@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 06:00:52</td>
+            <td class="headerValue">2020-12-10 06:56:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -146,7 +146,7 @@
 <a name="76"><span class="lineNum">      76 </span>            : </a>
 <a name="77"><span class="lineNum">      77 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">        670 :     function constructRestartFileFormat(methodName) result(RestartFileFormatObj)</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       1340 :     function constructRestartFileFormat(methodName) result(RestartFileFormatObj)</span></a>
 <a name="80"><span class="lineNum">      80 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="81"><span class="lineNum">      81 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructRestartFileFormat</a>
 <a name="82"><span class="lineNum">      82 </span>            : #endif</a>
@@ -156,13 +156,13 @@
 <a name="86"><span class="lineNum">      86 </span>            :         character(*), intent(in)    :: methodName</a>
 <a name="87"><span class="lineNum">      87 </span>            :         type(RestartFileFormat_type)  :: RestartFileFormatObj</a>
 <a name="88"><span class="lineNum">      88 </span>            : </a>
-<a name="89"><span class="lineNum">      89 </span><span class="lineCov">        670 :         RestartFileFormatObj%isBinary = .false.</span></a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">        670 :         RestartFileFormatObj%isAscii = .false.</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">        670 :         RestartFileFormatObj%binary = FILE_TYPE%binary</span></a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">        670 :         RestartFileFormatObj%ascii = FILE_TYPE%ascii</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">        670 :         RestartFileFormatObj%def = RestartFileFormatObj%binary</span></a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">       1340 :         RestartFileFormatObj%isBinary = .false.</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">       1340 :         RestartFileFormatObj%isAscii = .false.</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       1340 :         RestartFileFormatObj%binary = FILE_TYPE%binary</span></a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       1340 :         RestartFileFormatObj%ascii = FILE_TYPE%ascii</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       1340 :         RestartFileFormatObj%def = RestartFileFormatObj%binary</span></a>
 <a name="94"><span class="lineNum">      94 </span>            : </a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        670 :         RestartFileFormatObj%null = repeat(NULL_SK, MAX_LEN_RESTART_FILE_FORMAT)</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       1340 :         RestartFileFormatObj%null = repeat(NULL_SK, MAX_LEN_RESTART_FILE_FORMAT)</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span>            :         RestartFileFormatObj%desc = &amp;</a>
 <a name="98"><span class="lineNum">      98 </span>            :         &quot;restartFileFormat is a string variable that represents the format of the output restart file(s) which are used to restart &amp;</a>
@@ -179,64 +179,64 @@
 <a name="109"><span class="lineNum">     109 </span>            :                     &amp;restart file generation, compared to the binary format. Therefore, its usage should be limited to situations where &amp;</a>
 <a name="110"><span class="lineNum">     110 </span>            :                     &amp;the user wants to track the dynamics of simulation specifications throughout the simulation time. &amp;</a>
 <a name="111"><span class="lineNum">     111 </span>            :                     &amp;ASCII restart file(s) will have the &quot; // FILE_EXT%ascii //&quot; file extensions.\n\n&amp;</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">        670 :         &amp;The default value is restartFileFormat = '&quot; // RestartFileFormatObj%def // &quot;'. Note that the input values are case-insensitive.&quot;</span></a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        670 :     end function constructRestartFileFormat</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">       1340 :         &amp;The default value is restartFileFormat = '&quot; // RestartFileFormatObj%def // &quot;'. Note that the input values are case-insensitive.&quot;</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       1340 :     end function constructRestartFileFormat</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
 <a name="115"><span class="lineNum">     115 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        670 :     subroutine nullifyNameListVar(RestartFileFormatObj)</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">       1340 :     subroutine nullifyNameListVar(RestartFileFormatObj)</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="119"><span class="lineNum">     119 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="120"><span class="lineNum">     120 </span>            : #endif</a>
 <a name="121"><span class="lineNum">     121 </span>            :         implicit none</a>
 <a name="122"><span class="lineNum">     122 </span>            :         class(RestartFileFormat_type), intent(in) :: RestartFileFormatObj</a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        670 :         restartFileFormat = RestartFileFormatObj%null</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        670 :     end subroutine nullifyNameListVar</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       1340 :         restartFileFormat = RestartFileFormatObj%null</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       1340 :     end subroutine nullifyNameListVar</span></a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
 <a name="126"><span class="lineNum">     126 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        710 :     subroutine setRestartFileFormat(RestartFileFormatObj,restartFileFormat)</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       1420 :     subroutine setRestartFileFormat(RestartFileFormatObj,restartFileFormat)</span></a>
 <a name="129"><span class="lineNum">     129 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="130"><span class="lineNum">     130 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setRestartFileFormat</a>
 <a name="131"><span class="lineNum">     131 </span>            : #endif</a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">        670 :         use String_mod, only: getLowerCase</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       1340 :         use String_mod, only: getLowerCase</span></a>
 <a name="133"><span class="lineNum">     133 </span>            :         implicit none</a>
 <a name="134"><span class="lineNum">     134 </span>            :         class(RestartFileFormat_type), intent(inout)    :: RestartFileFormatObj</a>
 <a name="135"><span class="lineNum">     135 </span>            :         character(*), intent(in)                        :: restartFileFormat</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        710 :         character(:), allocatable                       :: restartFileFormatLowerCase</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        710 :         RestartFileFormatObj%val = trim(adjustl(restartFileFormat))</span></a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        710 :         if ( RestartFileFormatObj%val==trim(adjustl(RestartFileFormatObj%null)) ) then</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        654 :             RestartFileFormatObj%val = trim(adjustl(RestartFileFormatObj%def))</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1420 :         character(:), allocatable                       :: restartFileFormatLowerCase</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">       1420 :         RestartFileFormatObj%val = trim(adjustl(restartFileFormat))</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       1420 :         if ( RestartFileFormatObj%val==trim(adjustl(RestartFileFormatObj%null)) ) then</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       1308 :             RestartFileFormatObj%val = trim(adjustl(RestartFileFormatObj%def))</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :         end if</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        710 :         restartFileFormatLowerCase = getLowerCase(RestartFileFormatObj%val)</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        710 :         RestartFileFormatObj%isBinary = restartFileFormatLowerCase == getLowerCase(RestartFileFormatObj%binary)</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">        710 :         RestartFileFormatObj%isAscii = restartFileFormatLowerCase == getLowerCase(RestartFileFormatObj%ascii)</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        710 :     end subroutine setRestartFileFormat</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1420 :         restartFileFormatLowerCase = getLowerCase(RestartFileFormatObj%val)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       1420 :         RestartFileFormatObj%isBinary = restartFileFormatLowerCase == getLowerCase(RestartFileFormatObj%binary)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       1420 :         RestartFileFormatObj%isAscii = restartFileFormatLowerCase == getLowerCase(RestartFileFormatObj%ascii)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       1420 :     end subroutine setRestartFileFormat</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">        662 :     subroutine checkForSanity(RestartFileFormat,Err,methodName)</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       1324 :     subroutine checkForSanity(RestartFileFormat,Err,methodName)</span></a>
 <a name="149"><span class="lineNum">     149 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="150"><span class="lineNum">     150 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="151"><span class="lineNum">     151 </span>            : #endif</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        710 :         use Err_mod, only: Err_type</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       1420 :         use Err_mod, only: Err_type</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :         use String_mod, only: num2str</a>
 <a name="154"><span class="lineNum">     154 </span>            :         implicit none</a>
 <a name="155"><span class="lineNum">     155 </span>            :         class(RestartFileFormat_type), intent(in)   :: RestartFileFormat</a>
 <a name="156"><span class="lineNum">     156 </span>            :         character(*), intent(in)                    :: methodName</a>
 <a name="157"><span class="lineNum">     157 </span>            :         type(Err_type), intent(inout)               :: Err</a>
 <a name="158"><span class="lineNum">     158 </span>            :         character(*), parameter                     :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">        662 :         if ( .not.(RestartFileFormat%isBinary .or. RestartFileFormat%isAscii) ) then</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          4 :             Err%occurred = .true.</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1324 :         if ( .not.(RestartFileFormat%isBinary .or. RestartFileFormat%isAscii) ) then</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          8 :             Err%occurred = .true.</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :             Err%msg =   Err%msg // &amp;</a>
 <a name="162"><span class="lineNum">     162 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
 <a name="163"><span class="lineNum">     163 </span>            :                         &amp;The input requested restart file format ('&quot; // RestartFileFormat%val // &amp;</a>
 <a name="164"><span class="lineNum">     164 </span>            :                         &quot;') represented by the variable restartFileFormat cannot be anything other than '&quot; // &amp;</a>
 <a name="165"><span class="lineNum">     165 </span>            :                         RestartFileFormat%binary // &quot;' or '&quot; // RestartFileFormat%ascii // &quot;'. If you don't know an appropriate &amp;</a>
 <a name="166"><span class="lineNum">     166 </span>            :                         &amp;value for RestartFileFormat, drop it from the input list. &quot; // methodName // &amp;</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          4 :                         &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          8 :                         &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :         end if</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1324 :     end subroutine checkForSanity</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       2648 :     end subroutine checkForSanity</span></a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
 <a name="171"><span class="lineNum">     171 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 06:00:52</td>
+            <td class="headerValue">2020-12-10 06:56:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -154,7 +154,7 @@
 <a name="84"><span class="lineNum">      84 </span>            :     !&gt; Setup the properties of the ParaMCMC parent sampler.</a>
 <a name="85"><span class="lineNum">      85 </span>            :     !&gt;</a>
 <a name="86"><span class="lineNum">      86 </span>            :     !&gt; @param[inout] PMPM : An object of class [ParaMCMC_type](@ref paramcmc_type).</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       1005 :     subroutine setupParaMCMC(PMPM)</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">        670 :     subroutine setupParaMCMC(PMPM)</span></a>
 <a name="88"><span class="lineNum">      88 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="89"><span class="lineNum">      89 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMCMC</a>
 <a name="90"><span class="lineNum">      90 </span>            : #endif</a>
@@ -162,8 +162,8 @@
 <a name="92"><span class="lineNum">      92 </span>            :         implicit none</a>
 <a name="93"><span class="lineNum">      93 </span>            :         class(ParaMCMC_type), intent(inout)    :: PMPM</a>
 <a name="94"><span class="lineNum">      94 </span>            :         character(*), parameter :: PROCEDURE_NAME = &quot;@setupParaMCMC()&quot;</a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       1005 :         PMPM%SpecMCMC = SpecMCMC_type(nd=PMPM%nd%val,methodName=PMPM%name)</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">       1005 :     end subroutine setupParaMCMC</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        670 :         PMPM%SpecMCMC = SpecMCMC_type(nd=PMPM%nd%val,methodName=PMPM%name)</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">        670 :     end subroutine setupParaMCMC</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : </a>
 <a name="98"><span class="lineNum">      98 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="99"><span class="lineNum">      99 </span>            : </a>

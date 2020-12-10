@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 06:00:52</td>
+            <td class="headerValue">2020-12-10 06:56:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">27</td>
@@ -224,7 +224,7 @@
 <a name="154"><span class="lineNum">     154 </span>            :     !&gt;</a>
 <a name="155"><span class="lineNum">     155 </span>            :     !&gt; \remark</a>
 <a name="156"><span class="lineNum">     156 </span>            :     !&gt; The first element of `CumSum` is the same as the first element of `Vec`.</a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       2740 :     pure function getCumSum_IK(vecLen,Vec) result(CumSum)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">        312 :     pure function getCumSum_IK(vecLen,Vec) result(CumSum)</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="159"><span class="lineNum">     159 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_IK</a>
 <a name="160"><span class="lineNum">     160 </span>            : #endif</a>
@@ -233,11 +233,11 @@
 <a name="163"><span class="lineNum">     163 </span>            :         integer(IK), intent(in) :: Vec(vecLen)</a>
 <a name="164"><span class="lineNum">     164 </span>            :         integer(IK)             :: CumSum(vecLen)</a>
 <a name="165"><span class="lineNum">     165 </span>            :         integer(IK)             :: i</a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">       1370 :         CumSum(1) = Vec(1)</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">     314104 :         do i = 2, vecLen</span></a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">     314104 :             CumSum(i) = CumSum(i-1) + Vec(i)</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">        156 :         CumSum(1) = Vec(1)</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">      95397 :         do i = 2, vecLen</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">      95397 :             CumSum(i) = CumSum(i-1) + Vec(i)</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :         end do</a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       1370 :     end function getCumSum_IK</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        156 :     end function getCumSum_IK</span></a>
 <a name="171"><span class="lineNum">     171 </span>            : </a>
 <a name="172"><span class="lineNum">     172 </span>            :     !&gt; \brief</a>
 <a name="173"><span class="lineNum">     173 </span>            :     !&gt; Return the cumulative sum of the input real array.</a>
@@ -249,20 +249,20 @@
 <a name="179"><span class="lineNum">     179 </span>            :     !&gt;</a>
 <a name="180"><span class="lineNum">     180 </span>            :     !&gt; \remark</a>
 <a name="181"><span class="lineNum">     181 </span>            :     !&gt; The first element of `CumSum` is the same as the first element of `Vec`.</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">     500481 :     pure function getCumSum_RK(vecLen,Vec) result(CumSum)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">     491577 :     pure function getCumSum_RK(vecLen,Vec) result(CumSum)</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="184"><span class="lineNum">     184 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_RK</a>
 <a name="185"><span class="lineNum">     185 </span>            : #endif</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       1370 :         use Constants_mod, only: IK, RK</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">        156 :         use Constants_mod, only: IK, RK</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :         integer(IK), intent(in) :: vecLen</a>
 <a name="188"><span class="lineNum">     188 </span>            :         real(RK)   , intent(in) :: Vec(vecLen)</a>
 <a name="189"><span class="lineNum">     189 </span>            :         real(RK)                :: CumSum(vecLen)</a>
 <a name="190"><span class="lineNum">     190 </span>            :         integer(IK)             :: i</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         33 :         CumSum(1) = Vec(1)</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     500382 :         do i = 2, vecLen</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">     500382 :             CumSum(i) = CumSum(i-1) + Vec(i)</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          9 :         CumSum(1) = Vec(1)</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     491550 :         do i = 2, vecLen</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">     491550 :             CumSum(i) = CumSum(i-1) + Vec(i)</span></a>
 <a name="194"><span class="lineNum">     194 </span>            :         end do</a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         33 :     end function getCumSum_RK</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          9 :     end function getCumSum_RK</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
 <a name="197"><span class="lineNum">     197 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
@@ -280,7 +280,7 @@
 <a name="210"><span class="lineNum">     210 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="211"><span class="lineNum">     211 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumReverse_IK</a>
 <a name="212"><span class="lineNum">     212 </span>            : #endif</a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         33 :         use Constants_mod, only: IK</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">          9 :         use Constants_mod, only: IK</span></a>
 <a name="214"><span class="lineNum">     214 </span>            :         integer(IK), intent(in) :: vecLen</a>
 <a name="215"><span class="lineNum">     215 </span>            :         integer(IK), intent(in) :: Vec(vecLen)</a>
 <a name="216"><span class="lineNum">     216 </span>            :         integer(IK)             :: CumSumReverse(vecLen)</a>
@@ -335,17 +335,17 @@
 <a name="265"><span class="lineNum">     265 </span>            :     !&gt;</a>
 <a name="266"><span class="lineNum">     266 </span>            :     !&gt; \remark</a>
 <a name="267"><span class="lineNum">     267 </span>            :     !&gt; This function is very useful for situations where `exp(logValueLarger)` is likely to cause overflow.</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       7877 :     pure function getLogSubExp_RK(logValueLarger,logValueSamller) result(logSubExp)</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">       6609 :     pure function getLogSubExp_RK(logValueLarger,logValueSamller) result(logSubExp)</span></a>
 <a name="269"><span class="lineNum">     269 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="270"><span class="lineNum">     270 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSubExp_RK</a>
 <a name="271"><span class="lineNum">     271 </span>            : #endif</a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineCov">          3 :         use Constants_mod, only: RK, LOGTINY_RK</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :         real(RK)   , intent(in) :: logValueLarger, logValueSamller</a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">       7877 :         real(RK)                :: logSubExp, diff</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       7877 :         logSubExp = logValueLarger</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       7877 :         diff = logValueSamller - logValueLarger</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       7875 :         if (diff&gt;LOGTINY_RK) logSubExp = logSubExp + log( 1._RK - exp(diff) )</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       7877 :     end function getLogSubExp_RK</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">       6609 :         real(RK)                :: logSubExp, diff</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">       6609 :         logSubExp = logValueLarger</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">       6609 :         diff = logValueSamller - logValueLarger</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       6607 :         if (diff&gt;LOGTINY_RK) logSubExp = logSubExp + log( 1._RK - exp(diff) )</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       6609 :     end function getLogSubExp_RK</span></a>
 <a name="279"><span class="lineNum">     279 </span>            : </a>
 <a name="280"><span class="lineNum">     280 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="281"><span class="lineNum">     281 </span>            : </a>
@@ -362,7 +362,7 @@
 <a name="292"><span class="lineNum">     292 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="293"><span class="lineNum">     293 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExp_RK</a>
 <a name="294"><span class="lineNum">     294 </span>            : #endif</a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">       7877 :         use Constants_mod, only: IK, RK, LOGTINY_RK</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">       6609 :         use Constants_mod, only: IK, RK, LOGTINY_RK</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :         integer(IK) , intent(in)            :: lenLogValue</a>
 <a name="297"><span class="lineNum">     297 </span>            :         real(RK)    , intent(in)            :: LogValue(lenLogValue)</a>
 <a name="298"><span class="lineNum">     298 </span>            :         real(RK)    , intent(in), optional  :: maxLogValue</a>

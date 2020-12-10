@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 06:00:52</td>
+            <td class="headerValue">2020-12-10 06:56:19</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -131,23 +131,23 @@
 <a name="61"><span class="lineNum">      61 </span>            : </a>
 <a name="62"><span class="lineNum">      62 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          2 :     subroutine test_Cosmology()</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">          4 :     subroutine test_Cosmology()</span></a>
 <a name="65"><span class="lineNum">      65 </span>            :         implicit none</a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          2 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          2 :         call Test%run(test_getlogdvdz, &quot;test_getlogdvdz&quot;)</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          2 :         call Test%run(test_ldiswickram, &quot;test_ldiswickram&quot;)</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          2 :         call Test%run(test_getLogLumDisWicMpc, &quot;test_getLogLumDisWicMpc&quot;)</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          2 :         call Test%run(test_getLookBackTime_1, &quot;test_getLookBackTime_1&quot;) ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          2 :         call Test%run(test_getLookBackTime_2, &quot;test_getLookBackTime_2&quot;) ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.</span></a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          2 :         call Test%run(test_getUniverseAgeDerivative, &quot;test_getUniverseAgeDerivative&quot;)</span></a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          2 :         call Test%finalize()</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          2 :     end subroutine test_Cosmology</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          4 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          4 :         call Test%run(test_getlogdvdz, &quot;test_getlogdvdz&quot;)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          4 :         call Test%run(test_ldiswickram, &quot;test_ldiswickram&quot;)</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          4 :         call Test%run(test_getLogLumDisWicMpc, &quot;test_getLogLumDisWicMpc&quot;)</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          4 :         call Test%run(test_getLookBackTime_1, &quot;test_getLookBackTime_1&quot;) ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          4 :         call Test%run(test_getLookBackTime_2, &quot;test_getLookBackTime_2&quot;) ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">          4 :         call Test%run(test_getUniverseAgeDerivative, &quot;test_getUniverseAgeDerivative&quot;)</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          4 :         call Test%finalize()</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          4 :     end subroutine test_Cosmology</span></a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
 <a name="76"><span class="lineNum">      76 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          2 :     function test_getlogdvdz() result(assertion)</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          4 :     function test_getlogdvdz() result(assertion)</span></a>
 <a name="79"><span class="lineNum">      79 </span>            : </a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          2 :         use Constants_mod, only: RK, IK</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          4 :         use Constants_mod, only: RK, IK</span></a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span>            :         implicit none</a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
@@ -157,12 +157,12 @@
 <a name="87"><span class="lineNum">      87 </span>            :         real(RK), parameter :: twiceLogLumDisMpc = 0._RK</a>
 <a name="88"><span class="lineNum">      88 </span>            :         real(RK), parameter :: logdvdz_ref = 3.421655392580980_RK</a>
 <a name="89"><span class="lineNum">      89 </span>            :         real(RK), parameter :: tolerance = 1.e-10_RK</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          2 :         real(RK)            :: difference</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          2 :         real(RK)            :: logdvdz</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">          4 :         real(RK)            :: difference</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">          4 :         real(RK)            :: logdvdz</span></a>
 <a name="92"><span class="lineNum">      92 </span>            : </a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          2 :         logdvdz = getlogdvdz(zplus1,LOGzplus1,twiceLogLumDisMpc)</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          2 :         difference = abs( (logdvdz - logdvdz_ref) / logdvdz_ref )</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          2 :         assertion = difference &lt; tolerance</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          4 :         logdvdz = getlogdvdz(zplus1,LOGzplus1,twiceLogLumDisMpc)</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          4 :         difference = abs( (logdvdz - logdvdz_ref) / logdvdz_ref )</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          4 :         assertion = difference &lt; tolerance</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span>            :         ! LCOV_EXCL_START</a>
 <a name="98"><span class="lineNum">      98 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -174,13 +174,13 @@
 <a name="104"><span class="lineNum">     104 </span>            :         end if</a>
 <a name="105"><span class="lineNum">     105 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="106"><span class="lineNum">     106 </span>            : </a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          2 :     end function test_getlogdvdz</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          4 :     end function test_getlogdvdz</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : </a>
 <a name="109"><span class="lineNum">     109 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          2 :     function test_ldiswickram() result(assertion)</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          4 :     function test_ldiswickram() result(assertion)</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          2 :         use Constants_mod, only: RK, IK</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          4 :         use Constants_mod, only: RK, IK</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
 <a name="115"><span class="lineNum">     115 </span>            :         implicit none</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
@@ -188,12 +188,12 @@
 <a name="118"><span class="lineNum">     118 </span>            :         real(RK), parameter :: zplus1 = 1.e1_RK</a>
 <a name="119"><span class="lineNum">     119 </span>            :         real(RK), parameter :: tolerance = 1.e-8_RK</a>
 <a name="120"><span class="lineNum">     120 </span>            :         real(RK), parameter :: lumDisWicMpc_ref = 90887.79805125466_RK</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          2 :         real(RK)            :: lumDisWicMpc</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          2 :         real(RK)            :: difference</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          4 :         real(RK)            :: lumDisWicMpc</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          4 :         real(RK)            :: difference</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          2 :         lumDisWicMpc = ldiswickram(zplus1)</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          2 :         difference = abs( (lumDisWicMpc - lumDisWicMpc_ref) / lumDisWicMpc_ref )</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          2 :         assertion = difference &lt; tolerance</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">          4 :         lumDisWicMpc = ldiswickram(zplus1)</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">          4 :         difference = abs( (lumDisWicMpc - lumDisWicMpc_ref) / lumDisWicMpc_ref )</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          4 :         assertion = difference &lt; tolerance</span></a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
 <a name="128"><span class="lineNum">     128 </span>            :         ! LCOV_EXCL_START</a>
 <a name="129"><span class="lineNum">     129 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -205,13 +205,13 @@
 <a name="135"><span class="lineNum">     135 </span>            :         end if</a>
 <a name="136"><span class="lineNum">     136 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          2 :     end function test_ldiswickram</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          4 :     end function test_ldiswickram</span></a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
 <a name="140"><span class="lineNum">     140 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          2 :     function test_getLogLumDisWicMpc() result(assertion)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          4 :     function test_getLogLumDisWicMpc() result(assertion)</span></a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          2 :         use Constants_mod, only: RK, IK</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          4 :         use Constants_mod, only: RK, IK</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            :         implicit none</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
@@ -219,12 +219,12 @@
 <a name="149"><span class="lineNum">     149 </span>            :         real(RK), parameter :: zplus1 = 1.e1_RK</a>
 <a name="150"><span class="lineNum">     150 </span>            :         real(RK), parameter :: tolerance = 1.e-8_RK</a>
 <a name="151"><span class="lineNum">     151 </span>            :         real(RK), parameter :: logLumDisWicMpc_ref = 11.417381027586867_RK</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          2 :         real(RK)            :: logLumDisWicMpc</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          2 :         real(RK)            :: difference</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          4 :         real(RK)            :: logLumDisWicMpc</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          4 :         real(RK)            :: difference</span></a>
 <a name="154"><span class="lineNum">     154 </span>            : </a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          2 :         logLumDisWicMpc = getLogLumDisWicMpc(zplus1)</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          2 :         difference = abs( (logLumDisWicMpc - logLumDisWicMpc_ref) / logLumDisWicMpc_ref )</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          2 :         assertion = difference &lt; tolerance</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          4 :         logLumDisWicMpc = getLogLumDisWicMpc(zplus1)</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          4 :         difference = abs( (logLumDisWicMpc - logLumDisWicMpc_ref) / logLumDisWicMpc_ref )</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">          4 :         assertion = difference &lt; tolerance</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span>            :         ! LCOV_EXCL_START</a>
 <a name="160"><span class="lineNum">     160 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -236,13 +236,13 @@
 <a name="166"><span class="lineNum">     166 </span>            :         end if</a>
 <a name="167"><span class="lineNum">     167 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :     end function test_getLogLumDisWicMpc</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          4 :     end function test_getLogLumDisWicMpc</span></a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
 <a name="171"><span class="lineNum">     171 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :     function test_getLookBackTime_1() result(assertion)</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          4 :     function test_getLookBackTime_1() result(assertion)</span></a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          2 :         use Constants_mod, only: RK, IK</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          4 :         use Constants_mod, only: RK, IK</span></a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
 <a name="177"><span class="lineNum">     177 </span>            :         implicit none</a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
@@ -252,12 +252,12 @@
 <a name="182"><span class="lineNum">     182 </span>            :         real(RK)    , parameter :: lookBackTime_ref = 12.7740854156781_RK</a>
 <a name="183"><span class="lineNum">     183 </span>            :         real(RK)    , parameter :: maxRelativeError = 1.e-5_RK</a>
 <a name="184"><span class="lineNum">     184 </span>            :         integer(IK) , parameter :: nRefinement = 6</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          2 :         real(RK)                :: lookBackTime</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :         real(RK)                :: difference</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          4 :         real(RK)                :: lookBackTime</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          4 :         real(RK)                :: difference</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          4 :         lookBackTime = getLookBackTime(zplus1 = zplus1, maxRelativeError = maxRelativeError, nRefinement = nRefinement)</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :         difference = abs( (lookBackTime - lookBackTime_ref) / lookBackTime_ref )</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          2 :         assertion = difference &lt; tolerance</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          8 :         lookBackTime = getLookBackTime(zplus1 = zplus1, maxRelativeError = maxRelativeError, nRefinement = nRefinement)</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          4 :         difference = abs( (lookBackTime - lookBackTime_ref) / lookBackTime_ref )</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          4 :         assertion = difference &lt; tolerance</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span>            :         ! LCOV_EXCL_START</a>
 <a name="193"><span class="lineNum">     193 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -269,13 +269,13 @@
 <a name="199"><span class="lineNum">     199 </span>            :         end if</a>
 <a name="200"><span class="lineNum">     200 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="201"><span class="lineNum">     201 </span>            : </a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          2 :     end function test_getLookBackTime_1</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          4 :     end function test_getLookBackTime_1</span></a>
 <a name="203"><span class="lineNum">     203 </span>            : </a>
 <a name="204"><span class="lineNum">     204 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="205"><span class="lineNum">     205 </span>            : </a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          2 :     function test_getLookBackTime_2() result(assertion)</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          4 :     function test_getLookBackTime_2() result(assertion)</span></a>
 <a name="207"><span class="lineNum">     207 </span>            : </a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          2 :         use Constants_mod, only: RK, IK</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          4 :         use Constants_mod, only: RK, IK</span></a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
 <a name="210"><span class="lineNum">     210 </span>            :         implicit none</a>
 <a name="211"><span class="lineNum">     211 </span>            : </a>
@@ -283,12 +283,12 @@
 <a name="213"><span class="lineNum">     213 </span>            :         real(RK)    , parameter :: zplus1 = 1.e1_RK</a>
 <a name="214"><span class="lineNum">     214 </span>            :         real(RK)    , parameter :: tolerance = 1.e-12_RK</a>
 <a name="215"><span class="lineNum">     215 </span>            :         real(RK)    , parameter :: lookBackTime_ref = 12.7736258974511_RK</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          2 :         real(RK)                :: lookBackTime</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          2 :         real(RK)                :: difference</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          4 :         real(RK)                :: lookBackTime</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          4 :         real(RK)                :: difference</span></a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          4 :         lookBackTime = getLookBackTime(zplus1 = zplus1)</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          2 :         difference = abs( (lookBackTime - lookBackTime_ref) / lookBackTime_ref )</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          2 :         assertion = difference &lt; tolerance</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          8 :         lookBackTime = getLookBackTime(zplus1 = zplus1)</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          4 :         difference = abs( (lookBackTime - lookBackTime_ref) / lookBackTime_ref )</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          4 :         assertion = difference &lt; tolerance</span></a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>
 <a name="223"><span class="lineNum">     223 </span>            :         ! LCOV_EXCL_START</a>
 <a name="224"><span class="lineNum">     224 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -300,13 +300,13 @@
 <a name="230"><span class="lineNum">     230 </span>            :         end if</a>
 <a name="231"><span class="lineNum">     231 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="232"><span class="lineNum">     232 </span>            : </a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          2 :     end function test_getLookBackTime_2</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          4 :     end function test_getLookBackTime_2</span></a>
 <a name="234"><span class="lineNum">     234 </span>            : </a>
 <a name="235"><span class="lineNum">     235 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="236"><span class="lineNum">     236 </span>            : </a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          2 :     function test_getUniverseAgeDerivative() result(assertion)</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">          4 :     function test_getUniverseAgeDerivative() result(assertion)</span></a>
 <a name="238"><span class="lineNum">     238 </span>            : </a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          2 :         use Constants_mod, only: RK, IK</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          4 :         use Constants_mod, only: RK, IK</span></a>
 <a name="240"><span class="lineNum">     240 </span>            : </a>
 <a name="241"><span class="lineNum">     241 </span>            :         implicit none</a>
 <a name="242"><span class="lineNum">     242 </span>            : </a>
@@ -314,12 +314,12 @@
 <a name="244"><span class="lineNum">     244 </span>            :         real(RK)    , parameter :: zplus1 = 1.e1_RK</a>
 <a name="245"><span class="lineNum">     245 </span>            :         real(RK)    , parameter :: tolerance = 1.e-12_RK</a>
 <a name="246"><span class="lineNum">     246 </span>            :         real(RK)    , parameter :: universeAgeDerivative_ref = 8.122223525986105e-05_RK</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          2 :         real(RK)                :: universeAgeDerivative</span></a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          2 :         real(RK)                :: difference</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">          4 :         real(RK)                :: universeAgeDerivative</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          4 :         real(RK)                :: difference</span></a>
 <a name="249"><span class="lineNum">     249 </span>            : </a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          2 :         universeAgeDerivative = getUniverseAgeDerivative(zplus1 = zplus1)</span></a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          2 :         difference = abs( (universeAgeDerivative - universeAgeDerivative_ref) / universeAgeDerivative_ref )</span></a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          2 :         assertion = difference &lt; tolerance</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          4 :         universeAgeDerivative = getUniverseAgeDerivative(zplus1 = zplus1)</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">          4 :         difference = abs( (universeAgeDerivative - universeAgeDerivative_ref) / universeAgeDerivative_ref )</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          4 :         assertion = difference &lt; tolerance</span></a>
 <a name="253"><span class="lineNum">     253 </span>            : </a>
 <a name="254"><span class="lineNum">     254 </span>            :         ! LCOV_EXCL_START</a>
 <a name="255"><span class="lineNum">     255 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -331,7 +331,7 @@
 <a name="261"><span class="lineNum">     261 </span>            :         end if</a>
 <a name="262"><span class="lineNum">     262 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="263"><span class="lineNum">     263 </span>            : </a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          2 :     end function test_getUniverseAgeDerivative</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          4 :     end function test_getUniverseAgeDerivative</span></a>
 <a name="265"><span class="lineNum">     265 </span>            : </a>
 <a name="266"><span class="lineNum">     266 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="267"><span class="lineNum">     267 </span>            : </a>
