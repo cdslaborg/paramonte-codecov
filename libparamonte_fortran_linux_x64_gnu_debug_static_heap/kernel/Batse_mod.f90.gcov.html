@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 04:44:10</td>
+            <td class="headerValue">2020-12-10 05:47:44</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -210,7 +210,7 @@
 <a name="140"><span class="lineNum">     140 </span>            :     !&gt; \param[in]   inFilePath  :   The path to the input BATSE file.</a>
 <a name="141"><span class="lineNum">     141 </span>            :     !&gt; \param[in]   outFilePath :   The path to the output BATSE file.</a>
 <a name="142"><span class="lineNum">     142 </span>            :     !&gt; \param[in]   isLgrb      :   A logical flag indicating what type of input file is being processed.</a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          2 :     subroutine readDataGRB(inFilePath,outFilePath,isLgrb)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         16 :     subroutine readDataGRB(inFilePath,outFilePath,isLgrb)</span></a>
 <a name="144"><span class="lineNum">     144 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="145"><span class="lineNum">     145 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: readDataGRB</a>
 <a name="146"><span class="lineNum">     146 </span>            : #endif</a>
@@ -221,82 +221,82 @@
 <a name="151"><span class="lineNum">     151 </span>            :         character(*), intent(in)            :: inFilePath, outFilePath</a>
 <a name="152"><span class="lineNum">     152 </span>            :         integer(IK)                         :: inFileUnit, outFileUnit, igrb</a>
 <a name="153"><span class="lineNum">     153 </span>            :         logical     , intent(in)            :: isLgrb</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 :         type(Image_type)                    :: Image</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         16 :         type(Image_type)                    :: Image</span></a>
 <a name="155"><span class="lineNum">     155 </span>            : </a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">          2 :         call Image%query()</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">         16 :         call Image%query()</span></a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          2 :         if (isLgrb) then</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          1 :             GRB%count = NLGRB</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">         16 :         if (isLgrb) then</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">          8 :             GRB%count = NLGRB</span></a>
 <a name="160"><span class="lineNum">     160 </span>            :         else</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          1 :             GRB%count = NSGRB</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          8 :             GRB%count = NSGRB</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :         end if</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          2 :         if (allocated(GRB%Event)) deallocate(GRB%Event); allocate(GRB%Event(GRB%count))</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          2 :         if (allocated(Trigger)) deallocate(Trigger); allocate(Trigger(GRB%count))</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">         16 :         if (allocated(GRB%Event)) deallocate(GRB%Event); allocate(GRB%Event(GRB%count))</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         16 :         if (allocated(Trigger)) deallocate(Trigger); allocate(Trigger(GRB%count))</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          2 :         open(newunit=inFileUnit,file=inFilePath,status=&quot;old&quot;)</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         16 :         open(newunit=inFileUnit,file=inFilePath,status=&quot;old&quot;)</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :         if (Image%isFirst) then</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          2 :             open(newunit=outFileUnit,file=outFilePath,status=&quot;replace&quot;)</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          2 :             write(outFileUnit,&quot;(9a30)&quot;  ) &quot;trigger&quot;             &amp;</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          2 :                                         , &quot;logPbol_1eV_20MeV&quot;   &amp;</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :                                         , &quot;logSbol_1eV_20MeV&quot;   &amp;</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          2 :                                         , &quot;logEpk&quot;              &amp;</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          2 :                                         , &quot;logEPR1024&quot;          &amp;</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          2 :                                         , &quot;logEFR&quot;              &amp;</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          2 :                                         , &quot;logFPR1024&quot;          &amp;</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          2 :                                         , &quot;logT90&quot;              &amp;</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          4 :                                         , &quot;logEffPF53&quot;</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">         16 :         if (Image%isFirst) then</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">         16 :             open(newunit=outFileUnit,file=outFilePath,status=&quot;replace&quot;)</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         16 :             write(outFileUnit,&quot;(9a30)&quot;  ) &quot;trigger&quot;             &amp;</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">         16 :                                         , &quot;logPbol_1eV_20MeV&quot;   &amp;</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         16 :                                         , &quot;logSbol_1eV_20MeV&quot;   &amp;</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         16 :                                         , &quot;logEpk&quot;              &amp;</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         16 :                                         , &quot;logEPR1024&quot;          &amp;</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         16 :                                         , &quot;logEFR&quot;              &amp;</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         16 :                                         , &quot;logFPR1024&quot;          &amp;</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">         16 :                                         , &quot;logT90&quot;              &amp;</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">         32 :                                         , &quot;logEffPF53&quot;</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :         end if</a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            :         ! skip the header row in the input file</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          2 :         read(inFileUnit,*)</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">         16 :         read(inFileUnit,*)</span></a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
 <a name="185"><span class="lineNum">     185 </span>            :         ! read BATSE GRB data</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       1933 :         do igrb = 1, GRB%count</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">      15464 :         do igrb = 1, GRB%count</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
 <a name="188"><span class="lineNum">     188 </span><span class="lineNoCov">          0 :             read(inFileUnit,*   ) Trigger(igrb)             &amp;</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">       1931 :                                 , GRB%Event(igrb)%logPF53   &amp;</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       1931 :                                 , GRB%Event(igrb)%logEpk    &amp;</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">       1931 :                                 , GRB%Event(igrb)%logSbol   &amp;</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">       3862 :                                 , GRB%Event(igrb)%logT90</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">      15448 :                                 , GRB%Event(igrb)%logPF53   &amp;</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">      15448 :                                 , GRB%Event(igrb)%logEpk    &amp;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">      15448 :                                 , GRB%Event(igrb)%logSbol   &amp;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">      30896 :                                 , GRB%Event(igrb)%logT90</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
 <a name="194"><span class="lineNum">     194 </span>            :             ! convert all values to logarithm in base Neper</a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       1931 :             GRB%Event(igrb)%logPF53 = LN10 * GRB%Event(igrb)%logPF53</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       1931 :             GRB%Event(igrb)%logEpk  = LN10 * GRB%Event(igrb)%logEpk</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">       1931 :             GRB%Event(igrb)%logSbol = LN10 * GRB%Event(igrb)%logSbol</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">       1931 :             GRB%Event(igrb)%logT90  = LN10 * GRB%Event(igrb)%logT90</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">      15448 :             GRB%Event(igrb)%logPF53 = LN10 * GRB%Event(igrb)%logPF53</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      15448 :             GRB%Event(igrb)%logEpk  = LN10 * GRB%Event(igrb)%logEpk</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">      15448 :             GRB%Event(igrb)%logSbol = LN10 * GRB%Event(igrb)%logSbol</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">      15448 :             GRB%Event(igrb)%logT90  = LN10 * GRB%Event(igrb)%logT90</span></a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>
 <a name="201"><span class="lineNum">     201 </span>            :             ! convert photon count data to energy in units of ergs</a>
 <a name="202"><span class="lineNum">     202 </span>            : </a>
-<a name="203"><span class="lineNum">     203 </span><span class="lineCov">       1931 :             GRB%Event(igrb)%logPbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logPF53 )</span></a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       1931 :             if (isLgrb) then</span></a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">       1366 :                 GRB%Event(igrb)%logSbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logSbol )</span></a>
+<a name="203"><span class="lineNum">     203 </span><span class="lineCov">      15448 :             GRB%Event(igrb)%logPbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logPF53 )</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">      15448 :             if (isLgrb) then</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">      10928 :                 GRB%Event(igrb)%logSbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logSbol )</span></a>
 <a name="206"><span class="lineNum">     206 </span>            :             else</a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        565 :                 GRB%Event(igrb)%logPF53 = GRB%Event(igrb)%logPF53 - THRESH_ERFC_AMP * erfc( (GRB%Event(igrb)%logT90-THRESH_ERFC_AVG) * THRESH_ERFC_STD_INV )</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       4520 :                 GRB%Event(igrb)%logPF53 = GRB%Event(igrb)%logPF53 - THRESH_ERFC_AMP * erfc( (GRB%Event(igrb)%logT90-THRESH_ERFC_AVG) * THRESH_ERFC_STD_INV )</span></a>
 <a name="208"><span class="lineNum">     208 </span>            :             end if</a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
 <a name="210"><span class="lineNum">     210 </span>            :             ! write the converted data to output file</a>
 <a name="211"><span class="lineNum">     211 </span>            : </a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">       1933 :             if (Image%isFirst) then</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">      15464 :             if (Image%isFirst) then</span></a>
 <a name="213"><span class="lineNum">     213 </span>            :                 write(outFileUnit,&quot;(I30,8E30.6)&quot;) Trigger(igrb)                                     &amp; ! LCOV_EXCL_LINE</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       1931 :                                                 , GRB%Event(igrb)%logPbol                           &amp;</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1931 :                                                 , GRB%Event(igrb)%logSbol                           &amp;</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">       1931 :                                                 , GRB%Event(igrb)%logEpk                            &amp;</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">       1931 :                                                 , GRB%Event(igrb)%logEpk-GRB%Event(igrb)%logPbol    &amp;</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">       1931 :                                                 , GRB%Event(igrb)%logEpk-GRB%Event(igrb)%logSbol    &amp;</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       1931 :                                                 , GRB%Event(igrb)%logSbol-GRB%Event(igrb)%logPbol   &amp;</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">       1931 :                                                 , GRB%Event(igrb)%logT90                            &amp;</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">       3862 :                                                 , GRB%Event(igrb)%logPF53</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">      15448 :                                                 , GRB%Event(igrb)%logPbol                           &amp;</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">      15448 :                                                 , GRB%Event(igrb)%logSbol                           &amp;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">      15448 :                                                 , GRB%Event(igrb)%logEpk                            &amp;</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">      15448 :                                                 , GRB%Event(igrb)%logEpk-GRB%Event(igrb)%logPbol    &amp;</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">      15448 :                                                 , GRB%Event(igrb)%logEpk-GRB%Event(igrb)%logSbol    &amp;</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">      15448 :                                                 , GRB%Event(igrb)%logSbol-GRB%Event(igrb)%logPbol   &amp;</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">      15448 :                                                 , GRB%Event(igrb)%logT90                            &amp;</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">      30896 :                                                 , GRB%Event(igrb)%logPF53</span></a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>
 <a name="223"><span class="lineNum">     223 </span>            :             end if</a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>
 <a name="225"><span class="lineNum">     225 </span>            :         end do</a>
 <a name="226"><span class="lineNum">     226 </span>            : </a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          2 :         if (Image%isFirst) close(outFileUnit)</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">         16 :         if (Image%isFirst) close(outFileUnit)</span></a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          2 :         close(inFileUnit)</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">         16 :         close(inFileUnit)</span></a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
 <a name="231"><span class="lineNum">     231 </span>            : !#if defined CAF_ENABLED</a>
 <a name="232"><span class="lineNum">     232 </span>            : !        sync images(*)</a>
@@ -315,11 +315,11 @@
 <a name="245"><span class="lineNum">     245 </span>            : !    end if</a>
 <a name="246"><span class="lineNum">     246 </span>            : !#endif</a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">          2 :     end subroutine readDataGRB</span></a>
+<a name="248"><span class="lineNum">     248 </span><span class="lineCov">         16 :     end subroutine readDataGRB</span></a>
 <a name="249"><span class="lineNum">     249 </span>            : </a>
 <a name="250"><span class="lineNum">     250 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">        258 :     pure function getLog10PF53(log10epk,log10pbol) result(log10PF53)</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">       2064 :     pure function getLog10PF53(log10epk,log10pbol) result(log10PF53)</span></a>
 <a name="253"><span class="lineNum">     253 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="254"><span class="lineNum">     254 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53</a>
 <a name="255"><span class="lineNum">     255 </span>            : #endif</a>
@@ -327,20 +327,20 @@
 <a name="257"><span class="lineNum">     257 </span>            :         ! this function calculates the corresponding Log10(peak photon flux) in the BATSE detection energy range [50,300] KeV.</a>
 <a name="258"><span class="lineNum">     258 </span>            :         ! Amir Shahmoradi, Wednesday June 27, 2012, 7:15 PM, IFS, The University of Texas at Austin.</a>
 <a name="259"><span class="lineNum">     259 </span>            :         ! Amir Shahmoradi, Wednesday June 27, 2012, 9:29 PM, IFS, The University of Texas at Austin.</a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          2 :         use Constants_mod, only: RK</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         16 :         use Constants_mod, only: RK</span></a>
 <a name="261"><span class="lineNum">     261 </span>            :         implicit none</a>
 <a name="262"><span class="lineNum">     262 </span>            :         real(RK), intent(in)    :: log10epk,log10pbol</a>
 <a name="263"><span class="lineNum">     263 </span>            :         real(RK)                :: log10PF53</a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">        258 :         if (log10epk&lt;-2.915056638230699_RK) then</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          3 :             log10PF53 = log10pbol    + 4.9200000000000000_RK</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">        255 :         elseif (log10epk&lt;1.5_RK) then</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">       2064 :         if (log10epk&lt;-2.915056638230699_RK) then</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         24 :             log10PF53 = log10pbol    + 4.9200000000000000_RK</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">       2040 :         elseif (log10epk&lt;1.5_RK) then</span></a>
 <a name="267"><span class="lineNum">     267 </span>            :             log10PF53 = log10pbol   + 5.7361200000000000_RK + log10epk * &amp;</a>
 <a name="268"><span class="lineNum">     268 </span>            :                                     ( 0.3093600000000000_RK + log10epk * &amp;</a>
 <a name="269"><span class="lineNum">     269 </span>            :                                     ( 0.0045600000000000_RK + log10epk * &amp;</a>
 <a name="270"><span class="lineNum">     270 </span>            :                                     ( 0.0015900000000000_RK + log10epk * &amp;</a>
 <a name="271"><span class="lineNum">     271 </span>            :                                     ( 0.0001533360000000_RK - log10epk   &amp;</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        132 :                                     * 0.0003574800000000_RK ))))</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">        123 :         elseif (log10epk&lt;2.5_RK) then</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">       1056 :                                     * 0.0003574800000000_RK ))))</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">        984 :         elseif (log10epk&lt;2.5_RK) then</span></a>
 <a name="274"><span class="lineNum">     274 </span>            :             log10PF53 = log10pbol   + 1.9112800000000000_RK + log10epk * &amp;</a>
 <a name="275"><span class="lineNum">     275 </span>            :                                     ( 39.710390000000000_RK - log10epk * &amp;</a>
 <a name="276"><span class="lineNum">     276 </span>            :                                     ( 96.606280000000000_RK - log10epk * &amp;</a>
@@ -348,28 +348,28 @@
 <a name="278"><span class="lineNum">     278 </span>            :                                     ( 67.271800000000000_RK - log10epk * &amp;</a>
 <a name="279"><span class="lineNum">     279 </span>            :                                     ( 23.402390000000000_RK - log10epk * &amp;</a>
 <a name="280"><span class="lineNum">     280 </span>            :                                     ( 4.3454400000000000_RK - log10epk   &amp;</a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">         30 :                                     * 0.3360600000000000_RK ))))))</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">         93 :         elseif (log10epk&lt;4._RK) then</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        240 :                                     * 0.3360600000000000_RK ))))))</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        744 :         elseif (log10epk&lt;4._RK) then</span></a>
 <a name="283"><span class="lineNum">     283 </span>            :             log10PF53 = log10pbol   + 2.8020600000000000_RK + log10epk * &amp;</a>
 <a name="284"><span class="lineNum">     284 </span>            :                                     ( 4.5690700000000000_RK - log10epk * &amp;</a>
 <a name="285"><span class="lineNum">     285 </span>            :                                     ( 1.9277200000000000_RK - log10epk * &amp;</a>
 <a name="286"><span class="lineNum">     286 </span>            :                                     ( 0.2938100000000000_RK - log10epk   &amp;</a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">         45 :                                     * 0.0148900000000000_RK )))</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         48 :         elseif (log10epk&lt;5.4093868613659435_RK) then</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">        360 :                                     * 0.0148900000000000_RK )))</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        384 :         elseif (log10epk&lt;5.4093868613659435_RK) then</span></a>
 <a name="289"><span class="lineNum">     289 </span>            :             log10PF53 = log10pbol   - 10.465330000000000_RK + log10epk * &amp;</a>
 <a name="290"><span class="lineNum">     290 </span>            :                                     ( 26.706370000000000_RK - log10epk * &amp;</a>
 <a name="291"><span class="lineNum">     291 </span>            :                                     ( 14.476310000000000_RK - log10epk * &amp;</a>
 <a name="292"><span class="lineNum">     292 </span>            :                                     ( 3.5404100000000000_RK - log10epk * &amp;</a>
 <a name="293"><span class="lineNum">     293 </span>            :                                     ( 0.4095700000000000_RK - log10epk   &amp;</a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">         45 :                                     * 0.0183100000000000_RK ))))</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        360 :                                     * 0.0183100000000000_RK ))))</span></a>
 <a name="295"><span class="lineNum">     295 </span>            :         else ! if (log10epk&gt;=5.4093868613659435_RK) then</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">          3 :             log10PF53 = log10pbol   + 4.9200000000000000_RK</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         24 :             log10PF53 = log10pbol   + 4.9200000000000000_RK</span></a>
 <a name="297"><span class="lineNum">     297 </span>            :         end if</a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">        258 :     end function getLog10PF53</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">       2064 :     end function getLog10PF53</span></a>
 <a name="299"><span class="lineNum">     299 </span>            : </a>
 <a name="300"><span class="lineNum">     300 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">       3469 :     pure function getLogPF53(logEpk,logPbol) result(logPF53)</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">      27752 :     pure function getLogPF53(logEpk,logPbol) result(logPF53)</span></a>
 <a name="303"><span class="lineNum">     303 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="304"><span class="lineNum">     304 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53</a>
 <a name="305"><span class="lineNum">     305 </span>            : #endif</a>
@@ -377,20 +377,20 @@
 <a name="307"><span class="lineNum">     307 </span>            :         ! this function calculates the corresponding Log(peak photon flux) in the BATSE detection energy range [50,300] KeV.</a>
 <a name="308"><span class="lineNum">     308 </span>            :         ! Amir Shahmoradi, Wednesday June 27, 2012, 7:15 PM, IFS, The University of Texas at Austin.</a>
 <a name="309"><span class="lineNum">     309 </span>            :         ! Amir Shahmoradi, Wednesday June 27, 2012, 9:29 PM, IFS, The University of Texas at Austin.</a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">        258 :         use Constants_mod, only: RK</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       2064 :         use Constants_mod, only: RK</span></a>
 <a name="311"><span class="lineNum">     311 </span>            :         implicit none</a>
 <a name="312"><span class="lineNum">     312 </span>            :         real(RK), intent(in)    :: logEpk,logPbol</a>
 <a name="313"><span class="lineNum">     313 </span>            :         real(RK)                :: logPF53</a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">       3469 :         if (logEpk&lt;-6.712165960423344_RK) then</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          2 :             logPF53 = logPbol    + 11.32871865753070600_RK</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       3467 :         elseif (logEpk&lt;3.453877639491069_RK) then</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">      27752 :         if (logEpk&lt;-6.712165960423344_RK) then</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">         16 :             logPF53 = logPbol    + 11.32871865753070600_RK</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">      27736 :         elseif (logEpk&lt;3.453877639491069_RK) then</span></a>
 <a name="317"><span class="lineNum">     317 </span>            :             logPF53 = logPbol   + 13.20790440362500600_RK + logEpk * &amp;</a>
 <a name="318"><span class="lineNum">     318 </span>            :                                 ( 0.309360000000000000_RK + logEpk * &amp;</a>
 <a name="319"><span class="lineNum">     319 </span>            :                                 ( 0.001980382837478830_RK + logEpk * &amp;</a>
 <a name="320"><span class="lineNum">     320 </span>            :                                 ( 0.000299892598248466_RK + logEpk * &amp;</a>
 <a name="321"><span class="lineNum">     321 </span>            :                                 ( 1.25602147173493e-05_RK - logEpk   &amp;</a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        110 :                                 * 1.27171265917873e-05_RK ))))</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">       3357 :         elseif (logEpk&lt;5.756462732485115_RK) then</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        880 :                                 * 1.27171265917873e-05_RK ))))</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">      26856 :         elseif (logEpk&lt;5.756462732485115_RK) then</span></a>
 <a name="324"><span class="lineNum">     324 </span>            :             logPF53 = logPbol   + 4.400884836537660000_RK + logEpk * &amp;</a>
 <a name="325"><span class="lineNum">     325 </span>            :                                 ( 39.71039000000000000_RK - logEpk * &amp;</a>
 <a name="326"><span class="lineNum">     326 </span>            :                                 ( 41.95557432120050000_RK - logEpk * &amp;</a>
@@ -398,29 +398,29 @@
 <a name="328"><span class="lineNum">     328 </span>            :                                 ( 5.510436247342930000_RK - logEpk * &amp;</a>
 <a name="329"><span class="lineNum">     329 </span>            :                                 ( 0.832525333390336000_RK - logEpk * &amp;</a>
 <a name="330"><span class="lineNum">     330 </span>            :                                 ( 0.067135977132248900_RK - logEpk   &amp;</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">       2454 :                                 * 0.002254876138523550_RK ))))))</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">        903 :         elseif (logEpk&lt;9.210340371976184_RK) then</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">      19632 :                                 * 0.002254876138523550_RK ))))))</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">       7224 :         elseif (logEpk&lt;9.210340371976184_RK) then</span></a>
 <a name="333"><span class="lineNum">     333 </span>            :             logPF53 = logPbol   + 6.451981585674900000_RK + logEpk * &amp;</a>
 <a name="334"><span class="lineNum">     334 </span>            :                                 ( 4.569070000000000000_RK - logEpk * &amp;</a>
 <a name="335"><span class="lineNum">     335 </span>            :                                 ( 0.837198158654537000_RK - logEpk * &amp;</a>
 <a name="336"><span class="lineNum">     336 </span>            :                                 ( 0.055416002698982300_RK - logEpk   &amp;</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">        871 :                                 * 0.001219684856402480_RK )))</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         32 :         elseif (logEpk&lt;12.455573549219071_RK) then</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       6968 :                                 * 0.001219684856402480_RK )))</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">        256 :         elseif (logEpk&lt;12.455573549219071_RK) then</span></a>
 <a name="339"><span class="lineNum">     339 </span>            :             logPF53 = logPbol   - 24.09731285126340000_RK + logEpk * &amp;</a>
 <a name="340"><span class="lineNum">     340 </span>            :                                 ( 26.70637000000000000_RK - logEpk * &amp;</a>
 <a name="341"><span class="lineNum">     341 </span>            :                                 ( 6.286981551320860000_RK - logEpk * &amp;</a>
 <a name="342"><span class="lineNum">     342 </span>            :                                 ( 0.667762738216888000_RK - logEpk * &amp;</a>
 <a name="343"><span class="lineNum">     343 </span>            :                                 ( 0.033549115287895400_RK - logEpk   &amp;</a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         30 :                                 * 0.000651366755890191_RK ))))</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">        240 :                                 * 0.000651366755890191_RK ))))</span></a>
 <a name="345"><span class="lineNum">     345 </span>            :         else</a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          2 :             logPF53 = logPbol   + 11.32871865753070600_RK</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         16 :             logPF53 = logPbol   + 11.32871865753070600_RK</span></a>
 <a name="347"><span class="lineNum">     347 </span>            :         end if</a>
 <a name="348"><span class="lineNum">     348 </span>            :         !write(*,&quot;(*(g0.13,:,', '))&quot;) &quot;logEpk, logPbol, logPF53&lt;0.0: &quot;, logEpk, logPbol, logPF53</a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">       3469 :     end function getLogPF53</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">      27752 :     end function getLogPF53</span></a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
 <a name="351"><span class="lineNum">     351 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="352"><span class="lineNum">     352 </span>            : </a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">       3383 :     pure function getLogPbol(logEpk,logPF53) result(logPbol)</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">      27064 :     pure function getLogPbol(logEpk,logPF53) result(logPbol)</span></a>
 <a name="354"><span class="lineNum">     354 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="355"><span class="lineNum">     355 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol</a>
 <a name="356"><span class="lineNum">     356 </span>            : #endif</a>
@@ -428,16 +428,16 @@
 <a name="358"><span class="lineNum">     358 </span>            :         ! this function calculates the corresponding Log10(peak photon flux) in the BATSE detection energy range [50,300] KeV.</a>
 <a name="359"><span class="lineNum">     359 </span>            :         ! Amir Shahmoradi, Wednesday June 27, 2012, 7:15 PM, IFS, The University of Texas at Austin.</a>
 <a name="360"><span class="lineNum">     360 </span>            :         ! Amir Shahmoradi, Wednesday June 27, 2012, 9:29 PM, IFS, The University of Texas at Austin.</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">       3469 :         use Constants_mod, only: RK</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      27752 :         use Constants_mod, only: RK</span></a>
 <a name="362"><span class="lineNum">     362 </span>            :         implicit none</a>
 <a name="363"><span class="lineNum">     363 </span>            :         real(RK), intent(in)    :: logEpk, logPF53</a>
 <a name="364"><span class="lineNum">     364 </span>            :         real(RK)                :: logPbol</a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">       3383 :         logPbol = logPF53 - getLogPF53(logEpk,0._RK)</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">       6766 :     end function getLogPbol</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">      27064 :         logPbol = logPF53 - getLogPF53(logEpk,0._RK)</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">      54128 :     end function getLogPbol</span></a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
 <a name="368"><span class="lineNum">     368 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="369"><span class="lineNum">     369 </span>            : </a>
-<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          1 :     pure function getLogEffectivePeakPhotonFlux_SPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">          8 :     pure function getLogEffectivePeakPhotonFlux_SPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)</span></a>
 <a name="371"><span class="lineNum">     371 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="372"><span class="lineNum">     372 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux_SPR</a>
 <a name="373"><span class="lineNum">     373 </span>            : #endif</a>
@@ -448,12 +448,12 @@
 <a name="378"><span class="lineNum">     378 </span>            :         implicit none</a>
 <a name="379"><span class="lineNum">     379 </span>            :         real(RK), intent(in)    :: logPeakPhotonFlux64ms, logT90</a>
 <a name="380"><span class="lineNum">     380 </span>            :         real(RK)                :: logEffectivePeakPhotonFlux</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          1 :         logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)</span></a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">       3383 :     end function getLogEffectivePeakPhotonFlux_SPR</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          8 :         logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">      27064 :     end function getLogEffectivePeakPhotonFlux_SPR</span></a>
 <a name="383"><span class="lineNum">     383 </span>            : </a>
 <a name="384"><span class="lineNum">     384 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="385"><span class="lineNum">     385 </span>            : </a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          1 :     pure function getLogEffectivePeakPhotonFlux_DPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">          8 :     pure function getLogEffectivePeakPhotonFlux_DPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)</span></a>
 <a name="387"><span class="lineNum">     387 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="388"><span class="lineNum">     388 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux_DPR</a>
 <a name="389"><span class="lineNum">     389 </span>            : #endif</a>
@@ -464,12 +464,12 @@
 <a name="394"><span class="lineNum">     394 </span>            :         implicit none</a>
 <a name="395"><span class="lineNum">     395 </span>            :         real(RK), intent(in)    :: logPeakPhotonFlux64ms, logT90</a>
 <a name="396"><span class="lineNum">     396 </span>            :         real(RK)                :: logEffectivePeakPhotonFlux</a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">          1 :         logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          1 :     end function getLogEffectivePeakPhotonFlux_DPR</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">          8 :         logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          8 :     end function getLogEffectivePeakPhotonFlux_DPR</span></a>
 <a name="399"><span class="lineNum">     399 </span>            : </a>
 <a name="400"><span class="lineNum">     400 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="401"><span class="lineNum">     401 </span>            : </a>
-<a name="402"><span class="lineNum">     402 </span><span class="lineCov">          2 :     pure function getLogEffectivePeakPhotonFluxCorrection_SPR(logT90) result(logEffectivePeakPhotonFluxCorrection)</span></a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">         16 :     pure function getLogEffectivePeakPhotonFluxCorrection_SPR(logT90) result(logEffectivePeakPhotonFluxCorrection)</span></a>
 <a name="403"><span class="lineNum">     403 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="404"><span class="lineNum">     404 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFluxCorrection_SPR</a>
 <a name="405"><span class="lineNum">     405 </span>            : #endif</a>
@@ -480,13 +480,13 @@
 <a name="410"><span class="lineNum">     410 </span>            :         implicit none</a>
 <a name="411"><span class="lineNum">     411 </span>            :         real(RK), intent(in)    :: logT90</a>
 <a name="412"><span class="lineNum">     412 </span>            :         real(RK)                :: logEffectivePeakPhotonFluxCorrection</a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">          2 :         logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">         16 :         logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))</span></a>
 <a name="414"><span class="lineNum">     414 </span>            :                                               ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms</a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">          1 :     end function getLogEffectivePeakPhotonFluxCorrection_SPR</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">          8 :     end function getLogEffectivePeakPhotonFluxCorrection_SPR</span></a>
 <a name="416"><span class="lineNum">     416 </span>            : </a>
 <a name="417"><span class="lineNum">     417 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="418"><span class="lineNum">     418 </span>            : </a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">          2 :     pure function getLogEffectivePeakPhotonFluxCorrection_DPR(logT90) result(logEffectivePeakPhotonFluxCorrection)</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">         16 :     pure function getLogEffectivePeakPhotonFluxCorrection_DPR(logT90) result(logEffectivePeakPhotonFluxCorrection)</span></a>
 <a name="420"><span class="lineNum">     420 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="421"><span class="lineNum">     421 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFluxCorrection_DPR</a>
 <a name="422"><span class="lineNum">     422 </span>            : #endif</a>
@@ -497,9 +497,9 @@
 <a name="427"><span class="lineNum">     427 </span>            :         implicit none</a>
 <a name="428"><span class="lineNum">     428 </span>            :         real(RK), intent(in)    :: logT90</a>
 <a name="429"><span class="lineNum">     429 </span>            :         real(RK)                :: logEffectivePeakPhotonFluxCorrection</a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">          2 :         logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">         16 :         logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))</span></a>
 <a name="431"><span class="lineNum">     431 </span>            :                                               ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms</a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">          2 :     end function getLogEffectivePeakPhotonFluxCorrection_DPR</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         16 :     end function getLogEffectivePeakPhotonFluxCorrection_DPR</span></a>
 <a name="433"><span class="lineNum">     433 </span>            : </a>
 <a name="434"><span class="lineNum">     434 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="435"><span class="lineNum">     435 </span>            : </a>

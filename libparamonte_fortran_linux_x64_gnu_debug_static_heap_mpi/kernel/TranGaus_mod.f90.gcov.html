@@ -31,13 +31,13 @@
             <td class="headerValue">ParaMonte :: MPI Parallel Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">69</td>
+            <td class="headerCovTableEntry">90</td>
             <td class="headerCovTableEntry">94</td>
-            <td class="headerCovTableEntryLo">73.4 %</td>
+            <td class="headerCovTableEntryHi">95.7 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 04:48:27</td>
+            <td class="headerValue">2020-12-10 05:37:02</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -2619,7 +2619,7 @@
 <a name="2549"><span class="lineNum">    2549 </span>            :     !&gt;</a>
 <a name="2550"><span class="lineNum">    2550 </span>            :     !&gt; \return</a>
 <a name="2551"><span class="lineNum">    2551 </span>            :     !&gt; `tranGaus`   :   The output truncated random Gaussian number.</a>
-<a name="2552"><span class="lineNum">    2552 </span><span class="lineCov">       2400 :     function getTranGaus(lowerLim,upperLim,avg,std) result(tranGaus)</span></a>
+<a name="2552"><span class="lineNum">    2552 </span><span class="lineCov">     378900 :     function getTranGaus(lowerLim,upperLim,avg,std) result(tranGaus)</span></a>
 <a name="2553"><span class="lineNum">    2553 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="2554"><span class="lineNum">    2554 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getTranGaus</a>
 <a name="2555"><span class="lineNum">    2555 </span>            : #endif</a>
@@ -2670,20 +2670,20 @@
 <a name="2600"><span class="lineNum">    2600 </span>            :     real(RK), intent(in)            :: lowerLim,upperLim</a>
 <a name="2601"><span class="lineNum">    2601 </span>            :     real(RK), intent(in), optional  :: avg, std</a>
 <a name="2602"><span class="lineNum">    2602 </span>            :     real(RK)                        :: tranGaus !,p</a>
-<a name="2603"><span class="lineNum">    2603 </span><span class="lineCov">       2400 :     real(RK)                        :: lowerLimStd,upperLimStd, mean, stdev</span></a>
+<a name="2603"><span class="lineNum">    2603 </span><span class="lineCov">     378900 :     real(RK)                        :: lowerLimStd,upperLimStd, mean, stdev</span></a>
 <a name="2604"><span class="lineNum">    2604 </span>            : </a>
-<a name="2605"><span class="lineNum">    2605 </span><span class="lineCov">       2400 :     mean = 0._RK</span></a>
-<a name="2606"><span class="lineNum">    2606 </span><span class="lineCov">       2400 :     stdev = 1._RK</span></a>
-<a name="2607"><span class="lineNum">    2607 </span><span class="lineCov">       2400 :     if (present(avg))    mean = avg</span></a>
-<a name="2608"><span class="lineNum">    2608 </span><span class="lineCov">       2400 :     if (present(std)) stdev = std</span></a>
+<a name="2605"><span class="lineNum">    2605 </span><span class="lineCov">     378900 :     mean = 0._RK</span></a>
+<a name="2606"><span class="lineNum">    2606 </span><span class="lineCov">     378900 :     stdev = 1._RK</span></a>
+<a name="2607"><span class="lineNum">    2607 </span><span class="lineCov">     378900 :     if (present(avg))    mean = avg</span></a>
+<a name="2608"><span class="lineNum">    2608 </span><span class="lineCov">     378900 :     if (present(std)) stdev = std</span></a>
 <a name="2609"><span class="lineNum">    2609 </span>            : </a>
 <a name="2610"><span class="lineNum">    2610 </span>            :     ! Scaling</a>
-<a name="2611"><span class="lineNum">    2611 </span><span class="lineCov">       2400 :     lowerLimStd = (lowerLim-avg)/stdev</span></a>
-<a name="2612"><span class="lineNum">    2612 </span><span class="lineCov">       2400 :     upperLimStd = (upperLim-avg)/stdev</span></a>
-<a name="2613"><span class="lineNum">    2613 </span><span class="lineCov">       2400 :     tranGaus = getStdTranGaus(lowerLimStd,upperLimStd)    ! Generate the random variables</span></a>
+<a name="2611"><span class="lineNum">    2611 </span><span class="lineCov">     378900 :     lowerLimStd = (lowerLim-avg)/stdev</span></a>
+<a name="2612"><span class="lineNum">    2612 </span><span class="lineCov">     378900 :     upperLimStd = (upperLim-avg)/stdev</span></a>
+<a name="2613"><span class="lineNum">    2613 </span><span class="lineCov">     378900 :     tranGaus = getStdTranGaus(lowerLimStd,upperLimStd)    ! Generate the random variables</span></a>
 <a name="2614"><span class="lineNum">    2614 </span>            : </a>
 <a name="2615"><span class="lineNum">    2615 </span>            :     ! Scaling</a>
-<a name="2616"><span class="lineNum">    2616 </span><span class="lineCov">       2400 :     tranGaus = tranGaus * stdev + avg</span></a>
+<a name="2616"><span class="lineNum">    2616 </span><span class="lineCov">     378900 :     tranGaus = tranGaus * stdev + avg</span></a>
 <a name="2617"><span class="lineNum">    2617 </span>            : </a>
 <a name="2618"><span class="lineNum">    2618 </span>            :     !! Compute the probabilities</a>
 <a name="2619"><span class="lineNum">    2619 </span>            :     !if (present(p)) then</a>
@@ -2692,7 +2692,7 @@
 <a name="2622"><span class="lineNum">    2622 </span>            :     !    p = exp(-(tranGaus-mu).^2/2/std**2) / Z</a>
 <a name="2623"><span class="lineNum">    2623 </span>            :     !end if</a>
 <a name="2624"><span class="lineNum">    2624 </span>            : </a>
-<a name="2625"><span class="lineNum">    2625 </span><span class="lineCov">       2400 :     end function getTranGaus</span></a>
+<a name="2625"><span class="lineNum">    2625 </span><span class="lineCov">     378900 :     end function getTranGaus</span></a>
 <a name="2626"><span class="lineNum">    2626 </span>            : </a>
 <a name="2627"><span class="lineNum">    2627 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="2628"><span class="lineNum">    2628 </span>            : </a>
@@ -2707,12 +2707,12 @@
 <a name="2637"><span class="lineNum">    2637 </span>            :     !&gt;</a>
 <a name="2638"><span class="lineNum">    2638 </span>            :     !&gt; \return</a>
 <a name="2639"><span class="lineNum">    2639 </span>            :     !&gt; `tranGaus`   :   The output truncated random Standard Gaussian number.</a>
-<a name="2640"><span class="lineNum">    2640 </span><span class="lineCov">       3400 :     recursive function getStdTranGaus(lowerLim,upperLim) result(stdTranGaus)</span></a>
+<a name="2640"><span class="lineNum">    2640 </span><span class="lineCov">     530500 :     recursive function getStdTranGaus(lowerLim,upperLim) result(stdTranGaus)</span></a>
 <a name="2641"><span class="lineNum">    2641 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="2642"><span class="lineNum">    2642 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getStdTranGaus</a>
 <a name="2643"><span class="lineNum">    2643 </span>            : #endif</a>
 <a name="2644"><span class="lineNum">    2644 </span>            : </a>
-<a name="2645"><span class="lineNum">    2645 </span><span class="lineCov">       2400 :         use Constants_mod, only: IK, RK</span></a>
+<a name="2645"><span class="lineNum">    2645 </span><span class="lineCov">     378900 :         use Constants_mod, only: IK, RK</span></a>
 <a name="2646"><span class="lineNum">    2646 </span>            :         use Statistics_mod, only: getRandInt, getRandGaus</a>
 <a name="2647"><span class="lineNum">    2647 </span>            :         use iso_fortran_env, only: output_unit</a>
 <a name="2648"><span class="lineNum">    2648 </span>            : </a>
@@ -2733,13 +2733,13 @@
 <a name="2663"><span class="lineNum">    2663 </span>            :         real(RK)                :: YL0 = 0.053513975472_RK              !&lt; y_l of the leftmost rectangle</a>
 <a name="2664"><span class="lineNum">    2664 </span>            :         real(RK)                :: YLN = 0.000914116389555_RK           !&lt; y_l of the rightmost rectangle</a>
 <a name="2665"><span class="lineNum">    2665 </span>            : </a>
-<a name="2666"><span class="lineNum">    2666 </span><span class="lineCov">       3400 :         real(RK)                :: twiceLowerLim, expLowerUpper, z, negLogUnifRnd, unifrnd, unifrndFixed</span></a>
-<a name="2667"><span class="lineNum">    2667 </span><span class="lineCov">       3400 :         real(RK)                :: sim, simy, ylk, d, lowerBound    !, u</span></a>
+<a name="2666"><span class="lineNum">    2666 </span><span class="lineCov">     530500 :         real(RK)                :: twiceLowerLim, expLowerUpper, z, negLogUnifRnd, unifrnd, unifrndFixed</span></a>
+<a name="2667"><span class="lineNum">    2667 </span><span class="lineCov">     530500 :         real(RK)                :: sim, simy, ylk, d, lowerBound    !, u</span></a>
 <a name="2668"><span class="lineNum">    2668 </span>            :         integer(IK)             :: i, ka, kb, k</a>
 <a name="2669"><span class="lineNum">    2669 </span>            : </a>
 <a name="2670"><span class="lineNum">    2670 </span>            :         ! Check if lowerLim &lt; upperLim</a>
 <a name="2671"><span class="lineNum">    2671 </span>            : </a>
-<a name="2672"><span class="lineNum">    2672 </span><span class="lineCov">       3400 :         blockRange: if (lowerLim&gt;=upperLim) then</span></a>
+<a name="2672"><span class="lineNum">    2672 </span><span class="lineCov">     530500 :         blockRange: if (lowerLim&gt;=upperLim) then</span></a>
 <a name="2673"><span class="lineNum">    2673 </span>            : </a>
 <a name="2674"><span class="lineNum">    2674 </span>            :             ! LCOV_EXCL_START</a>
 <a name="2675"><span class="lineNum">    2675 </span>            :             write(output_unit,&quot;(A)&quot;) MODULE_NAME//&quot;@getStdTranGaus: upperLim must be greater than lowerLim.&quot;</a>
@@ -2747,30 +2747,30 @@
 <a name="2677"><span class="lineNum">    2677 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="2678"><span class="lineNum">    2678 </span>            : </a>
 <a name="2679"><span class="lineNum">    2679 </span>            :         ! Check if |lowerLim| &lt; |upperLim|</a>
-<a name="2680"><span class="lineNum">    2680 </span><span class="lineCov">       3400 :         elseif (abs(lowerLim)&gt;abs(upperLim)) then blockRange</span></a>
+<a name="2680"><span class="lineNum">    2680 </span><span class="lineCov">     530500 :         elseif (abs(lowerLim)&gt;abs(upperLim)) then blockRange</span></a>
 <a name="2681"><span class="lineNum">    2681 </span>            : </a>
-<a name="2682"><span class="lineNum">    2682 </span><span class="lineCov">       1000 :             stdTranGaus = -getStdTranGaus(-upperLim,-lowerLim)</span></a>
+<a name="2682"><span class="lineNum">    2682 </span><span class="lineCov">     151600 :             stdTranGaus = -getStdTranGaus(-upperLim,-lowerLim)</span></a>
 <a name="2683"><span class="lineNum">    2683 </span>            : </a>
 <a name="2684"><span class="lineNum">    2684 </span>            :         ! If lowerLim in the right tail (lowerLim &gt; xmax), use rejection algorithm with a truncated exponential proposal</a>
-<a name="2685"><span class="lineNum">    2685 </span><span class="lineCov">       2400 :         elseif (lowerLim &gt; xmax) then blockRange</span></a>
+<a name="2685"><span class="lineNum">    2685 </span><span class="lineCov">     378900 :         elseif (lowerLim &gt; xmax) then blockRange</span></a>
 <a name="2686"><span class="lineNum">    2686 </span>            : </a>
-<a name="2687"><span class="lineNum">    2687 </span><span class="lineCov">       1000 :             twiceLowerLim = 2_RK * lowerLim**2;</span></a>
-<a name="2688"><span class="lineNum">    2688 </span><span class="lineCov">       1000 :             expLowerUpper = exp(-lowerLim*(upperLim-lowerLim)) - 1._RK;</span></a>
-<a name="2689"><span class="lineNum">    2689 </span><span class="lineCov">          8 :             do</span></a>
-<a name="2690"><span class="lineNum">    2690 </span><span class="lineCov">       1008 :                 call random_number(unifrnd)</span></a>
-<a name="2691"><span class="lineNum">    2691 </span><span class="lineCov">       1008 :                 z = log(1 + unifrnd*expLowerUpper)</span></a>
-<a name="2692"><span class="lineNum">    2692 </span><span class="lineCov">       1008 :                 call random_number(unifrnd)</span></a>
-<a name="2693"><span class="lineNum">    2693 </span><span class="lineCov">       1008 :                 negLogUnifRnd = -log(unifrnd)</span></a>
-<a name="2694"><span class="lineNum">    2694 </span><span class="lineCov">       1008 :                 if (twiceLowerLim*negLogUnifRnd &gt; z**2) exit</span></a>
+<a name="2687"><span class="lineNum">    2687 </span><span class="lineCov">     176700 :             twiceLowerLim = 2_RK * lowerLim**2;</span></a>
+<a name="2688"><span class="lineNum">    2688 </span><span class="lineCov">     176700 :             expLowerUpper = exp(-lowerLim*(upperLim-lowerLim)) - 1._RK;</span></a>
+<a name="2689"><span class="lineNum">    2689 </span><span class="lineCov">        769 :             do</span></a>
+<a name="2690"><span class="lineNum">    2690 </span><span class="lineCov">     177469 :                 call random_number(unifrnd)</span></a>
+<a name="2691"><span class="lineNum">    2691 </span><span class="lineCov">     177469 :                 z = log(1 + unifrnd*expLowerUpper)</span></a>
+<a name="2692"><span class="lineNum">    2692 </span><span class="lineCov">     177469 :                 call random_number(unifrnd)</span></a>
+<a name="2693"><span class="lineNum">    2693 </span><span class="lineCov">     177469 :                 negLogUnifRnd = -log(unifrnd)</span></a>
+<a name="2694"><span class="lineNum">    2694 </span><span class="lineCov">     177469 :                 if (twiceLowerLim*negLogUnifRnd &gt; z**2) exit</span></a>
 <a name="2695"><span class="lineNum">    2695 </span>            :             end do</a>
-<a name="2696"><span class="lineNum">    2696 </span><span class="lineCov">       1000 :             stdTranGaus = lowerLim - z / lowerLim</span></a>
+<a name="2696"><span class="lineNum">    2696 </span><span class="lineCov">     176700 :             stdTranGaus = lowerLim - z / lowerLim</span></a>
 <a name="2697"><span class="lineNum">    2697 </span>            : </a>
 <a name="2698"><span class="lineNum">    2698 </span>            :         ! If lowerLim in the left tail (lowerLim &lt; xmin), use rejection algorithm with a Gaussian proposal</a>
-<a name="2699"><span class="lineNum">    2699 </span><span class="lineCov">       1400 :         elseif (lowerLim&lt;xmin) then blockRange</span></a>
+<a name="2699"><span class="lineNum">    2699 </span><span class="lineCov">     202200 :         elseif (lowerLim&lt;xmin) then blockRange</span></a>
 <a name="2700"><span class="lineNum">    2700 </span>            : </a>
 <a name="2701"><span class="lineNum">    2701 </span>            :             do ! LCOV_EXCL_LINE</a>
-<a name="2702"><span class="lineNum">    2702 </span><span class="lineCov">        400 :                 stdTranGaus = getRandGaus();</span></a>
-<a name="2703"><span class="lineNum">    2703 </span><span class="lineCov">        400 :                 if ( (stdTranGaus&gt;=lowerLim) .and. (stdTranGaus&lt;=upperLim) ) exit</span></a>
+<a name="2702"><span class="lineNum">    2702 </span><span class="lineCov">      50600 :                 stdTranGaus = getRandGaus();</span></a>
+<a name="2703"><span class="lineNum">    2703 </span><span class="lineCov">      50600 :                 if ( (stdTranGaus&gt;=lowerLim) .and. (stdTranGaus&lt;=upperLim) ) exit</span></a>
 <a name="2704"><span class="lineNum">    2704 </span>            :             end do</a>
 <a name="2705"><span class="lineNum">    2705 </span>            : </a>
 <a name="2706"><span class="lineNum">    2706 </span>            :         ! In other cases (xmin &lt; lowerLim &lt; xmax), use the algorithm of Chopin</a>
@@ -2779,77 +2779,77 @@
 <a name="2709"><span class="lineNum">    2709 </span>            :             ! Large data tables and design variables are used here</a>
 <a name="2710"><span class="lineNum">    2710 </span>            : </a>
 <a name="2711"><span class="lineNum">    2711 </span>            :             ! Compute ka and kb</a>
-<a name="2712"><span class="lineNum">    2712 </span><span class="lineCov">       1000 :             i = I0 + floor(lowerLim*INVH)</span></a>
-<a name="2713"><span class="lineNum">    2713 </span><span class="lineCov">       1000 :             ka = VEC_CELL(i+1)                ! +1 due to index offset in Fortran</span></a>
-<a name="2714"><span class="lineNum">    2714 </span><span class="lineCov">       1000 :             if (upperLim &gt;= xmax) then</span></a>
-<a name="2715"><span class="lineNum">    2715 </span><span class="lineCov">        600 :                 kb = LEN_VEC_YU</span></a>
+<a name="2712"><span class="lineNum">    2712 </span><span class="lineCov">     151600 :             i = I0 + floor(lowerLim*INVH)</span></a>
+<a name="2713"><span class="lineNum">    2713 </span><span class="lineCov">     151600 :             ka = VEC_CELL(i+1)                ! +1 due to index offset in Fortran</span></a>
+<a name="2714"><span class="lineNum">    2714 </span><span class="lineCov">     151600 :             if (upperLim &gt;= xmax) then</span></a>
+<a name="2715"><span class="lineNum">    2715 </span><span class="lineCov">      75900 :                 kb = LEN_VEC_YU</span></a>
 <a name="2716"><span class="lineNum">    2716 </span>            :             else</a>
-<a name="2717"><span class="lineNum">    2717 </span><span class="lineCov">        400 :                 i = I0 + floor(upperLim*INVH)</span></a>
-<a name="2718"><span class="lineNum">    2718 </span><span class="lineCov">        400 :                 kb = VEC_CELL(i+1)            ! +1 due to index offset in Fortran</span></a>
+<a name="2717"><span class="lineNum">    2717 </span><span class="lineCov">      75700 :                 i = I0 + floor(upperLim*INVH)</span></a>
+<a name="2718"><span class="lineNum">    2718 </span><span class="lineCov">      75700 :                 kb = VEC_CELL(i+1)            ! +1 due to index offset in Fortran</span></a>
 <a name="2719"><span class="lineNum">    2719 </span>            :             end if</a>
 <a name="2720"><span class="lineNum">    2720 </span>            : </a>
 <a name="2721"><span class="lineNum">    2721 </span>            :             ! If |upperLim-lowerLim| is small, use rejection algorithm with a truncated exponential proposal</a>
-<a name="2722"><span class="lineNum">    2722 </span><span class="lineCov">       1000 :             if (abs(kb-ka) &lt; KMIN) then</span></a>
-<a name="2723"><span class="lineNum">    2723 </span><span class="lineCov">        200 :                 twiceLowerLim = 2._RK*lowerLim**2</span></a>
-<a name="2724"><span class="lineNum">    2724 </span><span class="lineCov">        200 :                 expLowerUpper = exp(-lowerLim*(upperLim-lowerLim)) - 1._RK</span></a>
+<a name="2722"><span class="lineNum">    2722 </span><span class="lineCov">     151600 :             if (abs(kb-ka) &lt; KMIN) then</span></a>
+<a name="2723"><span class="lineNum">    2723 </span><span class="lineCov">      50400 :                 twiceLowerLim = 2._RK*lowerLim**2</span></a>
+<a name="2724"><span class="lineNum">    2724 </span><span class="lineCov">      50400 :                 expLowerUpper = exp(-lowerLim*(upperLim-lowerLim)) - 1._RK</span></a>
 <a name="2725"><span class="lineNum">    2725 </span><span class="lineNoCov">          0 :                 do</span></a>
-<a name="2726"><span class="lineNum">    2726 </span><span class="lineCov">        200 :                     call random_number(unifrnd)</span></a>
-<a name="2727"><span class="lineNum">    2727 </span><span class="lineCov">        200 :                     z = log( 1._RK + unifrnd*expLowerUpper )</span></a>
-<a name="2728"><span class="lineNum">    2728 </span><span class="lineCov">        200 :                     call random_number(unifrnd)</span></a>
-<a name="2729"><span class="lineNum">    2729 </span><span class="lineCov">        200 :                     negLogUnifRnd = -log(unifrnd);</span></a>
-<a name="2730"><span class="lineNum">    2730 </span><span class="lineCov">        200 :                     if (twiceLowerLim*negLogUnifRnd &gt; z**2) exit</span></a>
+<a name="2726"><span class="lineNum">    2726 </span><span class="lineCov">      50400 :                     call random_number(unifrnd)</span></a>
+<a name="2727"><span class="lineNum">    2727 </span><span class="lineCov">      50400 :                     z = log( 1._RK + unifrnd*expLowerUpper )</span></a>
+<a name="2728"><span class="lineNum">    2728 </span><span class="lineCov">      50400 :                     call random_number(unifrnd)</span></a>
+<a name="2729"><span class="lineNum">    2729 </span><span class="lineCov">      50400 :                     negLogUnifRnd = -log(unifrnd);</span></a>
+<a name="2730"><span class="lineNum">    2730 </span><span class="lineCov">      50400 :                     if (twiceLowerLim*negLogUnifRnd &gt; z**2) exit</span></a>
 <a name="2731"><span class="lineNum">    2731 </span>            :                 end do</a>
-<a name="2732"><span class="lineNum">    2732 </span><span class="lineCov">        200 :                 stdTranGaus = lowerLim - z/lowerLim</span></a>
-<a name="2733"><span class="lineNum">    2733 </span><span class="lineCov">        200 :                 return</span></a>
+<a name="2732"><span class="lineNum">    2732 </span><span class="lineCov">      50400 :                 stdTranGaus = lowerLim - z/lowerLim</span></a>
+<a name="2733"><span class="lineNum">    2733 </span><span class="lineCov">      50400 :                 return</span></a>
 <a name="2734"><span class="lineNum">    2734 </span>            :             end if</a>
 <a name="2735"><span class="lineNum">    2735 </span>            : </a>
 <a name="2736"><span class="lineNum">    2736 </span>            :             do ! LCOV_EXCL_LINE</a>
 <a name="2737"><span class="lineNum">    2737 </span>            : </a>
 <a name="2738"><span class="lineNum">    2738 </span>            :                 ! Sample integer between ka and kb</a>
-<a name="2739"><span class="lineNum">    2739 </span><span class="lineCov">        803 :                 k = getRandInt(ka,kb) + 1_IK;   ! +1 due to index offset in Fortran</span></a>
+<a name="2739"><span class="lineNum">    2739 </span><span class="lineCov">     101397 :                 k = getRandInt(ka,kb) + 1_IK;   ! +1 due to index offset in Fortran</span></a>
 <a name="2740"><span class="lineNum">    2740 </span>            : </a>
-<a name="2741"><span class="lineNum">    2741 </span><span class="lineCov">        803 :                 if (k == LEN_VEC_YU + 1_IK) then</span></a>
+<a name="2741"><span class="lineNum">    2741 </span><span class="lineCov">     101397 :                 if (k == LEN_VEC_YU + 1_IK) then</span></a>
 <a name="2742"><span class="lineNum">    2742 </span>            : </a>
 <a name="2743"><span class="lineNum">    2743 </span>            :                     ! Right tail</a>
 <a name="2744"><span class="lineNum">    2744 </span>            : </a>
-<a name="2745"><span class="lineNum">    2745 </span><span class="lineNoCov">          0 :                     lowerBound = VEC_X(LEN_VEC_X);</span></a>
-<a name="2746"><span class="lineNum">    2746 </span><span class="lineNoCov">          0 :                     call random_number(unifrnd)</span></a>
-<a name="2747"><span class="lineNum">    2747 </span><span class="lineNoCov">          0 :                     z = -log(unifrnd);</span></a>
-<a name="2748"><span class="lineNum">    2748 </span><span class="lineNoCov">          0 :                     call random_number(unifrnd)</span></a>
-<a name="2749"><span class="lineNum">    2749 </span><span class="lineNoCov">          0 :                     negLogUnifRnd = -log(unifrnd);</span></a>
-<a name="2750"><span class="lineNum">    2750 </span><span class="lineNoCov">          0 :                     z = z / lowerBound;</span></a>
-<a name="2751"><span class="lineNum">    2751 </span><span class="lineNoCov">          0 :                     if ( (z**2 &lt;= 2._RK*negLogUnifRnd) .and. (z &lt; upperLim-lowerBound) ) then</span></a>
+<a name="2745"><span class="lineNum">    2745 </span><span class="lineCov">          8 :                     lowerBound = VEC_X(LEN_VEC_X);</span></a>
+<a name="2746"><span class="lineNum">    2746 </span><span class="lineCov">          8 :                     call random_number(unifrnd)</span></a>
+<a name="2747"><span class="lineNum">    2747 </span><span class="lineCov">          8 :                     z = -log(unifrnd);</span></a>
+<a name="2748"><span class="lineNum">    2748 </span><span class="lineCov">          8 :                     call random_number(unifrnd)</span></a>
+<a name="2749"><span class="lineNum">    2749 </span><span class="lineCov">          8 :                     negLogUnifRnd = -log(unifrnd);</span></a>
+<a name="2750"><span class="lineNum">    2750 </span><span class="lineCov">          8 :                     z = z / lowerBound;</span></a>
+<a name="2751"><span class="lineNum">    2751 </span><span class="lineCov">          8 :                     if ( (z**2 &lt;= 2._RK*negLogUnifRnd) .and. (z &lt; upperLim-lowerBound) ) then</span></a>
 <a name="2752"><span class="lineNum">    2752 </span>            :                         ! Accept this proposition, otherwise reject</a>
-<a name="2753"><span class="lineNum">    2753 </span><span class="lineNoCov">          0 :                         stdTranGaus = lowerBound + z</span></a>
-<a name="2754"><span class="lineNum">    2754 </span><span class="lineNoCov">          0 :                         return</span></a>
+<a name="2753"><span class="lineNum">    2753 </span><span class="lineCov">          8 :                         stdTranGaus = lowerBound + z</span></a>
+<a name="2754"><span class="lineNum">    2754 </span><span class="lineCov">          8 :                         return</span></a>
 <a name="2755"><span class="lineNum">    2755 </span>            :                     end if</a>
 <a name="2756"><span class="lineNum">    2756 </span>            : </a>
-<a name="2757"><span class="lineNum">    2757 </span><span class="lineCov">        803 :                 elseif ( (k&lt;=ka+2) .or. (k&gt;=kb .and. upperLim&lt;xmax) ) then</span></a>
+<a name="2757"><span class="lineNum">    2757 </span><span class="lineCov">     101389 :                 elseif ( (k&lt;=ka+2) .or. (k&gt;=kb .and. upperLim&lt;xmax) ) then</span></a>
 <a name="2758"><span class="lineNum">    2758 </span>            : </a>
 <a name="2759"><span class="lineNum">    2759 </span>            :                     ! Two leftmost and rightmost regions</a>
 <a name="2760"><span class="lineNum">    2760 </span>            : </a>
-<a name="2761"><span class="lineNum">    2761 </span><span class="lineCov">          1 :                     call random_number(unifrnd)</span></a>
-<a name="2762"><span class="lineNum">    2762 </span><span class="lineCov">          1 :                     sim = VEC_X(k) + (VEC_X(k+1_IK)-VEC_X(k)) * unifrnd;</span></a>
-<a name="2763"><span class="lineNum">    2763 </span><span class="lineCov">          1 :                     if ( (sim &gt;= lowerLim) .and. (sim &lt;= upperLim) ) then</span></a>
+<a name="2761"><span class="lineNum">    2761 </span><span class="lineCov">         87 :                     call random_number(unifrnd)</span></a>
+<a name="2762"><span class="lineNum">    2762 </span><span class="lineCov">         87 :                     sim = VEC_X(k) + (VEC_X(k+1_IK)-VEC_X(k)) * unifrnd;</span></a>
+<a name="2763"><span class="lineNum">    2763 </span><span class="lineCov">         87 :                     if ( (sim &gt;= lowerLim) .and. (sim &lt;= upperLim) ) then</span></a>
 <a name="2764"><span class="lineNum">    2764 </span>            : </a>
 <a name="2765"><span class="lineNum">    2765 </span>            :                         ! Accept this proposition, otherwise reject</a>
-<a name="2766"><span class="lineNum">    2766 </span><span class="lineNoCov">          0 :                         call random_number(unifrnd)</span></a>
-<a name="2767"><span class="lineNum">    2767 </span><span class="lineNoCov">          0 :                         simy = VEC_YU(k)*unifrnd</span></a>
+<a name="2766"><span class="lineNum">    2766 </span><span class="lineCov">         50 :                         call random_number(unifrnd)</span></a>
+<a name="2767"><span class="lineNum">    2767 </span><span class="lineCov">         50 :                         simy = VEC_YU(k)*unifrnd</span></a>
 <a name="2768"><span class="lineNum">    2768 </span>            : </a>
 <a name="2769"><span class="lineNum">    2769 </span>            :                         ! Compute y_l from y_k</a>
-<a name="2770"><span class="lineNum">    2770 </span><span class="lineNoCov">          0 :                         if (k == 1_IK) then</span></a>
+<a name="2770"><span class="lineNum">    2770 </span><span class="lineCov">         50 :                         if (k == 1_IK) then</span></a>
 <a name="2771"><span class="lineNum">    2771 </span><span class="lineNoCov">          0 :                            ylk = YL0</span></a>
-<a name="2772"><span class="lineNum">    2772 </span><span class="lineNoCov">          0 :                         elseif (k == LEN_VEC_YU) then</span></a>
+<a name="2772"><span class="lineNum">    2772 </span><span class="lineCov">         50 :                         elseif (k == LEN_VEC_YU) then</span></a>
 <a name="2773"><span class="lineNum">    2773 </span><span class="lineNoCov">          0 :                            ylk = YLN</span></a>
-<a name="2774"><span class="lineNum">    2774 </span><span class="lineNoCov">          0 :                         elseif (k &lt;= 1954_IK) then</span></a>
-<a name="2775"><span class="lineNum">    2775 </span><span class="lineNoCov">          0 :                             ylk = VEC_YU(k-1_IK)</span></a>
+<a name="2774"><span class="lineNum">    2774 </span><span class="lineCov">         50 :                         elseif (k &lt;= 1954_IK) then</span></a>
+<a name="2775"><span class="lineNum">    2775 </span><span class="lineCov">         25 :                             ylk = VEC_YU(k-1_IK)</span></a>
 <a name="2776"><span class="lineNum">    2776 </span>            :                         else</a>
-<a name="2777"><span class="lineNum">    2777 </span><span class="lineNoCov">          0 :                             ylk = VEC_YU(k+1_IK)</span></a>
+<a name="2777"><span class="lineNum">    2777 </span><span class="lineCov">         25 :                             ylk = VEC_YU(k+1_IK)</span></a>
 <a name="2778"><span class="lineNum">    2778 </span>            :                         end if</a>
 <a name="2779"><span class="lineNum">    2779 </span>            : </a>
-<a name="2780"><span class="lineNum">    2780 </span><span class="lineNoCov">          0 :                         if ( (simy&lt;ylk) .or. (sim**2 + 2._RK*log(simy) + ALPHA &lt; 0._RK) ) then</span></a>
-<a name="2781"><span class="lineNum">    2781 </span><span class="lineNoCov">          0 :                             stdTranGaus = sim</span></a>
-<a name="2782"><span class="lineNum">    2782 </span><span class="lineNoCov">          0 :                             return</span></a>
+<a name="2780"><span class="lineNum">    2780 </span><span class="lineCov">         50 :                         if ( (simy&lt;ylk) .or. (sim**2 + 2._RK*log(simy) + ALPHA &lt; 0._RK) ) then</span></a>
+<a name="2781"><span class="lineNum">    2781 </span><span class="lineCov">         50 :                             stdTranGaus = sim</span></a>
+<a name="2782"><span class="lineNum">    2782 </span><span class="lineCov">         50 :                             return</span></a>
 <a name="2783"><span class="lineNum">    2783 </span>            :                         end if</a>
 <a name="2784"><span class="lineNum">    2784 </span>            : </a>
 <a name="2785"><span class="lineNum">    2785 </span>            :                     end if</a>
@@ -2858,31 +2858,31 @@
 <a name="2788"><span class="lineNum">    2788 </span>            : </a>
 <a name="2789"><span class="lineNum">    2789 </span>            :                     ! All the other boxes</a>
 <a name="2790"><span class="lineNum">    2790 </span>            : </a>
-<a name="2791"><span class="lineNum">    2791 </span><span class="lineCov">        802 :                     call random_number(unifrndFixed)</span></a>
-<a name="2792"><span class="lineNum">    2792 </span><span class="lineCov">        802 :                     simy = VEC_YU(k) * unifrndFixed;</span></a>
-<a name="2793"><span class="lineNum">    2793 </span><span class="lineCov">        802 :                     d = VEC_X(k+1_IK) - VEC_X(k);</span></a>
+<a name="2791"><span class="lineNum">    2791 </span><span class="lineCov">     101302 :                     call random_number(unifrndFixed)</span></a>
+<a name="2792"><span class="lineNum">    2792 </span><span class="lineCov">     101302 :                     simy = VEC_YU(k) * unifrndFixed;</span></a>
+<a name="2793"><span class="lineNum">    2793 </span><span class="lineCov">     101302 :                     d = VEC_X(k+1_IK) - VEC_X(k);</span></a>
 <a name="2794"><span class="lineNum">    2794 </span>            : </a>
 <a name="2795"><span class="lineNum">    2795 </span>            :                     ! Compute y_l from y_k</a>
-<a name="2796"><span class="lineNum">    2796 </span><span class="lineCov">        802 :                     if (k == 1_IK) then</span></a>
+<a name="2796"><span class="lineNum">    2796 </span><span class="lineCov">     101302 :                     if (k == 1_IK) then</span></a>
 <a name="2797"><span class="lineNum">    2797 </span><span class="lineNoCov">          0 :                         ylk = YL0</span></a>
-<a name="2798"><span class="lineNum">    2798 </span><span class="lineCov">        802 :                     elseif (k == LEN_VEC_YU) then</span></a>
-<a name="2799"><span class="lineNum">    2799 </span><span class="lineCov">          2 :                         ylk = YLN</span></a>
-<a name="2800"><span class="lineNum">    2800 </span><span class="lineCov">        800 :                     elseif (k &lt;= 1954_IK) then</span></a>
-<a name="2801"><span class="lineNum">    2801 </span><span class="lineCov">        186 :                         ylk = VEC_YU(k-1_IK)</span></a>
+<a name="2798"><span class="lineNum">    2798 </span><span class="lineCov">     101302 :                     elseif (k == LEN_VEC_YU) then</span></a>
+<a name="2799"><span class="lineNum">    2799 </span><span class="lineCov">         50 :                         ylk = YLN</span></a>
+<a name="2800"><span class="lineNum">    2800 </span><span class="lineCov">     101252 :                     elseif (k &lt;= 1954_IK) then</span></a>
+<a name="2801"><span class="lineNum">    2801 </span><span class="lineCov">      22236 :                         ylk = VEC_YU(k-1_IK)</span></a>
 <a name="2802"><span class="lineNum">    2802 </span>            :                     else</a>
-<a name="2803"><span class="lineNum">    2803 </span><span class="lineCov">        614 :                         ylk = VEC_YU(k+1_IK)</span></a>
+<a name="2803"><span class="lineNum">    2803 </span><span class="lineCov">      79016 :                         ylk = VEC_YU(k+1_IK)</span></a>
 <a name="2804"><span class="lineNum">    2804 </span>            :                     end if</a>
 <a name="2805"><span class="lineNum">    2805 </span>            : </a>
-<a name="2806"><span class="lineNum">    2806 </span><span class="lineCov">        802 :                     if (simy &lt; ylk) then  ! That is what happens most of the time</span></a>
-<a name="2807"><span class="lineNum">    2807 </span><span class="lineCov">        800 :                         stdTranGaus = VEC_X(k) + unifrndFixed*d*VEC_YU(k) / ylk</span></a>
-<a name="2808"><span class="lineNum">    2808 </span><span class="lineCov">        800 :                         return</span></a>
+<a name="2806"><span class="lineNum">    2806 </span><span class="lineCov">     101302 :                     if (simy &lt; ylk) then  ! That is what happens most of the time</span></a>
+<a name="2807"><span class="lineNum">    2807 </span><span class="lineCov">     101029 :                         stdTranGaus = VEC_X(k) + unifrndFixed*d*VEC_YU(k) / ylk</span></a>
+<a name="2808"><span class="lineNum">    2808 </span><span class="lineCov">     101029 :                         return</span></a>
 <a name="2809"><span class="lineNum">    2809 </span>            :                     end if</a>
-<a name="2810"><span class="lineNum">    2810 </span><span class="lineCov">          2 :                     call random_number(unifrnd)</span></a>
-<a name="2811"><span class="lineNum">    2811 </span><span class="lineCov">          2 :                     sim = VEC_X(k) + d * unifrnd</span></a>
+<a name="2810"><span class="lineNum">    2810 </span><span class="lineCov">        273 :                     call random_number(unifrnd)</span></a>
+<a name="2811"><span class="lineNum">    2811 </span><span class="lineCov">        273 :                     sim = VEC_X(k) + d * unifrnd</span></a>
 <a name="2812"><span class="lineNum">    2812 </span>            :                     ! Otherwise, check if we are below the pdf curve</a>
-<a name="2813"><span class="lineNum">    2813 </span><span class="lineCov">          2 :                     if (sim**2 + 2*log(simy) + ALPHA &lt; 0) then</span></a>
-<a name="2814"><span class="lineNum">    2814 </span><span class="lineNoCov">          0 :                         stdTranGaus = sim</span></a>
-<a name="2815"><span class="lineNum">    2815 </span><span class="lineNoCov">          0 :                         return</span></a>
+<a name="2813"><span class="lineNum">    2813 </span><span class="lineCov">        273 :                     if (sim**2 + 2*log(simy) + ALPHA &lt; 0) then</span></a>
+<a name="2814"><span class="lineNum">    2814 </span><span class="lineCov">        113 :                         stdTranGaus = sim</span></a>
+<a name="2815"><span class="lineNum">    2815 </span><span class="lineCov">        113 :                         return</span></a>
 <a name="2816"><span class="lineNum">    2816 </span>            :                     end if</a>
 <a name="2817"><span class="lineNum">    2817 </span>            : </a>
 <a name="2818"><span class="lineNum">    2818 </span>            :                 end if</a>
@@ -2891,7 +2891,7 @@
 <a name="2821"><span class="lineNum">    2821 </span>            : </a>
 <a name="2822"><span class="lineNum">    2822 </span>            :         end if blockRange</a>
 <a name="2823"><span class="lineNum">    2823 </span>            : </a>
-<a name="2824"><span class="lineNum">    2824 </span><span class="lineCov">       2400 :     end function getStdTranGaus</span></a>
+<a name="2824"><span class="lineNum">    2824 </span><span class="lineCov">     378900 :     end function getStdTranGaus</span></a>
 <a name="2825"><span class="lineNum">    2825 </span>            : </a>
 <a name="2826"><span class="lineNum">    2826 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="2827"><span class="lineNum">    2827 </span>            : </a>
