@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:47:44</td>
+            <td class="headerValue">2020-12-10 14:55:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -180,7 +180,7 @@
 <a name="110"><span class="lineNum">     110 </span>            :     !&gt;</a>
 <a name="111"><span class="lineNum">     111 </span>            :     !&gt; \return</a>
 <a name="112"><span class="lineNum">     112 </span>            :     !&gt; `ebrk` : The spectral break energy in units of [keV].</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          8 :     pure function getEbreak(epk,alpha,beta) result(ebrk)</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 :     pure function getEbreak(epk,alpha,beta) result(ebrk)</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="115"><span class="lineNum">     115 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getEbreak</a>
 <a name="116"><span class="lineNum">     116 </span>            : #endif</a>
@@ -189,8 +189,8 @@
 <a name="119"><span class="lineNum">     119 </span>            :         real(RK), intent(in)            :: epk</a>
 <a name="120"><span class="lineNum">     120 </span>            :         real(RK), intent(in), optional  :: alpha, beta</a>
 <a name="121"><span class="lineNum">     121 </span>            :         real(RK)                        :: ebrk</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          8 :         ebrk = epk * (alpha-beta) / (alpha+2._RK)</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">         16 :     end function getEbreak</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          1 :         ebrk = epk * (alpha-beta) / (alpha+2._RK)</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">          2 :     end function getEbreak</span></a>
 <a name="124"><span class="lineNum">     124 </span>            : </a>
 <a name="125"><span class="lineNum">     125 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
@@ -205,20 +205,20 @@
 <a name="135"><span class="lineNum">     135 </span>            :     !&gt; \param[out]  ebrk            :   The spectral break energy in units of [keV].</a>
 <a name="136"><span class="lineNum">     136 </span>            :     !&gt; \param[out]  coef            :   The spectral continuity coefficient.</a>
 <a name="137"><span class="lineNum">     137 </span>            :     !&gt; \param[out]  alphaPlusTwo    :   The lower spectral exponent of the Band model plus two.</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          8 :     pure subroutine getBandParam(epk,alpha,beta,ebrk,coef,alphaPlusTwo)</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          1 :     pure subroutine getBandParam(epk,alpha,beta,ebrk,coef,alphaPlusTwo)</span></a>
 <a name="139"><span class="lineNum">     139 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="140"><span class="lineNum">     140 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getBandParam</a>
 <a name="141"><span class="lineNum">     141 </span>            : #endif</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          8 :         use Constants_mod, only: IK, RK</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          1 :         use Constants_mod, only: IK, RK</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :         implicit none</a>
 <a name="144"><span class="lineNum">     144 </span>            :         real(RK), intent(in)    :: epk,alpha,beta</a>
 <a name="145"><span class="lineNum">     145 </span>            :         real(RK), intent(out)   :: ebrk, coef, alphaPlusTwo</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          8 :         real(RK)                :: alphaMinusBeta</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          8 :         alphaPlusTwo = alpha + 2._RK</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          8 :         alphaMinusBeta = alpha - beta</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          8 :         ebrk = epk * alphaMinusBeta / alphaPlusTwo</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          8 :         coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta)</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          8 :     end subroutine getBandParam</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          1 :         real(RK)                :: alphaMinusBeta</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">          1 :         alphaPlusTwo = alpha + 2._RK</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          1 :         alphaMinusBeta = alpha - beta</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">          1 :         ebrk = epk * alphaMinusBeta / alphaPlusTwo</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          1 :         coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta)</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 :     end subroutine getBandParam</span></a>
 <a name="152"><span class="lineNum">     152 </span>            : </a>
 <a name="153"><span class="lineNum">     153 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="154"><span class="lineNum">     154 </span>            : </a>
@@ -242,26 +242,26 @@
 <a name="172"><span class="lineNum">     172 </span>            :     !&gt; \warning</a>
 <a name="173"><span class="lineNum">     173 </span>            :     !&gt; The input energy values `energy`, `epk`, `ebrk`, must all have the same units.</a>
 <a name="174"><span class="lineNum">     174 </span>            :     !&gt; It is expected that the input energy is in units of keV, although it does not affect the accuracy of the results.</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         32 :     pure function getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo) result(photonFlux)</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          4 :     pure function getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo) result(photonFlux)</span></a>
 <a name="176"><span class="lineNum">     176 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="177"><span class="lineNum">     177 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFlux</a>
 <a name="178"><span class="lineNum">     178 </span>            : #endif</a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          8 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          1 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :         implicit none</a>
 <a name="181"><span class="lineNum">     181 </span>            :         real(RK), intent(in)            :: energy, epk, ebrk, alpha, beta,coef,alphaPlusTwo</a>
 <a name="182"><span class="lineNum">     182 </span>            :         real(RK)                        :: photonFlux</a>
 <a name="183"><span class="lineNum">     183 </span>            :         ! check if the photon indices are consistent with the mathematical rules</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">         32 :         if (alpha&lt;beta .or. alpha&lt;-2._RK) then</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">         16 :             photonFlux = -HUGE_RK</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         16 :             return</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          4 :         if (alpha&lt;beta .or. alpha&lt;-2._RK) then</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          2 :             photonFlux = -HUGE_RK</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :             return</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :         end if</a>
 <a name="188"><span class="lineNum">     188 </span>            :         ! compute the spectrum</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         16 :         if (energy&lt;=ebrk) then</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          8 :             photonFlux = energy**alpha * exp(-energy*alphaPlusTwo/epk)</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">          2 :         if (energy&lt;=ebrk) then</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          1 :             photonFlux = energy**alpha * exp(-energy*alphaPlusTwo/epk)</span></a>
 <a name="191"><span class="lineNum">     191 </span>            :         else</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          8 :             photonFlux = coef * energy**beta</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          1 :             photonFlux = coef * energy**beta</span></a>
 <a name="193"><span class="lineNum">     193 </span>            :         end if</a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">         32 :     end function getPhotonFlux</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          4 :     end function getPhotonFlux</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
 <a name="196"><span class="lineNum">     196 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="197"><span class="lineNum">     197 </span>            : </a>
@@ -277,16 +277,16 @@
 <a name="207"><span class="lineNum">     207 </span>            :     !&gt;</a>
 <a name="208"><span class="lineNum">     208 </span>            :     !&gt; \warning</a>
 <a name="209"><span class="lineNum">     209 </span>            :     !&gt; The input `energy` values must be less than `ebrk`.</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          8 :     pure function getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk) result(photonFluxLower)</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          1 :     pure function getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk) result(photonFluxLower)</span></a>
 <a name="211"><span class="lineNum">     211 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="212"><span class="lineNum">     212 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluxLower</a>
 <a name="213"><span class="lineNum">     213 </span>            : #endif</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         32 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          4 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
 <a name="215"><span class="lineNum">     215 </span>            :         implicit none</a>
 <a name="216"><span class="lineNum">     216 </span>            :         real(RK), intent(in)            :: energy, alpha, alphaPlusTwoOverEpk</a>
 <a name="217"><span class="lineNum">     217 </span>            :         real(RK)                        :: photonFluxLower</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          8 :         photonFluxLower = energy**alpha * exp(-energy*alphaPlusTwoOverEpk)  ! the lower-energy spectrum</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">         16 :     end function getPhotonFluxLower</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          1 :         photonFluxLower = energy**alpha * exp(-energy*alphaPlusTwoOverEpk)  ! the lower-energy spectrum</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">          2 :     end function getPhotonFluxLower</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>
@@ -578,11 +578,11 @@
 <a name="508"><span class="lineNum">     508 </span>            :     !&gt; \remark</a>
 <a name="509"><span class="lineNum">     509 </span>            :     !&gt; If the optional `[lowerLimNew, upperLimNew]` are provided, each will replace the</a>
 <a name="510"><span class="lineNum">     510 </span>            :     !&gt; corresponding input `[lowerLim, upperLim]` in the computation of the output `photonFluence`.</a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">         64 :     subroutine getPhotonFluenceFromEnergyFluence( energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance, photonFluence, Err, lowerLimNew, upperLimNew )</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">          8 :     subroutine getPhotonFluenceFromEnergyFluence( energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance, photonFluence, Err, lowerLimNew, upperLimNew )</span></a>
 <a name="512"><span class="lineNum">     512 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="513"><span class="lineNum">     513 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluenceFromEnergyFluence</a>
 <a name="514"><span class="lineNum">     514 </span>            : #endif</a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">          8 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">          1 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
 <a name="516"><span class="lineNum">     516 </span>            :         use Err_mod, only: Err_type</a>
 <a name="517"><span class="lineNum">     517 </span>            :         implicit none</a>
 <a name="518"><span class="lineNum">     518 </span>            :         real(RK), intent(in)            :: energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance</a>
@@ -590,23 +590,23 @@
 <a name="520"><span class="lineNum">     520 </span>            :         type(Err_type), intent(out)     :: Err</a>
 <a name="521"><span class="lineNum">     521 </span>            :         character(*), parameter         :: PROCEDURE_NAME = &quot;@getPhotonFluenceFromEnergyFluence()&quot;</a>
 <a name="522"><span class="lineNum">     522 </span>            :         real(RK), intent(in), optional  :: lowerLimNew, upperLimNew</a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">         64 :         real(RK)                        :: lowLimNew, uppLimNew, amplitude</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">          8 :         real(RK)                        :: lowLimNew, uppLimNew, amplitude</span></a>
 <a name="524"><span class="lineNum">     524 </span>            : </a>
-<a name="525"><span class="lineNum">     525 </span><span class="lineCov">         64 :         Err%occurred = .false.</span></a>
+<a name="525"><span class="lineNum">     525 </span><span class="lineCov">          8 :         Err%occurred = .false.</span></a>
 <a name="526"><span class="lineNum">     526 </span>            : </a>
 <a name="527"><span class="lineNum">     527 </span>            :         ! check if the photon indices are consistent with the mathematical rules</a>
 <a name="528"><span class="lineNum">     528 </span>            : </a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         64 :         if (lowerLim&gt;=upperLim) then</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">          8 :             photonFluence = 0._RK</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">          8 :             return</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">          8 :         if (lowerLim&gt;=upperLim) then</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">          1 :             photonFluence = 0._RK</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">          1 :             return</span></a>
 <a name="532"><span class="lineNum">     532 </span>            :         end if</a>
 <a name="533"><span class="lineNum">     533 </span>            : </a>
 <a name="534"><span class="lineNum">     534 </span>            :         ! check if the photon indices are consistent with the mathematical rules</a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">         56 :         if (alpha&lt;beta .or. alpha&lt;-2._RK) then</span></a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">         16 :             photonFluence = -HUGE_RK</span></a>
-<a name="537"><span class="lineNum">     537 </span><span class="lineCov">         16 :             Err%occurred = .true.</span></a>
-<a name="538"><span class="lineNum">     538 </span><span class="lineCov">         16 :             Err%msg = MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred: alpha&lt;beta .or. alpha&lt;-2._RK&quot;</span></a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">         16 :             return</span></a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">          7 :         if (alpha&lt;beta .or. alpha&lt;-2._RK) then</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">          2 :             photonFluence = -HUGE_RK</span></a>
+<a name="537"><span class="lineNum">     537 </span><span class="lineCov">          2 :             Err%occurred = .true.</span></a>
+<a name="538"><span class="lineNum">     538 </span><span class="lineCov">          2 :             Err%msg = MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred: alpha&lt;beta .or. alpha&lt;-2._RK&quot;</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">          2 :             return</span></a>
 <a name="540"><span class="lineNum">     540 </span>            :         end if</a>
 <a name="541"><span class="lineNum">     541 </span>            : </a>
 <a name="542"><span class="lineNum">     542 </span>            : !#if defined OS_IS_WSL &amp;&amp; defined CODECOV_ENABLED</a>
@@ -626,23 +626,23 @@
 <a name="556"><span class="lineNum">     556 </span>            :             return</a>
 <a name="557"><span class="lineNum">     557 </span>            :         end if</a>
 <a name="558"><span class="lineNum">     558 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">         40 :         amplitude = energyFluence / amplitude</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">          5 :         amplitude = energyFluence / amplitude</span></a>
 <a name="560"><span class="lineNum">     560 </span>            : </a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">         40 :         call getPhotonFluence(lowLimNew,uppLimNew,epk,alpha,beta,tolerance,photonFluence,Err)</span></a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">         40 :         if (Err%occurred) then</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">          5 :         call getPhotonFluence(lowLimNew,uppLimNew,epk,alpha,beta,tolerance,photonFluence,Err)</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">          5 :         if (Err%occurred) then</span></a>
 <a name="563"><span class="lineNum">     563 </span>            :         ! LCOV_EXCL_START</a>
 <a name="564"><span class="lineNum">     564 </span>            :             photonFluence = -HUGE_RK</a>
 <a name="565"><span class="lineNum">     565 </span>            :             Err%msg = MODULE_NAME // PROCEDURE_NAME // Err%msg</a>
 <a name="566"><span class="lineNum">     566 </span>            :             return</a>
 <a name="567"><span class="lineNum">     567 </span>            :         end if</a>
 <a name="568"><span class="lineNum">     568 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineCov">         40 :         photonFluence = amplitude * photonFluence</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">          5 :         photonFluence = amplitude * photonFluence</span></a>
 <a name="570"><span class="lineNum">     570 </span>            : </a>
 <a name="571"><span class="lineNum">     571 </span>            : !#if defined OS_IS_WSL &amp;&amp; defined CODECOV_ENABLED</a>
 <a name="572"><span class="lineNum">     572 </span>            : !! LCOV_EXCL_STOP</a>
 <a name="573"><span class="lineNum">     573 </span>            : !#endif</a>
 <a name="574"><span class="lineNum">     574 </span>            : </a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         64 :     end subroutine getPhotonFluenceFromEnergyFluence</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">          8 :     end subroutine getPhotonFluenceFromEnergyFluence</span></a>
 <a name="576"><span class="lineNum">     576 </span>            : </a>
 <a name="577"><span class="lineNum">     577 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="578"><span class="lineNum">     578 </span>            : </a>

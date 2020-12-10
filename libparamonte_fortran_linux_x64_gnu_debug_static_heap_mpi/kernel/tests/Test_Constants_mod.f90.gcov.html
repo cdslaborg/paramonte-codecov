@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 06:56:19</td>
+            <td class="headerValue">2020-12-10 16:26:41</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -130,31 +130,31 @@
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          6 :     subroutine test_Constants()</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">         12 :     subroutine test_Constants()</span></a>
 <a name="64"><span class="lineNum">      64 </span>            :         implicit none</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          3 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          3 :         call Test%run(test_getPosInf_RK_1,&quot;test_getPosInf_RK_1&quot;)</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          3 :         call Test%run(test_getNegInf_RK_1,&quot;test_getNegInf_RK_1&quot;)</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          3 :         call Test%finalize()</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          3 :     end subroutine test_Constants</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          6 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          6 :         call Test%run(test_getPosInf_RK_1,&quot;test_getPosInf_RK_1&quot;)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          6 :         call Test%run(test_getNegInf_RK_1,&quot;test_getNegInf_RK_1&quot;)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          6 :         call Test%finalize()</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          6 :     end subroutine test_Constants</span></a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          3 :     function test_getPosInf_RK_1() result(assertion)</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          3 :         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_positive_inf</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          6 :     function test_getPosInf_RK_1() result(assertion)</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          6 :         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_positive_inf</span></a>
 <a name="75"><span class="lineNum">      75 </span>            :         implicit none</a>
 <a name="76"><span class="lineNum">      76 </span>            :         logical             :: assertion</a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          3 :         assertion = getPosInf_RK() == ieee_value(0._RK, ieee_positive_inf)</span></a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          3 :     end function test_getPosInf_RK_1</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          6 :         assertion = getPosInf_RK() == ieee_value(0._RK, ieee_positive_inf)</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          6 :     end function test_getPosInf_RK_1</span></a>
 <a name="79"><span class="lineNum">      79 </span>            : </a>
 <a name="80"><span class="lineNum">      80 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          3 :     function test_getNegInf_RK_1() result(assertion)</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          3 :         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_negative_inf</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">          6 :     function test_getNegInf_RK_1() result(assertion)</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          6 :         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_negative_inf</span></a>
 <a name="84"><span class="lineNum">      84 </span>            :         implicit none</a>
 <a name="85"><span class="lineNum">      85 </span>            :         logical             :: assertion</a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          3 :         assertion = getNegInf_RK() == ieee_value(0._RK, ieee_negative_inf)</span></a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          3 :     end function test_getNegInf_RK_1</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          6 :         assertion = getNegInf_RK() == ieee_value(0._RK, ieee_negative_inf)</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">          6 :     end function test_getNegInf_RK_1</span></a>
 <a name="88"><span class="lineNum">      88 </span>            : </a>
 <a name="89"><span class="lineNum">      89 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="90"><span class="lineNum">      90 </span>            : </a>

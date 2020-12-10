@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:47:44</td>
+            <td class="headerValue">2020-12-10 14:55:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -140,7 +140,7 @@
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       3015 :     function construct(nd,methodName) result(self)</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        335 :     function construct(nd,methodName) result(self)</span></a>
 <a name="74"><span class="lineNum">      74 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="75"><span class="lineNum">      75 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: construct</a>
 <a name="76"><span class="lineNum">      76 </span>            : #endif</a>
@@ -151,8 +151,8 @@
 <a name="81"><span class="lineNum">      81 </span>            :         integer(IK), intent(in)                     :: nd</a>
 <a name="82"><span class="lineNum">      82 </span>            :         character(*), intent(in)                    :: methodName</a>
 <a name="83"><span class="lineNum">      83 </span>            :         type(DelayedRejectionScaleFactorVec_type)   :: self</a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       3015 :         self%def  = 0.5_RK**(1._RK/real(nd,kind=RK))  ! This gives a half volume to the covariance</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       3015 :         self%null = NULL_RK</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        335 :         self%def  = 0.5_RK**(1._RK/real(nd,kind=RK))  ! This gives a half volume to the covariance</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        335 :         self%null = NULL_RK</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :         self%desc = &amp;</a>
 <a name="87"><span class="lineNum">      87 </span>            :         &quot;delayedRejectionScaleFactorVec is a real-valued positive vector of length (1:delayedRejectionCount) by which &amp;</a>
 <a name="88"><span class="lineNum">      88 </span>            :         &amp;the covariance matrix of the proposal distribution of &quot;//methodName//&quot; sampler is scaled when the Delayed Rejection (DR) &amp;</a>
@@ -161,57 +161,57 @@
 <a name="91"><span class="lineNum">      91 </span>            :         &amp;Missing elements of the delayedRejectionScaleFactorVec in the input to &quot;//methodName//&quot; will be set to the default value. &amp;</a>
 <a name="92"><span class="lineNum">      92 </span>            :         &amp;The default value at all stages is 0.5^(1/ndim) = &quot;//num2str(self%def)//&quot;, which reduces the &amp;</a>
 <a name="93"><span class="lineNum">      93 </span>            :         &amp;volume of the covariance matrix of the proposal from the last DR stage by one half. The variable ndim represents the &amp;</a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">       3015 :         &amp;number of dimensions of the Domain of the objective function.&quot;</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       3015 :     end function construct</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        335 :         &amp;number of dimensions of the Domain of the objective function.&quot;</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">        335 :     end function construct</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       3015 :     subroutine nullifyNameListVar(self)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">        335 :     subroutine nullifyNameListVar(self)</span></a>
 <a name="100"><span class="lineNum">     100 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="101"><span class="lineNum">     101 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="102"><span class="lineNum">     102 </span>            : #endif</a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">       3015 :         use SpecDRAM_DelayedRejectionCount_mod, only: MAX_DELAYED_REJECTION_COUNT</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        335 :         use SpecDRAM_DelayedRejectionCount_mod, only: MAX_DELAYED_REJECTION_COUNT</span></a>
 <a name="104"><span class="lineNum">     104 </span>            :         use Constants_mod, only: IK</a>
 <a name="105"><span class="lineNum">     105 </span>            :         implicit none</a>
 <a name="106"><span class="lineNum">     106 </span>            :         class(DelayedRejectionScaleFactorVec_type), intent(in) :: self</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">         48 :         if (allocated(DelayedRejectionScaleFactorVec)) deallocate(DelayedRejectionScaleFactorVec)</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">    3018020 :         allocate(DelayedRejectionScaleFactorVec(MAX_DELAYED_REJECTION_COUNT), source = self%null)</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">       3015 :     end subroutine nullifyNameListVar</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          4 :         if (allocated(DelayedRejectionScaleFactorVec)) deallocate(DelayedRejectionScaleFactorVec)</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     335335 :         allocate(DelayedRejectionScaleFactorVec(MAX_DELAYED_REJECTION_COUNT), source = self%null)</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">        335 :     end subroutine nullifyNameListVar</span></a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
 <a name="111"><span class="lineNum">     111 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">      12024 :     pure subroutine set(self,delayedRejectionCount, DelayedRejectionScaleFactorVec)</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       1336 :     pure subroutine set(self,delayedRejectionCount, DelayedRejectionScaleFactorVec)</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="115"><span class="lineNum">     115 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: set</a>
 <a name="116"><span class="lineNum">     116 </span>            : #endif</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">       3015 :         use Constants_mod, only: IK, RK</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        335 :         use Constants_mod, only: IK, RK</span></a>
 <a name="118"><span class="lineNum">     118 </span>            :         implicit none</a>
 <a name="119"><span class="lineNum">     119 </span>            :         class(DelayedRejectionScaleFactorVec_type), intent(inout)   :: self</a>
 <a name="120"><span class="lineNum">     120 </span>            :         integer(IK) , intent(in)                                    :: delayedRejectionCount</a>
 <a name="121"><span class="lineNum">     121 </span>            :         real(RK)    , intent(in), optional                          :: DelayedRejectionScaleFactorVec(:) ! This must remain colon</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       6012 :         if (present(DelayedRejectionScaleFactorVec)) then</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">    3018410 :             self%Val = pack( DelayedRejectionScaleFactorVec, mask = DelayedRejectionScaleFactorVec /= self%null )</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       3069 :             if (size(self%Val) == 0) then</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       2997 :                 deallocate(self%Val)</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       3213 :                 allocate(self%Val(delayedRejectionCount), source = self%def)</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        668 :         if (present(DelayedRejectionScaleFactorVec)) then</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">     335379 :             self%Val = pack( DelayedRejectionScaleFactorVec, mask = DelayedRejectionScaleFactorVec /= self%null )</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">        341 :             if (size(self%Val) == 0) then</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        333 :                 deallocate(self%Val)</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        357 :                 allocate(self%Val(delayedRejectionCount), source = self%def)</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :             end if</a>
 <a name="128"><span class="lineNum">     128 </span>            :         else</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">       2943 :             if (allocated(self%Val)) then</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       2943 :                 if (size(self%Val) == 0) then</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       2889 :                     deallocate(self%Val)</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">      21051 :                     allocate(self%Val(delayedRejectionCount), source = self%def)</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">        327 :             if (allocated(self%Val)) then</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">        327 :                 if (size(self%Val) == 0) then</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        321 :                     deallocate(self%Val)</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       2339 :                     allocate(self%Val(delayedRejectionCount), source = self%def)</span></a>
 <a name="133"><span class="lineNum">     133 </span>            :                 end if</a>
 <a name="134"><span class="lineNum">     134 </span>            :             end if</a>
 <a name="135"><span class="lineNum">     135 </span>            :         end if</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       6012 :     end subroutine set</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        668 :     end subroutine set</span></a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>
 <a name="138"><span class="lineNum">     138 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       2967 :     subroutine checkForSanity(self,Err,methodName,delayedRejectionCount)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        331 :     subroutine checkForSanity(self,Err,methodName,delayedRejectionCount)</span></a>
 <a name="141"><span class="lineNum">     141 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="142"><span class="lineNum">     142 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="143"><span class="lineNum">     143 </span>            : #endif</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       6012 :         use Constants_mod, only: IK, RK</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        668 :         use Constants_mod, only: IK, RK</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :         use Err_mod, only: Err_type</a>
 <a name="146"><span class="lineNum">     146 </span>            :         use String_mod, only: num2str</a>
 <a name="147"><span class="lineNum">     147 </span>            :         implicit none</a>
@@ -221,25 +221,25 @@
 <a name="151"><span class="lineNum">     151 </span>            :         integer(IK), intent(in)                                 :: delayedRejectionCount</a>
 <a name="152"><span class="lineNum">     152 </span>            :         character(*), parameter                                 :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
 <a name="153"><span class="lineNum">     153 </span>            :         integer(IK)                                             :: i</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       2967 :         if ( size(self%Val)/=delayedRejectionCount ) then</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         36 :             Err%occurred = .true.</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">        331 :         if ( size(self%Val)/=delayedRejectionCount ) then</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          4 :             Err%occurred = .true.</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :             Err%msg =   Err%msg // &amp;</a>
 <a name="157"><span class="lineNum">     157 </span>            :                         MODULE_NAME//PROCEDURE_NAME//&quot;: Error occurred. The length of the vector delayedRejectionScaleFactorVec (&quot; // &amp;</a>
 <a name="158"><span class="lineNum">     158 </span>            :                         num2str(size(self%Val)) // &quot;) is not equal to delayedRejectionCount = &quot; // &amp;</a>
 <a name="159"><span class="lineNum">     159 </span>            :                         num2str(delayedRejectionCount) // &quot;. If you are not sure how to set the values of &amp;</a>
 <a name="160"><span class="lineNum">     160 </span>            :                         &amp;delayedRejectionScaleFactorVec, drop it from the input. &quot; &amp;</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         36 :                         // methodName // &quot; will automatically set the appropriate value for delayedRejectionScaleFactorVec.\n\n&quot;</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          4 :                         // methodName // &quot; will automatically set the appropriate value for delayedRejectionScaleFactorVec.\n\n&quot;</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :         end if</a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">      21417 :         do i = 1,size(self%Val)</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">      21417 :             if ( self%Val(i)&lt;=0._RK ) then</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         36 :                 Err%occurred = .true.</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       2381 :         do i = 1,size(self%Val)</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">       2381 :             if ( self%Val(i)&lt;=0._RK ) then</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          4 :                 Err%occurred = .true.</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :                 Err%msg =   Err%msg // &amp;</a>
 <a name="167"><span class="lineNum">     167 </span>            :                             MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. The input value for the element &quot; // &amp;</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         36 :                             num2str(i) // &quot; of the variable delayedRejectionScaleFactorVec cannot be smaller than or equal to 0.\n\n&quot;</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          4 :                             num2str(i) // &quot; of the variable delayedRejectionScaleFactorVec cannot be smaller than or equal to 0.\n\n&quot;</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :             end if</a>
 <a name="170"><span class="lineNum">     170 </span>            :         end do</a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       2967 :         deallocate(DelayedRejectionScaleFactorVec)</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       5934 :     end subroutine checkForSanity</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">        331 :         deallocate(DelayedRejectionScaleFactorVec)</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        662 :     end subroutine checkForSanity</span></a>
 <a name="173"><span class="lineNum">     173 </span>            : </a>
 <a name="174"><span class="lineNum">     174 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="175"><span class="lineNum">     175 </span>            : </a>

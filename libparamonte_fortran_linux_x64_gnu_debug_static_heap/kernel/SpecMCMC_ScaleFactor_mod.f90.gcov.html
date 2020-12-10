@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:47:44</td>
+            <td class="headerValue">2020-12-10 14:55:54</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -139,7 +139,7 @@
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">       3015 :     function constructScaleFactor(nd,methodName) result(ScaleFactorObj)</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        335 :     function constructScaleFactor(nd,methodName) result(ScaleFactorObj)</span></a>
 <a name="73"><span class="lineNum">      73 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="74"><span class="lineNum">      74 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructScaleFactor</a>
 <a name="75"><span class="lineNum">      75 </span>            : #endif</a>
@@ -151,9 +151,9 @@
 <a name="81"><span class="lineNum">      81 </span>            :         character(*), intent(in)    :: methodName</a>
 <a name="82"><span class="lineNum">      82 </span>            :         type(ScaleFactor_type)      :: ScaleFactorObj</a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       3015 :         ScaleFactorObj%defStr = &quot;gelman&quot;</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       3015 :         ScaleFactorObj%defVal = 2.38_RK/sqrt(real(nd,kind=RK))  ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       3015 :         ScaleFactorObj%null = repeat(NULL_SK, MAX_LEN_STRING_SCALE_FACTOR)</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        335 :         ScaleFactorObj%defStr = &quot;gelman&quot;</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        335 :         ScaleFactorObj%defVal = 2.38_RK/sqrt(real(nd,kind=RK))  ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">        335 :         ScaleFactorObj%null = repeat(NULL_SK, MAX_LEN_STRING_SCALE_FACTOR)</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :         ScaleFactorObj%desc = &amp;</a>
 <a name="88"><span class="lineNum">      88 </span>            :         &quot;scaleFactor is a real-valued positive number (which must be given as string), by the square of which the &amp;</a>
 <a name="89"><span class="lineNum">      89 </span>            :         &amp;covariance matrix of the proposal distribution of the MCMC sampler is scaled. In other words, &amp;</a>
@@ -185,44 +185,44 @@
 <a name="115"><span class="lineNum">     115 </span>            :         &amp;symbol will lead to a simulation crash. Also, note that the prescription of an acceptance range specified by the input &amp;</a>
 <a name="116"><span class="lineNum">     116 </span>            :         &amp;variable 'targetAcceptanceRate' will lead to dynamic modification of the initial input value of scaleFactor throughout sampling &amp;</a>
 <a name="117"><span class="lineNum">     117 </span>            :         &amp;for adaptiveUpdateCount times. &amp;</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       3015 :         &amp;The default scaleFactor string-value is 'gelman' (for all proposals), which is subsequently converted to 2.38/sqrt(ndim).&quot;</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       3015 :     end function constructScaleFactor</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        335 :         &amp;The default scaleFactor string-value is 'gelman' (for all proposals), which is subsequently converted to 2.38/sqrt(ndim).&quot;</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        335 :     end function constructScaleFactor</span></a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
 <a name="121"><span class="lineNum">     121 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3015 :     subroutine nullifyNameListVar(ScaleFactorObj)</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        335 :     subroutine nullifyNameListVar(ScaleFactorObj)</span></a>
 <a name="124"><span class="lineNum">     124 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="125"><span class="lineNum">     125 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="126"><span class="lineNum">     126 </span>            : #endif</a>
 <a name="127"><span class="lineNum">     127 </span>            :         implicit none</a>
 <a name="128"><span class="lineNum">     128 </span>            :         class(ScaleFactor_type), intent(in) :: ScaleFactorObj</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">       3015 :         scaleFactor = ScaleFactorObj%null</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       3015 :     end subroutine nullifyNameListVar</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">        335 :         scaleFactor = ScaleFactorObj%null</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">        335 :     end subroutine nullifyNameListVar</span></a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
 <a name="132"><span class="lineNum">     132 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="133"><span class="lineNum">     133 </span>            : </a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       3105 :     subroutine setScaleFactor(ScaleFactorObj,scaleFactor)</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        345 :     subroutine setScaleFactor(ScaleFactorObj,scaleFactor)</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="136"><span class="lineNum">     136 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setScaleFactor</a>
 <a name="137"><span class="lineNum">     137 </span>            : #endif</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       3015 :         use Constants_mod, only: RK</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        335 :         use Constants_mod, only: RK</span></a>
 <a name="139"><span class="lineNum">     139 </span>            :         implicit none</a>
 <a name="140"><span class="lineNum">     140 </span>            :         class(ScaleFactor_type), intent(inout)  :: ScaleFactorObj</a>
 <a name="141"><span class="lineNum">     141 </span>            :         character(*), intent(in)                :: scaleFactor</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       3105 :         ScaleFactorObj%str = trim(adjustl(scaleFactor))</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       3105 :         if (ScaleFactorObj%str==ScaleFactorObj%null) then</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       2889 :             ScaleFactorObj%str = ScaleFactorObj%defStr</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        345 :         ScaleFactorObj%str = trim(adjustl(scaleFactor))</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">        345 :         if (ScaleFactorObj%str==ScaleFactorObj%null) then</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        321 :             ScaleFactorObj%str = ScaleFactorObj%defStr</span></a>
 <a name="145"><span class="lineNum">     145 </span>            :         end if</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">       6210 :     end subroutine setScaleFactor</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">        690 :     end subroutine setScaleFactor</span></a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
 <a name="150"><span class="lineNum">     150 </span>            :     ! ATTN: This subroutine also assigns the value of ScaleFactor. It MUST be executed by all images.</a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">       2967 :     subroutine checkForSanity(ScaleFactorObj,Err,methodName)</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        331 :     subroutine checkForSanity(ScaleFactorObj,Err,methodName)</span></a>
 <a name="152"><span class="lineNum">     152 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="153"><span class="lineNum">     153 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="154"><span class="lineNum">     154 </span>            : #endif</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       3105 :         use Constants_mod, only: IK, RK</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        345 :         use Constants_mod, only: IK, RK</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :         use String_mod, only: num2str, String_type</a>
 <a name="157"><span class="lineNum">     157 </span>            :         use Err_mod, only: Err_type</a>
 <a name="158"><span class="lineNum">     158 </span>            :         implicit none</a>
@@ -230,63 +230,63 @@
 <a name="160"><span class="lineNum">     160 </span>            :         character(*), intent(in)                :: methodName</a>
 <a name="161"><span class="lineNum">     161 </span>            :         type(Err_type), intent(inout)           :: Err</a>
 <a name="162"><span class="lineNum">     162 </span>            :         character(*), parameter                 :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">       2967 :         type(String_type)                       :: String</span></a>
+<a name="163"><span class="lineNum">     163 </span><span class="lineCov">        331 :         type(String_type)                       :: String</span></a>
 <a name="164"><span class="lineNum">     164 </span>            :         integer(IK)                             :: i</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">       2967 :         real(RK)                                :: temp</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">        331 :         real(RK)                                :: temp</span></a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
 <a name="167"><span class="lineNum">     167 </span>            :         ! First convert the scaleFactor string to real value:</a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       2967 :         String%value = String%replaceStr(ScaleFactorObj%str,&quot; &quot;,&quot;&quot;) ! remove the white spaces</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       2967 :         if (len_trim(adjustl(String%value))==0) then</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         36 :             Err%occurred = .true.</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">        331 :         String%value = String%replaceStr(ScaleFactorObj%str,&quot; &quot;,&quot;&quot;) ! remove the white spaces</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">        331 :         if (len_trim(adjustl(String%value))==0) then</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          4 :             Err%occurred = .true.</span></a>
 <a name="172"><span class="lineNum">     172 </span>            :             Err%msg =   Err%msg // &amp;</a>
 <a name="173"><span class="lineNum">     173 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
 <a name="174"><span class="lineNum">     174 </span>            :                         &amp;The input string value (&quot; // ScaleFactorObj%str // &quot;) for the variable scaleFactor &amp;</a>
 <a name="175"><span class="lineNum">     175 </span>            :                         &amp;is empty. Make sure the input string follows the syntax rules of &quot; &amp;</a>
 <a name="176"><span class="lineNum">     176 </span>            :                         // methodName // &quot; for this variable. Otherwise drop it from the input list. &quot; &amp;</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">         36 :                         // methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">         36 :             return</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          4 :                         // methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          4 :             return</span></a>
 <a name="179"><span class="lineNum">     179 </span>            :         end if</a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
 <a name="181"><span class="lineNum">     181 </span>            :         ! Now split the string by &quot;*&quot; to real coefficient and character (gelman) parts for further evaluations</a>
 <a name="182"><span class="lineNum">     182 </span>            : </a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">      11976 :         String%Parts = String%split(string = String%value, delim = &quot;*&quot;, nPart = String%nPart)</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       2931 :         ScaleFactorObj%val = 1._RK</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       5916 :         do i = 1, String%nPart</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">       8955 :             if ( String%getLowerCase( String%Parts(i)%record ) == &quot;gelman&quot; ) then</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">       2877 :                 ScaleFactorObj%val = ScaleFactorObj%val * ScaleFactorObj%defVal</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">       1336 :         String%Parts = String%split(string = String%value, delim = &quot;*&quot;, nPart = String%nPart)</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        327 :         ScaleFactorObj%val = 1._RK</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">        660 :         do i = 1, String%nPart</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">        999 :             if ( String%getLowerCase( String%Parts(i)%record ) == &quot;gelman&quot; ) then</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">        321 :                 ScaleFactorObj%val = ScaleFactorObj%val * ScaleFactorObj%defVal</span></a>
 <a name="188"><span class="lineNum">     188 </span>            :             else</a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">        162 :                 temp = String%str2real64( str=String%Parts(i)%record, iostat=Err%stat )</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       3201 :                 if ( Err%stat/=0 ) then</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         54 :                     Err%occurred = .true.</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">         18 :                 temp = String%str2real64( str=String%Parts(i)%record, iostat=Err%stat )</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">        357 :                 if ( Err%stat/=0 ) then</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          6 :                     Err%occurred = .true.</span></a>
 <a name="192"><span class="lineNum">     192 </span>            :                     Err%msg = Err%msg // &amp; ! LCOV_EXCL_LINE</a>
 <a name="193"><span class="lineNum">     193 </span>            :                     MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred while reading real number.\n&quot;//&amp; ! LCOV_EXCL_LINE</a>
 <a name="194"><span class="lineNum">     194 </span>            :                     &quot;The input string value for the variable scaleFactor (&quot; // ScaleFactorObj%str // &quot;) does not appear to follow &quot;//&amp; ! LCOV_EXCL_LINE</a>
 <a name="195"><span class="lineNum">     195 </span>            :                     &quot;the standard syntax rules of &quot;// methodName // &quot; for this variable. '&quot; // String%Parts(i)%record // &amp; ! LCOV_EXCL_LINE</a>
 <a name="196"><span class="lineNum">     196 </span>            :                     &quot;' cannot be parsed into any meaningful token. Please correct the input value, or drop it from the input list, &quot;//&amp; ! LCOV_EXCL_LINE</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">         54 :                     &quot;in which case, &quot; // methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">         54 :                     return</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          6 :                     &quot;in which case, &quot; // methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          6 :                     return</span></a>
 <a name="199"><span class="lineNum">     199 </span>            :                 else</a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">        108 :                     ScaleFactorObj%val = ScaleFactorObj%val * temp</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         12 :                     ScaleFactorObj%val = ScaleFactorObj%val * temp</span></a>
 <a name="201"><span class="lineNum">     201 </span>            :                 end if</a>
 <a name="202"><span class="lineNum">     202 </span>            :             end if</a>
 <a name="203"><span class="lineNum">     203 </span>            :         end do</a>
 <a name="204"><span class="lineNum">     204 </span>            : </a>
 <a name="205"><span class="lineNum">     205 </span>            :         ! Now check if the real value is positive</a>
 <a name="206"><span class="lineNum">     206 </span>            : </a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">       2877 :         if (ScaleFactorObj%val&lt;=0) then</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">         18 :             Err%occurred = .true.</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">        321 :         if (ScaleFactorObj%val&lt;=0) then</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          2 :             Err%occurred = .true.</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :             Err%msg = Err%msg // &amp;</a>
 <a name="210"><span class="lineNum">     210 </span>            :             MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
 <a name="211"><span class="lineNum">     211 </span>            :             &amp;The input string value (&quot; // ScaleFactorObj%str // &quot;) translates to a negative real value: &quot; // &amp;</a>
 <a name="212"><span class="lineNum">     212 </span>            :             num2str(ScaleFactorObj%val) // &quot;. &amp;</a>
 <a name="213"><span class="lineNum">     213 </span>            :             &amp;Make sure the input string follows the syntax rules of &quot; // methodName // &quot; for this variable. &amp;</a>
 <a name="214"><span class="lineNum">     214 </span>            :             &amp;Otherwise drop it from the input list. &quot; // methodName // &amp;</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         18 :             &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">         18 :             return</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          2 :             &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          2 :             return</span></a>
 <a name="217"><span class="lineNum">     217 </span>            :         end if</a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">       8955 :     end subroutine checkForSanity</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">        999 :     end subroutine checkForSanity</span></a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>

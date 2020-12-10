@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 06:56:19</td>
+            <td class="headerValue">2020-12-10 16:26:41</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -140,7 +140,7 @@
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       1005 :     function constructMaxNumDomainCheckToStop() result(MaxNumDomainCheckToStopObj)</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">       1017 :     function constructMaxNumDomainCheckToStop() result(MaxNumDomainCheckToStopObj)</span></a>
 <a name="74"><span class="lineNum">      74 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="75"><span class="lineNum">      75 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructMaxNumDomainCheckToStop</a>
 <a name="76"><span class="lineNum">      76 </span>            : #endif</a>
@@ -148,8 +148,8 @@
 <a name="78"><span class="lineNum">      78 </span>            :         use String_mod, only: num2str</a>
 <a name="79"><span class="lineNum">      79 </span>            :         implicit none</a>
 <a name="80"><span class="lineNum">      80 </span>            :         type(MaxNumDomainCheckToStop_type) :: MaxNumDomainCheckToStopObj</a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       1005 :         MaxNumDomainCheckToStopObj%def = 10000_IK</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1005 :         MaxNumDomainCheckToStopObj%null = NULL_IK</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       1017 :         MaxNumDomainCheckToStopObj%def = 10000_IK</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1017 :         MaxNumDomainCheckToStopObj%null = NULL_IK</span></a>
 <a name="83"><span class="lineNum">      83 </span>            :         MaxNumDomainCheckToStopObj%desc = &amp;</a>
 <a name="84"><span class="lineNum">      84 </span>            :         &quot;maxNumDomainCheckToStop is an integer number beyond which the program will stop globally with a fatal error message &amp;</a>
 <a name="85"><span class="lineNum">      85 </span>            :         &amp;declaring that the maximum number of proposal-out-of-domain-bounds has reached. The counter for this global-stop request &amp;</a>
@@ -157,50 +157,50 @@
 <a name="87"><span class="lineNum">      87 </span>            :         &amp;When out-of-domain sampling happens frequently, it is a strong indication of something fundamentally wrong in the &amp;</a>
 <a name="88"><span class="lineNum">      88 </span>            :         &amp;simulation. It is, therefore, important to closely inspect and monitor for such frequent out-of-domain samplings. &amp;</a>
 <a name="89"><span class="lineNum">      89 </span>            :         &amp;This can be done by setting maxNumDomainCheckToStop to an appropriate value determined by the user. &amp;</a>
-<a name="90"><span class="lineNum">      90 </span><span class="lineCov">       1005 :         &amp;The default value is &quot; // num2str(MaxNumDomainCheckToStopObj%def) // &quot;.&quot;</span></a>
-<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       1005 :     end function constructMaxNumDomainCheckToStop</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">       1017 :         &amp;The default value is &quot; // num2str(MaxNumDomainCheckToStopObj%def) // &quot;.&quot;</span></a>
+<a name="91"><span class="lineNum">      91 </span><span class="lineCov">       1017 :     end function constructMaxNumDomainCheckToStop</span></a>
 <a name="92"><span class="lineNum">      92 </span>            : </a>
 <a name="93"><span class="lineNum">      93 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="94"><span class="lineNum">      94 </span>            : </a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       1005 :     subroutine nullifyNameListVar(MaxNumDomainCheckToStopObj)</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">       1017 :     subroutine nullifyNameListVar(MaxNumDomainCheckToStopObj)</span></a>
 <a name="96"><span class="lineNum">      96 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="97"><span class="lineNum">      97 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="98"><span class="lineNum">      98 </span>            : #endif</a>
 <a name="99"><span class="lineNum">      99 </span>            :         implicit none</a>
 <a name="100"><span class="lineNum">     100 </span>            :         class(MaxNumDomainCheckToStop_type), intent(in)     :: MaxNumDomainCheckToStopObj</a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       1005 :         maxNumDomainCheckToStop = MaxNumDomainCheckToStopObj%null</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       1005 :     end subroutine nullifyNameListVar</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       1017 :         maxNumDomainCheckToStop = MaxNumDomainCheckToStopObj%null</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">       1017 :     end subroutine nullifyNameListVar</span></a>
 <a name="103"><span class="lineNum">     103 </span>            : </a>
 <a name="104"><span class="lineNum">     104 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="105"><span class="lineNum">     105 </span>            : </a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">       1017 :     subroutine setMaxNumDomainCheckToStop(MaxNumDomainCheckToStopObj,maxNumDomainCheckToStop)</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">       1029 :     subroutine setMaxNumDomainCheckToStop(MaxNumDomainCheckToStopObj,maxNumDomainCheckToStop)</span></a>
 <a name="107"><span class="lineNum">     107 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="108"><span class="lineNum">     108 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setMaxNumDomainCheckToStop</a>
 <a name="109"><span class="lineNum">     109 </span>            : #endif</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       1005 :         use Constants_mod, only: IK</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       1017 :         use Constants_mod, only: IK</span></a>
 <a name="111"><span class="lineNum">     111 </span>            :         implicit none</a>
 <a name="112"><span class="lineNum">     112 </span>            :         class(MaxNumDomainCheckToStop_type), intent(inout)  :: MaxNumDomainCheckToStopObj</a>
 <a name="113"><span class="lineNum">     113 </span>            :         integer(IK), intent(in)                             :: maxNumDomainCheckToStop</a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">       1017 :         MaxNumDomainCheckToStopObj%val = maxNumDomainCheckToStop</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">       1017 :         if (MaxNumDomainCheckToStopObj%val==MaxNumDomainCheckToStopObj%null) then</span></a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        987 :             MaxNumDomainCheckToStopObj%val = MaxNumDomainCheckToStopObj%def</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">       1029 :         MaxNumDomainCheckToStopObj%val = maxNumDomainCheckToStop</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">       1029 :         if (MaxNumDomainCheckToStopObj%val==MaxNumDomainCheckToStopObj%null) then</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">        999 :             MaxNumDomainCheckToStopObj%val = MaxNumDomainCheckToStopObj%def</span></a>
 <a name="117"><span class="lineNum">     117 </span>            :         end if</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1017 :     end subroutine setMaxNumDomainCheckToStop</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1029 :     end subroutine setMaxNumDomainCheckToStop</span></a>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <a name="120"><span class="lineNum">     120 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        993 :     subroutine checkForSanity(MaxNumDomainCheckToStop,Err,methodName)</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       1005 :     subroutine checkForSanity(MaxNumDomainCheckToStop,Err,methodName)</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="124"><span class="lineNum">     124 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="125"><span class="lineNum">     125 </span>            : #endif</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       1017 :         use Err_mod, only: Err_type</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       1029 :         use Err_mod, only: Err_type</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :         use String_mod, only: num2str</a>
 <a name="128"><span class="lineNum">     128 </span>            :         implicit none</a>
 <a name="129"><span class="lineNum">     129 </span>            :         class(MaxNumDomainCheckToStop_type), intent(in) :: MaxNumDomainCheckToStop</a>
 <a name="130"><span class="lineNum">     130 </span>            :         character(*), intent(in)                        :: methodName</a>
 <a name="131"><span class="lineNum">     131 </span>            :         type(Err_type), intent(inout)                   :: Err</a>
 <a name="132"><span class="lineNum">     132 </span>            :         character(*), parameter                         :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        993 :         if ( MaxNumDomainCheckToStop%val&lt;1 ) then</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       1005 :         if ( MaxNumDomainCheckToStop%val&lt;1 ) then</span></a>
 <a name="134"><span class="lineNum">     134 </span><span class="lineCov">         12 :             Err%occurred = .true.</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :             Err%msg =   Err%msg // &amp;</a>
 <a name="136"><span class="lineNum">     136 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
@@ -208,7 +208,7 @@
 <a name="138"><span class="lineNum">     138 </span>            :                         &amp;If you are not sure about the appropriate value for this variable, simply drop it from the input. &quot; // &amp;</a>
 <a name="139"><span class="lineNum">     139 </span><span class="lineCov">         12 :                         methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
 <a name="140"><span class="lineNum">     140 </span>            :         end if</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1986 :     end subroutine checkForSanity</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       2010 :     end subroutine checkForSanity</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
 <a name="143"><span class="lineNum">     143 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="144"><span class="lineNum">     144 </span>            : </a>
