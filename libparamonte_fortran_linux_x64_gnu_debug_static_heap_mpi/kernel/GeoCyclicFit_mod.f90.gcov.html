@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:56:48</td>
+            <td class="headerValue">2020-12-10 06:00:52</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -179,7 +179,7 @@
 <a name="109"><span class="lineNum">     109 </span>            :     !&gt;</a>
 <a name="110"><span class="lineNum">     110 </span>            :     !&gt; \author</a>
 <a name="111"><span class="lineNum">     111 </span>            :     !&gt; Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">          3 :     function fitGeoCyclicLogPDF(maxNumTrial, numTrial, SuccessStep, LogCount) result(PowellMinimum)</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">        216 :     function fitGeoCyclicLogPDF(maxNumTrial, numTrial, SuccessStep, LogCount) result(PowellMinimum)</span></a>
 <a name="113"><span class="lineNum">     113 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="114"><span class="lineNum">     114 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF</a>
 <a name="115"><span class="lineNum">     115 </span>            : #endif</a>
@@ -197,21 +197,21 @@
 <a name="127"><span class="lineNum">     127 </span>            :         real(RK)    , parameter     :: FISHER_TRANS_SUCCESS_PROB_INIT_GUESS = atanh(2*(SUCCESS_PROB_INIT_GUESS - 0.5_RK))</a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
 <a name="129"><span class="lineNum">     129 </span>            : #if defined OS_IS_WSL</a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          3 :         numTrial_WSL = numTrial</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          3 :         maxNumTrial_WSL = maxNumTrial</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">         84 :         SuccessStep_WSL = SuccessStep</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         84 :         LogCount_WSL = LogCount</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">        216 :         numTrial_WSL = numTrial</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        216 :         maxNumTrial_WSL = maxNumTrial</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       1286 :         SuccessStep_WSL = SuccessStep</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       1286 :         LogCount_WSL = LogCount</span></a>
 <a name="134"><span class="lineNum">     134 </span>            : #endif</a>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
 <a name="136"><span class="lineNum">     136 </span>            :         ! do Fisher transformation to make the limits infinity.</a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">          3 :         BestFitSuccessProbNormFac = [FISHER_TRANS_SUCCESS_PROB_INIT_GUESS, 0._RK] ! LogCount(1)]</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        216 :         BestFitSuccessProbNormFac = [FISHER_TRANS_SUCCESS_PROB_INIT_GUESS, 0._RK] ! LogCount(1)]</span></a>
 <a name="138"><span class="lineNum">     138 </span>            : </a>
 <a name="139"><span class="lineNum">     139 </span>            :         PowellMinimum = PowellMinimum_type  ( ndim = 2_IK &amp;</a>
 <a name="140"><span class="lineNum">     140 </span>            :                                             , getFuncMD = getSumDistSq &amp;</a>
 <a name="141"><span class="lineNum">     141 </span>            :                                             , StartVec = BestFitSuccessProbNormFac &amp;</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          3 :                                             )</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          3 :         if (PowellMinimum%Err%occurred) return</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          3 :         PowellMinimum%xmin(1) = 0.5_RK * tanh(PowellMinimum%xmin(1)) + 0.5_RK ! reverse Fisher-transform</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        216 :                                             )</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">        216 :         if (PowellMinimum%Err%occurred) return</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        216 :         PowellMinimum%xmin(1) = 0.5_RK * tanh(PowellMinimum%xmin(1)) + 0.5_RK ! reverse Fisher-transform</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            : #if !defined OS_IS_WSL</a>
 <a name="147"><span class="lineNum">     147 </span>            :     contains</a>
@@ -247,7 +247,7 @@
 <a name="177"><span class="lineNum">     177 </span>            :                             )</a>
 <a name="178"><span class="lineNum">     178 </span>            :         end function getSumDistSq</a>
 <a name="179"><span class="lineNum">     179 </span>            : #endif</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :     end function fitGeoCyclicLogPDF</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">        216 :     end function fitGeoCyclicLogPDF</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
@@ -264,8 +264,8 @@
 <a name="194"><span class="lineNum">     194 </span>            :     !&gt; \remark</a>
 <a name="195"><span class="lineNum">     195 </span>            :     !&gt; Although `successProbFisherTransNormFac` is a vector on input, it is expected to have a length of one at all times.</a>
 <a name="196"><span class="lineNum">     196 </span>            :     !&gt; This is solely to fullfile the interface restrictions of [PowellMinimum_type](@ref optimization_mod::powellminimum_type).</a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       1331 :     pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          3 :         use Statistics_mod, only: getLogProbGeoCyclic</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      71839 :     pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        216 :         use Statistics_mod, only: getLogProbGeoCyclic</span></a>
 <a name="199"><span class="lineNum">     199 </span>            :         use Constants_mod, only: IK, RK</a>
 <a name="200"><span class="lineNum">     200 </span>            :         implicit none</a>
 <a name="201"><span class="lineNum">     201 </span>            :         integer(IK) , intent(in)    :: ndim</a>
@@ -278,10 +278,10 @@
 <a name="208"><span class="lineNum">     208 </span>            :                                                     , numTrial=numTrial_WSL &amp; ! LCOV_EXCL_LINE</a>
 <a name="209"><span class="lineNum">     209 </span>            :                                                     , SuccessStep=SuccessStep_WSL &amp; ! LCOV_EXCL_LINE</a>
 <a name="210"><span class="lineNum">     210 </span>            :                                                     ) &amp;</a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">       1331 :                             - successProbFisherTransNormFac(2) &amp;</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">      71839 :                             - successProbFisherTransNormFac(2) &amp;</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :                             )**2 &amp;</a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">      52454 :                         )</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">       1331 :     end function getSumDistSq</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">     496592 :                         )</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">      71839 :     end function getSumDistSq</span></a>
 <a name="215"><span class="lineNum">     215 </span>            : #endif</a>
 <a name="216"><span class="lineNum">     216 </span>            : </a>
 <a name="217"><span class="lineNum">     217 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
