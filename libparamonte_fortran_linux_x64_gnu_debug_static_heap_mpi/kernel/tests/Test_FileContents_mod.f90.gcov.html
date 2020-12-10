@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 16:26:41</td>
+            <td class="headerValue">2020-12-10 17:49:43</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -130,30 +130,30 @@
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          7 :     subroutine test_FileContents()</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          1 :     subroutine test_FileContents()</span></a>
 <a name="64"><span class="lineNum">      64 </span>            : </a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          7 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          7 :         call Test%run(test_constructFileContents_1, &quot;test_constructFileContents_1&quot;)</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          7 :         call Test%run(test_constructFileContents_2, &quot;test_constructFileContents_2&quot;)</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          7 :         call Test%finalize()</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          1 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 :         call Test%run(test_constructFileContents_1, &quot;test_constructFileContents_1&quot;)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          1 :         call Test%run(test_constructFileContents_2, &quot;test_constructFileContents_2&quot;)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          1 :         call Test%finalize()</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          7 :     end subroutine test_FileContents</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          1 :     end subroutine test_FileContents</span></a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
 <a name="72"><span class="lineNum">      72 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="73"><span class="lineNum">      73 </span>            : </a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          7 :     function test_constructFileContents_1() result(assertion)</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          7 :         use System_mod, only: RandomFileName_type, removeFile, OS_type</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          1 :     function test_constructFileContents_1() result(assertion)</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          1 :         use System_mod, only: RandomFileName_type, removeFile, OS_type</span></a>
 <a name="76"><span class="lineNum">      76 </span>            :         use String_mod, only: num2str</a>
 <a name="77"><span class="lineNum">      77 </span>            :         implicit none</a>
 <a name="78"><span class="lineNum">      78 </span>            :         logical                     :: assertion</a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          7 :         type(RandomFileName_type)   :: RandomFileName</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          7 :         type(FileContents_type)     :: FileContents</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          7 :         type(OS_type)               :: OS</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">          1 :         type(RandomFileName_type)   :: RandomFileName</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 :         type(FileContents_type)     :: FileContents</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          1 :         type(OS_type)               :: OS</span></a>
 <a name="82"><span class="lineNum">      82 </span>            :         integer                     :: fileUnit, i, iostat</a>
 <a name="83"><span class="lineNum">      83 </span>            : </a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          7 :         RandomFileName = RandomFileName_type(key = Test%outDir//&quot;/Test_FileContents_mod@test_constructFileContents&quot;)</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          7 :         assertion = .not. RandomFileName%Err%occurred</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          1 :         RandomFileName = RandomFileName_type(key = Test%outDir//&quot;/Test_FileContents_mod@test_constructFileContents&quot;)</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          1 :         assertion = .not. RandomFileName%Err%occurred</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :             ! LCOV_EXCL_START</a>
 <a name="88"><span class="lineNum">      88 </span>            :             if (Test%isDebugMode) then</a>
 <a name="89"><span class="lineNum">      89 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;RandomFileName%Err%occurred = &quot;, RandomFileName%Err%occurred</a>
@@ -164,9 +164,9 @@
 <a name="94"><span class="lineNum">      94 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="95"><span class="lineNum">      95 </span>            :         end if</a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          7 :         open(newunit = fileUnit, file = RandomFileName%path, status = &quot;new&quot;, iostat = iostat)</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          7 :         assertion = iostat == 0</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">          1 :         open(newunit = fileUnit, file = RandomFileName%path, status = &quot;new&quot;, iostat = iostat)</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          1 :         assertion = iostat == 0</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="100"><span class="lineNum">     100 </span>            :             ! LCOV_EXCL_START</a>
 <a name="101"><span class="lineNum">     101 </span>            :             if (Test%isDebugMode) then</a>
 <a name="102"><span class="lineNum">     102 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;iostat = &quot;, iostat, &quot; &lt;= 0&quot;</a>
@@ -175,14 +175,14 @@
 <a name="105"><span class="lineNum">     105 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="106"><span class="lineNum">     106 </span>            :         end if</a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;) &quot;Testing FileContents_type...&quot;</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;) &quot; &quot;</span></a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;) &quot;&quot;</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;)</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;) &quot;Testing FileContents_type...&quot;</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;) &quot; &quot;</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;) &quot;&quot;</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;)</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          7 :         FileContents = FileContents_type(RandomFileName%path)</span></a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          7 :         assertion = .not. FileContents%Err%occurred</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          1 :         FileContents = FileContents_type(RandomFileName%path)</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">          1 :         assertion = .not. FileContents%Err%occurred</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="116"><span class="lineNum">     116 </span>            :             ! LCOV_EXCL_START</a>
 <a name="117"><span class="lineNum">     117 </span>            :             if (Test%isDebugMode) then</a>
 <a name="118"><span class="lineNum">     118 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;FileContents%Err%occurred = &quot;, FileContents%Err%occurred</a>
@@ -193,9 +193,9 @@
 <a name="123"><span class="lineNum">     123 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="124"><span class="lineNum">     124 </span>            :         end if</a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          7 :         call OS%query()</span></a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          7 :         assertion = .not. OS%Err%occurred</span></a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">          1 :         call OS%query()</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          1 :         assertion = .not. OS%Err%occurred</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="129"><span class="lineNum">     129 </span>            :             ! LCOV_EXCL_START</a>
 <a name="130"><span class="lineNum">     130 </span>            :             if (Test%isDebugMode) then</a>
 <a name="131"><span class="lineNum">     131 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;)</a>
@@ -207,9 +207,9 @@
 <a name="137"><span class="lineNum">     137 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="138"><span class="lineNum">     138 </span>            :         end if</a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          7 :         call removeFile(RandomFileName%path,OS%Err)</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          7 :         assertion = .not. OS%Err%occurred</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 :         call removeFile(RandomFileName%path,OS%Err)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 :         assertion = .not. OS%Err%occurred</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :             ! LCOV_EXCL_START</a>
 <a name="144"><span class="lineNum">     144 </span>            :             if (Test%isDebugMode) then</a>
 <a name="145"><span class="lineNum">     145 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;)</a>
@@ -221,8 +221,8 @@
 <a name="151"><span class="lineNum">     151 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="152"><span class="lineNum">     152 </span>            :         end if</a>
 <a name="153"><span class="lineNum">     153 </span>            : </a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%numRecord==4</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%numRecord==4</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :             ! LCOV_EXCL_START</a>
 <a name="157"><span class="lineNum">     157 </span>            :             if (Test%isDebugMode) then</a>
 <a name="158"><span class="lineNum">     158 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;FileContents%numRecord = &quot;, FileContents%numRecord, &quot; /= &quot;, 4</a>
@@ -231,12 +231,12 @@
 <a name="161"><span class="lineNum">     161 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="162"><span class="lineNum">     162 </span>            :         end if</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(1)%record==&quot;Testing FileContents_type...&quot;</span></a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(2)%record==&quot;&quot;</span></a>
-<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(3)%record==&quot;&quot;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(4)%record==&quot;&quot;</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(1)%record==&quot;Testing FileContents_type...&quot;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(2)%record==&quot;&quot;</span></a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(3)%record==&quot;&quot;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(4)%record==&quot;&quot;</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          7 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="170"><span class="lineNum">     170 </span>            :         ! LCOV_EXCL_START</a>
 <a name="171"><span class="lineNum">     171 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;)</a>
 <a name="172"><span class="lineNum">     172 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;)   &quot;numRecord  : &quot;, num2str(FileContents%numRecord)</a>
@@ -247,25 +247,25 @@
 <a name="177"><span class="lineNum">     177 </span>            :         end if</a>
 <a name="178"><span class="lineNum">     178 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="179"><span class="lineNum">     179 </span>            : </a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         35 :     end function test_constructFileContents_1</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          5 :     end function test_constructFileContents_1</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          7 :     function test_constructFileContents_2() result(assertion)</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          1 :     function test_constructFileContents_2() result(assertion)</span></a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          7 :         use System_mod, only: RandomFileName_type, removeFile, OS_type</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          1 :         use System_mod, only: RandomFileName_type, removeFile, OS_type</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :         use String_mod, only: num2str</a>
 <a name="188"><span class="lineNum">     188 </span>            :         implicit none</a>
 <a name="189"><span class="lineNum">     189 </span>            :         logical                     :: assertion</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          7 :         type(RandomFileName_type)   :: RandomFileName</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          7 :         type(FileContents_type)     :: FileContents</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          7 :         type(OS_type)               :: OS</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          1 :         type(RandomFileName_type)   :: RandomFileName</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          1 :         type(FileContents_type)     :: FileContents</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          1 :         type(OS_type)               :: OS</span></a>
 <a name="193"><span class="lineNum">     193 </span>            :         integer                     :: fileUnit, i, iostat</a>
 <a name="194"><span class="lineNum">     194 </span>            :         logical                     :: exist</a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          7 :         RandomFileName = RandomFileName_type(key = Test%outDir//&quot;/Test_FileContents_mod@test_constructFileContents&quot;)</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          7 :         assertion = .not. RandomFileName%Err%occurred</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          1 :         RandomFileName = RandomFileName_type(key = Test%outDir//&quot;/Test_FileContents_mod@test_constructFileContents&quot;)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          1 :         assertion = .not. RandomFileName%Err%occurred</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="199"><span class="lineNum">     199 </span>            :             ! LCOV_EXCL_START</a>
 <a name="200"><span class="lineNum">     200 </span>            :             if (Test%isDebugMode) then</a>
 <a name="201"><span class="lineNum">     201 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;RandomFileName%Err%occurred = &quot;, RandomFileName%Err%occurred</a>
@@ -276,9 +276,9 @@
 <a name="206"><span class="lineNum">     206 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="207"><span class="lineNum">     207 </span>            :         end if</a>
 <a name="208"><span class="lineNum">     208 </span>            : </a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          7 :         open(newunit = fileUnit, file = RandomFileName%path, status = &quot;new&quot;, iostat = iostat)</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          7 :         assertion = iostat == 0</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          1 :         open(newunit = fileUnit, file = RandomFileName%path, status = &quot;new&quot;, iostat = iostat)</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          1 :         assertion = iostat == 0</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :             ! LCOV_EXCL_START</a>
 <a name="213"><span class="lineNum">     213 </span>            :             if (Test%isDebugMode) then</a>
 <a name="214"><span class="lineNum">     214 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;iostat = &quot;, iostat, &quot; &lt;= 0&quot;</a>
@@ -287,14 +287,14 @@
 <a name="217"><span class="lineNum">     217 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="218"><span class="lineNum">     218 </span>            :         end if</a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;) &quot;Testing FileContents_type...&quot;</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;) &quot; &quot;</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;) &quot;&quot;</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          7 :         write(fileUnit,&quot;(A)&quot;)</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;) &quot;Testing FileContents_type...&quot;</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;) &quot; &quot;</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;) &quot;&quot;</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          1 :         write(fileUnit,&quot;(A)&quot;)</span></a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          7 :         FileContents = FileContents_type(RandomFileName%path, delEnabled = .true.)</span></a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          7 :         assertion = .not. FileContents%Err%occurred</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          1 :         FileContents = FileContents_type(RandomFileName%path, delEnabled = .true.)</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          1 :         assertion = .not. FileContents%Err%occurred</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="228"><span class="lineNum">     228 </span>            :             ! LCOV_EXCL_START</a>
 <a name="229"><span class="lineNum">     229 </span>            :             if (Test%isDebugMode) then</a>
 <a name="230"><span class="lineNum">     230 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;FileContents%Err%occurred = &quot;, FileContents%Err%occurred</a>
@@ -305,9 +305,9 @@
 <a name="235"><span class="lineNum">     235 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="236"><span class="lineNum">     236 </span>            :         end if</a>
 <a name="237"><span class="lineNum">     237 </span>            : </a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          7 :         call OS%query()</span></a>
-<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          7 :         assertion = .not. OS%Err%occurred</span></a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          1 :         call OS%query()</span></a>
+<a name="239"><span class="lineNum">     239 </span><span class="lineCov">          1 :         assertion = .not. OS%Err%occurred</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="241"><span class="lineNum">     241 </span>            :             ! LCOV_EXCL_START</a>
 <a name="242"><span class="lineNum">     242 </span>            :             if (Test%isDebugMode) then</a>
 <a name="243"><span class="lineNum">     243 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;)</a>
@@ -319,9 +319,9 @@
 <a name="249"><span class="lineNum">     249 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="250"><span class="lineNum">     250 </span>            :         end if</a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          7 :         inquire(file = RandomFileName%path, exist = exist)</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          7 :         assertion = .not. exist</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          1 :         inquire(file = RandomFileName%path, exist = exist)</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          1 :         assertion = .not. exist</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :             ! LCOV_EXCL_START</a>
 <a name="256"><span class="lineNum">     256 </span>            :             if (Test%isDebugMode) then</a>
 <a name="257"><span class="lineNum">     257 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;delEnabled = &quot;, .true.</a>
@@ -331,8 +331,8 @@
 <a name="261"><span class="lineNum">     261 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="262"><span class="lineNum">     262 </span>            :         end if</a>
 <a name="263"><span class="lineNum">     263 </span>            : </a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%numRecord==4</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          7 :         if (.not. assertion) then</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%numRecord==4</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          1 :         if (.not. assertion) then</span></a>
 <a name="266"><span class="lineNum">     266 </span>            :             ! LCOV_EXCL_START</a>
 <a name="267"><span class="lineNum">     267 </span>            :             if (Test%isDebugMode) then</a>
 <a name="268"><span class="lineNum">     268 </span>            :                 write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;FileContents%numRecord = &quot;, FileContents%numRecord, &quot; /= &quot;, 4</a>
@@ -341,12 +341,12 @@
 <a name="271"><span class="lineNum">     271 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="272"><span class="lineNum">     272 </span>            :         end if</a>
 <a name="273"><span class="lineNum">     273 </span>            : </a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(1)%record==&quot;Testing FileContents_type...&quot;</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(2)%record==&quot;&quot;</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(3)%record==&quot;&quot;</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          7 :         assertion = assertion .and. FileContents%Line(4)%record==&quot;&quot;</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(1)%record==&quot;Testing FileContents_type...&quot;</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(2)%record==&quot;&quot;</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(3)%record==&quot;&quot;</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">          1 :         assertion = assertion .and. FileContents%Line(4)%record==&quot;&quot;</span></a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          7 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          1 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="280"><span class="lineNum">     280 </span>            :         ! LCOV_EXCL_START</a>
 <a name="281"><span class="lineNum">     281 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;)</a>
 <a name="282"><span class="lineNum">     282 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;)   &quot;numRecord  : &quot;, num2str(FileContents%numRecord)</a>
@@ -357,7 +357,7 @@
 <a name="287"><span class="lineNum">     287 </span>            :         end if</a>
 <a name="288"><span class="lineNum">     288 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         35 :     end function test_constructFileContents_2</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">          5 :     end function test_constructFileContents_2</span></a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="293"><span class="lineNum">     293 </span>            : </a>

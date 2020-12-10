@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 16:26:41</td>
+            <td class="headerValue">2020-12-10 17:49:43</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -142,7 +142,7 @@
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="74"><span class="lineNum">      74 </span>            : </a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       1356 :     function constructSampleSize(methodName) result(SampleSizeObj)</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">        347 :     function constructSampleSize(methodName) result(SampleSizeObj)</span></a>
 <a name="76"><span class="lineNum">      76 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="77"><span class="lineNum">      77 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructSampleSize</a>
 <a name="78"><span class="lineNum">      78 </span>            : #endif</a>
@@ -151,8 +151,8 @@
 <a name="81"><span class="lineNum">      81 </span>            :         implicit none</a>
 <a name="82"><span class="lineNum">      82 </span>            :         character(*), intent(in)    :: methodName</a>
 <a name="83"><span class="lineNum">      83 </span>            :         type(SampleSize_type)       :: SampleSizeObj</a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       1356 :         SampleSizeObj%def  = -1</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       1356 :         SampleSizeObj%null = NULL_IK</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        347 :         SampleSizeObj%def  = -1</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        347 :         SampleSizeObj%null = NULL_IK</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :         SampleSizeObj%desc = &amp;</a>
 <a name="87"><span class="lineNum">      87 </span>            :         &quot;The variable sampleSize is an integer that dictates the number of (hopefully, independent and identically distributed &amp;</a>
 <a name="88"><span class="lineNum">      88 </span>            :         &amp;[i.i.d.]) samples to be drawn from the user-provided objective function. Three ranges of values are possible. If\n\n&amp;</a>
@@ -173,38 +173,38 @@
 <a name="103"><span class="lineNum">     103 </span>            :         &amp;                    sampleSize = 1000 yields a 1000-points sample from the objective function.\n\n&amp;</a>
 <a name="104"><span class="lineNum">     104 </span>            :         &amp;    sampleSize = 0,\n\n&amp;</a>
 <a name="105"><span class="lineNum">     105 </span>            :         &amp;            then, no sample file will be generated.\n\n&amp;</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">       1356 :         &amp;The default value is sampleSize = &quot;// num2str(SampleSizeObj%def) //&quot;.&quot;</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">       1356 :     end function constructSampleSize</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">        347 :         &amp;The default value is sampleSize = &quot;// num2str(SampleSizeObj%def) //&quot;.&quot;</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        347 :     end function constructSampleSize</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : </a>
 <a name="109"><span class="lineNum">     109 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       1356 :     subroutine nullifyNameListVar(SampleSizeObj)</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">        347 :     subroutine nullifyNameListVar(SampleSizeObj)</span></a>
 <a name="112"><span class="lineNum">     112 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="113"><span class="lineNum">     113 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="114"><span class="lineNum">     114 </span>            : #endif</a>
 <a name="115"><span class="lineNum">     115 </span>            :         implicit none</a>
 <a name="116"><span class="lineNum">     116 </span>            :         class(SampleSize_type), intent(in)  :: SampleSizeObj</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">       1356 :         sampleSize = SampleSizeObj%null</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1356 :     end subroutine nullifyNameListVar</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        347 :         sampleSize = SampleSizeObj%null</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        347 :     end subroutine nullifyNameListVar</span></a>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <a name="120"><span class="lineNum">     120 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       1568 :     subroutine setSampleSize(SampleSizeObj,sampleSize)</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        408 :     subroutine setSampleSize(SampleSizeObj,sampleSize)</span></a>
 <a name="123"><span class="lineNum">     123 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="124"><span class="lineNum">     124 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setSampleSize</a>
 <a name="125"><span class="lineNum">     125 </span>            : #endif</a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       1356 :         use String_mod, only: num2str</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        347 :         use String_mod, only: num2str</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :         use Constants_mod, only: IK</a>
 <a name="128"><span class="lineNum">     128 </span>            :         implicit none</a>
 <a name="129"><span class="lineNum">     129 </span>            :         class(SampleSize_type), intent(inout)   :: SampleSizeObj</a>
 <a name="130"><span class="lineNum">     130 </span>            :         integer(IK), intent(in)                 :: sampleSize</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       1568 :         SampleSizeObj%val = sampleSize</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       1568 :         if (SampleSizeObj%val==SampleSizeObj%null) then</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       1348 :             SampleSizeObj%val = SampleSizeObj%def</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        408 :         SampleSizeObj%val = sampleSize</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">        408 :         if (SampleSizeObj%val==SampleSizeObj%null) then</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">        345 :             SampleSizeObj%val = SampleSizeObj%def</span></a>
 <a name="134"><span class="lineNum">     134 </span>            :         end if</a>
-<a name="135"><span class="lineNum">     135 </span><span class="lineCov">       1568 :         SampleSizeObj%str = num2str(SampleSizeObj%val)</span></a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       1568 :         SampleSizeObj%abs = abs(SampleSizeObj%val)</span></a>
-<a name="137"><span class="lineNum">     137 </span><span class="lineCov">       1568 :     end subroutine setSampleSize</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">        408 :         SampleSizeObj%str = num2str(SampleSizeObj%val)</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        408 :         SampleSizeObj%abs = abs(SampleSizeObj%val)</span></a>
+<a name="137"><span class="lineNum">     137 </span><span class="lineCov">        408 :     end subroutine setSampleSize</span></a>
 <a name="138"><span class="lineNum">     138 </span>            : </a>
 <a name="139"><span class="lineNum">     139 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
