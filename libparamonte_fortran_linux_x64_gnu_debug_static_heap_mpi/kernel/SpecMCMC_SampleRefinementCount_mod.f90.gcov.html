@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:37:02</td>
+            <td class="headerValue">2020-12-10 05:56:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -141,7 +141,7 @@
 <a name="71"><span class="lineNum">      71 </span>            : </a>
 <a name="72"><span class="lineNum">      72 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="73"><span class="lineNum">      73 </span>            : </a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">       2010 :     function constructSampleRefinementCount(methodName) result(SampleRefinementCountObj)</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">        335 :     function constructSampleRefinementCount(methodName) result(SampleRefinementCountObj)</span></a>
 <a name="75"><span class="lineNum">      75 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="76"><span class="lineNum">      76 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructSampleRefinementCount</a>
 <a name="77"><span class="lineNum">      77 </span>            : #endif</a>
@@ -151,8 +151,8 @@
 <a name="81"><span class="lineNum">      81 </span>            :         implicit none</a>
 <a name="82"><span class="lineNum">      82 </span>            :         character(*), intent(in)  :: methodName</a>
 <a name="83"><span class="lineNum">      83 </span>            :         type(SampleRefinementCount_type) :: SampleRefinementCountObj</a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       2010 :         SampleRefinementCountObj%def  = POSINF_IK</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       2010 :         SampleRefinementCountObj%null = NULL_IK</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        335 :         SampleRefinementCountObj%def  = POSINF_IK</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        335 :         SampleRefinementCountObj%null = NULL_IK</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :         SampleRefinementCountObj%desc = &amp;</a>
 <a name="87"><span class="lineNum">      87 </span>            :         &quot;When sampleSize &lt; 0, the integer variable sampleRefinementCount dictates the maximum number of times &amp;</a>
 <a name="88"><span class="lineNum">      88 </span>            :         &amp;the MCMC chain will be refined to remove the autocorrelation within the output MCMC sample. For example,\n\n&amp;</a>
@@ -181,60 +181,60 @@
 <a name="111"><span class="lineNum">     111 </span>            :         &amp;Note that to obtain i.i.d. samples from a multidimensional chain, &quot;//methodName//&quot; will, by default, use the maximum of &amp;</a>
 <a name="112"><span class="lineNum">     112 </span>            :         &amp;Integrated Autocorrelation (IAC) among all dimensions of the chain to refine the chain. &amp;</a>
 <a name="113"><span class="lineNum">     113 </span>            :         &amp;Note that the value specified for sampleRefinementCount is used only when the variable sampleSize &lt; 0, otherwise, &amp;</a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">       2010 :         &amp;it will be ignored. The default value is sampleRefinementCount = &quot;// num2str(SampleRefinementCountObj%def) //&quot;.&quot;</span></a>
-<a name="115"><span class="lineNum">     115 </span><span class="lineCov">       2010 :     end function constructSampleRefinementCount</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        335 :         &amp;it will be ignored. The default value is sampleRefinementCount = &quot;// num2str(SampleRefinementCountObj%def) //&quot;.&quot;</span></a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">        335 :     end function constructSampleRefinementCount</span></a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       2010 :     subroutine nullifyNameListVar(SampleRefinementCountObj)</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        335 :     subroutine nullifyNameListVar(SampleRefinementCountObj)</span></a>
 <a name="120"><span class="lineNum">     120 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="121"><span class="lineNum">     121 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="122"><span class="lineNum">     122 </span>            : #endif</a>
 <a name="123"><span class="lineNum">     123 </span>            :         implicit none</a>
 <a name="124"><span class="lineNum">     124 </span>            :         class(SampleRefinementCount_type), intent(in) :: SampleRefinementCountObj</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">       2010 :         sampleRefinementCount = SampleRefinementCountObj%null</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       2010 :     end subroutine nullifyNameListVar</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">        335 :         sampleRefinementCount = SampleRefinementCountObj%null</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        335 :     end subroutine nullifyNameListVar</span></a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
 <a name="128"><span class="lineNum">     128 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="129"><span class="lineNum">     129 </span>            : </a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">       2022 :     subroutine setSampleRefinementCount(SampleRefinementCountObj,sampleRefinementCount)</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">        337 :     subroutine setSampleRefinementCount(SampleRefinementCountObj,sampleRefinementCount)</span></a>
 <a name="131"><span class="lineNum">     131 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="132"><span class="lineNum">     132 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setSampleRefinementCount</a>
 <a name="133"><span class="lineNum">     133 </span>            : #endif</a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       2010 :         use String_mod, only: num2str</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        335 :         use String_mod, only: num2str</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :         use Constants_mod, only: IK</a>
 <a name="136"><span class="lineNum">     136 </span>            :         implicit none</a>
 <a name="137"><span class="lineNum">     137 </span>            :         class(SampleRefinementCount_type), intent(inout)    :: SampleRefinementCountObj</a>
 <a name="138"><span class="lineNum">     138 </span>            :         integer(IK), intent(in)                             :: sampleRefinementCount</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">       2022 :         SampleRefinementCountObj%val = sampleRefinementCount</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       2022 :         if (SampleRefinementCountObj%val==SampleRefinementCountObj%null) then</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       1986 :             SampleRefinementCountObj%val = SampleRefinementCountObj%def</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        337 :         SampleRefinementCountObj%val = sampleRefinementCount</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        337 :         if (SampleRefinementCountObj%val==SampleRefinementCountObj%null) then</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        331 :             SampleRefinementCountObj%val = SampleRefinementCountObj%def</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :         end if</a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">       2022 :         SampleRefinementCountObj%str = num2str(SampleRefinementCountObj%val)</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       2022 :     end subroutine setSampleRefinementCount</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">        337 :         SampleRefinementCountObj%str = num2str(SampleRefinementCountObj%val)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        337 :     end subroutine setSampleRefinementCount</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       1976 :     subroutine checkForSanity(SampleRefinementCountObj,Err,methodName)</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">        331 :     subroutine checkForSanity(SampleRefinementCountObj,Err,methodName)</span></a>
 <a name="149"><span class="lineNum">     149 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="150"><span class="lineNum">     150 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="151"><span class="lineNum">     151 </span>            : #endif</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       2022 :         use Err_mod, only: Err_type</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        337 :         use Err_mod, only: Err_type</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :         use String_mod, only: num2str</a>
 <a name="154"><span class="lineNum">     154 </span>            :         implicit none</a>
 <a name="155"><span class="lineNum">     155 </span>            :         class(SampleRefinementCount_type), intent(in) :: SampleRefinementCountObj</a>
 <a name="156"><span class="lineNum">     156 </span>            :         character(*), intent(in)           :: methodName</a>
 <a name="157"><span class="lineNum">     157 </span>            :         type(Err_type), intent(inout)      :: Err</a>
 <a name="158"><span class="lineNum">     158 </span>            :         character(*), parameter            :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       1976 :         if ( SampleRefinementCountObj%val&lt;0 ) then</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">         24 :             Err%occurred = .true.</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">        331 :         if ( SampleRefinementCountObj%val&lt;0 ) then</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          4 :             Err%occurred = .true.</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :             Err%msg =   Err%msg // &amp;</a>
 <a name="162"><span class="lineNum">     162 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
 <a name="163"><span class="lineNum">     163 </span>            :                         &amp;The input value for variable sampleRefinementCount must be a non-negative integer. &amp;</a>
 <a name="164"><span class="lineNum">     164 </span>            :                         &amp;If you are not sure about the appropriate value for this variable, simply drop it from the input. &quot; // &amp;</a>
-<a name="165"><span class="lineNum">     165 </span><span class="lineCov">         24 :                         methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="165"><span class="lineNum">     165 </span><span class="lineCov">          4 :                         methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
 <a name="166"><span class="lineNum">     166 </span>            :         end if</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">       3952 :     end subroutine checkForSanity</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">        662 :     end subroutine checkForSanity</span></a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
 <a name="169"><span class="lineNum">     169 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>

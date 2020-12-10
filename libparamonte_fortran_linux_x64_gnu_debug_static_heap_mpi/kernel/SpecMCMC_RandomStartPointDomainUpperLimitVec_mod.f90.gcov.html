@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:37:02</td>
+            <td class="headerValue">2020-12-10 05:56:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -139,7 +139,7 @@
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="71"><span class="lineNum">      71 </span>            : </a>
-<a name="72"><span class="lineNum">      72 </span><span class="lineCov">       2010 :     function construct(methodName) result(self)</span></a>
+<a name="72"><span class="lineNum">      72 </span><span class="lineCov">        335 :     function construct(methodName) result(self)</span></a>
 <a name="73"><span class="lineNum">      73 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="74"><span class="lineNum">      74 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: construct</a>
 <a name="75"><span class="lineNum">      75 </span>            : #endif</a>
@@ -148,7 +148,7 @@
 <a name="78"><span class="lineNum">      78 </span>            :         implicit none</a>
 <a name="79"><span class="lineNum">      79 </span>            :         character(*), intent(in)                        :: methodName</a>
 <a name="80"><span class="lineNum">      80 </span>            :         type(RandomStartPointDomainUpperLimitVec_type)  :: self</a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       2010 :         self%null = NULL_RK</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">        335 :         self%null = NULL_RK</span></a>
 <a name="82"><span class="lineNum">      82 </span>            :         self%desc = &amp;</a>
 <a name="83"><span class="lineNum">      83 </span>            :         &quot;randomStartPointDomainUpperLimitVec represents the upper boundaries of the cubical domain from which the starting point(s) of &amp;</a>
 <a name="84"><span class="lineNum">      84 </span>            :         &amp;the MCMC chain(s) will be initialized randomly (only if requested via the input variable randomStartPointRequested. &amp;</a>
@@ -171,45 +171,45 @@
 <a name="101"><span class="lineNum">     101 </span>            :         &amp;            will only set the upper limits on the first, second, and the third dimensions to -2.5*10^100, while the rest of &amp;</a>
 <a name="102"><span class="lineNum">     102 </span>            :                     &amp;the upper limits for the missing dimensions will be automatically set to the default value.\n\n&amp;</a>
 <a name="103"><span class="lineNum">     103 </span>            :         &amp;The default values for all elements of randomStartPointDomainUpperLimitVec are taken from the corresponding values in the input &amp;</a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">       2010 :         &amp;variable domainUpperLimitVec.&quot;</span></a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">       2010 :     end function construct</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">        335 :         &amp;variable domainUpperLimitVec.&quot;</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        335 :     end function construct</span></a>
 <a name="106"><span class="lineNum">     106 </span>            : </a>
 <a name="107"><span class="lineNum">     107 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="108"><span class="lineNum">     108 </span>            : </a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">       2010 :     subroutine nullifyNameListVar(self,nd)</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">        335 :     subroutine nullifyNameListVar(self,nd)</span></a>
 <a name="110"><span class="lineNum">     110 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="111"><span class="lineNum">     111 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="112"><span class="lineNum">     112 </span>            : #endif</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       2010 :         use Constants_mod, only: IK</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        335 :         use Constants_mod, only: IK</span></a>
 <a name="114"><span class="lineNum">     114 </span>            :         implicit none</a>
 <a name="115"><span class="lineNum">     115 </span>            :         class(RandomStartPointDomainUpperLimitVec_type), intent(in) :: self</a>
 <a name="116"><span class="lineNum">     116 </span>            :         integer(IK), intent(in)                                     :: nd</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">         32 :         if (allocated(randomStartPointDomainUpperLimitVec)) deallocate(randomStartPointDomainUpperLimitVec)</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       2010 :         allocate(randomStartPointDomainUpperLimitVec(nd))</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       4854 :         randomStartPointDomainUpperLimitVec(:) = self%null</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       2010 :     end subroutine nullifyNameListVar</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          4 :         if (allocated(randomStartPointDomainUpperLimitVec)) deallocate(randomStartPointDomainUpperLimitVec)</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        335 :         allocate(randomStartPointDomainUpperLimitVec(nd))</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        809 :         randomStartPointDomainUpperLimitVec(:) = self%null</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        335 :     end subroutine nullifyNameListVar</span></a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
 <a name="122"><span class="lineNum">     122 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       8016 :     pure subroutine set(self,randomStartPointDomainUpperLimitVec)</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">       1336 :     pure subroutine set(self,randomStartPointDomainUpperLimitVec)</span></a>
 <a name="125"><span class="lineNum">     125 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="126"><span class="lineNum">     126 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: set</a>
 <a name="127"><span class="lineNum">     127 </span>            : #endif</a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       2010 :         use SpecBase_mod, only: SpecBase_type</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        335 :         use SpecBase_mod, only: SpecBase_type</span></a>
 <a name="129"><span class="lineNum">     129 </span>            :         use Constants_mod, only: IK, RK</a>
 <a name="130"><span class="lineNum">     130 </span>            :         implicit none</a>
 <a name="131"><span class="lineNum">     131 </span>            :         class(RandomStartPointDomainUpperLimitVec_type), intent(inout)  :: self</a>
 <a name="132"><span class="lineNum">     132 </span>            :         real(RK), intent(in), optional                                  :: randomStartPointDomainUpperLimitVec(:)</a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       6996 :         if (present(randomStartPointDomainUpperLimitVec)) self%Val = randomStartPointDomainUpperLimitVec</span></a>
-<a name="134"><span class="lineNum">     134 </span><span class="lineCov">       4008 :     end subroutine set</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       1166 :         if (present(randomStartPointDomainUpperLimitVec)) self%Val = randomStartPointDomainUpperLimitVec</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">        668 :     end subroutine set</span></a>
 <a name="135"><span class="lineNum">     135 </span>            : </a>
 <a name="136"><span class="lineNum">     136 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="137"><span class="lineNum">     137 </span>            : </a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">       3956 :     subroutine checkForSanity(self, Err, methodName, SpecBase, randomStartPointRequested, randomStartPointDomainLowerLimitVec)</span></a>
+<a name="138"><span class="lineNum">     138 </span><span class="lineCov">        662 :     subroutine checkForSanity(self, Err, methodName, SpecBase, randomStartPointRequested, randomStartPointDomainLowerLimitVec)</span></a>
 <a name="139"><span class="lineNum">     139 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="140"><span class="lineNum">     140 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="141"><span class="lineNum">     141 </span>            : #endif</a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">       4008 :         use SpecBase_mod, only: SpecBase_type</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">        668 :         use SpecBase_mod, only: SpecBase_type</span></a>
 <a name="143"><span class="lineNum">     143 </span>            :         use Constants_mod, only: RK</a>
 <a name="144"><span class="lineNum">     144 </span>            :         use Err_mod, only: Err_type</a>
 <a name="145"><span class="lineNum">     145 </span>            :         use String_mod, only: num2str</a>
@@ -222,49 +222,49 @@
 <a name="152"><span class="lineNum">     152 </span>            :         real(RK), intent(in)                                            :: randomStartPointDomainLowerLimitVec(:)</a>
 <a name="153"><span class="lineNum">     153 </span>            :         character(*), parameter                                         :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
 <a name="154"><span class="lineNum">     154 </span>            :         integer                                                         :: i</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       4790 :         do i = 1,size(self%Val(:))</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        801 :         do i = 1,size(self%Val(:))</span></a>
 <a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       2812 :             if (self%Val(i)==self%null) self%Val(i) = SpecBase%DomainUpperLimitVec%Val(i)</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">        470 :             if (self%Val(i)==self%null) self%Val(i) = SpecBase%DomainUpperLimitVec%Val(i)</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span>            :             ! check if the domain is set when random start point is requested</a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">       2812 :             if ( randomStartPointRequested .and. self%Val(i)==SpecBase%DomainUpperLimitVec%def ) then</span></a>
-<a name="162"><span class="lineNum">     162 </span><span class="lineCov">         24 :                 Err%occurred = .true.</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">        470 :             if ( randomStartPointRequested .and. self%Val(i)==SpecBase%DomainUpperLimitVec%def ) then</span></a>
+<a name="162"><span class="lineNum">     162 </span><span class="lineCov">          4 :                 Err%occurred = .true.</span></a>
 <a name="163"><span class="lineNum">     163 </span>            :                 Err%msg =   Err%msg // &amp;</a>
 <a name="164"><span class="lineNum">     164 </span>            :                             MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
 <a name="165"><span class="lineNum">     165 </span>            :                             &amp;You have requested a random start point by setting randomStartPointRequested to TRUE while the &amp;</a>
 <a name="166"><span class="lineNum">     166 </span>            :                             &amp;element #&quot;//num2str(i)//&quot; of RandomStartPointDomainLowerLimitVec has not been preset to a finite value. &amp;</a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         24 :                             &amp;This information is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?\n\n&quot;</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          4 :                             &amp;This information is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?\n\n&quot;</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :             end if</a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
 <a name="170"><span class="lineNum">     170 </span>            :             ! the upper boundary of the domain of random-start-point must be smaller than the upper boundary of the target's domain.</a>
 <a name="171"><span class="lineNum">     171 </span>            : </a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">       2812 :             if ( self%Val(i)&gt;SpecBase%DomainUpperLimitVec%Val(i) ) then</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         12 :                 Err%occurred = .true.</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">        470 :             if ( self%Val(i)&gt;SpecBase%DomainUpperLimitVec%Val(i) ) then</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :                 Err%occurred = .true.</span></a>
 <a name="174"><span class="lineNum">     174 </span>            :                 Err%msg =   Err%msg // &amp;</a>
 <a name="175"><span class="lineNum">     175 </span>            :                             MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. The component &quot; // num2str(i) // &amp;</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">         24 :                             &quot; of the variable randomStartPointDomainUpperLimitVec (&quot; // num2str(self%Val(i)) // &quot;) cannot be &quot; // &amp;</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          4 :                             &quot; of the variable randomStartPointDomainUpperLimitVec (&quot; // num2str(self%Val(i)) // &quot;) cannot be &quot; // &amp;</span></a>
 <a name="177"><span class="lineNum">     177 </span>            :                             &quot;larger than the corresponding component of the variable domainUpperLimitVec (&quot; // &amp;</a>
 <a name="178"><span class="lineNum">     178 </span>            :                             num2str(SpecBase%DomainUpperLimitVec%Val(i)) // &quot;). If you don't know an appropriate &quot; // &amp; ! LCOV_EXCL_LINE</a>
 <a name="179"><span class="lineNum">     179 </span>            :                             &quot;value to set for randomStartPointDomainUpperLimitVec, drop it from the input list. &quot; // &amp;</a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">         12 :                             methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          2 :                             methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
 <a name="181"><span class="lineNum">     181 </span>            :             end if</a>
 <a name="182"><span class="lineNum">     182 </span>            : </a>
 <a name="183"><span class="lineNum">     183 </span>            :             ! the upper boundary of the domain of random-start-point must be smaller than the corresponding lower boundary.</a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">       4790 :             if ( self%Val(i)&lt;=randomStartPointDomainLowerLimitVec(i) ) then</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         48 :                 Err%occurred = .true.</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">        801 :             if ( self%Val(i)&lt;=randomStartPointDomainLowerLimitVec(i) ) then</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          8 :                 Err%occurred = .true.</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :                 Err%msg =   Err%msg // &amp;</a>
 <a name="188"><span class="lineNum">     188 </span>            :                             PROCEDURE_NAME // &quot;: Error occurred. The input upper limit value in the component &quot; // num2str(i) // &amp;</a>
 <a name="189"><span class="lineNum">     189 </span>            :                             &quot; of the variable randomStartPointDomainUpperLimitVec cannot be smaller than or equal to the corresponding input &amp;</a>
 <a name="190"><span class="lineNum">     190 </span>            :                             &amp;lower limit value in randomStartPointDomainLowerLimitVec:\n&quot; // &amp;</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         48 :                             &quot;    randomStartPointDomainLowerLimitVec(&quot; // num2str(i) // &quot;) = &quot; // num2str(randomStartPointDomainLowerLimitVec(i)) // &quot;\n&quot; // &amp;</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         96 :                             &quot;    randomStartPointDomainUpperLimitVec(&quot; // num2str(i) // &quot;) = &quot; // num2str(self%Val(i)) // &quot;\n\n&quot;</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">          8 :                             &quot;    randomStartPointDomainLowerLimitVec(&quot; // num2str(i) // &quot;) = &quot; // num2str(randomStartPointDomainLowerLimitVec(i)) // &quot;\n&quot; // &amp;</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         16 :                             &quot;    randomStartPointDomainUpperLimitVec(&quot; // num2str(i) // &quot;) = &quot; // num2str(self%Val(i)) // &quot;\n\n&quot;</span></a>
 <a name="193"><span class="lineNum">     193 </span>            :             end if</a>
 <a name="194"><span class="lineNum">     194 </span>            : </a>
 <a name="195"><span class="lineNum">     195 </span>            :         end do</a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">       1978 :         deallocate(randomStartPointDomainUpperLimitVec)</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">       3956 :     end subroutine checkForSanity</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">        331 :         deallocate(randomStartPointDomainUpperLimitVec)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        662 :     end subroutine checkForSanity</span></a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
 <a name="199"><span class="lineNum">     199 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>

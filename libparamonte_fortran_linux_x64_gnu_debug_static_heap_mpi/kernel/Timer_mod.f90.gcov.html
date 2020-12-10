@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:37:02</td>
+            <td class="headerValue">2020-12-10 05:56:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -177,7 +177,7 @@
 <a name="107"><span class="lineNum">     107 </span>            :     !&gt;</a>
 <a name="108"><span class="lineNum">     108 </span>            :     !&gt; \author</a>
 <a name="109"><span class="lineNum">     109 </span>            :     !&gt; Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       6354 :     function constructTimer(Err) result(Timer)</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">        706 :     function constructTimer(Err) result(Timer)</span></a>
 <a name="111"><span class="lineNum">     111 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="112"><span class="lineNum">     112 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructTimer</a>
 <a name="113"><span class="lineNum">     113 </span>            : #endif</a>
@@ -187,16 +187,16 @@
 <a name="117"><span class="lineNum">     117 </span>            :         type(Err_type), intent(out) :: Err</a>
 <a name="118"><span class="lineNum">     118 </span>            :         type(Timer_type)            :: Timer</a>
 <a name="119"><span class="lineNum">     119 </span>            :         character(*), parameter     :: PROCEDURE_NAME = &quot;@constructTimer()&quot;</a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       3339 :         Err%occurred = .false.</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">       3339 :         Err%msg = &quot;&quot;</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       3339 :         call system_clock( count=Timer%Count%start, count_rate=Timer%Count%rate, count_max=Timer%Count%max )</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       3339 :         if ( Timer%Count%start==-huge(0) .or. Timer%Count%rate==0._RK .or. Timer%Count%max==0 ) then</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        371 :         Err%occurred = .false.</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">        371 :         Err%msg = &quot;&quot;</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        371 :         call system_clock( count=Timer%Count%start, count_rate=Timer%Count%rate, count_max=Timer%Count%max )</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        371 :         if ( Timer%Count%start==-huge(0) .or. Timer%Count%rate==0._RK .or. Timer%Count%max==0 ) then</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineNoCov">          0 :             Err%occurred = .true.</span></a>
 <a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :             Err%msg = PROCEDURE_NAME // &quot;: Error occurred. There is no processor clock.&quot;</span></a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :             return</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :         end if</a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">       3339 :         call Timer%tic()</span></a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">       3339 :     end function constructTimer</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        371 :         call Timer%tic()</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">        371 :     end function constructTimer</span></a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
 <a name="131"><span class="lineNum">     131 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="132"><span class="lineNum">     132 </span>            : </a>
@@ -208,23 +208,23 @@
 <a name="138"><span class="lineNum">     138 </span>            :     !&gt;</a>
 <a name="139"><span class="lineNum">     139 </span>            :     !&gt; \author</a>
 <a name="140"><span class="lineNum">     140 </span>            :     !&gt; Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">       5274 :     subroutine setTic(Timer)</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">        586 :     subroutine setTic(Timer)</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="143"><span class="lineNum">     143 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setTic</a>
 <a name="144"><span class="lineNum">     144 </span>            : #endif</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">       3339 :         use Constants_mod, only: RK</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">        371 :         use Constants_mod, only: RK</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :         implicit none</a>
 <a name="147"><span class="lineNum">     147 </span>            :         class(Timer_type), intent(inout)    :: Timer</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">      10548 :         call system_clock( count=Timer%Count%start, count_rate=Timer%Count%rate, count_max=Timer%Count%max )</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       5274 :         Timer%period        = 1._RK / Timer%Count%rate</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">       5274 :         Timer%Count%stop    = Timer%Count%start</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">       5274 :         Timer%Count%total   = 0</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       5274 :         Timer%Count%delta   = 0</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">       5274 :         Timer%Time%start    = real(Timer%Count%start,kind=RK) * Timer%period</span></a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">       5274 :         Timer%Time%stop     = Timer%Time%start</span></a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       5274 :         Timer%Time%total    = 0._RK</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       5274 :         Timer%Time%delta    = 0._RK</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">       5274 :     end subroutine setTic</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       1172 :         call system_clock( count=Timer%Count%start, count_rate=Timer%Count%rate, count_max=Timer%Count%max )</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        586 :         Timer%period        = 1._RK / Timer%Count%rate</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">        586 :         Timer%Count%stop    = Timer%Count%start</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        586 :         Timer%Count%total   = 0</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        586 :         Timer%Count%delta   = 0</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">        586 :         Timer%Time%start    = real(Timer%Count%start,kind=RK) * Timer%period</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">        586 :         Timer%Time%stop     = Timer%Time%start</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">        586 :         Timer%Time%total    = 0._RK</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">        586 :         Timer%Time%delta    = 0._RK</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">        586 :     end subroutine setTic</span></a>
 <a name="158"><span class="lineNum">     158 </span>            : </a>
 <a name="159"><span class="lineNum">     159 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="160"><span class="lineNum">     160 </span>            : </a>
@@ -245,23 +245,23 @@
 <a name="175"><span class="lineNum">     175 </span>            :     !&gt;</a>
 <a name="176"><span class="lineNum">     176 </span>            :     !&gt; \author</a>
 <a name="177"><span class="lineNum">     177 </span>            :     !&gt; Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">    7347260 :     subroutine setToc(Timer)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">     692132 :     subroutine setToc(Timer)</span></a>
 <a name="179"><span class="lineNum">     179 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="180"><span class="lineNum">     180 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setToc</a>
 <a name="181"><span class="lineNum">     181 </span>            : #endif</a>
 <a name="182"><span class="lineNum">     182 </span>            :         implicit none</a>
 <a name="183"><span class="lineNum">     183 </span>            :         class(Timer_type), intent(inout)    :: Timer</a>
 <a name="184"><span class="lineNum">     184 </span>            :         integer(int64)                      :: stopCount</a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">    7347260 :         real(RK)                            :: stopTime</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">   14694500 :         call system_clock( count=stopCount )</span></a>
-<a name="187"><span class="lineNum">     187 </span><span class="lineCov">    7347260 :         Timer%Count%delta   = stopCount - Timer%Count%stop</span></a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">    7347260 :         Timer%Count%total   = stopCount - Timer%Count%start</span></a>
-<a name="189"><span class="lineNum">     189 </span><span class="lineCov">    7347260 :         Timer%Count%stop    = stopCount</span></a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">    7347260 :         stopTime            = real(stopCount,kind=RK) * Timer%period</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">    7347260 :         Timer%Time%delta    = stopTime - Timer%Time%stop</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">    7347260 :         Timer%Time%total    = stopTime - Timer%Time%start</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">    7347260 :         Timer%Time%stop     = stopTime</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">       5274 :     end subroutine setToc</span></a>
+<a name="185"><span class="lineNum">     185 </span><span class="lineCov">     692132 :         real(RK)                            :: stopTime</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">    1384260 :         call system_clock( count=stopCount )</span></a>
+<a name="187"><span class="lineNum">     187 </span><span class="lineCov">     692132 :         Timer%Count%delta   = stopCount - Timer%Count%stop</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">     692132 :         Timer%Count%total   = stopCount - Timer%Count%start</span></a>
+<a name="189"><span class="lineNum">     189 </span><span class="lineCov">     692132 :         Timer%Count%stop    = stopCount</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">     692132 :         stopTime            = real(stopCount,kind=RK) * Timer%period</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">     692132 :         Timer%Time%delta    = stopTime - Timer%Time%stop</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">     692132 :         Timer%Time%total    = stopTime - Timer%Time%start</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">     692132 :         Timer%Time%stop     = stopTime</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        586 :     end subroutine setToc</span></a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
 <a name="196"><span class="lineNum">     196 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="197"><span class="lineNum">     197 </span>            : </a>
@@ -276,16 +276,16 @@
 <a name="206"><span class="lineNum">     206 </span>            :     !&gt;</a>
 <a name="207"><span class="lineNum">     207 </span>            :     !&gt; \author</a>
 <a name="208"><span class="lineNum">     208 </span>            :     !&gt; Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          9 :     function getTimeSinceLastCall(Timer) result(timeSinceLastCall)</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          1 :     function getTimeSinceLastCall(Timer) result(timeSinceLastCall)</span></a>
 <a name="210"><span class="lineNum">     210 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="211"><span class="lineNum">     211 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getTimeSinceLastCall</a>
 <a name="212"><span class="lineNum">     212 </span>            : #endif</a>
 <a name="213"><span class="lineNum">     213 </span>            :         implicit none</a>
 <a name="214"><span class="lineNum">     214 </span>            :         class(Timer_type), intent(inout)    :: Timer</a>
 <a name="215"><span class="lineNum">     215 </span>            :         real(RK)                            :: timeSinceLastCall</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          9 :         call Timer%toc()</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          9 :         timeSinceLastCall = Timer%Time%delta</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">    7347270 :     end function getTimeSinceLastCall</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          1 :         call Timer%toc()</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          1 :         timeSinceLastCall = Timer%Time%delta</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">     692133 :     end function getTimeSinceLastCall</span></a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
 <a name="220"><span class="lineNum">     220 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="221"><span class="lineNum">     221 </span>            : </a>
@@ -300,16 +300,16 @@
 <a name="230"><span class="lineNum">     230 </span>            :     !&gt;</a>
 <a name="231"><span class="lineNum">     231 </span>            :     !&gt; \author</a>
 <a name="232"><span class="lineNum">     232 </span>            :     !&gt; Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          9 :     function getTimeSinceStart(Timer) result(timeSinceStart)</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          1 :     function getTimeSinceStart(Timer) result(timeSinceStart)</span></a>
 <a name="234"><span class="lineNum">     234 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="235"><span class="lineNum">     235 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getTimeSinceStart</a>
 <a name="236"><span class="lineNum">     236 </span>            : #endif</a>
 <a name="237"><span class="lineNum">     237 </span>            :         implicit none</a>
 <a name="238"><span class="lineNum">     238 </span>            :         class(Timer_type), intent(inout)    :: Timer</a>
 <a name="239"><span class="lineNum">     239 </span>            :         real(RK)                            :: timeSinceStart</a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          9 :         call Timer%toc()</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          9 :         timeSinceStart = Timer%Time%delta</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">         18 :     end function getTimeSinceStart</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">          1 :         call Timer%toc()</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">          1 :         timeSinceStart = Timer%Time%delta</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          2 :     end function getTimeSinceStart</span></a>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
 <a name="244"><span class="lineNum">     244 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>

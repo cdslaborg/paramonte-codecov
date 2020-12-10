@@ -31,13 +31,13 @@
             <td class="headerValue">ParaMonte :: MPI Parallel Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">107</td>
+            <td class="headerCovTableEntry">106</td>
             <td class="headerCovTableEntry">108</td>
-            <td class="headerCovTableEntryHi">99.1 %</td>
+            <td class="headerCovTableEntryHi">98.1 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:37:02</td>
+            <td class="headerValue">2020-12-10 05:56:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -198,7 +198,7 @@
 <a name="128"><span class="lineNum">     128 </span>            :     !&gt;</a>
 <a name="129"><span class="lineNum">     129 </span>            :     !&gt; \warning</a>
 <a name="130"><span class="lineNum">     130 </span>            :     !&gt; This routine must not contain any synchronization statements under any circumstances.</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       2704 :     subroutine queryImage(Image)</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        338 :     subroutine queryImage(Image)</span></a>
 <a name="132"><span class="lineNum">     132 </span>            : </a>
 <a name="133"><span class="lineNum">     133 </span>            :         use Constants_mod, only: RK, IK</a>
 <a name="134"><span class="lineNum">     134 </span>            :         use String_mod, only: num2str</a>
@@ -215,23 +215,23 @@
 <a name="145"><span class="lineNum">     145 </span>            :             use mpi</a>
 <a name="146"><span class="lineNum">     146 </span>            :             integer(IK) :: ierrMPI</a>
 <a name="147"><span class="lineNum">     147 </span>            :             logical     :: isInitialized</a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">       2704 :             call mpi_initialized( isInitialized, ierrMPI )</span></a>
-<a name="149"><span class="lineNum">     149 </span><span class="lineCov">       2704 :             if (.not. isInitialized) call mpi_init(ierrMPI)</span></a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">       2704 :             call mpi_comm_rank(mpi_comm_world, Image%id, ierrMPI)</span></a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">       2704 :             call mpi_comm_size(mpi_comm_world, Image%count, ierrMPI)</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">       2704 :             Image%id = Image%id + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">        338 :             call mpi_initialized( isInitialized, ierrMPI )</span></a>
+<a name="149"><span class="lineNum">     149 </span><span class="lineCov">        338 :             if (.not. isInitialized) call mpi_init(ierrMPI)</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">        338 :             call mpi_comm_rank(mpi_comm_world, Image%id, ierrMPI)</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">        338 :             call mpi_comm_size(mpi_comm_world, Image%count, ierrMPI)</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        338 :             Image%id = Image%id + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions</span></a>
 <a name="153"><span class="lineNum">     153 </span>            :         end block</a>
 <a name="154"><span class="lineNum">     154 </span>            : #else</a>
 <a name="155"><span class="lineNum">     155 </span>            :         Image%id            = 1_IK</a>
 <a name="156"><span class="lineNum">     156 </span>            :         Image%count         = 1_IK</a>
 <a name="157"><span class="lineNum">     157 </span>            : #endif</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">       2704 :         Image%name          = &quot;@process(&quot; // num2str(Image%id) // &quot;)&quot;</span></a>
-<a name="159"><span class="lineNum">     159 </span><span class="lineCov">       2704 :         Image%isFirst       = Image%id==1_IK</span></a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">       2704 :         Image%isNotFirst    = Image%id/=1_IK</span></a>
+<a name="158"><span class="lineNum">     158 </span><span class="lineCov">        338 :         Image%name          = &quot;@process(&quot; // num2str(Image%id) // &quot;)&quot;</span></a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineCov">        338 :         Image%isFirst       = Image%id==1_IK</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineCov">        338 :         Image%isNotFirst    = Image%id/=1_IK</span></a>
 <a name="161"><span class="lineNum">     161 </span>            :         !Image%isLeader      = .false.   ! ATTN: this is to be set by the user at runtime, depending on the type of parallelism.</a>
 <a name="162"><span class="lineNum">     162 </span>            :         !Image%isRooter      = .false.   ! ATTN: this is to be set by the user at runtime, depending on the type of parallelism.</a>
 <a name="163"><span class="lineNum">     163 </span>            : </a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">       5408 :     end subroutine queryImage</span></a>
+<a name="164"><span class="lineNum">     164 </span><span class="lineCov">        676 :     end subroutine queryImage</span></a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
 <a name="166"><span class="lineNum">     166 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="167"><span class="lineNum">     167 </span>            : </a>
@@ -242,7 +242,7 @@
 <a name="172"><span class="lineNum">     172 </span>            :     !&gt; \warning</a>
 <a name="173"><span class="lineNum">     173 </span>            :     !&gt; This routine global Coarray and MPI synchronization barriers and</a>
 <a name="174"><span class="lineNum">     174 </span>            :     !&gt; therefore, must be called by all processes in the current simulation.</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">      21480 :     subroutine syncImages()</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       2685 :     subroutine syncImages()</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :         implicit none</a>
 <a name="177"><span class="lineNum">     177 </span>            : #if defined MPI_ENABLED</a>
 <a name="178"><span class="lineNum">     178 </span>            :         block</a>
@@ -251,13 +251,13 @@
 <a name="181"><span class="lineNum">     181 </span>            :             !logical     :: isFinalized</a>
 <a name="182"><span class="lineNum">     182 </span>            :             !call mpi_finalized( isFinalized, ierrMPI )</a>
 <a name="183"><span class="lineNum">     183 </span>            :             !if (.not. isFinalized) then</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">      21480 :                 call mpi_barrier(mpi_comm_world,ierrMPI)</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">       2685 :                 call mpi_barrier(mpi_comm_world,ierrMPI)</span></a>
 <a name="185"><span class="lineNum">     185 </span>            :             !end if</a>
 <a name="186"><span class="lineNum">     186 </span>            :         end block</a>
 <a name="187"><span class="lineNum">     187 </span>            : #elif defined CAF_ENABLED</a>
 <a name="188"><span class="lineNum">     188 </span>            :         sync all</a>
 <a name="189"><span class="lineNum">     189 </span>            : #endif</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">       2704 :     end subroutine syncImages</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">        338 :     end subroutine syncImages</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
 <a name="192"><span class="lineNum">     192 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
@@ -271,17 +271,17 @@
 <a name="201"><span class="lineNum">     201 </span>            : #if defined CAF_ENABLED</a>
 <a name="202"><span class="lineNum">     202 </span>            :         sync all</a>
 <a name="203"><span class="lineNum">     203 </span>            : #elif defined MPI_ENABLED</a>
-<a name="204"><span class="lineNum">     204 </span><span class="lineCov">      21480 :         use mpi</span></a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">       2685 :         use mpi</span></a>
 <a name="205"><span class="lineNum">     205 </span>            :         implicit none</a>
 <a name="206"><span class="lineNum">     206 </span>            :         integer(IK) :: ierrMPI</a>
 <a name="207"><span class="lineNum">     207 </span>            :         logical     :: isFinalized</a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          8 :         call mpi_finalized( isFinalized, ierrMPI )</span></a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          8 :         if (.not. isFinalized) then</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          8 :             call mpi_barrier(mpi_comm_world,ierrMPI)</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          8 :             call mpi_finalize(ierrMPI)</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          1 :         call mpi_finalized( isFinalized, ierrMPI )</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          1 :         if (.not. isFinalized) then</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          1 :             call mpi_barrier(mpi_comm_world,ierrMPI)</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">          1 :             call mpi_finalize(ierrMPI)</span></a>
 <a name="212"><span class="lineNum">     212 </span>            :         end if</a>
 <a name="213"><span class="lineNum">     213 </span>            : #endif</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          8 :     end subroutine finalizeImages</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">          1 :     end subroutine finalizeImages</span></a>
 <a name="215"><span class="lineNum">     215 </span>            : </a>
 <a name="216"><span class="lineNum">     216 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
@@ -299,7 +299,7 @@
 <a name="229"><span class="lineNum">     229 </span>            :     !&gt;</a>
 <a name="230"><span class="lineNum">     230 </span>            :     !&gt; \return</a>
 <a name="231"><span class="lineNum">     231 </span>            :     !&gt; `ForkJoin` : An object of class [ForkJoin_type](@ref forkjoin_type) containing the parallelization speedup.</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        518 :     function constructForkJoin(processCount, lenProcessID, ProcessID, successProb, seqSecTime, parSecTime, comSecTime) result(ForkJoin) ! nonpure</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         13 :     function constructForkJoin(processCount, lenProcessID, ProcessID, successProb, seqSecTime, parSecTime, comSecTime) result(ForkJoin) ! nonpure</span></a>
 <a name="233"><span class="lineNum">     233 </span>            : </a>
 <a name="234"><span class="lineNum">     234 </span>            :         use GeoCyclicFit_mod, only: fitGeoCyclicLogPDF ! LCOV_EXCL_LINE</a>
 <a name="235"><span class="lineNum">     235 </span>            :         use Constants_mod, only: IK, RK, SQRT_EPS_RK, NEGINF_RK</a>
@@ -323,38 +323,38 @@
 <a name="253"><span class="lineNum">     253 </span>            :         ! check for invalid input</a>
 <a name="254"><span class="lineNum">     254 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="255"><span class="lineNum">     255 </span>            : </a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">        518 :         ForkJoin%Err%occurred = .false.</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         13 :         ForkJoin%Err%occurred = .false.</span></a>
 <a name="257"><span class="lineNum">     257 </span>            : </a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">        518 :         if (successProb&lt;-SQRT_EPS_RK .or. successProb&gt;1._RK+SQRT_EPS_RK) then</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">         16 :             ForkJoin%Err%occurred = .true.</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">         16 :             ForkJoin%Err%msg = PROCEDURE_NAME // &quot;: successProb must be a number between zero and one. The input value is: &quot; // num2str(successProb)</span></a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">         16 :             return</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">         13 :         if (successProb&lt;-SQRT_EPS_RK .or. successProb&gt;1._RK+SQRT_EPS_RK) then</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          2 :             ForkJoin%Err%occurred = .true.</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">          2 :             ForkJoin%Err%msg = PROCEDURE_NAME // &quot;: successProb must be a number between zero and one. The input value is: &quot; // num2str(successProb)</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">          2 :             return</span></a>
 <a name="262"><span class="lineNum">     262 </span>            :         end if</a>
 <a name="263"><span class="lineNum">     263 </span>            : </a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">        502 :         if (processCount&lt;1_IK) then</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          8 :             ForkJoin%Err%occurred = .true.</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          8 :             ForkJoin%Err%msg = PROCEDURE_NAME // &quot;: processCount cannot be less than one. The input value is: &quot; // num2str(processCount)</span></a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          8 :             return</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         11 :         if (processCount&lt;1_IK) then</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          1 :             ForkJoin%Err%occurred = .true.</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          1 :             ForkJoin%Err%msg = PROCEDURE_NAME // &quot;: processCount cannot be less than one. The input value is: &quot; // num2str(processCount)</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">          1 :             return</span></a>
 <a name="268"><span class="lineNum">     268 </span>            :         end if</a>
 <a name="269"><span class="lineNum">     269 </span>            : </a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">        494 :         if (processCount==1_IK .or. successProb &lt;= SQRT_EPS_RK .or. successProb &gt;= 1._RK+SQRT_EPS_RK) then</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">        271 :             ForkJoin%Speedup%Maximum%value = 1._RK</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">        271 :             ForkJoin%Speedup%Maximum%nproc = 1_IK</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">        271 :             ForkJoin%Speedup%current = 1._RK</span></a>
-<a name="274"><span class="lineNum">     274 </span><span class="lineCov">        271 :             ForkJoin%Speedup%count = 1_IK</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">        542 :             ForkJoin%Speedup%Scaling = [1._RK]</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">        271 :             ForkJoin%Contribution%count = processCount</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       2494 :             ForkJoin%Contribution%Identity = [( i, i = 1, processCount )]</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">       1012 :             allocate(ForkJoin%Contribution%Frequency(processCount), source = 0_IK)</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">        271 :             ForkJoin%Contribution%Frequency(1) = lenProcessID</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">       1012 :             allocate(ForkJoin%Contribution%LogFrequency(processCount), source = NEGINF_RK)</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">        271 :             ForkJoin%Contribution%LogFrequency(1) = log(real(ForkJoin%Contribution%Frequency(1),kind=RK))</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        271 :             ForkJoin%UniqueProcess%count = 1_IK</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">        542 :             ForkJoin%UniqueProcess%Identity = [1_IK]</span></a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">        542 :             ForkJoin%UniqueProcess%Frequency = [lenProcessID]</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">        271 :             ForkJoin%SuccessProb%current = successProb</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">        271 :             ForkJoin%SuccessProb%effective = successProb</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">        271 :             return</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">         10 :         if (processCount==1_IK .or. successProb &lt;= SQRT_EPS_RK .or. successProb &gt;= 1._RK+SQRT_EPS_RK) then</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          8 :             ForkJoin%Speedup%Maximum%value = 1._RK</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          8 :             ForkJoin%Speedup%Maximum%nproc = 1_IK</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          8 :             ForkJoin%Speedup%current = 1._RK</span></a>
+<a name="274"><span class="lineNum">     274 </span><span class="lineCov">          8 :             ForkJoin%Speedup%count = 1_IK</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">         16 :             ForkJoin%Speedup%Scaling = [1._RK]</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          8 :             ForkJoin%Contribution%count = processCount</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">         53 :             ForkJoin%Contribution%Identity = [( i, i = 1, processCount )]</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">         23 :             allocate(ForkJoin%Contribution%Frequency(processCount), source = 0_IK)</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">          8 :             ForkJoin%Contribution%Frequency(1) = lenProcessID</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">         23 :             allocate(ForkJoin%Contribution%LogFrequency(processCount), source = NEGINF_RK)</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">          8 :             ForkJoin%Contribution%LogFrequency(1) = log(real(ForkJoin%Contribution%Frequency(1),kind=RK))</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">          8 :             ForkJoin%UniqueProcess%count = 1_IK</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">         16 :             ForkJoin%UniqueProcess%Identity = [1_IK]</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">         16 :             ForkJoin%UniqueProcess%Frequency = [lenProcessID]</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          8 :             ForkJoin%SuccessProb%current = successProb</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">          8 :             ForkJoin%SuccessProb%effective = successProb</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          8 :             return</span></a>
 <a name="288"><span class="lineNum">     288 </span>            :         end if</a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
 <a name="290"><span class="lineNum">     290 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
@@ -366,15 +366,15 @@
 <a name="296"><span class="lineNum">     296 </span>            :                         , UniqueValue = ForkJoin%UniqueProcess%Identity &amp;</a>
 <a name="297"><span class="lineNum">     297 </span>            :                         , UniqueCount = ForkJoin%UniqueProcess%Frequency &amp;</a>
 <a name="298"><span class="lineNum">     298 </span>            :                         , lenUnique = ForkJoin%UniqueProcess%count &amp;</a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">        223 :                         )</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">          2 :                         )</span></a>
 <a name="300"><span class="lineNum">     300 </span>            :         !maxContributorProcessID = ForkJoin%UniqueProcess%Identity(maxloc(ForkJoin%UniqueProcess%Frequency))</a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
 <a name="302"><span class="lineNum">     302 </span>            :         ! Sort ascending. This rearrangement may not be necessary anymore, since fitGeoCyclicLogPDF() is now order-agnostic.</a>
 <a name="303"><span class="lineNum">     303 </span>            :         ! From the IO report perspective, however, it is important to have it ordered.</a>
 <a name="304"><span class="lineNum">     304 </span>            : </a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">        223 :         allocate(Indx(ForkJoin%UniqueProcess%count))</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">        223 :         call indexArray( n = ForkJoin%UniqueProcess%count, Array = ForkJoin%UniqueProcess%Identity, Indx = Indx, Err = ForkJoin%Err )</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">        223 :         if (ForkJoin%Err%occurred) then</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">          2 :         allocate(Indx(ForkJoin%UniqueProcess%count))</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">          2 :         call indexArray( n = ForkJoin%UniqueProcess%count, Array = ForkJoin%UniqueProcess%Identity, Indx = Indx, Err = ForkJoin%Err )</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">          2 :         if (ForkJoin%Err%occurred) then</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :             ! LCOV_EXCL_START</a>
 <a name="309"><span class="lineNum">     309 </span>            :             ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg</a>
 <a name="310"><span class="lineNum">     310 </span>            :             return</a>
@@ -383,38 +383,38 @@
 <a name="313"><span class="lineNum">     313 </span>            : </a>
 <a name="314"><span class="lineNum">     314 </span>            :         ! get all processes contributions</a>
 <a name="315"><span class="lineNum">     315 </span>            : </a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">       1713 :         ForkJoin%UniqueProcess%Identity(:) = ForkJoin%UniqueProcess%Identity(Indx)</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       1713 :         ForkJoin%UniqueProcess%Frequency(:) = ForkJoin%UniqueProcess%Frequency(Indx)</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         34 :         ForkJoin%UniqueProcess%Identity(:) = ForkJoin%UniqueProcess%Identity(Indx)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         34 :         ForkJoin%UniqueProcess%Frequency(:) = ForkJoin%UniqueProcess%Frequency(Indx)</span></a>
 <a name="318"><span class="lineNum">     318 </span>            : </a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">        223 :         deallocate(Indx)</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">          2 :         deallocate(Indx)</span></a>
 <a name="320"><span class="lineNum">     320 </span>            : </a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">        223 :         ForkJoin%Contribution%count = processCount</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        223 :         if (allocated(ForkJoin%Contribution%LogFrequency)) deallocate(ForkJoin%Contribution%LogFrequency);</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">        972 :         allocate(ForkJoin%Contribution%LogFrequency(ForkJoin%Contribution%count), source = 0._RK)</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">        223 :         if (allocated(ForkJoin%Contribution%Frequency)) deallocate(ForkJoin%Contribution%Frequency);</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">        972 :         allocate(ForkJoin%Contribution%Frequency(ForkJoin%Contribution%count), source = 0_IK)</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">        223 :         if (allocated(ForkJoin%Contribution%Identity)) deallocate(ForkJoin%Contribution%Identity);</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">        223 :         allocate(ForkJoin%Contribution%Identity(ForkJoin%Contribution%count))</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">          2 :         ForkJoin%Contribution%count = processCount</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">          2 :         if (allocated(ForkJoin%Contribution%LogFrequency)) deallocate(ForkJoin%Contribution%LogFrequency);</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">         18 :         allocate(ForkJoin%Contribution%LogFrequency(ForkJoin%Contribution%count), source = 0._RK)</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          2 :         if (allocated(ForkJoin%Contribution%Frequency)) deallocate(ForkJoin%Contribution%Frequency);</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         18 :         allocate(ForkJoin%Contribution%Frequency(ForkJoin%Contribution%count), source = 0_IK)</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          2 :         if (allocated(ForkJoin%Contribution%Identity)) deallocate(ForkJoin%Contribution%Identity);</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          2 :         allocate(ForkJoin%Contribution%Identity(ForkJoin%Contribution%count))</span></a>
 <a name="328"><span class="lineNum">     328 </span>            : </a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       1713 :         ForkJoin%Contribution%Frequency(ForkJoin%UniqueProcess%Identity) = ForkJoin%UniqueProcess%Frequency</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">       2693 :         ForkJoin%Contribution%Identity = [(i, i = 1, ForkJoin%Contribution%count)]</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">        223 :         if (ForkJoin%Contribution%Frequency(1)==0_IK) then</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         34 :         ForkJoin%Contribution%Frequency(ForkJoin%UniqueProcess%Identity) = ForkJoin%UniqueProcess%Frequency</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">         52 :         ForkJoin%Contribution%Identity = [(i, i = 1, ForkJoin%Contribution%count)]</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          2 :         if (ForkJoin%Contribution%Frequency(1)==0_IK) then</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :             ! LCOV_EXCL_START</a>
 <a name="333"><span class="lineNum">     333 </span>            :             ForkJoin%Err%occurred = .true.</a>
 <a name="334"><span class="lineNum">     334 </span>            :             ForkJoin%Err%msg = PROCEDURE_NAME//&quot;: The contribution of the first process to the simulation is zero. This is highly unusual and requires further investigation.&quot;</a>
 <a name="335"><span class="lineNum">     335 </span>            :             return</a>
 <a name="336"><span class="lineNum">     336 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="337"><span class="lineNum">     337 </span>            :         end if</a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">        972 :         do i = 1, ForkJoin%Contribution%count</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         18 :         do i = 1, ForkJoin%Contribution%count</span></a>
 <a name="339"><span class="lineNum">     339 </span>            :             ! TODO: xxx a better solution instead of this ad-hoc approach would be to fit for the GeoCyclicCDF. Amir.</a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">        972 :             if (ForkJoin%Contribution%Frequency(i)/=0_IK) then</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">        745 :                 ForkJoin%Contribution%LogFrequency(i) = log(real(ForkJoin%Contribution%Frequency(i),kind=RK))</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">         18 :             if (ForkJoin%Contribution%Frequency(i)/=0_IK) then</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         16 :                 ForkJoin%Contribution%LogFrequency(i) = log(real(ForkJoin%Contribution%Frequency(i),kind=RK))</span></a>
 <a name="342"><span class="lineNum">     342 </span>            :             else</a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          4 :                 ForkJoin%Contribution%LogFrequency(i) = ForkJoin%Contribution%LogFrequency(i-1) + LOG_HALF</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineNoCov">          0 :                 ForkJoin%Contribution%LogFrequency(i) = ForkJoin%Contribution%LogFrequency(i-1) + LOG_HALF</span></a>
 <a name="344"><span class="lineNum">     344 </span>            :             end if</a>
 <a name="345"><span class="lineNum">     345 </span>            :         end do</a>
 <a name="346"><span class="lineNum">     346 </span>            : </a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">        223 :         ForkJoin%SuccessProb%current = successProb</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          2 :         ForkJoin%SuccessProb%current = successProb</span></a>
 <a name="348"><span class="lineNum">     348 </span>            : </a>
 <a name="349"><span class="lineNum">     349 </span>            :         ! fit for the effective successProb</a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
@@ -422,8 +422,8 @@
 <a name="352"><span class="lineNum">     352 </span>            :                                                                 , numTrial = ForkJoin%Contribution%count &amp; ! LCOV_EXCL_LINE</a>
 <a name="353"><span class="lineNum">     353 </span>            :                                                                 , SuccessStep = ForkJoin%Contribution%Identity &amp; ! LCOV_EXCL_LINE</a>
 <a name="354"><span class="lineNum">     354 </span>            :                                                                 , LogCount = ForkJoin%Contribution%LogFrequency &amp; ! LCOV_EXCL_LINE</a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">        223 :                                                                 )</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        223 :         if (ForkJoin%SuccessProb%PowellMinimum%Err%occurred) then</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          2 :                                                                 )</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          2 :         if (ForkJoin%SuccessProb%PowellMinimum%Err%occurred) then</span></a>
 <a name="357"><span class="lineNum">     357 </span>            :             ! LCOV_EXCL_START</a>
 <a name="358"><span class="lineNum">     358 </span>            :             ForkJoin%Err = ForkJoin%SuccessProb%PowellMinimum%Err</a>
 <a name="359"><span class="lineNum">     359 </span>            :             ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg</a>
@@ -431,7 +431,7 @@
 <a name="361"><span class="lineNum">     361 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="362"><span class="lineNum">     362 </span>            :         end if</a>
 <a name="363"><span class="lineNum">     363 </span>            : </a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        223 :         ForkJoin%SuccessProb%effective = ForkJoin%SuccessProb%PowellMinimum%xmin(1)</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          2 :         ForkJoin%SuccessProb%effective = ForkJoin%SuccessProb%PowellMinimum%xmin(1)</span></a>
 <a name="365"><span class="lineNum">     365 </span>            : </a>
 <a name="366"><span class="lineNum">     366 </span>            :         ! fit for the effective successProb</a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
@@ -445,16 +445,16 @@
 <a name="375"><span class="lineNum">     375 </span>            :                                 , maxSpeedup = ForkJoin%Speedup%Maximum%value &amp;                 ! returned maximum speedup.</a>
 <a name="376"><span class="lineNum">     376 </span>            :                                 , maxSpeedupNumProc = ForkJoin%Speedup%Maximum%nproc &amp;          ! returned number of processes for maximum speedup.</a>
 <a name="377"><span class="lineNum">     377 </span>            :                                 , Err = ForkJoin%Err &amp;</a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">        223 :                                 )</span></a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">        223 :         if (ForkJoin%Err%occurred) then</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">          2 :                                 )</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">          2 :         if (ForkJoin%Err%occurred) then</span></a>
 <a name="380"><span class="lineNum">     380 </span>            :             ! LCOV_EXCL_START</a>
 <a name="381"><span class="lineNum">     381 </span>            :             ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg</a>
 <a name="382"><span class="lineNum">     382 </span>            :             return</a>
 <a name="383"><span class="lineNum">     383 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="384"><span class="lineNum">     384 </span>            :         end if</a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">        223 :         ForkJoin%Speedup%current = ForkJoin%Speedup%Scaling(processCount)</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">          2 :         ForkJoin%Speedup%current = ForkJoin%Speedup%Scaling(processCount)</span></a>
 <a name="386"><span class="lineNum">     386 </span>            : </a>
-<a name="387"><span class="lineNum">     387 </span><span class="lineCov">        964 :     end function constructForkJoin</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">         17 :     end function constructForkJoin</span></a>
 <a name="388"><span class="lineNum">     388 </span>            : </a>
 <a name="389"><span class="lineNum">     389 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="390"><span class="lineNum">     390 </span>            : </a>
@@ -471,9 +471,9 @@
 <a name="401"><span class="lineNum">     401 </span>            :     !&gt; @param[out]  maxSpeedupNumProc   :   The number of processes at which the maximum speedup happens.</a>
 <a name="402"><span class="lineNum">     402 </span>            :     !&gt; @param[out]  maxSpeedup          :   The maximum speedup for any number of processors.</a>
 <a name="403"><span class="lineNum">     403 </span>            :     !&gt; @param[out]  Err                 :   An object of [Err_type](@ref err_mod::err_type) class indicating whether and error has occurred upon return.</a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">        446 :     subroutine getForkJoinSpeedup(successProb, seqSecTime, parSecTime, comSecTimePerProc, minMaxNumProc, Speedup, lenSpeedup, maxSpeedupNumProc, maxSpeedup, Err)</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">          4 :     subroutine getForkJoinSpeedup(successProb, seqSecTime, parSecTime, comSecTimePerProc, minMaxNumProc, Speedup, lenSpeedup, maxSpeedupNumProc, maxSpeedup, Err)</span></a>
 <a name="405"><span class="lineNum">     405 </span>            : </a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">        518 :         use Statistics_mod, only: getLogProbGeoCyclic</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">         13 :         use Statistics_mod, only: getLogProbGeoCyclic</span></a>
 <a name="407"><span class="lineNum">     407 </span>            :         use Constants_mod, only: IK, RK</a>
 <a name="408"><span class="lineNum">     408 </span>            :         use String_mod, only: num2str</a>
 <a name="409"><span class="lineNum">     409 </span>            :         use Misc_mod, only: resize</a>
@@ -491,41 +491,41 @@
 <a name="421"><span class="lineNum">     421 </span>            :         character(*)    , parameter                 :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructForkJoin()&quot;</a>
 <a name="422"><span class="lineNum">     422 </span>            :         integer(IK)     , parameter                 :: ABS_MAX_NUM_PROC = 1000000_IK</a>
 <a name="423"><span class="lineNum">     423 </span>            : </a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">        446 :         real(RK)                                    :: FirstImageContribution(1)</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        223 :         real(RK)                                    :: serialRuntime, parSecTimePerProc, comSecTime</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">          4 :         real(RK)                                    :: FirstImageContribution(1)</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">          2 :         real(RK)                                    :: serialRuntime, parSecTimePerProc, comSecTime</span></a>
 <a name="426"><span class="lineNum">     426 </span>            :         integer(IK)                                 :: numProc, lenSpeedupNew !, maxNumProc</a>
 <a name="427"><span class="lineNum">     427 </span>            :         logical                                     :: maxSpeedupFound, isPresentErr</a>
 <a name="428"><span class="lineNum">     428 </span>            :         integer(IK), parameter                      :: SuccessStep(*) = [1_IK]</a>
 <a name="429"><span class="lineNum">     429 </span>            : </a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        223 :         isPresentErr = present(Err)</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        223 :         if (isPresentErr) Err%occurred = .false.</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">          2 :         isPresentErr = present(Err)</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">          2 :         if (isPresentErr) Err%occurred = .false.</span></a>
 <a name="432"><span class="lineNum">     432 </span>            : </a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">        223 :         lenSpeedup = minMaxNumProc</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">        223 :         allocate(Speedup(lenSpeedup))</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">          2 :         lenSpeedup = minMaxNumProc</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">          2 :         allocate(Speedup(lenSpeedup))</span></a>
 <a name="435"><span class="lineNum">     435 </span>            : </a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">        223 :         numProc = 1</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">        223 :         Speedup(numProc) = 1._RK</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">        223 :         maxSpeedup = Speedup(numProc)</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">        223 :         maxSpeedupNumProc = numProc</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">        223 :         serialRuntime = seqSecTime + parSecTime ! serial runtime of the code per function call</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">          2 :         numProc = 1</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">          2 :         Speedup(numProc) = 1._RK</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">          2 :         maxSpeedup = Speedup(numProc)</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">          2 :         maxSpeedupNumProc = numProc</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">          2 :         serialRuntime = seqSecTime + parSecTime ! serial runtime of the code per function call</span></a>
 <a name="441"><span class="lineNum">     441 </span>            : </a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">        223 :         maxSpeedupFound = .false.</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">       3067 :         loopOverProc: do</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">          2 :         maxSpeedupFound = .false.</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">        254 :         loopOverProc: do</span></a>
 <a name="444"><span class="lineNum">     444 </span>            : </a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">       3290 :             numProc = numProc + 1</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">        256 :             numProc = numProc + 1</span></a>
 <a name="446"><span class="lineNum">     446 </span>            : </a>
 <a name="447"><span class="lineNum">     447 </span>            :             ! resize allocation if needed</a>
 <a name="448"><span class="lineNum">     448 </span>            : </a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">       3290 :             if (numProc&gt;lenSpeedup) then</span></a>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">        271 :                 if (maxSpeedupFound) exit loopOverProc</span></a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">         48 :                 lenSpeedupNew = 2 * lenSpeedup</span></a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">         48 :                 call resize(Speedup, from = lenSpeedup, to = lenSpeedupNew)</span></a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">         48 :                 lenSpeedup = lenSpeedupNew</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">        256 :             if (numProc&gt;lenSpeedup) then</span></a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">          8 :                 if (maxSpeedupFound) exit loopOverProc</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">          6 :                 lenSpeedupNew = 2 * lenSpeedup</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">          6 :                 call resize(Speedup, from = lenSpeedup, to = lenSpeedupNew)</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">          6 :                 lenSpeedup = lenSpeedupNew</span></a>
 <a name="454"><span class="lineNum">     454 </span>            :             end if</a>
 <a name="455"><span class="lineNum">     455 </span>            : </a>
 <a name="456"><span class="lineNum">     456 </span>            :             ! compute the fraction of work done by the first image</a>
 <a name="457"><span class="lineNum">     457 </span>            : </a>
-<a name="458"><span class="lineNum">     458 </span><span class="lineCov">       3067 :             if (successProb==0._RK) then</span></a>
+<a name="458"><span class="lineNum">     458 </span><span class="lineCov">        254 :             if (successProb==0._RK) then</span></a>
 <a name="459"><span class="lineNum">     459 </span><span class="lineNoCov">          0 :                 FirstImageContribution(1) = 1._RK / numProc</span></a>
 <a name="460"><span class="lineNum">     460 </span>            :             else</a>
 <a name="461"><span class="lineNum">     461 </span>            : </a>
@@ -533,23 +533,23 @@
 <a name="463"><span class="lineNum">     463 </span>            :                                                                 , maxNumTrial = numProc &amp;</a>
 <a name="464"><span class="lineNum">     464 </span>            :                                                                 , numTrial = 1_IK &amp;</a>
 <a name="465"><span class="lineNum">     465 </span>            :                                                                 , SuccessStep = SuccessStep &amp;</a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">       6134 :                                                                 ) )</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        508 :                                                                 ) )</span></a>
 <a name="467"><span class="lineNum">     467 </span>            :             end if</a>
 <a name="468"><span class="lineNum">     468 </span>            : </a>
 <a name="469"><span class="lineNum">     469 </span>            :             ! effective runtime of the parallel-section of the code, when executed in parallel on numProc processes</a>
 <a name="470"><span class="lineNum">     470 </span>            : </a>
-<a name="471"><span class="lineNum">     471 </span><span class="lineCov">       3067 :             parSecTimePerProc = parSecTime * FirstImageContribution(1)</span></a>
+<a name="471"><span class="lineNum">     471 </span><span class="lineCov">        254 :             parSecTimePerProc = parSecTime * FirstImageContribution(1)</span></a>
 <a name="472"><span class="lineNum">     472 </span>            : </a>
 <a name="473"><span class="lineNum">     473 </span>            :             ! communication time grows linearly with the number of processes.</a>
 <a name="474"><span class="lineNum">     474 </span>            : </a>
-<a name="475"><span class="lineNum">     475 </span><span class="lineCov">       3067 :             comSecTime = (numProc-1_IK) * comSecTimePerProc</span></a>
+<a name="475"><span class="lineNum">     475 </span><span class="lineCov">        254 :             comSecTime = (numProc-1_IK) * comSecTimePerProc</span></a>
 <a name="476"><span class="lineNum">     476 </span>            : </a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">       3067 :             Speedup(numProc) = serialRuntime / (seqSecTime + parSecTimePerProc + comSecTime)</span></a>
-<a name="478"><span class="lineNum">     478 </span><span class="lineCov">       3067 :             if (maxSpeedup &lt; Speedup(numProc)) then</span></a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       1249 :                 maxSpeedup = Speedup(numProc)</span></a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">       1249 :                 maxSpeedupNumProc = numProc</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">        254 :             Speedup(numProc) = serialRuntime / (seqSecTime + parSecTimePerProc + comSecTime)</span></a>
+<a name="478"><span class="lineNum">     478 </span><span class="lineCov">        254 :             if (maxSpeedup &lt; Speedup(numProc)) then</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">        156 :                 maxSpeedup = Speedup(numProc)</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">        156 :                 maxSpeedupNumProc = numProc</span></a>
 <a name="481"><span class="lineNum">     481 </span>            :             else</a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">       1818 :                 maxSpeedupFound = .true.</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">         98 :                 maxSpeedupFound = .true.</span></a>
 <a name="483"><span class="lineNum">     483 </span>            :             end if</a>
 <a name="484"><span class="lineNum">     484 </span>            : </a>
 <a name="485"><span class="lineNum">     485 </span>            :             if (numProc&lt;ABS_MAX_NUM_PROC) cycle loopOverProc ! LCOV_EXCL_LINE</a>
@@ -566,7 +566,7 @@
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span>            :         end do loopOverProc</a>
 <a name="498"><span class="lineNum">     498 </span>            : </a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">        223 :     end subroutine getForkJoinSpeedup</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">          2 :     end subroutine getForkJoinSpeedup</span></a>
 <a name="500"><span class="lineNum">     500 </span>            : </a>
 <a name="501"><span class="lineNum">     501 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="502"><span class="lineNum">     502 </span>            : </a>

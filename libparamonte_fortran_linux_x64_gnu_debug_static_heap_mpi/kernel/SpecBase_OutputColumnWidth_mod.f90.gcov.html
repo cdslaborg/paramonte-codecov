@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-10 05:37:02</td>
+            <td class="headerValue">2020-12-10 05:56:48</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -143,7 +143,7 @@
 <a name="73"><span class="lineNum">      73 </span>            : </a>
 <a name="74"><span class="lineNum">      74 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="75"><span class="lineNum">      75 </span>            : </a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       2345 :     function constructOutputColumnWidth(methodName) result(OutputColumnWidthObj)</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">        335 :     function constructOutputColumnWidth(methodName) result(OutputColumnWidthObj)</span></a>
 <a name="77"><span class="lineNum">      77 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="78"><span class="lineNum">      78 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructOutputColumnWidth</a>
 <a name="79"><span class="lineNum">      79 </span>            : #endif</a>
@@ -152,53 +152,53 @@
 <a name="82"><span class="lineNum">      82 </span>            :         implicit none</a>
 <a name="83"><span class="lineNum">      83 </span>            :         character(*), intent(in)  :: methodName</a>
 <a name="84"><span class="lineNum">      84 </span>            :         type(OutputColumnWidth_type) :: OutputColumnWidthObj</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">       2345 :         OutputColumnWidthObj%def = 0_IK</span></a>
-<a name="86"><span class="lineNum">      86 </span><span class="lineCov">       2345 :         OutputColumnWidthObj%null = NULL_IK</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        335 :         OutputColumnWidthObj%def = 0_IK</span></a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">        335 :         OutputColumnWidthObj%null = NULL_IK</span></a>
 <a name="87"><span class="lineNum">      87 </span>            :         OutputColumnWidthObj%desc = &amp;</a>
 <a name="88"><span class="lineNum">      88 </span>            :         &quot;The variable outputColumnWidth is a non-negative integer number that determines the width of &amp;</a>
 <a name="89"><span class="lineNum">      89 </span>            :         &amp;the data columns in &quot; // methodName // &quot; formatted output files that have tabular structure. &amp;</a>
 <a name="90"><span class="lineNum">      90 </span>            :         &amp;If it is set to zero, &quot; // methodName // &quot; will ensure to set the width of each output element &amp;</a>
 <a name="91"><span class="lineNum">      91 </span>            :         &amp;to the minimum possible width without losing the requested output precision. In other words, &amp;</a>
 <a name="92"><span class="lineNum">      92 </span>            :         &amp;setting outputColumnWidth = 0 will result in the smallest-size for the formatted output files that are in ASCII format. &amp;</a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       2345 :         &amp;The default value is &quot; // num2str(OutputColumnWidthObj%def) // &quot;.&quot;</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">       2345 :     end function constructOutputColumnWidth</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">        335 :         &amp;The default value is &quot; // num2str(OutputColumnWidthObj%def) // &quot;.&quot;</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">        335 :     end function constructOutputColumnWidth</span></a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
 <a name="96"><span class="lineNum">      96 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="97"><span class="lineNum">      97 </span>            : </a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">       2345 :     subroutine nullifyNameListVar(OutputColumnWidthObj)</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        335 :     subroutine nullifyNameListVar(OutputColumnWidthObj)</span></a>
 <a name="99"><span class="lineNum">      99 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="100"><span class="lineNum">     100 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="101"><span class="lineNum">     101 </span>            : #endif</a>
 <a name="102"><span class="lineNum">     102 </span>            :         implicit none</a>
 <a name="103"><span class="lineNum">     103 </span>            :         class(OutputColumnWidth_type), intent(in) :: OutputColumnWidthObj</a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">       2345 :         outputColumnWidth = OutputColumnWidthObj%null</span></a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineCov">       2345 :     end subroutine nullifyNameListVar</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">        335 :         outputColumnWidth = OutputColumnWidthObj%null</span></a>
+<a name="105"><span class="lineNum">     105 </span><span class="lineCov">        335 :     end subroutine nullifyNameListVar</span></a>
 <a name="106"><span class="lineNum">     106 </span>            : </a>
 <a name="107"><span class="lineNum">     107 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="108"><span class="lineNum">     108 </span>            : </a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">       2387 :     subroutine setOutputColumnWidth(OutputColumnWidthObj,outputColumnWidth)</span></a>
+<a name="109"><span class="lineNum">     109 </span><span class="lineCov">        341 :     subroutine setOutputColumnWidth(OutputColumnWidthObj,outputColumnWidth)</span></a>
 <a name="110"><span class="lineNum">     110 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="111"><span class="lineNum">     111 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setOutputColumnWidth</a>
 <a name="112"><span class="lineNum">     112 </span>            : #endif</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       2345 :         use String_mod, only: num2str</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        335 :         use String_mod, only: num2str</span></a>
 <a name="114"><span class="lineNum">     114 </span>            :         use Constants_mod, only: IK</a>
 <a name="115"><span class="lineNum">     115 </span>            :         implicit none</a>
 <a name="116"><span class="lineNum">     116 </span>            :         class(OutputColumnWidth_type), intent(inout)    :: OutputColumnWidthObj</a>
 <a name="117"><span class="lineNum">     117 </span>            :         integer(IK), intent(in)                         :: outputColumnWidth</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       2387 :         OutputColumnWidthObj%val = outputColumnWidth</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">       2387 :         if (OutputColumnWidthObj%val==OutputColumnWidthObj%null) then</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">       2317 :             OutputColumnWidthObj%val = OutputColumnWidthObj%def</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        341 :         OutputColumnWidthObj%val = outputColumnWidth</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">        341 :         if (OutputColumnWidthObj%val==OutputColumnWidthObj%null) then</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">        331 :             OutputColumnWidthObj%val = OutputColumnWidthObj%def</span></a>
 <a name="121"><span class="lineNum">     121 </span>            :         end if</a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">       2387 :         OutputColumnWidthObj%str = num2str(OutputColumnWidthObj%val)</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">       2387 :     end subroutine setOutputColumnWidth</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        341 :         OutputColumnWidthObj%str = num2str(OutputColumnWidthObj%val)</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        341 :     end subroutine setOutputColumnWidth</span></a>
 <a name="124"><span class="lineNum">     124 </span>            : </a>
 <a name="125"><span class="lineNum">     125 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="126"><span class="lineNum">     126 </span>            : </a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">       2307 :     subroutine checkForSanity(OutputColumnWidthObj,Err,methodName,outputRealPrecision)</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        331 :     subroutine checkForSanity(OutputColumnWidthObj,Err,methodName,outputRealPrecision)</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="129"><span class="lineNum">     129 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="130"><span class="lineNum">     130 </span>            : #endif</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">       2387 :         use Err_mod, only: Err_type</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        341 :         use Err_mod, only: Err_type</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :         use Constants_mod, only: IK</a>
 <a name="133"><span class="lineNum">     133 </span>            :         use String_mod, only: num2str</a>
 <a name="134"><span class="lineNum">     134 </span>            :         implicit none</a>
@@ -207,23 +207,23 @@
 <a name="137"><span class="lineNum">     137 </span>            :         integer(IK) , intent(in)               :: outputRealPrecision</a>
 <a name="138"><span class="lineNum">     138 </span>            :         type(Err_type), intent(inout)          :: Err</a>
 <a name="139"><span class="lineNum">     139 </span>            :         character(*), parameter                :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">       2307 :         if ( OutputColumnWidthObj%val&lt;0_IK ) then</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">         28 :             Err%occurred = .true.</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">        331 :         if ( OutputColumnWidthObj%val&lt;0_IK ) then</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          4 :             Err%occurred = .true.</span></a>
 <a name="142"><span class="lineNum">     142 </span>            :             Err%msg =   Err%msg // &amp;</a>
 <a name="143"><span class="lineNum">     143 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
 <a name="144"><span class="lineNum">     144 </span>            :                         &amp;The input value for variable outputColumnWidth must be a non-negative integer. &amp;</a>
 <a name="145"><span class="lineNum">     145 </span>            :                         &amp;If you are not sure about the appropriate value for this variable, simply drop it from the input. &quot; // &amp;</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineCov">         28 :                         methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">       2279 :         elseif ( OutputColumnWidthObj%val&gt;0_IK .and. OutputColumnWidthObj%val&lt;outputRealPrecision+7_IK ) then</span></a>
-<a name="148"><span class="lineNum">     148 </span><span class="lineCov">         14 :             Err%occurred = .true.</span></a>
+<a name="146"><span class="lineNum">     146 </span><span class="lineCov">          4 :                         methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        327 :         elseif ( OutputColumnWidthObj%val&gt;0_IK .and. OutputColumnWidthObj%val&lt;outputRealPrecision+7_IK ) then</span></a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          2 :             Err%occurred = .true.</span></a>
 <a name="149"><span class="lineNum">     149 </span>            :             Err%msg =   Err%msg // &amp;</a>
 <a name="150"><span class="lineNum">     150 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. The input value for variable outputColumnWidth &amp;</a>
 <a name="151"><span class="lineNum">     151 </span>            :                         &amp;must be equal to or greater than the input value for outputRealPrecision + 7. &amp;</a>
 <a name="152"><span class="lineNum">     152 </span>            :                         &amp;If you are not sure about the appropriate value for this variable, either set it to zero on input, &amp;</a>
 <a name="153"><span class="lineNum">     153 </span>            :                         &amp;or simply drop it from the input. &quot; // methodName // &amp;</a>
-<a name="154"><span class="lineNum">     154 </span><span class="lineCov">         14 :                         &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          2 :                         &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
 <a name="155"><span class="lineNum">     155 </span>            :         end if</a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">       4614 :     end subroutine checkForSanity</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">        662 :     end subroutine checkForSanity</span></a>
 <a name="157"><span class="lineNum">     157 </span>            : </a>
 <a name="158"><span class="lineNum">     158 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="159"><span class="lineNum">     159 </span>            : </a>
