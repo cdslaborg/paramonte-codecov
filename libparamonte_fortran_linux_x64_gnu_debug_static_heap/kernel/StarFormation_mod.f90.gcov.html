@@ -31,13 +31,13 @@
             <td class="headerValue">ParaMonte :: Serial Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">185</td>
-            <td class="headerCovTableEntry">196</td>
-            <td class="headerCovTableEntryHi">94.4 %</td>
+            <td class="headerCovTableEntry">179</td>
+            <td class="headerCovTableEntry">190</td>
+            <td class="headerCovTableEntryHi">94.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">23</td>
@@ -860,11 +860,11 @@
 <a name="790"><span class="lineNum">     790 </span><span class="lineCov">          8 :                                             )</span></a>
 <a name="791"><span class="lineNum">     791 </span>            : </a>
 <a name="792"><span class="lineNum">     792 </span>            : #if defined OS_IS_WSL</a>
-<a name="793"><span class="lineNum">     793 </span><span class="lineCov">          8 :         getMergerDelayTimePDF_WSL =&gt; getMergerDelayTimePDF</span></a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">          8 :         getStarFormationRateDensity_WSL =&gt; getStarFormationRateDensity</span></a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">          8 :         maxRelativeErrorDefault_WSL = maxRelativeErrorDefault</span></a>
-<a name="796"><span class="lineNum">     796 </span><span class="lineCov">          8 :         nRefinementDefault_WSL = nRefinementDefault</span></a>
-<a name="797"><span class="lineNum">     797 </span><span class="lineCov">          8 :         lookBackTimeRef_WSL = lookBackTimeRef</span></a>
+<a name="793"><span class="lineNum">     793 </span>            :         getMergerDelayTimePDF_WSL =&gt; getMergerDelayTimePDF</a>
+<a name="794"><span class="lineNum">     794 </span>            :         getStarFormationRateDensity_WSL =&gt; getStarFormationRateDensity</a>
+<a name="795"><span class="lineNum">     795 </span>            :         maxRelativeErrorDefault_WSL = maxRelativeErrorDefault</a>
+<a name="796"><span class="lineNum">     796 </span>            :         nRefinementDefault_WSL = nRefinementDefault</a>
+<a name="797"><span class="lineNum">     797 </span>            :         lookBackTimeRef_WSL = lookBackTimeRef</a>
 <a name="798"><span class="lineNum">     798 </span>            : #endif</a>
 <a name="799"><span class="lineNum">     799 </span>            : </a>
 <a name="800"><span class="lineNum">     800 </span>            :         call doQuadRombOpen ( getFunc           = getBinaryMergerRateDensityIntegrand   &amp;</a>
@@ -887,26 +887,26 @@
 <a name="817"><span class="lineNum">     817 </span>            :         end if</a>
 <a name="818"><span class="lineNum">     818 </span>            : </a>
 <a name="819"><span class="lineNum">     819 </span>            : #if defined OS_IS_WSL</a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">          8 :         nullify(getStarFormationRateDensity_WSL)</span></a>
-<a name="821"><span class="lineNum">     821 </span><span class="lineCov">          8 :         nullify(getMergerDelayTimePDF_WSL)</span></a>
+<a name="820"><span class="lineNum">     820 </span>            :         nullify(getStarFormationRateDensity_WSL)</a>
+<a name="821"><span class="lineNum">     821 </span>            :         nullify(getMergerDelayTimePDF_WSL)</a>
 <a name="822"><span class="lineNum">     822 </span>            : #else</a>
 <a name="823"><span class="lineNum">     823 </span>            :     contains</a>
 <a name="824"><span class="lineNum">     824 </span>            : </a>
-<a name="825"><span class="lineNum">     825 </span>            :         function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)</a>
+<a name="825"><span class="lineNum">     825 </span><span class="lineCov">       1296 :         function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)</span></a>
 <a name="826"><span class="lineNum">     826 </span>            : </a>
-<a name="827"><span class="lineNum">     827 </span>            :             use Cosmology_mod, only: getUniverseAgeDerivative</a>
+<a name="827"><span class="lineNum">     827 </span><span class="lineCov">          8 :             use Cosmology_mod, only: getUniverseAgeDerivative</span></a>
 <a name="828"><span class="lineNum">     828 </span>            :             implicit none</a>
 <a name="829"><span class="lineNum">     829 </span>            :             real(RK)    , intent(in)    :: zplus1</a>
 <a name="830"><span class="lineNum">     830 </span>            :             real(RK)                    :: binaryMergerRateIntegrand !,lognormpdf</a>
-<a name="831"><span class="lineNum">     831 </span>            :             real(RK)                    :: mergerDelayTime</a>
+<a name="831"><span class="lineNum">     831 </span><span class="lineCov">       1296 :             real(RK)                    :: mergerDelayTime</span></a>
 <a name="832"><span class="lineNum">     832 </span>            : </a>
 <a name="833"><span class="lineNum">     833 </span>            :             ! note that zp&lt;z always, so that delay&gt;0.</a>
 <a name="834"><span class="lineNum">     834 </span>            :             mergerDelayTime = getLookBackTime   ( zplus1 = zplus1 &amp;</a>
 <a name="835"><span class="lineNum">     835 </span>            :                                                 , maxRelativeError = maxRelativeErrorDefault &amp;</a>
 <a name="836"><span class="lineNum">     836 </span>            :                                                 , nRefinement = nRefinementDefault &amp;</a>
-<a name="837"><span class="lineNum">     837 </span>            :                                                 )</a>
-<a name="838"><span class="lineNum">     838 </span>            :             mergerDelayTime = mergerDelayTime - lookBackTimeRef</a>
-<a name="839"><span class="lineNum">     839 </span>            :             if (mergerDelayTime&lt;=0._RK) then</a>
+<a name="837"><span class="lineNum">     837 </span><span class="lineCov">       1296 :                                                 )</span></a>
+<a name="838"><span class="lineNum">     838 </span><span class="lineCov">       1296 :             mergerDelayTime = mergerDelayTime - lookBackTimeRef</span></a>
+<a name="839"><span class="lineNum">     839 </span><span class="lineCov">       1296 :             if (mergerDelayTime&lt;=0._RK) then</span></a>
 <a name="840"><span class="lineNum">     840 </span>            :                 ! LCOV_EXCL_START</a>
 <a name="841"><span class="lineNum">     841 </span>            :                 write(output_unit,&quot;(A)&quot;) &quot;The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = &quot;, zplus1, mergerDelayTime</a>
 <a name="842"><span class="lineNum">     842 </span>            :                 error stop</a>
@@ -915,29 +915,29 @@
 <a name="845"><span class="lineNum">     845 </span>            : </a>
 <a name="846"><span class="lineNum">     846 </span>            :             binaryMergerRateIntegrand   = getMergerDelayTimePDF(mergerDelayTime) &amp;</a>
 <a name="847"><span class="lineNum">     847 </span>            :                                         * getStarFormationRateDensity(zplus1) &amp;</a>
-<a name="848"><span class="lineNum">     848 </span>            :                                         * getUniverseAgeDerivative(zplus1)</a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">       1296 :                                         * getUniverseAgeDerivative(zplus1)</span></a>
 <a name="849"><span class="lineNum">     849 </span>            : </a>
-<a name="850"><span class="lineNum">     850 </span>            :         end function getBinaryMergerRateDensityIntegrand</a>
+<a name="850"><span class="lineNum">     850 </span><span class="lineCov">       1296 :         end function getBinaryMergerRateDensityIntegrand</span></a>
 <a name="851"><span class="lineNum">     851 </span>            : #endif</a>
-<a name="852"><span class="lineNum">     852 </span><span class="lineCov">          8 :     end function getBinaryMergerRateDensity</span></a>
+<a name="852"><span class="lineNum">     852 </span>            :     end function getBinaryMergerRateDensity</a>
 <a name="853"><span class="lineNum">     853 </span>            : </a>
 <a name="854"><span class="lineNum">     854 </span>            : #if defined OS_IS_WSL</a>
 <a name="855"><span class="lineNum">     855 </span>            :         ! This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.</a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">       1296 :         function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)</span></a>
+<a name="856"><span class="lineNum">     856 </span>            :         function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)</a>
 <a name="857"><span class="lineNum">     857 </span>            :             use, intrinsic :: iso_fortran_env, only: output_unit</a>
-<a name="858"><span class="lineNum">     858 </span><span class="lineCov">          8 :             use Cosmology_mod, only: getUniverseAgeDerivative</span></a>
+<a name="858"><span class="lineNum">     858 </span>            :             use Cosmology_mod, only: getUniverseAgeDerivative</a>
 <a name="859"><span class="lineNum">     859 </span>            :             use Cosmology_mod, only: getLookBackTime</a>
 <a name="860"><span class="lineNum">     860 </span>            :             implicit none</a>
 <a name="861"><span class="lineNum">     861 </span>            :             real(RK)    , intent(in)    :: zplus1</a>
 <a name="862"><span class="lineNum">     862 </span>            :             real(RK)                    :: binaryMergerRateIntegrand !,lognormpdf</a>
-<a name="863"><span class="lineNum">     863 </span><span class="lineCov">       1296 :             real(RK)                    :: mergerDelayTime</span></a>
+<a name="863"><span class="lineNum">     863 </span>            :             real(RK)                    :: mergerDelayTime</a>
 <a name="864"><span class="lineNum">     864 </span>            :             ! note that zp&lt;z always, so that delay&gt;0.</a>
 <a name="865"><span class="lineNum">     865 </span>            :             mergerDelayTime = getLookBackTime   ( zplus1 = zplus1 &amp;</a>
 <a name="866"><span class="lineNum">     866 </span>            :                                                 , maxRelativeError = maxRelativeErrorDefault_WSL &amp;</a>
 <a name="867"><span class="lineNum">     867 </span>            :                                                 , nRefinement = nRefinementDefault_WSL &amp;</a>
-<a name="868"><span class="lineNum">     868 </span><span class="lineCov">       2592 :                                                 )</span></a>
-<a name="869"><span class="lineNum">     869 </span><span class="lineCov">       1296 :             mergerDelayTime = mergerDelayTime - lookBackTimeRef_WSL</span></a>
-<a name="870"><span class="lineNum">     870 </span><span class="lineCov">       1296 :             if (mergerDelayTime&lt;=0._RK) then</span></a>
+<a name="868"><span class="lineNum">     868 </span>            :                                                 )</a>
+<a name="869"><span class="lineNum">     869 </span>            :             mergerDelayTime = mergerDelayTime - lookBackTimeRef_WSL</a>
+<a name="870"><span class="lineNum">     870 </span>            :             if (mergerDelayTime&lt;=0._RK) then</a>
 <a name="871"><span class="lineNum">     871 </span>            :             ! LCOV_EXCL_START</a>
 <a name="872"><span class="lineNum">     872 </span>            :                 write(output_unit,&quot;(A)&quot;) &quot;The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = &quot;, zplus1, mergerDelayTime</a>
 <a name="873"><span class="lineNum">     873 </span>            :                 error stop</a>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -420,7 +420,7 @@
 <a name="350"><span class="lineNum">     350 </span>            :     !&gt; @param[in]   count       : The number of times to write the string to the output (**optional**, default = 1).</a>
 <a name="351"><span class="lineNum">     351 </span>            :     !&gt; @param[in]   width       : The width of the line (**optional**).</a>
 <a name="352"><span class="lineNum">     352 </span>            :     !&gt; @param[in]   string      : The string to output (**optional**, default = &quot;&quot;).</a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">     295418 :     module subroutine write ( outputUnit    &amp;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">     294836 :     module subroutine write ( outputUnit    &amp;</span></a>
 <a name="354"><span class="lineNum">     354 </span>            :                             , marginTop     &amp;</a>
 <a name="355"><span class="lineNum">     355 </span>            :                             , marginBot     &amp;</a>
 <a name="356"><span class="lineNum">     356 </span>            :                             , count         &amp;</a>
@@ -445,11 +445,11 @@
 <a name="375"><span class="lineNum">     375 </span>            :         advanceEnabled = .true.; if (present(advance)) advanceEnabled = advance</a>
 <a name="376"><span class="lineNum">     376 </span>            : #endif</a>
 <a name="377"><span class="lineNum">     377 </span>            : </a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">     295418 :         if (present(outputUnit)) then</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">     294836 :         if (present(outputUnit)) then</span></a>
 <a name="379"><span class="lineNum">     379 </span>            : #if defined MEXPRINT_ENABLED</a>
 <a name="380"><span class="lineNum">     380 </span>            :             isStdout = output_unit == outputUnit</a>
 <a name="381"><span class="lineNum">     381 </span>            : #endif</a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">     294733 :             logFileUnit = outputUnit</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">     294151 :             logFileUnit = outputUnit</span></a>
 <a name="383"><span class="lineNum">     383 </span>            :         else</a>
 <a name="384"><span class="lineNum">     384 </span>            : #if defined MEXPRINT_ENABLED</a>
 <a name="385"><span class="lineNum">     385 </span>            :             isStdout = .true.</a>
@@ -457,8 +457,8 @@
 <a name="387"><span class="lineNum">     387 </span><span class="lineCov">        685 :             logFileUnit = output_unit</span></a>
 <a name="388"><span class="lineNum">     388 </span>            :         end if</a>
 <a name="389"><span class="lineNum">     389 </span>            : </a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">     295418 :         if (present(marginTop)) then</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">     313050 :             do i = 1, marginTop</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">     294836 :         if (present(marginTop)) then</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">     312468 :             do i = 1, marginTop</span></a>
 <a name="392"><span class="lineNum">     392 </span>            : #if defined MEXPRINT_ENABLED</a>
 <a name="393"><span class="lineNum">     393 </span>            :                 if (isStdout) then</a>
 <a name="394"><span class="lineNum">     394 </span>            :                     call mexPrintf(NLC)</a>
@@ -466,19 +466,19 @@
 <a name="396"><span class="lineNum">     396 </span>            :                     write(logFileUnit,*)</a>
 <a name="397"><span class="lineNum">     397 </span>            :                 end if</a>
 <a name="398"><span class="lineNum">     398 </span>            : #else</a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">     313050 :                 write(logFileUnit,*)</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">     312468 :                 write(logFileUnit,*)</span></a>
 <a name="400"><span class="lineNum">     400 </span>            : #endif</a>
 <a name="401"><span class="lineNum">     401 </span>            :             end do</a>
 <a name="402"><span class="lineNum">     402 </span>            :         end if</a>
 <a name="403"><span class="lineNum">     403 </span>            :     </a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">     295418 :         if (present(count)) then</span></a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">     275341 :             thisManyTimes = count</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">     294836 :         if (present(count)) then</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">     274955 :             thisManyTimes = count</span></a>
 <a name="406"><span class="lineNum">     406 </span>            :         else</a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">      20077 :             thisManyTimes = 1</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">      19881 :             thisManyTimes = 1</span></a>
 <a name="408"><span class="lineNum">     408 </span>            :         end if</a>
 <a name="409"><span class="lineNum">     409 </span>            : </a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">     295418 :         if (present(string)) then</span></a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">     552248 :             do i = 1, thisManyTimes</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">     294836 :         if (present(string)) then</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">     551476 :             do i = 1, thisManyTimes</span></a>
 <a name="412"><span class="lineNum">     412 </span>            : #if defined MEXPRINT_ENABLED</a>
 <a name="413"><span class="lineNum">     413 </span>            :                 if (isStdout) then</a>
 <a name="414"><span class="lineNum">     414 </span>            :                     if (advanceEnabled) then</a>
@@ -490,11 +490,11 @@
 <a name="420"><span class="lineNum">     420 </span>            :                     write(logFileUnit,&quot;(g0)&quot;) string</a>
 <a name="421"><span class="lineNum">     421 </span>            :                 end if</a>
 <a name="422"><span class="lineNum">     422 </span>            : #else</a>
-<a name="423"><span class="lineNum">     423 </span><span class="lineCov">     552248 :                 write(logFileUnit,&quot;(g0)&quot;) string</span></a>
+<a name="423"><span class="lineNum">     423 </span><span class="lineCov">     551476 :                 write(logFileUnit,&quot;(g0)&quot;) string</span></a>
 <a name="424"><span class="lineNum">     424 </span>            : #endif</a>
 <a name="425"><span class="lineNum">     425 </span>            :             end do</a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">      19619 :         elseif (.not. ( present(marginBot) .and. present(marginTop) ) ) then</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">      37426 :             do i = 1, thisManyTimes</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">      19423 :         elseif (.not. ( present(marginBot) .and. present(marginTop) ) ) then</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">      37034 :             do i = 1, thisManyTimes</span></a>
 <a name="428"><span class="lineNum">     428 </span>            : #if defined MEXPRINT_ENABLED</a>
 <a name="429"><span class="lineNum">     429 </span>            :                 if (isStdout) then</a>
 <a name="430"><span class="lineNum">     430 </span>            :                     call mexPrintf(NLC)</a>
@@ -502,13 +502,13 @@
 <a name="432"><span class="lineNum">     432 </span>            :                     write(logFileUnit,*)</a>
 <a name="433"><span class="lineNum">     433 </span>            :                 end if</a>
 <a name="434"><span class="lineNum">     434 </span>            : #else</a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">      37426 :                 write(logFileUnit,*)</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">      37034 :                 write(logFileUnit,*)</span></a>
 <a name="436"><span class="lineNum">     436 </span>            : #endif</a>
 <a name="437"><span class="lineNum">     437 </span>            :             end do</a>
 <a name="438"><span class="lineNum">     438 </span>            :         end if</a>
 <a name="439"><span class="lineNum">     439 </span>            :     </a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     295418 :         if (present(marginBot)) then</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">     311177 :             do i = 1, marginBot</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     294836 :         if (present(marginBot)) then</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">     310595 :             do i = 1, marginBot</span></a>
 <a name="442"><span class="lineNum">     442 </span>            : #if defined MEXPRINT_ENABLED</a>
 <a name="443"><span class="lineNum">     443 </span>            :                 if (isStdout) then</a>
 <a name="444"><span class="lineNum">     444 </span>            :                     call mexPrintf(NLC)</a>
@@ -516,12 +516,12 @@
 <a name="446"><span class="lineNum">     446 </span>            :                     write(logFileUnit,*)</a>
 <a name="447"><span class="lineNum">     447 </span>            :                 end if</a>
 <a name="448"><span class="lineNum">     448 </span>            : #else</a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">     311177 :                 write(logFileUnit,*)</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">     310595 :                 write(logFileUnit,*)</span></a>
 <a name="450"><span class="lineNum">     450 </span>            : #endif</a>
 <a name="451"><span class="lineNum">     451 </span>            :             end do</a>
 <a name="452"><span class="lineNum">     452 </span>            :         end if</a>
 <a name="453"><span class="lineNum">     453 </span>            :   </a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">     590836 :     end subroutine write</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">     589672 :     end subroutine write</span></a>
 <a name="455"><span class="lineNum">     455 </span>            : </a>
 <a name="456"><span class="lineNum">     456 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="457"><span class="lineNum">     457 </span>            : </a>
@@ -534,13 +534,13 @@
 <a name="464"><span class="lineNum">     464 </span>            :     !&gt;</a>
 <a name="465"><span class="lineNum">     465 </span>            :     !&gt; \return</a>
 <a name="466"><span class="lineNum">     466 </span>            :     !&gt; ListOfLines : The list of lines that are wrapped to fit within the requested input width.</a>
-<a name="467"><span class="lineNum">     467 </span><span class="lineCov">     123161 :     module function wrapText(string,width,split,pad) result(ListOfLines)</span></a>
+<a name="467"><span class="lineNum">     467 </span><span class="lineCov">     126521 :     module function wrapText(string,width,split,pad) result(ListOfLines)</span></a>
 <a name="468"><span class="lineNum">     468 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="469"><span class="lineNum">     469 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: wrapText</a>
 <a name="470"><span class="lineNum">     470 </span>            : #endif</a>
 <a name="471"><span class="lineNum">     471 </span>            : </a>
 <a name="472"><span class="lineNum">     472 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">     295418 :         use Constants_mod, only: IK</span></a>
+<a name="473"><span class="lineNum">     473 </span><span class="lineCov">     294836 :         use Constants_mod, only: IK</span></a>
 <a name="474"><span class="lineNum">     474 </span>            : </a>
 <a name="475"><span class="lineNum">     475 </span>            :         implicit none</a>
 <a name="476"><span class="lineNum">     476 </span>            : </a>
@@ -555,121 +555,121 @@
 <a name="485"><span class="lineNum">     485 </span>            :         integer(IK), allocatable            :: IsEndOfSplitLoc(:), EndOfSplitLoc(:), EndOfLineLoc(:)</a>
 <a name="486"><span class="lineNum">     486 </span>            :         logical                             :: isPadZone</a>
 <a name="487"><span class="lineNum">     487 </span>            : </a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">     123161 :         padLen = len(pad)</span></a>
-<a name="489"><span class="lineNum">     489 </span><span class="lineCov">     123161 :         splitLen = len(split)</span></a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">     123161 :         stringLen = len(string)</span></a>
-<a name="491"><span class="lineNum">     491 </span><span class="lineCov">     123161 :         if (stringLen==0) then</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">     126521 :         padLen = len(pad)</span></a>
+<a name="489"><span class="lineNum">     489 </span><span class="lineCov">     126521 :         splitLen = len(split)</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">     126521 :         stringLen = len(string)</span></a>
+<a name="491"><span class="lineNum">     491 </span><span class="lineCov">     126521 :         if (stringLen==0) then</span></a>
 <a name="492"><span class="lineNum">     492 </span><span class="lineCov">      76504 :             allocate( ListOfLines(1) )</span></a>
 <a name="493"><span class="lineNum">     493 </span><span class="lineCov">      38252 :             ListOfLines(1)%record = &quot;&quot;</span></a>
 <a name="494"><span class="lineNum">     494 </span><span class="lineCov">      38252 :             return</span></a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">      84909 :         elseif (splitLen&gt;=stringLen) then</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">      88269 :         elseif (splitLen&gt;=stringLen) then</span></a>
 <a name="496"><span class="lineNum">     496 </span><span class="lineNoCov">          0 :             allocate( ListOfLines(1) )</span></a>
 <a name="497"><span class="lineNum">     497 </span><span class="lineNoCov">          0 :             ListOfLines(1)%record = string</span></a>
 <a name="498"><span class="lineNum">     498 </span><span class="lineNoCov">          0 :             return</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">      84909 :         elseif (splitLen==0) then ! enforce wrapping at any character as necessary</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">       8075 :             lineCount = stringLen / width + 1</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">      18411 :             allocate( ListOfLines(lineCount) )</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">      10336 :             do indx = 1, lineCount-1</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      10336 :                 ListOfLines(indx)%record = string(width*(indx-1)+1:width*indx)</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">      88269 :         elseif (splitLen==0) then ! enforce wrapping at any character as necessary</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">      11628 :             lineCount = stringLen / width + 1</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">      25517 :             allocate( ListOfLines(lineCount) )</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">      13889 :             do indx = 1, lineCount-1</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      13889 :                 ListOfLines(indx)%record = string(width*(indx-1)+1:width*indx)</span></a>
 <a name="504"><span class="lineNum">     504 </span>            :             end do</a>
-<a name="505"><span class="lineNum">     505 </span><span class="lineCov">       8075 :             ListOfLines(lineCount)%record = string(width*(lineCount-1)+1:stringLen)</span></a>
-<a name="506"><span class="lineNum">     506 </span><span class="lineCov">       8075 :             return</span></a>
+<a name="505"><span class="lineNum">     505 </span><span class="lineCov">      11628 :             ListOfLines(lineCount)%record = string(width*(lineCount-1)+1:stringLen)</span></a>
+<a name="506"><span class="lineNum">     506 </span><span class="lineCov">      11628 :             return</span></a>
 <a name="507"><span class="lineNum">     507 </span>            :         end if</a>
 <a name="508"><span class="lineNum">     508 </span>            : </a>
 <a name="509"><span class="lineNum">     509 </span>            :         ! get the initial pad size, and the locations of split ends.</a>
 <a name="510"><span class="lineNum">     510 </span>            : </a>
-<a name="511"><span class="lineNum">     511 </span><span class="lineCov">      76834 :         allocate(IsEndOfSplitLoc(stringLen))</span></a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">   16991300 :         IsEndOfSplitLoc = 0_IK</span></a>
-<a name="513"><span class="lineNum">     513 </span><span class="lineCov">      76834 :         istart = 1_IK</span></a>
-<a name="514"><span class="lineNum">     514 </span><span class="lineCov">      76834 :         iend = istart + splitLen - 1_IK</span></a>
-<a name="515"><span class="lineNum">     515 </span><span class="lineCov">      76834 :         padLength = 0_IK</span></a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">      76834 :         isPadZone = .true.</span></a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineCov">      76834 :         if (padLen==0_IK) isPadZone = .false.</span></a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">   16837600 :         blockFindSplit: do</span></a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">   16914500 :             if (iend==stringLen) then</span></a>
-<a name="520"><span class="lineNum">     520 </span><span class="lineCov">      76834 :                 IsEndOfSplitLoc(stringLen) = 1_IK</span></a>
-<a name="521"><span class="lineNum">     521 </span><span class="lineCov">      76834 :                 exit blockFindSplit</span></a>
+<a name="511"><span class="lineNum">     511 </span><span class="lineCov">      76641 :         allocate(IsEndOfSplitLoc(stringLen))</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">   16966100 :         IsEndOfSplitLoc = 0_IK</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineCov">      76641 :         istart = 1_IK</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineCov">      76641 :         iend = istart + splitLen - 1_IK</span></a>
+<a name="515"><span class="lineNum">     515 </span><span class="lineCov">      76641 :         padLength = 0_IK</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">      76641 :         isPadZone = .true.</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">      76641 :         if (padLen==0_IK) isPadZone = .false.</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">   16812800 :         blockFindSplit: do</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">   16889500 :             if (iend==stringLen) then</span></a>
+<a name="520"><span class="lineNum">     520 </span><span class="lineCov">      76641 :                 IsEndOfSplitLoc(stringLen) = 1_IK</span></a>
+<a name="521"><span class="lineNum">     521 </span><span class="lineCov">      76641 :                 exit blockFindSplit</span></a>
 <a name="522"><span class="lineNum">     522 </span>            :             end if</a>
-<a name="523"><span class="lineNum">     523 </span><span class="lineCov">   16837600 :             if ( isPadZone .and. mod(iend,padLen)==0_IK .and. string(istart:iend)==pad ) then</span></a>
+<a name="523"><span class="lineNum">     523 </span><span class="lineCov">   16812800 :             if ( isPadZone .and. mod(iend,padLen)==0_IK .and. string(istart:iend)==pad ) then</span></a>
 <a name="524"><span class="lineNum">     524 </span><span class="lineCov">     241260 :                 padLength = iend</span></a>
 <a name="525"><span class="lineNum">     525 </span>            :             else</a>
-<a name="526"><span class="lineNum">     526 </span><span class="lineCov">   16596400 :                 isPadZone = .false.</span></a>
+<a name="526"><span class="lineNum">     526 </span><span class="lineCov">   16571600 :                 isPadZone = .false.</span></a>
 <a name="527"><span class="lineNum">     527 </span>            :             end if</a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">   16837600 :             if (string(istart:iend)==split) then</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">    2638900 :                 IsEndOfSplitLoc(iend) = 1_IK</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">   16812800 :             if (string(istart:iend)==split) then</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">    2637060 :                 IsEndOfSplitLoc(iend) = 1_IK</span></a>
 <a name="530"><span class="lineNum">     530 </span>            :             else</a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">   14198700 :                 IsEndOfSplitLoc(iend) = 0_IK</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">   14175800 :                 IsEndOfSplitLoc(iend) = 0_IK</span></a>
 <a name="532"><span class="lineNum">     532 </span>            :             end if</a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">   16837600 :             istart = istart + 1_IK</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">   16837600 :             iend = iend + 1_IK</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">   16812800 :             istart = istart + 1_IK</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">   16812800 :             iend = iend + 1_IK</span></a>
 <a name="535"><span class="lineNum">     535 </span>            :         end do blockFindSplit</a>
 <a name="536"><span class="lineNum">     536 </span>            : </a>
 <a name="537"><span class="lineNum">     537 </span>            :         ! create a vector of split-end indices</a>
 <a name="538"><span class="lineNum">     538 </span>            : </a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineCov">   16991300 :         numSplitEndLoc = sum(IsEndOfSplitLoc)</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineCov">      76834 :         if (numSplitEndLoc==0_IK) then</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">   16966100 :         numSplitEndLoc = sum(IsEndOfSplitLoc)</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">      76641 :         if (numSplitEndLoc==0_IK) then</span></a>
 <a name="541"><span class="lineNum">     541 </span><span class="lineNoCov">          0 :             allocate( ListOfLines(1) )</span></a>
 <a name="542"><span class="lineNum">     542 </span><span class="lineNoCov">          0 :             ListOfLines(1)%record = string</span></a>
 <a name="543"><span class="lineNum">     543 </span><span class="lineNoCov">          0 :             return</span></a>
 <a name="544"><span class="lineNum">     544 </span>            :         else</a>
 <a name="545"><span class="lineNum">     545 </span>            :             ! xxx: here goes another GFortran 7.3 bug: EndOfSplitLoc is assumed already allocated, despite the first appearance here.</a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">      76834 :             if (allocated(EndOfSplitLoc)) deallocate(EndOfSplitLoc)</span></a>
-<a name="547"><span class="lineNum">     547 </span><span class="lineCov">      76834 :             allocate(EndOfSplitLoc(numSplitEndLoc))</span></a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">      76834 :             counter = 0_IK</span></a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">   16991300 :             do indx = 1,stringLen</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineCov">   16991300 :                 if (IsEndOfSplitLoc(indx)==1_IK) then</span></a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">    2715740 :                     counter = counter + 1_IK</span></a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineCov">    2715740 :                     EndOfSplitLoc(counter) = indx</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">      76641 :             if (allocated(EndOfSplitLoc)) deallocate(EndOfSplitLoc)</span></a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineCov">      76641 :             allocate(EndOfSplitLoc(numSplitEndLoc))</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">      76641 :             counter = 0_IK</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">   16966100 :             do indx = 1,stringLen</span></a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineCov">   16966100 :                 if (IsEndOfSplitLoc(indx)==1_IK) then</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">    2713700 :                     counter = counter + 1_IK</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">    2713700 :                     EndOfSplitLoc(counter) = indx</span></a>
 <a name="553"><span class="lineNum">     553 </span>            :                 end if</a>
 <a name="554"><span class="lineNum">     554 </span>            :             end do</a>
 <a name="555"><span class="lineNum">     555 </span>            :         end if</a>
-<a name="556"><span class="lineNum">     556 </span><span class="lineCov">    5585150 :         EndOfSplitLoc = EndOfSplitLoc(1:counter)</span></a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineCov">      76834 :         deallocate(IsEndOfSplitLoc)</span></a>
+<a name="556"><span class="lineNum">     556 </span><span class="lineCov">    5580680 :         EndOfSplitLoc = EndOfSplitLoc(1:counter)</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineCov">      76641 :         deallocate(IsEndOfSplitLoc)</span></a>
 <a name="558"><span class="lineNum">     558 </span>            : </a>
 <a name="559"><span class="lineNum">     559 </span>            :         ! compute the number wrappings to be done</a>
 <a name="560"><span class="lineNum">     560 </span>            : </a>
 <a name="561"><span class="lineNum">     561 </span>            :         ! xxx: here goes another GFortran 7.3 bug: EndOfLineLoc is assumed already allocated, despite the first appearance here.</a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">      76834 :         if (allocated(EndOfLineLoc)) deallocate(EndOfLineLoc)</span></a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">      76834 :         allocate( EndOfLineLoc(0:numSplitEndLoc+1) ) ! consider the maximum possible number of lines</span></a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineCov">    2946240 :         EndOfLineLoc = 0_IK</span></a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">      76834 :         lineCount = 0_IK</span></a>
-<a name="566"><span class="lineNum">     566 </span><span class="lineCov">      76834 :         padLengthDynamic = 0_IK ! first wrap does not need padding</span></a>
-<a name="567"><span class="lineNum">     567 </span><span class="lineCov">      76834 :         indxOld = 1_IK</span></a>
-<a name="568"><span class="lineNum">     568 </span><span class="lineCov">      76834 :         indx = 0_IK</span></a>
-<a name="569"><span class="lineNum">     569 </span><span class="lineCov">      76834 :         oldLineLen = -huge(oldLineLen)</span></a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">    2657800 :         blockFindLine: do</span></a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineCov">    2734630 :             indx = indx + 1_IK</span></a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">    2734630 :             if (indx&gt;numSplitEndLoc) exit blockFindLine</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">    2657800 :             newLineLen = padLengthDynamic+EndOfSplitLoc(indx)-EndOfLineLoc(lineCount)</span></a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">    2657800 :             if (newLineLen&lt;=width) then</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">    2523750 :                 oldLineLen = newLineLen</span></a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">    2523750 :                 cycle blockFindLine</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">      76641 :         if (allocated(EndOfLineLoc)) deallocate(EndOfLineLoc)</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">      76641 :         allocate( EndOfLineLoc(0:numSplitEndLoc+1) ) ! consider the maximum possible number of lines</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">    2943620 :         EndOfLineLoc = 0_IK</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">      76641 :         lineCount = 0_IK</span></a>
+<a name="566"><span class="lineNum">     566 </span><span class="lineCov">      76641 :         padLengthDynamic = 0_IK ! first wrap does not need padding</span></a>
+<a name="567"><span class="lineNum">     567 </span><span class="lineCov">      76641 :         indxOld = 1_IK</span></a>
+<a name="568"><span class="lineNum">     568 </span><span class="lineCov">      76641 :         indx = 0_IK</span></a>
+<a name="569"><span class="lineNum">     569 </span><span class="lineCov">      76641 :         oldLineLen = -huge(oldLineLen)</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">    2655750 :         blockFindLine: do</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">    2732390 :             indx = indx + 1_IK</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">    2732390 :             if (indx&gt;numSplitEndLoc) exit blockFindLine</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">    2655750 :             newLineLen = padLengthDynamic+EndOfSplitLoc(indx)-EndOfLineLoc(lineCount)</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">    2655750 :             if (newLineLen&lt;=width) then</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">    2521900 :                 oldLineLen = newLineLen</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">    2521900 :                 cycle blockFindLine</span></a>
 <a name="577"><span class="lineNum">     577 </span>            :             else</a>
 <a name="578"><span class="lineNum">     578 </span>            :                 ! swap the commented block with the uncommented to switch from better to good wrapping style.</a>
-<a name="579"><span class="lineNum">     579 </span><span class="lineCov">     134042 :                 lineCount = lineCount + 1_IK</span></a>
-<a name="580"><span class="lineNum">     580 </span><span class="lineCov">     134042 :                 if (indx-1_IK&gt;indxOld) then ! ensure there is at least one split before the wrapping point</span></a>
+<a name="579"><span class="lineNum">     579 </span><span class="lineCov">     133849 :                 lineCount = lineCount + 1_IK</span></a>
+<a name="580"><span class="lineNum">     580 </span><span class="lineCov">     133849 :                 if (indx-1_IK&gt;indxOld) then ! ensure there is at least one split before the wrapping point</span></a>
 <a name="581"><span class="lineNum">     581 </span>            :                     ! comment the following line to keep the max line length, strictly less than width (if possible).</a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">     133982 :                     if (width-oldLineLen&gt;newLineLen-width) indx = indx + 1_IK ! removing the last token would make the line more beautiful</span></a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">     133982 :                     EndOfLineLoc(lineCount) = EndOfSplitLoc(indx-1)</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineCov">     133789 :                     if (width-oldLineLen&gt;newLineLen-width) indx = indx + 1_IK ! removing the last token would make the line more beautiful</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">     133789 :                     EndOfLineLoc(lineCount) = EndOfSplitLoc(indx-1)</span></a>
 <a name="584"><span class="lineNum">     584 </span>            :                 else</a>
 <a name="585"><span class="lineNum">     585 </span><span class="lineCov">         60 :                     EndOfLineLoc(lineCount) = EndOfSplitLoc(indx)</span></a>
 <a name="586"><span class="lineNum">     586 </span>            :                 end if</a>
-<a name="587"><span class="lineNum">     587 </span><span class="lineCov">     134042 :                 indxOld = indx</span></a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineCov">     134042 :                 padLengthDynamic = padLength</span></a>
+<a name="587"><span class="lineNum">     587 </span><span class="lineCov">     133849 :                 indxOld = indx</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">     133849 :                 padLengthDynamic = padLength</span></a>
 <a name="589"><span class="lineNum">     589 </span>            :             end if</a>
 <a name="590"><span class="lineNum">     590 </span>            :         end do blockFindLine</a>
 <a name="591"><span class="lineNum">     591 </span>            : </a>
 <a name="592"><span class="lineNum">     592 </span>            :         ! add the remaining end of the string as a separate line</a>
 <a name="593"><span class="lineNum">     593 </span>            : </a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">      76834 :         if (EndOfLineLoc(lineCount)&lt;stringLen .or. lineCount==0_IK) then</span></a>
-<a name="595"><span class="lineNum">     595 </span><span class="lineCov">      75243 :             lineCount = lineCount + 1_IK</span></a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">      75243 :             EndOfLineLoc(lineCount) = stringLen</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">      76641 :         if (EndOfLineLoc(lineCount)&lt;stringLen .or. lineCount==0_IK) then</span></a>
+<a name="595"><span class="lineNum">     595 </span><span class="lineCov">      75050 :             lineCount = lineCount + 1_IK</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">      75050 :             EndOfLineLoc(lineCount) = stringLen</span></a>
 <a name="597"><span class="lineNum">     597 </span>            :         end if</a>
-<a name="598"><span class="lineNum">     598 </span><span class="lineCov">    3364810 :         EndOfLineLoc = pack(EndOfLineLoc, mask=EndOfLineLoc/=0_IK)</span></a>
+<a name="598"><span class="lineNum">     598 </span><span class="lineCov">    3361420 :         EndOfLineLoc = pack(EndOfLineLoc, mask=EndOfLineLoc/=0_IK)</span></a>
 <a name="599"><span class="lineNum">     599 </span>            : </a>
 <a name="600"><span class="lineNum">     600 </span>            :         ! ensure the line count makes sense</a>
 <a name="601"><span class="lineNum">     601 </span>            : </a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">      76834 :         if ( lineCount /= size(EndOfLineLoc) ) then</span></a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">      76641 :         if ( lineCount /= size(EndOfLineLoc) ) then</span></a>
 <a name="603"><span class="lineNum">     603 </span>            :             write(output_unit,&quot;(*(g0,:,' '))&quot;)  MODULE_NAME // PROCEDURE_NAME // &amp;</a>
 <a name="604"><span class="lineNum">     604 </span><span class="lineNoCov">          0 :                                                 &quot;: Internal error occurred. lineCount /= size(EndOfLineLoc):&quot;, &amp;</span></a>
 <a name="605"><span class="lineNum">     605 </span><span class="lineNoCov">          0 :                                                 lineCount, &quot;/=&quot;, size(EndOfLineLoc), EndOfLineLoc</span></a>
@@ -679,11 +679,11 @@
 <a name="609"><span class="lineNum">     609 </span>            : </a>
 <a name="610"><span class="lineNum">     610 </span>            :         ! construct the wrappings</a>
 <a name="611"><span class="lineNum">     611 </span>            :         </a>
-<a name="612"><span class="lineNum">     612 </span><span class="lineCov">     286119 :         allocate( ListOfLines(lineCount) )</span></a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">      76834 :         indx = 1_IK</span></a>
-<a name="614"><span class="lineNum">     614 </span><span class="lineCov">      76834 :         ListOfLines(indx)%record = string(1:EndOfLineLoc(indx))</span></a>
-<a name="615"><span class="lineNum">     615 </span><span class="lineCov">     209285 :         do indx = 2, lineCount</span></a>
-<a name="616"><span class="lineNum">     616 </span><span class="lineCov">     132451 :             if ( padLength==0 .and. EndOfLineLoc(indx-1)+1&gt;EndOfLineLoc(indx) ) then</span></a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">     285540 :         allocate( ListOfLines(lineCount) )</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">      76641 :         indx = 1_IK</span></a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">      76641 :         ListOfLines(indx)%record = string(1:EndOfLineLoc(indx))</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">     208899 :         do indx = 2, lineCount</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">     132258 :             if ( padLength==0 .and. EndOfLineLoc(indx-1)+1&gt;EndOfLineLoc(indx) ) then</span></a>
 <a name="617"><span class="lineNum">     617 </span>            :                 write(output_unit,&quot;(*(g0,:,' '))&quot;)  MODULE_NAME // PROCEDURE_NAME // &amp;</a>
 <a name="618"><span class="lineNum">     618 </span>            :                                                     &quot;: Fatal error occurred. &quot; // &amp;</a>
 <a name="619"><span class="lineNum">     619 </span>            :                                                     &quot;padLength==0 .and. EndOfLineLoc(indx-1)+1&gt;EndOfLineLoc(indx) &quot; // &amp;</a>
@@ -691,10 +691,10 @@
 <a name="621"><span class="lineNum">     621 </span><span class="lineNoCov">          0 :                 write(output_unit,&quot;(A)&quot;)            string</span></a>
 <a name="622"><span class="lineNum">     622 </span><span class="lineNoCov">          0 :                 error stop</span></a>
 <a name="623"><span class="lineNum">     623 </span>            :             end if</a>
-<a name="624"><span class="lineNum">     624 </span><span class="lineCov">     209285 :             ListOfLines(indx)%record = string(1:padLength) // string(EndOfLineLoc(indx-1)+1:EndOfLineLoc(indx))</span></a>
+<a name="624"><span class="lineNum">     624 </span><span class="lineCov">     208899 :             ListOfLines(indx)%record = string(1:padLength) // string(EndOfLineLoc(indx-1)+1:EndOfLineLoc(indx))</span></a>
 <a name="625"><span class="lineNum">     625 </span>            :         end do</a>
 <a name="626"><span class="lineNum">     626 </span>            : </a>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">     123161 :     end function wrapText</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">     126521 :     end function wrapText</span></a>
 <a name="628"><span class="lineNum">     628 </span>            : </a>
 <a name="629"><span class="lineNum">     629 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="630"><span class="lineNum">     630 </span>            : </a>
@@ -708,24 +708,24 @@
 <a name="638"><span class="lineNum">     638 </span>            :     !&gt;</a>
 <a name="639"><span class="lineNum">     639 </span>            :     !&gt; \remark</a>
 <a name="640"><span class="lineNum">     640 </span>            :     !&gt; The escape sequence &quot;\n&quot; can be passed as the input value of `delimiter` to separate the lines.</a>
-<a name="641"><span class="lineNum">     641 </span><span class="lineCov">      34237 :     module function getListOfLines(string,delimiter) result(ListOfLines)</span></a>
+<a name="641"><span class="lineNum">     641 </span><span class="lineCov">      34041 :     module function getListOfLines(string,delimiter) result(ListOfLines)</span></a>
 <a name="642"><span class="lineNum">     642 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="643"><span class="lineNum">     643 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getListOfLines</a>
 <a name="644"><span class="lineNum">     644 </span>            : #endif</a>
-<a name="645"><span class="lineNum">     645 </span><span class="lineCov">     123161 :         use Constants_mod, only: IK</span></a>
+<a name="645"><span class="lineNum">     645 </span><span class="lineCov">     126521 :         use Constants_mod, only: IK</span></a>
 <a name="646"><span class="lineNum">     646 </span>            :         implicit none</a>
 <a name="647"><span class="lineNum">     647 </span>            :         character(len=*)  , intent(in)              :: string</a>
 <a name="648"><span class="lineNum">     648 </span>            :         character(len=*)  , intent(in), optional    :: delimiter</a>
 <a name="649"><span class="lineNum">     649 </span>            :         type(CharVec_type), allocatable             :: ListOfLines(:)</a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineCov">      34237 :         character(len=:)  , allocatable             :: dumstr</span></a>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">      34041 :         character(len=:)  , allocatable             :: dumstr</span></a>
 <a name="651"><span class="lineNum">     651 </span>            :         integer(IK)                                 :: stringLen, delimLen, delimLenMinusOne</a>
 <a name="652"><span class="lineNum">     652 </span>            :         integer(IK)                                 :: maxNumSplit, counterString, counterLine, counterRecord</a>
 <a name="653"><span class="lineNum">     653 </span>            :         logical                                     :: delimIsCStyle</a>
 <a name="654"><span class="lineNum">     654 </span>            : </a>
-<a name="655"><span class="lineNum">     655 </span><span class="lineCov">      34237 :         if (.not.present(delimiter)) then</span></a>
-<a name="656"><span class="lineNum">     656 </span><span class="lineCov">        722 :             allocate(ListOfLines(1))</span></a>
-<a name="657"><span class="lineNum">     657 </span><span class="lineCov">        361 :             ListOfLines(1)%record = string</span></a>
-<a name="658"><span class="lineNum">     658 </span><span class="lineCov">        361 :             return</span></a>
+<a name="655"><span class="lineNum">     655 </span><span class="lineCov">      34041 :         if (.not.present(delimiter)) then</span></a>
+<a name="656"><span class="lineNum">     656 </span><span class="lineCov">        330 :             allocate(ListOfLines(1))</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">        165 :             ListOfLines(1)%record = string</span></a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineCov">        165 :             return</span></a>
 <a name="659"><span class="lineNum">     659 </span>            :         end if</a>
 <a name="660"><span class="lineNum">     660 </span>            : </a>
 <a name="661"><span class="lineNum">     661 </span><span class="lineCov">      33876 :         stringLen = len(string)</span></a>
@@ -741,13 +741,13 @@
 <a name="671"><span class="lineNum">     671 </span><span class="lineCov">      33874 :         delimIsCStyle = delimLen==2 .and. delimiter==&quot;\n&quot;</span></a>
 <a name="672"><span class="lineNum">     672 </span>            : </a>
 <a name="673"><span class="lineNum">     673 </span><span class="lineCov">      33874 :         maxNumSplit = 1 + stringLen / delimLen</span></a>
-<a name="674"><span class="lineNum">     674 </span><span class="lineCov">   10008400 :         allocate(ListOfLines(maxNumSplit))</span></a>
+<a name="674"><span class="lineNum">     674 </span><span class="lineCov">   10011700 :         allocate(ListOfLines(maxNumSplit))</span></a>
 <a name="675"><span class="lineNum">     675 </span><span class="lineCov">      33874 :         allocate( character(len=stringLen) :: dumstr )</span></a>
 <a name="676"><span class="lineNum">     676 </span><span class="lineCov">      33874 :         counterLine = 0</span></a>
 <a name="677"><span class="lineNum">     677 </span><span class="lineCov">      33874 :         counterRecord = 0</span></a>
 <a name="678"><span class="lineNum">     678 </span><span class="lineCov">      33874 :         counterString = 1</span></a>
-<a name="679"><span class="lineNum">     679 </span><span class="lineCov">   17296500 :         loopParseString: do</span></a>
-<a name="680"><span class="lineNum">     680 </span><span class="lineCov">   17330400 :             if (counterString+delimLenMinusOne&gt;stringLen) then</span></a>
+<a name="679"><span class="lineNum">     679 </span><span class="lineCov">   17299800 :         loopParseString: do</span></a>
+<a name="680"><span class="lineNum">     680 </span><span class="lineCov">   17333700 :             if (counterString+delimLenMinusOne&gt;stringLen) then</span></a>
 <a name="681"><span class="lineNum">     681 </span><span class="lineCov">      30723 :                 counterLine = counterLine + 1</span></a>
 <a name="682"><span class="lineNum">     682 </span><span class="lineCov">      30723 :                 if (counterRecord==0) then</span></a>
 <a name="683"><span class="lineNum">     683 </span><span class="lineNoCov">          0 :                     ListOfLines(counterLine)%record = string(counterString:stringLen)</span></a>
@@ -756,35 +756,35 @@
 <a name="686"><span class="lineNum">     686 </span>            :                 end if</a>
 <a name="687"><span class="lineNum">     687 </span><span class="lineCov">      30723 :                 exit loopParseString</span></a>
 <a name="688"><span class="lineNum">     688 </span>            :             end if</a>
-<a name="689"><span class="lineNum">     689 </span><span class="lineCov">   17299600 :             if (string(counterString:counterString+delimLenMinusOne)==delimiter) then</span></a>
-<a name="690"><span class="lineNum">     690 </span><span class="lineCov">     101624 :                 counterLine = counterLine + 1</span></a>
-<a name="691"><span class="lineNum">     691 </span><span class="lineCov">     101624 :                 if (counterRecord==0) then</span></a>
+<a name="689"><span class="lineNum">     689 </span><span class="lineCov">   17303000 :             if (string(counterString:counterString+delimLenMinusOne)==delimiter) then</span></a>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">     101627 :                 counterLine = counterLine + 1</span></a>
+<a name="691"><span class="lineNum">     691 </span><span class="lineCov">     101627 :                 if (counterRecord==0) then</span></a>
 <a name="692"><span class="lineNum">     692 </span><span class="lineCov">      45289 :                     ListOfLines(counterLine)%record = &quot;&quot;</span></a>
 <a name="693"><span class="lineNum">     693 </span>            :                 else</a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">      56335 :                     ListOfLines(counterLine)%record = dumstr(1:counterRecord)</span></a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">      56335 :                     counterRecord = 0</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">      56338 :                     ListOfLines(counterLine)%record = dumstr(1:counterRecord)</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">      56338 :                     counterRecord = 0</span></a>
 <a name="696"><span class="lineNum">     696 </span>            :                 end if</a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">     101624 :                 counterString = counterString + delimLen</span></a>
-<a name="698"><span class="lineNum">     698 </span><span class="lineCov">     101624 :                 if (counterString&gt;stringLen) then</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">     101627 :                 counterString = counterString + delimLen</span></a>
+<a name="698"><span class="lineNum">     698 </span><span class="lineCov">     101627 :                 if (counterString&gt;stringLen) then</span></a>
 <a name="699"><span class="lineNum">     699 </span><span class="lineCov">       3151 :                     counterLine = counterLine + 1</span></a>
 <a name="700"><span class="lineNum">     700 </span><span class="lineCov">       3151 :                     ListOfLines(counterLine)%record = &quot;&quot;</span></a>
 <a name="701"><span class="lineNum">     701 </span><span class="lineCov">       3151 :                     exit loopParseString</span></a>
 <a name="702"><span class="lineNum">     702 </span>            :                 end if</a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">   17198000 :             elseif (delimIsCStyle .and. string(counterString:counterString)==&quot;\&quot;) then</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">   17201400 :             elseif (delimIsCStyle .and. string(counterString:counterString)==&quot;\&quot;) then</span></a>
 <a name="704"><span class="lineNum">     704 </span><span class="lineCov">       4199 :                 counterString = counterString + 1</span></a>
 <a name="705"><span class="lineNum">     705 </span><span class="lineCov">       4199 :                 counterRecord = counterRecord + 1</span></a>
 <a name="706"><span class="lineNum">     706 </span><span class="lineCov">       4199 :                 dumstr(counterRecord:counterRecord) = &quot;\&quot;</span></a>
 <a name="707"><span class="lineNum">     707 </span><span class="lineCov">       4199 :                 if (string(counterString:counterString)==&quot;\&quot;) counterString = counterString + 1</span></a>
 <a name="708"><span class="lineNum">     708 </span>            :             else</a>
-<a name="709"><span class="lineNum">     709 </span><span class="lineCov">   17193800 :                 counterRecord = counterRecord + 1</span></a>
-<a name="710"><span class="lineNum">     710 </span><span class="lineCov">   17193800 :                 dumstr(counterRecord:counterRecord) = string(counterString:counterString)</span></a>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">   17193800 :                 counterString = counterString + 1</span></a>
+<a name="709"><span class="lineNum">     709 </span><span class="lineCov">   17197200 :                 counterRecord = counterRecord + 1</span></a>
+<a name="710"><span class="lineNum">     710 </span><span class="lineCov">   17197200 :                 dumstr(counterRecord:counterRecord) = string(counterString:counterString)</span></a>
+<a name="711"><span class="lineNum">     711 </span><span class="lineCov">   17197200 :                 counterString = counterString + 1</span></a>
 <a name="712"><span class="lineNum">     712 </span>            :             end if</a>
 <a name="713"><span class="lineNum">     713 </span>            :         end do loopParseString</a>
 <a name="714"><span class="lineNum">     714 </span>            : </a>
-<a name="715"><span class="lineNum">     715 </span><span class="lineCov">   10482600 :         ListOfLines = ListOfLines(1:counterLine)</span></a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineCov">   10486000 :         ListOfLines = ListOfLines(1:counterLine)</span></a>
 <a name="716"><span class="lineNum">     716 </span>            : </a>
-<a name="717"><span class="lineNum">     717 </span><span class="lineCov">      68474 :     end function getListOfLines</span></a>
+<a name="717"><span class="lineNum">     717 </span><span class="lineCov">      68082 :     end function getListOfLines</span></a>
 <a name="718"><span class="lineNum">     718 </span>            : </a>
 <a name="719"><span class="lineNum">     719 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="720"><span class="lineNum">     720 </span>            : </a>

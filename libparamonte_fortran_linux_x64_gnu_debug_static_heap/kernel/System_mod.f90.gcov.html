@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">13</td>
@@ -1236,9 +1236,9 @@
 <a name="1166"><span class="lineNum">    1166 </span>            :         ! count the number of lines in the file.</a>
 <a name="1167"><span class="lineNum">    1167 </span>            : </a>
 <a name="1168"><span class="lineNum">    1168 </span><span class="lineCov">          3 :         nRecord = 0 ! number of filenames in the file</span></a>
-<a name="1169"><span class="lineNum">    1169 </span><span class="lineCov">         66 :         do</span></a>
-<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">         69 :             read(fileUnit,'(A)',iostat=Err%stat) record</span></a>
-<a name="1171"><span class="lineNum">    1171 </span><span class="lineCov">         69 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
+<a name="1169"><span class="lineNum">    1169 </span><span class="lineCov">         99 :         do</span></a>
+<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">        102 :             read(fileUnit,'(A)',iostat=Err%stat) record</span></a>
+<a name="1171"><span class="lineNum">    1171 </span><span class="lineCov">        102 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
 <a name="1172"><span class="lineNum">    1172 </span>            :             ! LCOV_EXCL_START</a>
 <a name="1173"><span class="lineNum">    1173 </span>            :                 Err%occurred = .true.</a>
 <a name="1174"><span class="lineNum">    1174 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read &amp;</a>
@@ -1255,8 +1255,8 @@
 <a name="1185"><span class="lineNum">    1185 </span>            :                 return</a>
 <a name="1186"><span class="lineNum">    1186 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="1187"><span class="lineNum">    1187 </span>            :             else</a>
-<a name="1188"><span class="lineNum">    1188 </span><span class="lineCov">         66 :                 nRecord = nRecord + 1</span></a>
-<a name="1189"><span class="lineNum">    1189 </span><span class="lineCov">         66 :                 cycle</span></a>
+<a name="1188"><span class="lineNum">    1188 </span><span class="lineCov">         99 :                 nRecord = nRecord + 1</span></a>
+<a name="1189"><span class="lineNum">    1189 </span><span class="lineCov">         99 :                 cycle</span></a>
 <a name="1190"><span class="lineNum">    1190 </span>            :             end if</a>
 <a name="1191"><span class="lineNum">    1191 </span>            :         end do</a>
 <a name="1192"><span class="lineNum">    1192 </span><span class="lineCov">          3 :         close(fileUnit,iostat=Err%stat)</span></a>
@@ -1294,10 +1294,10 @@
 <a name="1224"><span class="lineNum">    1224 </span>            :         ! the line counting, allocating memory, and reopening of the file</a>
 <a name="1225"><span class="lineNum">    1225 </span>            :         ! to read the contents. But is it really significant at all to care?</a>
 <a name="1226"><span class="lineNum">    1226 </span>            : </a>
-<a name="1227"><span class="lineNum">    1227 </span><span class="lineCov">         69 :         allocate(List(nRecord))</span></a>
-<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">         69 :         do counter = 1,nRecord</span></a>
-<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">         66 :             read(fileUnit,'(A)',iostat=Err%stat) record</span></a>
-<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">         66 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
+<a name="1227"><span class="lineNum">    1227 </span><span class="lineCov">        102 :         allocate(List(nRecord))</span></a>
+<a name="1228"><span class="lineNum">    1228 </span><span class="lineCov">        102 :         do counter = 1,nRecord</span></a>
+<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">         99 :             read(fileUnit,'(A)',iostat=Err%stat) record</span></a>
+<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">         99 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
 <a name="1231"><span class="lineNum">    1231 </span>            :             ! LCOV_EXCL_START</a>
 <a name="1232"><span class="lineNum">    1232 </span>            :                 Err%occurred = .true.</a>
 <a name="1233"><span class="lineNum">    1233 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read &amp;</a>
@@ -1311,7 +1311,7 @@
 <a name="1241"><span class="lineNum">    1241 </span>            :                 return</a>
 <a name="1242"><span class="lineNum">    1242 </span>            :             end if</a>
 <a name="1243"><span class="lineNum">    1243 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="1244"><span class="lineNum">    1244 </span><span class="lineCov">         69 :             List(counter)%record = trim(adjustl(record))</span></a>
+<a name="1244"><span class="lineNum">    1244 </span><span class="lineCov">        102 :             List(counter)%record = trim(adjustl(record))</span></a>
 <a name="1245"><span class="lineNum">    1245 </span>            :         end do</a>
 <a name="1246"><span class="lineNum">    1246 </span>            : </a>
 <a name="1247"><span class="lineNum">    1247 </span>            :         ! delete the stderr file</a>
@@ -1369,16 +1369,16 @@
 <a name="1299"><span class="lineNum">    1299 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="1300"><span class="lineNum">    1300 </span>            : </a>
 <a name="1301"><span class="lineNum">    1301 </span><span class="lineCov">        893 :         countRate = 1._RK / countRate</span></a>
-<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">   13487300 :         do</span></a>
-<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">   13488200 :             call system_clock( count=countNew )</span></a>
-<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">   13488200 :             if (countNew==countMax) then</span></a>
+<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">  252061000 :         do</span></a>
+<a name="1303"><span class="lineNum">    1303 </span><span class="lineCov">  252062000 :             call system_clock( count=countNew )</span></a>
+<a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">  252062000 :             if (countNew==countMax) then</span></a>
 <a name="1305"><span class="lineNum">    1305 </span>            :             ! LCOV_EXCL_START</a>
 <a name="1306"><span class="lineNum">    1306 </span>            :                 Err%occurred = .true.</a>
 <a name="1307"><span class="lineNum">    1307 </span>            :                 Err%msg = PROCEDURE_NAME // &quot;: Error occurred. Maximum processor clock count reached.&quot;</a>
 <a name="1308"><span class="lineNum">    1308 </span>            :             end if</a>
 <a name="1309"><span class="lineNum">    1309 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">   13488200 :             if ( real(countNew-countOld,kind=RK) * countRate &gt; seconds ) exit</span></a>
-<a name="1311"><span class="lineNum">    1311 </span><span class="lineCov">   13487300 :             cycle</span></a>
+<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">  252062000 :             if ( real(countNew-countOld,kind=RK) * countRate &gt; seconds ) exit</span></a>
+<a name="1311"><span class="lineNum">    1311 </span><span class="lineCov">  252061000 :             cycle</span></a>
 <a name="1312"><span class="lineNum">    1312 </span>            :         end do</a>
 <a name="1313"><span class="lineNum">    1313 </span>            : </a>
 <a name="1314"><span class="lineNum">    1314 </span><span class="lineCov">        893 :     end subroutine sleep</span></a>

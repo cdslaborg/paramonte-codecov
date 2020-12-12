@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -423,27 +423,27 @@
 <a name="353"><span class="lineNum">     353 </span>            : </a>
 <a name="354"><span class="lineNum">     354 </span><span class="lineCov">          8 :         nskip = 0   ! check filename is not among records</span></a>
 <a name="355"><span class="lineNum">     355 </span><span class="lineCov">          8 :         nrecord = 0 ! number of filenames in the file</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         35 :         do</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">         43 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         43 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">         42 :         do</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">         50 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         50 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
 <a name="359"><span class="lineNum">     359 </span>            :             ! LCOV_EXCL_START</a>
 <a name="360"><span class="lineNum">     360 </span>            :                 Err%occurred = .true.</a>
 <a name="361"><span class="lineNum">     361 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
 <a name="362"><span class="lineNum">     362 </span>            :                 return</a>
 <a name="363"><span class="lineNum">     363 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         43 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         50 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
 <a name="365"><span class="lineNum">     365 </span><span class="lineCov">          8 :                 exit</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         35 :             elseif ( Err%stat&gt;0 ) then</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">         42 :             elseif ( Err%stat&gt;0 ) then</span></a>
 <a name="367"><span class="lineNum">     367 </span>            :             ! LCOV_EXCL_START</a>
 <a name="368"><span class="lineNum">     368 </span>            :                 Err%occurred = .true.</a>
 <a name="369"><span class="lineNum">     369 </span>            :                 Err%msg = PROCEDURE_NAME // &quot;: Unknown error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
 <a name="370"><span class="lineNum">     370 </span>            :                 return</a>
 <a name="371"><span class="lineNum">     371 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="372"><span class="lineNum">     372 </span>            :             else</a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         35 :                 recordTrimmed = trim(adjustl(record))</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         35 :                 if(filename==recordTrimmed) nskip = nskip + 1</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         35 :                 nrecord = nrecord + 1</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         35 :                 cycle</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">         42 :                 recordTrimmed = trim(adjustl(record))</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         42 :                 if(filename==recordTrimmed) nskip = nskip + 1</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">         42 :                 nrecord = nrecord + 1</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">         42 :                 cycle</span></a>
 <a name="377"><span class="lineNum">     377 </span>            :             end if</a>
 <a name="378"><span class="lineNum">     378 </span>            :         end do</a>
 <a name="379"><span class="lineNum">     379 </span><span class="lineCov">          8 :         close(fileUnit, iostat = Err%stat)</span></a>
@@ -455,7 +455,7 @@
 <a name="385"><span class="lineNum">     385 </span>            :         end if</a>
 <a name="386"><span class="lineNum">     386 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="387"><span class="lineNum">     387 </span>            : </a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         36 :         allocate(FileList(nrecord-nskip))</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">         43 :         allocate(FileList(nrecord-nskip))</span></a>
 <a name="389"><span class="lineNum">     389 </span>            : </a>
 <a name="390"><span class="lineNum">     390 </span><span class="lineCov">          8 :         call sleep(seconds=0.1_RK,Err=Err)</span></a>
 <a name="391"><span class="lineNum">     391 </span><span class="lineCov">          8 :         if (Err%occurred) then</span></a>
@@ -475,27 +475,27 @@
 <a name="405"><span class="lineNum">     405 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="406"><span class="lineNum">     406 </span>            : </a>
 <a name="407"><span class="lineNum">     407 </span><span class="lineCov">          8 :         fileCounter = 0</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">         43 :         do counter = 1,nrecord</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         35 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">         35 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">         50 :         do counter = 1,nrecord</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         42 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">         42 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
 <a name="411"><span class="lineNum">     411 </span>            :             ! LCOV_EXCL_START</a>
 <a name="412"><span class="lineNum">     412 </span>            :                 Err%occurred = .true.</a>
 <a name="413"><span class="lineNum">     413 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
 <a name="414"><span class="lineNum">     414 </span>            :                 return</a>
 <a name="415"><span class="lineNum">     415 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         35 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">         42 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
 <a name="417"><span class="lineNum">     417 </span><span class="lineNoCov">          0 :                 exit</span></a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">         35 :             elseif ( Err%stat&gt;0 ) then</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">         42 :             elseif ( Err%stat&gt;0 ) then</span></a>
 <a name="419"><span class="lineNum">     419 </span>            :             ! LCOV_EXCL_START</a>
 <a name="420"><span class="lineNum">     420 </span>            :                 Err%occurred = .true.</a>
 <a name="421"><span class="lineNum">     421 </span>            :                 Err%msg = PROCEDURE_NAME // &quot;: Unknown error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
 <a name="422"><span class="lineNum">     422 </span>            :                 return</a>
 <a name="423"><span class="lineNum">     423 </span>            :             end if</a>
 <a name="424"><span class="lineNum">     424 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         35 :             recordTrimmed = trim(adjustl(record))</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">         43 :             if(filename/=recordTrimmed) then</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">         28 :                 fileCounter = fileCounter + 1</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">         28 :                 FileList(fileCounter)%record = trim(adjustl(record))</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         42 :             recordTrimmed = trim(adjustl(record))</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">         50 :             if(filename/=recordTrimmed) then</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">         35 :                 fileCounter = fileCounter + 1</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">         35 :                 FileList(fileCounter)%record = trim(adjustl(record))</span></a>
 <a name="429"><span class="lineNum">     429 </span>            :             end if</a>
 <a name="430"><span class="lineNum">     430 </span>            :         end do</a>
 <a name="431"><span class="lineNum">     431 </span>            : </a>

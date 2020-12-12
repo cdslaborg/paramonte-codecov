@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -242,7 +242,7 @@
 <a name="172"><span class="lineNum">     172 </span>            :     !&gt; \warning</a>
 <a name="173"><span class="lineNum">     173 </span>            :     !&gt; This routine global Coarray and MPI synchronization barriers and</a>
 <a name="174"><span class="lineNum">     174 </span>            :     !&gt; therefore, must be called by all processes in the current simulation.</a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        806 :     subroutine syncImages()</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">        826 :     subroutine syncImages()</span></a>
 <a name="176"><span class="lineNum">     176 </span>            :         implicit none</a>
 <a name="177"><span class="lineNum">     177 </span>            : #if defined MPI_ENABLED</a>
 <a name="178"><span class="lineNum">     178 </span>            :         block</a>
@@ -281,7 +281,7 @@
 <a name="211"><span class="lineNum">     211 </span>            :             call mpi_finalize(ierrMPI)</a>
 <a name="212"><span class="lineNum">     212 </span>            :         end if</a>
 <a name="213"><span class="lineNum">     213 </span>            : #endif</a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">        807 :     end subroutine finalizeImages</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">        827 :     end subroutine finalizeImages</span></a>
 <a name="215"><span class="lineNum">     215 </span>            : </a>
 <a name="216"><span class="lineNum">     216 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>

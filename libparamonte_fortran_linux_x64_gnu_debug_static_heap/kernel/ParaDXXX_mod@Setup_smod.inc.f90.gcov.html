@@ -31,13 +31,13 @@
             <td class="headerValue">ParaMonte :: Serial Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">505</td>
-            <td class="headerCovTableEntry">527</td>
-            <td class="headerCovTableEntryHi">95.8 %</td>
+            <td class="headerCovTableEntry">508</td>
+            <td class="headerCovTableEntry">528</td>
+            <td class="headerCovTableEntryHi">96.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -1081,8 +1081,8 @@
 <a name="1011"><span class="lineNum">    1011 </span>            :             ! reset BurninLoc to the maximum value</a>
 <a name="1012"><span class="lineNum">    1012 </span>            : </a>
 <a name="1013"><span class="lineNum">    1013 </span><span class="lineCov">        227 :             if (self%Stats%AdaptationBurninLoc%compact&gt;self%Stats%BurninLoc%compact) then</span></a>
-<a name="1014"><span class="lineNum">    1014 </span><span class="lineNoCov">          0 :                 self%Stats%BurninLoc%compact = self%Stats%AdaptationBurninLoc%compact</span></a>
-<a name="1015"><span class="lineNum">    1015 </span><span class="lineNoCov">          0 :                 self%Stats%BurninLoc%verbose = self%Stats%AdaptationBurninLoc%verbose</span></a>
+<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">          1 :                 self%Stats%BurninLoc%compact = self%Stats%AdaptationBurninLoc%compact</span></a>
+<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">          1 :                 self%Stats%BurninLoc%verbose = self%Stats%AdaptationBurninLoc%verbose</span></a>
 <a name="1016"><span class="lineNum">    1016 </span>            :             end if</a>
 <a name="1017"><span class="lineNum">    1017 </span>            : </a>
 <a name="1018"><span class="lineNum">    1018 </span>            :             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
@@ -1142,7 +1142,7 @@
 <a name="1072"><span class="lineNum">    1072 </span>            :                                                 , newline = &quot;\n&quot;    &amp;</a>
 <a name="1073"><span class="lineNum">    1073 </span><span class="lineCov">        227 :                                                 , outputUnit = self%LogFile%unit )</span></a>
 <a name="1074"><span class="lineNum">    1074 </span>            : </a>
-<a name="1075"><span class="lineNum">    1075 </span><span class="lineCov">      76625 :             self%Stats%Chain%count = sum(self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact))</span></a>
+<a name="1075"><span class="lineNum">    1075 </span><span class="lineCov">      76631 :             self%Stats%Chain%count = sum(self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact))</span></a>
 <a name="1076"><span class="lineNum">    1076 </span>            : </a>
 <a name="1077"><span class="lineNum">    1077 </span>            :             ! compute the covariance and correlation upper-triangle matrices</a>
 <a name="1078"><span class="lineNum">    1078 </span>            : </a>
@@ -1171,7 +1171,7 @@
 <a name="1101"><span class="lineNum">    1101 </span>            : </a>
 <a name="1102"><span class="lineNum">    1102 </span><span class="lineCov">        227 :             if (allocated(self%Stats%Chain%Quantile)) deallocate(self%Stats%Chain%Quantile)</span></a>
 <a name="1103"><span class="lineNum">    1103 </span><span class="lineCov">        227 :             allocate(self%Stats%Chain%Quantile(QPROB%count,ndim))</span></a>
-<a name="1104"><span class="lineNum">    1104 </span><span class="lineCov">     124168 :             ContiguousChain = transpose(self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
+<a name="1104"><span class="lineNum">    1104 </span><span class="lineCov">     124185 :             ContiguousChain = transpose(self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
 <a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">        579 :             do i = 1, ndim</span></a>
 <a name="1106"><span class="lineNum">    1106 </span><span class="lineCov">       2112 :                     self%Stats%Chain%Quantile(1:QPROB%count,i) = getQuantile( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &amp;</span></a>
 <a name="1107"><span class="lineNum">    1107 </span>            :                                                                             , nq = QPROB%count &amp; ! LCOV_EXCL_LINE</a>
@@ -1280,14 +1280,14 @@
 <a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">        227 :             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.iac&quot;</span></a>
 <a name="1211"><span class="lineNum">    1211 </span><span class="lineCov">        227 :             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
 <a name="1212"><span class="lineNum">    1212 </span><span class="lineCov">        579 :             write(self%LogFile%unit,self%LogFile%format) &quot;RefinementStage&quot;,&quot;SampleSize&quot;,&quot;IAC_SampleLogFunc&quot;,(&quot;IAC_&quot;//trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
-<a name="1213"><span class="lineNum">    1213 </span><span class="lineCov">        825 :             do i = 0, self%RefinedChain%numRefinement</span></a>
-<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">        825 :                 write(self%LogFile%unit,formatStr) i, self%RefinedChain%Count(i)%Verbose, self%RefinedChain%IAC(0:ndim,i)</span></a>
+<a name="1213"><span class="lineNum">    1213 </span><span class="lineCov">        828 :             do i = 0, self%RefinedChain%numRefinement</span></a>
+<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">        828 :                 write(self%LogFile%unit,formatStr) i, self%RefinedChain%Count(i)%Verbose, self%RefinedChain%IAC(0:ndim,i)</span></a>
 <a name="1215"><span class="lineNum">    1215 </span>            :             end do</a>
 <a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">        227 :             msg = &quot;This is the table of the Integrated Autocorrelation (IAC) of individual variables in the verbose (Markov) chain, at increasing stages of chain refinements.&quot;</span></a>
 <a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">        227 :             if (self%RefinedChain%numRefinement==0_IK) then</span></a>
 <a name="1218"><span class="lineNum">    1218 </span>            :                 msg = msg // NLC // &quot;The user-specified sampleRefinementCount (&quot;// num2str(self%SpecMCMC%SampleRefinementCount%val) // &quot;) &amp;</a>
 <a name="1219"><span class="lineNum">    1219 </span>            :                                     &amp;is too small to ensure an accurate computation of the decorrelated i.i.d. effective sample size. &amp;</a>
-<a name="1220"><span class="lineNum">    1220 </span><span class="lineCov">          8 :                                     &amp;No refinement of the Markov chain was performed.&quot;</span></a>
+<a name="1220"><span class="lineNum">    1220 </span><span class="lineCov">         11 :                                     &amp;No refinement of the Markov chain was performed.&quot;</span></a>
 <a name="1221"><span class="lineNum">    1221 </span>            :             end if</a>
 <a name="1222"><span class="lineNum">    1222 </span><span class="lineCov">        227 :             call self%reportDesc(msg)</span></a>
 <a name="1223"><span class="lineNum">    1223 </span>            : </a>
@@ -1502,370 +1502,371 @@
 <a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">        225 :                 if (allocated(self%Stats%Sample%Mean)) deallocate(self%Stats%Sample%Mean); allocate(self%Stats%Sample%Mean(ndim))</span></a>
 <a name="1433"><span class="lineNum">    1433 </span><span class="lineCov">        225 :                 if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat); allocate(self%Stats%Sample%CovMat(ndim,ndim))</span></a>
 <a name="1434"><span class="lineNum">    1434 </span><span class="lineCov">        225 :                 if (self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &gt; ndim + 1_IK) then</span></a>
-<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">        446 :                     call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
-<a name="1436"><span class="lineNum">    1436 </span><span class="lineCov">        446 :                                                     , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &amp;</span></a>
-<a name="1437"><span class="lineNum">    1437 </span>            :                                                     , nd = ndim &amp; ! LCOV_EXCL_LINE</a>
-<a name="1438"><span class="lineNum">    1438 </span>            :                                                     , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
-<a name="1439"><span class="lineNum">    1439 </span>            :                                                     , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
-<a name="1440"><span class="lineNum">    1440 </span>            :                                                     , CovMatUpper = self%Stats%Sample%CovMat &amp; ! LCOV_EXCL_LINE</a>
-<a name="1441"><span class="lineNum">    1441 </span>            :                                                     , Mean = self%Stats%Sample%Mean &amp; ! LCOV_EXCL_LINE</a>
-<a name="1442"><span class="lineNum">    1442 </span><span class="lineCov">        225 :                                                     )</span></a>
-<a name="1443"><span class="lineNum">    1443 </span><span class="lineCov">       1175 :                     self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)</span></a>
-<a name="1444"><span class="lineNum">    1444 </span>            : </a>
-<a name="1445"><span class="lineNum">    1445 </span>            :                 else</a>
-<a name="1446"><span class="lineNum">    1446 </span>            :                     if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat) ! LCOV_EXCL_LINE</a>
-<a name="1447"><span class="lineNum">    1447 </span><span class="lineCov">         14 :                     allocate(self%Stats%Sample%CovMat(ndim,ndim), source = POSINF_RK)</span></a>
-<a name="1448"><span class="lineNum">    1448 </span><span class="lineCov">         14 :                     self%Stats%Sample%CorMat = getEye(ndim,ndim)</span></a>
-<a name="1449"><span class="lineNum">    1449 </span>            :                     self%Stats%Sample%Mean   = getMean  ( nd = ndim &amp;</a>
-<a name="1450"><span class="lineNum">    1450 </span><span class="lineCov">          4 :                                                         , np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
-<a name="1451"><span class="lineNum">    1451 </span>            :                                                         , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
-<a name="1452"><span class="lineNum">    1452 </span><span class="lineCov">         12 :                                                         , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp;</span></a>
-<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">         10 :                                                         )</span></a>
-<a name="1454"><span class="lineNum">    1454 </span>            :                 end if</a>
-<a name="1455"><span class="lineNum">    1455 </span>            : </a>
-<a name="1456"><span class="lineNum">    1456 </span>            :                 ! transpose the covariance and correlation matrices</a>
-<a name="1457"><span class="lineNum">    1457 </span>            : </a>
-<a name="1458"><span class="lineNum">    1458 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
-<a name="1459"><span class="lineNum">    1459 </span><span class="lineCov">        350 :                     self%Stats%Sample%CorMat(i,i) = 1._RK</span></a>
-<a name="1460"><span class="lineNum">    1460 </span><span class="lineCov">        475 :                     self%Stats%Sample%CorMat(i+1:ndim,i) = self%Stats%Sample%CorMat(i,i+1:ndim)</span></a>
-<a name="1461"><span class="lineNum">    1461 </span><span class="lineCov">        700 :                     self%Stats%Sample%CovMat(i+1:ndim,i) = self%Stats%Sample%CovMat(i,i+1:ndim)</span></a>
-<a name="1462"><span class="lineNum">    1462 </span>            :                 end do</a>
-<a name="1463"><span class="lineNum">    1463 </span>            : </a>
-<a name="1464"><span class="lineNum">    1464 </span>            :                 ! compute the quantiles</a>
-<a name="1465"><span class="lineNum">    1465 </span>            : </a>
-<a name="1466"><span class="lineNum">    1466 </span><span class="lineCov">      52198 :                 ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
-<a name="1467"><span class="lineNum">    1467 </span><span class="lineCov">        225 :                 if (allocated(self%Stats%Sample%Quantile)) deallocate(self%Stats%Sample%Quantile)</span></a>
-<a name="1468"><span class="lineNum">    1468 </span><span class="lineCov">        225 :                 allocate(self%Stats%Sample%Quantile(QPROB%count,ndim))</span></a>
-<a name="1469"><span class="lineNum">    1469 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
-<a name="1470"><span class="lineNum">    1470 </span><span class="lineCov">       2800 :                     self%Stats%Sample%Quantile(1:QPROB%count,i) = getQuantile   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
-<a name="1471"><span class="lineNum">    1471 </span>            :                                                                                 , nq = QPROB%count &amp; ! LCOV_EXCL_LINE</a>
-<a name="1472"><span class="lineNum">    1472 </span>            :                                                                                 , SortedQuantileProbability = QPROB%Value &amp; ! LCOV_EXCL_LINE</a>
-<a name="1473"><span class="lineNum">    1473 </span>            :                                                                                 , Point = ContiguousChain(:,i) &amp; ! LCOV_EXCL_LINE</a>
-<a name="1474"><span class="lineNum">    1474 </span>            :                                                                                 , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
-<a name="1475"><span class="lineNum">    1475 </span><span class="lineCov">        700 :                                                                                 , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &amp;</span></a>
-<a name="1476"><span class="lineNum">    1476 </span><span class="lineCov">       3725 :                                                                                 )</span></a>
-<a name="1477"><span class="lineNum">    1477 </span>            :                 end do</a>
-<a name="1478"><span class="lineNum">    1478 </span>            : </a>
-<a name="1479"><span class="lineNum">    1479 </span>            :                 ! report the refined chain statistics</a>
-<a name="1480"><span class="lineNum">    1480 </span>            : </a>
-<a name="1481"><span class="lineNum">    1481 </span>            :                 !formatStr = &quot;(1A&quot; // self%LogFile%maxColWidth%str // &quot;,*(E&quot; // self%LogFile%maxColWidth%str // &quot;.&quot; // self%SpecBase%OutputRealPrecision%str // &quot;))&quot;</a>
-<a name="1482"><span class="lineNum">    1482 </span>            : </a>
-<a name="1483"><span class="lineNum">    1483 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1484"><span class="lineNum">    1484 </span>            : </a>
-<a name="1485"><span class="lineNum">    1485 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.length&quot;</span></a>
-<a name="1487"><span class="lineNum">    1487 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1488"><span class="lineNum">    1488 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_TABBED_FORMAT) self%Stats%Sample%count</span></a>
-<a name="1489"><span class="lineNum">    1489 </span><span class="lineCov">        225 :                 msg = &quot;This is the final output refined sample size. &quot;</span></a>
-<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">        225 :                 if (self%SpecBase%SampleSize%val/=-1_IK) then</span></a>
-<a name="1491"><span class="lineNum">    1491 </span><span class="lineCov">         57 :                     if (abs(self%SpecBase%SampleSize%abs)&lt;effectiveSampleSize) then</span></a>
-<a name="1492"><span class="lineNum">    1492 </span>            :                         msg = msg // &quot;The user-requested sample size (&quot;// num2str(self%SpecBase%SampleSize%abs) // &quot;) is smaller &amp;</a>
-<a name="1493"><span class="lineNum">    1493 </span>            :                             &amp;than the potentially-optimal i.i.d. sample size (&quot; // num2str(effectiveSampleSize) // &quot;). The output sample &amp;</a>
-<a name="1494"><span class="lineNum">    1494 </span>            :                             &amp;contains i.i.d. samples, however, the sample-size could have been larger if it had been set to the optimal size. &amp;</a>
-<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">          6 :                             &amp;To get the optimal size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
-<a name="1496"><span class="lineNum">    1496 </span><span class="lineCov">         51 :                     elseif (abs(self%SpecBase%SampleSize%abs)&gt;effectiveSampleSize) then</span></a>
-<a name="1497"><span class="lineNum">    1497 </span>            :                         msg = msg // &quot;The user-requested sample size (&quot;// num2str(self%SpecBase%SampleSize%abs) // &quot;) is larger than &amp;</a>
-<a name="1498"><span class="lineNum">    1498 </span>            :                             &amp;the potentially-optimal i.i.d. sample size (&quot; // num2str(effectiveSampleSize) // &quot;). The resulting sample &amp;</a>
-<a name="1499"><span class="lineNum">    1499 </span>            :                             &amp;likely contains duplicates and is not independently and identically distributed (i.i.d.).\nTo get the optimal &amp;</a>
-<a name="1500"><span class="lineNum">    1500 </span><span class="lineCov">         51 :                             &amp;size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
-<a name="1501"><span class="lineNum">    1501 </span>            :                     else ! LCOV_EXCL_LINE</a>
-<a name="1502"><span class="lineNum">    1502 </span>            :                         msg = msg // &quot;How lucky that could be! The user-requested sample size (&quot; // num2str(self%SpecBase%SampleSize%abs) // &amp; ! LCOV_EXCL_LINE</a>
-<a name="1503"><span class="lineNum">    1503 </span>            :                              &quot;) is equal to the potentially-optimal i.i.d. sample size determined by the &quot;//self%name//&quot; sampler.&quot; ! LCOV_EXCL_LINE</a>
-<a name="1504"><span class="lineNum">    1504 </span>            :                     end if</a>
-<a name="1505"><span class="lineNum">    1505 </span>            :                 end if</a>
-<a name="1506"><span class="lineNum">    1506 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
-<a name="1507"><span class="lineNum">    1507 </span>            : </a>
-<a name="1508"><span class="lineNum">    1508 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1509"><span class="lineNum">    1509 </span>            : </a>
-<a name="1510"><span class="lineNum">    1510 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1511"><span class="lineNum">    1511 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.avgStd&quot;</span></a>
-<a name="1512"><span class="lineNum">    1512 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1513"><span class="lineNum">    1513 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,self%LogFile%format) &quot;variableName&quot;, &quot;Mean&quot;, &quot;Standard Deviation&quot;</span></a>
-<a name="1514"><span class="lineNum">    1514 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
-<a name="1515"><span class="lineNum">    1515 </span><span class="lineCov">        575 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(self%SpecBase%VariableNameList%Val(i))), self%Stats%Sample%Mean(i), sqrt(self%Stats%Sample%CovMat(i,i))</span></a>
-<a name="1516"><span class="lineNum">    1516 </span>            :                 end do</a>
-<a name="1517"><span class="lineNum">    1517 </span><span class="lineCov">        225 :                 msg = &quot;This is the Mean and standard deviation table of the final output refined sample.&quot;</span></a>
-<a name="1518"><span class="lineNum">    1518 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
-<a name="1519"><span class="lineNum">    1519 </span>            : </a>
-<a name="1520"><span class="lineNum">    1520 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1521"><span class="lineNum">    1521 </span>            : </a>
-<a name="1522"><span class="lineNum">    1522 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1523"><span class="lineNum">    1523 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.covmat&quot;</span></a>
-<a name="1524"><span class="lineNum">    1524 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1525"><span class="lineNum">    1525 </span><span class="lineCov">        575 :                 write(self%LogFile%unit,self%LogFile%format) &quot;&quot;, (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
-<a name="1526"><span class="lineNum">    1526 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
-<a name="1527"><span class="lineNum">    1527 </span><span class="lineCov">        575 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(self%SpecBase%VariableNameList%Val(i))), self%Stats%Sample%CovMat(1:ndim,i)</span></a>
-<a name="1528"><span class="lineNum">    1528 </span>            :                 end do</a>
-<a name="1529"><span class="lineNum">    1529 </span><span class="lineCov">        225 :                 msg = &quot;This is the covariance matrix of the final output refined sample.&quot;</span></a>
-<a name="1530"><span class="lineNum">    1530 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
-<a name="1531"><span class="lineNum">    1531 </span>            : </a>
-<a name="1532"><span class="lineNum">    1532 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1533"><span class="lineNum">    1533 </span>            : </a>
-<a name="1534"><span class="lineNum">    1534 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1535"><span class="lineNum">    1535 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.cormat&quot;</span></a>
-<a name="1536"><span class="lineNum">    1536 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1537"><span class="lineNum">    1537 </span><span class="lineCov">        575 :                 write(self%LogFile%unit,self%LogFile%format) &quot;&quot;, (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
-<a name="1538"><span class="lineNum">    1538 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
-<a name="1539"><span class="lineNum">    1539 </span><span class="lineCov">        575 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(self%SpecBase%VariableNameList%Val(i))), self%Stats%Sample%CorMat(1:ndim,i)</span></a>
-<a name="1540"><span class="lineNum">    1540 </span>            :                 end do</a>
-<a name="1541"><span class="lineNum">    1541 </span><span class="lineCov">        225 :                 msg = &quot;This is the correlation matrix of the final output refined sample.&quot;</span></a>
-<a name="1542"><span class="lineNum">    1542 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
-<a name="1543"><span class="lineNum">    1543 </span>            : </a>
-<a name="1544"><span class="lineNum">    1544 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1545"><span class="lineNum">    1545 </span>            : </a>
-<a name="1546"><span class="lineNum">    1546 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1547"><span class="lineNum">    1547 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.quantile&quot;</span></a>
-<a name="1548"><span class="lineNum">    1548 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
-<a name="1549"><span class="lineNum">    1549 </span><span class="lineCov">        575 :                 write(self%LogFile%unit,self%LogFile%format) &quot;Quantile&quot;, (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
-<a name="1550"><span class="lineNum">    1550 </span><span class="lineCov">       2250 :                 do iq = 1, QPROB%count</span></a>
-<a name="1551"><span class="lineNum">    1551 </span><span class="lineCov">       5400 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(QPROB%Name(iq))), (self%Stats%Sample%Quantile(iq,i),i=1,ndim)</span></a>
-<a name="1552"><span class="lineNum">    1552 </span>            :                 end do</a>
-<a name="1553"><span class="lineNum">    1553 </span><span class="lineCov">        225 :                 msg = &quot;This is the quantiles table of the variables of the final output refined sample.&quot;</span></a>
-<a name="1554"><span class="lineNum">    1554 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
-<a name="1555"><span class="lineNum">    1555 </span>            : </a>
-<a name="1556"><span class="lineNum">    1556 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1557"><span class="lineNum">    1557 </span>            :                 ! Begin inter-chain convergence test in multiChain parallelization mode</a>
-<a name="1558"><span class="lineNum">    1558 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1559"><span class="lineNum">    1559 </span>            : </a>
-<a name="1560"><span class="lineNum">    1560 </span>            : #if defined CAF_ENABLED || defined MPI_ENABLED</a>
-<a name="1561"><span class="lineNum">    1561 </span>            : </a>
-<a name="1562"><span class="lineNum">    1562 </span>            :                 blockInterChainConvergence: if (self%SpecBase%ParallelizationModel%isMultiChain .and. self%Image%count&gt;1_IK) then</a>
-<a name="1563"><span class="lineNum">    1563 </span>            : </a>
-<a name="1564"><span class="lineNum">    1564 </span>            :                     call self%note  ( prefix            = self%brand        &amp;</a>
-<a name="1565"><span class="lineNum">    1565 </span>            :                                     , outputUnit        = self%LogFile%unit &amp;</a>
-<a name="1566"><span class="lineNum">    1566 </span>            :                                     , newline           = NLC               &amp;</a>
-<a name="1567"><span class="lineNum">    1567 </span>            :                                     , marginTop         = 1_IK              &amp;</a>
-<a name="1568"><span class="lineNum">    1568 </span>            :                                     , marginBot         = 1_IK              &amp;</a>
-<a name="1569"><span class="lineNum">    1569 </span>            :                                     , msg               = &quot;Computing the inter-chain convergence probabilities...&quot; )</a>
-<a name="1570"><span class="lineNum">    1570 </span>            :                     if (self%Image%isFirst) then ! print the message on stdout</a>
-<a name="1571"><span class="lineNum">    1571 </span>            :                         call self%note  ( prefix        = self%brand        &amp;</a>
-<a name="1572"><span class="lineNum">    1572 </span>            :                                         , outputUnit    = output_unit       &amp;</a>
-<a name="1573"><span class="lineNum">    1573 </span>            :                                         , newline       = NLC               &amp;</a>
-<a name="1574"><span class="lineNum">    1574 </span>            :                                         , marginTop     = 1_IK              &amp;</a>
-<a name="1575"><span class="lineNum">    1575 </span>            :                                         , marginBot     = 1_IK              &amp;</a>
-<a name="1576"><span class="lineNum">    1576 </span>            :                                         , msg           = &quot;Computing the inter-chain convergence probabilities...&quot; )</a>
-<a name="1577"><span class="lineNum">    1577 </span>            :                     end if</a>
-<a name="1578"><span class="lineNum">    1578 </span>            : </a>
-<a name="1579"><span class="lineNum">    1579 </span>            :                     call self%Image%sync()</a>
-<a name="1580"><span class="lineNum">    1580 </span>            : </a>
-<a name="1581"><span class="lineNum">    1581 </span>            :                     ! read the sample files generated by other images</a>
-<a name="1582"><span class="lineNum">    1582 </span>            : </a>
-<a name="1583"><span class="lineNum">    1583 </span>            :                     multiChainConvergenceTest: block</a>
-<a name="1584"><span class="lineNum">    1584 </span>            : </a>
-<a name="1585"><span class="lineNum">    1585 </span>            :                         use Sort_mod, only: sortAscending</a>
-<a name="1586"><span class="lineNum">    1586 </span>            :                         use String_mod, only: replaceStr</a>
-<a name="1587"><span class="lineNum">    1587 </span>            :                         use Statistics_mod, only: doSortedKS2</a>
-<a name="1588"><span class="lineNum">    1588 </span>            :                         use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type</a>
-<a name="1589"><span class="lineNum">    1589 </span>            :                         type(RefinedChain_type)     :: RefinedChainThisImage, RefinedChainThatImage</a>
-<a name="1590"><span class="lineNum">    1590 </span>            :                         integer(IK)                 :: imageID,indexMinProbKS,imageMinProbKS</a>
-<a name="1591"><span class="lineNum">    1591 </span>            :                         real(RK)                    :: statKS, minProbKS</a>
-<a name="1592"><span class="lineNum">    1592 </span>            :                         real(RK)    , allocatable   :: ProbKS(:)</a>
-<a name="1593"><span class="lineNum">    1593 </span>            :                         character(:), allocatable   :: inputSamplePath</a>
-<a name="1594"><span class="lineNum">    1594 </span>            : </a>
-<a name="1595"><span class="lineNum">    1595 </span>            :                         minProbKS = huge(minProbKS)</a>
-<a name="1596"><span class="lineNum">    1596 </span>            :                         if (allocated(ProbKS)) deallocate(ProbKS) ! LCOV_EXCL_LINE</a>
-<a name="1597"><span class="lineNum">    1597 </span>            :                         allocate(ProbKS(0:ndim))</a>
-<a name="1598"><span class="lineNum">    1598 </span>            : </a>
-<a name="1599"><span class="lineNum">    1599 </span>            :                         ! read the refined chain on the current image</a>
-<a name="1600"><span class="lineNum">    1600 </span>            : </a>
-<a name="1601"><span class="lineNum">    1601 </span>            :                         RefinedChainThisImage = readRefinedChain( sampleFilePath=self%SampleFile%Path%original, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim, tenabled = .true. )</a>
-<a name="1602"><span class="lineNum">    1602 </span>            :                         if (RefinedChainThisImage%Err%occurred) then</a>
-<a name="1603"><span class="lineNum">    1603 </span>            :                             ! LCOV_EXCL_START</a>
-<a name="1604"><span class="lineNum">    1604 </span>            :                             self%Err%occurred = .true.</a>
-<a name="1605"><span class="lineNum">    1605 </span>            :                             self%Err%msg = PROCEDURE_NAME//RefinedChainThisImage%Err%msg</a>
-<a name="1606"><span class="lineNum">    1606 </span>            :                             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
-<a name="1607"><span class="lineNum">    1607 </span>            :                             exit blockLeaderPostProcessing</a>
-<a name="1608"><span class="lineNum">    1608 </span>            :                             return</a>
-<a name="1609"><span class="lineNum">    1609 </span>            :                             ! LCOV_EXCL_STOP</a>
-<a name="1610"><span class="lineNum">    1610 </span>            :                         end if</a>
-<a name="1611"><span class="lineNum">    1611 </span>            : </a>
-<a name="1612"><span class="lineNum">    1612 </span>            :                         ! sort the refined chain on the current image</a>
-<a name="1613"><span class="lineNum">    1613 </span>            : </a>
-<a name="1614"><span class="lineNum">    1614 </span>            :                         do i = 0, ndim</a>
-<a name="1615"><span class="lineNum">    1615 </span>            :                             call sortAscending  ( np = RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose &amp;</a>
-<a name="1616"><span class="lineNum">    1616 </span>            :                                                 , Point = RefinedChainThisImage%LogFuncState(1:RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose,i) &amp;</a>
-<a name="1617"><span class="lineNum">    1617 </span>            :                                                 , Err = self%Err &amp;</a>
-<a name="1618"><span class="lineNum">    1618 </span>            :                                                 )</a>
-<a name="1619"><span class="lineNum">    1619 </span>            :                             if (self%Err%occurred) then</a>
-<a name="1620"><span class="lineNum">    1620 </span>            :                                 ! LCOV_EXCL_START</a>
-<a name="1621"><span class="lineNum">    1621 </span>            :                                 self%Err%msg = PROCEDURE_NAME//self%Err%msg</a>
-<a name="1622"><span class="lineNum">    1622 </span>            :                                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
-<a name="1623"><span class="lineNum">    1623 </span>            :                                 exit blockLeaderPostProcessing</a>
-<a name="1624"><span class="lineNum">    1624 </span>            :                                 return</a>
-<a name="1625"><span class="lineNum">    1625 </span>            :                                 ! LCOV_EXCL_STOP</a>
-<a name="1626"><span class="lineNum">    1626 </span>            :                             end if</a>
-<a name="1627"><span class="lineNum">    1627 </span>            :                         end do</a>
-<a name="1628"><span class="lineNum">    1628 </span>            : </a>
-<a name="1629"><span class="lineNum">    1629 </span>            :                         ! compute and report the KS convergence probabilities for all images</a>
-<a name="1630"><span class="lineNum">    1630 </span>            : </a>
-<a name="1631"><span class="lineNum">    1631 </span>            :                         formatStr = &quot;(1I&quot; // self%LogFile%maxColWidth%str // &quot;,*(E&quot; // self%LogFile%maxColWidth%str // &quot;.&quot; // self%SpecBase%OutputRealPrecision%str // &quot;E3))&quot;</a>
-<a name="1632"><span class="lineNum">    1632 </span>            : </a>
-<a name="1633"><span class="lineNum">    1633 </span>            :                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1634"><span class="lineNum">    1634 </span>            : </a>
-<a name="1635"><span class="lineNum">    1635 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
-<a name="1636"><span class="lineNum">    1636 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.kstest.prob&quot;</a>
-<a name="1637"><span class="lineNum">    1637 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
-<a name="1638"><span class="lineNum">    1638 </span>            :                         write(self%LogFile%unit,self%LogFile%format) &quot;ProcessID&quot;,(&quot;probKS(&quot;//trim(adjustl(self%RefinedChain%ColHeader(i)%record))//&quot;)&quot;,i=0,ndim)</a>
-<a name="1639"><span class="lineNum">    1639 </span>            : </a>
-<a name="1640"><span class="lineNum">    1640 </span>            :                         do imageID = 1, self%Image%count</a>
-<a name="1641"><span class="lineNum">    1641 </span>            : </a>
-<a name="1642"><span class="lineNum">    1642 </span>            :                             if (imageID/=self%Image%id) then</a>
-<a name="1643"><span class="lineNum">    1643 </span>            : </a>
-<a name="1644"><span class="lineNum">    1644 </span>            :                                 ! read the refined chain on the other image</a>
-<a name="1645"><span class="lineNum">    1645 </span>            : </a>
-<a name="1646"><span class="lineNum">    1646 </span>            :                                 inputSamplePath = replaceStr( string = self%SampleFile%Path%original &amp;</a>
-<a name="1647"><span class="lineNum">    1647 </span>            :                                                             , search = &quot;process_&quot;//num2str(self%Image%id) &amp;</a>
-<a name="1648"><span class="lineNum">    1648 </span>            :                                                             , substitute = &quot;process_&quot;//num2str(imageID) )</a>
-<a name="1649"><span class="lineNum">    1649 </span>            : </a>
-<a name="1650"><span class="lineNum">    1650 </span>            :                                 RefinedChainThatImage = readRefinedChain( sampleFilePath=inputSamplePath, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim, tenabled = .true. )</a>
-<a name="1651"><span class="lineNum">    1651 </span>            :                                 if (RefinedChainThatImage%Err%occurred) then</a>
-<a name="1652"><span class="lineNum">    1652 </span>            :                                     ! LCOV_EXCL_START</a>
-<a name="1653"><span class="lineNum">    1653 </span>            :                                     self%Err%occurred = .true.</a>
-<a name="1654"><span class="lineNum">    1654 </span>            :                                     self%Err%msg = PROCEDURE_NAME//RefinedChainThatImage%Err%msg</a>
-<a name="1655"><span class="lineNum">    1655 </span>            :                                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
-<a name="1656"><span class="lineNum">    1656 </span>            :                                     exit blockLeaderPostProcessing</a>
-<a name="1657"><span class="lineNum">    1657 </span>            :                                     return</a>
-<a name="1658"><span class="lineNum">    1658 </span>            :                                     ! LCOV_EXCL_STOP</a>
-<a name="1659"><span class="lineNum">    1659 </span>            :                                 end if</a>
-<a name="1660"><span class="lineNum">    1660 </span>            : </a>
-<a name="1661"><span class="lineNum">    1661 </span>            :                                 do i = 0, ndim</a>
-<a name="1662"><span class="lineNum">    1662 </span>            : </a>
-<a name="1663"><span class="lineNum">    1663 </span>            :                                     ! sort the refined chain on the other image</a>
-<a name="1664"><span class="lineNum">    1664 </span>            : </a>
-<a name="1665"><span class="lineNum">    1665 </span>            :                                     call sortAscending  ( np = RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose &amp;</a>
-<a name="1666"><span class="lineNum">    1666 </span>            :                                                         , Point = RefinedChainThatImage%LogFuncState(1:RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose,i) &amp;</a>
-<a name="1667"><span class="lineNum">    1667 </span>            :                                                         , Err = self%Err &amp;</a>
-<a name="1668"><span class="lineNum">    1668 </span>            :                                                         )</a>
-<a name="1669"><span class="lineNum">    1669 </span>            :                                     if (self%Err%occurred) then</a>
-<a name="1670"><span class="lineNum">    1670 </span>            :                                         ! LCOV_EXCL_START</a>
-<a name="1671"><span class="lineNum">    1671 </span>            :                                         self%Err%msg = PROCEDURE_NAME//self%Err%msg</a>
-<a name="1672"><span class="lineNum">    1672 </span>            :                                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
-<a name="1673"><span class="lineNum">    1673 </span>            :                                         exit blockLeaderPostProcessing</a>
-<a name="1674"><span class="lineNum">    1674 </span>            :                                         return</a>
-<a name="1675"><span class="lineNum">    1675 </span>            :                                         ! LCOV_EXCL_STOP</a>
-<a name="1676"><span class="lineNum">    1676 </span>            :                                     end if</a>
-<a name="1677"><span class="lineNum">    1677 </span>            : </a>
-<a name="1678"><span class="lineNum">    1678 </span>            :                                     ! compute the inter-chain KS probability table</a>
-<a name="1679"><span class="lineNum">    1679 </span>            : </a>
-<a name="1680"><span class="lineNum">    1680 </span>            :                                     call doSortedKS2( np1 = RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose &amp;</a>
-<a name="1681"><span class="lineNum">    1681 </span>            :                                                     , np2 = RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose &amp;</a>
-<a name="1682"><span class="lineNum">    1682 </span>            :                                                     , SortedPoint1 = RefinedChainThisImage%LogFuncState(1:RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose,i) &amp;</a>
-<a name="1683"><span class="lineNum">    1683 </span>            :                                                     , SortedPoint2 = RefinedChainThatImage%LogFuncState(1:RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose,i) &amp;</a>
-<a name="1684"><span class="lineNum">    1684 </span>            :                                                     , statKS = statKS &amp;</a>
-<a name="1685"><span class="lineNum">    1685 </span>            :                                                     , probKS = ProbKS(i) &amp;</a>
-<a name="1686"><span class="lineNum">    1686 </span>            :                                                     )</a>
-<a name="1687"><span class="lineNum">    1687 </span>            : </a>
-<a name="1688"><span class="lineNum">    1688 </span>            :                                     ! determine the minimum KS</a>
-<a name="1689"><span class="lineNum">    1689 </span>            : </a>
-<a name="1690"><span class="lineNum">    1690 </span>            :                                     if (ProbKS(i)&lt;minProbKS) then</a>
-<a name="1691"><span class="lineNum">    1691 </span>            :                                         minProbKS = ProbKS(i)</a>
-<a name="1692"><span class="lineNum">    1692 </span>            :                                         indexMinProbKS = i</a>
-<a name="1693"><span class="lineNum">    1693 </span>            :                                         imageMinProbKS = imageID</a>
-<a name="1694"><span class="lineNum">    1694 </span>            :                                     end if</a>
-<a name="1695"><span class="lineNum">    1695 </span>            : </a>
-<a name="1696"><span class="lineNum">    1696 </span>            :                                 end do</a>
-<a name="1697"><span class="lineNum">    1697 </span>            : </a>
-<a name="1698"><span class="lineNum">    1698 </span>            :                                 ! write the inter-chain KS probability table row</a>
-<a name="1699"><span class="lineNum">    1699 </span>            : </a>
-<a name="1700"><span class="lineNum">    1700 </span>            :                                 write(self%LogFile%unit, formatStr) imageID, (ProbKS(i), i = 0, ndim)</a>
-<a name="1701"><span class="lineNum">    1701 </span>            : </a>
-<a name="1702"><span class="lineNum">    1702 </span>            :                             end if</a>
-<a name="1703"><span class="lineNum">    1703 </span>            : </a>
-<a name="1704"><span class="lineNum">    1704 </span>            :                         end do</a>
-<a name="1705"><span class="lineNum">    1705 </span>            :                         msg =   &quot;This is the table pairwise inter-chain Kolmogorov-Smirnov (KS) convergence (similarity) probabilities. &amp;</a>
-<a name="1706"><span class="lineNum">    1706 </span>            :                                 &amp;Higher KS probabilities are better, indicating less evidence for a lack of convergence.&quot;</a>
-<a name="1707"><span class="lineNum">    1707 </span>            :                         call self%reportDesc(msg)</a>
-<a name="1708"><span class="lineNum">    1708 </span>            : </a>
-<a name="1709"><span class="lineNum">    1709 </span>            :                         ! write the smallest KS probabilities</a>
-<a name="1710"><span class="lineNum">    1710 </span>            : </a>
-<a name="1711"><span class="lineNum">    1711 </span>            :                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1712"><span class="lineNum">    1712 </span>            : </a>
-<a name="1713"><span class="lineNum">    1713 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
-<a name="1714"><span class="lineNum">    1714 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.kstest.prob.min&quot;</a>
-<a name="1715"><span class="lineNum">    1715 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
-<a name="1716"><span class="lineNum">    1716 </span>            :                         write(self%LogFile%unit,GENERIC_TABBED_FORMAT) minProbKS</a>
-<a name="1717"><span class="lineNum">    1717 </span>            :                         msg =   &quot;This is the smallest KS-test probability for the inter-chain sampling convergence, which has happened between &quot;//self%RefinedChain%ColHeader(indexMinProbKS)%record// &amp;</a>
-<a name="1718"><span class="lineNum">    1718 </span>            :                                 &quot; on the chains generated by processes &quot;//num2str(self%Image%id)//&quot; and &quot;//num2str(imageMinProbKS)//&quot;.&quot;</a>
-<a name="1719"><span class="lineNum">    1719 </span>            :                         call self%reportDesc(msg)</a>
-<a name="1720"><span class="lineNum">    1720 </span>            : </a>
-<a name="1721"><span class="lineNum">    1721 </span>            :                         ! report the smallest KS probabilities on stdout</a>
-<a name="1722"><span class="lineNum">    1722 </span>            : </a>
-<a name="1723"><span class="lineNum">    1723 </span>            :                         if (self%Image%isFirst) call self%note  ( prefix     = self%brand       &amp;</a>
-<a name="1724"><span class="lineNum">    1724 </span>            :                                                                 , outputUnit = output_unit      &amp;</a>
-<a name="1725"><span class="lineNum">    1725 </span>            :                                                                 , newline    = NLC              &amp;</a>
-<a name="1726"><span class="lineNum">    1726 </span>            :                                                                 , marginTop  = 2_IK             &amp;</a>
-<a name="1727"><span class="lineNum">    1727 </span>            :                                                                 , marginBot  = 0_IK             &amp;</a>
-<a name="1728"><span class="lineNum">    1728 </span>            :                                                                 , msg        = &quot;The smallest KS probabilities for the inter-chain sampling convergence:&quot; )</a>
-<a name="1729"><span class="lineNum">    1729 </span>            : </a>
-<a name="1730"><span class="lineNum">    1730 </span>            :                         do imageID = 1, self%Image%count</a>
-<a name="1731"><span class="lineNum">    1731 </span>            :                             if (imageID==self%Image%id) then</a>
-<a name="1732"><span class="lineNum">    1732 </span>            :                                 call self%note  ( prefix     = self%brand       &amp;</a>
-<a name="1733"><span class="lineNum">    1733 </span>            :                                                 , outputUnit = output_unit      &amp;</a>
-<a name="1734"><span class="lineNum">    1734 </span>            :                                                 , newline    = NLC              &amp;</a>
-<a name="1735"><span class="lineNum">    1735 </span>            :                                                 , marginTop  = 0_IK             &amp;</a>
-<a name="1736"><span class="lineNum">    1736 </span>            :                                                 , marginBot  = 0_IK             &amp;</a>
-<a name="1737"><span class="lineNum">    1737 </span>            :                                                 , msg        = num2str(minProbKS)//&quot; for &quot;//self%RefinedChain%ColHeader(indexMinProbKS)%record//&amp;</a>
-<a name="1738"><span class="lineNum">    1738 </span>            :                                                                &quot; on the chains generated by processes &quot;//num2str(self%Image%id)//&amp;</a>
-<a name="1739"><span class="lineNum">    1739 </span>            :                                                                &quot; and &quot;//num2str(imageMinProbKS)//&quot;.&quot; )</a>
-<a name="1740"><span class="lineNum">    1740 </span>            :                             end if</a>
-<a name="1741"><span class="lineNum">    1741 </span>            : #if defined CAF_ENABLED || MPI_ENABLED</a>
-<a name="1742"><span class="lineNum">    1742 </span>            :                             call execute_command_line(&quot; &quot;, cmdstat = self%Err%stat)</a>
-<a name="1743"><span class="lineNum">    1743 </span>            :                             flush(output_unit)</a>
-<a name="1744"><span class="lineNum">    1744 </span>            :                             call self%Image%sync()</a>
-<a name="1745"><span class="lineNum">    1745 </span>            : #endif</a>
-<a name="1746"><span class="lineNum">    1746 </span>            :                         end do</a>
-<a name="1747"><span class="lineNum">    1747 </span>            : </a>
-<a name="1748"><span class="lineNum">    1748 </span>            :                     end block multiChainConvergenceTest</a>
-<a name="1749"><span class="lineNum">    1749 </span>            : </a>
-<a name="1750"><span class="lineNum">    1750 </span>            :                 end if blockInterChainConvergence</a>
-<a name="1751"><span class="lineNum">    1751 </span>            : #endif</a>
-<a name="1752"><span class="lineNum">    1752 </span>            : </a>
-<a name="1753"><span class="lineNum">    1753 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1754"><span class="lineNum">    1754 </span>            :                 ! End inter-chain convergence test in multiChain parallelization mode</a>
-<a name="1755"><span class="lineNum">    1755 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1756"><span class="lineNum">    1756 </span>            : </a>
-<a name="1757"><span class="lineNum">    1757 </span>            :             end if blockSampleFileGeneration</a>
-<a name="1758"><span class="lineNum">    1758 </span>            : </a>
-<a name="1759"><span class="lineNum">    1759 </span>            :             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1760"><span class="lineNum">    1760 </span>            :             ! End of generating the i.i.d. sample statistics and output file (if requested)</a>
-<a name="1761"><span class="lineNum">    1761 </span>            :             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1762"><span class="lineNum">    1762 </span>            : </a>
-<a name="1763"><span class="lineNum">    1763 </span><span class="lineCov">        227 :             call self%Decor%write(self%LogFile%unit,1,1)</span></a>
-<a name="1764"><span class="lineNum">    1764 </span>            : </a>
-<a name="1765"><span class="lineNum">    1765 </span>            :             ! Mission accomplished.</a>
-<a name="1766"><span class="lineNum">    1766 </span>            : </a>
-<a name="1767"><span class="lineNum">    1767 </span><span class="lineCov">        227 :             call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = &quot;\n&quot;, msg = &quot;Mission Accomplished.&quot; )</span></a>
-<a name="1768"><span class="lineNum">    1768 </span><span class="lineCov">        227 :             if (output_unit/=self%LogFile%unit .and. self%Image%isFirst) then</span></a>
-<a name="1769"><span class="lineNum">    1769 </span><span class="lineCov">        227 :                 call self%Decor%write(output_unit,1,1)</span></a>
-<a name="1770"><span class="lineNum">    1770 </span><span class="lineCov">        227 :                 call self%note( prefix = self%brand, outputUnit = output_unit, newline = &quot;\n&quot;, msg = &quot;Mission Accomplished.&quot; )</span></a>
-<a name="1771"><span class="lineNum">    1771 </span><span class="lineCov">        227 :                 call self%Decor%write(output_unit,1,1)</span></a>
-<a name="1772"><span class="lineNum">    1772 </span>            :             end if</a>
-<a name="1773"><span class="lineNum">    1773 </span>            : </a>
-<a name="1774"><span class="lineNum">    1774 </span><span class="lineCov">        227 :             close(self%TimeFile%unit)</span></a>
-<a name="1775"><span class="lineNum">    1775 </span><span class="lineCov">        227 :             close(self%LogFile%unit)</span></a>
-<a name="1776"><span class="lineNum">    1776 </span>            : </a>
-<a name="1777"><span class="lineNum">    1777 </span>            :         end if blockLeaderPostProcessing</a>
-<a name="1778"><span class="lineNum">    1778 </span>            : </a>
-<a name="1779"><span class="lineNum">    1779 </span>            : #if (defined MPI_ENABLED || defined CAF_ENABLED) &amp;&amp; (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)</a>
-<a name="1780"><span class="lineNum">    1780 </span>            :         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block</a>
-<a name="1781"><span class="lineNum">    1781 </span>            : #endif</a>
-<a name="1782"><span class="lineNum">    1782 </span>            :         if (self%Err%occurred) return ! LCOV_EXCL_LINE</a>
-<a name="1783"><span class="lineNum">    1783 </span>            : </a>
-<a name="1784"><span class="lineNum">    1784 </span>            :         !nullify(self%Proposal)</a>
-<a name="1785"><span class="lineNum">    1785 </span>            : #if defined CAF_ENABLED || defined MPI_ENABLED</a>
-<a name="1786"><span class="lineNum">    1786 </span>            :             if (self%SpecBase%MpiFinalizeRequested%val) call self%Image%finalize()</a>
-<a name="1787"><span class="lineNum">    1787 </span>            : #endif</a>
-<a name="1788"><span class="lineNum">    1788 </span>            : </a>
-<a name="1789"><span class="lineNum">    1789 </span><span class="lineCov">        804 :     end subroutine runSampler</span></a>
-<a name="1790"><span class="lineNum">    1790 </span>            : </a>
-<a name="1791"><span class="lineNum">    1791 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">      84659 :                     ContiguousChain = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)</span></a>
+<a name="1436"><span class="lineNum">    1436 </span><span class="lineCov">        442 :                     call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
+<a name="1437"><span class="lineNum">    1437 </span><span class="lineCov">        442 :                                                     , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &amp;</span></a>
+<a name="1438"><span class="lineNum">    1438 </span>            :                                                     , nd = ndim &amp; ! LCOV_EXCL_LINE</a>
+<a name="1439"><span class="lineNum">    1439 </span>            :                                                     , Point = ContiguousChain &amp; ! LCOV_EXCL_LINE</a>
+<a name="1440"><span class="lineNum">    1440 </span>            :                                                     , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
+<a name="1441"><span class="lineNum">    1441 </span>            :                                                     , CovMatUpper = self%Stats%Sample%CovMat &amp; ! LCOV_EXCL_LINE</a>
+<a name="1442"><span class="lineNum">    1442 </span>            :                                                     , Mean = self%Stats%Sample%Mean &amp; ! LCOV_EXCL_LINE</a>
+<a name="1443"><span class="lineNum">    1443 </span><span class="lineCov">        221 :                                                     )</span></a>
+<a name="1444"><span class="lineNum">    1444 </span><span class="lineCov">       1161 :                     self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)</span></a>
+<a name="1445"><span class="lineNum">    1445 </span>            : </a>
+<a name="1446"><span class="lineNum">    1446 </span>            :                 else</a>
+<a name="1447"><span class="lineNum">    1447 </span>            :                     if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat) ! LCOV_EXCL_LINE</a>
+<a name="1448"><span class="lineNum">    1448 </span><span class="lineCov">         28 :                     allocate(self%Stats%Sample%CovMat(ndim,ndim), source = POSINF_RK)</span></a>
+<a name="1449"><span class="lineNum">    1449 </span><span class="lineCov">         28 :                     self%Stats%Sample%CorMat = getEye(ndim,ndim)</span></a>
+<a name="1450"><span class="lineNum">    1450 </span>            :                     self%Stats%Sample%Mean   = getMean  ( nd = ndim &amp;</a>
+<a name="1451"><span class="lineNum">    1451 </span><span class="lineCov">          8 :                                                         , np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
+<a name="1452"><span class="lineNum">    1452 </span>            :                                                         , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
+<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">         24 :                                                         , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp;</span></a>
+<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">         18 :                                                         )</span></a>
+<a name="1455"><span class="lineNum">    1455 </span>            :                 end if</a>
+<a name="1456"><span class="lineNum">    1456 </span>            : </a>
+<a name="1457"><span class="lineNum">    1457 </span>            :                 ! transpose the covariance and correlation matrices</a>
+<a name="1458"><span class="lineNum">    1458 </span>            : </a>
+<a name="1459"><span class="lineNum">    1459 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
+<a name="1460"><span class="lineNum">    1460 </span><span class="lineCov">        350 :                     self%Stats%Sample%CorMat(i,i) = 1._RK</span></a>
+<a name="1461"><span class="lineNum">    1461 </span><span class="lineCov">        475 :                     self%Stats%Sample%CorMat(i+1:ndim,i) = self%Stats%Sample%CorMat(i,i+1:ndim)</span></a>
+<a name="1462"><span class="lineNum">    1462 </span><span class="lineCov">        700 :                     self%Stats%Sample%CovMat(i+1:ndim,i) = self%Stats%Sample%CovMat(i,i+1:ndim)</span></a>
+<a name="1463"><span class="lineNum">    1463 </span>            :                 end do</a>
+<a name="1464"><span class="lineNum">    1464 </span>            : </a>
+<a name="1465"><span class="lineNum">    1465 </span>            :                 ! compute the quantiles</a>
+<a name="1466"><span class="lineNum">    1466 </span>            : </a>
+<a name="1467"><span class="lineNum">    1467 </span><span class="lineCov">      53069 :                 ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
+<a name="1468"><span class="lineNum">    1468 </span><span class="lineCov">        225 :                 if (allocated(self%Stats%Sample%Quantile)) deallocate(self%Stats%Sample%Quantile)</span></a>
+<a name="1469"><span class="lineNum">    1469 </span><span class="lineCov">        225 :                 allocate(self%Stats%Sample%Quantile(QPROB%count,ndim))</span></a>
+<a name="1470"><span class="lineNum">    1470 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
+<a name="1471"><span class="lineNum">    1471 </span><span class="lineCov">       2800 :                     self%Stats%Sample%Quantile(1:QPROB%count,i) = getQuantile   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
+<a name="1472"><span class="lineNum">    1472 </span>            :                                                                                 , nq = QPROB%count &amp; ! LCOV_EXCL_LINE</a>
+<a name="1473"><span class="lineNum">    1473 </span>            :                                                                                 , SortedQuantileProbability = QPROB%Value &amp; ! LCOV_EXCL_LINE</a>
+<a name="1474"><span class="lineNum">    1474 </span>            :                                                                                 , Point = ContiguousChain(:,i) &amp; ! LCOV_EXCL_LINE</a>
+<a name="1475"><span class="lineNum">    1475 </span>            :                                                                                 , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
+<a name="1476"><span class="lineNum">    1476 </span><span class="lineCov">        700 :                                                                                 , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &amp;</span></a>
+<a name="1477"><span class="lineNum">    1477 </span><span class="lineCov">       3725 :                                                                                 )</span></a>
+<a name="1478"><span class="lineNum">    1478 </span>            :                 end do</a>
+<a name="1479"><span class="lineNum">    1479 </span>            : </a>
+<a name="1480"><span class="lineNum">    1480 </span>            :                 ! report the refined chain statistics</a>
+<a name="1481"><span class="lineNum">    1481 </span>            : </a>
+<a name="1482"><span class="lineNum">    1482 </span>            :                 !formatStr = &quot;(1A&quot; // self%LogFile%maxColWidth%str // &quot;,*(E&quot; // self%LogFile%maxColWidth%str // &quot;.&quot; // self%SpecBase%OutputRealPrecision%str // &quot;))&quot;</a>
+<a name="1483"><span class="lineNum">    1483 </span>            : </a>
+<a name="1484"><span class="lineNum">    1484 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1485"><span class="lineNum">    1485 </span>            : </a>
+<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1487"><span class="lineNum">    1487 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.length&quot;</span></a>
+<a name="1488"><span class="lineNum">    1488 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1489"><span class="lineNum">    1489 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_TABBED_FORMAT) self%Stats%Sample%count</span></a>
+<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">        225 :                 msg = &quot;This is the final output refined sample size. &quot;</span></a>
+<a name="1491"><span class="lineNum">    1491 </span><span class="lineCov">        225 :                 if (self%SpecBase%SampleSize%val/=-1_IK) then</span></a>
+<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">         57 :                     if (abs(self%SpecBase%SampleSize%abs)&lt;effectiveSampleSize) then</span></a>
+<a name="1493"><span class="lineNum">    1493 </span>            :                         msg = msg // &quot;The user-requested sample size (&quot;// num2str(self%SpecBase%SampleSize%abs) // &quot;) is smaller &amp;</a>
+<a name="1494"><span class="lineNum">    1494 </span>            :                             &amp;than the potentially-optimal i.i.d. sample size (&quot; // num2str(effectiveSampleSize) // &quot;). The output sample &amp;</a>
+<a name="1495"><span class="lineNum">    1495 </span>            :                             &amp;contains i.i.d. samples, however, the sample-size could have been larger if it had been set to the optimal size. &amp;</a>
+<a name="1496"><span class="lineNum">    1496 </span><span class="lineCov">          9 :                             &amp;To get the optimal size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
+<a name="1497"><span class="lineNum">    1497 </span><span class="lineCov">         48 :                     elseif (abs(self%SpecBase%SampleSize%abs)&gt;effectiveSampleSize) then</span></a>
+<a name="1498"><span class="lineNum">    1498 </span>            :                         msg = msg // &quot;The user-requested sample size (&quot;// num2str(self%SpecBase%SampleSize%abs) // &quot;) is larger than &amp;</a>
+<a name="1499"><span class="lineNum">    1499 </span>            :                             &amp;the potentially-optimal i.i.d. sample size (&quot; // num2str(effectiveSampleSize) // &quot;). The resulting sample &amp;</a>
+<a name="1500"><span class="lineNum">    1500 </span>            :                             &amp;likely contains duplicates and is not independently and identically distributed (i.i.d.).\nTo get the optimal &amp;</a>
+<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">         48 :                             &amp;size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
+<a name="1502"><span class="lineNum">    1502 </span>            :                     else ! LCOV_EXCL_LINE</a>
+<a name="1503"><span class="lineNum">    1503 </span>            :                         msg = msg // &quot;How lucky that could be! The user-requested sample size (&quot; // num2str(self%SpecBase%SampleSize%abs) // &amp; ! LCOV_EXCL_LINE</a>
+<a name="1504"><span class="lineNum">    1504 </span>            :                              &quot;) is equal to the potentially-optimal i.i.d. sample size determined by the &quot;//self%name//&quot; sampler.&quot; ! LCOV_EXCL_LINE</a>
+<a name="1505"><span class="lineNum">    1505 </span>            :                     end if</a>
+<a name="1506"><span class="lineNum">    1506 </span>            :                 end if</a>
+<a name="1507"><span class="lineNum">    1507 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
+<a name="1508"><span class="lineNum">    1508 </span>            : </a>
+<a name="1509"><span class="lineNum">    1509 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1510"><span class="lineNum">    1510 </span>            : </a>
+<a name="1511"><span class="lineNum">    1511 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1512"><span class="lineNum">    1512 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.avgStd&quot;</span></a>
+<a name="1513"><span class="lineNum">    1513 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1514"><span class="lineNum">    1514 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,self%LogFile%format) &quot;variableName&quot;, &quot;Mean&quot;, &quot;Standard Deviation&quot;</span></a>
+<a name="1515"><span class="lineNum">    1515 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
+<a name="1516"><span class="lineNum">    1516 </span><span class="lineCov">        575 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(self%SpecBase%VariableNameList%Val(i))), self%Stats%Sample%Mean(i), sqrt(self%Stats%Sample%CovMat(i,i))</span></a>
+<a name="1517"><span class="lineNum">    1517 </span>            :                 end do</a>
+<a name="1518"><span class="lineNum">    1518 </span><span class="lineCov">        225 :                 msg = &quot;This is the Mean and standard deviation table of the final output refined sample.&quot;</span></a>
+<a name="1519"><span class="lineNum">    1519 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
+<a name="1520"><span class="lineNum">    1520 </span>            : </a>
+<a name="1521"><span class="lineNum">    1521 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1522"><span class="lineNum">    1522 </span>            : </a>
+<a name="1523"><span class="lineNum">    1523 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1524"><span class="lineNum">    1524 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.covmat&quot;</span></a>
+<a name="1525"><span class="lineNum">    1525 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1526"><span class="lineNum">    1526 </span><span class="lineCov">        575 :                 write(self%LogFile%unit,self%LogFile%format) &quot;&quot;, (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
+<a name="1527"><span class="lineNum">    1527 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
+<a name="1528"><span class="lineNum">    1528 </span><span class="lineCov">        575 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(self%SpecBase%VariableNameList%Val(i))), self%Stats%Sample%CovMat(1:ndim,i)</span></a>
+<a name="1529"><span class="lineNum">    1529 </span>            :                 end do</a>
+<a name="1530"><span class="lineNum">    1530 </span><span class="lineCov">        225 :                 msg = &quot;This is the covariance matrix of the final output refined sample.&quot;</span></a>
+<a name="1531"><span class="lineNum">    1531 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
+<a name="1532"><span class="lineNum">    1532 </span>            : </a>
+<a name="1533"><span class="lineNum">    1533 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1534"><span class="lineNum">    1534 </span>            : </a>
+<a name="1535"><span class="lineNum">    1535 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1536"><span class="lineNum">    1536 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.cormat&quot;</span></a>
+<a name="1537"><span class="lineNum">    1537 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1538"><span class="lineNum">    1538 </span><span class="lineCov">        575 :                 write(self%LogFile%unit,self%LogFile%format) &quot;&quot;, (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
+<a name="1539"><span class="lineNum">    1539 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
+<a name="1540"><span class="lineNum">    1540 </span><span class="lineCov">        575 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(self%SpecBase%VariableNameList%Val(i))), self%Stats%Sample%CorMat(1:ndim,i)</span></a>
+<a name="1541"><span class="lineNum">    1541 </span>            :                 end do</a>
+<a name="1542"><span class="lineNum">    1542 </span><span class="lineCov">        225 :                 msg = &quot;This is the correlation matrix of the final output refined sample.&quot;</span></a>
+<a name="1543"><span class="lineNum">    1543 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
+<a name="1544"><span class="lineNum">    1544 </span>            : </a>
+<a name="1545"><span class="lineNum">    1545 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1546"><span class="lineNum">    1546 </span>            : </a>
+<a name="1547"><span class="lineNum">    1547 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1548"><span class="lineNum">    1548 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.quantile&quot;</span></a>
+<a name="1549"><span class="lineNum">    1549 </span><span class="lineCov">        225 :                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
+<a name="1550"><span class="lineNum">    1550 </span><span class="lineCov">        575 :                 write(self%LogFile%unit,self%LogFile%format) &quot;Quantile&quot;, (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
+<a name="1551"><span class="lineNum">    1551 </span><span class="lineCov">       2250 :                 do iq = 1, QPROB%count</span></a>
+<a name="1552"><span class="lineNum">    1552 </span><span class="lineCov">       5400 :                     write(self%LogFile%unit,formatStrReal) trim(adjustl(QPROB%Name(iq))), (self%Stats%Sample%Quantile(iq,i),i=1,ndim)</span></a>
+<a name="1553"><span class="lineNum">    1553 </span>            :                 end do</a>
+<a name="1554"><span class="lineNum">    1554 </span><span class="lineCov">        225 :                 msg = &quot;This is the quantiles table of the variables of the final output refined sample.&quot;</span></a>
+<a name="1555"><span class="lineNum">    1555 </span><span class="lineCov">        225 :                 call self%reportDesc(msg)</span></a>
+<a name="1556"><span class="lineNum">    1556 </span>            : </a>
+<a name="1557"><span class="lineNum">    1557 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1558"><span class="lineNum">    1558 </span>            :                 ! Begin inter-chain convergence test in multiChain parallelization mode</a>
+<a name="1559"><span class="lineNum">    1559 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1560"><span class="lineNum">    1560 </span>            : </a>
+<a name="1561"><span class="lineNum">    1561 </span>            : #if defined CAF_ENABLED || defined MPI_ENABLED</a>
+<a name="1562"><span class="lineNum">    1562 </span>            : </a>
+<a name="1563"><span class="lineNum">    1563 </span>            :                 blockInterChainConvergence: if (self%SpecBase%ParallelizationModel%isMultiChain .and. self%Image%count&gt;1_IK) then</a>
+<a name="1564"><span class="lineNum">    1564 </span>            : </a>
+<a name="1565"><span class="lineNum">    1565 </span>            :                     call self%note  ( prefix            = self%brand        &amp;</a>
+<a name="1566"><span class="lineNum">    1566 </span>            :                                     , outputUnit        = self%LogFile%unit &amp;</a>
+<a name="1567"><span class="lineNum">    1567 </span>            :                                     , newline           = NLC               &amp;</a>
+<a name="1568"><span class="lineNum">    1568 </span>            :                                     , marginTop         = 1_IK              &amp;</a>
+<a name="1569"><span class="lineNum">    1569 </span>            :                                     , marginBot         = 1_IK              &amp;</a>
+<a name="1570"><span class="lineNum">    1570 </span>            :                                     , msg               = &quot;Computing the inter-chain convergence probabilities...&quot; )</a>
+<a name="1571"><span class="lineNum">    1571 </span>            :                     if (self%Image%isFirst) then ! print the message on stdout</a>
+<a name="1572"><span class="lineNum">    1572 </span>            :                         call self%note  ( prefix        = self%brand        &amp;</a>
+<a name="1573"><span class="lineNum">    1573 </span>            :                                         , outputUnit    = output_unit       &amp;</a>
+<a name="1574"><span class="lineNum">    1574 </span>            :                                         , newline       = NLC               &amp;</a>
+<a name="1575"><span class="lineNum">    1575 </span>            :                                         , marginTop     = 1_IK              &amp;</a>
+<a name="1576"><span class="lineNum">    1576 </span>            :                                         , marginBot     = 1_IK              &amp;</a>
+<a name="1577"><span class="lineNum">    1577 </span>            :                                         , msg           = &quot;Computing the inter-chain convergence probabilities...&quot; )</a>
+<a name="1578"><span class="lineNum">    1578 </span>            :                     end if</a>
+<a name="1579"><span class="lineNum">    1579 </span>            : </a>
+<a name="1580"><span class="lineNum">    1580 </span>            :                     call self%Image%sync()</a>
+<a name="1581"><span class="lineNum">    1581 </span>            : </a>
+<a name="1582"><span class="lineNum">    1582 </span>            :                     ! read the sample files generated by other images</a>
+<a name="1583"><span class="lineNum">    1583 </span>            : </a>
+<a name="1584"><span class="lineNum">    1584 </span>            :                     multiChainConvergenceTest: block</a>
+<a name="1585"><span class="lineNum">    1585 </span>            : </a>
+<a name="1586"><span class="lineNum">    1586 </span>            :                         use Sort_mod, only: sortAscending</a>
+<a name="1587"><span class="lineNum">    1587 </span>            :                         use String_mod, only: replaceStr</a>
+<a name="1588"><span class="lineNum">    1588 </span>            :                         use Statistics_mod, only: doSortedKS2</a>
+<a name="1589"><span class="lineNum">    1589 </span>            :                         use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type</a>
+<a name="1590"><span class="lineNum">    1590 </span>            :                         type(RefinedChain_type)     :: RefinedChainThisImage, RefinedChainThatImage</a>
+<a name="1591"><span class="lineNum">    1591 </span>            :                         integer(IK)                 :: imageID,indexMinProbKS,imageMinProbKS</a>
+<a name="1592"><span class="lineNum">    1592 </span>            :                         real(RK)                    :: statKS, minProbKS</a>
+<a name="1593"><span class="lineNum">    1593 </span>            :                         real(RK)    , allocatable   :: ProbKS(:)</a>
+<a name="1594"><span class="lineNum">    1594 </span>            :                         character(:), allocatable   :: inputSamplePath</a>
+<a name="1595"><span class="lineNum">    1595 </span>            : </a>
+<a name="1596"><span class="lineNum">    1596 </span>            :                         minProbKS = huge(minProbKS)</a>
+<a name="1597"><span class="lineNum">    1597 </span>            :                         if (allocated(ProbKS)) deallocate(ProbKS) ! LCOV_EXCL_LINE</a>
+<a name="1598"><span class="lineNum">    1598 </span>            :                         allocate(ProbKS(0:ndim))</a>
+<a name="1599"><span class="lineNum">    1599 </span>            : </a>
+<a name="1600"><span class="lineNum">    1600 </span>            :                         ! read the refined chain on the current image</a>
+<a name="1601"><span class="lineNum">    1601 </span>            : </a>
+<a name="1602"><span class="lineNum">    1602 </span>            :                         RefinedChainThisImage = readRefinedChain( sampleFilePath=self%SampleFile%Path%original, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim, tenabled = .true. )</a>
+<a name="1603"><span class="lineNum">    1603 </span>            :                         if (RefinedChainThisImage%Err%occurred) then</a>
+<a name="1604"><span class="lineNum">    1604 </span>            :                             ! LCOV_EXCL_START</a>
+<a name="1605"><span class="lineNum">    1605 </span>            :                             self%Err%occurred = .true.</a>
+<a name="1606"><span class="lineNum">    1606 </span>            :                             self%Err%msg = PROCEDURE_NAME//RefinedChainThisImage%Err%msg</a>
+<a name="1607"><span class="lineNum">    1607 </span>            :                             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
+<a name="1608"><span class="lineNum">    1608 </span>            :                             exit blockLeaderPostProcessing</a>
+<a name="1609"><span class="lineNum">    1609 </span>            :                             return</a>
+<a name="1610"><span class="lineNum">    1610 </span>            :                             ! LCOV_EXCL_STOP</a>
+<a name="1611"><span class="lineNum">    1611 </span>            :                         end if</a>
+<a name="1612"><span class="lineNum">    1612 </span>            : </a>
+<a name="1613"><span class="lineNum">    1613 </span>            :                         ! sort the refined chain on the current image</a>
+<a name="1614"><span class="lineNum">    1614 </span>            : </a>
+<a name="1615"><span class="lineNum">    1615 </span>            :                         do i = 0, ndim</a>
+<a name="1616"><span class="lineNum">    1616 </span>            :                             call sortAscending  ( np = RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose &amp;</a>
+<a name="1617"><span class="lineNum">    1617 </span>            :                                                 , Point = RefinedChainThisImage%LogFuncState(1:RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose,i) &amp;</a>
+<a name="1618"><span class="lineNum">    1618 </span>            :                                                 , Err = self%Err &amp;</a>
+<a name="1619"><span class="lineNum">    1619 </span>            :                                                 )</a>
+<a name="1620"><span class="lineNum">    1620 </span>            :                             if (self%Err%occurred) then</a>
+<a name="1621"><span class="lineNum">    1621 </span>            :                                 ! LCOV_EXCL_START</a>
+<a name="1622"><span class="lineNum">    1622 </span>            :                                 self%Err%msg = PROCEDURE_NAME//self%Err%msg</a>
+<a name="1623"><span class="lineNum">    1623 </span>            :                                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
+<a name="1624"><span class="lineNum">    1624 </span>            :                                 exit blockLeaderPostProcessing</a>
+<a name="1625"><span class="lineNum">    1625 </span>            :                                 return</a>
+<a name="1626"><span class="lineNum">    1626 </span>            :                                 ! LCOV_EXCL_STOP</a>
+<a name="1627"><span class="lineNum">    1627 </span>            :                             end if</a>
+<a name="1628"><span class="lineNum">    1628 </span>            :                         end do</a>
+<a name="1629"><span class="lineNum">    1629 </span>            : </a>
+<a name="1630"><span class="lineNum">    1630 </span>            :                         ! compute and report the KS convergence probabilities for all images</a>
+<a name="1631"><span class="lineNum">    1631 </span>            : </a>
+<a name="1632"><span class="lineNum">    1632 </span>            :                         formatStr = &quot;(1I&quot; // self%LogFile%maxColWidth%str // &quot;,*(E&quot; // self%LogFile%maxColWidth%str // &quot;.&quot; // self%SpecBase%OutputRealPrecision%str // &quot;E3))&quot;</a>
+<a name="1633"><span class="lineNum">    1633 </span>            : </a>
+<a name="1634"><span class="lineNum">    1634 </span>            :                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1635"><span class="lineNum">    1635 </span>            : </a>
+<a name="1636"><span class="lineNum">    1636 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
+<a name="1637"><span class="lineNum">    1637 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.kstest.prob&quot;</a>
+<a name="1638"><span class="lineNum">    1638 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
+<a name="1639"><span class="lineNum">    1639 </span>            :                         write(self%LogFile%unit,self%LogFile%format) &quot;ProcessID&quot;,(&quot;probKS(&quot;//trim(adjustl(self%RefinedChain%ColHeader(i)%record))//&quot;)&quot;,i=0,ndim)</a>
+<a name="1640"><span class="lineNum">    1640 </span>            : </a>
+<a name="1641"><span class="lineNum">    1641 </span>            :                         do imageID = 1, self%Image%count</a>
+<a name="1642"><span class="lineNum">    1642 </span>            : </a>
+<a name="1643"><span class="lineNum">    1643 </span>            :                             if (imageID/=self%Image%id) then</a>
+<a name="1644"><span class="lineNum">    1644 </span>            : </a>
+<a name="1645"><span class="lineNum">    1645 </span>            :                                 ! read the refined chain on the other image</a>
+<a name="1646"><span class="lineNum">    1646 </span>            : </a>
+<a name="1647"><span class="lineNum">    1647 </span>            :                                 inputSamplePath = replaceStr( string = self%SampleFile%Path%original &amp;</a>
+<a name="1648"><span class="lineNum">    1648 </span>            :                                                             , search = &quot;process_&quot;//num2str(self%Image%id) &amp;</a>
+<a name="1649"><span class="lineNum">    1649 </span>            :                                                             , substitute = &quot;process_&quot;//num2str(imageID) )</a>
+<a name="1650"><span class="lineNum">    1650 </span>            : </a>
+<a name="1651"><span class="lineNum">    1651 </span>            :                                 RefinedChainThatImage = readRefinedChain( sampleFilePath=inputSamplePath, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim, tenabled = .true. )</a>
+<a name="1652"><span class="lineNum">    1652 </span>            :                                 if (RefinedChainThatImage%Err%occurred) then</a>
+<a name="1653"><span class="lineNum">    1653 </span>            :                                     ! LCOV_EXCL_START</a>
+<a name="1654"><span class="lineNum">    1654 </span>            :                                     self%Err%occurred = .true.</a>
+<a name="1655"><span class="lineNum">    1655 </span>            :                                     self%Err%msg = PROCEDURE_NAME//RefinedChainThatImage%Err%msg</a>
+<a name="1656"><span class="lineNum">    1656 </span>            :                                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
+<a name="1657"><span class="lineNum">    1657 </span>            :                                     exit blockLeaderPostProcessing</a>
+<a name="1658"><span class="lineNum">    1658 </span>            :                                     return</a>
+<a name="1659"><span class="lineNum">    1659 </span>            :                                     ! LCOV_EXCL_STOP</a>
+<a name="1660"><span class="lineNum">    1660 </span>            :                                 end if</a>
+<a name="1661"><span class="lineNum">    1661 </span>            : </a>
+<a name="1662"><span class="lineNum">    1662 </span>            :                                 do i = 0, ndim</a>
+<a name="1663"><span class="lineNum">    1663 </span>            : </a>
+<a name="1664"><span class="lineNum">    1664 </span>            :                                     ! sort the refined chain on the other image</a>
+<a name="1665"><span class="lineNum">    1665 </span>            : </a>
+<a name="1666"><span class="lineNum">    1666 </span>            :                                     call sortAscending  ( np = RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose &amp;</a>
+<a name="1667"><span class="lineNum">    1667 </span>            :                                                         , Point = RefinedChainThatImage%LogFuncState(1:RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose,i) &amp;</a>
+<a name="1668"><span class="lineNum">    1668 </span>            :                                                         , Err = self%Err &amp;</a>
+<a name="1669"><span class="lineNum">    1669 </span>            :                                                         )</a>
+<a name="1670"><span class="lineNum">    1670 </span>            :                                     if (self%Err%occurred) then</a>
+<a name="1671"><span class="lineNum">    1671 </span>            :                                         ! LCOV_EXCL_START</a>
+<a name="1672"><span class="lineNum">    1672 </span>            :                                         self%Err%msg = PROCEDURE_NAME//self%Err%msg</a>
+<a name="1673"><span class="lineNum">    1673 </span>            :                                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
+<a name="1674"><span class="lineNum">    1674 </span>            :                                         exit blockLeaderPostProcessing</a>
+<a name="1675"><span class="lineNum">    1675 </span>            :                                         return</a>
+<a name="1676"><span class="lineNum">    1676 </span>            :                                         ! LCOV_EXCL_STOP</a>
+<a name="1677"><span class="lineNum">    1677 </span>            :                                     end if</a>
+<a name="1678"><span class="lineNum">    1678 </span>            : </a>
+<a name="1679"><span class="lineNum">    1679 </span>            :                                     ! compute the inter-chain KS probability table</a>
+<a name="1680"><span class="lineNum">    1680 </span>            : </a>
+<a name="1681"><span class="lineNum">    1681 </span>            :                                     call doSortedKS2( np1 = RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose &amp;</a>
+<a name="1682"><span class="lineNum">    1682 </span>            :                                                     , np2 = RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose &amp;</a>
+<a name="1683"><span class="lineNum">    1683 </span>            :                                                     , SortedPoint1 = RefinedChainThisImage%LogFuncState(1:RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose,i) &amp;</a>
+<a name="1684"><span class="lineNum">    1684 </span>            :                                                     , SortedPoint2 = RefinedChainThatImage%LogFuncState(1:RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose,i) &amp;</a>
+<a name="1685"><span class="lineNum">    1685 </span>            :                                                     , statKS = statKS &amp;</a>
+<a name="1686"><span class="lineNum">    1686 </span>            :                                                     , probKS = ProbKS(i) &amp;</a>
+<a name="1687"><span class="lineNum">    1687 </span>            :                                                     )</a>
+<a name="1688"><span class="lineNum">    1688 </span>            : </a>
+<a name="1689"><span class="lineNum">    1689 </span>            :                                     ! determine the minimum KS</a>
+<a name="1690"><span class="lineNum">    1690 </span>            : </a>
+<a name="1691"><span class="lineNum">    1691 </span>            :                                     if (ProbKS(i)&lt;minProbKS) then</a>
+<a name="1692"><span class="lineNum">    1692 </span>            :                                         minProbKS = ProbKS(i)</a>
+<a name="1693"><span class="lineNum">    1693 </span>            :                                         indexMinProbKS = i</a>
+<a name="1694"><span class="lineNum">    1694 </span>            :                                         imageMinProbKS = imageID</a>
+<a name="1695"><span class="lineNum">    1695 </span>            :                                     end if</a>
+<a name="1696"><span class="lineNum">    1696 </span>            : </a>
+<a name="1697"><span class="lineNum">    1697 </span>            :                                 end do</a>
+<a name="1698"><span class="lineNum">    1698 </span>            : </a>
+<a name="1699"><span class="lineNum">    1699 </span>            :                                 ! write the inter-chain KS probability table row</a>
+<a name="1700"><span class="lineNum">    1700 </span>            : </a>
+<a name="1701"><span class="lineNum">    1701 </span>            :                                 write(self%LogFile%unit, formatStr) imageID, (ProbKS(i), i = 0, ndim)</a>
+<a name="1702"><span class="lineNum">    1702 </span>            : </a>
+<a name="1703"><span class="lineNum">    1703 </span>            :                             end if</a>
+<a name="1704"><span class="lineNum">    1704 </span>            : </a>
+<a name="1705"><span class="lineNum">    1705 </span>            :                         end do</a>
+<a name="1706"><span class="lineNum">    1706 </span>            :                         msg =   &quot;This is the table pairwise inter-chain Kolmogorov-Smirnov (KS) convergence (similarity) probabilities. &amp;</a>
+<a name="1707"><span class="lineNum">    1707 </span>            :                                 &amp;Higher KS probabilities are better, indicating less evidence for a lack of convergence.&quot;</a>
+<a name="1708"><span class="lineNum">    1708 </span>            :                         call self%reportDesc(msg)</a>
+<a name="1709"><span class="lineNum">    1709 </span>            : </a>
+<a name="1710"><span class="lineNum">    1710 </span>            :                         ! write the smallest KS probabilities</a>
+<a name="1711"><span class="lineNum">    1711 </span>            : </a>
+<a name="1712"><span class="lineNum">    1712 </span>            :                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1713"><span class="lineNum">    1713 </span>            : </a>
+<a name="1714"><span class="lineNum">    1714 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
+<a name="1715"><span class="lineNum">    1715 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.kstest.prob.min&quot;</a>
+<a name="1716"><span class="lineNum">    1716 </span>            :                         write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</a>
+<a name="1717"><span class="lineNum">    1717 </span>            :                         write(self%LogFile%unit,GENERIC_TABBED_FORMAT) minProbKS</a>
+<a name="1718"><span class="lineNum">    1718 </span>            :                         msg =   &quot;This is the smallest KS-test probability for the inter-chain sampling convergence, which has happened between &quot;//self%RefinedChain%ColHeader(indexMinProbKS)%record// &amp;</a>
+<a name="1719"><span class="lineNum">    1719 </span>            :                                 &quot; on the chains generated by processes &quot;//num2str(self%Image%id)//&quot; and &quot;//num2str(imageMinProbKS)//&quot;.&quot;</a>
+<a name="1720"><span class="lineNum">    1720 </span>            :                         call self%reportDesc(msg)</a>
+<a name="1721"><span class="lineNum">    1721 </span>            : </a>
+<a name="1722"><span class="lineNum">    1722 </span>            :                         ! report the smallest KS probabilities on stdout</a>
+<a name="1723"><span class="lineNum">    1723 </span>            : </a>
+<a name="1724"><span class="lineNum">    1724 </span>            :                         if (self%Image%isFirst) call self%note  ( prefix     = self%brand       &amp;</a>
+<a name="1725"><span class="lineNum">    1725 </span>            :                                                                 , outputUnit = output_unit      &amp;</a>
+<a name="1726"><span class="lineNum">    1726 </span>            :                                                                 , newline    = NLC              &amp;</a>
+<a name="1727"><span class="lineNum">    1727 </span>            :                                                                 , marginTop  = 2_IK             &amp;</a>
+<a name="1728"><span class="lineNum">    1728 </span>            :                                                                 , marginBot  = 0_IK             &amp;</a>
+<a name="1729"><span class="lineNum">    1729 </span>            :                                                                 , msg        = &quot;The smallest KS probabilities for the inter-chain sampling convergence:&quot; )</a>
+<a name="1730"><span class="lineNum">    1730 </span>            : </a>
+<a name="1731"><span class="lineNum">    1731 </span>            :                         do imageID = 1, self%Image%count</a>
+<a name="1732"><span class="lineNum">    1732 </span>            :                             if (imageID==self%Image%id) then</a>
+<a name="1733"><span class="lineNum">    1733 </span>            :                                 call self%note  ( prefix     = self%brand       &amp;</a>
+<a name="1734"><span class="lineNum">    1734 </span>            :                                                 , outputUnit = output_unit      &amp;</a>
+<a name="1735"><span class="lineNum">    1735 </span>            :                                                 , newline    = NLC              &amp;</a>
+<a name="1736"><span class="lineNum">    1736 </span>            :                                                 , marginTop  = 0_IK             &amp;</a>
+<a name="1737"><span class="lineNum">    1737 </span>            :                                                 , marginBot  = 0_IK             &amp;</a>
+<a name="1738"><span class="lineNum">    1738 </span>            :                                                 , msg        = num2str(minProbKS)//&quot; for &quot;//self%RefinedChain%ColHeader(indexMinProbKS)%record//&amp;</a>
+<a name="1739"><span class="lineNum">    1739 </span>            :                                                                &quot; on the chains generated by processes &quot;//num2str(self%Image%id)//&amp;</a>
+<a name="1740"><span class="lineNum">    1740 </span>            :                                                                &quot; and &quot;//num2str(imageMinProbKS)//&quot;.&quot; )</a>
+<a name="1741"><span class="lineNum">    1741 </span>            :                             end if</a>
+<a name="1742"><span class="lineNum">    1742 </span>            : #if defined CAF_ENABLED || MPI_ENABLED</a>
+<a name="1743"><span class="lineNum">    1743 </span>            :                             call execute_command_line(&quot; &quot;, cmdstat = self%Err%stat)</a>
+<a name="1744"><span class="lineNum">    1744 </span>            :                             flush(output_unit)</a>
+<a name="1745"><span class="lineNum">    1745 </span>            :                             call self%Image%sync()</a>
+<a name="1746"><span class="lineNum">    1746 </span>            : #endif</a>
+<a name="1747"><span class="lineNum">    1747 </span>            :                         end do</a>
+<a name="1748"><span class="lineNum">    1748 </span>            : </a>
+<a name="1749"><span class="lineNum">    1749 </span>            :                     end block multiChainConvergenceTest</a>
+<a name="1750"><span class="lineNum">    1750 </span>            : </a>
+<a name="1751"><span class="lineNum">    1751 </span>            :                 end if blockInterChainConvergence</a>
+<a name="1752"><span class="lineNum">    1752 </span>            : #endif</a>
+<a name="1753"><span class="lineNum">    1753 </span>            : </a>
+<a name="1754"><span class="lineNum">    1754 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1755"><span class="lineNum">    1755 </span>            :                 ! End inter-chain convergence test in multiChain parallelization mode</a>
+<a name="1756"><span class="lineNum">    1756 </span>            :                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1757"><span class="lineNum">    1757 </span>            : </a>
+<a name="1758"><span class="lineNum">    1758 </span>            :             end if blockSampleFileGeneration</a>
+<a name="1759"><span class="lineNum">    1759 </span>            : </a>
+<a name="1760"><span class="lineNum">    1760 </span>            :             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1761"><span class="lineNum">    1761 </span>            :             ! End of generating the i.i.d. sample statistics and output file (if requested)</a>
+<a name="1762"><span class="lineNum">    1762 </span>            :             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1763"><span class="lineNum">    1763 </span>            : </a>
+<a name="1764"><span class="lineNum">    1764 </span><span class="lineCov">        227 :             call self%Decor%write(self%LogFile%unit,1,1)</span></a>
+<a name="1765"><span class="lineNum">    1765 </span>            : </a>
+<a name="1766"><span class="lineNum">    1766 </span>            :             ! Mission accomplished.</a>
+<a name="1767"><span class="lineNum">    1767 </span>            : </a>
+<a name="1768"><span class="lineNum">    1768 </span><span class="lineCov">        227 :             call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = &quot;\n&quot;, msg = &quot;Mission Accomplished.&quot; )</span></a>
+<a name="1769"><span class="lineNum">    1769 </span><span class="lineCov">        227 :             if (output_unit/=self%LogFile%unit .and. self%Image%isFirst) then</span></a>
+<a name="1770"><span class="lineNum">    1770 </span><span class="lineCov">        227 :                 call self%Decor%write(output_unit,1,1)</span></a>
+<a name="1771"><span class="lineNum">    1771 </span><span class="lineCov">        227 :                 call self%note( prefix = self%brand, outputUnit = output_unit, newline = &quot;\n&quot;, msg = &quot;Mission Accomplished.&quot; )</span></a>
+<a name="1772"><span class="lineNum">    1772 </span><span class="lineCov">        227 :                 call self%Decor%write(output_unit,1,1)</span></a>
+<a name="1773"><span class="lineNum">    1773 </span>            :             end if</a>
+<a name="1774"><span class="lineNum">    1774 </span>            : </a>
+<a name="1775"><span class="lineNum">    1775 </span><span class="lineCov">        227 :             close(self%TimeFile%unit)</span></a>
+<a name="1776"><span class="lineNum">    1776 </span><span class="lineCov">        227 :             close(self%LogFile%unit)</span></a>
+<a name="1777"><span class="lineNum">    1777 </span>            : </a>
+<a name="1778"><span class="lineNum">    1778 </span>            :         end if blockLeaderPostProcessing</a>
+<a name="1779"><span class="lineNum">    1779 </span>            : </a>
+<a name="1780"><span class="lineNum">    1780 </span>            : #if (defined MPI_ENABLED || defined CAF_ENABLED) &amp;&amp; (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)</a>
+<a name="1781"><span class="lineNum">    1781 </span>            :         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block</a>
+<a name="1782"><span class="lineNum">    1782 </span>            : #endif</a>
+<a name="1783"><span class="lineNum">    1783 </span>            :         if (self%Err%occurred) return ! LCOV_EXCL_LINE</a>
+<a name="1784"><span class="lineNum">    1784 </span>            : </a>
+<a name="1785"><span class="lineNum">    1785 </span>            :         !nullify(self%Proposal)</a>
+<a name="1786"><span class="lineNum">    1786 </span>            : #if defined CAF_ENABLED || defined MPI_ENABLED</a>
+<a name="1787"><span class="lineNum">    1787 </span>            :             if (self%SpecBase%MpiFinalizeRequested%val) call self%Image%finalize()</a>
+<a name="1788"><span class="lineNum">    1788 </span>            : #endif</a>
+<a name="1789"><span class="lineNum">    1789 </span>            : </a>
+<a name="1790"><span class="lineNum">    1790 </span><span class="lineCov">        804 :     end subroutine runSampler</span></a>
+<a name="1791"><span class="lineNum">    1791 </span>            : </a>
 <a name="1792"><span class="lineNum">    1792 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1793"><span class="lineNum">    1793 </span>            : </a>
-<a name="1794"><span class="lineNum">    1794 </span>            : !end submodule Setup_smod</a>
-<a name="1795"><span class="lineNum">    1795 </span>            : </a>
-<a name="1796"><span class="lineNum">    1796 </span>            : #undef ParaDXXXProposalAbstract_mod</a>
-<a name="1797"><span class="lineNum">    1797 </span>            : #undef ParaDXXX_type</a>
-<a name="1798"><span class="lineNum">    1798 </span>            : #undef ParaDXXX</a>
+<a name="1793"><span class="lineNum">    1793 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1794"><span class="lineNum">    1794 </span>            : </a>
+<a name="1795"><span class="lineNum">    1795 </span>            : !end submodule Setup_smod</a>
+<a name="1796"><span class="lineNum">    1796 </span>            : </a>
+<a name="1797"><span class="lineNum">    1797 </span>            : #undef ParaDXXXProposalAbstract_mod</a>
+<a name="1798"><span class="lineNum">    1798 </span>            : #undef ParaDXXX_type</a>
+<a name="1799"><span class="lineNum">    1799 </span>            : #undef ParaDXXX</a>
 </pre>
       </td>
     </tr>

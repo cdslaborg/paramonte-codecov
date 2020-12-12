@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">83</td>
@@ -834,7 +834,7 @@
 <a name="764"><span class="lineNum">     764 </span>            :     !&gt;</a>
 <a name="765"><span class="lineNum">     765 </span>            :     !&gt; \return</a>
 <a name="766"><span class="lineNum">     766 </span>            :     !&gt; `Mean` : The output mean vector of length `nd`.</a>
-<a name="767"><span class="lineNum">     767 </span><span class="lineCov">         22 :     pure function getMean_2D(nd,np,Point,Weight) result(Mean)</span></a>
+<a name="767"><span class="lineNum">     767 </span><span class="lineCov">         32 :     pure function getMean_2D(nd,np,Point,Weight) result(Mean)</span></a>
 <a name="768"><span class="lineNum">     768 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="769"><span class="lineNum">     769 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getMean_2D</a>
 <a name="770"><span class="lineNum">     770 </span>            : #endif</a>
@@ -845,21 +845,21 @@
 <a name="775"><span class="lineNum">     775 </span>            :         integer(IK), intent(in), optional   :: Weight(np)       ! sample weight</a>
 <a name="776"><span class="lineNum">     776 </span>            :         real(RK)                            :: Mean(nd)         ! output mean vector</a>
 <a name="777"><span class="lineNum">     777 </span>            :         integer(IK)                         :: ip, sumWeight</a>
-<a name="778"><span class="lineNum">     778 </span><span class="lineCov">         14 :         Mean = 0._RK</span></a>
-<a name="779"><span class="lineNum">     779 </span><span class="lineCov">          4 :         if (present(Weight)) then</span></a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          3 :             sumWeight = 0_IK</span></a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">         14 :             do ip = 1,np</span></a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">         11 :                 sumWeight = sumWeight + Weight(ip)</span></a>
-<a name="783"><span class="lineNum">     783 </span><span class="lineCov">         41 :                 Mean = Mean + Weight(ip) * Point(1:nd,ip)</span></a>
+<a name="778"><span class="lineNum">     778 </span><span class="lineCov">         20 :         Mean = 0._RK</span></a>
+<a name="779"><span class="lineNum">     779 </span><span class="lineCov">          6 :         if (present(Weight)) then</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">          5 :             sumWeight = 0_IK</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">         19 :             do ip = 1,np</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">         14 :                 sumWeight = sumWeight + Weight(ip)</span></a>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">         52 :                 Mean = Mean + Weight(ip) * Point(1:nd,ip)</span></a>
 <a name="784"><span class="lineNum">     784 </span>            :             end do</a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">         10 :             Mean = Mean / sumWeight</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">         16 :             Mean = Mean / sumWeight</span></a>
 <a name="786"><span class="lineNum">     786 </span>            :         else</a>
 <a name="787"><span class="lineNum">     787 </span><span class="lineCov">          6 :             do ip = 1,np</span></a>
 <a name="788"><span class="lineNum">     788 </span><span class="lineCov">         21 :                 Mean = Mean + Point(1:nd,ip)</span></a>
 <a name="789"><span class="lineNum">     789 </span>            :             end do</a>
 <a name="790"><span class="lineNum">     790 </span><span class="lineCov">          4 :             Mean = Mean / real(np,kind=RK)</span></a>
 <a name="791"><span class="lineNum">     791 </span>            :         end if</a>
-<a name="792"><span class="lineNum">     792 </span><span class="lineCov">          9 :     end function getMean_2D</span></a>
+<a name="792"><span class="lineNum">     792 </span><span class="lineCov">         11 :     end function getMean_2D</span></a>
 <a name="793"><span class="lineNum">     793 </span>            : </a>
 <a name="794"><span class="lineNum">     794 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="795"><span class="lineNum">     795 </span>            : </a>
@@ -889,7 +889,7 @@
 <a name="819"><span class="lineNum">     819 </span><span class="lineCov">          6 :         do i = 1,np</span></a>
 <a name="820"><span class="lineNum">     820 </span><span class="lineCov">         21 :             NormData(i,1:nd) = Point(1:nd,i) - Mean</span></a>
 <a name="821"><span class="lineNum">     821 </span>            :         end do</a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">          5 :     end function getNormData_2D</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">          7 :     end function getNormData_2D</span></a>
 <a name="823"><span class="lineNum">     823 </span>            : </a>
 <a name="824"><span class="lineNum">     824 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="825"><span class="lineNum">     825 </span>            : </a>
@@ -1283,7 +1283,7 @@
 <a name="1213"><span class="lineNum">    1213 </span>            :     !&gt;</a>
 <a name="1214"><span class="lineNum">    1214 </span>            :     !&gt; \author</a>
 <a name="1215"><span class="lineNum">    1215 </span>            :     !&gt; Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan</a>
-<a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">         45 :     subroutine getSamCovUpperMeanTrans(np,nd,Point,CovMatUpper,Mean)</span></a>
+<a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">         47 :     subroutine getSamCovUpperMeanTrans(np,nd,Point,CovMatUpper,Mean)</span></a>
 <a name="1217"><span class="lineNum">    1217 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="1218"><span class="lineNum">    1218 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCovUpperMeanTrans</a>
 <a name="1219"><span class="lineNum">    1219 </span>            : #endif</a>
@@ -1293,29 +1293,29 @@
 <a name="1223"><span class="lineNum">    1223 </span>            :         real(RK)   , intent(in)            :: Point(nd,np)           ! Point is the matrix of the data, CovMatUpper contains the elements of the sample covariance matrix</a>
 <a name="1224"><span class="lineNum">    1224 </span>            :         real(RK)   , intent(out)           :: CovMatUpper(nd,nd)     ! Covariance matrix of the input data</a>
 <a name="1225"><span class="lineNum">    1225 </span>            :         real(RK)   , intent(out)           :: Mean(nd)               ! Mean vector</a>
-<a name="1226"><span class="lineNum">    1226 </span><span class="lineCov">        595 :         real(RK)                           :: npMinusOneInvReal, NormData(nd,np)</span></a>
+<a name="1226"><span class="lineNum">    1226 </span><span class="lineCov">        615 :         real(RK)                           :: npMinusOneInvReal, NormData(nd,np)</span></a>
 <a name="1227"><span class="lineNum">    1227 </span>            :         integer(IK)                        :: i,j</a>
 <a name="1228"><span class="lineNum">    1228 </span>            : </a>
-<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">        124 :         Mean = 0._RK</span></a>
-<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">        225 :         do i = 1,np</span></a>
-<a name="1231"><span class="lineNum">    1231 </span><span class="lineCov">        595 :             do j = 1,nd</span></a>
-<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">        550 :                 Mean(j) = Mean(j) + Point(j,i)</span></a>
+<a name="1229"><span class="lineNum">    1229 </span><span class="lineCov">        132 :         Mean = 0._RK</span></a>
+<a name="1230"><span class="lineNum">    1230 </span><span class="lineCov">        230 :         do i = 1,np</span></a>
+<a name="1231"><span class="lineNum">    1231 </span><span class="lineCov">        615 :             do j = 1,nd</span></a>
+<a name="1232"><span class="lineNum">    1232 </span><span class="lineCov">        568 :                 Mean(j) = Mean(j) + Point(j,i)</span></a>
 <a name="1233"><span class="lineNum">    1233 </span>            :             end do</a>
 <a name="1234"><span class="lineNum">    1234 </span>            :         end do</a>
-<a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">        124 :         Mean = Mean / real(np,kind=RK)</span></a>
+<a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">        132 :         Mean = Mean / real(np,kind=RK)</span></a>
 <a name="1236"><span class="lineNum">    1236 </span>            : </a>
-<a name="1237"><span class="lineNum">    1237 </span><span class="lineCov">        225 :         do i = 1,np</span></a>
-<a name="1238"><span class="lineNum">    1238 </span><span class="lineCov">        595 :             NormData(1:nd,i) = Point(1:nd,i) - Mean</span></a>
+<a name="1237"><span class="lineNum">    1237 </span><span class="lineCov">        230 :         do i = 1,np</span></a>
+<a name="1238"><span class="lineNum">    1238 </span><span class="lineCov">        615 :             NormData(1:nd,i) = Point(1:nd,i) - Mean</span></a>
 <a name="1239"><span class="lineNum">    1239 </span>            :         end do</a>
 <a name="1240"><span class="lineNum">    1240 </span>            : </a>
-<a name="1241"><span class="lineNum">    1241 </span><span class="lineCov">         45 :         npMinusOneInvReal = 1._RK / real(np-1,kind=RK)</span></a>
-<a name="1242"><span class="lineNum">    1242 </span><span class="lineCov">        124 :         do j = 1,nd</span></a>
-<a name="1243"><span class="lineNum">    1243 </span><span class="lineCov">        244 :             do i = 1,j</span></a>
-<a name="1244"><span class="lineNum">    1244 </span><span class="lineCov">        824 :                 CovMatUpper(i,j) = dot_product(NormData(i,1:np),NormData(j,1:np)) * npMinusOneInvReal</span></a>
+<a name="1241"><span class="lineNum">    1241 </span><span class="lineCov">         47 :         npMinusOneInvReal = 1._RK / real(np-1,kind=RK)</span></a>
+<a name="1242"><span class="lineNum">    1242 </span><span class="lineCov">        132 :         do j = 1,nd</span></a>
+<a name="1243"><span class="lineNum">    1243 </span><span class="lineCov">        262 :             do i = 1,j</span></a>
+<a name="1244"><span class="lineNum">    1244 </span><span class="lineCov">        867 :                 CovMatUpper(i,j) = dot_product(NormData(i,1:np),NormData(j,1:np)) * npMinusOneInvReal</span></a>
 <a name="1245"><span class="lineNum">    1245 </span>            :             end do</a>
 <a name="1246"><span class="lineNum">    1246 </span>            :         end do</a>
 <a name="1247"><span class="lineNum">    1247 </span>            : </a>
-<a name="1248"><span class="lineNum">    1248 </span><span class="lineCov">         45 :   end subroutine getSamCovUpperMeanTrans</span></a>
+<a name="1248"><span class="lineNum">    1248 </span><span class="lineCov">         47 :   end subroutine getSamCovUpperMeanTrans</span></a>
 <a name="1249"><span class="lineNum">    1249 </span>            : </a>
 <a name="1250"><span class="lineNum">    1250 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1251"><span class="lineNum">    1251 </span>            : </a>
@@ -1344,46 +1344,46 @@
 <a name="1274"><span class="lineNum">    1274 </span>            :     !&gt;</a>
 <a name="1275"><span class="lineNum">    1275 </span>            :     !&gt; \author</a>
 <a name="1276"><span class="lineNum">    1276 </span>            :     !&gt; Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan</a>
-<a name="1277"><span class="lineNum">    1277 </span><span class="lineCov">      24256 :     subroutine getWeiSamCovUppMeanTrans(np,sumWeight,nd,Point,Weight,CovMatUpper,Mean)</span></a>
+<a name="1277"><span class="lineNum">    1277 </span><span class="lineCov">      24166 :     subroutine getWeiSamCovUppMeanTrans(np,sumWeight,nd,Point,Weight,CovMatUpper,Mean)</span></a>
 <a name="1278"><span class="lineNum">    1278 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="1279"><span class="lineNum">    1279 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getWeiSamCovUppMeanTrans</a>
 <a name="1280"><span class="lineNum">    1280 </span>            : #endif</a>
 <a name="1281"><span class="lineNum">    1281 </span>            : </a>
-<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">         45 :         use Matrix_mod, only: getInvPosDefMatSqrtDet</span></a>
+<a name="1282"><span class="lineNum">    1282 </span><span class="lineCov">         47 :         use Matrix_mod, only: getInvPosDefMatSqrtDet</span></a>
 <a name="1283"><span class="lineNum">    1283 </span>            :         implicit none</a>
 <a name="1284"><span class="lineNum">    1284 </span>            :         integer(IK), intent(in)             :: np,nd,sumWeight        ! np is the number of observations, nd is the number of parameters for each observation</a>
 <a name="1285"><span class="lineNum">    1285 </span>            :         integer(IK), intent(in)             :: Weight(np)             ! weights of the points</a>
 <a name="1286"><span class="lineNum">    1286 </span>            :         real(RK)   , intent(in)             :: Point(nd,np)           ! Point is the matrix of the data, CovMatUpper contains the elements of the sample covariance matrix</a>
 <a name="1287"><span class="lineNum">    1287 </span>            :         real(RK)   , intent(out)            :: CovMatUpper(nd,nd)     ! Covariance matrix of the input data</a>
 <a name="1288"><span class="lineNum">    1288 </span>            :         real(RK)   , intent(out)            :: Mean(nd)               ! Mean vector</a>
-<a name="1289"><span class="lineNum">    1289 </span><span class="lineCov">      24256 :         real(RK)                            :: sumWeightMinusOneInvReal</span></a>
-<a name="1290"><span class="lineNum">    1290 </span><span class="lineCov">     533620 :         real(RK)                            :: NormData(nd,np)</span></a>
+<a name="1289"><span class="lineNum">    1289 </span><span class="lineCov">      24166 :         real(RK)                            :: sumWeightMinusOneInvReal</span></a>
+<a name="1290"><span class="lineNum">    1290 </span><span class="lineCov">     534993 :         real(RK)                            :: NormData(nd,np)</span></a>
 <a name="1291"><span class="lineNum">    1291 </span>            :         integer(IK)                         :: i,j,ip</a>
 <a name="1292"><span class="lineNum">    1292 </span>            : </a>
-<a name="1293"><span class="lineNum">    1293 </span><span class="lineCov">      61450 :         Mean = 0._RK</span></a>
-<a name="1294"><span class="lineNum">    1294 </span><span class="lineCov">     218192 :         do i = 1,np</span></a>
-<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">     533620 :             do j = 1,nd</span></a>
-<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">     509364 :                 Mean(j) = Mean(j) + Weight(i)*Point(j,i)</span></a>
+<a name="1293"><span class="lineNum">    1293 </span><span class="lineCov">      61269 :         Mean = 0._RK</span></a>
+<a name="1294"><span class="lineNum">    1294 </span><span class="lineCov">     218721 :         do i = 1,np</span></a>
+<a name="1295"><span class="lineNum">    1295 </span><span class="lineCov">     534993 :             do j = 1,nd</span></a>
+<a name="1296"><span class="lineNum">    1296 </span><span class="lineCov">     510827 :                 Mean(j) = Mean(j) + Weight(i)*Point(j,i)</span></a>
 <a name="1297"><span class="lineNum">    1297 </span>            :             end do</a>
 <a name="1298"><span class="lineNum">    1298 </span>            :         end do</a>
-<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">      61450 :         Mean = Mean / real(sumWeight,kind=RK)</span></a>
+<a name="1299"><span class="lineNum">    1299 </span><span class="lineCov">      61269 :         Mean = Mean / real(sumWeight,kind=RK)</span></a>
 <a name="1300"><span class="lineNum">    1300 </span>            : </a>
-<a name="1301"><span class="lineNum">    1301 </span><span class="lineCov">     218192 :         do i = 1,np</span></a>
-<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">     533620 :             NormData(1:nd,i) = Point(1:nd,i) - Mean</span></a>
+<a name="1301"><span class="lineNum">    1301 </span><span class="lineCov">     218721 :         do i = 1,np</span></a>
+<a name="1302"><span class="lineNum">    1302 </span><span class="lineCov">     534993 :             NormData(1:nd,i) = Point(1:nd,i) - Mean</span></a>
 <a name="1303"><span class="lineNum">    1303 </span>            :         end do</a>
 <a name="1304"><span class="lineNum">    1304 </span>            : </a>
-<a name="1305"><span class="lineNum">    1305 </span><span class="lineCov">      24256 :         sumWeightMinusOneInvReal = 1._RK / real(sumWeight-1,kind=RK)</span></a>
-<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">      61450 :         do j = 1,nd</span></a>
-<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">     111583 :             do i = 1,j</span></a>
-<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">      50133 :                 CovMatUpper(i,j) = 0</span></a>
-<a name="1309"><span class="lineNum">    1309 </span><span class="lineCov">     487058 :                 do ip = 1,np</span></a>
-<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">     487058 :                     CovMatUpper(i,j) = CovMatUpper(i,j) + Weight(ip)*NormData(i,ip)*NormData(j,ip)</span></a>
+<a name="1305"><span class="lineNum">    1305 </span><span class="lineCov">      24166 :         sumWeightMinusOneInvReal = 1._RK / real(sumWeight-1,kind=RK)</span></a>
+<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">      61269 :         do j = 1,nd</span></a>
+<a name="1307"><span class="lineNum">    1307 </span><span class="lineCov">     111310 :             do i = 1,j</span></a>
+<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">      50041 :                 CovMatUpper(i,j) = 0</span></a>
+<a name="1309"><span class="lineNum">    1309 </span><span class="lineCov">     488035 :                 do ip = 1,np</span></a>
+<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">     488035 :                     CovMatUpper(i,j) = CovMatUpper(i,j) + Weight(ip)*NormData(i,ip)*NormData(j,ip)</span></a>
 <a name="1311"><span class="lineNum">    1311 </span>            :                 end do</a>
-<a name="1312"><span class="lineNum">    1312 </span><span class="lineCov">      87327 :                 CovMatUpper(i,j) = CovMatUpper(i,j) * sumWeightMinusOneInvReal</span></a>
+<a name="1312"><span class="lineNum">    1312 </span><span class="lineCov">      87144 :                 CovMatUpper(i,j) = CovMatUpper(i,j) * sumWeightMinusOneInvReal</span></a>
 <a name="1313"><span class="lineNum">    1313 </span>            :             end do</a>
 <a name="1314"><span class="lineNum">    1314 </span>            :         end do</a>
 <a name="1315"><span class="lineNum">    1315 </span>            : </a>
-<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">      24256 :     end subroutine getWeiSamCovUppMeanTrans</span></a>
+<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">      24166 :     end subroutine getWeiSamCovUppMeanTrans</span></a>
 <a name="1317"><span class="lineNum">    1317 </span>            : </a>
 <a name="1318"><span class="lineNum">    1318 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1319"><span class="lineNum">    1319 </span>            : </a>
@@ -1442,7 +1442,7 @@
 <a name="1372"><span class="lineNum">    1372 </span><span class="lineCov">         23 :         DistanceSq = matmul( (MeanMatA-MeanMatB), transpose((MeanMatA-MeanMatB)) ) * npA * npB * npABinverse</span></a>
 <a name="1373"><span class="lineNum">    1373 </span><span class="lineCov">         13 :         CovMatAB = ( (npA-1) * CovMatA + (npB-1) * CovMatB + DistanceSq ) / real(npAB-1, kind=RK)</span></a>
 <a name="1374"><span class="lineNum">    1374 </span>            : </a>
-<a name="1375"><span class="lineNum">    1375 </span><span class="lineCov">      24256 :     end subroutine mergeMeanCov</span></a>
+<a name="1375"><span class="lineNum">    1375 </span><span class="lineCov">      24166 :     end subroutine mergeMeanCov</span></a>
 <a name="1376"><span class="lineNum">    1376 </span>            : </a>
 <a name="1377"><span class="lineNum">    1377 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1378"><span class="lineNum">    1378 </span>            : </a>
@@ -1531,7 +1531,7 @@
 <a name="1461"><span class="lineNum">    1461 </span>            :     !&gt;</a>
 <a name="1462"><span class="lineNum">    1462 </span>            :     !&gt; \author</a>
 <a name="1463"><span class="lineNum">    1463 </span>            :     !&gt; Amir Shahmoradi, Nov 24, 2020, 4:19 AM, Dallas, TX</a>
-<a name="1464"><span class="lineNum">    1464 </span><span class="lineCov">      23622 :     subroutine mergeMeanCovUpper(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB,MeanVecAB,CovMatUpperAB)</span></a>
+<a name="1464"><span class="lineNum">    1464 </span><span class="lineCov">      23536 :     subroutine mergeMeanCovUpper(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB,MeanVecAB,CovMatUpperAB)</span></a>
 <a name="1465"><span class="lineNum">    1465 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="1466"><span class="lineNum">    1466 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: mergeMeanCovUpper</a>
 <a name="1467"><span class="lineNum">    1467 </span>            : #endif</a>
@@ -1541,34 +1541,34 @@
 <a name="1471"><span class="lineNum">    1471 </span>            :         real(RK)   , intent(in)             :: MeanVecA(nd),CovMatUpperA(nd,nd)</a>
 <a name="1472"><span class="lineNum">    1472 </span>            :         real(RK)   , intent(in)             :: MeanVecB(nd),CovMatUpperB(nd,nd)</a>
 <a name="1473"><span class="lineNum">    1473 </span>            :         real(RK)   , intent(out)            :: MeanVecAB(nd),CovMatUpperAB(nd,nd)</a>
-<a name="1474"><span class="lineNum">    1474 </span><span class="lineCov">      59830 :         real(RK)                            :: MeanVecDiffAB(nd)</span></a>
-<a name="1475"><span class="lineNum">    1475 </span><span class="lineCov">      23622 :         real(RK)                            :: npAnpB2npAB2npABMinusOne</span></a>
-<a name="1476"><span class="lineNum">    1476 </span><span class="lineCov">      23622 :         real(RK)                            :: npAMinusOne2npABMinusOne</span></a>
-<a name="1477"><span class="lineNum">    1477 </span><span class="lineCov">      23622 :         real(RK)                            :: npBMinusOne2npABMinusOne</span></a>
-<a name="1478"><span class="lineNum">    1478 </span><span class="lineCov">      23622 :         real(RK)                            :: npABMinusOneInverse</span></a>
-<a name="1479"><span class="lineNum">    1479 </span><span class="lineCov">      23622 :         real(RK)                            :: npABinverse</span></a>
-<a name="1480"><span class="lineNum">    1480 </span><span class="lineCov">      23622 :         real(RK)                            :: npA2npAB</span></a>
-<a name="1481"><span class="lineNum">    1481 </span><span class="lineCov">      23622 :         real(RK)                            :: npB2npAB</span></a>
+<a name="1474"><span class="lineNum">    1474 </span><span class="lineCov">      59663 :         real(RK)                            :: MeanVecDiffAB(nd)</span></a>
+<a name="1475"><span class="lineNum">    1475 </span><span class="lineCov">      23536 :         real(RK)                            :: npAnpB2npAB2npABMinusOne</span></a>
+<a name="1476"><span class="lineNum">    1476 </span><span class="lineCov">      23536 :         real(RK)                            :: npAMinusOne2npABMinusOne</span></a>
+<a name="1477"><span class="lineNum">    1477 </span><span class="lineCov">      23536 :         real(RK)                            :: npBMinusOne2npABMinusOne</span></a>
+<a name="1478"><span class="lineNum">    1478 </span><span class="lineCov">      23536 :         real(RK)                            :: npABMinusOneInverse</span></a>
+<a name="1479"><span class="lineNum">    1479 </span><span class="lineCov">      23536 :         real(RK)                            :: npABinverse</span></a>
+<a name="1480"><span class="lineNum">    1480 </span><span class="lineCov">      23536 :         real(RK)                            :: npA2npAB</span></a>
+<a name="1481"><span class="lineNum">    1481 </span><span class="lineCov">      23536 :         real(RK)                            :: npB2npAB</span></a>
 <a name="1482"><span class="lineNum">    1482 </span>            :         integer(IK)                         :: npAB, i, j</a>
 <a name="1483"><span class="lineNum">    1483 </span>            : </a>
-<a name="1484"><span class="lineNum">    1484 </span><span class="lineCov">      23622 :         npAB = npA + npB</span></a>
-<a name="1485"><span class="lineNum">    1485 </span><span class="lineCov">      23622 :         npABinverse = 1._RK / real(npAB, kind=RK)</span></a>
-<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">      23622 :         npABMinusOneInverse = 1._RK / real(npAB-1, kind=RK)</span></a>
-<a name="1487"><span class="lineNum">    1487 </span><span class="lineCov">      23622 :         npAnpB2npAB2npABMinusOne = npA * npB * npABinverse * npABMinusOneInverse</span></a>
-<a name="1488"><span class="lineNum">    1488 </span><span class="lineCov">      23622 :         npA2npAB = npA * npABinverse</span></a>
-<a name="1489"><span class="lineNum">    1489 </span><span class="lineCov">      23622 :         npB2npAB = npB * npABinverse</span></a>
-<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">      23622 :         npAMinusOne2npABMinusOne = (npA - 1_IK) * npABMinusOneInverse</span></a>
-<a name="1491"><span class="lineNum">    1491 </span><span class="lineCov">      23622 :         npBMinusOne2npABMinusOne = (npB - 1_IK) * npABMinusOneInverse</span></a>
+<a name="1484"><span class="lineNum">    1484 </span><span class="lineCov">      23536 :         npAB = npA + npB</span></a>
+<a name="1485"><span class="lineNum">    1485 </span><span class="lineCov">      23536 :         npABinverse = 1._RK / real(npAB, kind=RK)</span></a>
+<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">      23536 :         npABMinusOneInverse = 1._RK / real(npAB-1, kind=RK)</span></a>
+<a name="1487"><span class="lineNum">    1487 </span><span class="lineCov">      23536 :         npAnpB2npAB2npABMinusOne = npA * npB * npABinverse * npABMinusOneInverse</span></a>
+<a name="1488"><span class="lineNum">    1488 </span><span class="lineCov">      23536 :         npA2npAB = npA * npABinverse</span></a>
+<a name="1489"><span class="lineNum">    1489 </span><span class="lineCov">      23536 :         npB2npAB = npB * npABinverse</span></a>
+<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">      23536 :         npAMinusOne2npABMinusOne = (npA - 1_IK) * npABMinusOneInverse</span></a>
+<a name="1491"><span class="lineNum">    1491 </span><span class="lineCov">      23536 :         npBMinusOne2npABMinusOne = (npB - 1_IK) * npABMinusOneInverse</span></a>
 <a name="1492"><span class="lineNum">    1492 </span>            : </a>
 <a name="1493"><span class="lineNum">    1493 </span>            :         ! Compute the new Mean and Covariance matrix</a>
 <a name="1494"><span class="lineNum">    1494 </span>            : </a>
-<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">      59830 :         do j = 1, nd</span></a>
-<a name="1496"><span class="lineNum">    1496 </span><span class="lineCov">      36208 :             MeanVecDiffAB(j) = MeanVecA(j) - MeanVecB(j)</span></a>
-<a name="1497"><span class="lineNum">    1497 </span><span class="lineCov">      36208 :             MeanVecAB(j) = npA2npAB * MeanVecA(j) + npB2npAB * MeanVecB(j)</span></a>
-<a name="1498"><span class="lineNum">    1498 </span><span class="lineCov">     108625 :             do i = 1, j</span></a>
-<a name="1499"><span class="lineNum">    1499 </span><span class="lineCov">      48795 :                 CovMatUpperAB(i,j)  = npAMinusOne2npABMinusOne * CovMatUpperA(i,j) &amp;</span></a>
-<a name="1500"><span class="lineNum">    1500 </span><span class="lineCov">      48795 :                                     + npBMinusOne2npABMinusOne * CovMatUpperB(i,j) &amp;</span></a>
-<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">      85003 :                                     + npAnpB2npAB2npABMinusOne * MeanVecDiffAB(i) * MeanVecDiffAB(j)</span></a>
+<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">      59663 :         do j = 1, nd</span></a>
+<a name="1496"><span class="lineNum">    1496 </span><span class="lineCov">      36127 :             MeanVecDiffAB(j) = MeanVecA(j) - MeanVecB(j)</span></a>
+<a name="1497"><span class="lineNum">    1497 </span><span class="lineCov">      36127 :             MeanVecAB(j) = npA2npAB * MeanVecA(j) + npB2npAB * MeanVecB(j)</span></a>
+<a name="1498"><span class="lineNum">    1498 </span><span class="lineCov">     108382 :             do i = 1, j</span></a>
+<a name="1499"><span class="lineNum">    1499 </span><span class="lineCov">      48719 :                 CovMatUpperAB(i,j)  = npAMinusOne2npABMinusOne * CovMatUpperA(i,j) &amp;</span></a>
+<a name="1500"><span class="lineNum">    1500 </span><span class="lineCov">      48719 :                                     + npBMinusOne2npABMinusOne * CovMatUpperB(i,j) &amp;</span></a>
+<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">      84846 :                                     + npAnpB2npAB2npABMinusOne * MeanVecDiffAB(i) * MeanVecDiffAB(j)</span></a>
 <a name="1502"><span class="lineNum">    1502 </span>            :             end do</a>
 <a name="1503"><span class="lineNum">    1503 </span>            :         end do</a>
 <a name="1504"><span class="lineNum">    1504 </span>            : </a>
@@ -1639,7 +1639,7 @@
 <a name="1569"><span class="lineNum">    1569 </span>            :             end do</a>
 <a name="1570"><span class="lineNum">    1570 </span>            :         end do</a>
 <a name="1571"><span class="lineNum">    1571 </span>            : </a>
-<a name="1572"><span class="lineNum">    1572 </span><span class="lineCov">      23622 :     end subroutine mergeMeanCovUpperDense</span></a>
+<a name="1572"><span class="lineNum">    1572 </span><span class="lineCov">      23536 :     end subroutine mergeMeanCovUpperDense</span></a>
 <a name="1573"><span class="lineNum">    1573 </span>            : </a>
 <a name="1574"><span class="lineNum">    1574 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1575"><span class="lineNum">    1575 </span>            : </a>
@@ -1654,7 +1654,7 @@
 <a name="1584"><span class="lineNum">    1584 </span>            :     !&gt;</a>
 <a name="1585"><span class="lineNum">    1585 </span>            :     !&gt; \author</a>
 <a name="1586"><span class="lineNum">    1586 </span>            :     !&gt; Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan</a>
-<a name="1587"><span class="lineNum">    1587 </span><span class="lineCov">     700213 :     function getRandGaus() result(randGaus)</span></a>
+<a name="1587"><span class="lineNum">    1587 </span><span class="lineCov">     570102 :     function getRandGaus() result(randGaus)</span></a>
 <a name="1588"><span class="lineNum">    1588 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="1589"><span class="lineNum">    1589 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getRandGaus</a>
 <a name="1590"><span class="lineNum">    1590 </span>            : #endif</a>
@@ -1662,11 +1662,11 @@
 <a name="1592"><span class="lineNum">    1592 </span>            :         implicit none</a>
 <a name="1593"><span class="lineNum">    1593 </span>            :         integer(IK), save :: iset=0</a>
 <a name="1594"><span class="lineNum">    1594 </span>            :         real(RK)   , save :: gset</a>
-<a name="1595"><span class="lineNum">    1595 </span><span class="lineCov">     700213 :         real(RK)          :: fac,rsq,vec(2)</span></a>
+<a name="1595"><span class="lineNum">    1595 </span><span class="lineCov">     570102 :         real(RK)          :: fac,rsq,vec(2)</span></a>
 <a name="1596"><span class="lineNum">    1596 </span>            :         real(RK)          :: randGaus</a>
 <a name="1597"><span class="lineNum">    1597 </span>            : </a>
-<a name="1598"><span class="lineNum">    1598 </span><span class="lineCov">     700213 :         if (iset == 0_IK) then</span></a>
-<a name="1599"><span class="lineNum">    1599 </span><span class="lineCov">      94923 :             do</span></a>
+<a name="1598"><span class="lineNum">    1598 </span><span class="lineCov">     570102 :         if (iset == 0_IK) then</span></a>
+<a name="1599"><span class="lineNum">    1599 </span><span class="lineCov">      77206 :             do</span></a>
 <a name="1600"><span class="lineNum">    1600 </span>            :                 !block</a>
 <a name="1601"><span class="lineNum">    1601 </span>            :                 !integer :: i, n</a>
 <a name="1602"><span class="lineNum">    1602 </span>            :                 !real(RK) :: unifrnd(30)</a>
@@ -1687,21 +1687,21 @@
 <a name="1617"><span class="lineNum">    1617 </span>            :                 !    paradramPrintEnabled = .false.</a>
 <a name="1618"><span class="lineNum">    1618 </span>            :                 !end if</a>
 <a name="1619"><span class="lineNum">    1619 </span>            :                 !end block</a>
-<a name="1620"><span class="lineNum">    1620 </span><span class="lineCov">     445030 :                 call random_number(vec)</span></a>
-<a name="1621"><span class="lineNum">    1621 </span><span class="lineCov">    1335090 :                 vec = 2._RK*vec - 1._RK</span></a>
-<a name="1622"><span class="lineNum">    1622 </span><span class="lineCov">     445030 :                 rsq = vec(1)**2 + vec(2)**2</span></a>
-<a name="1623"><span class="lineNum">    1623 </span><span class="lineCov">     445030 :                 if ( rsq &gt; 0._RK .and. rsq &lt; 1._RK ) exit</span></a>
+<a name="1620"><span class="lineNum">    1620 </span><span class="lineCov">     362257 :                 call random_number(vec)</span></a>
+<a name="1621"><span class="lineNum">    1621 </span><span class="lineCov">    1086770 :                 vec = 2._RK*vec - 1._RK</span></a>
+<a name="1622"><span class="lineNum">    1622 </span><span class="lineCov">     362257 :                 rsq = vec(1)**2 + vec(2)**2</span></a>
+<a name="1623"><span class="lineNum">    1623 </span><span class="lineCov">     362257 :                 if ( rsq &gt; 0._RK .and. rsq &lt; 1._RK ) exit</span></a>
 <a name="1624"><span class="lineNum">    1624 </span>            :             end do</a>
-<a name="1625"><span class="lineNum">    1625 </span><span class="lineCov">     350107 :             fac = sqrt(-2._RK*log(rsq)/rsq)</span></a>
-<a name="1626"><span class="lineNum">    1626 </span><span class="lineCov">     350107 :             gset = vec(1)*fac</span></a>
-<a name="1627"><span class="lineNum">    1627 </span><span class="lineCov">     350107 :             randGaus = vec(2)*fac</span></a>
-<a name="1628"><span class="lineNum">    1628 </span><span class="lineCov">     350107 :             iset = 1_IK</span></a>
+<a name="1625"><span class="lineNum">    1625 </span><span class="lineCov">     285051 :             fac = sqrt(-2._RK*log(rsq)/rsq)</span></a>
+<a name="1626"><span class="lineNum">    1626 </span><span class="lineCov">     285051 :             gset = vec(1)*fac</span></a>
+<a name="1627"><span class="lineNum">    1627 </span><span class="lineCov">     285051 :             randGaus = vec(2)*fac</span></a>
+<a name="1628"><span class="lineNum">    1628 </span><span class="lineCov">     285051 :             iset = 1_IK</span></a>
 <a name="1629"><span class="lineNum">    1629 </span>            :         else</a>
-<a name="1630"><span class="lineNum">    1630 </span><span class="lineCov">     350106 :             randGaus = gset</span></a>
-<a name="1631"><span class="lineNum">    1631 </span><span class="lineCov">     350106 :             iset = 0_IK</span></a>
+<a name="1630"><span class="lineNum">    1630 </span><span class="lineCov">     285051 :             randGaus = gset</span></a>
+<a name="1631"><span class="lineNum">    1631 </span><span class="lineCov">     285051 :             iset = 0_IK</span></a>
 <a name="1632"><span class="lineNum">    1632 </span>            :         endif</a>
 <a name="1633"><span class="lineNum">    1633 </span>            : </a>
-<a name="1634"><span class="lineNum">    1634 </span><span class="lineCov">     700215 :     end function getRandGaus</span></a>
+<a name="1634"><span class="lineNum">    1634 </span><span class="lineCov">     570104 :     end function getRandGaus</span></a>
 <a name="1635"><span class="lineNum">    1635 </span>            : </a>
 <a name="1636"><span class="lineNum">    1636 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1637"><span class="lineNum">    1637 </span>            : </a>
@@ -1724,7 +1724,7 @@
 <a name="1654"><span class="lineNum">    1654 </span>            :         real(RK), intent(in)    :: mean, std</a>
 <a name="1655"><span class="lineNum">    1655 </span>            :         real(RK)                :: randNorm</a>
 <a name="1656"><span class="lineNum">    1656 </span><span class="lineCov">          2 :         randNorm = mean + std * getRandGaus()</span></a>
-<a name="1657"><span class="lineNum">    1657 </span><span class="lineCov">     700214 :     end function getRandNorm</span></a>
+<a name="1657"><span class="lineNum">    1657 </span><span class="lineCov">     570103 :     end function getRandNorm</span></a>
 <a name="1658"><span class="lineNum">    1658 </span>            : </a>
 <a name="1659"><span class="lineNum">    1659 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1660"><span class="lineNum">    1660 </span>            : </a>
@@ -1865,7 +1865,7 @@
 <a name="1795"><span class="lineNum">    1795 </span>            :     !&gt;</a>
 <a name="1796"><span class="lineNum">    1796 </span>            :     !&gt; \author</a>
 <a name="1797"><span class="lineNum">    1797 </span>            :     !&gt; Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, UTEXAS</a>
-<a name="1798"><span class="lineNum">    1798 </span><span class="lineCov">    1451140 :     function getRandMVN(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVN)</span></a>
+<a name="1798"><span class="lineNum">    1798 </span><span class="lineCov">    1111850 :     function getRandMVN(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVN)</span></a>
 <a name="1799"><span class="lineNum">    1799 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="1800"><span class="lineNum">    1800 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMVN</a>
 <a name="1801"><span class="lineNum">    1801 </span>            : #endif</a>
@@ -1873,17 +1873,17 @@
 <a name="1803"><span class="lineNum">    1803 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="1804"><span class="lineNum">    1804 </span>            :         real(RK)   , intent(in) :: MeanVec(nd)</a>
 <a name="1805"><span class="lineNum">    1805 </span>            :         real(RK)   , intent(in) :: CholeskyLower(nd,nd), Diagonal(nd)   ! Cholesky lower triangle and its diagonal terms, calculated from the input CovMat.</a>
-<a name="1806"><span class="lineNum">    1806 </span><span class="lineCov">     301390 :         real(RK)                :: RandMVN(nd), dummy</span></a>
+<a name="1806"><span class="lineNum">    1806 </span><span class="lineCov">     233012 :         real(RK)                :: RandMVN(nd), dummy</span></a>
 <a name="1807"><span class="lineNum">    1807 </span>            :         integer(IK)             :: j,i</a>
-<a name="1808"><span class="lineNum">    1808 </span><span class="lineCov">     848360 :         RandMVN = MeanVec</span></a>
-<a name="1809"><span class="lineNum">    1809 </span><span class="lineCov">     848360 :         do j = 1,nd</span></a>
-<a name="1810"><span class="lineNum">    1810 </span><span class="lineCov">     546970 :             dummy = getRandGaus()</span></a>
-<a name="1811"><span class="lineNum">    1811 </span><span class="lineCov">     546970 :             RandMVN(j) = RandMVN(j) + Diagonal(j) * dummy</span></a>
-<a name="1812"><span class="lineNum">    1812 </span><span class="lineCov">    1093940 :             do i = j+1,nd</span></a>
-<a name="1813"><span class="lineNum">    1813 </span><span class="lineCov">     792550 :                 RandMVN(i) = RandMVN(i) + CholeskyLower(i,j) * dummy</span></a>
+<a name="1808"><span class="lineNum">    1808 </span><span class="lineCov">     645826 :         RandMVN = MeanVec</span></a>
+<a name="1809"><span class="lineNum">    1809 </span><span class="lineCov">     645826 :         do j = 1,nd</span></a>
+<a name="1810"><span class="lineNum">    1810 </span><span class="lineCov">     412814 :             dummy = getRandGaus()</span></a>
+<a name="1811"><span class="lineNum">    1811 </span><span class="lineCov">     412814 :             RandMVN(j) = RandMVN(j) + Diagonal(j) * dummy</span></a>
+<a name="1812"><span class="lineNum">    1812 </span><span class="lineCov">     825628 :             do i = j+1,nd</span></a>
+<a name="1813"><span class="lineNum">    1813 </span><span class="lineCov">     592616 :                 RandMVN(i) = RandMVN(i) + CholeskyLower(i,j) * dummy</span></a>
 <a name="1814"><span class="lineNum">    1814 </span>            :             end do</a>
 <a name="1815"><span class="lineNum">    1815 </span>            :         end do</a>
-<a name="1816"><span class="lineNum">    1816 </span><span class="lineCov">     301391 :     end function getRandMVN</span></a>
+<a name="1816"><span class="lineNum">    1816 </span><span class="lineCov">     233013 :     end function getRandMVN</span></a>
 <a name="1817"><span class="lineNum">    1817 </span>            : </a>
 <a name="1818"><span class="lineNum">    1818 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1819"><span class="lineNum">    1819 </span>            : </a>
@@ -1922,7 +1922,7 @@
 <a name="1852"><span class="lineNum">    1852 </span>            :     !&gt;</a>
 <a name="1853"><span class="lineNum">    1853 </span>            :     !&gt; \author</a>
 <a name="1854"><span class="lineNum">    1854 </span>            :     !&gt; Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS</a>
-<a name="1855"><span class="lineNum">    1855 </span><span class="lineCov">     359262 :     function getRandMVU(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVU)</span></a>
+<a name="1855"><span class="lineNum">    1855 </span><span class="lineCov">     369490 :     function getRandMVU(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVU)</span></a>
 <a name="1856"><span class="lineNum">    1856 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="1857"><span class="lineNum">    1857 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMVU</a>
 <a name="1858"><span class="lineNum">    1858 </span>            : #endif</a>
@@ -1931,24 +1931,24 @@
 <a name="1861"><span class="lineNum">    1861 </span>            :         real(RK)   , intent(in) :: MeanVec(nd)</a>
 <a name="1862"><span class="lineNum">    1862 </span>            :         real(RK)   , intent(in) :: CholeskyLower(nd,nd) ! Cholesky lower triangle, calculated from the input CovMat.</a>
 <a name="1863"><span class="lineNum">    1863 </span>            :         real(RK)   , intent(in) :: Diagonal(nd)         ! Cholesky diagonal terms, calculated from the input CovMat.</a>
-<a name="1864"><span class="lineNum">    1864 </span><span class="lineCov">     287083 :         real(RK)                :: RandMVU(nd), dummy, DummyVec(nd), sumSqDummyVec</span></a>
+<a name="1864"><span class="lineNum">    1864 </span><span class="lineCov">     295250 :         real(RK)                :: RandMVU(nd), dummy, DummyVec(nd), sumSqDummyVec</span></a>
 <a name="1865"><span class="lineNum">    1865 </span>            :         integer(IK)             :: i,j</a>
-<a name="1866"><span class="lineNum">    1866 </span><span class="lineCov">      72179 :         sumSqDummyVec = 0._RK</span></a>
-<a name="1867"><span class="lineNum">    1867 </span><span class="lineCov">     214904 :         do j=1,nd</span></a>
-<a name="1868"><span class="lineNum">    1868 </span><span class="lineCov">     142725 :             DummyVec(j) = getRandGaus()</span></a>
-<a name="1869"><span class="lineNum">    1869 </span><span class="lineCov">     214904 :             sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2</span></a>
+<a name="1866"><span class="lineNum">    1866 </span><span class="lineCov">      74240 :         sumSqDummyVec = 0._RK</span></a>
+<a name="1867"><span class="lineNum">    1867 </span><span class="lineCov">     221010 :         do j=1,nd</span></a>
+<a name="1868"><span class="lineNum">    1868 </span><span class="lineCov">     146770 :             DummyVec(j) = getRandGaus()</span></a>
+<a name="1869"><span class="lineNum">    1869 </span><span class="lineCov">     221010 :             sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2</span></a>
 <a name="1870"><span class="lineNum">    1870 </span>            :         end do</a>
-<a name="1871"><span class="lineNum">    1871 </span><span class="lineCov">      72179 :         call random_number(dummy)</span></a>
-<a name="1872"><span class="lineNum">    1872 </span><span class="lineCov">      72179 :         dummy = dummy**(1._RK/nd) / sqrt(sumSqDummyVec)</span></a>
-<a name="1873"><span class="lineNum">    1873 </span><span class="lineCov">     214904 :         DummyVec = DummyVec * dummy  ! a uniform random point from inside of nd-sphere</span></a>
-<a name="1874"><span class="lineNum">    1874 </span><span class="lineCov">     214904 :         RandMVU = MeanVec</span></a>
-<a name="1875"><span class="lineNum">    1875 </span><span class="lineCov">     214904 :         do j = 1,nd</span></a>
-<a name="1876"><span class="lineNum">    1876 </span><span class="lineCov">     142725 :             RandMVU(j) = RandMVU(j) + Diagonal(j) * DummyVec(j)</span></a>
-<a name="1877"><span class="lineNum">    1877 </span><span class="lineCov">     285450 :             do i = j+1,nd</span></a>
-<a name="1878"><span class="lineNum">    1878 </span><span class="lineCov">     213271 :                 RandMVU(i) = RandMVU(i) + CholeskyLower(i,j) * DummyVec(j)</span></a>
+<a name="1871"><span class="lineNum">    1871 </span><span class="lineCov">      74240 :         call random_number(dummy)</span></a>
+<a name="1872"><span class="lineNum">    1872 </span><span class="lineCov">      74240 :         dummy = dummy**(1._RK/nd) / sqrt(sumSqDummyVec)</span></a>
+<a name="1873"><span class="lineNum">    1873 </span><span class="lineCov">     221010 :         DummyVec = DummyVec * dummy  ! a uniform random point from inside of nd-sphere</span></a>
+<a name="1874"><span class="lineNum">    1874 </span><span class="lineCov">     221010 :         RandMVU = MeanVec</span></a>
+<a name="1875"><span class="lineNum">    1875 </span><span class="lineCov">     221010 :         do j = 1,nd</span></a>
+<a name="1876"><span class="lineNum">    1876 </span><span class="lineCov">     146770 :             RandMVU(j) = RandMVU(j) + Diagonal(j) * DummyVec(j)</span></a>
+<a name="1877"><span class="lineNum">    1877 </span><span class="lineCov">     293540 :             do i = j+1,nd</span></a>
+<a name="1878"><span class="lineNum">    1878 </span><span class="lineCov">     219300 :                 RandMVU(i) = RandMVU(i) + CholeskyLower(i,j) * DummyVec(j)</span></a>
 <a name="1879"><span class="lineNum">    1879 </span>            :             end do</a>
 <a name="1880"><span class="lineNum">    1880 </span>            :         end do</a>
-<a name="1881"><span class="lineNum">    1881 </span><span class="lineCov">     373569 :     end function getRandMVU</span></a>
+<a name="1881"><span class="lineNum">    1881 </span><span class="lineCov">     307252 :     end function getRandMVU</span></a>
 <a name="1882"><span class="lineNum">    1882 </span>            : </a>
 <a name="1883"><span class="lineNum">    1883 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1884"><span class="lineNum">    1884 </span>            : </a>
@@ -1978,7 +1978,7 @@
 <a name="1908"><span class="lineNum">    1908 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="1909"><span class="lineNum">    1909 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: isInsideEllipsoid</a>
 <a name="1910"><span class="lineNum">    1910 </span>            : #endif</a>
-<a name="1911"><span class="lineNum">    1911 </span><span class="lineCov">      72179 :         use Math_mod, only: getLogVolEllipsoid</span></a>
+<a name="1911"><span class="lineNum">    1911 </span><span class="lineCov">      74240 :         use Math_mod, only: getLogVolEllipsoid</span></a>
 <a name="1912"><span class="lineNum">    1912 </span>            :         implicit none</a>
 <a name="1913"><span class="lineNum">    1913 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="1914"><span class="lineNum">    1914 </span>            :         real(RK)   , intent(in) :: NormedPoint(nd)</a>
@@ -2692,7 +2692,7 @@
 <a name="2622"><span class="lineNum">    2622 </span>            :     !&gt;</a>
 <a name="2623"><span class="lineNum">    2623 </span>            :     !&gt; \author</a>
 <a name="2624"><span class="lineNum">    2624 </span>            :     !&gt; Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.</a>
-<a name="2625"><span class="lineNum">    2625 </span><span class="lineCov">       3251 :     pure function getCorMatUpperFromCovMatUpper(nd,CovMatUpper) result(CorMatUpper)</span></a>
+<a name="2625"><span class="lineNum">    2625 </span><span class="lineCov">       3233 :     pure function getCorMatUpperFromCovMatUpper(nd,CovMatUpper) result(CorMatUpper)</span></a>
 <a name="2626"><span class="lineNum">    2626 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="2627"><span class="lineNum">    2627 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getCorMatUpperFromCovMatUpper</a>
 <a name="2628"><span class="lineNum">    2628 </span>            : #endif</a>
@@ -2700,15 +2700,15 @@
 <a name="2630"><span class="lineNum">    2630 </span>            :         integer(IK)  , intent(in) :: nd</a>
 <a name="2631"><span class="lineNum">    2631 </span>            :         real(RK)     , intent(in) :: CovMatUpper(nd,nd)</a>
 <a name="2632"><span class="lineNum">    2632 </span>            :         real(RK)                  :: CorMatUpper(nd,nd)</a>
-<a name="2633"><span class="lineNum">    2633 </span><span class="lineCov">       1151 :         real(RK)                  :: InverseStdVec(nd)</span></a>
+<a name="2633"><span class="lineNum">    2633 </span><span class="lineCov">       1145 :         real(RK)                  :: InverseStdVec(nd)</span></a>
 <a name="2634"><span class="lineNum">    2634 </span>            :         integer(IK)               :: i,j</a>
-<a name="2635"><span class="lineNum">    2635 </span><span class="lineCov">       1151 :         do j = 1, nd</span></a>
-<a name="2636"><span class="lineNum">    2636 </span><span class="lineCov">        700 :             InverseStdVec(j) = 1._RK / sqrt(CovMatUpper(j,j))</span></a>
-<a name="2637"><span class="lineNum">    2637 </span><span class="lineCov">       2100 :             do i = 1, j</span></a>
-<a name="2638"><span class="lineNum">    2638 </span><span class="lineCov">       1649 :                 CorMatUpper(i,j) = CovMatUpper(i,j) * InverseStdVec(j) * InverseStdVec(i)</span></a>
+<a name="2635"><span class="lineNum">    2635 </span><span class="lineCov">       1145 :         do j = 1, nd</span></a>
+<a name="2636"><span class="lineNum">    2636 </span><span class="lineCov">        696 :             InverseStdVec(j) = 1._RK / sqrt(CovMatUpper(j,j))</span></a>
+<a name="2637"><span class="lineNum">    2637 </span><span class="lineCov">       2088 :             do i = 1, j</span></a>
+<a name="2638"><span class="lineNum">    2638 </span><span class="lineCov">       1639 :                 CorMatUpper(i,j) = CovMatUpper(i,j) * InverseStdVec(j) * InverseStdVec(i)</span></a>
 <a name="2639"><span class="lineNum">    2639 </span>            :             end do</a>
 <a name="2640"><span class="lineNum">    2640 </span>            :         end do</a>
-<a name="2641"><span class="lineNum">    2641 </span><span class="lineCov">        553 :     end function getCorMatUpperFromCovMatUpper</span></a>
+<a name="2641"><span class="lineNum">    2641 </span><span class="lineCov">        551 :     end function getCorMatUpperFromCovMatUpper</span></a>
 <a name="2642"><span class="lineNum">    2642 </span>            : </a>
 <a name="2643"><span class="lineNum">    2643 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="2644"><span class="lineNum">    2644 </span>            : </a>
@@ -2738,7 +2738,7 @@
 <a name="2668"><span class="lineNum">    2668 </span><span class="lineCov">          5 :                 CovMatUpper(i,j) = CorMatUpper(i,j) * StdVec(j) * StdVec(i)</span></a>
 <a name="2669"><span class="lineNum">    2669 </span>            :             end do</a>
 <a name="2670"><span class="lineNum">    2670 </span>            :         end do</a>
-<a name="2671"><span class="lineNum">    2671 </span><span class="lineCov">        452 :     end function getCovMatUpperFromCorMatUpper</span></a>
+<a name="2671"><span class="lineNum">    2671 </span><span class="lineCov">        450 :     end function getCovMatUpperFromCorMatUpper</span></a>
 <a name="2672"><span class="lineNum">    2672 </span>            : </a>
 <a name="2673"><span class="lineNum">    2673 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="2674"><span class="lineNum">    2674 </span>            : </a>
@@ -3865,13 +3865,13 @@
 <a name="3795"><span class="lineNum">    3795 </span><span class="lineCov">        704 :         if (present(sumWeight)) then</span></a>
 <a name="3796"><span class="lineNum">    3796 </span><span class="lineCov">        703 :             weightCounter = 0_IK</span></a>
 <a name="3797"><span class="lineNum">    3797 </span><span class="lineCov">       7030 :             SortedQuantileDensity = nint( SortedQuantileProbability * sumWeight )</span></a>
-<a name="3798"><span class="lineNum">    3798 </span><span class="lineCov">     175256 :             loopWeighted: do ip = 1, np</span></a>
-<a name="3799"><span class="lineNum">    3799 </span><span class="lineCov">     693876 :                 do iw = 1, Weight(Indx(ip))</span></a>
-<a name="3800"><span class="lineNum">    3800 </span><span class="lineCov">     519298 :                     weightCounter = weightCounter + 1_IK</span></a>
-<a name="3801"><span class="lineNum">    3801 </span><span class="lineCov">     693851 :                     if (weightCounter&gt;=SortedQuantileDensity(iq)) then</span></a>
-<a name="3802"><span class="lineNum">    3802 </span><span class="lineCov">       6292 :                         Quantile(iq) = Point(Indx(ip))</span></a>
-<a name="3803"><span class="lineNum">    3803 </span><span class="lineCov">       6292 :                         iq = iq + 1_IK</span></a>
-<a name="3804"><span class="lineNum">    3804 </span><span class="lineCov">       6292 :                         if (iq&gt;nq) exit loopWeighted</span></a>
+<a name="3798"><span class="lineNum">    3798 </span><span class="lineCov">     176166 :             loopWeighted: do ip = 1, np</span></a>
+<a name="3799"><span class="lineNum">    3799 </span><span class="lineCov">     633855 :                 do iw = 1, Weight(Indx(ip))</span></a>
+<a name="3800"><span class="lineNum">    3800 </span><span class="lineCov">     458359 :                     weightCounter = weightCounter + 1_IK</span></a>
+<a name="3801"><span class="lineNum">    3801 </span><span class="lineCov">     633822 :                     if (weightCounter&gt;=SortedQuantileDensity(iq)) then</span></a>
+<a name="3802"><span class="lineNum">    3802 </span><span class="lineCov">       6250 :                         Quantile(iq) = Point(Indx(ip))</span></a>
+<a name="3803"><span class="lineNum">    3803 </span><span class="lineCov">       6250 :                         iq = iq + 1_IK</span></a>
+<a name="3804"><span class="lineNum">    3804 </span><span class="lineCov">       6250 :                         if (iq&gt;nq) exit loopWeighted</span></a>
 <a name="3805"><span class="lineNum">    3805 </span>            :                     end if</a>
 <a name="3806"><span class="lineNum">    3806 </span>            :                 end do</a>
 <a name="3807"><span class="lineNum">    3807 </span>            :             end do loopWeighted</a>
@@ -3885,7 +3885,7 @@
 <a name="3815"><span class="lineNum">    3815 </span>            :                 end if</a>
 <a name="3816"><span class="lineNum">    3816 </span>            :             end do loopNonWeighted</a>
 <a name="3817"><span class="lineNum">    3817 </span>            :         end if</a>
-<a name="3818"><span class="lineNum">    3818 </span><span class="lineCov">        739 :         if (iq&lt;=nq) Quantile(iq:nq) = Point(Indx(np))</span></a>
+<a name="3818"><span class="lineNum">    3818 </span><span class="lineCov">        781 :         if (iq&lt;=nq) Quantile(iq:nq) = Point(Indx(np))</span></a>
 <a name="3819"><span class="lineNum">    3819 </span><span class="lineCov">       2112 :     end function getQuantile</span></a>
 <a name="3820"><span class="lineNum">    3820 </span>            : </a>
 <a name="3821"><span class="lineNum">    3821 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>

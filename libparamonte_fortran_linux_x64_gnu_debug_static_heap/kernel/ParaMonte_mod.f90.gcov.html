@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -197,7 +197,7 @@
 <a name="127"><span class="lineNum">     127 </span>            :     use System_mod, only: SystemInfo_type</a>
 <a name="128"><span class="lineNum">     128 </span>            :     use Parallelism_mod, only: Image_type</a>
 <a name="129"><span class="lineNum">     129 </span>            :     use Decoration_mod, only: Decoration_type</a>
-<a name="130"><span class="lineNum">     130 </span>            :     use Constants_mod, only: RK, IK, CIK, CRK, HUGE_IK, HUGE_RK</a>
+<a name="130"><span class="lineNum">     130 </span>            :     use Constants_mod, only: RK, IK, HUGE_IK, HUGE_RK</a>
 <a name="131"><span class="lineNum">     131 </span>            :     use String_mod, only: IntStr_type</a>
 <a name="132"><span class="lineNum">     132 </span>            :     use System_mod, only: OS_type</a>
 <a name="133"><span class="lineNum">     133 </span>            :     use Timer_mod, only: Timer_type</a>
@@ -628,7 +628,7 @@
 <a name="558"><span class="lineNum">     558 </span>            :         ! the creation of thousands of files on the system, simultaneously.</a>
 <a name="559"><span class="lineNum">     559 </span>            :         ! this is not needed by any process other than the masters.</a>
 <a name="560"><span class="lineNum">     560 </span>            : </a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">        645 :         self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">        799 :         self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)</span></a>
 <a name="562"><span class="lineNum">     562 </span><span class="lineCov">        323 :         if (self%SystemInfo%Err%occurred) then</span></a>
 <a name="563"><span class="lineNum">     563 </span>            :         ! LCOV_EXCL_START</a>
 <a name="564"><span class="lineNum">     564 </span>            :             self%Err = self%SystemInfo%Err</a>
@@ -640,10 +640,10 @@
 <a name="570"><span class="lineNum">     570 </span>            : </a>
 <a name="571"><span class="lineNum">     571 </span>            :         ! write the system info to the output file</a>
 <a name="572"><span class="lineNum">     572 </span>            : </a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">       7429 :         do j = 1, self%SystemInfo%nRecord</span></a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">      26486 :             self%Decor%List = self%Decor%wrapText( self%SystemInfo%Records(j)%record , 132 )</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">      15504 :             do i = 1,size(self%Decor%List)</span></a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">      15181 :                 write(self%LogFile%unit,&quot;(A)&quot;) self%Decor%List(i)%record</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">      10982 :         do j = 1, self%SystemInfo%nRecord</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">      37145 :             self%Decor%List = self%Decor%wrapText( self%SystemInfo%Records(j)%record , 132 )</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">      22610 :             do i = 1,size(self%Decor%List)</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">      22287 :                 write(self%LogFile%unit,&quot;(A)&quot;) self%Decor%List(i)%record</span></a>
 <a name="577"><span class="lineNum">     577 </span>            :             end do</a>
 <a name="578"><span class="lineNum">     578 </span>            :         end do</a>
 <a name="579"><span class="lineNum">     579 </span><span class="lineCov">        323 :         call self%Decor%write(self%LogFile%unit)</span></a>

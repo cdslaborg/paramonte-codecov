@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">8</td>
@@ -484,7 +484,7 @@
 <a name="414"><span class="lineNum">     414 </span>            :         implicit none</a>
 <a name="415"><span class="lineNum">     415 </span>            :         real(RK), intent(in)    :: logT90</a>
 <a name="416"><span class="lineNum">     416 </span>            :         real(RK)                :: logEffectivePeakPhotonFluxCorrection</a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">          2 :         logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">          2 :         logEffectivePeakPhotonFluxCorrection    = real(THRESH_ERFC_AMP,RK) * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))</span></a>
 <a name="418"><span class="lineNum">     418 </span>            :                                               ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms</a>
 <a name="419"><span class="lineNum">     419 </span><span class="lineCov">          1 :     end function getLogEffectivePeakPhotonFluxCorrection_SPR</span></a>
 <a name="420"><span class="lineNum">     420 </span>            : </a>

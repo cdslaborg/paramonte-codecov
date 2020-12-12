@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -323,8 +323,8 @@
 <a name="253"><span class="lineNum">     253 </span><span class="lineCov">        286 :         RefinedChain%Count(RefinedChain%numRefinement)%compact = CFC%Count%compact - burninLocDefault + 1</span></a>
 <a name="254"><span class="lineNum">     254 </span><span class="lineCov">        286 :         if (allocated(RefinedChain%LogFuncState)) deallocate(RefinedChain%LogFuncState)</span></a>
 <a name="255"><span class="lineNum">     255 </span><span class="lineCov">        286 :         allocate(RefinedChain%LogFuncState(0:RefinedChain%ndim,RefinedChain%Count(RefinedChain%numRefinement)%compact))</span></a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">     104986 :         RefinedChain%LogFuncState(0                  ,1:RefinedChain%Count(RefinedChain%numRefinement)%compact) = CFC%LogFunc(burninLocDefault:CFC%Count%compact)</span></a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">     283966 :         RefinedChain%LogFuncState(1:RefinedChain%ndim,1:RefinedChain%Count(RefinedChain%numRefinement)%compact) = CFC%State(1:RefinedChain%ndim, burninLocDefault:CFC%Count%compact)</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">     104992 :         RefinedChain%LogFuncState(0                  ,1:RefinedChain%Count(RefinedChain%numRefinement)%compact) = CFC%LogFunc(burninLocDefault:CFC%Count%compact)</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">     283986 :         RefinedChain%LogFuncState(1:RefinedChain%ndim,1:RefinedChain%Count(RefinedChain%numRefinement)%compact) = CFC%State(1:RefinedChain%ndim, burninLocDefault:CFC%Count%compact)</span></a>
 <a name="258"><span class="lineNum">     258 </span>            : </a>
 <a name="259"><span class="lineNum">     259 </span>            :         ! check if there are more than 1 sample points in the burnin-subtracted CFC</a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
@@ -351,52 +351,52 @@
 <a name="281"><span class="lineNum">     281 </span><span class="lineCov">          2 :             return</span></a>
 <a name="282"><span class="lineNum">     282 </span>            :         end if</a>
 <a name="283"><span class="lineNum">     283 </span>            : </a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">     104982 :         RefinedChain%Weight = CFC%Weight(burninLocDefault:CFC%Count%compact) ! Weight is intentionally separately assigned from State here</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">     104988 :         RefinedChain%Weight = CFC%Weight(burninLocDefault:CFC%Count%compact) ! Weight is intentionally separately assigned from State here</span></a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
 <a name="286"><span class="lineNum">     286 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="287"><span class="lineNum">     287 </span>            : </a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        418 :         loopRefinement: do</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">        422 :         loopRefinement: do</span></a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">        986 :             countCompact = RefinedChain%Count(RefinedChain%numRefinement)%compact</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">        990 :             countCompact = RefinedChain%Count(RefinedChain%numRefinement)%compact</span></a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span>            :             ! set the sample weight</a>
 <a name="293"><span class="lineNum">     293 </span>            : </a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        986 :             if (Method%isViaCompactChain) then</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        599 :                 if (allocated(SampleWeight)) deallocate(SampleWeight)</span></a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        387 :             elseif (Method%isViaVerboseChain) then</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      61859 :                 SampleWeight = RefinedChain%Weight</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">        990 :             if (Method%isViaCompactChain) then</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">        611 :                 if (allocated(SampleWeight)) deallocate(SampleWeight)</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">        379 :             elseif (Method%isViaVerboseChain) then</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      60788 :                 SampleWeight = RefinedChain%Weight</span></a>
 <a name="298"><span class="lineNum">     298 </span>            :             endif</a>
 <a name="299"><span class="lineNum">     299 </span>            : </a>
 <a name="300"><span class="lineNum">     300 </span>            :             ! obtain the IAC for each individual variable</a>
 <a name="301"><span class="lineNum">     301 </span>            : </a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">       3592 :             do i = 0, RefinedChain%ndim</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">     566096 :                 DumVec = RefinedChain%LogFuncState(i,1:RefinedChain%Count(RefinedChain%numRefinement)%compact)</span></a>
-<a name="304"><span class="lineNum">     304 </span><span class="lineCov">       3592 :                 if (Method%isBatchMeans) then</span></a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">       9380 :                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getBatchMeansIAC   ( np        = countCompact  &amp;</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">       3605 :             do i = 0, RefinedChain%ndim</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">     572410 :                 DumVec = RefinedChain%LogFuncState(i,1:RefinedChain%Count(RefinedChain%numRefinement)%compact)</span></a>
+<a name="304"><span class="lineNum">     304 </span><span class="lineCov">       3605 :                 if (Method%isBatchMeans) then</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">       9488 :                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getBatchMeansIAC   ( np        = countCompact  &amp;</span></a>
 <a name="306"><span class="lineNum">     306 </span>            :                                                                                         , Point     = DumVec        &amp; ! LCOV_EXCL_LINE</a>
 <a name="307"><span class="lineNum">     307 </span>            :                                                                                         , Weight    = SampleWeight  &amp; ! LCOV_EXCL_LINE</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       2345 :                                                                                         )</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">        261 :                 elseif (Method%isCutoffAutoCorr) then</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">        528 :                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getCumSumIAC       ( np        = countCompact  &amp;</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       2372 :                                                                                         )</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">        243 :                 elseif (Method%isCutoffAutoCorr) then</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">        480 :                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getCumSumIAC       ( np        = countCompact  &amp;</span></a>
 <a name="311"><span class="lineNum">     311 </span>            :                                                                                         , Point     = DumVec        &amp; ! LCOV_EXCL_LINE</a>
 <a name="312"><span class="lineNum">     312 </span>            :                                                                                         , Weight    = SampleWeight  &amp; ! LCOV_EXCL_LINE</a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        132 :                                                                                         )</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">        129 :                 elseif (Method%isMaxCumSumAutoCorr) then</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">        516 :                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC    ( np        = countCompact  &amp;</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        120 :                                                                                         )</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">        123 :                 elseif (Method%isMaxCumSumAutoCorr) then</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">        492 :                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC    ( np        = countCompact  &amp;</span></a>
 <a name="316"><span class="lineNum">     316 </span>            :                                                                                         , Point     = DumVec        &amp; ! LCOV_EXCL_LINE</a>
 <a name="317"><span class="lineNum">     317 </span>            :                                                                                         , Weight    = SampleWeight  &amp; ! LCOV_EXCL_LINE</a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        129 :                                                                                         )</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        123 :                                                                                         )</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :                 end if</a>
 <a name="320"><span class="lineNum">     320 </span>            :             end do</a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        986 :             if (refinedChainSizeIsPresent) then</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">      51839 :                 integratedAutoCorrTime = real(sum(RefinedChain%Weight),kind=RK) / real(refinedChainSize,kind=RK)</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        990 :             if (refinedChainSizeIsPresent) then</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">      51918 :                 integratedAutoCorrTime = real(sum(RefinedChain%Weight),kind=RK) / real(refinedChainSize,kind=RK)</span></a>
 <a name="324"><span class="lineNum">     324 </span>            :             else</a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">        825 :                 if (Method%isAvg) then</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       2574 :                     integratedAutoCorrTime = sum( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) ) * ndimPlusOneInverse</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         96 :                 elseif (Method%isMed) then</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         45 :                     call getMedian(lenArray=ndimPlusOne,Array=RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement),median=integratedAutoCorrTime,Err=Err)</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         45 :                     if (Err%occurred) then</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">        828 :                 if (Method%isAvg) then</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">       2596 :                     integratedAutoCorrTime = sum( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) ) * ndimPlusOneInverse</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">         93 :                 elseif (Method%isMed) then</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">         42 :                     call getMedian(lenArray=ndimPlusOne,Array=RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement),median=integratedAutoCorrTime,Err=Err)</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">         42 :                     if (Err%occurred) then</span></a>
 <a name="330"><span class="lineNum">     330 </span>            :                         ! LCOV_EXCL_START</a>
 <a name="331"><span class="lineNum">     331 </span>            :                         Err%msg = PROCEDURE_NAME//Err%msg</a>
 <a name="332"><span class="lineNum">     332 </span>            :                         return</a>
@@ -411,8 +411,8 @@
 <a name="341"><span class="lineNum">     341 </span>            : </a>
 <a name="342"><span class="lineNum">     342 </span>            :             ! so far, we have computed the max IAC of the sample, but no refinement. Refine the sample only if needed.</a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">        986 :             maxRefinementCountIsReached = RefinedChain%numRefinement==maxRefinementCount</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">        986 :             if (integratedAutoCorrTime&lt;2._RK .or. maxRefinementCountIsReached) then</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">        990 :             maxRefinementCountIsReached = RefinedChain%numRefinement==maxRefinementCount</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">        990 :             if (integratedAutoCorrTime&lt;2._RK .or. maxRefinementCountIsReached) then</span></a>
 <a name="346"><span class="lineNum">     346 </span><span class="lineCov">        568 :                 if (Method%isViaCompactChain .and. Method%isViaVerboseChain) then</span></a>
 <a name="347"><span class="lineNum">     347 </span>            :                     !if (maxRefinementCountIsReached) maxRefinementCount = maxRefinementCount * 2_IK</a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineCov">        284 :                     maxRefinementCount = maxRefinementCount * 2_IK</span></a>
@@ -424,21 +424,21 @@
 <a name="354"><span class="lineNum">     354 </span>            : </a>
 <a name="355"><span class="lineNum">     355 </span>            :             ! generate the refined sample, dump it in CFC, then put it back into RefinedChain to start over again</a>
 <a name="356"><span class="lineNum">     356 </span>            : </a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">        418 :             RefinedChain%numRefinement = RefinedChain%numRefinement + 1_IK</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">        422 :             RefinedChain%numRefinement = RefinedChain%numRefinement + 1_IK</span></a>
 <a name="358"><span class="lineNum">     358 </span>            : </a>
 <a name="359"><span class="lineNum">     359 </span>            :             ! reallocate to bigger array if nedded</a>
 <a name="360"><span class="lineNum">     360 </span>            : </a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        418 :             if (RefinedChain%numRefinement&gt;maxRefinementCurrent) then</span></a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         20 :                 call move_alloc( from = RefinedChain%IAC, to = DumIAC )</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         20 :                 call move_alloc( from = RefinedChain%Count, to = DumCount )</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         20 :                 maxRefinementCurrent = min( maxRefinementCurrent*2 , maxRefinementCount )</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         20 :                 allocate( RefinedChain%IAC( 0:RefinedChain%ndim , 0:maxRefinementCurrent ) )</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        124 :                 allocate( RefinedChain%Count( 0:maxRefinementCurrent ) )</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        259 :                 RefinedChain%IAC(0:RefinedChain%ndim,0:RefinedChain%numRefinement-1) = DumIAC</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         82 :                 RefinedChain%Count(0:RefinedChain%numRefinement-1) = DumCount</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">        422 :             if (RefinedChain%numRefinement&gt;maxRefinementCurrent) then</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">         19 :                 call move_alloc( from = RefinedChain%IAC, to = DumIAC )</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         19 :                 call move_alloc( from = RefinedChain%Count, to = DumCount )</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">         19 :                 maxRefinementCurrent = min( maxRefinementCurrent*2 , maxRefinementCount )</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         19 :                 allocate( RefinedChain%IAC( 0:RefinedChain%ndim , 0:maxRefinementCurrent ) )</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        118 :                 allocate( RefinedChain%Count( 0:maxRefinementCurrent ) )</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        237 :                 RefinedChain%IAC(0:RefinedChain%ndim,0:RefinedChain%numRefinement-1) = DumIAC</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         78 :                 RefinedChain%Count(0:RefinedChain%numRefinement-1) = DumCount</span></a>
 <a name="369"><span class="lineNum">     369 </span>            :             end if</a>
 <a name="370"><span class="lineNum">     370 </span>            : </a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        418 :             if (integratedAutoCorrTime&lt;2._RK) cycle loopRefinement ! no need for refinement. should happen only when transitioning from compact to verbose</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        422 :             if (integratedAutoCorrTime&lt;2._RK) cycle loopRefinement ! no need for refinement. should happen only when transitioning from compact to verbose</span></a>
 <a name="372"><span class="lineNum">     372 </span>            : </a>
 <a name="373"><span class="lineNum">     373 </span>            :             call refineWeightedSample   ( nd = RefinedChain%ndim                                        &amp; ! LCOV_EXCL_LINE</a>
 <a name="374"><span class="lineNum">     374 </span>            :                                         , np = countCompact                                             &amp; ! LCOV_EXCL_LINE</a>
@@ -447,11 +447,11 @@
 <a name="377"><span class="lineNum">     377 </span>            :                                         , Weight = RefinedChain%Weight                                  &amp; ! LCOV_EXCL_LINE</a>
 <a name="378"><span class="lineNum">     378 </span>            :                                         , RefinedChain = DumCFC%State                                   &amp; ! LCOV_EXCL_LINE</a>
 <a name="379"><span class="lineNum">     379 </span>            :                                         , RefinedWeight = DumCFC%Weight                                 &amp; ! LCOV_EXCL_LINE</a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">        836 :                                         , PointCount = RefinedChain%Count(RefinedChain%numRefinement)   &amp;</span></a>
+<a name="380"><span class="lineNum">     380 </span><span class="lineCov">        844 :                                         , PointCount = RefinedChain%Count(RefinedChain%numRefinement)   &amp;</span></a>
 <a name="381"><span class="lineNum">     381 </span>            :                                         , refinedChainSize = refinedChainSize                           &amp; ! LCOV_EXCL_LINE</a>
-<a name="382"><span class="lineNum">     382 </span><span class="lineCov">        418 :                                         )</span></a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">      53884 :             RefinedChain%Weight        = DumCFC%Weight</span></a>
-<a name="384"><span class="lineNum">     384 </span><span class="lineCov">     198786 :             RefinedChain%LogFuncState  = DumCFC%State</span></a>
+<a name="382"><span class="lineNum">     382 </span><span class="lineCov">        422 :                                         )</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">      55876 :             RefinedChain%Weight        = DumCFC%Weight</span></a>
+<a name="384"><span class="lineNum">     384 </span><span class="lineCov">     205918 :             RefinedChain%LogFuncState  = DumCFC%State</span></a>
 <a name="385"><span class="lineNum">     385 </span>            : </a>
 <a name="386"><span class="lineNum">     386 </span>            :         end do loopRefinement</a>
 <a name="387"><span class="lineNum">     387 </span>            : </a>
@@ -483,7 +483,7 @@
 <a name="413"><span class="lineNum">     413 </span>            :     !&gt;        Weight: 5, 0, 1, 3, 1</a>
 <a name="414"><span class="lineNum">     414 </span>            :     !&gt; RefinedWeight: 2, 0, 0, 1, 1</a>
 <a name="415"><span class="lineNum">     415 </span>            :     !&gt; ```</a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">        836 :     pure function getRefinedWeight(np,Weight,skip,refinedChainSize) result(RefinedWeight)</span></a>
+<a name="416"><span class="lineNum">     416 </span><span class="lineCov">        844 :     pure function getRefinedWeight(np,Weight,skip,refinedChainSize) result(RefinedWeight)</span></a>
 <a name="417"><span class="lineNum">     417 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="418"><span class="lineNum">     418 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getRefinedWeight</a>
 <a name="419"><span class="lineNum">     419 </span>            : #endif</a>
@@ -495,43 +495,43 @@
 <a name="425"><span class="lineNum">     425 </span>            :         integer(IK) , intent(in) , optional :: refinedChainSize</a>
 <a name="426"><span class="lineNum">     426 </span>            :         integer(IK)                         :: RefinedWeight(np)</a>
 <a name="427"><span class="lineNum">     427 </span>            :         integer(IK)                         :: ip, refinedChainSizeCounter, offset</a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">     122428 :         real(RK)                            :: sumSkips, CumSumWeight(np)</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">     123543 :         real(RK)                            :: sumSkips, CumSumWeight(np)</span></a>
 <a name="429"><span class="lineNum">     429 </span>            :         logical                             :: refinedChainSizeIsPresent</a>
-<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        418 :         refinedChainSizeIsPresent = present(refinedChainSize)</span></a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        418 :         if (refinedChainSizeIsPresent) refinedChainSizeCounter = 0_IK</span></a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">     122010 :         CumSumWeight = real(getCumSum(np,Weight),kind=RK)</span></a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">        418 :         sumSkips = skip</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">        418 :         offset = 1_IK</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">        418 :         ip = offset</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">     122010 :         RefinedWeight = 0_IK</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">     121543 :         loopOverAllSample: do</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      73342 :             loopOverCurrentSample: do</span></a>
-<a name="439"><span class="lineNum">     439 </span><span class="lineCov">     195303 :                 if (sumSkips&gt;CumSumWeight(ip)) then</span></a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     121931 :                     exit loopOverCurrentSample</span></a>
-<a name="441"><span class="lineNum">     441 </span><span class="lineCov">      73372 :                 elseif (refinedChainSizeIsPresent) then</span></a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">       9280 :                     if (refinedChainSizeCounter==refinedChainSize) exit loopOverAllSample</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">       9250 :                     refinedChainSizeCounter = refinedChainSizeCounter + 1_IK</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        422 :         refinedChainSizeIsPresent = present(refinedChainSize)</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">        422 :         if (refinedChainSizeIsPresent) refinedChainSizeCounter = 0_IK</span></a>
+<a name="432"><span class="lineNum">     432 </span><span class="lineCov">     123121 :         CumSumWeight = real(getCumSum(np,Weight),kind=RK)</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">        422 :         sumSkips = skip</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">        422 :         offset = 1_IK</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">        422 :         ip = offset</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">     123121 :         RefinedWeight = 0_IK</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">     122749 :         loopOverAllSample: do</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">      85662 :             loopOverCurrentSample: do</span></a>
+<a name="439"><span class="lineNum">     439 </span><span class="lineCov">     208833 :                 if (sumSkips&gt;CumSumWeight(ip)) then</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">     123138 :                     exit loopOverCurrentSample</span></a>
+<a name="441"><span class="lineNum">     441 </span><span class="lineCov">      85695 :                 elseif (refinedChainSizeIsPresent) then</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">       9405 :                     if (refinedChainSizeCounter==refinedChainSize) exit loopOverAllSample</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">       9372 :                     refinedChainSizeCounter = refinedChainSizeCounter + 1_IK</span></a>
 <a name="444"><span class="lineNum">     444 </span>            :                 end if</a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">      73342 :                 RefinedWeight(ip) = RefinedWeight(ip) + 1_IK</span></a>
-<a name="446"><span class="lineNum">     446 </span><span class="lineCov">      73342 :                 sumSkips = sumSkips + skip</span></a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">      73342 :                 cycle loopOverCurrentSample</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">      85662 :                 RefinedWeight(ip) = RefinedWeight(ip) + 1_IK</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">      85662 :                 sumSkips = sumSkips + skip</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">      85662 :                 cycle loopOverCurrentSample</span></a>
 <a name="448"><span class="lineNum">     448 </span>            :             end do loopOverCurrentSample</a>
-<a name="449"><span class="lineNum">     449 </span><span class="lineCov">     121931 :             if (ip==np) then</span></a>
-<a name="450"><span class="lineNum">     450 </span><span class="lineCov">        418 :                 if (refinedChainSizeIsPresent) then</span></a>
-<a name="451"><span class="lineNum">     451 </span><span class="lineCov">         47 :                     if (refinedChainSizeCounter&lt;refinedChainSize) then</span></a>
-<a name="452"><span class="lineNum">     452 </span><span class="lineCov">         30 :                         offset = offset + 1_IK</span></a>
-<a name="453"><span class="lineNum">     453 </span><span class="lineCov">         30 :                         if (offset==np) offset = 1_IK</span></a>
-<a name="454"><span class="lineNum">     454 </span><span class="lineCov">         30 :                         ip = offset</span></a>
-<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         30 :                         sumSkips = skip</span></a>
-<a name="456"><span class="lineNum">     456 </span><span class="lineCov">         30 :                         if (offset/=1_IK) sumSkips = sumSkips + CumSumWeight(ip-1)</span></a>
+<a name="449"><span class="lineNum">     449 </span><span class="lineCov">     123138 :             if (ip==np) then</span></a>
+<a name="450"><span class="lineNum">     450 </span><span class="lineCov">        422 :                 if (refinedChainSizeIsPresent) then</span></a>
+<a name="451"><span class="lineNum">     451 </span><span class="lineCov">         48 :                     if (refinedChainSizeCounter&lt;refinedChainSize) then</span></a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">         33 :                         offset = offset + 1_IK</span></a>
+<a name="453"><span class="lineNum">     453 </span><span class="lineCov">         33 :                         if (offset==np) offset = 1_IK</span></a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">         33 :                         ip = offset</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineCov">         33 :                         sumSkips = skip</span></a>
+<a name="456"><span class="lineNum">     456 </span><span class="lineCov">         33 :                         if (offset/=1_IK) sumSkips = sumSkips + CumSumWeight(ip-1)</span></a>
 <a name="457"><span class="lineNum">     457 </span>            :                         cycle loopOverAllSample ! LCOV_EXCL_LINE</a>
 <a name="458"><span class="lineNum">     458 </span>            :                     end if</a>
 <a name="459"><span class="lineNum">     459 </span>            :                 end if</a>
-<a name="460"><span class="lineNum">     460 </span><span class="lineCov">        388 :                 exit loopOverAllSample</span></a>
+<a name="460"><span class="lineNum">     460 </span><span class="lineCov">        389 :                 exit loopOverAllSample</span></a>
 <a name="461"><span class="lineNum">     461 </span>            :             end if</a>
-<a name="462"><span class="lineNum">     462 </span><span class="lineCov">     121513 :             ip = ip + 1_IK</span></a>
+<a name="462"><span class="lineNum">     462 </span><span class="lineCov">     122716 :             ip = ip + 1_IK</span></a>
 <a name="463"><span class="lineNum">     463 </span>            :         end do loopOverAllSample</a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">        418 :     end function getRefinedWeight</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">        422 :     end function getRefinedWeight</span></a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
 <a name="466"><span class="lineNum">     466 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="467"><span class="lineNum">     467 </span>            : </a>
@@ -548,11 +548,11 @@
 <a name="478"><span class="lineNum">     478 </span>            :     !&gt;                                      containing the number of points in the refined sample.</a>
 <a name="479"><span class="lineNum">     479 </span>            :     !&gt; \param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,</a>
 <a name="480"><span class="lineNum">     480 </span>            :     !&gt;                                      then the requested sample is directly generated based on the input size.</a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        418 :     pure subroutine refineWeightedSample(nd,np,skip,Sample,Weight,RefinedChain,RefinedWeight,PointCount,refinedChainSize)</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">        422 :     pure subroutine refineWeightedSample(nd,np,skip,Sample,Weight,RefinedChain,RefinedWeight,PointCount,refinedChainSize)</span></a>
 <a name="482"><span class="lineNum">     482 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="483"><span class="lineNum">     483 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: refineWeightedSample</a>
 <a name="484"><span class="lineNum">     484 </span>            : #endif</a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        418 :         use Constants_mod, only: IK, RK</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        422 :         use Constants_mod, only: IK, RK</span></a>
 <a name="486"><span class="lineNum">     486 </span>            :         implicit none</a>
 <a name="487"><span class="lineNum">     487 </span>            :         integer(IK)     , intent(in)                :: nd, np, Weight(np)   !, skip</a>
 <a name="488"><span class="lineNum">     488 </span>            :         real(RK)        , intent(in)                :: Sample(0:nd,np), skip</a>
@@ -561,21 +561,21 @@
 <a name="491"><span class="lineNum">     491 </span>            :         integer(IK)     , intent(in) , optional     :: refinedChainSize</a>
 <a name="492"><span class="lineNum">     492 </span>            :         type(Count_type), intent(out)               :: PointCount</a>
 <a name="493"><span class="lineNum">     493 </span>            :         integer(IK)                                 :: ip, ipRefined, npRefined, UpdatedWeight(np) ! LCOV_EXCL_LINE</a>
-<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        418 :         UpdatedWeight = getRefinedWeight(np,Weight,skip,refinedChainSize)</span></a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">     122010 :         npRefined = count(UpdatedWeight&gt;0)</span></a>
-<a name="496"><span class="lineNum">     496 </span><span class="lineCov">        418 :         allocate( RefinedChain(0:nd,npRefined) , RefinedWeight(npRefined) )</span></a>
-<a name="497"><span class="lineNum">     497 </span><span class="lineCov">        418 :         ipRefined = 0</span></a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">        418 :         PointCount%verbose = 0</span></a>
-<a name="499"><span class="lineNum">     499 </span><span class="lineCov">     122010 :         do ip = 1, np</span></a>
-<a name="500"><span class="lineNum">     500 </span><span class="lineCov">     122010 :             if (UpdatedWeight(ip)&gt;0) then</span></a>
-<a name="501"><span class="lineNum">     501 </span><span class="lineCov">      53466 :                 ipRefined = ipRefined + 1</span></a>
-<a name="502"><span class="lineNum">     502 </span><span class="lineCov">     198368 :                 RefinedChain(0:nd,ipRefined) = Sample(0:nd,ip)</span></a>
-<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      53466 :                 RefinedWeight(ipRefined) = UpdatedWeight(ip)</span></a>
-<a name="504"><span class="lineNum">     504 </span><span class="lineCov">      53466 :                 PointCount%verbose = PointCount%verbose + RefinedWeight(ipRefined)</span></a>
+<a name="494"><span class="lineNum">     494 </span><span class="lineCov">        422 :         UpdatedWeight = getRefinedWeight(np,Weight,skip,refinedChainSize)</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">     123121 :         npRefined = count(UpdatedWeight&gt;0)</span></a>
+<a name="496"><span class="lineNum">     496 </span><span class="lineCov">        422 :         allocate( RefinedChain(0:nd,npRefined) , RefinedWeight(npRefined) )</span></a>
+<a name="497"><span class="lineNum">     497 </span><span class="lineCov">        422 :         ipRefined = 0</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">        422 :         PointCount%verbose = 0</span></a>
+<a name="499"><span class="lineNum">     499 </span><span class="lineCov">     123121 :         do ip = 1, np</span></a>
+<a name="500"><span class="lineNum">     500 </span><span class="lineCov">     123121 :             if (UpdatedWeight(ip)&gt;0) then</span></a>
+<a name="501"><span class="lineNum">     501 </span><span class="lineCov">      55454 :                 ipRefined = ipRefined + 1</span></a>
+<a name="502"><span class="lineNum">     502 </span><span class="lineCov">     205496 :                 RefinedChain(0:nd,ipRefined) = Sample(0:nd,ip)</span></a>
+<a name="503"><span class="lineNum">     503 </span><span class="lineCov">      55454 :                 RefinedWeight(ipRefined) = UpdatedWeight(ip)</span></a>
+<a name="504"><span class="lineNum">     504 </span><span class="lineCov">      55454 :                 PointCount%verbose = PointCount%verbose + RefinedWeight(ipRefined)</span></a>
 <a name="505"><span class="lineNum">     505 </span>            :             end if</a>
 <a name="506"><span class="lineNum">     506 </span>            :         end do</a>
-<a name="507"><span class="lineNum">     507 </span><span class="lineCov">        418 :         PointCount%compact = npRefined</span></a>
-<a name="508"><span class="lineNum">     508 </span><span class="lineCov">        418 :     end subroutine refineWeightedSample</span></a>
+<a name="507"><span class="lineNum">     507 </span><span class="lineCov">        422 :         PointCount%compact = npRefined</span></a>
+<a name="508"><span class="lineNum">     508 </span><span class="lineCov">        422 :     end subroutine refineWeightedSample</span></a>
 <a name="509"><span class="lineNum">     509 </span>            : </a>
 <a name="510"><span class="lineNum">     510 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="511"><span class="lineNum">     511 </span>            : </a>
@@ -594,7 +594,7 @@
 <a name="524"><span class="lineNum">     524 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="525"><span class="lineNum">     525 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getSkip4NewSampleSize</a>
 <a name="526"><span class="lineNum">     526 </span>            : #endif</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        418 :         use Constants_mod, only: IK, RK</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">        422 :         use Constants_mod, only: IK, RK</span></a>
 <a name="528"><span class="lineNum">     528 </span>            :         implicit none</a>
 <a name="529"><span class="lineNum">     529 </span>            :         integer(IK) , intent(in)    :: oldSampleSize,newSampleSize</a>
 <a name="530"><span class="lineNum">     530 </span>            :         integer(IK)                 :: skip4NewSampleSize, addition, quotient</a>
@@ -627,9 +627,9 @@
 <a name="557"><span class="lineNum">     557 </span>            :         character(*), intent(in)                :: sampleFileHeaderFormat, sampleFileContentsFormat</a>
 <a name="558"><span class="lineNum">     558 </span>            :         integer(IK)                             :: isample, iweight, i</a>
 <a name="559"><span class="lineNum">     559 </span><span class="lineCov">        800 :         write(sampleFileUnit, sampleFileHeaderFormat) (trim(adjustl(RefinedChain%ColHeader(i)%record)),i=0,RefinedChain%ndim)</span></a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">      31506 :         do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%compact</span></a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">      86428 :             do iweight = 1, RefinedChain%Weight(isample)</span></a>
-<a name="562"><span class="lineNum">     562 </span><span class="lineCov">      86203 :                 write(sampleFileUnit,sampleFileContentsFormat) RefinedChain%LogFuncState(0:RefinedChain%ndim,isample)</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">      32197 :         do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%compact</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">      88612 :             do iweight = 1, RefinedChain%Weight(isample)</span></a>
+<a name="562"><span class="lineNum">     562 </span><span class="lineCov">      88387 :                 write(sampleFileUnit,sampleFileContentsFormat) RefinedChain%LogFuncState(0:RefinedChain%ndim,isample)</span></a>
 <a name="563"><span class="lineNum">     563 </span>            :             end do</a>
 <a name="564"><span class="lineNum">     564 </span>            :         end do</a>
 <a name="565"><span class="lineNum">     565 </span><span class="lineCov">        225 :         flush(sampleFileUnit)</span></a>

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-11 03:36:01</td>
+            <td class="headerValue">2020-12-12 05:35:34</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -219,7 +219,7 @@
 <a name="149"><span class="lineNum">     149 </span>            :     !&gt;</a>
 <a name="150"><span class="lineNum">     150 </span>            :     !&gt; \warning</a>
 <a name="151"><span class="lineNum">     151 </span>            :     !&gt; On return, the value of `Err%occurred` must be checked for any potential occurrences of errors during sorting.</a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         52 :     pure subroutine sortAscending_RK(np,Point,Err)</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">         49 :     pure subroutine sortAscending_RK(np,Point,Err)</span></a>
 <a name="153"><span class="lineNum">     153 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="154"><span class="lineNum">     154 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending_RK</a>
 <a name="155"><span class="lineNum">     155 </span>            : #endif</a>
@@ -235,25 +235,25 @@
 <a name="165"><span class="lineNum">     165 </span>            :         type(Err_type)  , intent(out)   :: Err</a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
 <a name="167"><span class="lineNum">     167 </span>            :         character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//&quot;@sortAscending_RK()&quot;</a>
-<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         52 :         real(RK)                        :: dummy</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">         49 :         real(RK)                        :: dummy</span></a>
 <a name="169"><span class="lineNum">     169 </span>            :         integer(IK)                     :: k,i,j,jstack,m,r,istack(NSTACK)</a>
 <a name="170"><span class="lineNum">     170 </span>            : </a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         52 :         Err%occurred = .false.</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">         49 :         Err%occurred = .false.</span></a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         52 :         jstack=0</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         52 :         m = 1</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         52 :         r = np</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">         49 :         jstack=0</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         49 :         m = 1</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">         49 :         r = np</span></a>
 <a name="176"><span class="lineNum">     176 </span><span class="lineCov">         60 :         do</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">        112 :             if (r-m &lt; nn) then</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">        454 :                 do j = m+1,r</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">        372 :                     dummy = Point(j)</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       1074 :                     do i = j-1,m,-1</span></a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        975 :                         if (Point(i) &lt;=  dummy) exit</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        801 :                         Point(i+1) = Point(i)</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">        109 :             if (r-m &lt; nn) then</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">        445 :                 do j = m+1,r</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">        366 :                     dummy = Point(j)</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">       1059 :                     do i = j-1,m,-1</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        964 :                         if (Point(i) &lt;=  dummy) exit</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        788 :                         Point(i+1) = Point(i)</span></a>
 <a name="183"><span class="lineNum">     183 </span>            :                     end do</a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        454 :                     Point(i+1) = dummy</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        445 :                     Point(i+1) = dummy</span></a>
 <a name="185"><span class="lineNum">     185 </span>            :                 end do</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         82 :                 if (jstack == 0) return</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         79 :                 if (jstack == 0) return</span></a>
 <a name="187"><span class="lineNum">     187 </span><span class="lineCov">         30 :                 r = istack(jstack)</span></a>
 <a name="188"><span class="lineNum">     188 </span><span class="lineCov">         30 :                 m = istack(jstack-1)</span></a>
 <a name="189"><span class="lineNum">     189 </span><span class="lineCov">         30 :                 jstack = jstack-2</span></a>
@@ -299,7 +299,7 @@
 <a name="229"><span class="lineNum">     229 </span>            :                 end if</a>
 <a name="230"><span class="lineNum">     230 </span>            :             end if</a>
 <a name="231"><span class="lineNum">     231 </span>            :         end do</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         52 :     end subroutine sortAscending_RK</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">         49 :     end subroutine sortAscending_RK</span></a>
 <a name="233"><span class="lineNum">     233 </span>            : </a>
 <a name="234"><span class="lineNum">     234 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="235"><span class="lineNum">     235 </span>            : </a>
@@ -317,7 +317,7 @@
 <a name="247"><span class="lineNum">     247 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="248"><span class="lineNum">     248 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: indexArray_RK</a>
 <a name="249"><span class="lineNum">     249 </span>            : #endif</a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         52 :         use Constants_mod, only: IK, RK</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">         49 :         use Constants_mod, only: IK, RK</span></a>
 <a name="251"><span class="lineNum">     251 </span>            :         use Misc_mod, only: swap</a>
 <a name="252"><span class="lineNum">     252 </span>            :         use Err_mod, only: Err_type</a>
 <a name="253"><span class="lineNum">     253 </span>            : </a>
@@ -336,78 +336,78 @@
 <a name="266"><span class="lineNum">     266 </span>            : </a>
 <a name="267"><span class="lineNum">     267 </span><span class="lineCov">        709 :         Err%occurred = .false.</span></a>
 <a name="268"><span class="lineNum">     268 </span>            : </a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">     176240 :         do j = 1,n</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">     176240 :             Indx(j) = j</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">     177142 :         do j = 1,n</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">     177142 :             Indx(j) = j</span></a>
 <a name="271"><span class="lineNum">     271 </span>            :         end do</a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineCov">        709 :         jstack=0</span></a>
 <a name="273"><span class="lineNum">     273 </span><span class="lineCov">        709 :         l=1</span></a>
 <a name="274"><span class="lineNum">     274 </span><span class="lineCov">        709 :         r=n</span></a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">      34661 :         do</span></a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">      34661 :             if (r-l &lt; nn) then</span></a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">     158555 :                 do j=l+1,r</span></a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">     140870 :                     indext=Indx(j)</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     140870 :                     a=Array(indext)</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     521878 :                     do i=j-1,l,-1</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">     491458 :                         if (Array(Indx(i)) &lt;= a) exit</span></a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">     411428 :                         Indx(i+1)=Indx(i)</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">      34559 :         do</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">      34559 :             if (r-l &lt; nn) then</span></a>
+<a name="277"><span class="lineNum">     277 </span><span class="lineCov">     159508 :                 do j=l+1,r</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">     141874 :                     indext=Indx(j)</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">     141874 :                     a=Array(indext)</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">     525373 :                     do i=j-1,l,-1</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">     495021 :                         if (Array(Indx(i)) &lt;= a) exit</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">     413851 :                         Indx(i+1)=Indx(i)</span></a>
 <a name="283"><span class="lineNum">     283 </span>            :                     end do</a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">     158555 :                     Indx(i+1)=indext</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">     159508 :                     Indx(i+1)=indext</span></a>
 <a name="285"><span class="lineNum">     285 </span>            :                 end do</a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      17685 :                 if (jstack == 0) return</span></a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">      16976 :                 r=istack(jstack)</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">      16976 :                 l=istack(jstack-1)</span></a>
-<a name="289"><span class="lineNum">     289 </span><span class="lineCov">      16976 :                 jstack=jstack-2</span></a>
+<a name="286"><span class="lineNum">     286 </span><span class="lineCov">      17634 :                 if (jstack == 0) return</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">      16925 :                 r=istack(jstack)</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">      16925 :                 l=istack(jstack-1)</span></a>
+<a name="289"><span class="lineNum">     289 </span><span class="lineCov">      16925 :                 jstack=jstack-2</span></a>
 <a name="290"><span class="lineNum">     290 </span>            :             else</a>
-<a name="291"><span class="lineNum">     291 </span><span class="lineCov">      16976 :                 k=(l+r)/2</span></a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">      16976 :                 call swap(Indx(k),Indx(l+1))</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">      16976 :                 call exchangeIndex(Indx(l),Indx(r))</span></a>
-<a name="294"><span class="lineNum">     294 </span><span class="lineCov">      16976 :                 call exchangeIndex(Indx(l+1),Indx(r))</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      16976 :                 call exchangeIndex(Indx(l),Indx(l+1))</span></a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">      16976 :                 i=l+1</span></a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      16976 :                 j=r</span></a>
-<a name="298"><span class="lineNum">     298 </span><span class="lineCov">      16976 :                 indext=Indx(l+1)</span></a>
-<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      16976 :                 a=Array(indext)</span></a>
-<a name="300"><span class="lineNum">     300 </span><span class="lineCov">     186702 :                 do</span></a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">     287347 :                     do</span></a>
-<a name="302"><span class="lineNum">     302 </span><span class="lineCov">     491025 :                         i=i+1</span></a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">     491025 :                         if (Array(Indx(i)) &gt;= a) exit</span></a>
+<a name="291"><span class="lineNum">     291 </span><span class="lineCov">      16925 :                 k=(l+r)/2</span></a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">      16925 :                 call swap(Indx(k),Indx(l+1))</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">      16925 :                 call exchangeIndex(Indx(l),Indx(r))</span></a>
+<a name="294"><span class="lineNum">     294 </span><span class="lineCov">      16925 :                 call exchangeIndex(Indx(l+1),Indx(r))</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">      16925 :                 call exchangeIndex(Indx(l),Indx(l+1))</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">      16925 :                 i=l+1</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">      16925 :                 j=r</span></a>
+<a name="298"><span class="lineNum">     298 </span><span class="lineCov">      16925 :                 indext=Indx(l+1)</span></a>
+<a name="299"><span class="lineNum">     299 </span><span class="lineCov">      16925 :                 a=Array(indext)</span></a>
+<a name="300"><span class="lineNum">     300 </span><span class="lineCov">     186978 :                 do</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">     290123 :                     do</span></a>
+<a name="302"><span class="lineNum">     302 </span><span class="lineCov">     494026 :                         i=i+1</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">     494026 :                         if (Array(Indx(i)) &gt;= a) exit</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :                     end do</a>
-<a name="305"><span class="lineNum">     305 </span><span class="lineCov">     261113 :                     do</span></a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">     464791 :                         j=j-1</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">     464791 :                         if (Array(Indx(j)) &lt;= a) exit</span></a>
+<a name="305"><span class="lineNum">     305 </span><span class="lineCov">     268872 :                     do</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">     472775 :                         j=j-1</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">     472775 :                         if (Array(Indx(j)) &lt;= a) exit</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :                     end do</a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">     203678 :                     if (j &lt; i) exit</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">     186702 :                     call swap(Indx(i),Indx(j))</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">     203903 :                     if (j &lt; i) exit</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">     186978 :                     call swap(Indx(i),Indx(j))</span></a>
 <a name="311"><span class="lineNum">     311 </span>            :                 end do</a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      16976 :                 Indx(l+1)=Indx(j)</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">      16976 :                 Indx(j)=indext</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">      16976 :                 jstack=jstack+2</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      16976 :                 if (jstack &gt; NSTACK) then</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      16925 :                 Indx(l+1)=Indx(j)</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">      16925 :                 Indx(j)=indext</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">      16925 :                 jstack=jstack+2</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">      16925 :                 if (jstack &gt; NSTACK) then</span></a>
 <a name="316"><span class="lineNum">     316 </span>            :                     ! LCOV_EXCL_START</a>
 <a name="317"><span class="lineNum">     317 </span>            :                     Err%occurred = .true.</a>
 <a name="318"><span class="lineNum">     318 </span>            :                     Err%msg = PROCEDURE_NAME//&quot;: NSTACK is too small.&quot;</a>
 <a name="319"><span class="lineNum">     319 </span>            :                     return</a>
 <a name="320"><span class="lineNum">     320 </span>            :                     ! LCOV_EXCL_STOP</a>
 <a name="321"><span class="lineNum">     321 </span>            :                 end if</a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">      16976 :                 if (r-i+1 &gt;= j-l) then</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">       8444 :                     istack(jstack)=r</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">       8444 :                     istack(jstack-1)=i</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">       8444 :                     r=j-1</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">      16925 :                 if (r-i+1 &gt;= j-l) then</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">       8395 :                     istack(jstack)=r</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">       8395 :                     istack(jstack-1)=i</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">       8395 :                     r=j-1</span></a>
 <a name="326"><span class="lineNum">     326 </span>            :                 else</a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       8532 :                     istack(jstack)=j-1</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">       8532 :                     istack(jstack-1)=l</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       8532 :                     l=i</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       8530 :                     istack(jstack)=j-1</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">       8530 :                     istack(jstack-1)=l</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">       8530 :                     l=i</span></a>
 <a name="330"><span class="lineNum">     330 </span>            :                 end if</a>
 <a name="331"><span class="lineNum">     331 </span>            :             end if</a>
 <a name="332"><span class="lineNum">     332 </span>            :         end do</a>
 <a name="333"><span class="lineNum">     333 </span>            :     contains</a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">      50928 :         pure subroutine exchangeIndex(i,j)</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">      50775 :         pure subroutine exchangeIndex(i,j)</span></a>
 <a name="335"><span class="lineNum">     335 </span>            :             integer(IK), intent(inout) :: i,j</a>
 <a name="336"><span class="lineNum">     336 </span>            :             integer(IK)                :: swp</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">      50928 :             if (Array(j) &lt; Array(i)) then</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">      19939 :                 swp=i</span></a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">      19939 :                 i=j</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">      19939 :                 j=swp</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">      50775 :             if (Array(j) &lt; Array(i)) then</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">      19543 :                 swp=i</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">      19543 :                 i=j</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">      19543 :                 j=swp</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :             end if</a>
 <a name="342"><span class="lineNum">     342 </span><span class="lineCov">        709 :         end subroutine exchangeIndex</span></a>
 <a name="343"><span class="lineNum">     343 </span>            :     end subroutine indexArray_RK</a>
@@ -613,7 +613,7 @@
 <a name="543"><span class="lineNum">     543 </span>            :     !&gt;</a>
 <a name="544"><span class="lineNum">     544 </span>            :     !&gt; \warning</a>
 <a name="545"><span class="lineNum">     545 </span>            :     !&gt; On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.</a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">         47 :     pure subroutine getMedian_RK(lenArray,Array,median,Err)</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">         44 :     pure subroutine getMedian_RK(lenArray,Array,median,Err)</span></a>
 <a name="547"><span class="lineNum">     547 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
 <a name="548"><span class="lineNum">     548 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: median_RK</a>
 <a name="549"><span class="lineNum">     549 </span>            : #endif</a>
@@ -628,11 +628,11 @@
 <a name="558"><span class="lineNum">     558 </span>            :         type(Err_type)  , intent(out)   :: Err</a>
 <a name="559"><span class="lineNum">     559 </span>            : </a>
 <a name="560"><span class="lineNum">     560 </span>            :         character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//&quot;@median_RK()&quot;</a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">        281 :         real(RK)                        :: ArrayDummy(lenArray)</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">        269 :         real(RK)                        :: ArrayDummy(lenArray)</span></a>
 <a name="562"><span class="lineNum">     562 </span>            :         integer(IK)                     :: lenArrayHalf</a>
 <a name="563"><span class="lineNum">     563 </span>            : </a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineCov">        281 :         ArrayDummy = Array</span></a>
-<a name="565"><span class="lineNum">     565 </span><span class="lineCov">         47 :         call sortAscending(np=lenArray,Point=ArrayDummy,Err=Err)</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">        269 :         ArrayDummy = Array</span></a>
+<a name="565"><span class="lineNum">     565 </span><span class="lineCov">         44 :         call sortAscending(np=lenArray,Point=ArrayDummy,Err=Err)</span></a>
 <a name="566"><span class="lineNum">     566 </span>            :         ! LCOV_EXCL_START</a>
 <a name="567"><span class="lineNum">     567 </span>            :         if (Err%occurred) then</a>
 <a name="568"><span class="lineNum">     568 </span>            :             Err%msg = PROCEDURE_NAME//Err%msg</a>
@@ -640,11 +640,11 @@
 <a name="570"><span class="lineNum">     570 </span>            :         end if</a>
 <a name="571"><span class="lineNum">     571 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="572"><span class="lineNum">     572 </span>            : </a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">         47 :         lenArrayHalf = lenArray / 2</span></a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">         47 :         median = ArrayDummy(lenArrayHalf+1)</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         47 :         if (2*lenArrayHalf==lenArray) median = 0.5_RK * ( ArrayDummy(lenArrayHalf) + median )</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">         44 :         lenArrayHalf = lenArray / 2</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">         44 :         median = ArrayDummy(lenArrayHalf+1)</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         44 :         if (2*lenArrayHalf==lenArray) median = 0.5_RK * ( ArrayDummy(lenArrayHalf) + median )</span></a>
 <a name="576"><span class="lineNum">     576 </span>            : </a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">         47 :     end subroutine getMedian_RK</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">         44 :     end subroutine getMedian_RK</span></a>
 <a name="578"><span class="lineNum">     578 </span>            : </a>
 <a name="579"><span class="lineNum">     579 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="580"><span class="lineNum">     580 </span>            : </a>
