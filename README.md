@@ -1,7 +1,16 @@
-# The ParaMonte Code Coverage Report  
+<div align="center">
 
-This repository contains the [ParaMonte library]()'s Code Coverage report for different build configurations and programming languages. 
-To learn more about the details of code coverage preparation, visit the [ParaMonte library's documentation website]().  
+<a href="https://cdslaborg.github.io/paramonte-api-kernel/html/" target="_blank">
+    <img alt="paramonte-api-kernel" src="https://cdslaborg.github.io/paramonte-api-kernel/html/logo.png" width="80%">
+</a>
+
+The ParaMonte Code Coverage Report  
+==================================
+
+</div>
+
+This repository contains the [ParaMonte library](https://github.com/cdslaborg/paramonte)'s Code Coverage report for different build configurations and programming languages. 
+To learn more about the details of code coverage preparation, visit the [ParaMonte library's documentation website](https://www.cdslab.org/paramonte/).  
 
 The following is a list of available code coverage reports for different languages and build configurations:  
 
