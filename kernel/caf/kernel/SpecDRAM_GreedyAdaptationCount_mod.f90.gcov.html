@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -141,7 +141,7 @@
 <a name="71"><span class="lineNum">      71 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">       1047 :     function constructGreedyAdaptationCount(methodName) result(GreedyAdaptationCountObj)</span></a>
-<a name="74"><span class="lineNum">      74 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="74"><span class="lineNum">      74 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="75"><span class="lineNum">      75 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructGreedyAdaptationCount</a>
 <a name="76"><span class="lineNum">      76 </span>            : #endif</a>
 <a name="77"><span class="lineNum">      77 </span>            :         use Constants_mod, only: IK, NULL_IK</a>
@@ -165,18 +165,18 @@
 <a name="95"><span class="lineNum">      95 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="96"><span class="lineNum">      96 </span>            : </a>
 <a name="97"><span class="lineNum">      97 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar(GreedyAdaptationCountObj)</span></a>
-<a name="98"><span class="lineNum">      98 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="98"><span class="lineNum">      98 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="99"><span class="lineNum">      99 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="100"><span class="lineNum">     100 </span>            : #endif</a>
 <a name="101"><span class="lineNum">     101 </span>            :         implicit none</a>
 <a name="102"><span class="lineNum">     102 </span>            :         class(GreedyAdaptationCount_type), intent(in)  :: GreedyAdaptationCountObj</a>
 <a name="103"><span class="lineNum">     103 </span><span class="lineCov">       1047 :         greedyAdaptationCount = GreedyAdaptationCountObj%null</span></a>
-<a name="104"><span class="lineNum">     104 </span><span class="lineCov">       2094 :     end subroutine nullifyNameListVar</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">       1047 :     end subroutine nullifyNameListVar</span></a>
 <a name="105"><span class="lineNum">     105 </span>            : </a>
 <a name="106"><span class="lineNum">     106 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
 <a name="108"><span class="lineNum">     108 </span><span class="lineCov">       1101 :     subroutine setGreedyAdaptationCount(GreedyAdaptationCountObj,greedyAdaptationCount)</span></a>
-<a name="109"><span class="lineNum">     109 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="109"><span class="lineNum">     109 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="110"><span class="lineNum">     110 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setGreedyAdaptationCount</a>
 <a name="111"><span class="lineNum">     111 </span>            : #endif</a>
 <a name="112"><span class="lineNum">     112 </span><span class="lineCov">       1047 :         use Constants_mod, only: IK</span></a>
@@ -192,7 +192,7 @@
 <a name="122"><span class="lineNum">     122 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="123"><span class="lineNum">     123 </span>            : </a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineCov">       1035 :     subroutine checkForSanity(GreedyAdaptationCountObj,Err,methodName)</span></a>
-<a name="125"><span class="lineNum">     125 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="125"><span class="lineNum">     125 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="126"><span class="lineNum">     126 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="127"><span class="lineNum">     127 </span>            : #endif</a>
 <a name="128"><span class="lineNum">     128 </span><span class="lineCov">       1101 :         use Constants_mod, only: IK</span></a>

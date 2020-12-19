@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -147,7 +147,7 @@
 <a name="77"><span class="lineNum">      77 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
 <a name="79"><span class="lineNum">      79 </span><span class="lineCov">       1047 :     function constructRestartFileFormat(methodName) result(RestartFileFormatObj)</span></a>
-<a name="80"><span class="lineNum">      80 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="80"><span class="lineNum">      80 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="81"><span class="lineNum">      81 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructRestartFileFormat</a>
 <a name="82"><span class="lineNum">      82 </span>            : #endif</a>
 <a name="83"><span class="lineNum">      83 </span>            :         use Constants_mod, only: NULL_SK, FILE_EXT, FILE_TYPE</a>
@@ -185,7 +185,7 @@
 <a name="115"><span class="lineNum">     115 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar(RestartFileFormatObj)</span></a>
-<a name="118"><span class="lineNum">     118 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="118"><span class="lineNum">     118 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="119"><span class="lineNum">     119 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="120"><span class="lineNum">     120 </span>            : #endif</a>
 <a name="121"><span class="lineNum">     121 </span>            :         implicit none</a>
@@ -196,7 +196,7 @@
 <a name="126"><span class="lineNum">     126 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="127"><span class="lineNum">     127 </span>            : </a>
 <a name="128"><span class="lineNum">     128 </span><span class="lineCov">       1107 :     subroutine setRestartFileFormat(RestartFileFormatObj,restartFileFormat)</span></a>
-<a name="129"><span class="lineNum">     129 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="129"><span class="lineNum">     129 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="130"><span class="lineNum">     130 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setRestartFileFormat</a>
 <a name="131"><span class="lineNum">     131 </span>            : #endif</a>
 <a name="132"><span class="lineNum">     132 </span><span class="lineCov">       1047 :         use String_mod, only: getLowerCase</span></a>
@@ -216,7 +216,7 @@
 <a name="146"><span class="lineNum">     146 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span><span class="lineCov">       1035 :     subroutine checkForSanity(RestartFileFormat,Err,methodName)</span></a>
-<a name="149"><span class="lineNum">     149 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="149"><span class="lineNum">     149 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="150"><span class="lineNum">     150 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="151"><span class="lineNum">     151 </span>            : #endif</a>
 <a name="152"><span class="lineNum">     152 </span><span class="lineCov">       1107 :         use Err_mod, only: Err_type</span></a>

@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:31:29</td>
+            <td class="headerValue">2020-12-19 06:06:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">41</td>
@@ -881,7 +881,7 @@
 <a name="811"><span class="lineNum">     811 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="812"><span class="lineNum">     812 </span>            : </a>
 <a name="813"><span class="lineNum">     813 </span>            :     !&gt; \brief </a>
-<a name="814"><span class="lineNum">     814 </span>            :     !&gt; Test [getLowerGamma](@ref matho_mod::getlowergamma) with a small `tolerance` input optional argument.</a>
+<a name="814"><span class="lineNum">     814 </span>            :     !&gt; Test [getLowerGamma](@ref math_mod::getlowergamma) with a small `tolerance` input optional argument.</a>
 <a name="815"><span class="lineNum">     815 </span><span class="lineCov">          1 :     function test_getLowerGamma_1() result(assertion)</span></a>
 <a name="816"><span class="lineNum">     816 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="817"><span class="lineNum">     817 </span>            :         implicit none</a>
@@ -916,7 +916,7 @@
 <a name="846"><span class="lineNum">     846 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="847"><span class="lineNum">     847 </span>            : </a>
 <a name="848"><span class="lineNum">     848 </span>            :     !&gt; \brief </a>
-<a name="849"><span class="lineNum">     849 </span>            :     !&gt; Test [getLowerGamma](@ref matho_mod::getlowergamma) with a medium `tolerance` input optional argument.</a>
+<a name="849"><span class="lineNum">     849 </span>            :     !&gt; Test [getLowerGamma](@ref math_mod::getlowergamma) with a medium `tolerance` input optional argument.</a>
 <a name="850"><span class="lineNum">     850 </span><span class="lineCov">          1 :     function test_getLowerGamma_2() result(assertion)</span></a>
 <a name="851"><span class="lineNum">     851 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="852"><span class="lineNum">     852 </span>            :         implicit none</a>
@@ -951,7 +951,7 @@
 <a name="881"><span class="lineNum">     881 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="882"><span class="lineNum">     882 </span>            : </a>
 <a name="883"><span class="lineNum">     883 </span>            :     !&gt; \brief </a>
-<a name="884"><span class="lineNum">     884 </span>            :     !&gt; Test [getLowerGamma](@ref matho_mod::getlowergamma) with a large `tolerance` input optional argument.</a>
+<a name="884"><span class="lineNum">     884 </span>            :     !&gt; Test [getLowerGamma](@ref math_mod::getlowergamma) with a large `tolerance` input optional argument.</a>
 <a name="885"><span class="lineNum">     885 </span><span class="lineCov">          1 :     function test_getLowerGamma_3() result(assertion)</span></a>
 <a name="886"><span class="lineNum">     886 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="887"><span class="lineNum">     887 </span>            :         implicit none</a>
@@ -986,7 +986,7 @@
 <a name="916"><span class="lineNum">     916 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="917"><span class="lineNum">     917 </span>            : </a>
 <a name="918"><span class="lineNum">     918 </span>            :     !&gt; \brief </a>
-<a name="919"><span class="lineNum">     919 </span>            :     !&gt; Test [getLowerGamma](@ref matho_mod::getlowergamma) without the `tolerance` input optional argument, </a>
+<a name="919"><span class="lineNum">     919 </span>            :     !&gt; Test [getLowerGamma](@ref math_mod::getlowergamma) without the `tolerance` input optional argument, </a>
 <a name="920"><span class="lineNum">     920 </span>            :     !&gt; in which case, the procedure should default to `epsilon` for the value of tolerance.</a>
 <a name="921"><span class="lineNum">     921 </span><span class="lineCov">          1 :     function test_getLowerGamma_4() result(assertion)</span></a>
 <a name="922"><span class="lineNum">     922 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
@@ -1021,7 +1021,7 @@
 <a name="951"><span class="lineNum">     951 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="952"><span class="lineNum">     952 </span>            : </a>
 <a name="953"><span class="lineNum">     953 </span>            :     !&gt; \brief </a>
-<a name="954"><span class="lineNum">     954 </span>            :     !&gt; Test [getLowerGamma](@ref matho_mod::getlowergamma) with a wrong positive value for the input argument `upperLim`.</a>
+<a name="954"><span class="lineNum">     954 </span>            :     !&gt; Test [getLowerGamma](@ref math_mod::getlowergamma) with a wrong positive value for the input argument `upperLim`.</a>
 <a name="955"><span class="lineNum">     955 </span><span class="lineCov">          1 :     function test_getLowerGamma_5() result(assertion)</span></a>
 <a name="956"><span class="lineNum">     956 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK, HUGE_RK</span></a>
 <a name="957"><span class="lineNum">     957 </span>            :         implicit none</a>
@@ -1048,7 +1048,7 @@
 <a name="978"><span class="lineNum">     978 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="979"><span class="lineNum">     979 </span>            : </a>
 <a name="980"><span class="lineNum">     980 </span>            :     !&gt; \brief </a>
-<a name="981"><span class="lineNum">     981 </span>            :     !&gt; Test [getUpperGamma](@ref matho_mod::getuppergamma) with a small `tolerance` input optional argument.</a>
+<a name="981"><span class="lineNum">     981 </span>            :     !&gt; Test [getUpperGamma](@ref math_mod::getuppergamma) with a small `tolerance` input optional argument.</a>
 <a name="982"><span class="lineNum">     982 </span><span class="lineCov">          1 :     function test_getUpperGamma_1() result(assertion)</span></a>
 <a name="983"><span class="lineNum">     983 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="984"><span class="lineNum">     984 </span>            :         implicit none</a>
@@ -1083,7 +1083,7 @@
 <a name="1013"><span class="lineNum">    1013 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1014"><span class="lineNum">    1014 </span>            : </a>
 <a name="1015"><span class="lineNum">    1015 </span>            :     !&gt; \brief </a>
-<a name="1016"><span class="lineNum">    1016 </span>            :     !&gt; Test [getUpperGamma](@ref matho_mod::getuppergamma) with a medium `tolerance` input optional argument.</a>
+<a name="1016"><span class="lineNum">    1016 </span>            :     !&gt; Test [getUpperGamma](@ref math_mod::getuppergamma) with a medium `tolerance` input optional argument.</a>
 <a name="1017"><span class="lineNum">    1017 </span><span class="lineCov">          1 :     function test_getUpperGamma_2() result(assertion)</span></a>
 <a name="1018"><span class="lineNum">    1018 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="1019"><span class="lineNum">    1019 </span>            :         implicit none</a>
@@ -1118,7 +1118,7 @@
 <a name="1048"><span class="lineNum">    1048 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1049"><span class="lineNum">    1049 </span>            : </a>
 <a name="1050"><span class="lineNum">    1050 </span>            :     !&gt; \brief </a>
-<a name="1051"><span class="lineNum">    1051 </span>            :     !&gt; Test [getUpperGamma](@ref matho_mod::getuppergamma) with a coarse `tolerance` input optional argument.</a>
+<a name="1051"><span class="lineNum">    1051 </span>            :     !&gt; Test [getUpperGamma](@ref math_mod::getuppergamma) with a coarse `tolerance` input optional argument.</a>
 <a name="1052"><span class="lineNum">    1052 </span><span class="lineCov">          1 :     function test_getUpperGamma_3() result(assertion)</span></a>
 <a name="1053"><span class="lineNum">    1053 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="1054"><span class="lineNum">    1054 </span>            :         implicit none</a>
@@ -1153,7 +1153,7 @@
 <a name="1083"><span class="lineNum">    1083 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1084"><span class="lineNum">    1084 </span>            : </a>
 <a name="1085"><span class="lineNum">    1085 </span>            :     !&gt; \brief </a>
-<a name="1086"><span class="lineNum">    1086 </span>            :     !&gt; Test [getUpperGamma](@ref matho_mod::getuppergamma) without the `tolerance` input optional argument, in which case</a>
+<a name="1086"><span class="lineNum">    1086 </span>            :     !&gt; Test [getUpperGamma](@ref math_mod::getuppergamma) without the `tolerance` input optional argument, in which case</a>
 <a name="1087"><span class="lineNum">    1087 </span>            :     !&gt; the procedure should default to `epsilon` for the value of tolerance.</a>
 <a name="1088"><span class="lineNum">    1088 </span><span class="lineCov">          1 :     function test_getUpperGamma_4() result(assertion)</span></a>
 <a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
@@ -1188,7 +1188,7 @@
 <a name="1118"><span class="lineNum">    1118 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1119"><span class="lineNum">    1119 </span>            : </a>
 <a name="1120"><span class="lineNum">    1120 </span>            :     !&gt; \brief </a>
-<a name="1121"><span class="lineNum">    1121 </span>            :     !&gt; Test [getUpperGamma](@ref matho_mod::getuppergamma) with a wrong positive value for the input argument `lowerLim`.</a>
+<a name="1121"><span class="lineNum">    1121 </span>            :     !&gt; Test [getUpperGamma](@ref math_mod::getuppergamma) with a wrong positive value for the input argument `lowerLim`.</a>
 <a name="1122"><span class="lineNum">    1122 </span><span class="lineCov">          1 :     function test_getUpperGamma_5() result(assertion)</span></a>
 <a name="1123"><span class="lineNum">    1123 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK, HUGE_RK</span></a>
 <a name="1124"><span class="lineNum">    1124 </span>            :         implicit none</a>
@@ -1217,7 +1217,7 @@
 <a name="1147"><span class="lineNum">    1147 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1148"><span class="lineNum">    1148 </span>            : </a>
 <a name="1149"><span class="lineNum">    1149 </span>            :     !&gt; \brief </a>
-<a name="1150"><span class="lineNum">    1150 </span>            :     !&gt; Test [getGammaSeries](@ref matho_mod::getgammaseries) with a zero value for the input argument `upperLim`.</a>
+<a name="1150"><span class="lineNum">    1150 </span>            :     !&gt; Test [getGammaSeries](@ref math_mod::getgammaseries) with a zero value for the input argument `upperLim`.</a>
 <a name="1151"><span class="lineNum">    1151 </span><span class="lineCov">          1 :     function test_getGammaSeries_1() result(assertion)</span></a>
 <a name="1152"><span class="lineNum">    1152 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="1153"><span class="lineNum">    1153 </span>            :         implicit none</a>
@@ -1249,7 +1249,7 @@
 <a name="1179"><span class="lineNum">    1179 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1180"><span class="lineNum">    1180 </span>            : </a>
 <a name="1181"><span class="lineNum">    1181 </span>            :     !&gt; \brief </a>
-<a name="1182"><span class="lineNum">    1182 </span>            :     !&gt; Test [getGammaContFrac](@ref matho_mod::getgammacontfrac) with a zero value for the input argument `lowerLim`.</a>
+<a name="1182"><span class="lineNum">    1182 </span>            :     !&gt; Test [getGammaContFrac](@ref math_mod::getgammacontfrac) with a zero value for the input argument `lowerLim`.</a>
 <a name="1183"><span class="lineNum">    1183 </span><span class="lineCov">          1 :     function test_getGammaContFrac_1() result(assertion)</span></a>
 <a name="1184"><span class="lineNum">    1184 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="1185"><span class="lineNum">    1185 </span>            :         implicit none</a>
@@ -1281,7 +1281,7 @@
 <a name="1211"><span class="lineNum">    1211 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1212"><span class="lineNum">    1212 </span>            : </a>
 <a name="1213"><span class="lineNum">    1213 </span>            :     !&gt; \brief </a>
-<a name="1214"><span class="lineNum">    1214 </span>            :     !&gt; Test the accuracy of [getLogGammaHalfInt](@ref matho_mod::getloggammahalfint).</a>
+<a name="1214"><span class="lineNum">    1214 </span>            :     !&gt; Test the accuracy of [getLogGammaHalfInt](@ref math_mod::getloggammahalfint).</a>
 <a name="1215"><span class="lineNum">    1215 </span><span class="lineCov">          1 :     function test_getGammaHalfInt_1() result(assertion)</span></a>
 <a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="1217"><span class="lineNum">    1217 </span>            :         implicit none</a>
@@ -1309,7 +1309,7 @@
 <a name="1239"><span class="lineNum">    1239 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1240"><span class="lineNum">    1240 </span>            : </a>
 <a name="1241"><span class="lineNum">    1241 </span>            :     !&gt; \brief </a>
-<a name="1242"><span class="lineNum">    1242 </span>            :     !&gt; Test the accuracy of [getLogGammaHalfInt](@ref matho_mod::getloggammahalfint).</a>
+<a name="1242"><span class="lineNum">    1242 </span>            :     !&gt; Test the accuracy of [getLogGammaHalfInt](@ref math_mod::getloggammahalfint).</a>
 <a name="1243"><span class="lineNum">    1243 </span><span class="lineCov">          1 :     function test_getLogGammaHalfInt_1() result(assertion)</span></a>
 <a name="1244"><span class="lineNum">    1244 </span><span class="lineCov">          1 :         use Constants_mod, only: RK, IK</span></a>
 <a name="1245"><span class="lineNum">    1245 </span>            :         implicit none</a>

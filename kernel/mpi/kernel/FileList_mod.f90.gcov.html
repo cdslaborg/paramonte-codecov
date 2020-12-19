@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -155,7 +155,7 @@
 <a name="85"><span class="lineNum">      85 </span>            :     !&gt; \return</a>
 <a name="86"><span class="lineNum">      86 </span>            :     !&gt; FileList : An object of [FileList_type](@ref filelist_type) class.</a>
 <a name="87"><span class="lineNum">      87 </span><span class="lineCov">         24 :     function constructFileList(searchStr,orderStr,excludeStr,OS) result(FileList)</span></a>
-<a name="88"><span class="lineNum">      88 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="88"><span class="lineNum">      88 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="89"><span class="lineNum">      89 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileList</a>
 <a name="90"><span class="lineNum">      90 </span>            : #endif</a>
 <a name="91"><span class="lineNum">      91 </span>            :         use System_mod, only: OS_type</a>
@@ -197,7 +197,7 @@
 <a name="127"><span class="lineNum">     127 </span>            :     !&gt; \return</a>
 <a name="128"><span class="lineNum">     128 </span>            :     !&gt; FileList : An object of [FileList_type](@ref filelist_type) class.</a>
 <a name="129"><span class="lineNum">     129 </span><span class="lineCov">         27 :     subroutine getFileList(FileList,Err,count,searchStr,orderStr,excludeStr,OS)</span></a>
-<a name="130"><span class="lineNum">     130 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="130"><span class="lineNum">     130 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="131"><span class="lineNum">     131 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getFileList</a>
 <a name="132"><span class="lineNum">     132 </span>            : #endif</a>
 <a name="133"><span class="lineNum">     133 </span>            : </a>
@@ -377,175 +377,195 @@
 <a name="307"><span class="lineNum">     307 </span>            : </a>
 <a name="308"><span class="lineNum">     308 </span>            :         ! delete the stderr file</a>
 <a name="309"><span class="lineNum">     309 </span>            : </a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         24 :         open(newunit = fileUnit, file = stdErr, status = &quot;replace&quot;)</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">         24 :         close(fileUnit, status = &quot;delete&quot;, iostat = Err%stat) ! parallel processes cannot delete the same file</span></a>
-<a name="312"><span class="lineNum">     312 </span>            : </a>
-<a name="313"><span class="lineNum">     313 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="314"><span class="lineNum">     314 </span>            :         ! now count the number of records in file:</a>
-<a name="315"><span class="lineNum">     315 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="316"><span class="lineNum">     316 </span>            : </a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         24 :         inquire(file=filename,opened=fileIsOpen,number=fileUnit,iostat=Err%stat)    ! check if the file already exists</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">         24 :         if (Err%stat/=0) then</span></a>
-<a name="319"><span class="lineNum">     319 </span>            :         ! LCOV_EXCL_START</a>
-<a name="320"><span class="lineNum">     320 </span>            :             Err%occurred = .true.</a>
-<a name="321"><span class="lineNum">     321 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Error occurred while inquiring the open status of file='&quot; // filename // &quot;'.&quot;</a>
-<a name="322"><span class="lineNum">     322 </span>            :             return</a>
-<a name="323"><span class="lineNum">     323 </span>            :         end if</a>
-<a name="324"><span class="lineNum">     324 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="325"><span class="lineNum">     325 </span>            : </a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         24 :         if (fileIsOpen) close(fileUnit,iostat=Err%stat)</span></a>
-<a name="327"><span class="lineNum">     327 </span>            :         ! LCOV_EXCL_START</a>
-<a name="328"><span class="lineNum">     328 </span>            :         if (Err%stat/=0) then</a>
-<a name="329"><span class="lineNum">     329 </span>            :             Err%occurred = .true.</a>
-<a name="330"><span class="lineNum">     330 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Error occurred while attempting to close the open file='&quot; // filename // &quot;'.&quot;</a>
-<a name="331"><span class="lineNum">     331 </span>            :             return</a>
-<a name="332"><span class="lineNum">     332 </span>            :         end if</a>
-<a name="333"><span class="lineNum">     333 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="334"><span class="lineNum">     334 </span>            : </a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">         24 :         call sleep(seconds=0.1_RK,Err=Err)</span></a>
-<a name="336"><span class="lineNum">     336 </span>            :         ! LCOV_EXCL_START</a>
-<a name="337"><span class="lineNum">     337 </span>            :         if (Err%occurred) then</a>
-<a name="338"><span class="lineNum">     338 </span>            :             Err%msg = PROCEDURE_NAME // Err%msg</a>
-<a name="339"><span class="lineNum">     339 </span>            :             return</a>
-<a name="340"><span class="lineNum">     340 </span>            :         end if</a>
-<a name="341"><span class="lineNum">     341 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="342"><span class="lineNum">     342 </span>            : </a>
-<a name="343"><span class="lineNum">     343 </span>            :         ! open the list file</a>
-<a name="344"><span class="lineNum">     344 </span>            : </a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">         24 :         open(newunit=fileUnit,file=filename,status=&quot;old&quot;,iostat=Err%stat)</span></a>
-<a name="346"><span class="lineNum">     346 </span>            :         ! LCOV_EXCL_START</a>
-<a name="347"><span class="lineNum">     347 </span>            :         if (Err%stat&gt;0) then</a>
-<a name="348"><span class="lineNum">     348 </span>            :             Err%occurred = .true.</a>
-<a name="349"><span class="lineNum">     349 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Unknown error occurred while opening file='&quot; // filename // &quot;'.&quot;</a>
-<a name="350"><span class="lineNum">     350 </span>            :             return</a>
-<a name="351"><span class="lineNum">     351 </span>            :         end if</a>
-<a name="352"><span class="lineNum">     352 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="353"><span class="lineNum">     353 </span>            : </a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         24 :         nskip = 0   ! check filename is not among records</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         24 :         nrecord = 0 ! number of filenames in the file</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">        189 :         do</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">        213 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">        213 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
-<a name="359"><span class="lineNum">     359 </span>            :             ! LCOV_EXCL_START</a>
-<a name="360"><span class="lineNum">     360 </span>            :                 Err%occurred = .true.</a>
-<a name="361"><span class="lineNum">     361 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
-<a name="362"><span class="lineNum">     362 </span>            :                 return</a>
-<a name="363"><span class="lineNum">     363 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">        213 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         24 :                 exit</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        189 :             elseif ( Err%stat&gt;0 ) then</span></a>
-<a name="367"><span class="lineNum">     367 </span>            :             ! LCOV_EXCL_START</a>
-<a name="368"><span class="lineNum">     368 </span>            :                 Err%occurred = .true.</a>
-<a name="369"><span class="lineNum">     369 </span>            :                 Err%msg = PROCEDURE_NAME // &quot;: Unknown error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
-<a name="370"><span class="lineNum">     370 </span>            :                 return</a>
-<a name="371"><span class="lineNum">     371 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="372"><span class="lineNum">     372 </span>            :             else</a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">        189 :                 recordTrimmed = trim(adjustl(record))</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">        189 :                 if(filename==recordTrimmed) nskip = nskip + 1</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        189 :                 nrecord = nrecord + 1</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        189 :                 cycle</span></a>
-<a name="377"><span class="lineNum">     377 </span>            :             end if</a>
-<a name="378"><span class="lineNum">     378 </span>            :         end do</a>
-<a name="379"><span class="lineNum">     379 </span><span class="lineCov">         24 :         close(fileUnit, iostat = Err%stat)</span></a>
-<a name="380"><span class="lineNum">     380 </span><span class="lineCov">         24 :         if (Err%stat/=0) then</span></a>
-<a name="381"><span class="lineNum">     381 </span>            :         ! LCOV_EXCL_START</a>
-<a name="382"><span class="lineNum">     382 </span>            :             Err%occurred = .true.</a>
-<a name="383"><span class="lineNum">     383 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Error occurred while attempting to close the open file='&quot; // filename // &quot;'.&quot;</a>
-<a name="384"><span class="lineNum">     384 </span>            :             return</a>
-<a name="385"><span class="lineNum">     385 </span>            :         end if</a>
-<a name="386"><span class="lineNum">     386 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="387"><span class="lineNum">     387 </span>            : </a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">        192 :         allocate(FileList(nrecord-nskip))</span></a>
-<a name="389"><span class="lineNum">     389 </span>            : </a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">         24 :         call sleep(seconds=0.1_RK,Err=Err)</span></a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">         24 :         if (Err%occurred) then</span></a>
-<a name="392"><span class="lineNum">     392 </span>            :         ! LCOV_EXCL_START</a>
-<a name="393"><span class="lineNum">     393 </span>            :             Err%msg = PROCEDURE_NAME // Err%msg</a>
-<a name="394"><span class="lineNum">     394 </span>            :             return</a>
-<a name="395"><span class="lineNum">     395 </span>            :         end if</a>
-<a name="396"><span class="lineNum">     396 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="397"><span class="lineNum">     397 </span>            : </a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">         24 :         open(newunit=fileUnit,file=filename,status=&quot;old&quot;,iostat=Err%stat)</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         24 :         if (Err%stat&gt;0) then</span></a>
-<a name="400"><span class="lineNum">     400 </span>            :         ! LCOV_EXCL_START</a>
-<a name="401"><span class="lineNum">     401 </span>            :             Err%occurred = .true.</a>
-<a name="402"><span class="lineNum">     402 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Unknown error occurred while opening file='&quot; // filename // &quot;'.&quot;</a>
-<a name="403"><span class="lineNum">     403 </span>            :             return</a>
-<a name="404"><span class="lineNum">     404 </span>            :         end if</a>
-<a name="405"><span class="lineNum">     405 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="406"><span class="lineNum">     406 </span>            : </a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">         24 :         fileCounter = 0</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">        213 :         do counter = 1,nrecord</span></a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">        189 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">        189 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
-<a name="411"><span class="lineNum">     411 </span>            :             ! LCOV_EXCL_START</a>
-<a name="412"><span class="lineNum">     412 </span>            :                 Err%occurred = .true.</a>
-<a name="413"><span class="lineNum">     413 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
-<a name="414"><span class="lineNum">     414 </span>            :                 return</a>
-<a name="415"><span class="lineNum">     415 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="416"><span class="lineNum">     416 </span><span class="lineCov">        189 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineNoCov">          0 :                 exit</span></a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">        189 :             elseif ( Err%stat&gt;0 ) then</span></a>
-<a name="419"><span class="lineNum">     419 </span>            :             ! LCOV_EXCL_START</a>
-<a name="420"><span class="lineNum">     420 </span>            :                 Err%occurred = .true.</a>
-<a name="421"><span class="lineNum">     421 </span>            :                 Err%msg = PROCEDURE_NAME // &quot;: Unknown error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
-<a name="422"><span class="lineNum">     422 </span>            :                 return</a>
-<a name="423"><span class="lineNum">     423 </span>            :             end if</a>
-<a name="424"><span class="lineNum">     424 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">        189 :             recordTrimmed = trim(adjustl(record))</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">        213 :             if(filename/=recordTrimmed) then</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">        168 :                 fileCounter = fileCounter + 1</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">        168 :                 FileList(fileCounter)%record = trim(adjustl(record))</span></a>
-<a name="429"><span class="lineNum">     429 </span>            :             end if</a>
-<a name="430"><span class="lineNum">     430 </span>            :         end do</a>
-<a name="431"><span class="lineNum">     431 </span>            : </a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">         24 :         if (present(count)) count = fileCounter</span></a>
-<a name="433"><span class="lineNum">     433 </span>            : </a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">         24 :         close(fileUnit, status = &quot;delete&quot;, iostat = Err%stat) ! parallel processes cannot delete the same file</span></a>
-<a name="435"><span class="lineNum">     435 </span>            : </a>
-<a name="436"><span class="lineNum">     436 </span>            :         !if (Err%stat/=0) then</a>
-<a name="437"><span class="lineNum">     437 </span>            :         !! LCOV_EXCL_START</a>
-<a name="438"><span class="lineNum">     438 </span>            :         !    Err%occurred = .true.</a>
-<a name="439"><span class="lineNum">     439 </span>            :         !    Err%msg = PROCEDURE_NAME // &quot;: Error occurred while attempting to close the open file='&quot; // filename // &quot;'.&quot;</a>
-<a name="440"><span class="lineNum">     440 </span>            :         !    return</a>
-<a name="441"><span class="lineNum">     441 </span>            :         !end if</a>
-<a name="442"><span class="lineNum">     442 </span>            :         !! LCOV_EXCL_STOP</a>
-<a name="443"><span class="lineNum">     443 </span>            : </a>
-<a name="444"><span class="lineNum">     444 </span>            :         ! remove the files</a>
-<a name="445"><span class="lineNum">     445 </span>            :         !call removeFile(filename,isWindowsShell,Err)</a>
-<a name="446"><span class="lineNum">     446 </span>            :         !if (Err%occurred) then</a>
-<a name="447"><span class="lineNum">     447 </span>            :         !    Err%msg = PROCEDURE_NAME // Err%msg</a>
-<a name="448"><span class="lineNum">     448 </span>            :         !    return</a>
-<a name="449"><span class="lineNum">     449 </span>            :         !end if</a>
-<a name="450"><span class="lineNum">     450 </span>            :         !call removeFile(stdErr,isWindowsShell,Err)</a>
-<a name="451"><span class="lineNum">     451 </span>            :         !if (Err%occurred) then</a>
-<a name="452"><span class="lineNum">     452 </span>            :         !    Err%msg = PROCEDURE_NAME // Err%msg</a>
-<a name="453"><span class="lineNum">     453 </span>            :         !    return</a>
-<a name="454"><span class="lineNum">     454 </span>            :         !end if</a>
+<a name="310"><span class="lineNum">     310 </span>            :         open( newunit = fileUnit &amp; ! LCOV_EXCL_LINE</a>
+<a name="311"><span class="lineNum">     311 </span>            :             , status = &quot;replace&quot; &amp; ! LCOV_EXCL_LINE</a>
+<a name="312"><span class="lineNum">     312 </span>            :             , file = stdErr &amp; ! LCOV_EXCL_LINE</a>
+<a name="313"><span class="lineNum">     313 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="314"><span class="lineNum">     314 </span>            :             , SHARED &amp; ! LCOV_EXCL_LINE</a>
+<a name="315"><span class="lineNum">     315 </span>            : #endif</a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         24 :             )</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         24 :         close(fileUnit, status = &quot;delete&quot;, iostat = Err%stat) ! parallel processes cannot delete the same file</span></a>
+<a name="318"><span class="lineNum">     318 </span>            : </a>
+<a name="319"><span class="lineNum">     319 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="320"><span class="lineNum">     320 </span>            :         ! now count the number of records in file:</a>
+<a name="321"><span class="lineNum">     321 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="322"><span class="lineNum">     322 </span>            : </a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">         24 :         inquire(file=filename,opened=fileIsOpen,number=fileUnit,iostat=Err%stat)    ! check if the file already exists</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         24 :         if (Err%stat/=0) then</span></a>
+<a name="325"><span class="lineNum">     325 </span>            :         ! LCOV_EXCL_START</a>
+<a name="326"><span class="lineNum">     326 </span>            :             Err%occurred = .true.</a>
+<a name="327"><span class="lineNum">     327 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Error occurred while inquiring the open status of file='&quot; // filename // &quot;'.&quot;</a>
+<a name="328"><span class="lineNum">     328 </span>            :             return</a>
+<a name="329"><span class="lineNum">     329 </span>            :         end if</a>
+<a name="330"><span class="lineNum">     330 </span>            :         ! LCOV_EXCL_STOP</a>
+<a name="331"><span class="lineNum">     331 </span>            : </a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         24 :         if (fileIsOpen) close(fileUnit,iostat=Err%stat)</span></a>
+<a name="333"><span class="lineNum">     333 </span>            :         ! LCOV_EXCL_START</a>
+<a name="334"><span class="lineNum">     334 </span>            :         if (Err%stat/=0) then</a>
+<a name="335"><span class="lineNum">     335 </span>            :             Err%occurred = .true.</a>
+<a name="336"><span class="lineNum">     336 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Error occurred while attempting to close the open file='&quot; // filename // &quot;'.&quot;</a>
+<a name="337"><span class="lineNum">     337 </span>            :             return</a>
+<a name="338"><span class="lineNum">     338 </span>            :         end if</a>
+<a name="339"><span class="lineNum">     339 </span>            :         ! LCOV_EXCL_STOP</a>
+<a name="340"><span class="lineNum">     340 </span>            : </a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         24 :         call sleep(seconds=0.1_RK,Err=Err)</span></a>
+<a name="342"><span class="lineNum">     342 </span>            :         ! LCOV_EXCL_START</a>
+<a name="343"><span class="lineNum">     343 </span>            :         if (Err%occurred) then</a>
+<a name="344"><span class="lineNum">     344 </span>            :             Err%msg = PROCEDURE_NAME // Err%msg</a>
+<a name="345"><span class="lineNum">     345 </span>            :             return</a>
+<a name="346"><span class="lineNum">     346 </span>            :         end if</a>
+<a name="347"><span class="lineNum">     347 </span>            :         ! LCOV_EXCL_STOP</a>
+<a name="348"><span class="lineNum">     348 </span>            : </a>
+<a name="349"><span class="lineNum">     349 </span>            :         ! open the list file</a>
+<a name="350"><span class="lineNum">     350 </span>            : </a>
+<a name="351"><span class="lineNum">     351 </span>            :         open( newunit = fileUnit &amp; ! LCOV_EXCL_LINE</a>
+<a name="352"><span class="lineNum">     352 </span>            :             , iostat = Err%stat &amp; ! LCOV_EXCL_LINE</a>
+<a name="353"><span class="lineNum">     353 </span>            :             , file = filename &amp; ! LCOV_EXCL_LINE</a>
+<a name="354"><span class="lineNum">     354 </span>            :             , status = &quot;old&quot; &amp; ! LCOV_EXCL_LINE</a>
+<a name="355"><span class="lineNum">     355 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="356"><span class="lineNum">     356 </span>            :             , SHARED &amp; ! LCOV_EXCL_LINE</a>
+<a name="357"><span class="lineNum">     357 </span>            : #endif</a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         24 :             )</span></a>
+<a name="359"><span class="lineNum">     359 </span>            :         ! LCOV_EXCL_START</a>
+<a name="360"><span class="lineNum">     360 </span>            :         if (Err%stat&gt;0) then</a>
+<a name="361"><span class="lineNum">     361 </span>            :             Err%occurred = .true.</a>
+<a name="362"><span class="lineNum">     362 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Unknown error occurred while opening file='&quot; // filename // &quot;'.&quot;</a>
+<a name="363"><span class="lineNum">     363 </span>            :             return</a>
+<a name="364"><span class="lineNum">     364 </span>            :         end if</a>
+<a name="365"><span class="lineNum">     365 </span>            :         ! LCOV_EXCL_STOP</a>
+<a name="366"><span class="lineNum">     366 </span>            : </a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         24 :         nskip = 0   ! check filename is not among records</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         24 :         nrecord = 0 ! number of filenames in the file</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">        187 :         do</span></a>
+<a name="370"><span class="lineNum">     370 </span><span class="lineCov">        211 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">        211 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
+<a name="372"><span class="lineNum">     372 </span>            :             ! LCOV_EXCL_START</a>
+<a name="373"><span class="lineNum">     373 </span>            :                 Err%occurred = .true.</a>
+<a name="374"><span class="lineNum">     374 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
+<a name="375"><span class="lineNum">     375 </span>            :                 return</a>
+<a name="376"><span class="lineNum">     376 </span>            :             ! LCOV_EXCL_STOP</a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">        211 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         24 :                 exit</span></a>
+<a name="379"><span class="lineNum">     379 </span><span class="lineCov">        187 :             elseif ( Err%stat&gt;0 ) then</span></a>
+<a name="380"><span class="lineNum">     380 </span>            :             ! LCOV_EXCL_START</a>
+<a name="381"><span class="lineNum">     381 </span>            :                 Err%occurred = .true.</a>
+<a name="382"><span class="lineNum">     382 </span>            :                 Err%msg = PROCEDURE_NAME // &quot;: Unknown error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
+<a name="383"><span class="lineNum">     383 </span>            :                 return</a>
+<a name="384"><span class="lineNum">     384 </span>            :             ! LCOV_EXCL_STOP</a>
+<a name="385"><span class="lineNum">     385 </span>            :             else</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">        187 :                 recordTrimmed = trim(adjustl(record))</span></a>
+<a name="387"><span class="lineNum">     387 </span><span class="lineCov">        187 :                 if(filename==recordTrimmed) nskip = nskip + 1</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">        187 :                 nrecord = nrecord + 1</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">        187 :                 cycle</span></a>
+<a name="390"><span class="lineNum">     390 </span>            :             end if</a>
+<a name="391"><span class="lineNum">     391 </span>            :         end do</a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         24 :         close(fileUnit, iostat = Err%stat)</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         24 :         if (Err%stat/=0) then</span></a>
+<a name="394"><span class="lineNum">     394 </span>            :         ! LCOV_EXCL_START</a>
+<a name="395"><span class="lineNum">     395 </span>            :             Err%occurred = .true.</a>
+<a name="396"><span class="lineNum">     396 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Error occurred while attempting to close the open file='&quot; // filename // &quot;'.&quot;</a>
+<a name="397"><span class="lineNum">     397 </span>            :             return</a>
+<a name="398"><span class="lineNum">     398 </span>            :         end if</a>
+<a name="399"><span class="lineNum">     399 </span>            :         ! LCOV_EXCL_STOP</a>
+<a name="400"><span class="lineNum">     400 </span>            : </a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">        190 :         allocate(FileList(nrecord-nskip))</span></a>
+<a name="402"><span class="lineNum">     402 </span>            : </a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">         24 :         call sleep(seconds=0.1_RK,Err=Err)</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">         24 :         if (Err%occurred) then</span></a>
+<a name="405"><span class="lineNum">     405 </span>            :         ! LCOV_EXCL_START</a>
+<a name="406"><span class="lineNum">     406 </span>            :             Err%msg = PROCEDURE_NAME // Err%msg</a>
+<a name="407"><span class="lineNum">     407 </span>            :             return</a>
+<a name="408"><span class="lineNum">     408 </span>            :         end if</a>
+<a name="409"><span class="lineNum">     409 </span>            :         ! LCOV_EXCL_STOP</a>
+<a name="410"><span class="lineNum">     410 </span>            : </a>
+<a name="411"><span class="lineNum">     411 </span>            :         open( newunit = fileUnit &amp; ! LCOV_EXCL_LINE</a>
+<a name="412"><span class="lineNum">     412 </span>            :             , iostat = Err%stat &amp; ! LCOV_EXCL_LINE</a>
+<a name="413"><span class="lineNum">     413 </span>            :             , file = filename &amp; ! LCOV_EXCL_LINE</a>
+<a name="414"><span class="lineNum">     414 </span>            :             , status = &quot;old&quot; &amp; ! LCOV_EXCL_LINE</a>
+<a name="415"><span class="lineNum">     415 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="416"><span class="lineNum">     416 </span>            :             , SHARED &amp; ! LCOV_EXCL_LINE</a>
+<a name="417"><span class="lineNum">     417 </span>            : #endif</a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">         24 :             )</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">         24 :         if (Err%stat&gt;0) then</span></a>
+<a name="420"><span class="lineNum">     420 </span>            :         ! LCOV_EXCL_START</a>
+<a name="421"><span class="lineNum">     421 </span>            :             Err%occurred = .true.</a>
+<a name="422"><span class="lineNum">     422 </span>            :             Err%msg = PROCEDURE_NAME // &quot;: Unknown error occurred while opening file='&quot; // filename // &quot;'.&quot;</a>
+<a name="423"><span class="lineNum">     423 </span>            :             return</a>
+<a name="424"><span class="lineNum">     424 </span>            :         end if</a>
+<a name="425"><span class="lineNum">     425 </span>            :         ! LCOV_EXCL_STOP</a>
+<a name="426"><span class="lineNum">     426 </span>            : </a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">         24 :         fileCounter = 0</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">        211 :         do counter = 1,nrecord</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">        187 :             read(fileUnit,&quot;(A)&quot;,iostat=Err%stat) record</span></a>
+<a name="430"><span class="lineNum">     430 </span><span class="lineCov">        187 :             if ( is_iostat_eor(Err%stat) ) then</span></a>
+<a name="431"><span class="lineNum">     431 </span>            :             ! LCOV_EXCL_START</a>
+<a name="432"><span class="lineNum">     432 </span>            :                 Err%occurred = .true.</a>
+<a name="433"><span class="lineNum">     433 </span>            :                 Err%msg  = PROCEDURE_NAME // &quot;: End-Of-Record error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
+<a name="434"><span class="lineNum">     434 </span>            :                 return</a>
+<a name="435"><span class="lineNum">     435 </span>            :             ! LCOV_EXCL_STOP</a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">        187 :             elseif ( is_iostat_end(Err%stat) ) then</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineNoCov">          0 :                 exit</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">        187 :             elseif ( Err%stat&gt;0 ) then</span></a>
+<a name="439"><span class="lineNum">     439 </span>            :             ! LCOV_EXCL_START</a>
+<a name="440"><span class="lineNum">     440 </span>            :                 Err%occurred = .true.</a>
+<a name="441"><span class="lineNum">     441 </span>            :                 Err%msg = PROCEDURE_NAME // &quot;: Unknown error condition occurred while attempting to read from file='&quot; // filename // &quot;'.&quot;</a>
+<a name="442"><span class="lineNum">     442 </span>            :                 return</a>
+<a name="443"><span class="lineNum">     443 </span>            :             end if</a>
+<a name="444"><span class="lineNum">     444 </span>            :             ! LCOV_EXCL_STOP</a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">        187 :             recordTrimmed = trim(adjustl(record))</span></a>
+<a name="446"><span class="lineNum">     446 </span><span class="lineCov">        211 :             if(filename/=recordTrimmed) then</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">        166 :                 fileCounter = fileCounter + 1</span></a>
+<a name="448"><span class="lineNum">     448 </span><span class="lineCov">        166 :                 FileList(fileCounter)%record = trim(adjustl(record))</span></a>
+<a name="449"><span class="lineNum">     449 </span>            :             end if</a>
+<a name="450"><span class="lineNum">     450 </span>            :         end do</a>
+<a name="451"><span class="lineNum">     451 </span>            : </a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineCov">         24 :         if (present(count)) count = fileCounter</span></a>
+<a name="453"><span class="lineNum">     453 </span>            : </a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineCov">         24 :         close(fileUnit, status = &quot;delete&quot;, iostat = Err%stat) ! parallel processes cannot delete the same file</span></a>
 <a name="455"><span class="lineNum">     455 </span>            : </a>
-<a name="456"><span class="lineNum">     456 </span>            :         !call sleep(seconds=0.1_RK,Err=Err)</a>
-<a name="457"><span class="lineNum">     457 </span>            :         !if (Err%occurred) then</a>
-<a name="458"><span class="lineNum">     458 </span>            :         !    Err%msg = PROCEDURE_NAME // Err%msg</a>
-<a name="459"><span class="lineNum">     459 </span>            :         !    return</a>
-<a name="460"><span class="lineNum">     460 </span>            :         !end if</a>
-<a name="461"><span class="lineNum">     461 </span>            :         !if (isWindowsShell) then  ! it is Windows cmd</a>
-<a name="462"><span class="lineNum">     462 </span>            :         !    command = &quot;del &quot; // filename // &quot;; del &quot; // stdErr</a>
-<a name="463"><span class="lineNum">     463 </span>            :         !else</a>
-<a name="464"><span class="lineNum">     464 </span>            :         !    command = &quot;rm &quot; // filename // &quot;; rm &quot; // stdErr</a>
-<a name="465"><span class="lineNum">     465 </span>            :         !end if</a>
-<a name="466"><span class="lineNum">     466 </span>            :         !call executeCmd( command = command//&quot; &gt; &quot;//filename//&quot; 2&gt; &quot;//stdErr, Err=Err )</a>
-<a name="467"><span class="lineNum">     467 </span>            :         !if (Err%occurred) then</a>
-<a name="468"><span class="lineNum">     468 </span>            :         !    Err%msg =   PROCEDURE_NAME // &amp;</a>
-<a name="469"><span class="lineNum">     469 </span>            :         !                &quot;: Error occurred while attempting to deleting the external file='&quot; // filename // &quot;'.\n&quot; // Err%msg</a>
-<a name="470"><span class="lineNum">     470 </span>            :         !    return</a>
-<a name="471"><span class="lineNum">     471 </span>            :         !end if</a>
-<a name="472"><span class="lineNum">     472 </span>            : </a>
-<a name="473"><span class="lineNum">     473 </span><span class="lineCov">         27 :     end subroutine getFileList</span></a>
-<a name="474"><span class="lineNum">     474 </span>            : </a>
-<a name="475"><span class="lineNum">     475 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="476"><span class="lineNum">     476 </span>            : </a>
-<a name="477"><span class="lineNum">     477 </span>            : </a>
-<a name="478"><span class="lineNum">     478 </span>            : end module FileList_mod ! LCOV_EXCL_LINE</a>
+<a name="456"><span class="lineNum">     456 </span>            :         !if (Err%stat/=0) then</a>
+<a name="457"><span class="lineNum">     457 </span>            :         !! LCOV_EXCL_START</a>
+<a name="458"><span class="lineNum">     458 </span>            :         !    Err%occurred = .true.</a>
+<a name="459"><span class="lineNum">     459 </span>            :         !    Err%msg = PROCEDURE_NAME // &quot;: Error occurred while attempting to close the open file='&quot; // filename // &quot;'.&quot;</a>
+<a name="460"><span class="lineNum">     460 </span>            :         !    return</a>
+<a name="461"><span class="lineNum">     461 </span>            :         !end if</a>
+<a name="462"><span class="lineNum">     462 </span>            :         !! LCOV_EXCL_STOP</a>
+<a name="463"><span class="lineNum">     463 </span>            : </a>
+<a name="464"><span class="lineNum">     464 </span>            :         ! remove the files</a>
+<a name="465"><span class="lineNum">     465 </span>            :         !call removeFile(filename,isWindowsShell,Err)</a>
+<a name="466"><span class="lineNum">     466 </span>            :         !if (Err%occurred) then</a>
+<a name="467"><span class="lineNum">     467 </span>            :         !    Err%msg = PROCEDURE_NAME // Err%msg</a>
+<a name="468"><span class="lineNum">     468 </span>            :         !    return</a>
+<a name="469"><span class="lineNum">     469 </span>            :         !end if</a>
+<a name="470"><span class="lineNum">     470 </span>            :         !call removeFile(stdErr,isWindowsShell,Err)</a>
+<a name="471"><span class="lineNum">     471 </span>            :         !if (Err%occurred) then</a>
+<a name="472"><span class="lineNum">     472 </span>            :         !    Err%msg = PROCEDURE_NAME // Err%msg</a>
+<a name="473"><span class="lineNum">     473 </span>            :         !    return</a>
+<a name="474"><span class="lineNum">     474 </span>            :         !end if</a>
+<a name="475"><span class="lineNum">     475 </span>            : </a>
+<a name="476"><span class="lineNum">     476 </span>            :         !call sleep(seconds=0.1_RK,Err=Err)</a>
+<a name="477"><span class="lineNum">     477 </span>            :         !if (Err%occurred) then</a>
+<a name="478"><span class="lineNum">     478 </span>            :         !    Err%msg = PROCEDURE_NAME // Err%msg</a>
+<a name="479"><span class="lineNum">     479 </span>            :         !    return</a>
+<a name="480"><span class="lineNum">     480 </span>            :         !end if</a>
+<a name="481"><span class="lineNum">     481 </span>            :         !if (isWindowsShell) then  ! it is Windows cmd</a>
+<a name="482"><span class="lineNum">     482 </span>            :         !    command = &quot;del &quot; // filename // &quot;; del &quot; // stdErr</a>
+<a name="483"><span class="lineNum">     483 </span>            :         !else</a>
+<a name="484"><span class="lineNum">     484 </span>            :         !    command = &quot;rm &quot; // filename // &quot;; rm &quot; // stdErr</a>
+<a name="485"><span class="lineNum">     485 </span>            :         !end if</a>
+<a name="486"><span class="lineNum">     486 </span>            :         !call executeCmd( command = command//&quot; &gt; &quot;//filename//&quot; 2&gt; &quot;//stdErr, Err=Err )</a>
+<a name="487"><span class="lineNum">     487 </span>            :         !if (Err%occurred) then</a>
+<a name="488"><span class="lineNum">     488 </span>            :         !    Err%msg =   PROCEDURE_NAME // &amp;</a>
+<a name="489"><span class="lineNum">     489 </span>            :         !                &quot;: Error occurred while attempting to deleting the external file='&quot; // filename // &quot;'.\n&quot; // Err%msg</a>
+<a name="490"><span class="lineNum">     490 </span>            :         !    return</a>
+<a name="491"><span class="lineNum">     491 </span>            :         !end if</a>
+<a name="492"><span class="lineNum">     492 </span>            : </a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">         27 :     end subroutine getFileList</span></a>
+<a name="494"><span class="lineNum">     494 </span>            : </a>
+<a name="495"><span class="lineNum">     495 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="496"><span class="lineNum">     496 </span>            : </a>
+<a name="497"><span class="lineNum">     497 </span>            : </a>
+<a name="498"><span class="lineNum">     498 </span>            : end module FileList_mod ! LCOV_EXCL_LINE</a>
 </pre>
       </td>
     </tr>

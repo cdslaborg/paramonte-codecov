@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -143,7 +143,7 @@
 <a name="73"><span class="lineNum">      73 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="74"><span class="lineNum">      74 </span>            : </a>
 <a name="75"><span class="lineNum">      75 </span><span class="lineCov">       1047 :     function constructSampleSize(methodName) result(SampleSizeObj)</span></a>
-<a name="76"><span class="lineNum">      76 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="76"><span class="lineNum">      76 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="77"><span class="lineNum">      77 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructSampleSize</a>
 <a name="78"><span class="lineNum">      78 </span>            : #endif</a>
 <a name="79"><span class="lineNum">      79 </span>            :         use Constants_mod, only: IK, NULL_IK</a>
@@ -179,18 +179,18 @@
 <a name="109"><span class="lineNum">     109 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="110"><span class="lineNum">     110 </span>            : </a>
 <a name="111"><span class="lineNum">     111 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar(SampleSizeObj)</span></a>
-<a name="112"><span class="lineNum">     112 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="112"><span class="lineNum">     112 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="113"><span class="lineNum">     113 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="114"><span class="lineNum">     114 </span>            : #endif</a>
 <a name="115"><span class="lineNum">     115 </span>            :         implicit none</a>
 <a name="116"><span class="lineNum">     116 </span>            :         class(SampleSize_type), intent(in)  :: SampleSizeObj</a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">       1047 :         sampleSize = SampleSizeObj%null</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       2094 :     end subroutine nullifyNameListVar</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">       1047 :     end subroutine nullifyNameListVar</span></a>
 <a name="119"><span class="lineNum">     119 </span>            : </a>
 <a name="120"><span class="lineNum">     120 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="121"><span class="lineNum">     121 </span>            : </a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineCov">       1230 :     subroutine setSampleSize(SampleSizeObj,sampleSize)</span></a>
-<a name="123"><span class="lineNum">     123 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="123"><span class="lineNum">     123 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="124"><span class="lineNum">     124 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setSampleSize</a>
 <a name="125"><span class="lineNum">     125 </span>            : #endif</a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineCov">       1047 :         use String_mod, only: num2str</span></a>
@@ -209,7 +209,7 @@
 <a name="139"><span class="lineNum">     139 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="140"><span class="lineNum">     140 </span>            : </a>
 <a name="141"><span class="lineNum">     141 </span>            : !    subroutine checkForSanity(SampleSizeObj,Err,methodName)</a>
-<a name="142"><span class="lineNum">     142 </span>            : !#if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="142"><span class="lineNum">     142 </span>            : !#if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="143"><span class="lineNum">     143 </span>            : !        !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="144"><span class="lineNum">     144 </span>            : !#endif</a>
 <a name="145"><span class="lineNum">     145 </span>            : !        use Err_mod, only: Err_type</a>

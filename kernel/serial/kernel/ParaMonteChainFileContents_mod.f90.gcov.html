@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:31:29</td>
+            <td class="headerValue">2020-12-19 06:06:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -194,7 +194,7 @@
 <a name="124"><span class="lineNum">     124 </span>            :     !&gt; \warning</a>
 <a name="125"><span class="lineNum">     125 </span>            :     !&gt; If `chainFilePath` is given, then the rest of the optional arguments *must be also given*.</a>
 <a name="126"><span class="lineNum">     126 </span><span class="lineCov">        460 :     function constructChainFileContents(ndim,variableNameList,chainFilePath,chainSize,chainFileForm,lenHeader,delimiter,targetChainSize) result(CFC)</span></a>
-<a name="127"><span class="lineNum">     127 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="127"><span class="lineNum">     127 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="128"><span class="lineNum">     128 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructChainFileContents</a>
 <a name="129"><span class="lineNum">     129 </span>            : #endif</a>
 <a name="130"><span class="lineNum">     130 </span>            :         implicit none</a>
@@ -266,7 +266,7 @@
 <a name="196"><span class="lineNum">     196 </span>            :     !&gt; `chainSize` must be `&lt;= targetChainSize`. The first `chainSize` elements of the `CFC` components will contain</a>
 <a name="197"><span class="lineNum">     197 </span>            :     !&gt; the chain information read from the chain file. The chain component elements beyond `chainSize` will be set to zero.</a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineCov">         41 :     subroutine getChainFileContents(CFC,chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)</span></a>
-<a name="199"><span class="lineNum">     199 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="199"><span class="lineNum">     199 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="200"><span class="lineNum">     200 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getChainFileContents</a>
 <a name="201"><span class="lineNum">     201 </span>            : #endif</a>
 <a name="202"><span class="lineNum">     202 </span><span class="lineCov">        231 :         use FileContents_mod, only: getNumRecordInFile</span></a>
@@ -351,7 +351,7 @@
 <a name="281"><span class="lineNum">     281 </span>            :                         , status = &quot;old&quot; &amp;</a>
 <a name="282"><span class="lineNum">     282 </span>            :                         , form = thisForm &amp;</a>
 <a name="283"><span class="lineNum">     283 </span>            :                         , iostat = Err%stat &amp;</a>
-<a name="284"><span class="lineNum">     284 </span>            : #if defined IFORT_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="284"><span class="lineNum">     284 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="285"><span class="lineNum">     285 </span>            :                         , SHARED &amp;</a>
 <a name="286"><span class="lineNum">     286 </span>            : #endif</a>
 <a name="287"><span class="lineNum">     287 </span><span class="lineCov">          4 :                         )</span></a>
@@ -460,7 +460,7 @@
 <a name="390"><span class="lineNum">     390 </span>            :                     , status = &quot;old&quot; &amp;</a>
 <a name="391"><span class="lineNum">     391 </span>            :                     , form = thisForm &amp;</a>
 <a name="392"><span class="lineNum">     392 </span>            :                     , iostat = Err%stat &amp;</a>
-<a name="393"><span class="lineNum">     393 </span>            : #if defined IFORT_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="393"><span class="lineNum">     393 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="394"><span class="lineNum">     394 </span>            :                     , SHARED &amp;</a>
 <a name="395"><span class="lineNum">     395 </span>            : #endif</a>
 <a name="396"><span class="lineNum">     396 </span><span class="lineCov">          1 :                     )</span></a>
@@ -557,7 +557,7 @@
 <a name="487"><span class="lineNum">     487 </span>            :                 , status = &quot;old&quot; &amp;</a>
 <a name="488"><span class="lineNum">     488 </span>            :                 , form = thisForm &amp;</a>
 <a name="489"><span class="lineNum">     489 </span>            :                 , iostat = Err%stat &amp;</a>
-<a name="490"><span class="lineNum">     490 </span>            : #if defined IFORT_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="490"><span class="lineNum">     490 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="491"><span class="lineNum">     491 </span>            :                 , SHARED &amp;</a>
 <a name="492"><span class="lineNum">     492 </span>            : #endif</a>
 <a name="493"><span class="lineNum">     493 </span><span class="lineCov">         21 :                 )</span></a>
@@ -579,7 +579,7 @@
 <a name="509"><span class="lineNum">     509 </span><span class="lineCov">         17 :                 allocate( character(99999) :: Record%value ) ! such huge allocation is rather redundant and is good for a ~4000 dimensional objective function.</span></a>
 <a name="510"><span class="lineNum">     510 </span><span class="lineCov">         17 :                 read(chainFileUnit, &quot;(A)&quot; ) Record%value</span></a>
 <a name="511"><span class="lineNum">     511 </span>            :             end if</a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">        420 :             CFC%ColHeader = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%npart)</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">        231 :             CFC%ColHeader = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%npart)</span></a>
 <a name="513"><span class="lineNum">     513 </span><span class="lineCov">        210 :             do i = 1, Record%npart ! xxx is this trimming necessary?</span></a>
 <a name="514"><span class="lineNum">     514 </span><span class="lineCov">        210 :                 CFC%ColHeader(i)%record = trim(adjustl(CFC%ColHeader(i)%record))</span></a>
 <a name="515"><span class="lineNum">     515 </span>            :             end do</a>
@@ -617,7 +617,7 @@
 <a name="547"><span class="lineNum">     547 </span>            : </a>
 <a name="548"><span class="lineNum">     548 </span><span class="lineCov">       6313 :                 loopReadCompact: do iState = 1, chainSizeDefault</span></a>
 <a name="549"><span class="lineNum">     549 </span><span class="lineCov">       6300 :                     read(chainFileUnit, &quot;(A)&quot; ) Record%value</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineCov">     126117 :                     Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)</span></a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineCov">      69417 :                     Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)</span></a>
 <a name="551"><span class="lineNum">     551 </span><span class="lineCov">       6313 :                     if (Record%nPart&lt;numColTot) then</span></a>
 <a name="552"><span class="lineNum">     552 </span>            :                         ! LCOV_EXCL_START</a>
 <a name="553"><span class="lineNum">     553 </span>            :                         call warnUserAboutCorruptChainFile(iState)</a>
@@ -661,7 +661,7 @@
 <a name="591"><span class="lineNum">     591 </span>            :                         ! read the first sample</a>
 <a name="592"><span class="lineNum">     592 </span>            : </a>
 <a name="593"><span class="lineNum">     593 </span><span class="lineCov">          4 :                         read(chainFileUnit, &quot;(A)&quot; ) Record%value</span></a>
-<a name="594"><span class="lineNum">     594 </span><span class="lineCov">        116 :                         Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)</span></a>
+<a name="594"><span class="lineNum">     594 </span><span class="lineCov">         80 :                         Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)</span></a>
 <a name="595"><span class="lineNum">     595 </span><span class="lineCov">          4 :                         if (Record%nPart&lt;numColTot) then</span></a>
 <a name="596"><span class="lineNum">     596 </span>            :                             ! LCOV_EXCL_START</a>
 <a name="597"><span class="lineNum">     597 </span>            :                             call warnUserAboutCorruptChainFile(iState)</a>
@@ -686,38 +686,38 @@
 <a name="616"><span class="lineNum">     616 </span>            :                         ! read the rest of samples beyond the first, if any exist</a>
 <a name="617"><span class="lineNum">     617 </span>            : </a>
 <a name="618"><span class="lineNum">     618 </span><span class="lineCov">          4 :                         newUniqueSampleDetected = .false.</span></a>
-<a name="619"><span class="lineNum">     619 </span><span class="lineCov">       7814 :                         loopOverChainfFileContents: do iState = 2, chainSizeDefault</span></a>
+<a name="619"><span class="lineNum">     619 </span><span class="lineCov">       7860 :                         loopOverChainfFileContents: do iState = 2, chainSizeDefault</span></a>
 <a name="620"><span class="lineNum">     620 </span>            : </a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">       7810 :                             read(chainFileUnit, &quot;(A)&quot; ) Record%value</span></a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineCov">     156200 :                             Record%Parts = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%nPart)</span></a>
-<a name="623"><span class="lineNum">     623 </span><span class="lineCov">       7814 :                             if (Record%nPart&lt;numColTot) then</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">       7856 :                             read(chainFileUnit, &quot;(A)&quot; ) Record%value</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">      86416 :                             Record%Parts = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%nPart)</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">       7860 :                             if (Record%nPart&lt;numColTot) then</span></a>
 <a name="624"><span class="lineNum">     624 </span>            :                                 ! LCOV_EXCL_START</a>
 <a name="625"><span class="lineNum">     625 </span>            :                                 call warnUserAboutCorruptChainFile(iState)</a>
 <a name="626"><span class="lineNum">     626 </span>            :                                 exit loopOverChainfFileContents</a>
 <a name="627"><span class="lineNum">     627 </span>            :                                 ! LCOV_EXCL_STOP</a>
 <a name="628"><span class="lineNum">     628 </span>            :                             else</a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineCov">       7810 :                                 read(Record%Parts(1)%record,*) ProcessID</span></a>
-<a name="630"><span class="lineNum">     630 </span><span class="lineCov">       7810 :                                 read(Record%Parts(2)%record,*) DelRejStage</span></a>
-<a name="631"><span class="lineNum">     631 </span><span class="lineCov">       7810 :                                 read(Record%Parts(3)%record,*) MeanAccRate</span></a>
-<a name="632"><span class="lineNum">     632 </span><span class="lineCov">       7810 :                                 read(Record%Parts(4)%record,*) Adaptation</span></a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">       7810 :                                 read(Record%Parts(5)%record,*) BurninLoc</span></a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineCov">       7810 :                                 read(Record%Parts(6)%record,*) Weight</span></a>
-<a name="635"><span class="lineNum">     635 </span><span class="lineCov">       7810 :                                 read(Record%Parts(7)%record,*) LogFunc</span></a>
-<a name="636"><span class="lineNum">     636 </span><span class="lineCov">      23430 :                                 do i = 1, CFC%ndim</span></a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">      23430 :                                     read(Record%Parts(CFC%numDefCol+i)%record,*) State(i)</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">       7856 :                                 read(Record%Parts(1)%record,*) ProcessID</span></a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineCov">       7856 :                                 read(Record%Parts(2)%record,*) DelRejStage</span></a>
+<a name="631"><span class="lineNum">     631 </span><span class="lineCov">       7856 :                                 read(Record%Parts(3)%record,*) MeanAccRate</span></a>
+<a name="632"><span class="lineNum">     632 </span><span class="lineCov">       7856 :                                 read(Record%Parts(4)%record,*) Adaptation</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">       7856 :                                 read(Record%Parts(5)%record,*) BurninLoc</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineCov">       7856 :                                 read(Record%Parts(6)%record,*) Weight</span></a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">       7856 :                                 read(Record%Parts(7)%record,*) LogFunc</span></a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineCov">      23568 :                                 do i = 1, CFC%ndim</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">      23568 :                                     read(Record%Parts(CFC%numDefCol+i)%record,*) State(i)</span></a>
 <a name="638"><span class="lineNum">     638 </span>            :                                 end do</a>
 <a name="639"><span class="lineNum">     639 </span>            : </a>
 <a name="640"><span class="lineNum">     640 </span>            :                                 ! increment CFC%Count%compact if new sample detected</a>
 <a name="641"><span class="lineNum">     641 </span>            : </a>
-<a name="642"><span class="lineNum">     642 </span><span class="lineCov">      15620 :                                 newUniqueSampleDetected =    LogFunc        /= CFC%LogFunc    (CFC%Count%compact) &amp;</span></a>
+<a name="642"><span class="lineNum">     642 </span><span class="lineCov">      15712 :                                 newUniqueSampleDetected =    LogFunc        /= CFC%LogFunc    (CFC%Count%compact) &amp;</span></a>
 <a name="643"><span class="lineNum">     643 </span>            :                                                        !.or. MeanAccRate    /= CFC%MeanAccRate(CFC%Count%compact) &amp;</a>
 <a name="644"><span class="lineNum">     644 </span>            :                                                        !.or. Adaptation     /= CFC%Adaptation (CFC%Count%compact) &amp;</a>
 <a name="645"><span class="lineNum">     645 </span>            :                                                        !.or. BurninLoc      /= CFC%BurninLoc  (CFC%Count%compact) &amp;</a>
 <a name="646"><span class="lineNum">     646 </span>            :                                                        !.or. Weight         /= CFC%Weight     (CFC%Count%compact) &amp;</a>
 <a name="647"><span class="lineNum">     647 </span>            :                                                        !.or. DelRejStage    /= CFC%DelRejStage(CFC%Count%compact) &amp;</a>
 <a name="648"><span class="lineNum">     648 </span>            :                                                        !.or. ProcessID      /= CFC%ProcessID  (CFC%Count%compact) &amp;</a>
-<a name="649"><span class="lineNum">     649 </span><span class="lineCov">      23430 :                                                         .or. any(CFC%State(1:CFC%ndim,CFC%Count%compact) /= CFC%State(1:CFC%ndim,CFC%Count%compact))</span></a>
-<a name="650"><span class="lineNum">     650 </span><span class="lineCov">       7810 :                                 if (newUniqueSampleDetected) then</span></a>
+<a name="649"><span class="lineNum">     649 </span><span class="lineCov">      23568 :                                                         .or. any(CFC%State(1:CFC%ndim,CFC%Count%compact) /= CFC%State(1:CFC%ndim,CFC%Count%compact))</span></a>
+<a name="650"><span class="lineNum">     650 </span><span class="lineCov">       7856 :                                 if (newUniqueSampleDetected) then</span></a>
 <a name="651"><span class="lineNum">     651 </span><span class="lineCov">       2396 :                                     irowLastUniqueSample = irowLastUniqueSample + CFC%Weight(CFC%Count%compact)</span></a>
 <a name="652"><span class="lineNum">     652 </span>            :                                     ! increment the compact sample</a>
 <a name="653"><span class="lineNum">     653 </span><span class="lineCov">       2396 :                                     CFC%Count%compact = CFC%Count%compact + 1_IK</span></a>
@@ -729,19 +729,19 @@
 <a name="659"><span class="lineNum">     659 </span><span class="lineNoCov">          0 :                                         return</span></a>
 <a name="660"><span class="lineNum">     660 </span>            :                                     end if</a>
 <a name="661"><span class="lineNum">     661 </span>            :                                 else</a>
-<a name="662"><span class="lineNum">     662 </span><span class="lineCov">       5414 :                                     weight = CFC%Weight(CFC%Count%compact) + 1_IK</span></a>
+<a name="662"><span class="lineNum">     662 </span><span class="lineCov">       5460 :                                     weight = CFC%Weight(CFC%Count%compact) + 1_IK</span></a>
 <a name="663"><span class="lineNum">     663 </span>            :                                 end if</a>
 <a name="664"><span class="lineNum">     664 </span>            : </a>
 <a name="665"><span class="lineNum">     665 </span>            :                                 ! write the latest sample</a>
 <a name="666"><span class="lineNum">     666 </span>            : </a>
-<a name="667"><span class="lineNum">     667 </span><span class="lineCov">       7810 :                                 CFC%LogFunc         (CFC%Count%compact) = LogFunc</span></a>
-<a name="668"><span class="lineNum">     668 </span><span class="lineCov">       7810 :                                 CFC%MeanAccRate     (CFC%Count%compact) = MeanAccRate</span></a>
-<a name="669"><span class="lineNum">     669 </span><span class="lineCov">       7810 :                                 CFC%Adaptation      (CFC%Count%compact) = max(CFC%Adaptation(CFC%Count%compact),Adaptation)</span></a>
-<a name="670"><span class="lineNum">     670 </span><span class="lineCov">       7810 :                                 CFC%BurninLoc       (CFC%Count%compact) = BurninLoc</span></a>
-<a name="671"><span class="lineNum">     671 </span><span class="lineCov">       7810 :                                 CFC%Weight          (CFC%Count%compact) = Weight</span></a>
-<a name="672"><span class="lineNum">     672 </span><span class="lineCov">       7810 :                                 CFC%DelRejStage     (CFC%Count%compact) = DelRejStage</span></a>
-<a name="673"><span class="lineNum">     673 </span><span class="lineCov">       7810 :                                 CFC%ProcessID       (CFC%Count%compact) = ProcessID</span></a>
-<a name="674"><span class="lineNum">     674 </span><span class="lineCov">      23430 :                                 CFC%State(1:CFC%ndim,CFC%Count%compact) = State(1:CFC%ndim)</span></a>
+<a name="667"><span class="lineNum">     667 </span><span class="lineCov">       7856 :                                 CFC%LogFunc         (CFC%Count%compact) = LogFunc</span></a>
+<a name="668"><span class="lineNum">     668 </span><span class="lineCov">       7856 :                                 CFC%MeanAccRate     (CFC%Count%compact) = MeanAccRate</span></a>
+<a name="669"><span class="lineNum">     669 </span><span class="lineCov">       7856 :                                 CFC%Adaptation      (CFC%Count%compact) = max(CFC%Adaptation(CFC%Count%compact),Adaptation)</span></a>
+<a name="670"><span class="lineNum">     670 </span><span class="lineCov">       7856 :                                 CFC%BurninLoc       (CFC%Count%compact) = BurninLoc</span></a>
+<a name="671"><span class="lineNum">     671 </span><span class="lineCov">       7856 :                                 CFC%Weight          (CFC%Count%compact) = Weight</span></a>
+<a name="672"><span class="lineNum">     672 </span><span class="lineCov">       7856 :                                 CFC%DelRejStage     (CFC%Count%compact) = DelRejStage</span></a>
+<a name="673"><span class="lineNum">     673 </span><span class="lineCov">       7856 :                                 CFC%ProcessID       (CFC%Count%compact) = ProcessID</span></a>
+<a name="674"><span class="lineNum">     674 </span><span class="lineCov">      23568 :                                 CFC%State(1:CFC%ndim,CFC%Count%compact) = State(1:CFC%ndim)</span></a>
 <a name="675"><span class="lineNum">     675 </span>            : </a>
 <a name="676"><span class="lineNum">     676 </span>            :                             end if</a>
 <a name="677"><span class="lineNum">     677 </span>            : </a>
@@ -833,7 +833,7 @@
 <a name="763"><span class="lineNum">     763 </span>            :     !&gt; @param[in]       startIndex      : The beginning index beyond which the component values will be reset.</a>
 <a name="764"><span class="lineNum">     764 </span>            :     !&gt; @param[in]       endIndex        : The ending index below which the component values will be reset.</a>
 <a name="765"><span class="lineNum">     765 </span><span class="lineCov">          1 :     subroutine nullifyChainFileContents(CFC,startIndex,endIndex)</span></a>
-<a name="766"><span class="lineNum">     766 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="766"><span class="lineNum">     766 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="767"><span class="lineNum">     767 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyChainFileContents</a>
 <a name="768"><span class="lineNum">     768 </span>            : #endif</a>
 <a name="769"><span class="lineNum">     769 </span>            :         implicit none</a>
@@ -861,7 +861,7 @@
 <a name="791"><span class="lineNum">     791 </span>            :     !&gt; @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).</a>
 <a name="792"><span class="lineNum">     792 </span>            :     !&gt;                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.</a>
 <a name="793"><span class="lineNum">     793 </span><span class="lineCov">         20 :     subroutine getLenHeader(CFC,ndim,isBinary,chainFileFormat)</span></a>
-<a name="794"><span class="lineNum">     794 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="794"><span class="lineNum">     794 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="795"><span class="lineNum">     795 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLenHeader</a>
 <a name="796"><span class="lineNum">     796 </span>            : #endif</a>
 <a name="797"><span class="lineNum">     797 </span>            :         use Constants_mod, only: IK ! LCOV_EXCL_LINE</a>
@@ -908,7 +908,7 @@
 <a name="838"><span class="lineNum">     838 </span>            :     !&gt; @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).</a>
 <a name="839"><span class="lineNum">     839 </span>            :     !&gt;                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.</a>
 <a name="840"><span class="lineNum">     840 </span><span class="lineCov">        229 :     subroutine writeHeader(CFC,ndim,chainFileUnit,isBinary,chainFileFormat)</span></a>
-<a name="841"><span class="lineNum">     841 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="841"><span class="lineNum">     841 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="842"><span class="lineNum">     842 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: writeHeader</a>
 <a name="843"><span class="lineNum">     843 </span>            : #endif</a>
 <a name="844"><span class="lineNum">     844 </span><span class="lineCov">         20 :         use Constants_mod, only: IK</span></a>
@@ -958,7 +958,7 @@
 <a name="888"><span class="lineNum">     888 </span>            :     !&gt;                                              This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.</a>
 <a name="889"><span class="lineNum">     889 </span>            :     !&gt; @param[in]       adaptiveUpdatePeriod    :   The adaptive update period (**optional**). It must be provided if `chainFileForm = &quot;verbose&quot;`.</a>
 <a name="890"><span class="lineNum">     890 </span><span class="lineCov">         20 :     subroutine writeChainFile(CFC,ndim,compactStartIndex,compactEndIndex,chainFileUnit,chainFileForm,chainFileFormat,adaptiveUpdatePeriod)</span></a>
-<a name="891"><span class="lineNum">     891 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="891"><span class="lineNum">     891 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="892"><span class="lineNum">     892 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: writeChainFile</a>
 <a name="893"><span class="lineNum">     893 </span>            : #endif</a>
 <a name="894"><span class="lineNum">     894 </span><span class="lineCov">        229 :         use Constants_mod, only: IK, RK</span></a>
@@ -1041,21 +1041,21 @@
 <a name="971"><span class="lineNum">     971 </span><span class="lineCov">          4 :             elseif (isVerbose) then</span></a>
 <a name="972"><span class="lineNum">     972 </span><span class="lineCov">          4 :                 counter = compactStartIndex</span></a>
 <a name="973"><span class="lineNum">     973 </span><span class="lineCov">       2396 :                 do i = compactStartIndex, compactEndIndex</span></a>
-<a name="974"><span class="lineNum">     974 </span><span class="lineCov">      10192 :                     do j = 1, CFC%Weight(i)</span></a>
-<a name="975"><span class="lineNum">     975 </span><span class="lineCov">       7796 :                         if (mod(counter,adaptiveUpdatePeriod)==0_IK) then</span></a>
-<a name="976"><span class="lineNum">     976 </span><span class="lineCov">       6556 :                             adaptation = CFC%Adaptation(i)</span></a>
+<a name="974"><span class="lineNum">     974 </span><span class="lineCov">      10241 :                     do j = 1, CFC%Weight(i)</span></a>
+<a name="975"><span class="lineNum">     975 </span><span class="lineCov">       7845 :                         if (mod(counter,adaptiveUpdatePeriod)==0_IK) then</span></a>
+<a name="976"><span class="lineNum">     976 </span><span class="lineCov">       6609 :                             adaptation = CFC%Adaptation(i)</span></a>
 <a name="977"><span class="lineNum">     977 </span>            :                         else</a>
-<a name="978"><span class="lineNum">     978 </span><span class="lineCov">       1240 :                             adaptation = 0._RK</span></a>
+<a name="978"><span class="lineNum">     978 </span><span class="lineCov">       1236 :                             adaptation = 0._RK</span></a>
 <a name="979"><span class="lineNum">     979 </span>            :                         end if</a>
-<a name="980"><span class="lineNum">     980 </span><span class="lineCov">       7796 :                         write(chainFileUnit,chainFileFormat ) CFC%ProcessID(i)      &amp;</span></a>
-<a name="981"><span class="lineNum">     981 </span><span class="lineCov">       7796 :                                                             , CFC%DelRejStage(i)    &amp;</span></a>
-<a name="982"><span class="lineNum">     982 </span><span class="lineCov">       7796 :                                                             , CFC%MeanAccRate(i)    &amp;</span></a>
+<a name="980"><span class="lineNum">     980 </span><span class="lineCov">       7845 :                         write(chainFileUnit,chainFileFormat ) CFC%ProcessID(i)      &amp;</span></a>
+<a name="981"><span class="lineNum">     981 </span><span class="lineCov">       7845 :                                                             , CFC%DelRejStage(i)    &amp;</span></a>
+<a name="982"><span class="lineNum">     982 </span><span class="lineCov">       7845 :                                                             , CFC%MeanAccRate(i)    &amp;</span></a>
 <a name="983"><span class="lineNum">     983 </span>            :                                                             , adaptation            &amp;</a>
-<a name="984"><span class="lineNum">     984 </span><span class="lineCov">       7796 :                                                             , CFC%BurninLoc(i)      &amp;</span></a>
-<a name="985"><span class="lineNum">     985 </span><span class="lineCov">       7796 :                                                             , 1_IK                  &amp;</span></a>
-<a name="986"><span class="lineNum">     986 </span><span class="lineCov">       7796 :                                                             , CFC%LogFunc(i)        &amp;</span></a>
-<a name="987"><span class="lineNum">     987 </span><span class="lineCov">      15592 :                                                             , CFC%State(1:ndim,i)</span></a>
-<a name="988"><span class="lineNum">     988 </span><span class="lineCov">      10188 :                         counter = counter + 1</span></a>
+<a name="984"><span class="lineNum">     984 </span><span class="lineCov">       7845 :                                                             , CFC%BurninLoc(i)      &amp;</span></a>
+<a name="985"><span class="lineNum">     985 </span><span class="lineCov">       7845 :                                                             , 1_IK                  &amp;</span></a>
+<a name="986"><span class="lineNum">     986 </span><span class="lineCov">       7845 :                                                             , CFC%LogFunc(i)        &amp;</span></a>
+<a name="987"><span class="lineNum">     987 </span><span class="lineCov">      15690 :                                                             , CFC%State(1:ndim,i)</span></a>
+<a name="988"><span class="lineNum">     988 </span><span class="lineCov">      10237 :                         counter = counter + 1</span></a>
 <a name="989"><span class="lineNum">     989 </span>            :                     end do</a>
 <a name="990"><span class="lineNum">     990 </span>            :                 end do</a>
 <a name="991"><span class="lineNum">     991 </span>            :             end if</a>

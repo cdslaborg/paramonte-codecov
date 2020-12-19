@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -93,7 +93,7 @@
 <a name="23"><span class="lineNum">      23 </span>            :     !&gt; \param[out]  energyFluence   :   The fluence in units of the input energy (keV) within the input energy range.</a>
 <a name="24"><span class="lineNum">      24 </span>            :     !&gt; \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.</a>
 <a name="25"><span class="lineNum">      25 </span><span class="lineCov">         36 :     module subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)</span></a>
-<a name="26"><span class="lineNum">      26 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="26"><span class="lineNum">      26 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="27"><span class="lineNum">      27 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence</a>
 <a name="28"><span class="lineNum">      28 </span>            : #endif</a>
 <a name="29"><span class="lineNum">      29 </span>            : </a>
@@ -185,15 +185,18 @@
 <a name="115"><span class="lineNum">     115 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
 <a name="117"><span class="lineNum">     117 </span>            :     pure function getBandCompLowEnergy(energy) result(bandCompLow)</a>
-<a name="118"><span class="lineNum">     118 </span>            :         implicit none</a>
-<a name="119"><span class="lineNum">     119 </span>            :         real(RK), intent(in)    :: energy</a>
-<a name="120"><span class="lineNum">     120 </span>            :         real(RK)                :: bandCompLow</a>
-<a name="121"><span class="lineNum">     121 </span>            :         bandCompLow = energy**mv_alphaPlusOne * exp(-mv_alphaPlusTwoOverEpk*energy)</a>
-<a name="122"><span class="lineNum">     122 </span>            :     end function getBandCompLowEnergy</a>
-<a name="123"><span class="lineNum">     123 </span>            : </a>
-<a name="124"><span class="lineNum">     124 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="125"><span class="lineNum">     125 </span>            : </a>
-<a name="126"><span class="lineNum">     126 </span>            : end submodule EnergyFluence_smod ! LCOV_EXCL_LINE</a>
+<a name="118"><span class="lineNum">     118 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="119"><span class="lineNum">     119 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getBandCompLowEnergy</a>
+<a name="120"><span class="lineNum">     120 </span>            : #endif</a>
+<a name="121"><span class="lineNum">     121 </span>            :         implicit none</a>
+<a name="122"><span class="lineNum">     122 </span>            :         real(RK), intent(in)    :: energy</a>
+<a name="123"><span class="lineNum">     123 </span>            :         real(RK)                :: bandCompLow</a>
+<a name="124"><span class="lineNum">     124 </span>            :         bandCompLow = energy**mv_alphaPlusOne * exp(-mv_alphaPlusTwoOverEpk*energy)</a>
+<a name="125"><span class="lineNum">     125 </span>            :     end function getBandCompLowEnergy</a>
+<a name="126"><span class="lineNum">     126 </span>            : </a>
+<a name="127"><span class="lineNum">     127 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="128"><span class="lineNum">     128 </span>            : </a>
+<a name="129"><span class="lineNum">     129 </span>            : end submodule EnergyFluence_smod ! LCOV_EXCL_LINE</a>
 </pre>
       </td>
     </tr>

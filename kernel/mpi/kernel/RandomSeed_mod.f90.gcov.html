@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -161,7 +161,7 @@
 <a name="91"><span class="lineNum">      91 </span>            :     !&gt; `RandomSeed` : An object of class [RandomSeed_type](@ref randomseed_type) containing the information and methods for</a>
 <a name="92"><span class="lineNum">      92 </span>            :     !&gt; setting and resetting the random seed.</a>
 <a name="93"><span class="lineNum">      93 </span><span class="lineCov">       1221 :     function constructRandomSeed(imageID, inputSeed, isRepeatable, isImageDistinct) result(RandomSeed)</span></a>
-<a name="94"><span class="lineNum">      94 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="94"><span class="lineNum">      94 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="95"><span class="lineNum">      95 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomSeed</a>
 <a name="96"><span class="lineNum">      96 </span>            : #endif</a>
 <a name="97"><span class="lineNum">      97 </span>            :         implicit none</a>
@@ -210,7 +210,7 @@
 <a name="140"><span class="lineNum">     140 </span>            :     !&gt;</a>
 <a name="141"><span class="lineNum">     141 </span>            :     !&gt; @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).</a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">       2418 :     subroutine getRandomSeed(RandomSeed)</span></a>
-<a name="143"><span class="lineNum">     143 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="143"><span class="lineNum">     143 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="144"><span class="lineNum">     144 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomSeed</a>
 <a name="145"><span class="lineNum">     145 </span>            : #endif</a>
 <a name="146"><span class="lineNum">     146 </span>            :         implicit none</a>
@@ -236,7 +236,7 @@
 <a name="166"><span class="lineNum">     166 </span>            :     !&gt; \warning</a>
 <a name="167"><span class="lineNum">     167 </span>            :     !&gt; Upon return from this procedure, the value of `RandomSeed%Err%occurred` must be checked for the occurrence of any potential errors.</a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineCov">       1221 :     subroutine setRandomSeed(RandomSeed,inputSeed)</span></a>
-<a name="169"><span class="lineNum">     169 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="169"><span class="lineNum">     169 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="170"><span class="lineNum">     170 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setRandomSeed</a>
 <a name="171"><span class="lineNum">     171 </span>            : #endif</a>
 <a name="172"><span class="lineNum">     172 </span><span class="lineCov">       2418 :         use Constants_mod, only: IK, RK, HUGE_IK</span></a>
@@ -353,7 +353,7 @@
 <a name="283"><span class="lineNum">     283 </span>            : !    subroutine random_init(repeatable, image_distinct, info, Err, ProcessID)</a>
 <a name="284"><span class="lineNum">     284 </span>            : !</a>
 <a name="285"><span class="lineNum">     285 </span>            : !        use iso_fortran_env, only: int64</a>
-<a name="286"><span class="lineNum">     286 </span>            : !#if defined IFORT_ENABLED</a>
+<a name="286"><span class="lineNum">     286 </span>            : !#if defined INTEL_COMPILER_ENABLED</a>
 <a name="287"><span class="lineNum">     287 </span>            : !        use ifport</a>
 <a name="288"><span class="lineNum">     288 </span>            : !#endif</a>
 <a name="289"><span class="lineNum">     289 </span>            : !        use Err_mod, only: Err_type</a>

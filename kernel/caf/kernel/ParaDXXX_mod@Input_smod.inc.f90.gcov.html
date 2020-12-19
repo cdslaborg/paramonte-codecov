@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -223,7 +223,7 @@
 <a name="153"><span class="lineNum">     153 </span>            :     !&gt; \remark</a>
 <a name="154"><span class="lineNum">     154 </span>            :     !&gt; This procedure requires preprocessing.</a>
 <a name="155"><span class="lineNum">     155 </span><span class="lineCov">       1047 :     module subroutine getSpecFromInputFile(self,nd)</span></a>
-<a name="156"><span class="lineNum">     156 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="156"><span class="lineNum">     156 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="157"><span class="lineNum">     157 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile</a>
 <a name="158"><span class="lineNum">     158 </span>            : #endif</a>
 <a name="159"><span class="lineNum">     159 </span>            :         use Constants_mod, only: IK, RK</a>
@@ -304,7 +304,7 @@
 <a name="234"><span class="lineNum">     234 </span>            :                     , file = self%InputFile%Path%modified &amp;</a>
 <a name="235"><span class="lineNum">     235 </span>            :                     , status = self%InputFile%status      &amp;</a>
 <a name="236"><span class="lineNum">     236 </span>            :                     , iostat = self%InputFile%Err%stat    &amp;</a>
-<a name="237"><span class="lineNum">     237 </span>            : #if defined IFORT_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="237"><span class="lineNum">     237 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="238"><span class="lineNum">     238 </span>            :                     , SHARED &amp;</a>
 <a name="239"><span class="lineNum">     239 </span>            : #endif</a>
 <a name="240"><span class="lineNum">     240 </span><span class="lineCov">         24 :                     )</span></a>

@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -138,7 +138,7 @@
 <a name="68"><span class="lineNum">      68 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="69"><span class="lineNum">      69 </span>            : </a>
 <a name="70"><span class="lineNum">      70 </span><span class="lineCov">       1047 :     function constructInputFileHasPriority(methodName) result(InputFileHasPriorityObj)</span></a>
-<a name="71"><span class="lineNum">      71 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="71"><span class="lineNum">      71 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="72"><span class="lineNum">      72 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructInputFileHasPriority</a>
 <a name="73"><span class="lineNum">      73 </span>            : #endif</a>
 <a name="74"><span class="lineNum">      74 </span>            :         use String_mod, only: log2str</a>
@@ -162,18 +162,18 @@
 <a name="92"><span class="lineNum">      92 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
 <a name="94"><span class="lineNum">      94 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar(InputFileHasPriorityObj)</span></a>
-<a name="95"><span class="lineNum">      95 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="95"><span class="lineNum">      95 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="96"><span class="lineNum">      96 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="97"><span class="lineNum">      97 </span>            : #endif</a>
 <a name="98"><span class="lineNum">      98 </span>            :         implicit none</a>
 <a name="99"><span class="lineNum">      99 </span>            :         class(InputFileHasPriority_type), intent(in)    :: InputFileHasPriorityObj</a>
 <a name="100"><span class="lineNum">     100 </span><span class="lineCov">       1047 :         inputFileHasPriority = InputFileHasPriorityObj%def</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       2094 :     end subroutine nullifyNameListVar</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">       1047 :     end subroutine nullifyNameListVar</span></a>
 <a name="102"><span class="lineNum">     102 </span>            : </a>
 <a name="103"><span class="lineNum">     103 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="104"><span class="lineNum">     104 </span>            : </a>
 <a name="105"><span class="lineNum">     105 </span><span class="lineCov">       1047 :     subroutine setInputFileHasPriority(InputFileHasPriorityObj,inputFileHasPriority)</span></a>
-<a name="106"><span class="lineNum">     106 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="106"><span class="lineNum">     106 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="107"><span class="lineNum">     107 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setInputFileHasPriority</a>
 <a name="108"><span class="lineNum">     108 </span>            : #endif</a>
 <a name="109"><span class="lineNum">     109 </span>            :         implicit none</a>

@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -141,7 +141,7 @@
 <a name="71"><span class="lineNum">      71 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineCov">       1047 :     function construct(nd,methodName) result(self)</span></a>
-<a name="74"><span class="lineNum">      74 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="74"><span class="lineNum">      74 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="75"><span class="lineNum">      75 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: construct</a>
 <a name="76"><span class="lineNum">      76 </span>            : #endif</a>
 <a name="77"><span class="lineNum">      77 </span>            :         use Decoration_mod, only: TAB</a>
@@ -167,7 +167,7 @@
 <a name="97"><span class="lineNum">      97 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="98"><span class="lineNum">      98 </span>            : </a>
 <a name="99"><span class="lineNum">      99 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar(self)</span></a>
-<a name="100"><span class="lineNum">     100 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="100"><span class="lineNum">     100 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="101"><span class="lineNum">     101 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="102"><span class="lineNum">     102 </span>            : #endif</a>
 <a name="103"><span class="lineNum">     103 </span><span class="lineCov">       1047 :         use SpecDRAM_DelayedRejectionCount_mod, only: MAX_DELAYED_REJECTION_COUNT</span></a>
@@ -180,8 +180,8 @@
 <a name="110"><span class="lineNum">     110 </span>            : </a>
 <a name="111"><span class="lineNum">     111 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       3153 :     pure subroutine set(self,delayedRejectionCount, DelayedRejectionScaleFactorVec)</span></a>
-<a name="114"><span class="lineNum">     114 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">       4176 :     pure subroutine set(self,delayedRejectionCount, DelayedRejectionScaleFactorVec)</span></a>
+<a name="114"><span class="lineNum">     114 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="115"><span class="lineNum">     115 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: set</a>
 <a name="116"><span class="lineNum">     116 </span>            : #endif</a>
 <a name="117"><span class="lineNum">     117 </span><span class="lineCov">       1047 :         use Constants_mod, only: IK, RK</span></a>
@@ -190,10 +190,10 @@
 <a name="120"><span class="lineNum">     120 </span>            :         integer(IK) , intent(in)                                    :: delayedRejectionCount</a>
 <a name="121"><span class="lineNum">     121 </span>            :         real(RK)    , intent(in), optional                          :: DelayedRejectionScaleFactorVec(:) ! This must remain colon</a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineCov">       2088 :         if (present(DelayedRejectionScaleFactorVec)) then</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">    1048240 :             self%Val = pack( DelayedRejectionScaleFactorVec, mask = DelayedRejectionScaleFactorVec /= self%null )</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">    1048180 :             self%Val = pack( DelayedRejectionScaleFactorVec, mask = DelayedRejectionScaleFactorVec /= self%null )</span></a>
 <a name="124"><span class="lineNum">     124 </span><span class="lineCov">       1065 :             if (size(self%Val) == 0) then</span></a>
 <a name="125"><span class="lineNum">     125 </span><span class="lineCov">       1041 :                 deallocate(self%Val)</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       2178 :                 allocate(self%Val(delayedRejectionCount), source = self%def)</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">       1113 :                 allocate(self%Val(delayedRejectionCount), source = self%def)</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :             end if</a>
 <a name="128"><span class="lineNum">     128 </span>            :         else</a>
 <a name="129"><span class="lineNum">     129 </span><span class="lineCov">       1023 :             if (allocated(self%Val)) then</span></a>
@@ -208,7 +208,7 @@
 <a name="138"><span class="lineNum">     138 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
 <a name="140"><span class="lineNum">     140 </span><span class="lineCov">       1035 :     subroutine checkForSanity(self,Err,methodName,delayedRejectionCount)</span></a>
-<a name="141"><span class="lineNum">     141 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="141"><span class="lineNum">     141 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="142"><span class="lineNum">     142 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="143"><span class="lineNum">     143 </span>            : #endif</a>
 <a name="144"><span class="lineNum">     144 </span><span class="lineCov">       2088 :         use Constants_mod, only: IK, RK</span></a>

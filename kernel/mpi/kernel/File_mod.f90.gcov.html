@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">26</td>
@@ -298,7 +298,7 @@
 <a name="228"><span class="lineNum">     228 </span>            :                           , round, sign,pad, blank, format, asynchronous &amp;</a>
 <a name="229"><span class="lineNum">     229 </span>            :                           , OS &amp;</a>
 <a name="230"><span class="lineNum">     230 </span>            :                           ) result(File)</a>
-<a name="231"><span class="lineNum">     231 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="231"><span class="lineNum">     231 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="232"><span class="lineNum">     232 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructFile</a>
 <a name="233"><span class="lineNum">     233 </span>            : #endif</a>
 <a name="234"><span class="lineNum">     234 </span>            : </a>
@@ -560,7 +560,7 @@
 <a name="490"><span class="lineNum">     490 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="491"><span class="lineNum">     491 </span>            : </a>
 <a name="492"><span class="lineNum">     492 </span><span class="lineCov">       2013 :     subroutine getExistStatus(exists,Err,unit,file)</span></a>
-<a name="493"><span class="lineNum">     493 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="493"><span class="lineNum">     493 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="494"><span class="lineNum">     494 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getExistStatus</a>
 <a name="495"><span class="lineNum">     495 </span>            : #endif</a>
 <a name="496"><span class="lineNum">     496 </span><span class="lineCov">        513 :         use String_mod, only: num2str</span></a>
@@ -605,7 +605,7 @@
 <a name="535"><span class="lineNum">     535 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="536"><span class="lineNum">     536 </span>            : </a>
 <a name="537"><span class="lineNum">     537 </span><span class="lineCov">         12 :     subroutine getOpenStatus(isOpen,Err,unit,file)</span></a>
-<a name="538"><span class="lineNum">     538 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="538"><span class="lineNum">     538 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="539"><span class="lineNum">     539 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getOpenStatus</a>
 <a name="540"><span class="lineNum">     540 </span>            : #endif</a>
 <a name="541"><span class="lineNum">     541 </span><span class="lineCov">       1011 :         use String_mod, only: num2str</span></a>
@@ -650,7 +650,7 @@
 <a name="580"><span class="lineNum">     580 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="581"><span class="lineNum">     581 </span>            : </a>
 <a name="582"><span class="lineNum">     582 </span><span class="lineCov">         12 :     subroutine getNumber(isNumbered,number,Err,unit,file)</span></a>
-<a name="583"><span class="lineNum">     583 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="583"><span class="lineNum">     583 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="584"><span class="lineNum">     584 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getNumber</a>
 <a name="585"><span class="lineNum">     585 </span>            : #endif</a>
 <a name="586"><span class="lineNum">     586 </span><span class="lineCov">         12 :         use String_mod, only: num2str</span></a>
@@ -698,7 +698,7 @@
 <a name="628"><span class="lineNum">     628 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="629"><span class="lineNum">     629 </span>            : </a>
 <a name="630"><span class="lineNum">     630 </span><span class="lineCov">         12 :     subroutine getName(isNamed,nameByCompiler,Err,unit,file)</span></a>
-<a name="631"><span class="lineNum">     631 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="631"><span class="lineNum">     631 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="632"><span class="lineNum">     632 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getName</a>
 <a name="633"><span class="lineNum">     633 </span>            : #endif</a>
 <a name="634"><span class="lineNum">     634 </span><span class="lineCov">         12 :         use String_mod, only: num2str</span></a>
@@ -747,7 +747,7 @@
 <a name="677"><span class="lineNum">     677 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="678"><span class="lineNum">     678 </span>            : </a>
 <a name="679"><span class="lineNum">     679 </span><span class="lineCov">         12 :     subroutine getAccess(access,Err,unit,file)</span></a>
-<a name="680"><span class="lineNum">     680 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="680"><span class="lineNum">     680 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="681"><span class="lineNum">     681 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getAccess</a>
 <a name="682"><span class="lineNum">     682 </span>            : #endif</a>
 <a name="683"><span class="lineNum">     683 </span><span class="lineCov">         12 :         use String_mod, only: num2str, getLowerCase</span></a>
@@ -794,7 +794,7 @@
 <a name="724"><span class="lineNum">     724 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="725"><span class="lineNum">     725 </span>            : </a>
 <a name="726"><span class="lineNum">     726 </span><span class="lineCov">         12 :     subroutine getForm(form,Err,unit,file)</span></a>
-<a name="727"><span class="lineNum">     727 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="727"><span class="lineNum">     727 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="728"><span class="lineNum">     728 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getForm</a>
 <a name="729"><span class="lineNum">     729 </span>            : #endif</a>
 <a name="730"><span class="lineNum">     730 </span><span class="lineCov">         12 :         use String_mod, only: num2str, getLowerCase</span></a>
@@ -841,7 +841,7 @@
 <a name="771"><span class="lineNum">     771 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
 <a name="773"><span class="lineNum">     773 </span><span class="lineCov">         12 :     subroutine getRecl(recl,Err,unit,file)</span></a>
-<a name="774"><span class="lineNum">     774 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="774"><span class="lineNum">     774 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="775"><span class="lineNum">     775 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getRecl</a>
 <a name="776"><span class="lineNum">     776 </span>            : #endif</a>
 <a name="777"><span class="lineNum">     777 </span><span class="lineCov">         12 :         use String_mod, only: num2str</span></a>
@@ -886,7 +886,7 @@
 <a name="816"><span class="lineNum">     816 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="817"><span class="lineNum">     817 </span>            : </a>
 <a name="818"><span class="lineNum">     818 </span><span class="lineCov">         12 :     subroutine getBlank(blank,Err,unit,file)</span></a>
-<a name="819"><span class="lineNum">     819 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="819"><span class="lineNum">     819 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="820"><span class="lineNum">     820 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getBlank</a>
 <a name="821"><span class="lineNum">     821 </span>            : #endif</a>
 <a name="822"><span class="lineNum">     822 </span><span class="lineCov">         12 :         use String_mod, only: num2str, getLowerCase</span></a>
@@ -933,7 +933,7 @@
 <a name="863"><span class="lineNum">     863 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="864"><span class="lineNum">     864 </span>            : </a>
 <a name="865"><span class="lineNum">     865 </span><span class="lineCov">         12 :     subroutine getPosition(position,Err,unit,file)</span></a>
-<a name="866"><span class="lineNum">     866 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="866"><span class="lineNum">     866 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="867"><span class="lineNum">     867 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPosition</a>
 <a name="868"><span class="lineNum">     868 </span>            : #endif</a>
 <a name="869"><span class="lineNum">     869 </span><span class="lineCov">         12 :         use String_mod, only: num2str, getLowerCase</span></a>
@@ -980,7 +980,7 @@
 <a name="910"><span class="lineNum">     910 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="911"><span class="lineNum">     911 </span>            : </a>
 <a name="912"><span class="lineNum">     912 </span><span class="lineCov">         12 :     subroutine getAction(action,Err,unit,file)</span></a>
-<a name="913"><span class="lineNum">     913 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="913"><span class="lineNum">     913 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="914"><span class="lineNum">     914 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getAction</a>
 <a name="915"><span class="lineNum">     915 </span>            : #endif</a>
 <a name="916"><span class="lineNum">     916 </span><span class="lineCov">         12 :         use String_mod, only: num2str, getLowerCase</span></a>
@@ -1027,7 +1027,7 @@
 <a name="957"><span class="lineNum">     957 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="958"><span class="lineNum">     958 </span>            : </a>
 <a name="959"><span class="lineNum">     959 </span><span class="lineCov">         12 :     subroutine getDelim(delim,Err,unit,file)</span></a>
-<a name="960"><span class="lineNum">     960 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="960"><span class="lineNum">     960 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="961"><span class="lineNum">     961 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getDelim</a>
 <a name="962"><span class="lineNum">     962 </span>            : #endif</a>
 <a name="963"><span class="lineNum">     963 </span><span class="lineCov">         12 :         use String_mod, only: num2str, getLowerCase</span></a>
@@ -1074,7 +1074,7 @@
 <a name="1004"><span class="lineNum">    1004 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1005"><span class="lineNum">    1005 </span>            : </a>
 <a name="1006"><span class="lineNum">    1006 </span><span class="lineNoCov">          0 :     subroutine closeFile( File )</span></a>
-<a name="1007"><span class="lineNum">    1007 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1007"><span class="lineNum">    1007 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1008"><span class="lineNum">    1008 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: closeFile</a>
 <a name="1009"><span class="lineNum">    1009 </span>            : #endif</a>
 <a name="1010"><span class="lineNum">    1010 </span>            :         implicit none</a>
@@ -1135,7 +1135,7 @@
 <a name="1065"><span class="lineNum">    1065 </span>            : </a>
 <a name="1066"><span class="lineNum">    1066 </span>            :     ! sets values for File%unit, File%exists, File%isOpen, File%number, File%Err, and updates File%Path%modified (if needed)</a>
 <a name="1067"><span class="lineNum">    1067 </span><span class="lineNoCov">          0 :     subroutine openFile( File )</span></a>
-<a name="1068"><span class="lineNum">    1068 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1068"><span class="lineNum">    1068 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1069"><span class="lineNum">    1069 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: openFile</a>
 <a name="1070"><span class="lineNum">    1070 </span>            : #endif</a>
 <a name="1071"><span class="lineNum">    1071 </span>            : </a>
@@ -1216,7 +1216,7 @@
 <a name="1146"><span class="lineNum">    1146 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1147"><span class="lineNum">    1147 </span>            : </a>
 <a name="1148"><span class="lineNum">    1148 </span><span class="lineCov">          9 :     function getWriteErr(stat) result(Err)</span></a>
-<a name="1149"><span class="lineNum">    1149 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1149"><span class="lineNum">    1149 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1150"><span class="lineNum">    1150 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getWriteErr</a>
 <a name="1151"><span class="lineNum">    1151 </span>            : #endif</a>
 <a name="1152"><span class="lineNum">    1152 </span>            :         use Err_mod, only: Err_type ! LCOV_EXCL_LINE</a>
@@ -1251,7 +1251,7 @@
 <a name="1181"><span class="lineNum">    1181 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1182"><span class="lineNum">    1182 </span>            : </a>
 <a name="1183"><span class="lineNum">    1183 </span><span class="lineCov">        546 :     function getReadErr(stat,path) result(Err)</span></a>
-<a name="1184"><span class="lineNum">    1184 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1184"><span class="lineNum">    1184 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1185"><span class="lineNum">    1185 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getReadErr</a>
 <a name="1186"><span class="lineNum">    1186 </span>            : #endif</a>
 <a name="1187"><span class="lineNum">    1187 </span><span class="lineCov">          9 :         use Err_mod, only: Err_type</span></a>
@@ -1282,7 +1282,7 @@
 <a name="1212"><span class="lineNum">    1212 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1213"><span class="lineNum">    1213 </span>            : </a>
 <a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">         33 :     function getCloseErr(stat) result(Err)</span></a>
-<a name="1215"><span class="lineNum">    1215 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1215"><span class="lineNum">    1215 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1216"><span class="lineNum">    1216 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getCloseErr</a>
 <a name="1217"><span class="lineNum">    1217 </span>            : #endif</a>
 <a name="1218"><span class="lineNum">    1218 </span><span class="lineCov">        546 :         use Err_mod, only: Err_type</span></a>
@@ -1303,7 +1303,7 @@
 <a name="1233"><span class="lineNum">    1233 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1234"><span class="lineNum">    1234 </span>            : </a>
 <a name="1235"><span class="lineNum">    1235 </span><span class="lineCov">       1898 :     function getOpenErr(stat) result(Err)</span></a>
-<a name="1236"><span class="lineNum">    1236 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1236"><span class="lineNum">    1236 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1237"><span class="lineNum">    1237 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getOpenErr</a>
 <a name="1238"><span class="lineNum">    1238 </span>            : #endif</a>
 <a name="1239"><span class="lineNum">    1239 </span><span class="lineCov">         33 :         use Err_mod, only: Err_type</span></a>
@@ -1324,7 +1324,7 @@
 <a name="1254"><span class="lineNum">    1254 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1255"><span class="lineNum">    1255 </span>            : </a>
 <a name="1256"><span class="lineNum">    1256 </span><span class="lineCov">       5214 :     function getInqErr(stat) result(Err)</span></a>
-<a name="1257"><span class="lineNum">    1257 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1257"><span class="lineNum">    1257 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1258"><span class="lineNum">    1258 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getInqErr</a>
 <a name="1259"><span class="lineNum">    1259 </span>            : #endif</a>
 <a name="1260"><span class="lineNum">    1260 </span><span class="lineCov">       1898 :         use Err_mod, only: Err_type</span></a>
@@ -1345,7 +1345,7 @@
 <a name="1275"><span class="lineNum">    1275 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1276"><span class="lineNum">    1276 </span>            : </a>
 <a name="1277"><span class="lineNum">    1277 </span><span class="lineCov">        600 :     function constructAction(value) result(Action)</span></a>
-<a name="1278"><span class="lineNum">    1278 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1278"><span class="lineNum">    1278 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1279"><span class="lineNum">    1279 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructAction</a>
 <a name="1280"><span class="lineNum">    1280 </span>            : #endif</a>
 <a name="1281"><span class="lineNum">    1281 </span><span class="lineCov">       5214 :         use String_mod, only: getLowerCase</span></a>
@@ -1373,239 +1373,255 @@
 <a name="1303"><span class="lineNum">    1303 </span>            :         end if</a>
 <a name="1304"><span class="lineNum">    1304 </span><span class="lineCov">        528 :     end function constructAction</span></a>
 <a name="1305"><span class="lineNum">    1305 </span>            : </a>
-<a name="1306"><span class="lineNum">    1306 </span><span class="lineCov">        528 :     function constructAccess(value) result(Access)</span></a>
-<a name="1307"><span class="lineNum">    1307 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1308"><span class="lineNum">    1308 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructAccess</a>
-<a name="1309"><span class="lineNum">    1309 </span>            : #endif</a>
-<a name="1310"><span class="lineNum">    1310 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
-<a name="1311"><span class="lineNum">    1311 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1312"><span class="lineNum">    1312 </span>            :         type(Access_type)                   :: Access</a>
-<a name="1313"><span class="lineNum">    1313 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructAccess()&quot;</a>
-<a name="1314"><span class="lineNum">    1314 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
-<a name="1315"><span class="lineNum">    1315 </span><span class="lineCov">         18 :             Access%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">         18 :             if (Access%value==&quot;sequential&quot;) then</span></a>
-<a name="1317"><span class="lineNum">    1317 </span><span class="lineCov">          3 :                 Access%isSequential = .true.</span></a>
-<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">         15 :             elseif (Access%value==&quot;direct&quot;) then</span></a>
-<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">          9 :                 Access%isDirect = .true.</span></a>
-<a name="1320"><span class="lineNum">    1320 </span><span class="lineCov">          6 :             elseif (Access%value==&quot;undefined&quot;) then</span></a>
-<a name="1321"><span class="lineNum">    1321 </span><span class="lineCov">          3 :                 Access%isUndefined = .true.</span></a>
-<a name="1322"><span class="lineNum">    1322 </span>            :             else</a>
-<a name="1323"><span class="lineNum">    1323 </span><span class="lineCov">          3 :                 Access%value = &quot;&quot;</span></a>
-<a name="1324"><span class="lineNum">    1324 </span><span class="lineCov">          3 :                 Access%Err%occurred = .true.</span></a>
-<a name="1325"><span class="lineNum">    1325 </span><span class="lineCov">          3 :                 Access%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Access%value='&quot; // Access%value // &quot;'.&quot;</span></a>
-<a name="1326"><span class="lineNum">    1326 </span>            :             end if</a>
-<a name="1327"><span class="lineNum">    1327 </span>            :         else</a>
-<a name="1328"><span class="lineNum">    1328 </span><span class="lineCov">        510 :             Access%value = &quot;sequential&quot;</span></a>
-<a name="1329"><span class="lineNum">    1329 </span><span class="lineCov">        510 :             Access%isSequential = .true.</span></a>
-<a name="1330"><span class="lineNum">    1330 </span>            :         end if</a>
-<a name="1331"><span class="lineNum">    1331 </span><span class="lineCov">        528 :     end function constructAccess</span></a>
-<a name="1332"><span class="lineNum">    1332 </span>            : </a>
-<a name="1333"><span class="lineNum">    1333 </span><span class="lineCov">        528 :     function constructForm(value) result(Form)</span></a>
-<a name="1334"><span class="lineNum">    1334 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1335"><span class="lineNum">    1335 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructForm</a>
-<a name="1336"><span class="lineNum">    1336 </span>            : #endif</a>
-<a name="1337"><span class="lineNum">    1337 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
-<a name="1338"><span class="lineNum">    1338 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1339"><span class="lineNum">    1339 </span>            :         type(Form_type)                     :: Form</a>
-<a name="1340"><span class="lineNum">    1340 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructForm()&quot;</a>
-<a name="1341"><span class="lineNum">    1341 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
-<a name="1342"><span class="lineNum">    1342 </span><span class="lineCov">        525 :             Form%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1343"><span class="lineNum">    1343 </span><span class="lineCov">        525 :             if (Form%value==&quot;formatted&quot;) then</span></a>
-<a name="1344"><span class="lineNum">    1344 </span><span class="lineCov">        510 :                 Form%isFormatted = .true.</span></a>
-<a name="1345"><span class="lineNum">    1345 </span><span class="lineCov">         15 :             elseif (Form%value==&quot;unformatted&quot;) then</span></a>
-<a name="1346"><span class="lineNum">    1346 </span><span class="lineCov">          9 :                 Form%isUnformatted = .true.</span></a>
-<a name="1347"><span class="lineNum">    1347 </span><span class="lineCov">          6 :             elseif (Form%value==&quot;undefined&quot;) then</span></a>
-<a name="1348"><span class="lineNum">    1348 </span><span class="lineCov">          3 :                 Form%isUndefined = .true.</span></a>
-<a name="1349"><span class="lineNum">    1349 </span>            :             else</a>
-<a name="1350"><span class="lineNum">    1350 </span><span class="lineCov">          3 :                 Form%value = &quot;&quot;</span></a>
-<a name="1351"><span class="lineNum">    1351 </span><span class="lineCov">          3 :                 Form%Err%occurred = .true.</span></a>
-<a name="1352"><span class="lineNum">    1352 </span><span class="lineCov">          3 :                 Form%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Form%value='&quot; // Form%value // &quot;'.&quot;</span></a>
-<a name="1353"><span class="lineNum">    1353 </span>            :             end if</a>
-<a name="1354"><span class="lineNum">    1354 </span>            :         else</a>
-<a name="1355"><span class="lineNum">    1355 </span><span class="lineCov">          3 :             Form%value = &quot;formatted&quot;</span></a>
-<a name="1356"><span class="lineNum">    1356 </span><span class="lineCov">          3 :             Form%isFormatted = .true.</span></a>
-<a name="1357"><span class="lineNum">    1357 </span>            :         end if</a>
-<a name="1358"><span class="lineNum">    1358 </span><span class="lineCov">        528 :     end function constructForm</span></a>
-<a name="1359"><span class="lineNum">    1359 </span>            : </a>
-<a name="1360"><span class="lineNum">    1360 </span><span class="lineCov">        528 :     function constructBlank(value) result(Blank)</span></a>
-<a name="1361"><span class="lineNum">    1361 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1362"><span class="lineNum">    1362 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructBlank</a>
-<a name="1363"><span class="lineNum">    1363 </span>            : #endif</a>
-<a name="1364"><span class="lineNum">    1364 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
-<a name="1365"><span class="lineNum">    1365 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1366"><span class="lineNum">    1366 </span>            :         type(Blank_type)                    :: Blank</a>
-<a name="1367"><span class="lineNum">    1367 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructBlank()&quot;</a>
-<a name="1368"><span class="lineNum">    1368 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
-<a name="1369"><span class="lineNum">    1369 </span><span class="lineCov">         18 :             Blank%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1370"><span class="lineNum">    1370 </span><span class="lineCov">         18 :             if (Blank%value==&quot;null&quot;) then</span></a>
-<a name="1371"><span class="lineNum">    1371 </span><span class="lineCov">          3 :                 Blank%isNull = .true.</span></a>
-<a name="1372"><span class="lineNum">    1372 </span><span class="lineCov">         15 :             elseif (Blank%value==&quot;zero&quot;) then</span></a>
-<a name="1373"><span class="lineNum">    1373 </span><span class="lineCov">          3 :                 Blank%isZero = .true.</span></a>
-<a name="1374"><span class="lineNum">    1374 </span><span class="lineCov">         12 :             elseif (Blank%value==&quot;undefined&quot;) then</span></a>
-<a name="1375"><span class="lineNum">    1375 </span><span class="lineCov">          9 :                 Blank%isUndefined = .true.</span></a>
-<a name="1376"><span class="lineNum">    1376 </span>            :             else</a>
-<a name="1377"><span class="lineNum">    1377 </span><span class="lineCov">          3 :                 Blank%value = &quot;&quot;</span></a>
-<a name="1378"><span class="lineNum">    1378 </span><span class="lineCov">          3 :                 Blank%Err%occurred = .true.</span></a>
-<a name="1379"><span class="lineNum">    1379 </span><span class="lineCov">          3 :                 Blank%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Blank%value='&quot; // Blank%value // &quot;'.&quot;</span></a>
-<a name="1380"><span class="lineNum">    1380 </span>            :             end if</a>
-<a name="1381"><span class="lineNum">    1381 </span>            :         else</a>
-<a name="1382"><span class="lineNum">    1382 </span><span class="lineCov">        510 :             Blank%value = &quot;null&quot;</span></a>
-<a name="1383"><span class="lineNum">    1383 </span><span class="lineCov">        510 :             Blank%isNull = .true.</span></a>
-<a name="1384"><span class="lineNum">    1384 </span>            :         end if</a>
-<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">        528 :     end function constructBlank</span></a>
-<a name="1386"><span class="lineNum">    1386 </span>            : </a>
-<a name="1387"><span class="lineNum">    1387 </span><span class="lineCov">        531 :     function constructPosition(value) result(Position)</span></a>
-<a name="1388"><span class="lineNum">    1388 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1389"><span class="lineNum">    1389 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructPosition</a>
-<a name="1390"><span class="lineNum">    1390 </span>            : #endif</a>
-<a name="1391"><span class="lineNum">    1391 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
-<a name="1392"><span class="lineNum">    1392 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1393"><span class="lineNum">    1393 </span>            :         type(Position_type)                 :: Position</a>
-<a name="1394"><span class="lineNum">    1394 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructPosition()&quot;</a>
-<a name="1395"><span class="lineNum">    1395 </span><span class="lineCov">        531 :         if (present(value)) then</span></a>
-<a name="1396"><span class="lineNum">    1396 </span><span class="lineCov">         21 :             Position%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1397"><span class="lineNum">    1397 </span><span class="lineCov">         21 :             if (Position%value==&quot;asis&quot;) then</span></a>
-<a name="1398"><span class="lineNum">    1398 </span><span class="lineCov">          3 :                 Position%isAsis = .true.</span></a>
-<a name="1399"><span class="lineNum">    1399 </span><span class="lineCov">         18 :             elseif (Position%value==&quot;rewind&quot;) then</span></a>
-<a name="1400"><span class="lineNum">    1400 </span><span class="lineCov">          3 :                 Position%isRewind = .true.</span></a>
-<a name="1401"><span class="lineNum">    1401 </span><span class="lineCov">         15 :             elseif (Position%value==&quot;append&quot;) then</span></a>
-<a name="1402"><span class="lineNum">    1402 </span><span class="lineCov">          9 :                 Position%isAppend = .true.</span></a>
-<a name="1403"><span class="lineNum">    1403 </span><span class="lineCov">          6 :             elseif (Position%value==&quot;undefined&quot;) then</span></a>
-<a name="1404"><span class="lineNum">    1404 </span><span class="lineCov">          3 :                 Position%isUndefined = .true.</span></a>
-<a name="1405"><span class="lineNum">    1405 </span>            :             else</a>
-<a name="1406"><span class="lineNum">    1406 </span><span class="lineCov">          3 :                 Position%value = &quot;&quot;</span></a>
-<a name="1407"><span class="lineNum">    1407 </span><span class="lineCov">          3 :                 Position%Err%occurred = .true.</span></a>
-<a name="1408"><span class="lineNum">    1408 </span><span class="lineCov">          3 :                 Position%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Position%value='&quot; // Position%value // &quot;'.&quot;</span></a>
-<a name="1409"><span class="lineNum">    1409 </span>            :             end if</a>
-<a name="1410"><span class="lineNum">    1410 </span>            :         else</a>
-<a name="1411"><span class="lineNum">    1411 </span><span class="lineCov">        510 :             Position%value = &quot;asis&quot;</span></a>
-<a name="1412"><span class="lineNum">    1412 </span><span class="lineCov">        510 :             Position%isAsis = .true.</span></a>
-<a name="1413"><span class="lineNum">    1413 </span>            :         end if</a>
-<a name="1414"><span class="lineNum">    1414 </span><span class="lineCov">        531 :     end function constructPosition</span></a>
-<a name="1415"><span class="lineNum">    1415 </span>            : </a>
-<a name="1416"><span class="lineNum">    1416 </span><span class="lineCov">        531 :     function constructDelim(value) result(Delim)</span></a>
-<a name="1417"><span class="lineNum">    1417 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1418"><span class="lineNum">    1418 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructDelim</a>
-<a name="1419"><span class="lineNum">    1419 </span>            : #endif</a>
-<a name="1420"><span class="lineNum">    1420 </span><span class="lineCov">        531 :         use String_mod, only: getLowerCase</span></a>
-<a name="1421"><span class="lineNum">    1421 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1422"><span class="lineNum">    1422 </span>            :         type(Delim_type)                    :: Delim</a>
-<a name="1423"><span class="lineNum">    1423 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructDelim()&quot;</a>
-<a name="1424"><span class="lineNum">    1424 </span><span class="lineCov">        531 :         if (present(value)) then</span></a>
-<a name="1425"><span class="lineNum">    1425 </span><span class="lineCov">         21 :             Delim%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1426"><span class="lineNum">    1426 </span><span class="lineCov">         21 :             if (Delim%value==&quot;quote&quot;) then</span></a>
-<a name="1427"><span class="lineNum">    1427 </span><span class="lineCov">          9 :                 Delim%isQuote = .true.</span></a>
-<a name="1428"><span class="lineNum">    1428 </span><span class="lineCov">         12 :             elseif (Delim%value==&quot;apostrophe&quot;) then</span></a>
-<a name="1429"><span class="lineNum">    1429 </span><span class="lineCov">          3 :                 Delim%isApostrophe = .true.</span></a>
-<a name="1430"><span class="lineNum">    1430 </span><span class="lineCov">          9 :             elseif (Delim%value==&quot;none&quot;) then</span></a>
-<a name="1431"><span class="lineNum">    1431 </span><span class="lineCov">          3 :                 Delim%isNone = .true.</span></a>
-<a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">          6 :             elseif (Delim%value==&quot;undefined&quot;) then</span></a>
-<a name="1433"><span class="lineNum">    1433 </span><span class="lineCov">          3 :                 Delim%isUndefined = .true.</span></a>
-<a name="1434"><span class="lineNum">    1434 </span>            :             else</a>
-<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">          3 :                 Delim%value = &quot;&quot;</span></a>
-<a name="1436"><span class="lineNum">    1436 </span><span class="lineCov">          3 :                 Delim%Err%occurred = .true.</span></a>
-<a name="1437"><span class="lineNum">    1437 </span><span class="lineCov">          3 :                 Delim%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Delim%value='&quot; // Delim%value // &quot;'.&quot;</span></a>
-<a name="1438"><span class="lineNum">    1438 </span>            :             end if</a>
-<a name="1439"><span class="lineNum">    1439 </span>            :         else</a>
-<a name="1440"><span class="lineNum">    1440 </span><span class="lineCov">        510 :             Delim%value = &quot;none&quot;</span></a>
-<a name="1441"><span class="lineNum">    1441 </span><span class="lineCov">        510 :             Delim%isNone = .true.</span></a>
-<a name="1442"><span class="lineNum">    1442 </span>            :         end if</a>
-<a name="1443"><span class="lineNum">    1443 </span><span class="lineCov">        531 :     end function constructDelim</span></a>
-<a name="1444"><span class="lineNum">    1444 </span>            : </a>
-<a name="1445"><span class="lineNum">    1445 </span><span class="lineCov">        528 :     function constructPad(value) result(Pad)</span></a>
-<a name="1446"><span class="lineNum">    1446 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1447"><span class="lineNum">    1447 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructPad</a>
-<a name="1448"><span class="lineNum">    1448 </span>            : #endif</a>
-<a name="1449"><span class="lineNum">    1449 </span><span class="lineCov">        531 :         use String_mod, only: getLowerCase</span></a>
-<a name="1450"><span class="lineNum">    1450 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1451"><span class="lineNum">    1451 </span>            :         type(Pad_type)                      :: Pad</a>
-<a name="1452"><span class="lineNum">    1452 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructPad()&quot;</a>
-<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
-<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">         18 :             Pad%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1455"><span class="lineNum">    1455 </span><span class="lineCov">         18 :             if (Pad%value==&quot;yes&quot;) then</span></a>
-<a name="1456"><span class="lineNum">    1456 </span><span class="lineCov">          3 :                 Pad%isPadded = .true.</span></a>
-<a name="1457"><span class="lineNum">    1457 </span><span class="lineCov">         15 :             elseif (Pad%value==&quot;no&quot;) then</span></a>
-<a name="1458"><span class="lineNum">    1458 </span><span class="lineCov">          9 :                 Pad%isNotPadded = .true.</span></a>
-<a name="1459"><span class="lineNum">    1459 </span><span class="lineCov">          6 :             elseif (Pad%value==&quot;undefined&quot;) then</span></a>
-<a name="1460"><span class="lineNum">    1460 </span><span class="lineCov">          3 :                 Pad%isUndefined = .true.</span></a>
-<a name="1461"><span class="lineNum">    1461 </span>            :             else</a>
-<a name="1462"><span class="lineNum">    1462 </span><span class="lineCov">          3 :                 Pad%value = &quot;&quot;</span></a>
-<a name="1463"><span class="lineNum">    1463 </span><span class="lineCov">          3 :                 Pad%Err%occurred = .true.</span></a>
-<a name="1464"><span class="lineNum">    1464 </span><span class="lineCov">          3 :                 Pad%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Pad%value='&quot; // Pad%value // &quot;'.&quot;</span></a>
-<a name="1465"><span class="lineNum">    1465 </span>            :             end if</a>
-<a name="1466"><span class="lineNum">    1466 </span>            :         else</a>
-<a name="1467"><span class="lineNum">    1467 </span><span class="lineCov">        510 :             Pad%value = &quot;yes&quot;</span></a>
-<a name="1468"><span class="lineNum">    1468 </span><span class="lineCov">        510 :             Pad%isPadded = .true.</span></a>
-<a name="1469"><span class="lineNum">    1469 </span>            :         end if</a>
-<a name="1470"><span class="lineNum">    1470 </span><span class="lineCov">        528 :     end function constructPad</span></a>
-<a name="1471"><span class="lineNum">    1471 </span>            : </a>
-<a name="1472"><span class="lineNum">    1472 </span><span class="lineCov">        540 :     function constructRound(value) result(Round)</span></a>
-<a name="1473"><span class="lineNum">    1473 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1474"><span class="lineNum">    1474 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructRound</a>
-<a name="1475"><span class="lineNum">    1475 </span>            : #endif</a>
-<a name="1476"><span class="lineNum">    1476 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
-<a name="1477"><span class="lineNum">    1477 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1478"><span class="lineNum">    1478 </span>            :         type(Round_type)                    :: Round</a>
-<a name="1479"><span class="lineNum">    1479 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructRound()&quot;</a>
-<a name="1480"><span class="lineNum">    1480 </span><span class="lineCov">        540 :         if (present(value)) then</span></a>
-<a name="1481"><span class="lineNum">    1481 </span><span class="lineCov">         30 :             Round%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1482"><span class="lineNum">    1482 </span><span class="lineCov">         30 :             if (Round%value==&quot;up&quot;) then</span></a>
-<a name="1483"><span class="lineNum">    1483 </span><span class="lineCov">          9 :                 Round%isUp = .true.</span></a>
-<a name="1484"><span class="lineNum">    1484 </span><span class="lineCov">         21 :             elseif (Round%value==&quot;down&quot;) then</span></a>
-<a name="1485"><span class="lineNum">    1485 </span><span class="lineCov">          3 :                 Round%isDown = .true.</span></a>
-<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">         18 :             elseif (Round%value==&quot;zero&quot;) then</span></a>
-<a name="1487"><span class="lineNum">    1487 </span><span class="lineCov">          3 :                 Round%isZero = .true.</span></a>
-<a name="1488"><span class="lineNum">    1488 </span><span class="lineCov">         15 :             elseif (Round%value==&quot;nearest&quot;) then</span></a>
-<a name="1489"><span class="lineNum">    1489 </span><span class="lineCov">          6 :                 Round%isNearest = .true.</span></a>
-<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">          9 :             elseif (Round%value==&quot;compatible&quot;) then</span></a>
-<a name="1491"><span class="lineNum">    1491 </span><span class="lineCov">          3 :                 Round%isCompatible = .true.</span></a>
-<a name="1492"><span class="lineNum">    1492 </span><span class="lineCov">          6 :             elseif (Round%value==&quot;processor_defined&quot;) then</span></a>
-<a name="1493"><span class="lineNum">    1493 </span><span class="lineCov">          3 :                 Round%isProcessDefined = .true.</span></a>
-<a name="1494"><span class="lineNum">    1494 </span><span class="lineCov">          3 :             elseif (Round%value==&quot;undefined&quot;) then</span></a>
-<a name="1495"><span class="lineNum">    1495 </span><span class="lineNoCov">          0 :                 Round%isUndefined = .true.</span></a>
-<a name="1496"><span class="lineNum">    1496 </span>            :             else</a>
-<a name="1497"><span class="lineNum">    1497 </span><span class="lineCov">          3 :                 Round%value = &quot;&quot;</span></a>
-<a name="1498"><span class="lineNum">    1498 </span><span class="lineCov">          3 :                 Round%Err%occurred = .true.</span></a>
-<a name="1499"><span class="lineNum">    1499 </span><span class="lineCov">          3 :                 Round%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Round%value='&quot; // Round%value // &quot;'.&quot;</span></a>
-<a name="1500"><span class="lineNum">    1500 </span>            :             end if</a>
-<a name="1501"><span class="lineNum">    1501 </span>            :         else</a>
-<a name="1502"><span class="lineNum">    1502 </span><span class="lineCov">        510 :             Round%value = &quot;processor_defined&quot;</span></a>
-<a name="1503"><span class="lineNum">    1503 </span><span class="lineCov">        510 :             Round%isProcessDefined = .true.</span></a>
-<a name="1504"><span class="lineNum">    1504 </span>            :         end if</a>
-<a name="1505"><span class="lineNum">    1505 </span><span class="lineCov">        540 :     end function constructRound</span></a>
-<a name="1506"><span class="lineNum">    1506 </span>            : </a>
-<a name="1507"><span class="lineNum">    1507 </span><span class="lineCov">        531 :     function constructSign(value) result(Sign)</span></a>
-<a name="1508"><span class="lineNum">    1508 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="1509"><span class="lineNum">    1509 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructSign</a>
-<a name="1510"><span class="lineNum">    1510 </span>            : #endif</a>
-<a name="1511"><span class="lineNum">    1511 </span><span class="lineCov">        540 :         use String_mod, only: getLowerCase</span></a>
-<a name="1512"><span class="lineNum">    1512 </span>            :         character(*), intent(in), optional  :: value</a>
-<a name="1513"><span class="lineNum">    1513 </span>            :         type(Sign_type)                     :: Sign</a>
-<a name="1514"><span class="lineNum">    1514 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructSign()&quot;</a>
-<a name="1515"><span class="lineNum">    1515 </span><span class="lineCov">        531 :         if (present(value)) then</span></a>
-<a name="1516"><span class="lineNum">    1516 </span><span class="lineCov">         21 :             Sign%value = getLowerCase(trim(adjustl(value)))</span></a>
-<a name="1517"><span class="lineNum">    1517 </span><span class="lineCov">         21 :             if (Sign%value==&quot;suppress&quot;) then</span></a>
-<a name="1518"><span class="lineNum">    1518 </span><span class="lineCov">          3 :                 Sign%isSuppress = .true.</span></a>
-<a name="1519"><span class="lineNum">    1519 </span><span class="lineCov">         18 :             elseif (Sign%value==&quot;plus&quot;) then</span></a>
-<a name="1520"><span class="lineNum">    1520 </span><span class="lineCov">          3 :                 Sign%isPlus = .true.</span></a>
-<a name="1521"><span class="lineNum">    1521 </span><span class="lineCov">         15 :             elseif (Sign%value==&quot;processor_defined&quot;) then</span></a>
-<a name="1522"><span class="lineNum">    1522 </span><span class="lineCov">          3 :                 Sign%isProcessDefined = .true.</span></a>
-<a name="1523"><span class="lineNum">    1523 </span><span class="lineCov">         12 :             elseif (Sign%value==&quot;undefined&quot;) then</span></a>
-<a name="1524"><span class="lineNum">    1524 </span><span class="lineCov">          9 :                 Sign%isUndefined = .true.</span></a>
-<a name="1525"><span class="lineNum">    1525 </span>            :             else</a>
-<a name="1526"><span class="lineNum">    1526 </span><span class="lineCov">          3 :                 Sign%value = &quot;&quot;</span></a>
-<a name="1527"><span class="lineNum">    1527 </span><span class="lineCov">          3 :                 Sign%Err%occurred = .true.</span></a>
-<a name="1528"><span class="lineNum">    1528 </span><span class="lineCov">          3 :                 Sign%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Sign%value='&quot; // Sign%value // &quot;'.&quot;</span></a>
-<a name="1529"><span class="lineNum">    1529 </span>            :             end if</a>
-<a name="1530"><span class="lineNum">    1530 </span>            :         else</a>
-<a name="1531"><span class="lineNum">    1531 </span><span class="lineCov">        510 :             Sign%value = &quot;processor_defined&quot;</span></a>
-<a name="1532"><span class="lineNum">    1532 </span><span class="lineCov">        510 :             Sign%isProcessDefined = .true.</span></a>
-<a name="1533"><span class="lineNum">    1533 </span>            :         end if</a>
-<a name="1534"><span class="lineNum">    1534 </span><span class="lineCov">        531 :     end function constructSign</span></a>
-<a name="1535"><span class="lineNum">    1535 </span>            : </a>
-<a name="1536"><span class="lineNum">    1536 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1537"><span class="lineNum">    1537 </span>            : </a>
-<a name="1538"><span class="lineNum">    1538 </span>            : end module File_mod ! LCOV_EXCL_LINE</a>
+<a name="1306"><span class="lineNum">    1306 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1307"><span class="lineNum">    1307 </span>            : </a>
+<a name="1308"><span class="lineNum">    1308 </span><span class="lineCov">        528 :     function constructAccess(value) result(Access)</span></a>
+<a name="1309"><span class="lineNum">    1309 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1310"><span class="lineNum">    1310 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructAccess</a>
+<a name="1311"><span class="lineNum">    1311 </span>            : #endif</a>
+<a name="1312"><span class="lineNum">    1312 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
+<a name="1313"><span class="lineNum">    1313 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1314"><span class="lineNum">    1314 </span>            :         type(Access_type)                   :: Access</a>
+<a name="1315"><span class="lineNum">    1315 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructAccess()&quot;</a>
+<a name="1316"><span class="lineNum">    1316 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
+<a name="1317"><span class="lineNum">    1317 </span><span class="lineCov">         18 :             Access%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1318"><span class="lineNum">    1318 </span><span class="lineCov">         18 :             if (Access%value==&quot;sequential&quot;) then</span></a>
+<a name="1319"><span class="lineNum">    1319 </span><span class="lineCov">          3 :                 Access%isSequential = .true.</span></a>
+<a name="1320"><span class="lineNum">    1320 </span><span class="lineCov">         15 :             elseif (Access%value==&quot;direct&quot;) then</span></a>
+<a name="1321"><span class="lineNum">    1321 </span><span class="lineCov">          9 :                 Access%isDirect = .true.</span></a>
+<a name="1322"><span class="lineNum">    1322 </span><span class="lineCov">          6 :             elseif (Access%value==&quot;undefined&quot;) then</span></a>
+<a name="1323"><span class="lineNum">    1323 </span><span class="lineCov">          3 :                 Access%isUndefined = .true.</span></a>
+<a name="1324"><span class="lineNum">    1324 </span>            :             else</a>
+<a name="1325"><span class="lineNum">    1325 </span><span class="lineCov">          3 :                 Access%value = &quot;&quot;</span></a>
+<a name="1326"><span class="lineNum">    1326 </span><span class="lineCov">          3 :                 Access%Err%occurred = .true.</span></a>
+<a name="1327"><span class="lineNum">    1327 </span><span class="lineCov">          3 :                 Access%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Access%value='&quot; // Access%value // &quot;'.&quot;</span></a>
+<a name="1328"><span class="lineNum">    1328 </span>            :             end if</a>
+<a name="1329"><span class="lineNum">    1329 </span>            :         else</a>
+<a name="1330"><span class="lineNum">    1330 </span><span class="lineCov">        510 :             Access%value = &quot;sequential&quot;</span></a>
+<a name="1331"><span class="lineNum">    1331 </span><span class="lineCov">        510 :             Access%isSequential = .true.</span></a>
+<a name="1332"><span class="lineNum">    1332 </span>            :         end if</a>
+<a name="1333"><span class="lineNum">    1333 </span><span class="lineCov">        528 :     end function constructAccess</span></a>
+<a name="1334"><span class="lineNum">    1334 </span>            : </a>
+<a name="1335"><span class="lineNum">    1335 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1336"><span class="lineNum">    1336 </span>            : </a>
+<a name="1337"><span class="lineNum">    1337 </span><span class="lineCov">        528 :     function constructForm(value) result(Form)</span></a>
+<a name="1338"><span class="lineNum">    1338 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1339"><span class="lineNum">    1339 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructForm</a>
+<a name="1340"><span class="lineNum">    1340 </span>            : #endif</a>
+<a name="1341"><span class="lineNum">    1341 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
+<a name="1342"><span class="lineNum">    1342 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1343"><span class="lineNum">    1343 </span>            :         type(Form_type)                     :: Form</a>
+<a name="1344"><span class="lineNum">    1344 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructForm()&quot;</a>
+<a name="1345"><span class="lineNum">    1345 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
+<a name="1346"><span class="lineNum">    1346 </span><span class="lineCov">        525 :             Form%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1347"><span class="lineNum">    1347 </span><span class="lineCov">        525 :             if (Form%value==&quot;formatted&quot;) then</span></a>
+<a name="1348"><span class="lineNum">    1348 </span><span class="lineCov">        510 :                 Form%isFormatted = .true.</span></a>
+<a name="1349"><span class="lineNum">    1349 </span><span class="lineCov">         15 :             elseif (Form%value==&quot;unformatted&quot;) then</span></a>
+<a name="1350"><span class="lineNum">    1350 </span><span class="lineCov">          9 :                 Form%isUnformatted = .true.</span></a>
+<a name="1351"><span class="lineNum">    1351 </span><span class="lineCov">          6 :             elseif (Form%value==&quot;undefined&quot;) then</span></a>
+<a name="1352"><span class="lineNum">    1352 </span><span class="lineCov">          3 :                 Form%isUndefined = .true.</span></a>
+<a name="1353"><span class="lineNum">    1353 </span>            :             else</a>
+<a name="1354"><span class="lineNum">    1354 </span><span class="lineCov">          3 :                 Form%value = &quot;&quot;</span></a>
+<a name="1355"><span class="lineNum">    1355 </span><span class="lineCov">          3 :                 Form%Err%occurred = .true.</span></a>
+<a name="1356"><span class="lineNum">    1356 </span><span class="lineCov">          3 :                 Form%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Form%value='&quot; // Form%value // &quot;'.&quot;</span></a>
+<a name="1357"><span class="lineNum">    1357 </span>            :             end if</a>
+<a name="1358"><span class="lineNum">    1358 </span>            :         else</a>
+<a name="1359"><span class="lineNum">    1359 </span><span class="lineCov">          3 :             Form%value = &quot;formatted&quot;</span></a>
+<a name="1360"><span class="lineNum">    1360 </span><span class="lineCov">          3 :             Form%isFormatted = .true.</span></a>
+<a name="1361"><span class="lineNum">    1361 </span>            :         end if</a>
+<a name="1362"><span class="lineNum">    1362 </span><span class="lineCov">        528 :     end function constructForm</span></a>
+<a name="1363"><span class="lineNum">    1363 </span>            : </a>
+<a name="1364"><span class="lineNum">    1364 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1365"><span class="lineNum">    1365 </span>            : </a>
+<a name="1366"><span class="lineNum">    1366 </span><span class="lineCov">        528 :     function constructBlank(value) result(Blank)</span></a>
+<a name="1367"><span class="lineNum">    1367 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1368"><span class="lineNum">    1368 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructBlank</a>
+<a name="1369"><span class="lineNum">    1369 </span>            : #endif</a>
+<a name="1370"><span class="lineNum">    1370 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
+<a name="1371"><span class="lineNum">    1371 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1372"><span class="lineNum">    1372 </span>            :         type(Blank_type)                    :: Blank</a>
+<a name="1373"><span class="lineNum">    1373 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructBlank()&quot;</a>
+<a name="1374"><span class="lineNum">    1374 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
+<a name="1375"><span class="lineNum">    1375 </span><span class="lineCov">         18 :             Blank%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1376"><span class="lineNum">    1376 </span><span class="lineCov">         18 :             if (Blank%value==&quot;null&quot;) then</span></a>
+<a name="1377"><span class="lineNum">    1377 </span><span class="lineCov">          3 :                 Blank%isNull = .true.</span></a>
+<a name="1378"><span class="lineNum">    1378 </span><span class="lineCov">         15 :             elseif (Blank%value==&quot;zero&quot;) then</span></a>
+<a name="1379"><span class="lineNum">    1379 </span><span class="lineCov">          3 :                 Blank%isZero = .true.</span></a>
+<a name="1380"><span class="lineNum">    1380 </span><span class="lineCov">         12 :             elseif (Blank%value==&quot;undefined&quot;) then</span></a>
+<a name="1381"><span class="lineNum">    1381 </span><span class="lineCov">          9 :                 Blank%isUndefined = .true.</span></a>
+<a name="1382"><span class="lineNum">    1382 </span>            :             else</a>
+<a name="1383"><span class="lineNum">    1383 </span><span class="lineCov">          3 :                 Blank%value = &quot;&quot;</span></a>
+<a name="1384"><span class="lineNum">    1384 </span><span class="lineCov">          3 :                 Blank%Err%occurred = .true.</span></a>
+<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">          3 :                 Blank%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Blank%value='&quot; // Blank%value // &quot;'.&quot;</span></a>
+<a name="1386"><span class="lineNum">    1386 </span>            :             end if</a>
+<a name="1387"><span class="lineNum">    1387 </span>            :         else</a>
+<a name="1388"><span class="lineNum">    1388 </span><span class="lineCov">        510 :             Blank%value = &quot;null&quot;</span></a>
+<a name="1389"><span class="lineNum">    1389 </span><span class="lineCov">        510 :             Blank%isNull = .true.</span></a>
+<a name="1390"><span class="lineNum">    1390 </span>            :         end if</a>
+<a name="1391"><span class="lineNum">    1391 </span><span class="lineCov">        528 :     end function constructBlank</span></a>
+<a name="1392"><span class="lineNum">    1392 </span>            : </a>
+<a name="1393"><span class="lineNum">    1393 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1394"><span class="lineNum">    1394 </span>            : </a>
+<a name="1395"><span class="lineNum">    1395 </span><span class="lineCov">        531 :     function constructPosition(value) result(Position)</span></a>
+<a name="1396"><span class="lineNum">    1396 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1397"><span class="lineNum">    1397 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructPosition</a>
+<a name="1398"><span class="lineNum">    1398 </span>            : #endif</a>
+<a name="1399"><span class="lineNum">    1399 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
+<a name="1400"><span class="lineNum">    1400 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1401"><span class="lineNum">    1401 </span>            :         type(Position_type)                 :: Position</a>
+<a name="1402"><span class="lineNum">    1402 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructPosition()&quot;</a>
+<a name="1403"><span class="lineNum">    1403 </span><span class="lineCov">        531 :         if (present(value)) then</span></a>
+<a name="1404"><span class="lineNum">    1404 </span><span class="lineCov">         21 :             Position%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1405"><span class="lineNum">    1405 </span><span class="lineCov">         21 :             if (Position%value==&quot;asis&quot;) then</span></a>
+<a name="1406"><span class="lineNum">    1406 </span><span class="lineCov">          3 :                 Position%isAsis = .true.</span></a>
+<a name="1407"><span class="lineNum">    1407 </span><span class="lineCov">         18 :             elseif (Position%value==&quot;rewind&quot;) then</span></a>
+<a name="1408"><span class="lineNum">    1408 </span><span class="lineCov">          3 :                 Position%isRewind = .true.</span></a>
+<a name="1409"><span class="lineNum">    1409 </span><span class="lineCov">         15 :             elseif (Position%value==&quot;append&quot;) then</span></a>
+<a name="1410"><span class="lineNum">    1410 </span><span class="lineCov">          9 :                 Position%isAppend = .true.</span></a>
+<a name="1411"><span class="lineNum">    1411 </span><span class="lineCov">          6 :             elseif (Position%value==&quot;undefined&quot;) then</span></a>
+<a name="1412"><span class="lineNum">    1412 </span><span class="lineCov">          3 :                 Position%isUndefined = .true.</span></a>
+<a name="1413"><span class="lineNum">    1413 </span>            :             else</a>
+<a name="1414"><span class="lineNum">    1414 </span><span class="lineCov">          3 :                 Position%value = &quot;&quot;</span></a>
+<a name="1415"><span class="lineNum">    1415 </span><span class="lineCov">          3 :                 Position%Err%occurred = .true.</span></a>
+<a name="1416"><span class="lineNum">    1416 </span><span class="lineCov">          3 :                 Position%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Position%value='&quot; // Position%value // &quot;'.&quot;</span></a>
+<a name="1417"><span class="lineNum">    1417 </span>            :             end if</a>
+<a name="1418"><span class="lineNum">    1418 </span>            :         else</a>
+<a name="1419"><span class="lineNum">    1419 </span><span class="lineCov">        510 :             Position%value = &quot;asis&quot;</span></a>
+<a name="1420"><span class="lineNum">    1420 </span><span class="lineCov">        510 :             Position%isAsis = .true.</span></a>
+<a name="1421"><span class="lineNum">    1421 </span>            :         end if</a>
+<a name="1422"><span class="lineNum">    1422 </span><span class="lineCov">        531 :     end function constructPosition</span></a>
+<a name="1423"><span class="lineNum">    1423 </span>            : </a>
+<a name="1424"><span class="lineNum">    1424 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1425"><span class="lineNum">    1425 </span>            : </a>
+<a name="1426"><span class="lineNum">    1426 </span><span class="lineCov">        531 :     function constructDelim(value) result(Delim)</span></a>
+<a name="1427"><span class="lineNum">    1427 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1428"><span class="lineNum">    1428 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructDelim</a>
+<a name="1429"><span class="lineNum">    1429 </span>            : #endif</a>
+<a name="1430"><span class="lineNum">    1430 </span><span class="lineCov">        531 :         use String_mod, only: getLowerCase</span></a>
+<a name="1431"><span class="lineNum">    1431 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1432"><span class="lineNum">    1432 </span>            :         type(Delim_type)                    :: Delim</a>
+<a name="1433"><span class="lineNum">    1433 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructDelim()&quot;</a>
+<a name="1434"><span class="lineNum">    1434 </span><span class="lineCov">        531 :         if (present(value)) then</span></a>
+<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">         21 :             Delim%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1436"><span class="lineNum">    1436 </span><span class="lineCov">         21 :             if (Delim%value==&quot;quote&quot;) then</span></a>
+<a name="1437"><span class="lineNum">    1437 </span><span class="lineCov">          9 :                 Delim%isQuote = .true.</span></a>
+<a name="1438"><span class="lineNum">    1438 </span><span class="lineCov">         12 :             elseif (Delim%value==&quot;apostrophe&quot;) then</span></a>
+<a name="1439"><span class="lineNum">    1439 </span><span class="lineCov">          3 :                 Delim%isApostrophe = .true.</span></a>
+<a name="1440"><span class="lineNum">    1440 </span><span class="lineCov">          9 :             elseif (Delim%value==&quot;none&quot;) then</span></a>
+<a name="1441"><span class="lineNum">    1441 </span><span class="lineCov">          3 :                 Delim%isNone = .true.</span></a>
+<a name="1442"><span class="lineNum">    1442 </span><span class="lineCov">          6 :             elseif (Delim%value==&quot;undefined&quot;) then</span></a>
+<a name="1443"><span class="lineNum">    1443 </span><span class="lineCov">          3 :                 Delim%isUndefined = .true.</span></a>
+<a name="1444"><span class="lineNum">    1444 </span>            :             else</a>
+<a name="1445"><span class="lineNum">    1445 </span><span class="lineCov">          3 :                 Delim%value = &quot;&quot;</span></a>
+<a name="1446"><span class="lineNum">    1446 </span><span class="lineCov">          3 :                 Delim%Err%occurred = .true.</span></a>
+<a name="1447"><span class="lineNum">    1447 </span><span class="lineCov">          3 :                 Delim%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Delim%value='&quot; // Delim%value // &quot;'.&quot;</span></a>
+<a name="1448"><span class="lineNum">    1448 </span>            :             end if</a>
+<a name="1449"><span class="lineNum">    1449 </span>            :         else</a>
+<a name="1450"><span class="lineNum">    1450 </span><span class="lineCov">        510 :             Delim%value = &quot;none&quot;</span></a>
+<a name="1451"><span class="lineNum">    1451 </span><span class="lineCov">        510 :             Delim%isNone = .true.</span></a>
+<a name="1452"><span class="lineNum">    1452 </span>            :         end if</a>
+<a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">        531 :     end function constructDelim</span></a>
+<a name="1454"><span class="lineNum">    1454 </span>            : </a>
+<a name="1455"><span class="lineNum">    1455 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1456"><span class="lineNum">    1456 </span>            : </a>
+<a name="1457"><span class="lineNum">    1457 </span><span class="lineCov">        528 :     function constructPad(value) result(Pad)</span></a>
+<a name="1458"><span class="lineNum">    1458 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1459"><span class="lineNum">    1459 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructPad</a>
+<a name="1460"><span class="lineNum">    1460 </span>            : #endif</a>
+<a name="1461"><span class="lineNum">    1461 </span><span class="lineCov">        531 :         use String_mod, only: getLowerCase</span></a>
+<a name="1462"><span class="lineNum">    1462 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1463"><span class="lineNum">    1463 </span>            :         type(Pad_type)                      :: Pad</a>
+<a name="1464"><span class="lineNum">    1464 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructPad()&quot;</a>
+<a name="1465"><span class="lineNum">    1465 </span><span class="lineCov">        528 :         if (present(value)) then</span></a>
+<a name="1466"><span class="lineNum">    1466 </span><span class="lineCov">         18 :             Pad%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1467"><span class="lineNum">    1467 </span><span class="lineCov">         18 :             if (Pad%value==&quot;yes&quot;) then</span></a>
+<a name="1468"><span class="lineNum">    1468 </span><span class="lineCov">          3 :                 Pad%isPadded = .true.</span></a>
+<a name="1469"><span class="lineNum">    1469 </span><span class="lineCov">         15 :             elseif (Pad%value==&quot;no&quot;) then</span></a>
+<a name="1470"><span class="lineNum">    1470 </span><span class="lineCov">          9 :                 Pad%isNotPadded = .true.</span></a>
+<a name="1471"><span class="lineNum">    1471 </span><span class="lineCov">          6 :             elseif (Pad%value==&quot;undefined&quot;) then</span></a>
+<a name="1472"><span class="lineNum">    1472 </span><span class="lineCov">          3 :                 Pad%isUndefined = .true.</span></a>
+<a name="1473"><span class="lineNum">    1473 </span>            :             else</a>
+<a name="1474"><span class="lineNum">    1474 </span><span class="lineCov">          3 :                 Pad%value = &quot;&quot;</span></a>
+<a name="1475"><span class="lineNum">    1475 </span><span class="lineCov">          3 :                 Pad%Err%occurred = .true.</span></a>
+<a name="1476"><span class="lineNum">    1476 </span><span class="lineCov">          3 :                 Pad%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Pad%value='&quot; // Pad%value // &quot;'.&quot;</span></a>
+<a name="1477"><span class="lineNum">    1477 </span>            :             end if</a>
+<a name="1478"><span class="lineNum">    1478 </span>            :         else</a>
+<a name="1479"><span class="lineNum">    1479 </span><span class="lineCov">        510 :             Pad%value = &quot;yes&quot;</span></a>
+<a name="1480"><span class="lineNum">    1480 </span><span class="lineCov">        510 :             Pad%isPadded = .true.</span></a>
+<a name="1481"><span class="lineNum">    1481 </span>            :         end if</a>
+<a name="1482"><span class="lineNum">    1482 </span><span class="lineCov">        528 :     end function constructPad</span></a>
+<a name="1483"><span class="lineNum">    1483 </span>            : </a>
+<a name="1484"><span class="lineNum">    1484 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1485"><span class="lineNum">    1485 </span>            : </a>
+<a name="1486"><span class="lineNum">    1486 </span><span class="lineCov">        540 :     function constructRound(value) result(Round)</span></a>
+<a name="1487"><span class="lineNum">    1487 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1488"><span class="lineNum">    1488 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructRound</a>
+<a name="1489"><span class="lineNum">    1489 </span>            : #endif</a>
+<a name="1490"><span class="lineNum">    1490 </span><span class="lineCov">        528 :         use String_mod, only: getLowerCase</span></a>
+<a name="1491"><span class="lineNum">    1491 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1492"><span class="lineNum">    1492 </span>            :         type(Round_type)                    :: Round</a>
+<a name="1493"><span class="lineNum">    1493 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructRound()&quot;</a>
+<a name="1494"><span class="lineNum">    1494 </span><span class="lineCov">        540 :         if (present(value)) then</span></a>
+<a name="1495"><span class="lineNum">    1495 </span><span class="lineCov">         30 :             Round%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1496"><span class="lineNum">    1496 </span><span class="lineCov">         30 :             if (Round%value==&quot;up&quot;) then</span></a>
+<a name="1497"><span class="lineNum">    1497 </span><span class="lineCov">          9 :                 Round%isUp = .true.</span></a>
+<a name="1498"><span class="lineNum">    1498 </span><span class="lineCov">         21 :             elseif (Round%value==&quot;down&quot;) then</span></a>
+<a name="1499"><span class="lineNum">    1499 </span><span class="lineCov">          3 :                 Round%isDown = .true.</span></a>
+<a name="1500"><span class="lineNum">    1500 </span><span class="lineCov">         18 :             elseif (Round%value==&quot;zero&quot;) then</span></a>
+<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">          3 :                 Round%isZero = .true.</span></a>
+<a name="1502"><span class="lineNum">    1502 </span><span class="lineCov">         15 :             elseif (Round%value==&quot;nearest&quot;) then</span></a>
+<a name="1503"><span class="lineNum">    1503 </span><span class="lineCov">          6 :                 Round%isNearest = .true.</span></a>
+<a name="1504"><span class="lineNum">    1504 </span><span class="lineCov">          9 :             elseif (Round%value==&quot;compatible&quot;) then</span></a>
+<a name="1505"><span class="lineNum">    1505 </span><span class="lineCov">          3 :                 Round%isCompatible = .true.</span></a>
+<a name="1506"><span class="lineNum">    1506 </span><span class="lineCov">          6 :             elseif (Round%value==&quot;processor_defined&quot;) then</span></a>
+<a name="1507"><span class="lineNum">    1507 </span><span class="lineCov">          3 :                 Round%isProcessDefined = .true.</span></a>
+<a name="1508"><span class="lineNum">    1508 </span><span class="lineCov">          3 :             elseif (Round%value==&quot;undefined&quot;) then</span></a>
+<a name="1509"><span class="lineNum">    1509 </span><span class="lineNoCov">          0 :                 Round%isUndefined = .true.</span></a>
+<a name="1510"><span class="lineNum">    1510 </span>            :             else</a>
+<a name="1511"><span class="lineNum">    1511 </span><span class="lineCov">          3 :                 Round%value = &quot;&quot;</span></a>
+<a name="1512"><span class="lineNum">    1512 </span><span class="lineCov">          3 :                 Round%Err%occurred = .true.</span></a>
+<a name="1513"><span class="lineNum">    1513 </span><span class="lineCov">          3 :                 Round%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Round%value='&quot; // Round%value // &quot;'.&quot;</span></a>
+<a name="1514"><span class="lineNum">    1514 </span>            :             end if</a>
+<a name="1515"><span class="lineNum">    1515 </span>            :         else</a>
+<a name="1516"><span class="lineNum">    1516 </span><span class="lineCov">        510 :             Round%value = &quot;processor_defined&quot;</span></a>
+<a name="1517"><span class="lineNum">    1517 </span><span class="lineCov">        510 :             Round%isProcessDefined = .true.</span></a>
+<a name="1518"><span class="lineNum">    1518 </span>            :         end if</a>
+<a name="1519"><span class="lineNum">    1519 </span><span class="lineCov">        540 :     end function constructRound</span></a>
+<a name="1520"><span class="lineNum">    1520 </span>            : </a>
+<a name="1521"><span class="lineNum">    1521 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1522"><span class="lineNum">    1522 </span>            : </a>
+<a name="1523"><span class="lineNum">    1523 </span><span class="lineCov">        531 :     function constructSign(value) result(Sign)</span></a>
+<a name="1524"><span class="lineNum">    1524 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1525"><span class="lineNum">    1525 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructSign</a>
+<a name="1526"><span class="lineNum">    1526 </span>            : #endif</a>
+<a name="1527"><span class="lineNum">    1527 </span><span class="lineCov">        540 :         use String_mod, only: getLowerCase</span></a>
+<a name="1528"><span class="lineNum">    1528 </span>            :         character(*), intent(in), optional  :: value</a>
+<a name="1529"><span class="lineNum">    1529 </span>            :         type(Sign_type)                     :: Sign</a>
+<a name="1530"><span class="lineNum">    1530 </span>            :         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // &quot;@constructSign()&quot;</a>
+<a name="1531"><span class="lineNum">    1531 </span><span class="lineCov">        531 :         if (present(value)) then</span></a>
+<a name="1532"><span class="lineNum">    1532 </span><span class="lineCov">         21 :             Sign%value = getLowerCase(trim(adjustl(value)))</span></a>
+<a name="1533"><span class="lineNum">    1533 </span><span class="lineCov">         21 :             if (Sign%value==&quot;suppress&quot;) then</span></a>
+<a name="1534"><span class="lineNum">    1534 </span><span class="lineCov">          3 :                 Sign%isSuppress = .true.</span></a>
+<a name="1535"><span class="lineNum">    1535 </span><span class="lineCov">         18 :             elseif (Sign%value==&quot;plus&quot;) then</span></a>
+<a name="1536"><span class="lineNum">    1536 </span><span class="lineCov">          3 :                 Sign%isPlus = .true.</span></a>
+<a name="1537"><span class="lineNum">    1537 </span><span class="lineCov">         15 :             elseif (Sign%value==&quot;processor_defined&quot;) then</span></a>
+<a name="1538"><span class="lineNum">    1538 </span><span class="lineCov">          3 :                 Sign%isProcessDefined = .true.</span></a>
+<a name="1539"><span class="lineNum">    1539 </span><span class="lineCov">         12 :             elseif (Sign%value==&quot;undefined&quot;) then</span></a>
+<a name="1540"><span class="lineNum">    1540 </span><span class="lineCov">          9 :                 Sign%isUndefined = .true.</span></a>
+<a name="1541"><span class="lineNum">    1541 </span>            :             else</a>
+<a name="1542"><span class="lineNum">    1542 </span><span class="lineCov">          3 :                 Sign%value = &quot;&quot;</span></a>
+<a name="1543"><span class="lineNum">    1543 </span><span class="lineCov">          3 :                 Sign%Err%occurred = .true.</span></a>
+<a name="1544"><span class="lineNum">    1544 </span><span class="lineCov">          3 :                 Sign%Err%msg = PROCEDURE_NAME // &quot;: Invalid requested Sign%value='&quot; // Sign%value // &quot;'.&quot;</span></a>
+<a name="1545"><span class="lineNum">    1545 </span>            :             end if</a>
+<a name="1546"><span class="lineNum">    1546 </span>            :         else</a>
+<a name="1547"><span class="lineNum">    1547 </span><span class="lineCov">        510 :             Sign%value = &quot;processor_defined&quot;</span></a>
+<a name="1548"><span class="lineNum">    1548 </span><span class="lineCov">        510 :             Sign%isProcessDefined = .true.</span></a>
+<a name="1549"><span class="lineNum">    1549 </span>            :         end if</a>
+<a name="1550"><span class="lineNum">    1550 </span><span class="lineCov">        531 :     end function constructSign</span></a>
+<a name="1551"><span class="lineNum">    1551 </span>            : </a>
+<a name="1552"><span class="lineNum">    1552 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1553"><span class="lineNum">    1553 </span>            : </a>
+<a name="1554"><span class="lineNum">    1554 </span>            : end module File_mod ! LCOV_EXCL_LINE</a>
 </pre>
       </td>
     </tr>

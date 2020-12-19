@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -31,13 +31,13 @@
             <td class="headerValue">ParaMonte 1.5.0 :: Serial Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">507</td>
+            <td class="headerCovTableEntry">508</td>
             <td class="headerCovTableEntry">528</td>
-            <td class="headerCovTableEntryHi">96.0 %</td>
+            <td class="headerCovTableEntryHi">96.2 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:31:29</td>
+            <td class="headerValue">2020-12-19 06:06:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -179,7 +179,7 @@
 <a name="109"><span class="lineNum">     109 </span>            :                                 , outputFileName                        &amp;</a>
 <a name="110"><span class="lineNum">     110 </span>            :                                 , outputDelimiter                       &amp;</a>
 <a name="111"><span class="lineNum">     111 </span>            :                                 , chainFileFormat                       &amp;</a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :                                 , variableNameList                      &amp;</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">         32 :                                 , variableNameList                      &amp;</span></a>
 <a name="113"><span class="lineNum">     113 </span>            :                                 , restartFileFormat                     &amp;</a>
 <a name="114"><span class="lineNum">     114 </span>            :                                 , outputColumnWidth                     &amp;</a>
 <a name="115"><span class="lineNum">     115 </span>            :                                 , overwriteRequested                    &amp;</a>
@@ -214,7 +214,7 @@
 <a name="144"><span class="lineNum">     144 </span>            :                                 , burninAdaptationMeasure               &amp;</a>
 <a name="145"><span class="lineNum">     145 </span><span class="lineCov">        349 :                                 , delayedRejectionScaleFactorVec        &amp;</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :                                 ) !  result(self)</a>
-<a name="147"><span class="lineNum">     147 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="147"><span class="lineNum">     147 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="148"><span class="lineNum">     148 </span>            :         !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type</a>
 <a name="149"><span class="lineNum">     149 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler</a>
 <a name="150"><span class="lineNum">     150 </span>            : #endif</a>
@@ -1081,8 +1081,8 @@
 <a name="1011"><span class="lineNum">    1011 </span>            :             ! reset BurninLoc to the maximum value</a>
 <a name="1012"><span class="lineNum">    1012 </span>            : </a>
 <a name="1013"><span class="lineNum">    1013 </span><span class="lineCov">        227 :             if (self%Stats%AdaptationBurninLoc%compact&gt;self%Stats%BurninLoc%compact) then</span></a>
-<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">          1 :                 self%Stats%BurninLoc%compact = self%Stats%AdaptationBurninLoc%compact</span></a>
-<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">          1 :                 self%Stats%BurninLoc%verbose = self%Stats%AdaptationBurninLoc%verbose</span></a>
+<a name="1014"><span class="lineNum">    1014 </span><span class="lineCov">          2 :                 self%Stats%BurninLoc%compact = self%Stats%AdaptationBurninLoc%compact</span></a>
+<a name="1015"><span class="lineNum">    1015 </span><span class="lineCov">          2 :                 self%Stats%BurninLoc%verbose = self%Stats%AdaptationBurninLoc%verbose</span></a>
 <a name="1016"><span class="lineNum">    1016 </span>            :             end if</a>
 <a name="1017"><span class="lineNum">    1017 </span>            : </a>
 <a name="1018"><span class="lineNum">    1018 </span>            :             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
@@ -1142,7 +1142,7 @@
 <a name="1072"><span class="lineNum">    1072 </span>            :                                                 , newline = &quot;\n&quot;    &amp;</a>
 <a name="1073"><span class="lineNum">    1073 </span><span class="lineCov">        227 :                                                 , outputUnit = self%LogFile%unit )</span></a>
 <a name="1074"><span class="lineNum">    1074 </span>            : </a>
-<a name="1075"><span class="lineNum">    1075 </span><span class="lineCov">      76625 :             self%Stats%Chain%count = sum(self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact))</span></a>
+<a name="1075"><span class="lineNum">    1075 </span><span class="lineCov">      76598 :             self%Stats%Chain%count = sum(self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact))</span></a>
 <a name="1076"><span class="lineNum">    1076 </span>            : </a>
 <a name="1077"><span class="lineNum">    1077 </span>            :             ! compute the covariance and correlation upper-triangle matrices</a>
 <a name="1078"><span class="lineNum">    1078 </span>            : </a>
@@ -1157,7 +1157,7 @@
 <a name="1087"><span class="lineNum">    1087 </span>            :                                             , Mean = self%Stats%Chain%Mean &amp; ! LCOV_EXCL_LINE</a>
 <a name="1088"><span class="lineNum">    1088 </span><span class="lineCov">        227 :                                             )</span></a>
 <a name="1089"><span class="lineNum">    1089 </span>            : </a>
-<a name="1090"><span class="lineNum">    1090 </span><span class="lineCov">       2149 :             self%Stats%Chain%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Chain%CovMat)</span></a>
+<a name="1090"><span class="lineNum">    1090 </span><span class="lineCov">       1195 :             self%Stats%Chain%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Chain%CovMat)</span></a>
 <a name="1091"><span class="lineNum">    1091 </span>            : </a>
 <a name="1092"><span class="lineNum">    1092 </span>            :             ! transpose the covariance and correlation matrices</a>
 <a name="1093"><span class="lineNum">    1093 </span>            : </a>
@@ -1171,7 +1171,7 @@
 <a name="1101"><span class="lineNum">    1101 </span>            : </a>
 <a name="1102"><span class="lineNum">    1102 </span><span class="lineCov">        227 :             if (allocated(self%Stats%Chain%Quantile)) deallocate(self%Stats%Chain%Quantile)</span></a>
 <a name="1103"><span class="lineNum">    1103 </span><span class="lineCov">        227 :             allocate(self%Stats%Chain%Quantile(QPROB%count,ndim))</span></a>
-<a name="1104"><span class="lineNum">    1104 </span><span class="lineCov">     124171 :             ContiguousChain = transpose(self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
+<a name="1104"><span class="lineNum">    1104 </span><span class="lineCov">     124117 :             ContiguousChain = transpose(self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
 <a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">        579 :             do i = 1, ndim</span></a>
 <a name="1106"><span class="lineNum">    1106 </span><span class="lineCov">       2112 :                     self%Stats%Chain%Quantile(1:QPROB%count,i) = getQuantile( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &amp;</span></a>
 <a name="1107"><span class="lineNum">    1107 </span>            :                                                                             , nq = QPROB%count &amp; ! LCOV_EXCL_LINE</a>
@@ -1280,14 +1280,14 @@
 <a name="1210"><span class="lineNum">    1210 </span><span class="lineCov">        227 :             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) &quot;stats.chain.refined.iac&quot;</span></a>
 <a name="1211"><span class="lineNum">    1211 </span><span class="lineCov">        227 :             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)</span></a>
 <a name="1212"><span class="lineNum">    1212 </span><span class="lineCov">        579 :             write(self%LogFile%unit,self%LogFile%format) &quot;RefinementStage&quot;,&quot;SampleSize&quot;,&quot;IAC_SampleLogFunc&quot;,(&quot;IAC_&quot;//trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,ndim)</span></a>
-<a name="1213"><span class="lineNum">    1213 </span><span class="lineCov">        816 :             do i = 0, self%RefinedChain%numRefinement</span></a>
-<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">        816 :                 write(self%LogFile%unit,formatStr) i, self%RefinedChain%Count(i)%Verbose, self%RefinedChain%IAC(0:ndim,i)</span></a>
+<a name="1213"><span class="lineNum">    1213 </span><span class="lineCov">        814 :             do i = 0, self%RefinedChain%numRefinement</span></a>
+<a name="1214"><span class="lineNum">    1214 </span><span class="lineCov">        814 :                 write(self%LogFile%unit,formatStr) i, self%RefinedChain%Count(i)%Verbose, self%RefinedChain%IAC(0:ndim,i)</span></a>
 <a name="1215"><span class="lineNum">    1215 </span>            :             end do</a>
 <a name="1216"><span class="lineNum">    1216 </span><span class="lineCov">        227 :             msg = &quot;This is the table of the Integrated Autocorrelation (IAC) of individual variables in the verbose (Markov) chain, at increasing stages of chain refinements.&quot;</span></a>
 <a name="1217"><span class="lineNum">    1217 </span><span class="lineCov">        227 :             if (self%RefinedChain%numRefinement==0_IK) then</span></a>
 <a name="1218"><span class="lineNum">    1218 </span>            :                 msg = msg // NLC // &quot;The user-specified sampleRefinementCount (&quot;// num2str(self%SpecMCMC%SampleRefinementCount%val) // &quot;) &amp;</a>
 <a name="1219"><span class="lineNum">    1219 </span>            :                                     &amp;is too small to ensure an accurate computation of the decorrelated i.i.d. effective sample size. &amp;</a>
-<a name="1220"><span class="lineNum">    1220 </span><span class="lineCov">          8 :                                     &amp;No refinement of the Markov chain was performed.&quot;</span></a>
+<a name="1220"><span class="lineNum">    1220 </span><span class="lineCov">          7 :                                     &amp;No refinement of the Markov chain was performed.&quot;</span></a>
 <a name="1221"><span class="lineNum">    1221 </span>            :             end if</a>
 <a name="1222"><span class="lineNum">    1222 </span><span class="lineCov">        227 :             call self%reportDesc(msg)</span></a>
 <a name="1223"><span class="lineNum">    1223 </span>            : </a>
@@ -1450,7 +1450,7 @@
 <a name="1380"><span class="lineNum">    1380 </span>            :                     , file      = self%SampleFile%Path%original   &amp;</a>
 <a name="1381"><span class="lineNum">    1381 </span>            :                     , status    = self%SampleFile%status          &amp;</a>
 <a name="1382"><span class="lineNum">    1382 </span>            :                     , iostat    = self%SampleFile%Err%stat        &amp;</a>
-<a name="1383"><span class="lineNum">    1383 </span>            : #if defined IFORT_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
+<a name="1383"><span class="lineNum">    1383 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="1384"><span class="lineNum">    1384 </span>            :                     , SHARED &amp;</a>
 <a name="1385"><span class="lineNum">    1385 </span>            : #endif</a>
 <a name="1386"><span class="lineNum">    1386 </span><span class="lineCov">        225 :                     , position  = self%SampleFile%Position%value  )</span></a>
@@ -1502,7 +1502,7 @@
 <a name="1432"><span class="lineNum">    1432 </span><span class="lineCov">        225 :                 if (allocated(self%Stats%Sample%Mean)) deallocate(self%Stats%Sample%Mean); allocate(self%Stats%Sample%Mean(ndim))</span></a>
 <a name="1433"><span class="lineNum">    1433 </span><span class="lineCov">        225 :                 if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat); allocate(self%Stats%Sample%CovMat(ndim,ndim))</span></a>
 <a name="1434"><span class="lineNum">    1434 </span><span class="lineCov">        225 :                 if (self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &gt; ndim + 1_IK) then</span></a>
-<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">      83417 :                     ContiguousChain = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)</span></a>
+<a name="1435"><span class="lineNum">    1435 </span><span class="lineCov">      86509 :                     ContiguousChain = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)</span></a>
 <a name="1436"><span class="lineNum">    1436 </span><span class="lineCov">        446 :                     call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
 <a name="1437"><span class="lineNum">    1437 </span><span class="lineCov">        446 :                                                     , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &amp;</span></a>
 <a name="1438"><span class="lineNum">    1438 </span>            :                                                     , nd = ndim &amp; ! LCOV_EXCL_LINE</a>
@@ -1511,7 +1511,7 @@
 <a name="1441"><span class="lineNum">    1441 </span>            :                                                     , CovMatUpper = self%Stats%Sample%CovMat &amp; ! LCOV_EXCL_LINE</a>
 <a name="1442"><span class="lineNum">    1442 </span>            :                                                     , Mean = self%Stats%Sample%Mean &amp; ! LCOV_EXCL_LINE</a>
 <a name="1443"><span class="lineNum">    1443 </span><span class="lineCov">        223 :                                                     )</span></a>
-<a name="1444"><span class="lineNum">    1444 </span><span class="lineCov">       2113 :                     self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)</span></a>
+<a name="1444"><span class="lineNum">    1444 </span><span class="lineCov">       1175 :                     self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)</span></a>
 <a name="1445"><span class="lineNum">    1445 </span>            : </a>
 <a name="1446"><span class="lineNum">    1446 </span>            :                 else</a>
 <a name="1447"><span class="lineNum">    1447 </span>            :                     if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat) ! LCOV_EXCL_LINE</a>
@@ -1521,7 +1521,7 @@
 <a name="1451"><span class="lineNum">    1451 </span><span class="lineCov">          4 :                                                         , np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &amp;</span></a>
 <a name="1452"><span class="lineNum">    1452 </span>            :                                                         , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp; ! LCOV_EXCL_LINE</a>
 <a name="1453"><span class="lineNum">    1453 </span><span class="lineCov">         12 :                                                         , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &amp;</span></a>
-<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">         14 :                                                         )</span></a>
+<a name="1454"><span class="lineNum">    1454 </span><span class="lineCov">         10 :                                                         )</span></a>
 <a name="1455"><span class="lineNum">    1455 </span>            :                 end if</a>
 <a name="1456"><span class="lineNum">    1456 </span>            : </a>
 <a name="1457"><span class="lineNum">    1457 </span>            :                 ! transpose the covariance and correlation matrices</a>
@@ -1534,7 +1534,7 @@
 <a name="1464"><span class="lineNum">    1464 </span>            : </a>
 <a name="1465"><span class="lineNum">    1465 </span>            :                 ! compute the quantiles</a>
 <a name="1466"><span class="lineNum">    1466 </span>            : </a>
-<a name="1467"><span class="lineNum">    1467 </span><span class="lineCov">      52094 :                 ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
+<a name="1467"><span class="lineNum">    1467 </span><span class="lineCov">      54327 :                 ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode</span></a>
 <a name="1468"><span class="lineNum">    1468 </span><span class="lineCov">        225 :                 if (allocated(self%Stats%Sample%Quantile)) deallocate(self%Stats%Sample%Quantile)</span></a>
 <a name="1469"><span class="lineNum">    1469 </span><span class="lineCov">        225 :                 allocate(self%Stats%Sample%Quantile(QPROB%count,ndim))</span></a>
 <a name="1470"><span class="lineNum">    1470 </span><span class="lineCov">        575 :                 do i = 1, ndim</span></a>
@@ -1563,12 +1563,12 @@
 <a name="1493"><span class="lineNum">    1493 </span>            :                         msg = msg // &quot;The user-requested sample size (&quot;// num2str(self%SpecBase%SampleSize%abs) // &quot;) is smaller &amp;</a>
 <a name="1494"><span class="lineNum">    1494 </span>            :                             &amp;than the potentially-optimal i.i.d. sample size (&quot; // num2str(effectiveSampleSize) // &quot;). The output sample &amp;</a>
 <a name="1495"><span class="lineNum">    1495 </span>            :                             &amp;contains i.i.d. samples, however, the sample-size could have been larger if it had been set to the optimal size. &amp;</a>
-<a name="1496"><span class="lineNum">    1496 </span><span class="lineCov">          9 :                             &amp;To get the optimal size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
-<a name="1497"><span class="lineNum">    1497 </span><span class="lineCov">         48 :                     elseif (abs(self%SpecBase%SampleSize%abs)&gt;effectiveSampleSize) then</span></a>
+<a name="1496"><span class="lineNum">    1496 </span><span class="lineCov">          8 :                             &amp;To get the optimal size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
+<a name="1497"><span class="lineNum">    1497 </span><span class="lineCov">         49 :                     elseif (abs(self%SpecBase%SampleSize%abs)&gt;effectiveSampleSize) then</span></a>
 <a name="1498"><span class="lineNum">    1498 </span>            :                         msg = msg // &quot;The user-requested sample size (&quot;// num2str(self%SpecBase%SampleSize%abs) // &quot;) is larger than &amp;</a>
 <a name="1499"><span class="lineNum">    1499 </span>            :                             &amp;the potentially-optimal i.i.d. sample size (&quot; // num2str(effectiveSampleSize) // &quot;). The resulting sample &amp;</a>
 <a name="1500"><span class="lineNum">    1500 </span>            :                             &amp;likely contains duplicates and is not independently and identically distributed (i.i.d.).\nTo get the optimal &amp;</a>
-<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">         48 :                             &amp;size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
+<a name="1501"><span class="lineNum">    1501 </span><span class="lineCov">         49 :                             &amp;size in the future runs, set sampleSize = -1, or drop it from the input list.&quot;</span></a>
 <a name="1502"><span class="lineNum">    1502 </span>            :                     else ! LCOV_EXCL_LINE</a>
 <a name="1503"><span class="lineNum">    1503 </span>            :                         msg = msg // &quot;How lucky that could be! The user-requested sample size (&quot; // num2str(self%SpecBase%SampleSize%abs) // &amp; ! LCOV_EXCL_LINE</a>
 <a name="1504"><span class="lineNum">    1504 </span>            :                              &quot;) is equal to the potentially-optimal i.i.d. sample size determined by the &quot;//self%name//&quot; sampler.&quot; ! LCOV_EXCL_LINE</a>
@@ -1857,7 +1857,7 @@
 <a name="1787"><span class="lineNum">    1787 </span>            :             if (self%SpecBase%MpiFinalizeRequested%val) call self%Image%finalize()</a>
 <a name="1788"><span class="lineNum">    1788 </span>            : #endif</a>
 <a name="1789"><span class="lineNum">    1789 </span>            : </a>
-<a name="1790"><span class="lineNum">    1790 </span><span class="lineCov">        778 :     end subroutine runSampler</span></a>
+<a name="1790"><span class="lineNum">    1790 </span><span class="lineCov">        810 :     end subroutine runSampler</span></a>
 <a name="1791"><span class="lineNum">    1791 </span>            : </a>
 <a name="1792"><span class="lineNum">    1792 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1793"><span class="lineNum">    1793 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>

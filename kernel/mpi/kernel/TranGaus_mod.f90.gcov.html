@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -2620,7 +2620,7 @@
 <a name="2550"><span class="lineNum">    2550 </span>            :     !&gt; \return</a>
 <a name="2551"><span class="lineNum">    2551 </span>            :     !&gt; `tranGaus`   :   The output truncated random Gaussian number.</a>
 <a name="2552"><span class="lineNum">    2552 </span><span class="lineCov">     225000 :     function getTranGaus(lowerLim,upperLim,avg,std) result(tranGaus)</span></a>
-<a name="2553"><span class="lineNum">    2553 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="2553"><span class="lineNum">    2553 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="2554"><span class="lineNum">    2554 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getTranGaus</a>
 <a name="2555"><span class="lineNum">    2555 </span>            : #endif</a>
 <a name="2556"><span class="lineNum">    2556 </span>            :     ! getTranGaus    Pseudorandom numbers from a truncated Gaussian distribution.</a>
@@ -2708,7 +2708,7 @@
 <a name="2638"><span class="lineNum">    2638 </span>            :     !&gt; \return</a>
 <a name="2639"><span class="lineNum">    2639 </span>            :     !&gt; `tranGaus`   :   The output truncated random Standard Gaussian number.</a>
 <a name="2640"><span class="lineNum">    2640 </span><span class="lineCov">     315000 :     recursive function getStdTranGaus(lowerLim,upperLim) result(stdTranGaus)</span></a>
-<a name="2641"><span class="lineNum">    2641 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="2641"><span class="lineNum">    2641 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="2642"><span class="lineNum">    2642 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getStdTranGaus</a>
 <a name="2643"><span class="lineNum">    2643 </span>            : #endif</a>
 <a name="2644"><span class="lineNum">    2644 </span>            : </a>

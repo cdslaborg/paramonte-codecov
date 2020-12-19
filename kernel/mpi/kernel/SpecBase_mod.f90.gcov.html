@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -31,13 +31,13 @@
             <td class="headerValue">ParaMonte 1.5.0 :: MPI Parallel Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">253</td>
+            <td class="headerCovTableEntry">254</td>
             <td class="headerCovTableEntry">255</td>
-            <td class="headerCovTableEntryHi">99.2 %</td>
+            <td class="headerCovTableEntryHi">99.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -210,7 +210,7 @@
 <a name="140"><span class="lineNum">     140 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">       1047 :     function constructSpecBase(nd,methodName,imageID,imageCount) result(SpecBase)</span></a>
-<a name="143"><span class="lineNum">     143 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="143"><span class="lineNum">     143 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="144"><span class="lineNum">     144 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructSpecBase</a>
 <a name="145"><span class="lineNum">     145 </span>            : #endif</a>
 <a name="146"><span class="lineNum">     146 </span>            :         use Constants_mod, only: IK</a>
@@ -247,7 +247,7 @@
 <a name="177"><span class="lineNum">     177 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar( SpecBase, nd )</span></a>
-<a name="180"><span class="lineNum">     180 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="180"><span class="lineNum">     180 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="181"><span class="lineNum">     181 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
 <a name="182"><span class="lineNum">     182 </span>            : #endif</a>
 <a name="183"><span class="lineNum">     183 </span><span class="lineCov">       1047 :         use Constants_mod, only: IK</span></a>
@@ -283,7 +283,7 @@
 <a name="213"><span class="lineNum">     213 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="214"><span class="lineNum">     214 </span>            : </a>
 <a name="215"><span class="lineNum">     215 </span><span class="lineCov">       1047 :     subroutine setFromInputFile( SpecBase, Err )</span></a>
-<a name="216"><span class="lineNum">     216 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="216"><span class="lineNum">     216 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="217"><span class="lineNum">     217 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputFile</a>
 <a name="218"><span class="lineNum">     218 </span>            : #endif</a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
@@ -337,7 +337,7 @@
 <a name="267"><span class="lineNum">     267 </span>            :                                 , outputFileName &amp;</a>
 <a name="268"><span class="lineNum">     268 </span>            :                                 , outputDelimiter &amp;</a>
 <a name="269"><span class="lineNum">     269 </span>            :                                 , chainFileFormat &amp;</a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineNoCov">          0 :                                 , variableNameList &amp;</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">       1041 :                                 , variableNameList &amp;</span></a>
 <a name="271"><span class="lineNum">     271 </span><span class="lineCov">       1041 :                                 , domainLowerLimitVec &amp;</span></a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineCov">       1041 :                                 , domainUpperLimitVec &amp;</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :                                 , restartFileFormat &amp;</a>
@@ -352,7 +352,7 @@
 <a name="282"><span class="lineNum">     282 </span>            :                                 , maxNumDomainCheckToWarn &amp;</a>
 <a name="283"><span class="lineNum">     283 </span>            :                                 , maxNumDomainCheckToStop &amp;</a>
 <a name="284"><span class="lineNum">     284 </span>            :                                 )</a>
-<a name="285"><span class="lineNum">     285 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="285"><span class="lineNum">     285 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="286"><span class="lineNum">     286 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputArgs</a>
 <a name="287"><span class="lineNum">     287 </span>            : #endif</a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
@@ -419,7 +419,7 @@
 <a name="349"><span class="lineNum">     349 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
 <a name="351"><span class="lineNum">     351 </span><span class="lineCov">        969 :     subroutine reportValues(SpecBase,prefix,outputUnit,isLeaderImage)</span></a>
-<a name="352"><span class="lineNum">     352 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="352"><span class="lineNum">     352 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="353"><span class="lineNum">     353 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues</a>
 <a name="354"><span class="lineNum">     354 </span>            : #endif</a>
 <a name="355"><span class="lineNum">     355 </span><span class="lineCov">       1041 :         use Decoration_mod, only: GENERIC_OUTPUT_FORMAT</span></a>
@@ -645,7 +645,7 @@
 <a name="575"><span class="lineNum">     575 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="576"><span class="lineNum">     576 </span>            : </a>
 <a name="577"><span class="lineNum">     577 </span><span class="lineCov">       1035 :     subroutine checkForSanity(SpecBase,Err,methodName)</span></a>
-<a name="578"><span class="lineNum">     578 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="578"><span class="lineNum">     578 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="579"><span class="lineNum">     579 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
 <a name="580"><span class="lineNum">     580 </span>            : #endif</a>
 <a name="581"><span class="lineNum">     581 </span><span class="lineCov">        969 :         use Err_mod, only: Err_type</span></a>

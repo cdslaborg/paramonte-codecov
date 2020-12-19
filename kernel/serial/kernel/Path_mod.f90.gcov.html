@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:31:29</td>
+            <td class="headerValue">2020-12-19 06:06:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -126,7 +126,7 @@
 <a name="56"><span class="lineNum">      56 </span>            :     !&gt; Windows reserved characters (not allowed in filenames):</a>
 <a name="57"><span class="lineNum">      57 </span>            :     character(*), parameter :: WINDOWS_RESERVED_CHAR = &quot;&lt;&gt;:&quot; // '&quot;' // &quot;|?*&quot; ! /\</a>
 <a name="58"><span class="lineNum">      58 </span>            : </a>
-<a name="59"><span class="lineNum">      59 </span>            : #if defined IFORT_ENABLED</a>
+<a name="59"><span class="lineNum">      59 </span>            : #if defined INTEL_COMPILER_ENABLED</a>
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            :     character(*), parameter :: SHELL_ESCAPE_CHAR =  &amp;</a>
 <a name="62"><span class="lineNum">      62 </span>            :                                                     &quot; &quot; // &amp; ! space character</a>
@@ -157,7 +157,7 @@
 <a name="87"><span class="lineNum">      87 </span>            : </a>
 <a name="88"><span class="lineNum">      88 </span>            : #else</a>
 <a name="89"><span class="lineNum">      89 </span>            : </a>
-<a name="90"><span class="lineNum">      90 </span>            :     ! stupid gfortran gives error on the above syntax</a>
+<a name="90"><span class="lineNum">      90 </span>            :     ! stupid gfortran (possibly version 8.3) gives error on the above syntax</a>
 <a name="91"><span class="lineNum">      91 </span>            :     character(*), parameter :: SHELL_ESCAPE_CHAR = &quot; !&quot;//'&quot;#$&amp;'//&quot;'()*,;&lt;=&gt;?[\]^`{|}~&quot;</a>
 <a name="92"><span class="lineNum">      92 </span>            : </a>
 <a name="93"><span class="lineNum">      93 </span>            : #endif</a>
@@ -201,7 +201,7 @@
 <a name="131"><span class="lineNum">     131 </span>            :     !&gt; \return</a>
 <a name="132"><span class="lineNum">     132 </span>            :     !&gt; `Path` : An object of class [Path_type](@ref path_type) containing the path properties and methods.</a>
 <a name="133"><span class="lineNum">     133 </span><span class="lineCov">       1985 :     function constructPath(inputPath,OS) result(Path)</span></a>
-<a name="134"><span class="lineNum">     134 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="134"><span class="lineNum">     134 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="135"><span class="lineNum">     135 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructPath</a>
 <a name="136"><span class="lineNum">     136 </span>            : #endif</a>
 <a name="137"><span class="lineNum">     137 </span>            :         use System_mod, only: OS_type</a>
@@ -225,7 +225,7 @@
 <a name="155"><span class="lineNum">     155 </span>            :     !&gt; \warning</a>
 <a name="156"><span class="lineNum">     156 </span>            :     !&gt; On output, do not forget to check the value `Path%%Err%%occurred` before using the output `Path`.</a>
 <a name="157"><span class="lineNum">     157 </span><span class="lineCov">       2336 :     subroutine query(Path,inputPath,OS)</span></a>
-<a name="158"><span class="lineNum">     158 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="158"><span class="lineNum">     158 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="159"><span class="lineNum">     159 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: query</a>
 <a name="160"><span class="lineNum">     160 </span>            : #endif</a>
 <a name="161"><span class="lineNum">     161 </span><span class="lineCov">       1985 :         use Err_mod, only: Err_type</span></a>
@@ -293,7 +293,7 @@
 <a name="223"><span class="lineNum">     223 </span><span class="lineCov">       2332 :         call Path%getDirNameExt( Path%modified, Path%shellSlash, Path%dir, Path%name, Path%ext )</span></a>
 <a name="224"><span class="lineNum">     224 </span><span class="lineCov">       2332 :         Path%base = Path%dir // Path%name</span></a>
 <a name="225"><span class="lineNum">     225 </span>            : </a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">       4668 :     end subroutine query</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">       2336 :     end subroutine query</span></a>
 <a name="227"><span class="lineNum">     227 </span>            : </a>
 <a name="228"><span class="lineNum">     228 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="229"><span class="lineNum">     229 </span>            : </a>
@@ -314,7 +314,7 @@
 <a name="244"><span class="lineNum">     244 </span>            :     !&gt; This routine strictly assumes that there is no dangling `\` in the input Linux path, and if there is,</a>
 <a name="245"><span class="lineNum">     245 </span>            :     !&gt; then either it is used to escape the special shell characters, or otherwise, the path is a Windows path.</a>
 <a name="246"><span class="lineNum">     246 </span><span class="lineCov">          3 :     pure function winify(inputPath) result(outputPath) !,Err)!,ignoreWindowsReservedChars)</span></a>
-<a name="247"><span class="lineNum">     247 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="247"><span class="lineNum">     247 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="248"><span class="lineNum">     248 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: winify</a>
 <a name="249"><span class="lineNum">     249 </span>            : #endif</a>
 <a name="250"><span class="lineNum">     250 </span>            :        !use Err_mod, only: Err_type</a>
@@ -362,7 +362,7 @@
 <a name="292"><span class="lineNum">     292 </span><span class="lineCov">          2 :         loopRemoveMultipleSlash: do</span></a>
 <a name="293"><span class="lineNum">     293 </span><span class="lineCov">          5 :             outputPathDummy = replaceStr(outputPath,&quot;\\&quot;,&quot;\&quot;)</span></a>
 <a name="294"><span class="lineNum">     294 </span><span class="lineCov">          5 :             if (outputPathDummy==outputPath) exit loopRemoveMultipleSlash</span></a>
-<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          5 :             outputPath = outputPathDummy</span></a>
+<a name="295"><span class="lineNum">     295 </span><span class="lineCov">          2 :             outputPath = outputPathDummy</span></a>
 <a name="296"><span class="lineNum">     296 </span>            :         end do loopRemoveMultipleSlash</a>
 <a name="297"><span class="lineNum">     297 </span><span class="lineCov">          3 :         outputPathLen = len(outputPath)</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : </a>
@@ -416,7 +416,7 @@
 <a name="346"><span class="lineNum">     346 </span>            :     !&gt; \return</a>
 <a name="347"><span class="lineNum">     347 </span>            :     !&gt; `outputPath` : The output modified path which conforms to the rules of the Unix OS.</a>
 <a name="348"><span class="lineNum">     348 </span><span class="lineCov">         17 :     pure function linify(inputPath) result(outputPath)</span></a>
-<a name="349"><span class="lineNum">     349 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="349"><span class="lineNum">     349 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="350"><span class="lineNum">     350 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: linify</a>
 <a name="351"><span class="lineNum">     351 </span>            : #endif</a>
 <a name="352"><span class="lineNum">     352 </span><span class="lineCov">          3 :         use Constants_mod, only: IK</span></a>
@@ -465,7 +465,7 @@
 <a name="395"><span class="lineNum">     395 </span>            :     !&gt; \param[out]      outputPath  :   The output modified path which conforms to the rules of the current OS.</a>
 <a name="396"><span class="lineNum">     396 </span>            :     !&gt; \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.</a>
 <a name="397"><span class="lineNum">     397 </span><span class="lineCov">          1 :     subroutine modify(inputPath,outputPath,Err)</span></a>
-<a name="398"><span class="lineNum">     398 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="398"><span class="lineNum">     398 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="399"><span class="lineNum">     399 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: modify</a>
 <a name="400"><span class="lineNum">     400 </span>            : #endif</a>
 <a name="401"><span class="lineNum">     401 </span><span class="lineCov">         17 :         use Err_mod, only: Err_type</span></a>
@@ -518,7 +518,7 @@
 <a name="448"><span class="lineNum">     448 </span>            :     !&gt; \param[out]      name    :   The base file name segment of the path.</a>
 <a name="449"><span class="lineNum">     449 </span>            :     !&gt; \param[out]      ext     :   The file extension segment of the path.</a>
 <a name="450"><span class="lineNum">     450 </span><span class="lineCov">       2334 :     subroutine getDirNameExt(path,slash,dir,name,ext)</span></a>
-<a name="451"><span class="lineNum">     451 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="451"><span class="lineNum">     451 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="452"><span class="lineNum">     452 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getDirNameExt</a>
 <a name="453"><span class="lineNum">     453 </span>            : #endif</a>
 <a name="454"><span class="lineNum">     454 </span>            :         implicit none</a>
@@ -541,7 +541,7 @@
 <a name="471"><span class="lineNum">     471 </span>            :     !&gt; \param[out]      dir         :   The directory segment of the path.</a>
 <a name="472"><span class="lineNum">     472 </span>            :     !&gt; \param[out]      fullName    :   The full file name and extension segment of the path.</a>
 <a name="473"><span class="lineNum">     473 </span><span class="lineCov">       2336 :     subroutine getDirFullName(path,slash,dir,fullName)</span></a>
-<a name="474"><span class="lineNum">     474 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="474"><span class="lineNum">     474 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="475"><span class="lineNum">     475 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getDirFullName</a>
 <a name="476"><span class="lineNum">     476 </span>            : #endif</a>
 <a name="477"><span class="lineNum">     477 </span><span class="lineCov">       2334 :         use Constants_mod, only: IK</span></a>
@@ -585,7 +585,7 @@
 <a name="515"><span class="lineNum">     515 </span>            :     !&gt; \param[out]      name        :   The name segment of the file.</a>
 <a name="516"><span class="lineNum">     516 </span>            :     !&gt; \param[out]      ext         :   The extension segment of the file (including the dot separator).</a>
 <a name="517"><span class="lineNum">     517 </span><span class="lineCov">       2336 :     subroutine getNameExt(fullName,name,ext)</span></a>
-<a name="518"><span class="lineNum">     518 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="518"><span class="lineNum">     518 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="519"><span class="lineNum">     519 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getNameExt</a>
 <a name="520"><span class="lineNum">     520 </span>            : #endif</a>
 <a name="521"><span class="lineNum">     521 </span><span class="lineCov">       2336 :         use Constants_mod, only: IK</span></a>
@@ -627,7 +627,7 @@
 <a name="557"><span class="lineNum">     557 </span>            :     !&gt; \author</a>
 <a name="558"><span class="lineNum">     558 </span>            :     !&gt; Last updated by Amir Shahmoradi, Tuesday 3:09 AM, Dec 8, 2020, Dallas, TX</a>
 <a name="559"><span class="lineNum">     559 </span><span class="lineCov">        383 :     function mkdir(dirPath,isUnixShell,wait) result(Err)</span></a>
-<a name="560"><span class="lineNum">     560 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="560"><span class="lineNum">     560 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="561"><span class="lineNum">     561 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: mkdir</a>
 <a name="562"><span class="lineNum">     562 </span>            : #endif</a>
 <a name="563"><span class="lineNum">     563 </span><span class="lineCov">       2336 :         use Constants_mod, only: IK, NLC</span></a>
@@ -704,15 +704,15 @@
 <a name="634"><span class="lineNum">     634 </span>            :     !&gt; \author</a>
 <a name="635"><span class="lineNum">     635 </span>            :     !&gt; Amir Shahmoradi, Tuesday 3:09 AM, Dec 8, 2020, Dallas, TX</a>
 <a name="636"><span class="lineNum">     636 </span><span class="lineCov">        384 :     function isdir(path) result(pathIsDir)</span></a>
-<a name="637"><span class="lineNum">     637 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="637"><span class="lineNum">     637 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="638"><span class="lineNum">     638 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: isdir</a>
 <a name="639"><span class="lineNum">     639 </span>            : #endif</a>
 <a name="640"><span class="lineNum">     640 </span>            :         implicit none</a>
 <a name="641"><span class="lineNum">     641 </span>            :         character(*), intent(in)        :: path</a>
 <a name="642"><span class="lineNum">     642 </span>            :         logical                         :: pathIsDir</a>
-<a name="643"><span class="lineNum">     643 </span>            : #if defined IFORT_ENABLED</a>
+<a name="643"><span class="lineNum">     643 </span>            : #if defined INTEL_COMPILER_ENABLED</a>
 <a name="644"><span class="lineNum">     644 </span>            :         inquire(directory = path, exist = pathIsDir)</a>
-<a name="645"><span class="lineNum">     645 </span>            : #elif defined __GFORTRAN__</a>
+<a name="645"><span class="lineNum">     645 </span>            : #elif defined GNU_COMPILER_ENABLED</a>
 <a name="646"><span class="lineNum">     646 </span><span class="lineCov">        384 :         inquire(file = path, exist = pathIsDir)</span></a>
 <a name="647"><span class="lineNum">     647 </span>            : #else</a>
 <a name="648"><span class="lineNum">     648 </span>            : #error &quot;This procedure does not currently support compilers other than Intel ifort and GNU gfortran.&quot;</a>

@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">42</td>
-            <td class="headerCovTableEntryHi">95.2 %</td>
+            <td class="headerCovTableEntry">40</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">6</td>
@@ -151,7 +151,7 @@
 <a name="81"><span class="lineNum">      81 </span>            :     !&gt; \return</a>
 <a name="82"><span class="lineNum">      82 </span>            :     !&gt; `logdvdz` : The natural logarithm of the differential comoving volume of cosmos.</a>
 <a name="83"><span class="lineNum">      83 </span><span class="lineCov">          3 :     pure function getlogdvdz(zplus1,logzplus1,twiceLogLumDisMpc) result(logdvdz)</span></a>
-<a name="84"><span class="lineNum">      84 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="84"><span class="lineNum">      84 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="85"><span class="lineNum">      85 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getlogdvdz</a>
 <a name="86"><span class="lineNum">      86 </span>            : #endif</a>
 <a name="87"><span class="lineNum">      87 </span>            :         use Constants_mod, only: RK, PI</a>
@@ -180,7 +180,7 @@
 <a name="110"><span class="lineNum">     110 </span>            :     !&gt; \remark</a>
 <a name="111"><span class="lineNum">     111 </span>            :     !&gt; The distance is calculated according to approximate algorithm of Wickramasinghe &amp; Okwatta (2010).</a>
 <a name="112"><span class="lineNum">     112 </span><span class="lineCov">         48 :     pure function getLogLumDisWicMpc(zplus1) result(logLumDisWicMpc)</span></a>
-<a name="113"><span class="lineNum">     113 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="113"><span class="lineNum">     113 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="114"><span class="lineNum">     114 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogLumDisWicMpc</a>
 <a name="115"><span class="lineNum">     115 </span>            : #endif</a>
 <a name="116"><span class="lineNum">     116 </span><span class="lineCov">          3 :         use Constants_mod, only: RK</span></a>
@@ -221,7 +221,7 @@
 <a name="151"><span class="lineNum">     151 </span>            :     !&gt; except for the fact that it return the natural value, as opposed to the natural logarithm.</a>
 <a name="152"><span class="lineNum">     152 </span>            :     !&gt; It is kept only for legacy reasons and should not be used in new code.</a>
 <a name="153"><span class="lineNum">     153 </span><span class="lineCov">          3 :     pure function ldiswickram(zplus1)</span></a>
-<a name="154"><span class="lineNum">     154 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="154"><span class="lineNum">     154 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="155"><span class="lineNum">     155 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: ldiswickram</a>
 <a name="156"><span class="lineNum">     156 </span>            : #endif</a>
 <a name="157"><span class="lineNum">     157 </span><span class="lineCov">         48 :         use Constants_mod, only: RK</span></a>
@@ -258,7 +258,7 @@
 <a name="188"><span class="lineNum">     188 </span>            :     !&gt; \author</a>
 <a name="189"><span class="lineNum">     189 </span>            :     !&gt; Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.</a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">       3918 :     function getLookBackTime(zplus1,maxRelativeError,nRefinement) result(lookBackTime)</span></a>
-<a name="191"><span class="lineNum">     191 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="191"><span class="lineNum">     191 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="192"><span class="lineNum">     192 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLookBackTime</a>
 <a name="193"><span class="lineNum">     193 </span>            : #endif</a>
 <a name="194"><span class="lineNum">     194 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
@@ -287,77 +287,79 @@
 <a name="217"><span class="lineNum">     217 </span>            :                                 , ierr              = ierr                      &amp;</a>
 <a name="218"><span class="lineNum">     218 </span><span class="lineCov">       3918 :                                 )</span></a>
 <a name="219"><span class="lineNum">     219 </span><span class="lineCov">       3918 :         if (ierr/=0_IK) then</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineNoCov">          0 :             write(output_unit,&quot;(A)&quot;) ErrorMessage(ierr)</span></a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineNoCov">          0 :             error stop</span></a>
-<a name="222"><span class="lineNum">     222 </span>            :         end if</a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">       3918 :         lookBackTime = HUBBLE_TIME_GYRS * lookBackTime</span></a>
-<a name="224"><span class="lineNum">     224 </span>            : </a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       3918 :     end function getLookBackTime</span></a>
+<a name="220"><span class="lineNum">     220 </span>            :             ! LCOV_EXCL_START</a>
+<a name="221"><span class="lineNum">     221 </span>            :             write(output_unit,&quot;(A)&quot;) ErrorMessage(ierr)</a>
+<a name="222"><span class="lineNum">     222 </span>            :             error stop</a>
+<a name="223"><span class="lineNum">     223 </span>            :             ! LCOV_EXCL_STOP</a>
+<a name="224"><span class="lineNum">     224 </span>            :         end if</a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">       3918 :         lookBackTime = HUBBLE_TIME_GYRS * lookBackTime</span></a>
 <a name="226"><span class="lineNum">     226 </span>            : </a>
-<a name="227"><span class="lineNum">     227 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">       3918 :     end function getLookBackTime</span></a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
-<a name="229"><span class="lineNum">     229 </span>            :     !&gt; \brief</a>
-<a name="230"><span class="lineNum">     230 </span>            :     !&gt; Return the **differential** (w.r.t. `z`) cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters.</a>
-<a name="231"><span class="lineNum">     231 </span>            :     !&gt;</a>
-<a name="232"><span class="lineNum">     232 </span>            :     !&gt; @param[in]   zplus1              : The redshift plus 1.</a>
-<a name="233"><span class="lineNum">     233 </span>            :     !&gt; \return</a>
-<a name="234"><span class="lineNum">     234 </span>            :     !&gt; `lookBackTimeDnesity` : The cosmological lookback time in GYrs at the given redshift.</a>
-<a name="235"><span class="lineNum">     235 </span>            :     !&gt;</a>
-<a name="236"><span class="lineNum">     236 </span>            :     !&gt; \remark</a>
-<a name="237"><span class="lineNum">     237 </span>            :     !&gt; The rest of the required parameters are taken from the module:</a>
-<a name="238"><span class="lineNum">     238 </span>            :     !&gt; - `OMEGA_DE` : the dark energy density,</a>
-<a name="239"><span class="lineNum">     239 </span>            :     !&gt; - `OMEGA_DM` : the dark matter density.</a>
-<a name="240"><span class="lineNum">     240 </span>            :     !&gt;</a>
-<a name="241"><span class="lineNum">     241 </span>            :     !&gt; \remark</a>
-<a name="242"><span class="lineNum">     242 </span>            :     !&gt; This function could have become an internal function within [getLookBackTime](@ref getlookbacktime).</a>
-<a name="243"><span class="lineNum">     243 </span>            :     !&gt; However, the library yields segmentation fault error when compiled and run on the Windows Subsystem </a>
-<a name="244"><span class="lineNum">     244 </span>            :     !&gt; for Linux Ubuntu with GFortran. As such, it is implemented as an independent function.</a>
-<a name="245"><span class="lineNum">     245 </span>            :     !&gt;</a>
-<a name="246"><span class="lineNum">     246 </span>            :     !&gt; \author</a>
-<a name="247"><span class="lineNum">     247 </span>            :     !&gt; Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.</a>
-<a name="248"><span class="lineNum">     248 </span><span class="lineCov">     183726 :     pure function getLookBackTimeDensity(zplus1) result(lookBackTimeDnesity)</span></a>
-<a name="249"><span class="lineNum">     249 </span><span class="lineCov">       3918 :         use Constants_mod, only: RK</span></a>
-<a name="250"><span class="lineNum">     250 </span>            :         implicit none</a>
-<a name="251"><span class="lineNum">     251 </span>            :         real(RK), intent(in)    :: zplus1</a>
-<a name="252"><span class="lineNum">     252 </span>            :         real(RK)                :: lookBackTimeDnesity</a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">     183726 :         lookBackTimeDnesity = 1._RK / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">     367452 :     end function getLookBackTimeDensity</span></a>
-<a name="255"><span class="lineNum">     255 </span>            : </a>
-<a name="256"><span class="lineNum">     256 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="229"><span class="lineNum">     229 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="230"><span class="lineNum">     230 </span>            : </a>
+<a name="231"><span class="lineNum">     231 </span>            :     !&gt; \brief</a>
+<a name="232"><span class="lineNum">     232 </span>            :     !&gt; Return the **differential** (w.r.t. `z`) cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters.</a>
+<a name="233"><span class="lineNum">     233 </span>            :     !&gt;</a>
+<a name="234"><span class="lineNum">     234 </span>            :     !&gt; @param[in]   zplus1              : The redshift plus 1.</a>
+<a name="235"><span class="lineNum">     235 </span>            :     !&gt; \return</a>
+<a name="236"><span class="lineNum">     236 </span>            :     !&gt; `lookBackTimeDnesity` : The cosmological lookback time in GYrs at the given redshift.</a>
+<a name="237"><span class="lineNum">     237 </span>            :     !&gt;</a>
+<a name="238"><span class="lineNum">     238 </span>            :     !&gt; \remark</a>
+<a name="239"><span class="lineNum">     239 </span>            :     !&gt; The rest of the required parameters are taken from the module:</a>
+<a name="240"><span class="lineNum">     240 </span>            :     !&gt; - `OMEGA_DE` : the dark energy density,</a>
+<a name="241"><span class="lineNum">     241 </span>            :     !&gt; - `OMEGA_DM` : the dark matter density.</a>
+<a name="242"><span class="lineNum">     242 </span>            :     !&gt;</a>
+<a name="243"><span class="lineNum">     243 </span>            :     !&gt; \remark</a>
+<a name="244"><span class="lineNum">     244 </span>            :     !&gt; This function could have become an internal function within [getLookBackTime](@ref getlookbacktime).</a>
+<a name="245"><span class="lineNum">     245 </span>            :     !&gt; However, the library yields segmentation fault error when compiled and run on the Windows Subsystem </a>
+<a name="246"><span class="lineNum">     246 </span>            :     !&gt; for Linux Ubuntu with GFortran. As such, it is implemented as an independent function.</a>
+<a name="247"><span class="lineNum">     247 </span>            :     !&gt;</a>
+<a name="248"><span class="lineNum">     248 </span>            :     !&gt; \author</a>
+<a name="249"><span class="lineNum">     249 </span>            :     !&gt; Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.</a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">     183726 :     pure function getLookBackTimeDensity(zplus1) result(lookBackTimeDnesity)</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">       3918 :         use Constants_mod, only: RK</span></a>
+<a name="252"><span class="lineNum">     252 </span>            :         implicit none</a>
+<a name="253"><span class="lineNum">     253 </span>            :         real(RK), intent(in)    :: zplus1</a>
+<a name="254"><span class="lineNum">     254 </span>            :         real(RK)                :: lookBackTimeDnesity</a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">     183726 :         lookBackTimeDnesity = 1._RK / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">     367452 :     end function getLookBackTimeDensity</span></a>
 <a name="257"><span class="lineNum">     257 </span>            : </a>
-<a name="258"><span class="lineNum">     258 </span>            :     !&gt; \brief</a>
-<a name="259"><span class="lineNum">     259 </span>            :     !&gt; Return the derivative of the age of the Universe, w.r.t. redshift for a given input redshift + 1.</a>
-<a name="260"><span class="lineNum">     260 </span>            :     !&gt;</a>
-<a name="261"><span class="lineNum">     261 </span>            :     !&gt; @param[in] zplus1 : The redshift plus 1.</a>
+<a name="258"><span class="lineNum">     258 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="259"><span class="lineNum">     259 </span>            : </a>
+<a name="260"><span class="lineNum">     260 </span>            :     !&gt; \brief</a>
+<a name="261"><span class="lineNum">     261 </span>            :     !&gt; Return the derivative of the age of the Universe, w.r.t. redshift for a given input redshift + 1.</a>
 <a name="262"><span class="lineNum">     262 </span>            :     !&gt;</a>
-<a name="263"><span class="lineNum">     263 </span>            :     !&gt; \return</a>
-<a name="264"><span class="lineNum">     264 </span>            :     !&gt; `universeAgeDerivative` : The derivative of the age of the Universe, w.r.t. redshift for a given input `zplus1`.</a>
-<a name="265"><span class="lineNum">     265 </span>            :     !&gt;</a>
-<a name="266"><span class="lineNum">     266 </span>            :     !&gt; \remark</a>
-<a name="267"><span class="lineNum">     267 </span>            :     !&gt; The rest of the required parameters are taken from the module:</a>
-<a name="268"><span class="lineNum">     268 </span>            :     !&gt; - `INVERSE_HUBBLE_CONST`</a>
-<a name="269"><span class="lineNum">     269 </span>            :     !&gt; - `OMEGA_DE`</a>
-<a name="270"><span class="lineNum">     270 </span>            :     !&gt; - `OMEGA_DM`</a>
-<a name="271"><span class="lineNum">     271 </span>            :     !&gt;</a>
-<a name="272"><span class="lineNum">     272 </span>            :     !&gt; \remark</a>
-<a name="273"><span class="lineNum">     273 </span>            :     !&gt; The integrations are performed using the Romberg integration method.</a>
-<a name="274"><span class="lineNum">     274 </span>            :     !&gt;</a>
-<a name="275"><span class="lineNum">     275 </span>            :     !&gt; \author</a>
-<a name="276"><span class="lineNum">     276 </span>            :     !&gt; Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.</a>
-<a name="277"><span class="lineNum">     277 </span><span class="lineCov">       3891 :     pure function getUniverseAgeDerivative(zplus1) result(universeAgeDerivative)</span></a>
-<a name="278"><span class="lineNum">     278 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="279"><span class="lineNum">     279 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getUniverseAgeDerivative</a>
-<a name="280"><span class="lineNum">     280 </span>            : #endif</a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">     183726 :         use Constants_mod, only: RK</span></a>
-<a name="282"><span class="lineNum">     282 </span>            :         implicit none</a>
-<a name="283"><span class="lineNum">     283 </span>            :         real(RK), intent(in)    :: zplus1</a>
-<a name="284"><span class="lineNum">     284 </span>            :         real(RK)                :: universeAgeDerivative</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">       3891 :         universeAgeDerivative = INVERSE_HUBBLE_CONST / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )</span></a>
-<a name="286"><span class="lineNum">     286 </span><span class="lineCov">       3891 :     end function getUniverseAgeDerivative</span></a>
-<a name="287"><span class="lineNum">     287 </span>            : </a>
-<a name="288"><span class="lineNum">     288 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="263"><span class="lineNum">     263 </span>            :     !&gt; @param[in] zplus1 : The redshift plus 1.</a>
+<a name="264"><span class="lineNum">     264 </span>            :     !&gt;</a>
+<a name="265"><span class="lineNum">     265 </span>            :     !&gt; \return</a>
+<a name="266"><span class="lineNum">     266 </span>            :     !&gt; `universeAgeDerivative` : The derivative of the age of the Universe, w.r.t. redshift for a given input `zplus1`.</a>
+<a name="267"><span class="lineNum">     267 </span>            :     !&gt;</a>
+<a name="268"><span class="lineNum">     268 </span>            :     !&gt; \remark</a>
+<a name="269"><span class="lineNum">     269 </span>            :     !&gt; The rest of the required parameters are taken from the module:</a>
+<a name="270"><span class="lineNum">     270 </span>            :     !&gt; - `INVERSE_HUBBLE_CONST`</a>
+<a name="271"><span class="lineNum">     271 </span>            :     !&gt; - `OMEGA_DE`</a>
+<a name="272"><span class="lineNum">     272 </span>            :     !&gt; - `OMEGA_DM`</a>
+<a name="273"><span class="lineNum">     273 </span>            :     !&gt;</a>
+<a name="274"><span class="lineNum">     274 </span>            :     !&gt; \remark</a>
+<a name="275"><span class="lineNum">     275 </span>            :     !&gt; The integrations are performed using the Romberg integration method.</a>
+<a name="276"><span class="lineNum">     276 </span>            :     !&gt;</a>
+<a name="277"><span class="lineNum">     277 </span>            :     !&gt; \author</a>
+<a name="278"><span class="lineNum">     278 </span>            :     !&gt; Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.</a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">       3891 :     pure function getUniverseAgeDerivative(zplus1) result(universeAgeDerivative)</span></a>
+<a name="280"><span class="lineNum">     280 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="281"><span class="lineNum">     281 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getUniverseAgeDerivative</a>
+<a name="282"><span class="lineNum">     282 </span>            : #endif</a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">     183726 :         use Constants_mod, only: RK</span></a>
+<a name="284"><span class="lineNum">     284 </span>            :         implicit none</a>
+<a name="285"><span class="lineNum">     285 </span>            :         real(RK), intent(in)    :: zplus1</a>
+<a name="286"><span class="lineNum">     286 </span>            :         real(RK)                :: universeAgeDerivative</a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">       3891 :         universeAgeDerivative = INVERSE_HUBBLE_CONST / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">       3891 :     end function getUniverseAgeDerivative</span></a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
-<a name="290"><span class="lineNum">     290 </span>            : end module Cosmology_mod</a>
+<a name="290"><span class="lineNum">     290 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="291"><span class="lineNum">     291 </span>            : </a>
+<a name="292"><span class="lineNum">     292 </span>            : end module Cosmology_mod</a>
 </pre>
       </td>
     </tr>

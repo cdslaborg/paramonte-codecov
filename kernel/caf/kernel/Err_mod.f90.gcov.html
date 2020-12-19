@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -149,7 +149,7 @@
 <a name="79"><span class="lineNum">      79 </span>            :     !&gt; @param[in]   returnEnabled   :   A logical value. If `.true.`, the program will not be abruptly terminated.</a>
 <a name="80"><span class="lineNum">      80 </span>            :     !&gt;                                  Instead, the control is returned to the calling routine.</a>
 <a name="81"><span class="lineNum">      81 </span><span class="lineCov">        384 :     subroutine abort(Err, prefix, newline, outputUnit, returnEnabled)</span></a>
-<a name="82"><span class="lineNum">      82 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="82"><span class="lineNum">      82 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="83"><span class="lineNum">      83 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: abort</a>
 <a name="84"><span class="lineNum">      84 </span>            : #endif</a>
 <a name="85"><span class="lineNum">      85 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
@@ -283,8 +283,8 @@
 <a name="213"><span class="lineNum">     213 </span>            :     !&gt; @param[in]   outputUnit  : The output file unit (**optional**, default = stdout).</a>
 <a name="214"><span class="lineNum">     214 </span>            :     !&gt; @param[in]   marginTop   : The number of empty lines before printing the message to the output (**optional**).</a>
 <a name="215"><span class="lineNum">     215 </span>            :     !&gt; @param[in]   marginBot   : The number of empty lines after printing the message to the output (**optional**).</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">        801 :     subroutine warn(msg,prefix,newline,outputUnit,marginTop,marginBot)</span></a>
-<a name="217"><span class="lineNum">     217 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">        803 :     subroutine warn(msg,prefix,newline,outputUnit,marginTop,marginBot)</span></a>
+<a name="217"><span class="lineNum">     217 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="218"><span class="lineNum">     218 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: warn</a>
 <a name="219"><span class="lineNum">     219 </span>            : #endif</a>
 <a name="220"><span class="lineNum">     220 </span><span class="lineCov">        384 :         use Constants_mod, only: IK</span></a>
@@ -292,14 +292,14 @@
 <a name="222"><span class="lineNum">     222 </span>            :         character(*), intent(in)            :: msg</a>
 <a name="223"><span class="lineNum">     223 </span>            :         character(*), intent(in), optional  :: prefix, newline</a>
 <a name="224"><span class="lineNum">     224 </span>            :         integer(IK) , intent(in), optional  :: outputUnit,marginTop,marginBot</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        801 :         if (present(prefix)) then</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        803 :         if (present(prefix)) then</span></a>
 <a name="226"><span class="lineNum">     226 </span>            :             call informUser ( msg           = msg                       &amp;</a>
 <a name="227"><span class="lineNum">     227 </span>            :                             , prefix        = prefix // &quot; - WARNING: &quot;  &amp;</a>
 <a name="228"><span class="lineNum">     228 </span>            :                             , newline       = newline                   &amp;</a>
 <a name="229"><span class="lineNum">     229 </span>            :                             , outputUnit    = outputUnit                &amp;</a>
 <a name="230"><span class="lineNum">     230 </span>            :                             , marginTop     = marginTop                 &amp;</a>
 <a name="231"><span class="lineNum">     231 </span>            :                             , marginBot     = marginBot                 &amp;</a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        798 :                             )</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        800 :                             )</span></a>
 <a name="233"><span class="lineNum">     233 </span>            :         else</a>
 <a name="234"><span class="lineNum">     234 </span>            :             call informUser ( msg           = msg                       &amp;</a>
 <a name="235"><span class="lineNum">     235 </span>            :                             , prefix        = &quot; - WARNING: &quot;            &amp;</a>
@@ -309,7 +309,7 @@
 <a name="239"><span class="lineNum">     239 </span>            :                             , marginBot     = marginBot                 &amp;</a>
 <a name="240"><span class="lineNum">     240 </span><span class="lineCov">          3 :                             )</span></a>
 <a name="241"><span class="lineNum">     241 </span>            :         end if</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       1602 :     end subroutine warn</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">       1606 :     end subroutine warn</span></a>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
 <a name="244"><span class="lineNum">     244 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
@@ -321,10 +321,10 @@
 <a name="251"><span class="lineNum">     251 </span>            :     !&gt; @param[in]   marginTop   : The number of empty lines before printing the message to the output (**optional**).</a>
 <a name="252"><span class="lineNum">     252 </span>            :     !&gt; @param[in]   marginBot   : The number of empty lines after printing the message to the output (**optional**).</a>
 <a name="253"><span class="lineNum">     253 </span><span class="lineCov">      34203 :     subroutine note(msg,prefix,newline,outputUnit,marginTop,marginBot)</span></a>
-<a name="254"><span class="lineNum">     254 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="254"><span class="lineNum">     254 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="255"><span class="lineNum">     255 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: note</a>
 <a name="256"><span class="lineNum">     256 </span>            : #endif</a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">        801 :         use Constants_mod, only: IK</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">        803 :         use Constants_mod, only: IK</span></a>
 <a name="258"><span class="lineNum">     258 </span>            :         implicit none</a>
 <a name="259"><span class="lineNum">     259 </span>            :         character(*), intent(in)            :: msg</a>
 <a name="260"><span class="lineNum">     260 </span>            :         character(*), intent(in), optional  :: prefix, newline</a>
@@ -359,8 +359,8 @@
 <a name="289"><span class="lineNum">     289 </span>            :     !&gt; @param[in]   wrapWidth   : The maximum width of the line beyond which the input `msg` is wrapped and continued on the next line (**optional**, default = 100).</a>
 <a name="290"><span class="lineNum">     290 </span>            :     !&gt; @param[in]   marginTop   : The number of empty lines before printing the message to the output (**optional**).</a>
 <a name="291"><span class="lineNum">     291 </span>            :     !&gt; @param[in]   marginBot   : The number of empty lines after printing the message to the output (**optional**).</a>
-<a name="292"><span class="lineNum">     292 </span><span class="lineCov">      35747 :     subroutine informUser(msg,prefix,newline,outputUnit,wrapSplit,wrapWidth,marginTop,marginBot)</span></a>
-<a name="293"><span class="lineNum">     293 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="292"><span class="lineNum">     292 </span><span class="lineCov">      35749 :     subroutine informUser(msg,prefix,newline,outputUnit,wrapSplit,wrapWidth,marginTop,marginBot)</span></a>
+<a name="293"><span class="lineNum">     293 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="294"><span class="lineNum">     294 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: informUser</a>
 <a name="295"><span class="lineNum">     295 </span>            : #endif</a>
 <a name="296"><span class="lineNum">     296 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
@@ -375,62 +375,62 @@
 <a name="305"><span class="lineNum">     305 </span>            :         integer(IK)                         :: stdout, sizeList, sizeListJustified</a>
 <a name="306"><span class="lineNum">     306 </span>            :         integer(IK)                         :: irecord, ijustified, width</a>
 <a name="307"><span class="lineNum">     307 </span>            :         integer(IK)                         :: padTop, padBot, padTopCurrent, padBotCurrent</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">      35747 :         character(:), allocatable           :: pfx, split</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">      35747 :         type(CharVec_type), allocatable     :: List(:), ListJustified(:)</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">      35749 :         character(:), allocatable           :: pfx, split</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">      35749 :         type(CharVec_type), allocatable     :: List(:), ListJustified(:)</span></a>
 <a name="310"><span class="lineNum">     310 </span>            : </a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      35747 :         if (present(outputUnit)) then</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      35747 :             stdout = outputUnit</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">      35749 :         if (present(outputUnit)) then</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">      35749 :             stdout = outputUnit</span></a>
 <a name="313"><span class="lineNum">     313 </span>            :         ! LCOV_EXCL_START</a>
 <a name="314"><span class="lineNum">     314 </span>            :         else</a>
 <a name="315"><span class="lineNum">     315 </span>            :             stdout = output_unit</a>
 <a name="316"><span class="lineNum">     316 </span>            :         end if</a>
 <a name="317"><span class="lineNum">     317 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">      35747 :         if (present(prefix)) then</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">      35747 :             pfx = prefix</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">      35749 :         if (present(prefix)) then</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">      35749 :             pfx = prefix</span></a>
 <a name="320"><span class="lineNum">     320 </span>            :         else</a>
 <a name="321"><span class="lineNum">     321 </span><span class="lineNoCov">          0 :             pfx = &quot;&quot;</span></a>
 <a name="322"><span class="lineNum">     322 </span>            :         end if</a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">      35747 :         if (present(wrapSplit)) then</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">      35749 :         if (present(wrapSplit)) then</span></a>
 <a name="324"><span class="lineNum">     324 </span><span class="lineNoCov">          0 :             split = wrapSplit</span></a>
 <a name="325"><span class="lineNum">     325 </span>            :         else</a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">      35747 :             split = &quot; &quot;</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">      35749 :             split = &quot; &quot;</span></a>
 <a name="327"><span class="lineNum">     327 </span>            :         end if</a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">      35747 :         if (present(wrapWidth)) then</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">      35749 :         if (present(wrapWidth)) then</span></a>
 <a name="329"><span class="lineNum">     329 </span><span class="lineCov">        359 :             width = wrapWidth</span></a>
 <a name="330"><span class="lineNum">     330 </span>            :         else</a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">      35388 :             width = 100_IK</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">      35390 :             width = 100_IK</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :         end if</a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">      35747 :         if (present(marginTop)) then</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">      35749 :         if (present(marginTop)) then</span></a>
 <a name="334"><span class="lineNum">     334 </span><span class="lineCov">      15154 :             padTop = marginTop</span></a>
 <a name="335"><span class="lineNum">     335 </span>            :         else</a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">      20593 :             padTop = 1_IK</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">      20595 :             padTop = 1_IK</span></a>
 <a name="337"><span class="lineNum">     337 </span>            :         end if</a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">      35747 :         if (present(marginBot)) then</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">      35749 :         if (present(marginBot)) then</span></a>
 <a name="339"><span class="lineNum">     339 </span><span class="lineCov">      15272 :             padBot = marginBot</span></a>
 <a name="340"><span class="lineNum">     340 </span>            :         else</a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">      20475 :             padBot = 1_IK</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">      20477 :             padBot = 1_IK</span></a>
 <a name="342"><span class="lineNum">     342 </span>            :         end if</a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">     330688 :         List = getListOfLines(string=msg,delimiter=newline)</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">      35747 :         sizeList = size(List)</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">     165344 :         do irecord = 1, sizeList</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">     330700 :         List = getListOfLines(string=msg,delimiter=newline)</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">      35749 :         sizeList = size(List)</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">     165350 :         do irecord = 1, sizeList</span></a>
 <a name="347"><span class="lineNum">     347 </span><span class="lineNoCov">          0 :             ListJustified = wrapText( string    = List(irecord)%record  &amp;</span></a>
 <a name="348"><span class="lineNum">     348 </span>            :                                     , width     = width                 &amp;</a>
 <a name="349"><span class="lineNum">     349 </span>            :                                     , split     = split                 &amp;</a>
 <a name="350"><span class="lineNum">     350 </span>            :                                     , pad       = &quot; &quot;                   &amp;</a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">     900620 :                                     )</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">     129597 :             sizeListJustified = size(ListJustified)</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">     445008 :             do ijustified = 1, sizeListJustified</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">     279664 :                 padTopCurrent = 0_IK</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">     279664 :                 padBotCurrent = 0_IK</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">     279664 :                 if (irecord==1 .and. ijustified==1_IK) padTopCurrent = padTop ! the very first line</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     279664 :                 if (irecord==sizeList .and. ijustified==sizeListJustified) padBotCurrent = padBot ! the very last line</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">     409261 :                 call write(stdout, padTopCurrent, padBotCurrent, 1_IK, pfx // ListJustified(ijustified)%record )</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">     900640 :                                     )</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">     129601 :             sizeListJustified = size(ListJustified)</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">     445022 :             do ijustified = 1, sizeListJustified</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">     279672 :                 padTopCurrent = 0_IK</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">     279672 :                 padBotCurrent = 0_IK</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">     279672 :                 if (irecord==1 .and. ijustified==1_IK) padTopCurrent = padTop ! the very first line</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">     279672 :                 if (irecord==sizeList .and. ijustified==sizeListJustified) padBotCurrent = padBot ! the very last line</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">     409273 :                 call write(stdout, padTopCurrent, padBotCurrent, 1_IK, pfx // ListJustified(ijustified)%record )</span></a>
 <a name="359"><span class="lineNum">     359 </span>            :             end do</a>
 <a name="360"><span class="lineNum">     360 </span>            :         end do</a>
-<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      35747 :         if (.not.present(marginBot)) call write(stdout)</span></a>
+<a name="361"><span class="lineNum">     361 </span><span class="lineCov">      35749 :         if (.not.present(marginBot)) call write(stdout)</span></a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">     287736 :     end subroutine informUser</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">     287746 :     end subroutine informUser</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
 <a name="365"><span class="lineNum">     365 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="366"><span class="lineNum">     366 </span>            : </a>
@@ -450,61 +450,64 @@
 <a name="380"><span class="lineNum">     380 </span>            :     !&gt; defined, it will SIGNIFICANTLY degrade the parallel performance of the code. </a>
 <a name="381"><span class="lineNum">     381 </span>            :     !&gt; Therefore, **`SAMPLER_TEST_ENABLED` should never be defined when building for production**.</a>
 <a name="382"><span class="lineNum">     382 </span><span class="lineCov">       7338 :     subroutine bcastErr(Err)</span></a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">      35747 :         use Constants_mod, only: IK</span></a>
-<a name="384"><span class="lineNum">     384 </span>            :         implicit none</a>
-<a name="385"><span class="lineNum">     385 </span>            :         type(Err_type), intent(inout)   :: Err</a>
-<a name="386"><span class="lineNum">     386 </span>            :         integer                         :: imageID, imageCount</a>
-<a name="387"><span class="lineNum">     387 </span>            : #if defined CAF_ENABLED</a>
-<a name="388"><span class="lineNum">     388 </span>            :         block</a>
-<a name="389"><span class="lineNum">     389 </span>            :             logical, allocatable, save  :: ErrorOccurred(:)[:]</a>
-<a name="390"><span class="lineNum">     390 </span>            :             integer(IK)                 :: i</a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">       7338 :             imageID     = this_image()</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">       7338 :             imageCount  = num_images()</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">       7338 :             allocate(ErrorOccurred(imageCount)[*])</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       7338 :             ErrorOccurred(imageID) = Err%occurred</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       7338 :             sync all</span></a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">      29352 :             do i = 1, imageCount</span></a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">      29352 :                 ErrorOccurred(i) = ErrorOccurred(i)[i]</span></a>
-<a name="398"><span class="lineNum">     398 </span>            :             end do</a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">      28236 :             Err%occurred = any(ErrorOccurred)</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">       7338 :             deallocate(ErrorOccurred)</span></a>
-<a name="401"><span class="lineNum">     401 </span>            :         end block</a>
-<a name="402"><span class="lineNum">     402 </span>            : #elif defined MPI_ENABLED</a>
-<a name="403"><span class="lineNum">     403 </span>            :         block</a>
-<a name="404"><span class="lineNum">     404 </span>            :             use mpi</a>
-<a name="405"><span class="lineNum">     405 </span>            :             integer                     :: ierrMPI</a>
-<a name="406"><span class="lineNum">     406 </span>            :             logical, allocatable        :: ErrorOccurred(:)</a>
-<a name="407"><span class="lineNum">     407 </span>            :             call mpi_comm_rank(mpi_comm_world, imageID, ierrMPI)</a>
-<a name="408"><span class="lineNum">     408 </span>            :             call mpi_comm_size(mpi_comm_world, imageCount, ierrMPI)</a>
-<a name="409"><span class="lineNum">     409 </span>            :             allocate(ErrorOccurred(imageCount))</a>
-<a name="410"><span class="lineNum">     410 </span>            :             call mpi_allgather  ( Err%occurred      &amp;   ! LCOV_EXCL_LINE : send buffer</a>
-<a name="411"><span class="lineNum">     411 </span>            :                                 , 1                 &amp;   ! LCOV_EXCL_LINE : send count</a>
-<a name="412"><span class="lineNum">     412 </span>            :                                 , mpi_logical       &amp;   ! LCOV_EXCL_LINE : send datatype</a>
-<a name="413"><span class="lineNum">     413 </span>            :                                 , ErrorOccurred(:)  &amp;   ! LCOV_EXCL_LINE : receive buffer</a>
-<a name="414"><span class="lineNum">     414 </span>            :                                 , 1                 &amp;   ! LCOV_EXCL_LINE : receive count</a>
-<a name="415"><span class="lineNum">     415 </span>            :                                 , mpi_logical       &amp;   ! LCOV_EXCL_LINE : receive datatype</a>
-<a name="416"><span class="lineNum">     416 </span>            :                                 , mpi_comm_world    &amp;   ! LCOV_EXCL_LINE : comm</a>
-<a name="417"><span class="lineNum">     417 </span>            :                                 , ierrMPI           &amp;   ! LCOV_EXCL_LINE : ierr</a>
-<a name="418"><span class="lineNum">     418 </span>            :                                 )</a>
-<a name="419"><span class="lineNum">     419 </span>            :            !call mpi_alltoall   ( Err%occurred &amp;    ! buffer_send   : The buffer containing the data that will be scattered to other processes.</a>
-<a name="420"><span class="lineNum">     420 </span>            :            !                    , 1 &amp;               ! count_send    : The number of elements that will be sent to each process.</a>
-<a name="421"><span class="lineNum">     421 </span>            :            !                    , mpi_logical &amp;     ! datatype_send : The type of one send buffer element.</a>
-<a name="422"><span class="lineNum">     422 </span>            :            !                    , ErrorOccurred &amp;   ! buffer_recv   : The buffer in which store the gathered data.</a>
-<a name="423"><span class="lineNum">     423 </span>            :            !                    , imageCount &amp;      ! count_recv    : The number of elements in the message to receive per process, not the total number of elements to receive from all processes altogether.</a>
-<a name="424"><span class="lineNum">     424 </span>            :            !                    , mpi_logical &amp;     ! datatype_recv : The type of one receive buffer element.</a>
-<a name="425"><span class="lineNum">     425 </span>            :            !                    , mpi_comm_world &amp;  ! communicator  : The communicator in which the all to all takes place.</a>
-<a name="426"><span class="lineNum">     426 </span>            :            !                    , ierrMPI &amp;         ! ierror        : The error code returned from the all to all.</a>
-<a name="427"><span class="lineNum">     427 </span>            :            !                    )</a>
-<a name="428"><span class="lineNum">     428 </span>            :             Err%occurred = any(ErrorOccurred)</a>
-<a name="429"><span class="lineNum">     429 </span>            :             deallocate(ErrorOccurred)</a>
-<a name="430"><span class="lineNum">     430 </span>            :         end block</a>
-<a name="431"><span class="lineNum">     431 </span>            : #endif</a>
-<a name="432"><span class="lineNum">     432 </span><span class="lineCov">       7338 :     end subroutine bcastErr</span></a>
-<a name="433"><span class="lineNum">     433 </span>            : #endif</a>
-<a name="434"><span class="lineNum">     434 </span>            : </a>
-<a name="435"><span class="lineNum">     435 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="436"><span class="lineNum">     436 </span>            : </a>
-<a name="437"><span class="lineNum">     437 </span>            : end module Err_mod ! LCOV_EXCL_LINE</a>
+<a name="383"><span class="lineNum">     383 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="384"><span class="lineNum">     384 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: bcastErr</a>
+<a name="385"><span class="lineNum">     385 </span>            : #endif</a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">      35749 :         use Constants_mod, only: IK</span></a>
+<a name="387"><span class="lineNum">     387 </span>            :         implicit none</a>
+<a name="388"><span class="lineNum">     388 </span>            :         type(Err_type), intent(inout)   :: Err</a>
+<a name="389"><span class="lineNum">     389 </span>            :         integer                         :: imageID, imageCount</a>
+<a name="390"><span class="lineNum">     390 </span>            : #if defined CAF_ENABLED</a>
+<a name="391"><span class="lineNum">     391 </span>            :         block</a>
+<a name="392"><span class="lineNum">     392 </span>            :             logical, allocatable, save  :: ErrorOccurred(:)[:]</a>
+<a name="393"><span class="lineNum">     393 </span>            :             integer(IK)                 :: i</a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">       7338 :             imageID     = this_image()</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">       7338 :             imageCount  = num_images()</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">       7338 :             allocate(ErrorOccurred(imageCount)[*])</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">       7338 :             ErrorOccurred(imageID) = Err%occurred</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">       7338 :             sync all</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">      29352 :             do i = 1, imageCount</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">      29352 :                 ErrorOccurred(i) = ErrorOccurred(i)[i]</span></a>
+<a name="401"><span class="lineNum">     401 </span>            :             end do</a>
+<a name="402"><span class="lineNum">     402 </span><span class="lineCov">      28236 :             Err%occurred = any(ErrorOccurred)</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       7338 :             deallocate(ErrorOccurred)</span></a>
+<a name="404"><span class="lineNum">     404 </span>            :         end block</a>
+<a name="405"><span class="lineNum">     405 </span>            : #elif defined MPI_ENABLED</a>
+<a name="406"><span class="lineNum">     406 </span>            :         block</a>
+<a name="407"><span class="lineNum">     407 </span>            :             use mpi</a>
+<a name="408"><span class="lineNum">     408 </span>            :             integer                     :: ierrMPI</a>
+<a name="409"><span class="lineNum">     409 </span>            :             logical, allocatable        :: ErrorOccurred(:)</a>
+<a name="410"><span class="lineNum">     410 </span>            :             call mpi_comm_rank(mpi_comm_world, imageID, ierrMPI)</a>
+<a name="411"><span class="lineNum">     411 </span>            :             call mpi_comm_size(mpi_comm_world, imageCount, ierrMPI)</a>
+<a name="412"><span class="lineNum">     412 </span>            :             allocate(ErrorOccurred(imageCount))</a>
+<a name="413"><span class="lineNum">     413 </span>            :             call mpi_allgather  ( Err%occurred      &amp;   ! LCOV_EXCL_LINE : send buffer</a>
+<a name="414"><span class="lineNum">     414 </span>            :                                 , 1                 &amp;   ! LCOV_EXCL_LINE : send count</a>
+<a name="415"><span class="lineNum">     415 </span>            :                                 , mpi_logical       &amp;   ! LCOV_EXCL_LINE : send datatype</a>
+<a name="416"><span class="lineNum">     416 </span>            :                                 , ErrorOccurred(:)  &amp;   ! LCOV_EXCL_LINE : receive buffer</a>
+<a name="417"><span class="lineNum">     417 </span>            :                                 , 1                 &amp;   ! LCOV_EXCL_LINE : receive count</a>
+<a name="418"><span class="lineNum">     418 </span>            :                                 , mpi_logical       &amp;   ! LCOV_EXCL_LINE : receive datatype</a>
+<a name="419"><span class="lineNum">     419 </span>            :                                 , mpi_comm_world    &amp;   ! LCOV_EXCL_LINE : comm</a>
+<a name="420"><span class="lineNum">     420 </span>            :                                 , ierrMPI           &amp;   ! LCOV_EXCL_LINE : ierr</a>
+<a name="421"><span class="lineNum">     421 </span>            :                                 )</a>
+<a name="422"><span class="lineNum">     422 </span>            :            !call mpi_alltoall   ( Err%occurred &amp;    ! buffer_send   : The buffer containing the data that will be scattered to other processes.</a>
+<a name="423"><span class="lineNum">     423 </span>            :            !                    , 1 &amp;               ! count_send    : The number of elements that will be sent to each process.</a>
+<a name="424"><span class="lineNum">     424 </span>            :            !                    , mpi_logical &amp;     ! datatype_send : The type of one send buffer element.</a>
+<a name="425"><span class="lineNum">     425 </span>            :            !                    , ErrorOccurred &amp;   ! buffer_recv   : The buffer in which store the gathered data.</a>
+<a name="426"><span class="lineNum">     426 </span>            :            !                    , imageCount &amp;      ! count_recv    : The number of elements in the message to receive per process, not the total number of elements to receive from all processes altogether.</a>
+<a name="427"><span class="lineNum">     427 </span>            :            !                    , mpi_logical &amp;     ! datatype_recv : The type of one receive buffer element.</a>
+<a name="428"><span class="lineNum">     428 </span>            :            !                    , mpi_comm_world &amp;  ! communicator  : The communicator in which the all to all takes place.</a>
+<a name="429"><span class="lineNum">     429 </span>            :            !                    , ierrMPI &amp;         ! ierror        : The error code returned from the all to all.</a>
+<a name="430"><span class="lineNum">     430 </span>            :            !                    )</a>
+<a name="431"><span class="lineNum">     431 </span>            :             Err%occurred = any(ErrorOccurred)</a>
+<a name="432"><span class="lineNum">     432 </span>            :             deallocate(ErrorOccurred)</a>
+<a name="433"><span class="lineNum">     433 </span>            :         end block</a>
+<a name="434"><span class="lineNum">     434 </span>            : #endif</a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">       7338 :     end subroutine bcastErr</span></a>
+<a name="436"><span class="lineNum">     436 </span>            : #endif</a>
+<a name="437"><span class="lineNum">     437 </span>            : </a>
+<a name="438"><span class="lineNum">     438 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="439"><span class="lineNum">     439 </span>            : </a>
+<a name="440"><span class="lineNum">     440 </span>            : end module Err_mod ! LCOV_EXCL_LINE</a>
 </pre>
       </td>
     </tr>

@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -170,7 +170,7 @@
 <a name="100"><span class="lineNum">     100 </span>            : </a>
 <a name="101"><span class="lineNum">     101 </span>            :     interface</a>
 <a name="102"><span class="lineNum">     102 </span>            :     module function constructDecoration(tabStr,symbol,text,List) result(Decoration)</a>
-<a name="103"><span class="lineNum">     103 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="103"><span class="lineNum">     103 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="104"><span class="lineNum">     104 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructDecoration</a>
 <a name="105"><span class="lineNum">     105 </span>            : #endif</a>
 <a name="106"><span class="lineNum">     106 </span>            :         use JaggedArray_mod, only: CharVec_type</a>
@@ -185,7 +185,7 @@
 <a name="115"><span class="lineNum">     115 </span>            : </a>
 <a name="116"><span class="lineNum">     116 </span>            :     interface</a>
 <a name="117"><span class="lineNum">     117 </span>            :     module subroutine writeDecoratedText(text,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit,newLine)</a>
-<a name="118"><span class="lineNum">     118 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="118"><span class="lineNum">     118 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="119"><span class="lineNum">     119 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedText</a>
 <a name="120"><span class="lineNum">     120 </span>            : #endif</a>
 <a name="121"><span class="lineNum">     121 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
@@ -202,7 +202,7 @@
 <a name="132"><span class="lineNum">     132 </span>            : </a>
 <a name="133"><span class="lineNum">     133 </span>            :     interface</a>
 <a name="134"><span class="lineNum">     134 </span>            :     module subroutine writeDecoratedList(List,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit)</a>
-<a name="135"><span class="lineNum">     135 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="135"><span class="lineNum">     135 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="136"><span class="lineNum">     136 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedList</a>
 <a name="137"><span class="lineNum">     137 </span>            : #endif</a>
 <a name="138"><span class="lineNum">     138 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
@@ -219,7 +219,7 @@
 <a name="149"><span class="lineNum">     149 </span>            : </a>
 <a name="150"><span class="lineNum">     150 </span>            :     interface</a>
 <a name="151"><span class="lineNum">     151 </span>            :     pure module function drawLine(symbol,width) result(line)</a>
-<a name="152"><span class="lineNum">     152 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="152"><span class="lineNum">     152 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="153"><span class="lineNum">     153 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: drawLine</a>
 <a name="154"><span class="lineNum">     154 </span>            : #endif</a>
 <a name="155"><span class="lineNum">     155 </span>            :         use Constants_mod, only: IK</a>
@@ -234,7 +234,7 @@
 <a name="164"><span class="lineNum">     164 </span>            : </a>
 <a name="165"><span class="lineNum">     165 </span>            :     interface</a>
 <a name="166"><span class="lineNum">     166 </span>            :     pure module function sandwich(text,symbol,width,thicknessHorz) result(sandwichedText)</a>
-<a name="167"><span class="lineNum">     167 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="167"><span class="lineNum">     167 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="168"><span class="lineNum">     168 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: sandwich</a>
 <a name="169"><span class="lineNum">     169 </span>            : #endif</a>
 <a name="170"><span class="lineNum">     170 </span>            :         use Constants_mod, only: IK</a>
@@ -257,7 +257,7 @@
 <a name="187"><span class="lineNum">     187 </span>            :                             , advance       &amp;</a>
 <a name="188"><span class="lineNum">     188 </span>            : #endif</a>
 <a name="189"><span class="lineNum">     189 </span>            :                             )</a>
-<a name="190"><span class="lineNum">     190 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="190"><span class="lineNum">     190 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="191"><span class="lineNum">     191 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: write</a>
 <a name="192"><span class="lineNum">     192 </span>            : #endif</a>
 <a name="193"><span class="lineNum">     193 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
@@ -276,7 +276,7 @@
 <a name="206"><span class="lineNum">     206 </span>            : </a>
 <a name="207"><span class="lineNum">     207 </span>            :     interface</a>
 <a name="208"><span class="lineNum">     208 </span>            :     module function getListOfLines(string,delimiter) result(ListOfLines)</a>
-<a name="209"><span class="lineNum">     209 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="209"><span class="lineNum">     209 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="210"><span class="lineNum">     210 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getListOfLines</a>
 <a name="211"><span class="lineNum">     211 </span>            : #endif</a>
 <a name="212"><span class="lineNum">     212 </span>            :         implicit none</a>
@@ -290,7 +290,7 @@
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            :     interface</a>
 <a name="222"><span class="lineNum">     222 </span>            :     module function wrapText(string,width,split, pad) result(ListOfLines)</a>
-<a name="223"><span class="lineNum">     223 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="223"><span class="lineNum">     223 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="224"><span class="lineNum">     224 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: wrapText</a>
 <a name="225"><span class="lineNum">     225 </span>            : #endif</a>
 <a name="226"><span class="lineNum">     226 </span>            :         use Constants_mod, only: IK</a>
@@ -306,8 +306,8 @@
 <a name="236"><span class="lineNum">     236 </span>            : </a>
 <a name="237"><span class="lineNum">     237 </span>            : !    interface</a>
 <a name="238"><span class="lineNum">     238 </span>            : !    module function style(string, attr, clbg, clfg, isUnixShell) result(modifiedString)</a>
-<a name="239"><span class="lineNum">     239 </span>            : !#if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="240"><span class="lineNum">     240 </span>            : !        !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat</a>
+<a name="239"><span class="lineNum">     239 </span>            : !#if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="240"><span class="lineNum">     240 </span>            : !        !DEC$ ATTRIBUTES DLLEXPORT :: style</a>
 <a name="241"><span class="lineNum">     241 </span>            : !#endif</a>
 <a name="242"><span class="lineNum">     242 </span>            : !        implicit none</a>
 <a name="243"><span class="lineNum">     243 </span>            : !        character(*), intent(in)            :: string</a>
@@ -364,8 +364,8 @@
 <a name="294"><span class="lineNum">     294 </span>            :     !</a>
 <a name="295"><span class="lineNum">     295 </span>            :     !  For more information, see: https://misc.flogisoft.com/bash/tip_colors_and_formatting</a>
 <a name="296"><span class="lineNum">     296 </span><span class="lineCov">         43 :     function style(string, attr, clfg, clbg) result(modifiedString)</span></a>
-<a name="297"><span class="lineNum">     297 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
-<a name="298"><span class="lineNum">     298 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat</a>
+<a name="297"><span class="lineNum">     297 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="298"><span class="lineNum">     298 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: style</a>
 <a name="299"><span class="lineNum">     299 </span>            : #endif</a>
 <a name="300"><span class="lineNum">     300 </span>            :         use Constants_mod, only: ESC</a>
 <a name="301"><span class="lineNum">     301 </span>            :         implicit none</a>
@@ -475,7 +475,7 @@
 <a name="405"><span class="lineNum">     405 </span>            :     !&gt; \return</a>
 <a name="406"><span class="lineNum">     406 </span>            :     !&gt; `formatStr` : The output format string to be used in IO.</a>
 <a name="407"><span class="lineNum">     407 </span><span class="lineCov">       1050 :     pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)</span></a>
-<a name="408"><span class="lineNum">     408 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="408"><span class="lineNum">     408 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="409"><span class="lineNum">     409 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat</a>
 <a name="410"><span class="lineNum">     410 </span>            : #endif</a>
 <a name="411"><span class="lineNum">     411 </span>            :         ! generates IO format strings, primarily for use in the output report files of ParaMonte</a>

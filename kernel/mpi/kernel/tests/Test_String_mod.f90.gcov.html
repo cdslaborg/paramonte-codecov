@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:34:37</td>
+            <td class="headerValue">2020-12-19 06:10:29</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">62</td>
@@ -210,7 +210,7 @@
 <a name="140"><span class="lineNum">     140 </span>            :         integer             :: i</a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">          3 :         String%value = &quot;  StringString &quot;</span></a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         33 :         String%Parts  = split(string=String%value,delim=&quot;String&quot;)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">         24 :         String%Parts  = split(string=String%value,delim=&quot;String&quot;)</span></a>
 <a name="144"><span class="lineNum">     144 </span><span class="lineCov">          3 :         assertion = String%Parts(1)%record == &quot;  &quot; .and. String%Parts(2)%record == &quot; &quot;</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -234,7 +234,7 @@
 <a name="164"><span class="lineNum">     164 </span>            :         integer             :: i</a>
 <a name="165"><span class="lineNum">     165 </span>            : </a>
 <a name="166"><span class="lineNum">     166 </span><span class="lineCov">          3 :         String%value = &quot;  Stringstring &quot;</span></a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         24 :         String%Parts  = split(string=String%value,delim='str')</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">         18 :         String%Parts  = split(string=String%value,delim='str')</span></a>
 <a name="168"><span class="lineNum">     168 </span><span class="lineCov">          3 :         assertion = String%Parts(1)%record == &quot;  String&quot; .and. String%Parts(2)%record == &quot;ing &quot;</span></a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
 <a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -258,7 +258,7 @@
 <a name="188"><span class="lineNum">     188 </span>            :         integer             :: i</a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
 <a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :         String%value = &quot;   &quot;</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         42 :         String%Parts  = split(string=String%value,delim=' ')</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         30 :         String%Parts  = split(string=String%value,delim=' ')</span></a>
 <a name="192"><span class="lineNum">     192 </span><span class="lineCov">          3 :         assertion = String%Parts(1)%record == &quot;&quot;</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
 <a name="194"><span class="lineNum">     194 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -282,7 +282,7 @@
 <a name="212"><span class="lineNum">     212 </span>            :         integer             :: i</a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
 <a name="214"><span class="lineNum">     214 </span><span class="lineCov">          3 :         String%value = &quot;   &quot;</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         42 :         String%Parts  = split(string = String%value, delim = &quot; &quot;, nPart = String%nPart)</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         30 :         String%Parts  = split(string = String%value, delim = &quot; &quot;, nPart = String%nPart)</span></a>
 <a name="216"><span class="lineNum">     216 </span><span class="lineCov">          3 :         assertion = String%nPart == 4_IK</span></a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
 <a name="218"><span class="lineNum">     218 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -308,7 +308,7 @@
 <a name="238"><span class="lineNum">     238 </span>            :         integer             :: i</a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
 <a name="240"><span class="lineNum">     240 </span><span class="lineCov">          3 :         String%value = &quot;ParaMonte&quot;</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         87 :         String%Parts  = split(string = String%value, delim = &quot;&quot;, nPart = String%nPart)</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         60 :         String%Parts  = split(string = String%value, delim = &quot;&quot;, nPart = String%nPart)</span></a>
 <a name="242"><span class="lineNum">     242 </span><span class="lineCov">          3 :         assertion = String%nPart == len(String%value)</span></a>
 <a name="243"><span class="lineNum">     243 </span><span class="lineCov">         30 :         do i = 1, len(String%value)</span></a>
 <a name="244"><span class="lineNum">     244 </span><span class="lineCov">         30 :             assertion = assertion .and. string%parts(i)%record == string%value(i:i)</span></a>
@@ -336,7 +336,7 @@
 <a name="266"><span class="lineNum">     266 </span>            :         integer             :: i</a>
 <a name="267"><span class="lineNum">     267 </span>            : </a>
 <a name="268"><span class="lineNum">     268 </span><span class="lineCov">          3 :         String%value = &quot;  StringString &quot;</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         24 :         String%Parts  = splitStr(string=String%value,delimiter=&quot;String&quot;)</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         18 :         String%Parts  = splitStr(string=String%value,delimiter=&quot;String&quot;)</span></a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineCov">          3 :         assertion = String%Parts(1)%record == &quot;  &quot; .and. String%Parts(2)%record == &quot; &quot;</span></a>
 <a name="271"><span class="lineNum">     271 </span>            : </a>
 <a name="272"><span class="lineNum">     272 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -360,7 +360,7 @@
 <a name="290"><span class="lineNum">     290 </span>            :         integer             :: i</a>
 <a name="291"><span class="lineNum">     291 </span>            : </a>
 <a name="292"><span class="lineNum">     292 </span><span class="lineCov">          3 :         String%value = &quot;  Stringstring &quot;</span></a>
-<a name="293"><span class="lineNum">     293 </span><span class="lineCov">         24 :         String%Parts  = splitStr(string=String%value,delimiter='str')</span></a>
+<a name="293"><span class="lineNum">     293 </span><span class="lineCov">         18 :         String%Parts  = splitStr(string=String%value,delimiter='str')</span></a>
 <a name="294"><span class="lineNum">     294 </span><span class="lineCov">          3 :         assertion = String%Parts(1)%record == &quot;  String&quot; .and. String%Parts(2)%record == &quot;ing &quot;</span></a>
 <a name="295"><span class="lineNum">     295 </span>            : </a>
 <a name="296"><span class="lineNum">     296 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -384,7 +384,7 @@
 <a name="314"><span class="lineNum">     314 </span>            :         integer             :: i</a>
 <a name="315"><span class="lineNum">     315 </span>            : </a>
 <a name="316"><span class="lineNum">     316 </span><span class="lineCov">          3 :         String%value = &quot;   &quot;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         15 :         String%Parts  = splitStr(string=String%value,delimiter=' ')</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">         12 :         String%Parts  = splitStr(string=String%value,delimiter=' ')</span></a>
 <a name="318"><span class="lineNum">     318 </span><span class="lineCov">          3 :         assertion = String%Parts(1)%record == &quot;&quot;</span></a>
 <a name="319"><span class="lineNum">     319 </span>            : </a>
 <a name="320"><span class="lineNum">     320 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -408,7 +408,7 @@
 <a name="338"><span class="lineNum">     338 </span>            :         integer             :: i</a>
 <a name="339"><span class="lineNum">     339 </span>            : </a>
 <a name="340"><span class="lineNum">     340 </span><span class="lineCov">          3 :         String%value = &quot;   &quot;</span></a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         15 :         String%Parts  = splitStr(string = String%value, delimiter = &quot; &quot;, nPart = String%nPart)</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         12 :         String%Parts  = splitStr(string = String%value, delimiter = &quot; &quot;, nPart = String%nPart)</span></a>
 <a name="342"><span class="lineNum">     342 </span><span class="lineCov">          3 :         assertion = String%nPart == 1_IK</span></a>
 <a name="343"><span class="lineNum">     343 </span>            : </a>
 <a name="344"><span class="lineNum">     344 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
@@ -434,7 +434,7 @@
 <a name="364"><span class="lineNum">     364 </span>            :         integer             :: i</a>
 <a name="365"><span class="lineNum">     365 </span>            : </a>
 <a name="366"><span class="lineNum">     366 </span><span class="lineCov">          3 :         String%value = &quot;ParaMonte&quot;</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         15 :         String%Parts  = splitStr(string = String%value, delimiter = &quot;&quot;, nPart = String%nPart)</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">         12 :         String%Parts  = splitStr(string = String%value, delimiter = &quot;&quot;, nPart = String%nPart)</span></a>
 <a name="368"><span class="lineNum">     368 </span><span class="lineCov">          3 :         assertion = String%nPart == 1_IK .and. string%parts(1)%record == string%value</span></a>
 <a name="369"><span class="lineNum">     369 </span>            : </a>
 <a name="370"><span class="lineNum">     370 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>

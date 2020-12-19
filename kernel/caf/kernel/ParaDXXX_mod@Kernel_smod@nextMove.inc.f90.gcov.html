@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -117,40 +117,40 @@
 <a name="47"><span class="lineNum">      47 </span>            : #endif</a>
 <a name="48"><span class="lineNum">      48 </span>            : </a>
 <a name="49"><span class="lineNum">      49 </span>            : #if defined SINGLCHAIN_PARALLELISM</a>
-<a name="50"><span class="lineNum">      50 </span><span class="lineCov">     304527 :                 proposalFoundSinglChainMode = 0_IK</span></a>
+<a name="50"><span class="lineNum">      50 </span><span class="lineCov">     270255 :                 proposalFoundSinglChainMode = 0_IK</span></a>
 <a name="51"><span class="lineNum">      51 </span>            : #if defined CAF_ENABLED</a>
 <a name="52"><span class="lineNum">      52 </span>            :                 ! This syncing is necessary since the co_LogFuncState has to be fetched from the </a>
 <a name="53"><span class="lineNum">      53 </span>            :                 ! first image by all other images before it is updated again below by the first image.</a>
-<a name="54"><span class="lineNum">      54 </span><span class="lineCov">     304527 :                 if (self%Image%isLeader) then</span></a>
-<a name="55"><span class="lineNum">      55 </span><span class="lineCov">     101509 :                     call self%Timer%toc()</span></a>
-<a name="56"><span class="lineNum">      56 </span><span class="lineCov">     101509 :                     sync images(*)</span></a>
-<a name="57"><span class="lineNum">      57 </span><span class="lineCov">     101509 :                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta</span></a>
+<a name="54"><span class="lineNum">      54 </span><span class="lineCov">     270255 :                 if (self%Image%isLeader) then</span></a>
+<a name="55"><span class="lineNum">      55 </span><span class="lineCov">      90085 :                     call self%Timer%toc()</span></a>
+<a name="56"><span class="lineNum">      56 </span><span class="lineCov">      90085 :                     sync images(*)</span></a>
+<a name="57"><span class="lineNum">      57 </span><span class="lineCov">      90085 :                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta</span></a>
 <a name="58"><span class="lineNum">      58 </span>            :                 else</a>
-<a name="59"><span class="lineNum">      59 </span><span class="lineCov">     203018 :                     sync images(1)</span></a>
+<a name="59"><span class="lineNum">      59 </span><span class="lineCov">     180170 :                     sync images(1)</span></a>
 <a name="60"><span class="lineNum">      60 </span>            :                 end if</a>
 <a name="61"><span class="lineNum">      61 </span>            : #endif</a>
 <a name="62"><span class="lineNum">      62 </span>            : #endif</a>
 <a name="63"><span class="lineNum">      63 </span>            : </a>
-<a name="64"><span class="lineNum">      64 </span><span class="lineCov">     788095 :                 LOOP_NEXT_MOVE : do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val</span></a>
+<a name="64"><span class="lineNum">      64 </span><span class="lineCov">     719882 :                 LOOP_NEXT_MOVE : do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val</span></a>
 <a name="65"><span class="lineNum">      65 </span>            : </a>
 <a name="66"><span class="lineNum">      66 </span>            : #if defined SINGLCHAIN_PARALLELISM</a>
 <a name="67"><span class="lineNum">      67 </span>            :                     ! self%Stats%NumFunCall%acceptedRejectedDelayedUnused is relevant only on the first image, despite being updated by all images</a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">     339453 :                     self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">     305295 :                     self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count</span></a>
 <a name="69"><span class="lineNum">      69 </span>            : #endif</a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            :                     co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd &amp; ! LCOV_EXCL_LINE</a>
 <a name="72"><span class="lineNum">      72 </span>            :                                                                             , counterDRS    = counterDRS &amp; ! LCOV_EXCL_LINE</a>
 <a name="73"><span class="lineNum">      73 </span>            :                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1) &amp; ! LCOV_EXCL_LINE</a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">    1205094 :                                                                             )</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">    1102878 :                                                                             )</span></a>
 <a name="75"><span class="lineNum">      75 </span>            : #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) &amp;&amp; !defined CAF_ENABLED &amp;&amp; !defined MPI_ENABLED</a>
 <a name="76"><span class="lineNum">      76 </span>            :                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if</a>
 <a name="77"><span class="lineNum">      77 </span>            : #elif defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED</a>
 <a name="78"><span class="lineNum">      78 </span>            :                     ! This block is exclusively used to test the deterministic restart functionality of ParaDXXX samplers. </a>
 <a name="79"><span class="lineNum">      79 </span>            :                     ! This block must not be activated under any other circumstances.</a>
 <a name="80"><span class="lineNum">      80 </span>            :                     ! This block must be executed by all images.</a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">     434270 :                     self%testSamplingCounter = self%testSamplingCounter + 1_IK</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">     434270 :                     self%Err%occurred = self%Err%occurred .or. self%testSamplingCounter &gt; self%testSamplingCountTarget</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">     434270 :                     if (self%Err%occurred) then</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">     400221 :                     self%testSamplingCounter = self%testSamplingCounter + 1_IK</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">     400221 :                     self%Err%occurred = self%Err%occurred .or. self%testSamplingCounter &gt; self%testSamplingCountTarget</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">     400221 :                     if (self%Err%occurred) then</span></a>
 <a name="84"><span class="lineNum">      84 </span><span class="lineNoCov">          0 :                         if (self%testSamplingCounter &gt; self%testSamplingCountTarget) self%Err%msg = &quot;The simulation was interrupted at the requested sampling count for restart testing purposes.&quot;</span></a>
 <a name="85"><span class="lineNum">      85 </span>            : #if defined MPI_ENABLED || defined CAF_ENABLED</a>
 <a name="86"><span class="lineNum">      86 </span><span class="lineNoCov">          0 :                         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block</span></a>
@@ -163,72 +163,72 @@
 <a name="93"><span class="lineNum">      93 </span>            :                     ! However, it is taken out of the subsequent loops to achieve 100% deterministic reproducibility when</a>
 <a name="94"><span class="lineNum">      94 </span>            :                     ! a simulation is restarted.</a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">     434270 :                     call random_number(uniformRnd)</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">     400221 :                     call random_number(uniformRnd)</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : </a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">     502720 :                     if (self%isFreshRun .or. numFunCallAcceptedPlusOne==self%Chain%Count%compact) then</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">     468779 :                     if (self%isFreshRun .or. numFunCallAcceptedPlusOne==self%Chain%Count%compact) then</span></a>
 <a name="99"><span class="lineNum">      99 </span>            : </a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">     348550 :                         call self%Timer%toc()</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">     348550 :                         co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">     348550 :                         call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta</span></a>
+<a name="100"><span class="lineNum">     100 </span><span class="lineCov">     314522 :                         call self%Timer%toc()</span></a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">     314522 :                         co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">     314522 :                         call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta</span></a>
 <a name="103"><span class="lineNum">     103 </span>            : </a>
 <a name="104"><span class="lineNum">     104 </span>            :                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="105"><span class="lineNum">     105 </span>            :                         ! accept or reject the proposed state</a>
 <a name="106"><span class="lineNum">     106 </span>            :                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="107"><span class="lineNum">     107 </span>            : </a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     348550 :                         if ( co_LogFuncState(0,counterDRS) &gt;= co_LogFuncState(0,-1) ) then ! accept the proposed state</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">     314522 :                         if ( co_LogFuncState(0,counterDRS) &gt;= co_LogFuncState(0,-1) ) then ! accept the proposed state</span></a>
 <a name="109"><span class="lineNum">     109 </span>            : </a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      63153 :                             co_AccRate(counterDRS) = 1._RK</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      63153 :                             co_AccRate(-1) = real(counterDRS,kind=RK)</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">     224754 :                             co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)</span></a>
+<a name="110"><span class="lineNum">     110 </span><span class="lineCov">      63526 :                             co_AccRate(counterDRS) = 1._RK</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">      63526 :                             co_AccRate(-1) = real(counterDRS,kind=RK)</span></a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineCov">     388266 :                             co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)</span></a>
 <a name="113"><span class="lineNum">     113 </span>            : #if !defined SINGLCHAIN_PARALLELISM</a>
-<a name="114"><span class="lineNum">     114 </span><span class="lineCov">       7432 :                             exit LOOP_NEXT_MOVE</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">       7453 :                             exit LOOP_NEXT_MOVE</span></a>
 <a name="115"><span class="lineNum">     115 </span>            : #endif</a>
 <a name="116"><span class="lineNum">     116 </span>            : </a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">     285397 :                             elseif ( co_LogFuncState(0,counterDRS) &lt; maxLogFuncRejectedProposal ) then  ! reject the proposed state. This step should be reachable only when delayedRejectionCount &gt; 0</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">     250996 :                             elseif ( co_LogFuncState(0,counterDRS) &lt; maxLogFuncRejectedProposal ) then  ! reject the proposed state. This step should be reachable only when delayedRejectionCount &gt; 0</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">      13998 :                                 co_AccRate(counterDRS) = 0._RK  ! proposal rejected XXX is this correct? could co_AccRatebe absolute zero?</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">      14047 :                                 co_AccRate(counterDRS) = 0._RK  ! proposal rejected XXX is this correct? could co_AccRatebe absolute zero?</span></a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
 <a name="121"><span class="lineNum">     121 </span>            :                             else    ! accept with probability co_AccRate</a>
 <a name="122"><span class="lineNum">     122 </span>            : </a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">     271399 :                             if ( counterDRS == 0_IK ) then ! This should be equivalent to maxLogFuncRejectedProposal == NEGINF_RK</span></a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">     267547 :                                 logFuncDiff = co_LogFuncState(0,counterDRS) - co_LogFuncState(0,-1)</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">     267547 :                                 if (logFuncDiff &lt; NEGLOGINF_RK) then ! xxx should the condition for LOGHUGE_RK be also added?</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      21983 :                                     co_AccRate(counterDRS) = 0._RK</span></a>
+<a name="123"><span class="lineNum">     123 </span><span class="lineCov">     236949 :                             if ( counterDRS == 0_IK ) then ! This should be equivalent to maxLogFuncRejectedProposal == NEGINF_RK</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">     233041 :                                 logFuncDiff = co_LogFuncState(0,counterDRS) - co_LogFuncState(0,-1)</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">     233041 :                                 if (logFuncDiff &lt; NEGLOGINF_RK) then ! xxx should the condition for LOGHUGE_RK be also added?</span></a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">      11423 :                                     co_AccRate(counterDRS) = 0._RK</span></a>
 <a name="127"><span class="lineNum">     127 </span>            :                                 else</a>
-<a name="128"><span class="lineNum">     128 </span><span class="lineCov">     245564 :                                     co_AccRate(counterDRS) = exp( logFuncDiff )</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">     221618 :                                     co_AccRate(counterDRS) = exp( logFuncDiff )</span></a>
 <a name="129"><span class="lineNum">     129 </span>            :                                 end if</a>
 <a name="130"><span class="lineNum">     130 </span>            :                             else    ! ensure no arithmetic overflow/underflow. ATT: co_LogFuncState(0,-1) &gt; co_LogFuncState(0,counterDRS) &gt; maxLogFuncRejectedProposal</a>
 <a name="131"><span class="lineNum">     131 </span>            :                                 co_AccRate(counterDRS)  = getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) &amp; ! LCOV_EXCL_LINE</a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       3852 :                                                         - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal )</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       3852 :                                 if (co_AccRate(counterDRS) &lt; NEGLOGINF_RK) then</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">       3908 :                                                         - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal )</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">       3908 :                                 if (co_AccRate(counterDRS) &lt; NEGLOGINF_RK) then</span></a>
 <a name="134"><span class="lineNum">     134 </span><span class="lineNoCov">          0 :                                     co_AccRate(counterDRS) = 0._RK</span></a>
 <a name="135"><span class="lineNum">     135 </span>            :                                 else</a>
-<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       3852 :                                     co_AccRate(counterDRS) = exp(co_AccRate(counterDRS))</span></a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">       3908 :                                     co_AccRate(counterDRS) = exp(co_AccRate(counterDRS))</span></a>
 <a name="137"><span class="lineNum">     137 </span>            :                                 end if</a>
 <a name="138"><span class="lineNum">     138 </span>            :                             end if</a>
 <a name="139"><span class="lineNum">     139 </span>            : </a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">     271399 :                             if (uniformRnd&lt;co_AccRate(counterDRS)) then ! accept the proposed state</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">      61744 :                                 co_AccRate(-1) = real(counterDRS,kind=RK)</span></a>
-<a name="142"><span class="lineNum">     142 </span><span class="lineCov">     219206 :                                 co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">     236949 :                             if (uniformRnd&lt;co_AccRate(counterDRS)) then ! accept the proposed state</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">      62071 :                                 co_AccRate(-1) = real(counterDRS,kind=RK)</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">     378255 :                                 co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)</span></a>
 <a name="143"><span class="lineNum">     143 </span>            : #if !defined SINGLCHAIN_PARALLELISM</a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       7571 :                                 exit LOOP_NEXT_MOVE</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">       7551 :                                 exit LOOP_NEXT_MOVE</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : #endif</a>
 <a name="146"><span class="lineNum">     146 </span>            :                             end if</a>
 <a name="147"><span class="lineNum">     147 </span>            : </a>
 <a name="148"><span class="lineNum">     148 </span>            :                         end if</a>
 <a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span><span class="lineCov">     333547 :                         maxLogFuncRejectedProposal = max( maxLogFuncRejectedProposal, co_LogFuncState(0,counterDRS) )</span></a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">     299518 :                         maxLogFuncRejectedProposal = max( maxLogFuncRejectedProposal, co_LogFuncState(0,counterDRS) )</span></a>
 <a name="151"><span class="lineNum">     151 </span>            : </a>
 <a name="152"><span class="lineNum">     152 </span>            :                     else ! if dryrun</a>
 <a name="153"><span class="lineNum">     153 </span>            : </a>
 <a name="154"><span class="lineNum">     154 </span>            : #if defined SINGLCHAIN_PARALLELISM</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">      83736 :                         if (self%Image%id==self%Chain%ProcessID(numFunCallAcceptedPlusOne) .and. &amp;</span></a>
-<a name="156"><span class="lineNum">     156 </span><span class="lineCov">      83736 :                             currentStateWeight+self%Image%id-1_IK==self%Chain%Weight(self%Stats%NumFunCall%accepted) .and. &amp;</span></a>
-<a name="157"><span class="lineNum">     157 </span><span class="lineCov">      41868 :                             counterDRS==self%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">      83694 :                         if (self%Image%id==self%Chain%ProcessID(numFunCallAcceptedPlusOne) .and. &amp;</span></a>
+<a name="156"><span class="lineNum">     156 </span><span class="lineCov">      83694 :                             currentStateWeight+self%Image%id-1_IK==self%Chain%Weight(self%Stats%NumFunCall%accepted) .and. &amp;</span></a>
+<a name="157"><span class="lineNum">     157 </span><span class="lineCov">      41847 :                             counterDRS==self%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then</span></a>
 <a name="158"><span class="lineNum">     158 </span><span class="lineCov">       6972 :                             co_AccRate(-1) = real(counterDRS,kind=RK)</span></a>
 <a name="159"><span class="lineNum">     159 </span><span class="lineCov">       6972 :                             co_LogFuncState(   0,counterDRS) = self%Chain%LogFunc   (numFunCallAcceptedPlusOne)</span></a>
 <a name="160"><span class="lineNum">     160 </span><span class="lineCov">      20916 :                             co_LogFuncState(1:nd,counterDRS) = self%Chain%State(1:nd,numFunCallAcceptedPlusOne)</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      27888 :                             co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">      48804 :                             co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)</span></a>
 <a name="162"><span class="lineNum">     162 </span>            :                         end if</a>
 <a name="163"><span class="lineNum">     163 </span>            : #else</a>
 <a name="164"><span class="lineNum">     164 </span><span class="lineCov">      43852 :                         if (currentStateWeight==self%Chain%Weight(self%Stats%NumFunCall%accepted) .and. counterDRS==self%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then</span></a>
@@ -244,11 +244,11 @@
 <a name="174"><span class="lineNum">     174 </span>            :                     ! broadcast the sampling status from the all images to all images.</a>
 <a name="175"><span class="lineNum">     175 </span>            :                     ! This is needed in singlChain parallelism to avoid unnecessary delayed rejection if a proposal is already found. </a>
 <a name="176"><span class="lineNum">     176 </span>            :                     ! Note that this is not necessary when the delayed rejection is deactivated.</a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">     643980 :                     if (delayedRejectionRequested) then</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      61239 :                         if (co_AccRate(-1) &gt; -0.5_RK) proposalFoundSinglChainMode = 1_IK ! -0.5 instead of -1. avoids possible real roundoff errors.</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      61239 :                         call self%Timer%toc()</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">     556398 :                     if (delayedRejectionRequested) then</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">      61359 :                         if (co_AccRate(-1) &gt; -0.5_RK) proposalFoundSinglChainMode = 1_IK ! -0.5 instead of -1. avoids possible real roundoff errors.</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">      61359 :                         call self%Timer%toc()</span></a>
 <a name="180"><span class="lineNum">     180 </span>            : #if defined CAF_ENABLED</a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">      61239 :                         call co_sum(proposalFoundSinglChainMode)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">      61359 :                         call co_sum(proposalFoundSinglChainMode)</span></a>
 <a name="182"><span class="lineNum">     182 </span>            : #elif defined MPI_ENABLED</a>
 <a name="183"><span class="lineNum">     183 </span>            :                         call mpi_allreduce  ( proposalFoundSinglChainMode           &amp; ! send buffer</a>
 <a name="184"><span class="lineNum">     184 </span>            :                                             , proposalFoundSinglChainModeReduced    &amp; ! recv buffer</a>
@@ -260,8 +260,8 @@
 <a name="190"><span class="lineNum">     190 </span>            :                                             )</a>
 <a name="191"><span class="lineNum">     191 </span>            :                         proposalFoundSinglChainMode = proposalFoundSinglChainModeReduced</a>
 <a name="192"><span class="lineNum">     192 </span>            : #endif</a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">      61239 :                         call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">      61239 :                         if (proposalFoundSinglChainMode&gt;0_IK) exit LOOP_NEXT_MOVE</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">      61359 :                         call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">      61359 :                         if (proposalFoundSinglChainMode&gt;0_IK) exit LOOP_NEXT_MOVE</span></a>
 <a name="195"><span class="lineNum">     195 </span>            :                     end if</a>
 <a name="196"><span class="lineNum">     196 </span>            : #endif</a>
 <a name="197"><span class="lineNum">     197 </span>            : </a>
@@ -283,12 +283,12 @@
 <a name="213"><span class="lineNum">     213 </span>            :                                 )</a>
 <a name="214"><span class="lineNum">     214 </span>            :                 call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta</a>
 <a name="215"><span class="lineNum">     215 </span>            : #elif defined SINGLCHAIN_PARALLELISM &amp;&amp; defined CAF_ENABLED</a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">     304527 :                 if (self%Image%isLeader) then</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">     101509 :                     call self%Timer%toc()</span></a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">     101509 :                     sync images(*)</span></a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">     101509 :                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">     270255 :                 if (self%Image%isLeader) then</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">      90085 :                     call self%Timer%toc()</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">      90085 :                     sync images(*)</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">      90085 :                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta</span></a>
 <a name="220"><span class="lineNum">     220 </span>            :                 else</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">     203018 :                     sync images(1)</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">     180170 :                     sync images(1)</span></a>
 <a name="222"><span class="lineNum">     222 </span>            :                 end if</a>
 <a name="223"><span class="lineNum">     223 </span>            : #endif</a>
 <a name="224"><span class="lineNum">     224 </span>            : </a>

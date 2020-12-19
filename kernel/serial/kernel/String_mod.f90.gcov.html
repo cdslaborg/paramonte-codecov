@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:31:29</td>
+            <td class="headerValue">2020-12-19 06:06:33</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
@@ -190,7 +190,7 @@
 <a name="120"><span class="lineNum">     120 </span>            :     !&gt; \author</a>
 <a name="121"><span class="lineNum">     121 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="122"><span class="lineNum">     122 </span><span class="lineCov">       4044 :     pure recursive function replaceStr(string,search,substitute) result(modifiedString)</span></a>
-<a name="123"><span class="lineNum">     123 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="123"><span class="lineNum">     123 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="124"><span class="lineNum">     124 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: replaceStr</a>
 <a name="125"><span class="lineNum">     125 </span>            : #endif</a>
 <a name="126"><span class="lineNum">     126 </span>            :         implicit none</a>
@@ -248,8 +248,8 @@
 <a name="178"><span class="lineNum">     178 </span>            :     !&gt;</a>
 <a name="179"><span class="lineNum">     179 </span>            :     !&gt; \author</a>
 <a name="180"><span class="lineNum">     180 </span>            :     ! Amir Shahmoradi, Friday Dec 4, 2020, 11:40 PM, Dallas, TX</a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">      15433 :     function split(string,delim,npart) result(Parts)</span></a>
-<a name="182"><span class="lineNum">     182 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">      15479 :     function split(string,delim,npart) result(Parts)</span></a>
+<a name="182"><span class="lineNum">     182 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="183"><span class="lineNum">     183 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: split</a>
 <a name="184"><span class="lineNum">     184 </span>            : #endif</a>
 <a name="185"><span class="lineNum">     185 </span>            :         implicit none</a>
@@ -262,13 +262,13 @@
 <a name="192"><span class="lineNum">     192 </span>            :         integer(IK)                                 :: strlen, dlmlen, npartMax, ipart, ibeg, iend, i</a>
 <a name="193"><span class="lineNum">     193 </span>            :         logical                                     :: npartIsPresent</a>
 <a name="194"><span class="lineNum">     194 </span>            : </a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      15433 :         dlmlen = len(delim)</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">      15433 :         strlen = len(string)</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      15433 :         npartIsPresent = present(npart)</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">      15479 :         dlmlen = len(delim)</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">      15479 :         strlen = len(string)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">      15479 :         npartIsPresent = present(npart)</span></a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
 <a name="199"><span class="lineNum">     199 </span>            :         ! if dlm is empty, return the whole string split character by character</a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">      15433 :         if (dlmlen==0_IK) then</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">      15479 :         if (dlmlen==0_IK) then</span></a>
 <a name="202"><span class="lineNum">     202 </span><span class="lineCov">         10 :             allocate(Parts(strlen))</span></a>
 <a name="203"><span class="lineNum">     203 </span><span class="lineCov">         10 :             do ipart = 1, strlen</span></a>
 <a name="204"><span class="lineNum">     204 </span><span class="lineCov">         10 :                 Parts(ipart)%record = string(ipart:ipart)</span></a>
@@ -277,39 +277,39 @@
 <a name="207"><span class="lineNum">     207 </span><span class="lineCov">          1 :             return</span></a>
 <a name="208"><span class="lineNum">     208 </span>            :         end if</a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">      15432 :         npartMax = 1_IK + strlen / dlmlen ! There can be at most strlen + 1 splits</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">      15432 :         allocate(PartBegin(npartMax), PartEnd(npartMax)) ! This will contain the beginning and the ends of the splits.</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">      15432 :         dlmlenMinusOne = dlmlen - 1_IK</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">      15478 :         npartMax = 1_IK + strlen / dlmlen ! There can be at most strlen + 1 splits</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">      15478 :         allocate(PartBegin(npartMax), PartEnd(npartMax)) ! This will contain the beginning and the ends of the splits.</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">      15478 :         dlmlenMinusOne = dlmlen - 1_IK</span></a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">      15432 :         ibeg = 0_IK</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">      15432 :         ipart = 1_IK</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">      15432 :         PartBegin(ipart) = 1_IK</span></a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">    1960120 :         loopParseString: do</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">      15478 :         ibeg = 0_IK</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">      15478 :         ipart = 1_IK</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">      15478 :         PartBegin(ipart) = 1_IK</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">    1964150 :         loopParseString: do</span></a>
 <a name="218"><span class="lineNum">     218 </span>            : </a>
-<a name="219"><span class="lineNum">     219 </span><span class="lineCov">    1975550 :             ibeg = ibeg + 1_IK</span></a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">    1975550 :             iend = ibeg + dlmlenMinusOne</span></a>
+<a name="219"><span class="lineNum">     219 </span><span class="lineCov">    1979630 :             ibeg = ibeg + 1_IK</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">    1979630 :             iend = ibeg + dlmlenMinusOne</span></a>
 <a name="221"><span class="lineNum">     221 </span>            : </a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">    1975550 :             if (strlen&lt;iend) then ! the remaining part of the string is shorter than the delim</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">      15432 :                 PartEnd(ipart) = strlen</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">      15432 :                 exit loopParseString</span></a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">    1960120 :             elseif ( string(ibeg:iend) == delim ) then</span></a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">     114843 :                 PartEnd(ipart) = ibeg - 1_IK</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">     114843 :                 ipart = ipart + 1_IK</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">     114843 :                 PartBegin(ipart) = iend + 1_IK</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">     114843 :                 ibeg = iend</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">    1979630 :             if (strlen&lt;iend) then ! the remaining part of the string is shorter than the delim</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">      15478 :                 PartEnd(ipart) = strlen</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">      15478 :                 exit loopParseString</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">    1964150 :             elseif ( string(ibeg:iend) == delim ) then</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">     115211 :                 PartEnd(ipart) = ibeg - 1_IK</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">     115211 :                 ipart = ipart + 1_IK</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">     115211 :                 PartBegin(ipart) = iend + 1_IK</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">     115211 :                 ibeg = iend</span></a>
 <a name="230"><span class="lineNum">     230 </span>            :             end if</a>
 <a name="231"><span class="lineNum">     231 </span>            : </a>
 <a name="232"><span class="lineNum">     232 </span>            :         end do loopParseString</a>
 <a name="233"><span class="lineNum">     233 </span>            : </a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">     145707 :         allocate(Parts(ipart))</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">     145707 :         do i = 1, ipart</span></a>
-<a name="236"><span class="lineNum">     236 </span><span class="lineCov">     145707 :             Parts(i)%record = string(PartBegin(i):PartEnd(i))</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">     146167 :         allocate(Parts(ipart))</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">     146167 :         do i = 1, ipart</span></a>
+<a name="236"><span class="lineNum">     236 </span><span class="lineCov">     146167 :             Parts(i)%record = string(PartBegin(i):PartEnd(i))</span></a>
 <a name="237"><span class="lineNum">     237 </span>            :         end do</a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">      15432 :         if (present(npart)) npart = ipart</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">      15478 :         if (present(npart)) npart = ipart</span></a>
 <a name="239"><span class="lineNum">     239 </span>            : </a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">      15432 :         deallocate(PartBegin, PartEnd)</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">      15478 :         deallocate(PartBegin, PartEnd)</span></a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">      15433 :     end function split</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">      15479 :     end function split</span></a>
 <a name="243"><span class="lineNum">     243 </span>            : </a>
 <a name="244"><span class="lineNum">     244 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
@@ -338,7 +338,7 @@
 <a name="268"><span class="lineNum">     268 </span>            :     !&gt; \author</a>
 <a name="269"><span class="lineNum">     269 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="270"><span class="lineNum">     270 </span><span class="lineCov">          5 :     function splitStr(string,delimiter,nPart) result(Parts)</span></a>
-<a name="271"><span class="lineNum">     271 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="271"><span class="lineNum">     271 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="272"><span class="lineNum">     272 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: splitStr</a>
 <a name="273"><span class="lineNum">     273 </span>            : #endif</a>
 <a name="274"><span class="lineNum">     274 </span>            : </a>
@@ -408,7 +408,7 @@
 <a name="338"><span class="lineNum">     338 </span><span class="lineCov">         47 :         Parts = Parts(1:splitCounter)</span></a>
 <a name="339"><span class="lineNum">     339 </span><span class="lineCov">          4 :         if (present(nPart)) nPart = splitCounter</span></a>
 <a name="340"><span class="lineNum">     340 </span>            : </a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">      15438 :     end function splitStr</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">      15484 :     end function splitStr</span></a>
 <a name="342"><span class="lineNum">     342 </span>            : </a>
 <a name="343"><span class="lineNum">     343 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="344"><span class="lineNum">     344 </span>            : </a>
@@ -426,7 +426,7 @@
 <a name="356"><span class="lineNum">     356 </span>            :     !&gt; \author</a>
 <a name="357"><span class="lineNum">     357 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="358"><span class="lineNum">     358 </span><span class="lineCov">        404 :     pure function isDigit(singleChar) result(stringIsDigit)</span></a>
-<a name="359"><span class="lineNum">     359 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="359"><span class="lineNum">     359 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="360"><span class="lineNum">     360 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: isDigit</a>
 <a name="361"><span class="lineNum">     361 </span>            : #endif</a>
 <a name="362"><span class="lineNum">     362 </span>            :         character(1), intent(in)    :: singleChar</a>
@@ -458,7 +458,7 @@
 <a name="388"><span class="lineNum">     388 </span>            :     !&gt; \author</a>
 <a name="389"><span class="lineNum">     389 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="390"><span class="lineNum">     390 </span><span class="lineCov">        867 :     pure function isInteger(string) result(stringIsInteger)</span></a>
-<a name="391"><span class="lineNum">     391 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="391"><span class="lineNum">     391 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="392"><span class="lineNum">     392 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: isInteger</a>
 <a name="393"><span class="lineNum">     393 </span>            : #endif</a>
 <a name="394"><span class="lineNum">     394 </span>            :         character(*), intent(in)    :: string</a>
@@ -493,7 +493,7 @@
 <a name="423"><span class="lineNum">     423 </span>            :     !&gt; \author</a>
 <a name="424"><span class="lineNum">     424 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="425"><span class="lineNum">     425 </span><span class="lineCov">       7278 :     pure function getLowerCase(string) result(output)</span></a>
-<a name="426"><span class="lineNum">     426 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="426"><span class="lineNum">     426 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="427"><span class="lineNum">     427 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCase</a>
 <a name="428"><span class="lineNum">     428 </span>            : #endif</a>
 <a name="429"><span class="lineNum">     429 </span>            :         character(*), intent(in) :: string</a>
@@ -524,7 +524,7 @@
 <a name="454"><span class="lineNum">     454 </span>            :     !&gt; \author</a>
 <a name="455"><span class="lineNum">     455 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="456"><span class="lineNum">     456 </span><span class="lineCov">          2 :     pure function getUpperCase(string) result(output)</span></a>
-<a name="457"><span class="lineNum">     457 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="457"><span class="lineNum">     457 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="458"><span class="lineNum">     458 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCase</a>
 <a name="459"><span class="lineNum">     459 </span>            : #endif</a>
 <a name="460"><span class="lineNum">     460 </span>            :         character(*), intent(in) :: string</a>
@@ -543,7 +543,7 @@
 <a name="473"><span class="lineNum">     473 </span>            : </a>
 <a name="474"><span class="lineNum">     474 </span>            : !    ! ATTN: legacy code, do not use. The substitute functions are &gt;1 order of magnitude faster. Changes a string to lower case</a>
 <a name="475"><span class="lineNum">     475 </span>            : !    pure function getLowerCaseOld(string)</a>
-<a name="476"><span class="lineNum">     476 </span>            : !#if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="476"><span class="lineNum">     476 </span>            : !#if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="477"><span class="lineNum">     477 </span>            : !        !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCaseOld</a>
 <a name="478"><span class="lineNum">     478 </span>            : !#endif</a>
 <a name="479"><span class="lineNum">     479 </span>            : !        implicit None</a>
@@ -562,7 +562,7 @@
 <a name="492"><span class="lineNum">     492 </span>            : !</a>
 <a name="493"><span class="lineNum">     493 </span>            : !    ! ATTN: legacy code, do not use. The substitute functions are &gt;1 order of magnitude faster. Changes a string to upper case</a>
 <a name="494"><span class="lineNum">     494 </span>            : !    pure function getUpperCaseOld(string)</a>
-<a name="495"><span class="lineNum">     495 </span>            : !#if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="495"><span class="lineNum">     495 </span>            : !#if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="496"><span class="lineNum">     496 </span>            : !        !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCaseOld</a>
 <a name="497"><span class="lineNum">     497 </span>            : !#endif</a>
 <a name="498"><span class="lineNum">     498 </span>            : !        implicit None</a>
@@ -593,7 +593,7 @@
 <a name="523"><span class="lineNum">     523 </span>            :     !&gt; \author</a>
 <a name="524"><span class="lineNum">     524 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="525"><span class="lineNum">     525 </span><span class="lineCov">       1747 :     pure function log2str(logicalIn)</span></a>
-<a name="526"><span class="lineNum">     526 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="526"><span class="lineNum">     526 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="527"><span class="lineNum">     527 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: log2str</a>
 <a name="528"><span class="lineNum">     528 </span>            : #endif</a>
 <a name="529"><span class="lineNum">     529 </span>            :         implicit none</a>
@@ -628,8 +628,8 @@
 <a name="558"><span class="lineNum">     558 </span>            :     !&gt;</a>
 <a name="559"><span class="lineNum">     559 </span>            :     !&gt; \author</a>
 <a name="560"><span class="lineNum">     560 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">      13390 :     pure function int322str(integerIn,formatIn,minLen)</span></a>
-<a name="562"><span class="lineNum">     562 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">      13339 :     pure function int322str(integerIn,formatIn,minLen)</span></a>
+<a name="562"><span class="lineNum">     562 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="563"><span class="lineNum">     563 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: int322str</a>
 <a name="564"><span class="lineNum">     564 </span>            : #endif</a>
 <a name="565"><span class="lineNum">     565 </span>            :         use, intrinsic :: iso_fortran_env, only: int32</a>
@@ -638,17 +638,17 @@
 <a name="568"><span class="lineNum">     568 </span>            :         character(*)   , intent(in), optional :: formatIn</a>
 <a name="569"><span class="lineNum">     569 </span>            :         integer(IK)    , intent(in), optional :: minLen</a>
 <a name="570"><span class="lineNum">     570 </span>            :         character(:)   , allocatable          :: int322str</a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineCov">      13390 :         allocate(character(NUM2STR_MAXLEN) :: int322str)</span></a>
-<a name="572"><span class="lineNum">     572 </span><span class="lineCov">      13390 :         if (present(formatIn)) then</span></a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">        337 :             write(int322str,formatIn) integerIn</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">      13339 :         allocate(character(NUM2STR_MAXLEN) :: int322str)</span></a>
+<a name="572"><span class="lineNum">     572 </span><span class="lineCov">      13339 :         if (present(formatIn)) then</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">        312 :             write(int322str,formatIn) integerIn</span></a>
 <a name="574"><span class="lineNum">     574 </span>            :         else</a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">      13053 :             write(int322str,&quot;(I0)&quot;) integerIn</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">      13027 :             write(int322str,&quot;(I0)&quot;) integerIn</span></a>
 <a name="576"><span class="lineNum">     576 </span>            :         end if</a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">      13390 :         if (present(minLen)) then</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">      13339 :         if (present(minLen)) then</span></a>
 <a name="578"><span class="lineNum">     578 </span><span class="lineCov">        900 :             int322str = adjustl(int322str)</span></a>
 <a name="579"><span class="lineNum">     579 </span><span class="lineCov">        900 :             int322str = int322str(1:minLen)</span></a>
 <a name="580"><span class="lineNum">     580 </span>            :         else</a>
-<a name="581"><span class="lineNum">     581 </span><span class="lineCov">      12490 :             int322str = trim(adjustl(int322str))</span></a>
+<a name="581"><span class="lineNum">     581 </span><span class="lineCov">      12439 :             int322str = trim(adjustl(int322str))</span></a>
 <a name="582"><span class="lineNum">     582 </span>            :         end if</a>
 <a name="583"><span class="lineNum">     583 </span><span class="lineCov">       1747 :     end function int322str</span></a>
 <a name="584"><span class="lineNum">     584 </span>            : </a>
@@ -674,7 +674,7 @@
 <a name="604"><span class="lineNum">     604 </span>            :     !&gt; \author</a>
 <a name="605"><span class="lineNum">     605 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="606"><span class="lineNum">     606 </span><span class="lineCov">          4 :     pure function int642str(integerIn,formatIn,minLen)</span></a>
-<a name="607"><span class="lineNum">     607 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="607"><span class="lineNum">     607 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="608"><span class="lineNum">     608 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: int642str</a>
 <a name="609"><span class="lineNum">     609 </span>            : #endif</a>
 <a name="610"><span class="lineNum">     610 </span>            :         use, intrinsic :: iso_fortran_env, only: int64</a>
@@ -695,7 +695,7 @@
 <a name="625"><span class="lineNum">     625 </span>            :         else</a>
 <a name="626"><span class="lineNum">     626 </span><span class="lineCov">          3 :             int642str = trim(adjustl(int642str))</span></a>
 <a name="627"><span class="lineNum">     627 </span>            :         end if</a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineCov">      13390 :     end function int642str</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">      13339 :     end function int642str</span></a>
 <a name="629"><span class="lineNum">     629 </span>            : </a>
 <a name="630"><span class="lineNum">     630 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="631"><span class="lineNum">     631 </span>            : </a>
@@ -715,7 +715,7 @@
 <a name="645"><span class="lineNum">     645 </span>            :     !&gt; \author</a>
 <a name="646"><span class="lineNum">     646 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="647"><span class="lineNum">     647 </span><span class="lineCov">          5 :     pure function real322str(realIn,formatIn,minLen)</span></a>
-<a name="648"><span class="lineNum">     648 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="648"><span class="lineNum">     648 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="649"><span class="lineNum">     649 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: real322str</a>
 <a name="650"><span class="lineNum">     650 </span>            : #endif</a>
 <a name="651"><span class="lineNum">     651 </span>            :         use, intrinsic :: iso_fortran_env, only: real32</a>
@@ -764,8 +764,8 @@
 <a name="694"><span class="lineNum">     694 </span>            :     !&gt;</a>
 <a name="695"><span class="lineNum">     695 </span>            :     !&gt; \author</a>
 <a name="696"><span class="lineNum">     696 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       3886 :     pure function real642str(realIn,formatIn,minLen)</span></a>
-<a name="698"><span class="lineNum">     698 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       3885 :     pure function real642str(realIn,formatIn,minLen)</span></a>
+<a name="698"><span class="lineNum">     698 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="699"><span class="lineNum">     699 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: real642str</a>
 <a name="700"><span class="lineNum">     700 </span>            : #endif</a>
 <a name="701"><span class="lineNum">     701 </span>            :         use, intrinsic :: iso_fortran_env, only: real64</a>
@@ -773,16 +773,16 @@
 <a name="703"><span class="lineNum">     703 </span>            :         real(real64), intent(in)            :: realIn</a>
 <a name="704"><span class="lineNum">     704 </span>            :         character(*), intent(in), optional  :: formatIn</a>
 <a name="705"><span class="lineNum">     705 </span>            :         integer(IK) , intent(in), optional  :: minLen</a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineCov">       3886 :         character(:), allocatable           :: dumstr</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">       3885 :         character(:), allocatable           :: dumstr</span></a>
 <a name="707"><span class="lineNum">     707 </span>            :         character(:), allocatable           :: real642str</a>
 <a name="708"><span class="lineNum">     708 </span>            :         integer(IK)                         :: len_real642str</a>
-<a name="709"><span class="lineNum">     709 </span><span class="lineCov">       3886 :         allocate(character(NUM2STR_MAXLEN)  :: real642str)</span></a>
-<a name="710"><span class="lineNum">     710 </span><span class="lineCov">       3886 :         if (present(formatIn)) then</span></a>
-<a name="711"><span class="lineNum">     711 </span><span class="lineCov">       2245 :             write(real642str,formatIn) realIn</span></a>
+<a name="709"><span class="lineNum">     709 </span><span class="lineCov">       3885 :         allocate(character(NUM2STR_MAXLEN)  :: real642str)</span></a>
+<a name="710"><span class="lineNum">     710 </span><span class="lineCov">       3885 :         if (present(formatIn)) then</span></a>
+<a name="711"><span class="lineNum">     711 </span><span class="lineCov">       2145 :             write(real642str,formatIn) realIn</span></a>
 <a name="712"><span class="lineNum">     712 </span>            :         else</a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       1641 :             write(real642str,*) realIn</span></a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       1740 :             write(real642str,*) realIn</span></a>
 <a name="714"><span class="lineNum">     714 </span>            :         end if</a>
-<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       3886 :         if (present(minLen)) then</span></a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       3885 :         if (present(minLen)) then</span></a>
 <a name="716"><span class="lineNum">     716 </span><span class="lineCov">        902 :             real642str = adjustl(real642str)</span></a>
 <a name="717"><span class="lineNum">     717 </span><span class="lineCov">        902 :             len_real642str = len(real642str)</span></a>
 <a name="718"><span class="lineNum">     718 </span><span class="lineCov">        902 :             if (minLen&gt;len_real642str) then</span></a>
@@ -793,9 +793,9 @@
 <a name="723"><span class="lineNum">     723 </span><span class="lineCov">        901 :                 real642str = real642str(1:minLen)</span></a>
 <a name="724"><span class="lineNum">     724 </span>            :             end if</a>
 <a name="725"><span class="lineNum">     725 </span>            :         else</a>
-<a name="726"><span class="lineNum">     726 </span><span class="lineCov">       2984 :             real642str = trim(adjustl(real642str))</span></a>
+<a name="726"><span class="lineNum">     726 </span><span class="lineCov">       2983 :             real642str = trim(adjustl(real642str))</span></a>
 <a name="727"><span class="lineNum">     727 </span>            :         end if</a>
-<a name="728"><span class="lineNum">     728 </span><span class="lineCov">       3891 :     end function real642str</span></a>
+<a name="728"><span class="lineNum">     728 </span><span class="lineCov">       3890 :     end function real642str</span></a>
 <a name="729"><span class="lineNum">     729 </span>            : </a>
 <a name="730"><span class="lineNum">     730 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="731"><span class="lineNum">     731 </span>            : </a>
@@ -815,7 +815,7 @@
 <a name="745"><span class="lineNum">     745 </span>            :     !&gt; \author</a>
 <a name="746"><span class="lineNum">     746 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="747"><span class="lineNum">     747 </span><span class="lineCov">         44 :     pure function real642str_1D(RealIn,formatIn,minLen)</span></a>
-<a name="748"><span class="lineNum">     748 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="748"><span class="lineNum">     748 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="749"><span class="lineNum">     749 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_1D</a>
 <a name="750"><span class="lineNum">     750 </span>            : #endif</a>
 <a name="751"><span class="lineNum">     751 </span>            :         use, intrinsic :: iso_fortran_env, only: real64</a>
@@ -845,7 +845,7 @@
 <a name="775"><span class="lineNum">     775 </span>            :         else</a>
 <a name="776"><span class="lineNum">     776 </span><span class="lineCov">         20 :             real642str_1D = trim(adjustl(real642str_1D))</span></a>
 <a name="777"><span class="lineNum">     777 </span>            :         end if</a>
-<a name="778"><span class="lineNum">     778 </span><span class="lineCov">       3908 :     end function real642str_1D</span></a>
+<a name="778"><span class="lineNum">     778 </span><span class="lineCov">       3907 :     end function real642str_1D</span></a>
 <a name="779"><span class="lineNum">     779 </span>            : </a>
 <a name="780"><span class="lineNum">     780 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="781"><span class="lineNum">     781 </span>            : </a>
@@ -865,7 +865,7 @@
 <a name="795"><span class="lineNum">     795 </span>            :     !&gt; \author</a>
 <a name="796"><span class="lineNum">     796 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="797"><span class="lineNum">     797 </span><span class="lineCov">         36 :     pure function real642str_2D(RealIn,formatIn,minLen)</span></a>
-<a name="798"><span class="lineNum">     798 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="798"><span class="lineNum">     798 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="799"><span class="lineNum">     799 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_2D</a>
 <a name="800"><span class="lineNum">     800 </span>            : #endif</a>
 <a name="801"><span class="lineNum">     801 </span>            :         use, intrinsic :: iso_fortran_env, only: real64</a>
@@ -915,7 +915,7 @@
 <a name="845"><span class="lineNum">     845 </span>            :     !&gt; \author</a>
 <a name="846"><span class="lineNum">     846 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="847"><span class="lineNum">     847 </span><span class="lineCov">          2 :     function str2int(str,iostat)</span></a>
-<a name="848"><span class="lineNum">     848 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="848"><span class="lineNum">     848 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="849"><span class="lineNum">     849 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: str2int</a>
 <a name="850"><span class="lineNum">     850 </span>            : #endif</a>
 <a name="851"><span class="lineNum">     851 </span><span class="lineCov">         18 :         use Constants_mod, only: IK</span></a>
@@ -949,7 +949,7 @@
 <a name="879"><span class="lineNum">     879 </span>            :     !&gt; \author</a>
 <a name="880"><span class="lineNum">     880 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="881"><span class="lineNum">     881 </span><span class="lineCov">          2 :     function str2int32(str,iostat)</span></a>
-<a name="882"><span class="lineNum">     882 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="882"><span class="lineNum">     882 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="883"><span class="lineNum">     883 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: str2int32</a>
 <a name="884"><span class="lineNum">     884 </span>            : #endif</a>
 <a name="885"><span class="lineNum">     885 </span>            :         use, intrinsic :: iso_fortran_env, only: int32</a>
@@ -983,7 +983,7 @@
 <a name="913"><span class="lineNum">     913 </span>            :     !&gt; \author</a>
 <a name="914"><span class="lineNum">     914 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="915"><span class="lineNum">     915 </span><span class="lineCov">          2 :     function str2int64(str,iostat)</span></a>
-<a name="916"><span class="lineNum">     916 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="916"><span class="lineNum">     916 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="917"><span class="lineNum">     917 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: str2int64</a>
 <a name="918"><span class="lineNum">     918 </span>            : #endif</a>
 <a name="919"><span class="lineNum">     919 </span>            :         use, intrinsic :: iso_fortran_env, only: int64</a>
@@ -1017,7 +1017,7 @@
 <a name="947"><span class="lineNum">     947 </span>            :     !&gt; \author</a>
 <a name="948"><span class="lineNum">     948 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="949"><span class="lineNum">     949 </span><span class="lineCov">          2 :     function str2real(str,iostat)</span></a>
-<a name="950"><span class="lineNum">     950 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="950"><span class="lineNum">     950 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="951"><span class="lineNum">     951 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: str2real</a>
 <a name="952"><span class="lineNum">     952 </span>            : #endif</a>
 <a name="953"><span class="lineNum">     953 </span>            :         use Constants_mod, only: RK ! LCOV_EXCL_LINE</a>
@@ -1051,7 +1051,7 @@
 <a name="981"><span class="lineNum">     981 </span>            :     !&gt; \author</a>
 <a name="982"><span class="lineNum">     982 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="983"><span class="lineNum">     983 </span><span class="lineCov">          6 :     function str2real32(str,iostat)</span></a>
-<a name="984"><span class="lineNum">     984 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="984"><span class="lineNum">     984 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="985"><span class="lineNum">     985 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: str2real32</a>
 <a name="986"><span class="lineNum">     986 </span>            : #endif</a>
 <a name="987"><span class="lineNum">     987 </span>            :         use, intrinsic :: iso_fortran_env, only: real32</a>
@@ -1085,7 +1085,7 @@
 <a name="1015"><span class="lineNum">    1015 </span>            :     !&gt; \author</a>
 <a name="1016"><span class="lineNum">    1016 </span>            :     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin</a>
 <a name="1017"><span class="lineNum">    1017 </span><span class="lineCov">         36 :     function str2real64(str,iostat)</span></a>
-<a name="1018"><span class="lineNum">    1018 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="1018"><span class="lineNum">    1018 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1019"><span class="lineNum">    1019 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: str2real64</a>
 <a name="1020"><span class="lineNum">    1020 </span>            : #endif</a>
 <a name="1021"><span class="lineNum">    1021 </span>            :         use, intrinsic :: iso_fortran_env, only: real64</a>
@@ -1117,29 +1117,32 @@
 <a name="1047"><span class="lineNum">    1047 </span>            :     !&gt; Note that `symbol` can be a string of any length. However, if the full lengths of symbols do not fit</a>
 <a name="1048"><span class="lineNum">    1048 </span>            :     !&gt; at the end of the padded output string, the symbol will be cut at the end of the output padded string.</a>
 <a name="1049"><span class="lineNum">    1049 </span><span class="lineCov">        902 :     pure function padString(string, symbol, paddedLen) result(paddedString)</span></a>
-<a name="1050"><span class="lineNum">    1050 </span><span class="lineCov">         36 :         use Constants_mod, only: IK</span></a>
-<a name="1051"><span class="lineNum">    1051 </span>            :         implicit none</a>
-<a name="1052"><span class="lineNum">    1052 </span>            :         character(*), intent(in)            :: string</a>
-<a name="1053"><span class="lineNum">    1053 </span>            :         character(*), intent(in)            :: symbol</a>
-<a name="1054"><span class="lineNum">    1054 </span>            :         integer(IK) , intent(in)            :: paddedLen</a>
-<a name="1055"><span class="lineNum">    1055 </span>            :         character(paddedLen)                :: paddedString</a>
-<a name="1056"><span class="lineNum">    1056 </span><span class="lineCov">        902 :         character(:), allocatable           :: pad</span></a>
-<a name="1057"><span class="lineNum">    1057 </span>            :         integer(IK)                         :: stringLen, symbolLen, symbolCount, diff ! LCOV_EXCL_LINE</a>
-<a name="1058"><span class="lineNum">    1058 </span>            :         stringLen = len(string) ! LCOV_EXCL_LINE</a>
-<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">        902 :         if (stringLen&gt;=paddedLen) then</span></a>
-<a name="1060"><span class="lineNum">    1060 </span><span class="lineCov">          2 :             paddedString = string</span></a>
-<a name="1061"><span class="lineNum">    1061 </span><span class="lineCov">          2 :             return</span></a>
-<a name="1062"><span class="lineNum">    1062 </span>            :         end if</a>
-<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">        900 :         symbolLen = len(symbol)</span></a>
-<a name="1064"><span class="lineNum">    1064 </span><span class="lineCov">        900 :         diff = paddedLen - stringLen</span></a>
-<a name="1065"><span class="lineNum">    1065 </span><span class="lineCov">        900 :         symbolCount = diff / symbolLen + 1</span></a>
-<a name="1066"><span class="lineNum">    1066 </span><span class="lineCov">      40537 :         pad = repeat(symbol,symbolCount)</span></a>
-<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">        900 :         paddedString = string // pad(1:diff)</span></a>
-<a name="1068"><span class="lineNum">    1068 </span><span class="lineCov">        902 :     end function padString</span></a>
-<a name="1069"><span class="lineNum">    1069 </span>            : </a>
-<a name="1070"><span class="lineNum">    1070 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="1071"><span class="lineNum">    1071 </span>            : </a>
-<a name="1072"><span class="lineNum">    1072 </span>            : end module String_mod ! LCOV_EXCL_LINE</a>
+<a name="1050"><span class="lineNum">    1050 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="1051"><span class="lineNum">    1051 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: padString</a>
+<a name="1052"><span class="lineNum">    1052 </span>            : #endif</a>
+<a name="1053"><span class="lineNum">    1053 </span><span class="lineCov">         36 :         use Constants_mod, only: IK</span></a>
+<a name="1054"><span class="lineNum">    1054 </span>            :         implicit none</a>
+<a name="1055"><span class="lineNum">    1055 </span>            :         character(*), intent(in)            :: string</a>
+<a name="1056"><span class="lineNum">    1056 </span>            :         character(*), intent(in)            :: symbol</a>
+<a name="1057"><span class="lineNum">    1057 </span>            :         integer(IK) , intent(in)            :: paddedLen</a>
+<a name="1058"><span class="lineNum">    1058 </span>            :         character(paddedLen)                :: paddedString</a>
+<a name="1059"><span class="lineNum">    1059 </span><span class="lineCov">        902 :         character(:), allocatable           :: pad</span></a>
+<a name="1060"><span class="lineNum">    1060 </span>            :         integer(IK)                         :: stringLen, symbolLen, symbolCount, diff ! LCOV_EXCL_LINE</a>
+<a name="1061"><span class="lineNum">    1061 </span>            :         stringLen = len(string) ! LCOV_EXCL_LINE</a>
+<a name="1062"><span class="lineNum">    1062 </span><span class="lineCov">        902 :         if (stringLen&gt;=paddedLen) then</span></a>
+<a name="1063"><span class="lineNum">    1063 </span><span class="lineCov">          2 :             paddedString = string</span></a>
+<a name="1064"><span class="lineNum">    1064 </span><span class="lineCov">          2 :             return</span></a>
+<a name="1065"><span class="lineNum">    1065 </span>            :         end if</a>
+<a name="1066"><span class="lineNum">    1066 </span><span class="lineCov">        900 :         symbolLen = len(symbol)</span></a>
+<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">        900 :         diff = paddedLen - stringLen</span></a>
+<a name="1068"><span class="lineNum">    1068 </span><span class="lineCov">        900 :         symbolCount = diff / symbolLen + 1</span></a>
+<a name="1069"><span class="lineNum">    1069 </span><span class="lineCov">      40537 :         pad = repeat(symbol,symbolCount)</span></a>
+<a name="1070"><span class="lineNum">    1070 </span><span class="lineCov">        900 :         paddedString = string // pad(1:diff)</span></a>
+<a name="1071"><span class="lineNum">    1071 </span><span class="lineCov">        902 :     end function padString</span></a>
+<a name="1072"><span class="lineNum">    1072 </span>            : </a>
+<a name="1073"><span class="lineNum">    1073 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="1074"><span class="lineNum">    1074 </span>            : </a>
+<a name="1075"><span class="lineNum">    1075 </span>            : end module String_mod ! LCOV_EXCL_LINE</a>
 </pre>
       </td>
     </tr>

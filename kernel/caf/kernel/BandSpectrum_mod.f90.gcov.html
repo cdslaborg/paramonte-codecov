@@ -11,7 +11,7 @@
 <body>
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
-    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://www.cdslab.org/paramonte/notes/api/kernel/logo.png"/></a></td></tr>
+    <tr><td class="title"><a href="https://www.cdslab.org/paramonte/" target="_blank"><img alt="The ParaMonte Documentation Website" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png"/></a></td></tr>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
 
     <tr>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-13 22:37:57</td>
+            <td class="headerValue">2020-12-19 06:14:23</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -133,7 +133,7 @@
 <a name="63"><span class="lineNum">      63 </span>            : </a>
 <a name="64"><span class="lineNum">      64 </span>            :     interface</a>
 <a name="65"><span class="lineNum">      65 </span>            :     module subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)</a>
-<a name="66"><span class="lineNum">      66 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="66"><span class="lineNum">      66 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="67"><span class="lineNum">      67 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence</a>
 <a name="68"><span class="lineNum">      68 </span>            : #endif</a>
 <a name="69"><span class="lineNum">      69 </span>            :         use Constants_mod, only: IK, RK, HUGE_RK</a>
@@ -150,7 +150,7 @@
 <a name="80"><span class="lineNum">      80 </span>            : </a>
 <a name="81"><span class="lineNum">      81 </span>            :     interface</a>
 <a name="82"><span class="lineNum">      82 </span>            :     module subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)</a>
-<a name="83"><span class="lineNum">      83 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="83"><span class="lineNum">      83 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="84"><span class="lineNum">      84 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence</a>
 <a name="85"><span class="lineNum">      85 </span>            : #endif</a>
 <a name="86"><span class="lineNum">      86 </span>            : </a>
@@ -181,7 +181,7 @@
 <a name="111"><span class="lineNum">     111 </span>            :     !&gt; \return</a>
 <a name="112"><span class="lineNum">     112 </span>            :     !&gt; `ebrk` : The spectral break energy in units of [keV].</a>
 <a name="113"><span class="lineNum">     113 </span><span class="lineCov">          3 :     pure function getEbreak(epk,alpha,beta) result(ebrk)</span></a>
-<a name="114"><span class="lineNum">     114 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="114"><span class="lineNum">     114 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="115"><span class="lineNum">     115 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getEbreak</a>
 <a name="116"><span class="lineNum">     116 </span>            : #endif</a>
 <a name="117"><span class="lineNum">     117 </span>            :         use Constants_mod, only: RK</a>
@@ -206,7 +206,7 @@
 <a name="136"><span class="lineNum">     136 </span>            :     !&gt; \param[out]  coef            :   The spectral continuity coefficient.</a>
 <a name="137"><span class="lineNum">     137 </span>            :     !&gt; \param[out]  alphaPlusTwo    :   The lower spectral exponent of the Band model plus two.</a>
 <a name="138"><span class="lineNum">     138 </span><span class="lineCov">          3 :     pure subroutine getBandParam(epk,alpha,beta,ebrk,coef,alphaPlusTwo)</span></a>
-<a name="139"><span class="lineNum">     139 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="139"><span class="lineNum">     139 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="140"><span class="lineNum">     140 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getBandParam</a>
 <a name="141"><span class="lineNum">     141 </span>            : #endif</a>
 <a name="142"><span class="lineNum">     142 </span><span class="lineCov">          3 :         use Constants_mod, only: IK, RK</span></a>
@@ -243,7 +243,7 @@
 <a name="173"><span class="lineNum">     173 </span>            :     !&gt; The input energy values `energy`, `epk`, `ebrk`, must all have the same units.</a>
 <a name="174"><span class="lineNum">     174 </span>            :     !&gt; It is expected that the input energy is in units of keV, although it does not affect the accuracy of the results.</a>
 <a name="175"><span class="lineNum">     175 </span><span class="lineCov">         12 :     pure function getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo) result(photonFlux)</span></a>
-<a name="176"><span class="lineNum">     176 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="176"><span class="lineNum">     176 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="177"><span class="lineNum">     177 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFlux</a>
 <a name="178"><span class="lineNum">     178 </span>            : #endif</a>
 <a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
@@ -278,7 +278,7 @@
 <a name="208"><span class="lineNum">     208 </span>            :     !&gt; \warning</a>
 <a name="209"><span class="lineNum">     209 </span>            :     !&gt; The input `energy` values must be less than `ebrk`.</a>
 <a name="210"><span class="lineNum">     210 </span><span class="lineCov">          3 :     pure function getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk) result(photonFluxLower)</span></a>
-<a name="211"><span class="lineNum">     211 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="211"><span class="lineNum">     211 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="212"><span class="lineNum">     212 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluxLower</a>
 <a name="213"><span class="lineNum">     213 </span>            : #endif</a>
 <a name="214"><span class="lineNum">     214 </span><span class="lineCov">         12 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
@@ -306,7 +306,7 @@
 <a name="236"><span class="lineNum">     236 </span>            : !WSL_GFORTRAN_BUG     !&gt; \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.</a>
 <a name="237"><span class="lineNum">     237 </span>            : !WSL_GFORTRAN_BUG     !&gt; \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.</a>
 <a name="238"><span class="lineNum">     238 </span>            : !WSL_GFORTRAN_BUG     subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)</a>
-<a name="239"><span class="lineNum">     239 </span>            : !WSL_GFORTRAN_BUG #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="239"><span class="lineNum">     239 </span>            : !WSL_GFORTRAN_BUG #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="240"><span class="lineNum">     240 </span>            : !WSL_GFORTRAN_BUG         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence</a>
 <a name="241"><span class="lineNum">     241 </span>            : !WSL_GFORTRAN_BUG #endif</a>
 <a name="242"><span class="lineNum">     242 </span>            : !WSL_GFORTRAN_BUG </a>
@@ -454,7 +454,7 @@
 <a name="384"><span class="lineNum">     384 </span>            : !WSL_GFORTRAN_BUG     !&gt; \param[out]  energyFluence   :   The fluence in units of the input energy (keV) within the input energy range.</a>
 <a name="385"><span class="lineNum">     385 </span>            : !WSL_GFORTRAN_BUG     !&gt; \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.</a>
 <a name="386"><span class="lineNum">     386 </span>            : !WSL_GFORTRAN_BUG     subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)</a>
-<a name="387"><span class="lineNum">     387 </span>            : !WSL_GFORTRAN_BUG #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="387"><span class="lineNum">     387 </span>            : !WSL_GFORTRAN_BUG #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="388"><span class="lineNum">     388 </span>            : !WSL_GFORTRAN_BUG         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence</a>
 <a name="389"><span class="lineNum">     389 </span>            : !WSL_GFORTRAN_BUG #endif</a>
 <a name="390"><span class="lineNum">     390 </span>            : !WSL_GFORTRAN_BUG </a>
@@ -579,7 +579,7 @@
 <a name="509"><span class="lineNum">     509 </span>            :     !&gt; If the optional `[lowerLimNew, upperLimNew]` are provided, each will replace the</a>
 <a name="510"><span class="lineNum">     510 </span>            :     !&gt; corresponding input `[lowerLim, upperLim]` in the computation of the output `photonFluence`.</a>
 <a name="511"><span class="lineNum">     511 </span><span class="lineCov">         24 :     subroutine getPhotonFluenceFromEnergyFluence( energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance, photonFluence, Err, lowerLimNew, upperLimNew )</span></a>
-<a name="512"><span class="lineNum">     512 </span>            : #if IFORT_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN) &amp;&amp; !defined CFI_ENABLED</a>
+<a name="512"><span class="lineNum">     512 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="513"><span class="lineNum">     513 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluenceFromEnergyFluence</a>
 <a name="514"><span class="lineNum">     514 </span>            : #endif</a>
 <a name="515"><span class="lineNum">     515 </span><span class="lineCov">          3 :         use Constants_mod, only: IK, RK, HUGE_RK</span></a>
