@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-19 06:14:23</td>
+            <td class="headerValue">2020-12-23 03:52:42</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -105,85 +105,90 @@
 <a name="35"><span class="lineNum">      35 </span>            : !!!!   work (education/research/industry/development/...) by citing the ParaMonte </a>
 <a name="36"><span class="lineNum">      36 </span>            : !!!!   library as described on this page:</a>
 <a name="37"><span class="lineNum">      37 </span>            : !!!!</a>
-<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md</a>
+<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md</a>
 <a name="39"><span class="lineNum">      39 </span>            : !!!!</a>
 <a name="40"><span class="lineNum">      40 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="41"><span class="lineNum">      41 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
-<a name="43"><span class="lineNum">      43 </span>            : module SpecBase_MpiFinalizeRequested_mod</a>
-<a name="44"><span class="lineNum">      44 </span>            : </a>
-<a name="45"><span class="lineNum">      45 </span>            :     implicit none</a>
-<a name="46"><span class="lineNum">      46 </span>            : </a>
-<a name="47"><span class="lineNum">      47 </span>            :     ! namelist input</a>
-<a name="48"><span class="lineNum">      48 </span>            :     logical                         :: mpiFinalizeRequested</a>
+<a name="43"><span class="lineNum">      43 </span>            : !&gt; \brief</a>
+<a name="44"><span class="lineNum">      44 </span>            : !&gt; This module contains the classes and procedures for setting up the `mpiFinalizeRequested` attribute of ParaMonte samplers.</a>
+<a name="45"><span class="lineNum">      45 </span>            : !&gt; For more information, see the description of this attribute in the body of the module.</a>
+<a name="46"><span class="lineNum">      46 </span>            : !&gt; \author Amir Shahmoradi</a>
+<a name="47"><span class="lineNum">      47 </span>            : </a>
+<a name="48"><span class="lineNum">      48 </span>            : module SpecBase_MpiFinalizeRequested_mod</a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
-<a name="50"><span class="lineNum">      50 </span>            :     type                            :: MpiFinalizeRequested_type</a>
-<a name="51"><span class="lineNum">      51 </span>            :         logical                     :: val</a>
-<a name="52"><span class="lineNum">      52 </span>            :         logical                     :: def</a>
-<a name="53"><span class="lineNum">      53 </span>            :         character(:), allocatable   :: desc</a>
-<a name="54"><span class="lineNum">      54 </span>            :     contains</a>
-<a name="55"><span class="lineNum">      55 </span>            :         procedure, pass             :: set =&gt; setMpiFinalizeRequested, nullifyNameListVar</a>
-<a name="56"><span class="lineNum">      56 </span>            :     end type MpiFinalizeRequested_type</a>
-<a name="57"><span class="lineNum">      57 </span>            : </a>
-<a name="58"><span class="lineNum">      58 </span>            :     interface MpiFinalizeRequested_type</a>
-<a name="59"><span class="lineNum">      59 </span>            :         module procedure            :: constructMpiFinalizeRequested</a>
-<a name="60"><span class="lineNum">      60 </span>            :     end interface MpiFinalizeRequested_type</a>
-<a name="61"><span class="lineNum">      61 </span>            : </a>
-<a name="62"><span class="lineNum">      62 </span>            :     private :: constructMpiFinalizeRequested, setMpiFinalizeRequested</a>
-<a name="63"><span class="lineNum">      63 </span>            : </a>
-<a name="64"><span class="lineNum">      64 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="65"><span class="lineNum">      65 </span>            : </a>
-<a name="66"><span class="lineNum">      66 </span>            : contains</a>
-<a name="67"><span class="lineNum">      67 </span>            : </a>
-<a name="68"><span class="lineNum">      68 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="69"><span class="lineNum">      69 </span>            : </a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">       1047 :     function constructMpiFinalizeRequested(methodName) result(MpiFinalizeRequestedObj)</span></a>
-<a name="71"><span class="lineNum">      71 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
-<a name="72"><span class="lineNum">      72 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructMpiFinalizeRequested</a>
-<a name="73"><span class="lineNum">      73 </span>            : #endif</a>
-<a name="74"><span class="lineNum">      74 </span>            :         use String_mod, only: log2str</a>
-<a name="75"><span class="lineNum">      75 </span>            :         implicit none</a>
-<a name="76"><span class="lineNum">      76 </span>            :         character(*), intent(in)        :: methodName</a>
-<a name="77"><span class="lineNum">      77 </span>            :         type(MpiFinalizeRequested_type) :: MpiFinalizeRequestedObj</a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       1047 :         MpiFinalizeRequestedObj%def = .true.</span></a>
-<a name="79"><span class="lineNum">      79 </span>            :         MpiFinalizeRequestedObj%desc = &amp;</a>
-<a name="80"><span class="lineNum">      80 </span>            :         &quot;In parallel &quot; // methodName // &quot; simulations via MPI communication libraries, &amp;</a>
-<a name="81"><span class="lineNum">      81 </span>            :         &amp;if mpiFinalizeRequested = true (or T, both case-insensitive), then a call will be made to the MPI_Finalize() routine &amp;</a>
-<a name="82"><span class="lineNum">      82 </span>            :         &amp;from inside &quot; // methodName // &quot; at the end of the simulation to finalize the MPI communications. Set this variable to &amp;</a>
-<a name="83"><span class="lineNum">      83 </span>            :         &amp;false (or f, both case-insensitive) if you do not want &quot; // methodName // &quot; to finalize the MPI communications for you. &amp;</a>
-<a name="84"><span class="lineNum">      84 </span>            :         &amp;This is a low-level simulation specification variable, relevant to simulations that directly involve MPI parallelism. &amp;</a>
-<a name="85"><span class="lineNum">      85 </span>            :         &amp;If you do not have any MPI-routine calls in your main program, you can safely ignore this variable with its default value. &amp;</a>
-<a name="86"><span class="lineNum">      86 </span>            :         &amp;Note that in non-MPI-enabled simulations, such as serial and Coarray-enabled simulations, the value of &amp;</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       1047 :         &amp;this variable is completely ignored. The default value is &quot; // log2str(MpiFinalizeRequestedObj%def) // &quot;.&quot;</span></a>
-<a name="88"><span class="lineNum">      88 </span><span class="lineCov">       1047 :     end function constructMpiFinalizeRequested</span></a>
-<a name="89"><span class="lineNum">      89 </span>            : </a>
-<a name="90"><span class="lineNum">      90 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="91"><span class="lineNum">      91 </span>            : </a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar(MpiFinalizeRequestedObj)</span></a>
-<a name="93"><span class="lineNum">      93 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
-<a name="94"><span class="lineNum">      94 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
-<a name="95"><span class="lineNum">      95 </span>            : #endif</a>
-<a name="96"><span class="lineNum">      96 </span>            :         implicit none</a>
-<a name="97"><span class="lineNum">      97 </span>            :         class(MpiFinalizeRequested_type), intent(in) :: MpiFinalizeRequestedObj</a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">       1047 :         mpiFinalizeRequested = MpiFinalizeRequestedObj%def</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">       1047 :     end subroutine nullifyNameListVar</span></a>
-<a name="100"><span class="lineNum">     100 </span>            : </a>
-<a name="101"><span class="lineNum">     101 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="102"><span class="lineNum">     102 </span>            : </a>
-<a name="103"><span class="lineNum">     103 </span><span class="lineCov">       2088 :     subroutine setMpiFinalizeRequested(MpiFinalizeRequestedObj,mpiFinalizeRequested)</span></a>
-<a name="104"><span class="lineNum">     104 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
-<a name="105"><span class="lineNum">     105 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setMpiFinalizeRequested</a>
-<a name="106"><span class="lineNum">     106 </span>            : #endif</a>
-<a name="107"><span class="lineNum">     107 </span>            :         implicit none</a>
-<a name="108"><span class="lineNum">     108 </span>            :         class(MpiFinalizeRequested_type), intent(inout) :: MpiFinalizeRequestedObj</a>
-<a name="109"><span class="lineNum">     109 </span>            :         logical, intent(in)                             :: mpiFinalizeRequested</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineCov">       2088 :         MpiFinalizeRequestedObj%val = mpiFinalizeRequested</span></a>
-<a name="111"><span class="lineNum">     111 </span>            : </a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineCov">       3135 :     end subroutine setMpiFinalizeRequested</span></a>
-<a name="113"><span class="lineNum">     113 </span>            : </a>
-<a name="114"><span class="lineNum">     114 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="115"><span class="lineNum">     115 </span>            : </a>
-<a name="116"><span class="lineNum">     116 </span>            : end module SpecBase_MpiFinalizeRequested_mod ! LCOV_EXCL_LINE</a>
+<a name="50"><span class="lineNum">      50 </span>            :     implicit none</a>
+<a name="51"><span class="lineNum">      51 </span>            : </a>
+<a name="52"><span class="lineNum">      52 </span>            :     ! namelist input</a>
+<a name="53"><span class="lineNum">      53 </span>            :     logical                         :: mpiFinalizeRequested</a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
+<a name="55"><span class="lineNum">      55 </span>            :     type                            :: MpiFinalizeRequested_type</a>
+<a name="56"><span class="lineNum">      56 </span>            :         logical                     :: val</a>
+<a name="57"><span class="lineNum">      57 </span>            :         logical                     :: def</a>
+<a name="58"><span class="lineNum">      58 </span>            :         character(:), allocatable   :: desc</a>
+<a name="59"><span class="lineNum">      59 </span>            :     contains</a>
+<a name="60"><span class="lineNum">      60 </span>            :         procedure, pass             :: set =&gt; setMpiFinalizeRequested, nullifyNameListVar</a>
+<a name="61"><span class="lineNum">      61 </span>            :     end type MpiFinalizeRequested_type</a>
+<a name="62"><span class="lineNum">      62 </span>            : </a>
+<a name="63"><span class="lineNum">      63 </span>            :     interface MpiFinalizeRequested_type</a>
+<a name="64"><span class="lineNum">      64 </span>            :         module procedure            :: constructMpiFinalizeRequested</a>
+<a name="65"><span class="lineNum">      65 </span>            :     end interface MpiFinalizeRequested_type</a>
+<a name="66"><span class="lineNum">      66 </span>            : </a>
+<a name="67"><span class="lineNum">      67 </span>            :     private :: constructMpiFinalizeRequested, setMpiFinalizeRequested</a>
+<a name="68"><span class="lineNum">      68 </span>            : </a>
+<a name="69"><span class="lineNum">      69 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="70"><span class="lineNum">      70 </span>            : </a>
+<a name="71"><span class="lineNum">      71 </span>            : contains</a>
+<a name="72"><span class="lineNum">      72 </span>            : </a>
+<a name="73"><span class="lineNum">      73 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="74"><span class="lineNum">      74 </span>            : </a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">       1047 :     function constructMpiFinalizeRequested(methodName) result(MpiFinalizeRequestedObj)</span></a>
+<a name="76"><span class="lineNum">      76 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="77"><span class="lineNum">      77 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructMpiFinalizeRequested</a>
+<a name="78"><span class="lineNum">      78 </span>            : #endif</a>
+<a name="79"><span class="lineNum">      79 </span>            :         use String_mod, only: log2str</a>
+<a name="80"><span class="lineNum">      80 </span>            :         implicit none</a>
+<a name="81"><span class="lineNum">      81 </span>            :         character(*), intent(in)        :: methodName</a>
+<a name="82"><span class="lineNum">      82 </span>            :         type(MpiFinalizeRequested_type) :: MpiFinalizeRequestedObj</a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">       1047 :         MpiFinalizeRequestedObj%def = .true.</span></a>
+<a name="84"><span class="lineNum">      84 </span>            :         MpiFinalizeRequestedObj%desc = &amp;</a>
+<a name="85"><span class="lineNum">      85 </span>            :         &quot;In parallel &quot; // methodName // &quot; simulations via MPI communication libraries, &amp;</a>
+<a name="86"><span class="lineNum">      86 </span>            :         &amp;if mpiFinalizeRequested = true (or T, both case-insensitive), then a call will be made to the MPI_Finalize() routine &amp;</a>
+<a name="87"><span class="lineNum">      87 </span>            :         &amp;from inside &quot; // methodName // &quot; at the end of the simulation to finalize the MPI communications. Set this variable to &amp;</a>
+<a name="88"><span class="lineNum">      88 </span>            :         &amp;false (or f, both case-insensitive) if you do not want &quot; // methodName // &quot; to finalize the MPI communications for you. &amp;</a>
+<a name="89"><span class="lineNum">      89 </span>            :         &amp;This is a low-level simulation specification variable, relevant to simulations that directly involve MPI parallelism. &amp;</a>
+<a name="90"><span class="lineNum">      90 </span>            :         &amp;If you do not have any MPI-routine calls in your main program, you can safely ignore this variable with its default value. &amp;</a>
+<a name="91"><span class="lineNum">      91 </span>            :         &amp;Note that in non-MPI-enabled simulations, such as serial and Coarray-enabled simulations, the value of &amp;</a>
+<a name="92"><span class="lineNum">      92 </span><span class="lineCov">       1047 :         &amp;this variable is completely ignored. The default value is &quot; // log2str(MpiFinalizeRequestedObj%def) // &quot;.&quot;</span></a>
+<a name="93"><span class="lineNum">      93 </span><span class="lineCov">       1047 :     end function constructMpiFinalizeRequested</span></a>
+<a name="94"><span class="lineNum">      94 </span>            : </a>
+<a name="95"><span class="lineNum">      95 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="96"><span class="lineNum">      96 </span>            : </a>
+<a name="97"><span class="lineNum">      97 </span><span class="lineCov">       1047 :     subroutine nullifyNameListVar(MpiFinalizeRequestedObj)</span></a>
+<a name="98"><span class="lineNum">      98 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="99"><span class="lineNum">      99 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
+<a name="100"><span class="lineNum">     100 </span>            : #endif</a>
+<a name="101"><span class="lineNum">     101 </span>            :         implicit none</a>
+<a name="102"><span class="lineNum">     102 </span>            :         class(MpiFinalizeRequested_type), intent(in) :: MpiFinalizeRequestedObj</a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">       1047 :         mpiFinalizeRequested = MpiFinalizeRequestedObj%def</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">       1047 :     end subroutine nullifyNameListVar</span></a>
+<a name="105"><span class="lineNum">     105 </span>            : </a>
+<a name="106"><span class="lineNum">     106 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="107"><span class="lineNum">     107 </span>            : </a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">       2088 :     subroutine setMpiFinalizeRequested(MpiFinalizeRequestedObj,mpiFinalizeRequested)</span></a>
+<a name="109"><span class="lineNum">     109 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="110"><span class="lineNum">     110 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setMpiFinalizeRequested</a>
+<a name="111"><span class="lineNum">     111 </span>            : #endif</a>
+<a name="112"><span class="lineNum">     112 </span>            :         implicit none</a>
+<a name="113"><span class="lineNum">     113 </span>            :         class(MpiFinalizeRequested_type), intent(inout) :: MpiFinalizeRequestedObj</a>
+<a name="114"><span class="lineNum">     114 </span>            :         logical, intent(in)                             :: mpiFinalizeRequested</a>
+<a name="115"><span class="lineNum">     115 </span><span class="lineCov">       2088 :         MpiFinalizeRequestedObj%val = mpiFinalizeRequested</span></a>
+<a name="116"><span class="lineNum">     116 </span>            : </a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">       3135 :     end subroutine setMpiFinalizeRequested</span></a>
+<a name="118"><span class="lineNum">     118 </span>            : </a>
+<a name="119"><span class="lineNum">     119 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="120"><span class="lineNum">     120 </span>            : </a>
+<a name="121"><span class="lineNum">     121 </span>            : end module SpecBase_MpiFinalizeRequested_mod ! LCOV_EXCL_LINE</a>
 </pre>
       </td>
     </tr>

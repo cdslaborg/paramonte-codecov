@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-19 06:14:23</td>
+            <td class="headerValue">2020-12-23 03:52:42</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">5</td>
@@ -105,7 +105,7 @@
 <a name="35"><span class="lineNum">      35 </span>            : !!!!   work (education/research/industry/development/...) by citing the ParaMonte</a>
 <a name="36"><span class="lineNum">      36 </span>            : !!!!   library as described on this page:</a>
 <a name="37"><span class="lineNum">      37 </span>            : !!!!</a>
-<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md</a>
+<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md</a>
 <a name="39"><span class="lineNum">      39 </span>            : !!!!</a>
 <a name="40"><span class="lineNum">      40 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="41"><span class="lineNum">      41 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
@@ -130,29 +130,29 @@
 <a name="60"><span class="lineNum">      60 </span>            : </a>
 <a name="61"><span class="lineNum">      61 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="62"><span class="lineNum">      62 </span>            : </a>
-<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          3 :     subroutine test_ParaMCMCRefinedChain()</span></a>
+<a name="63"><span class="lineNum">      63 </span><span class="lineCov">          6 :     subroutine test_ParaMCMCRefinedChain()</span></a>
 <a name="64"><span class="lineNum">      64 </span>            :         implicit none</a>
-<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          3 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          3 :         call Test%run(test_getSkip4NewSampleSize_1, &quot;test_getSkip4NewSampleSize_1&quot;)</span></a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          3 :         call Test%run(test_getSkip4NewSampleSize_2, &quot;test_getSkip4NewSampleSize_2&quot;)</span></a>
-<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          3 :         call Test%run(test_getSkip4NewSampleSize_3, &quot;test_getSkip4NewSampleSize_3&quot;)</span></a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          3 :         call Test%run(test_getSkip4NewSampleSize_4, &quot;test_getSkip4NewSampleSize_4&quot;)</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          3 :         call Test%finalize()</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          3 :     end subroutine test_ParaMCMCRefinedChain</span></a>
+<a name="65"><span class="lineNum">      65 </span><span class="lineCov">          6 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          6 :         call Test%run(test_getSkip4NewSampleSize_1, &quot;test_getSkip4NewSampleSize_1&quot;)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">          6 :         call Test%run(test_getSkip4NewSampleSize_2, &quot;test_getSkip4NewSampleSize_2&quot;)</span></a>
+<a name="68"><span class="lineNum">      68 </span><span class="lineCov">          6 :         call Test%run(test_getSkip4NewSampleSize_3, &quot;test_getSkip4NewSampleSize_3&quot;)</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          6 :         call Test%run(test_getSkip4NewSampleSize_4, &quot;test_getSkip4NewSampleSize_4&quot;)</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          6 :         call Test%finalize()</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          6 :     end subroutine test_ParaMCMCRefinedChain</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="74"><span class="lineNum">      74 </span>            : </a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          3 :     function test_getSkip4NewSampleSize_1() result(assertion)</span></a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          3 :         use Constants_mod, only: IK</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          6 :     function test_getSkip4NewSampleSize_1() result(assertion)</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">          6 :         use Constants_mod, only: IK</span></a>
 <a name="77"><span class="lineNum">      77 </span>            :         implicit none</a>
 <a name="78"><span class="lineNum">      78 </span>            :         logical                     :: assertion</a>
 <a name="79"><span class="lineNum">      79 </span>            :         integer(IK), parameter      :: oldSampleSize = 10_IK</a>
 <a name="80"><span class="lineNum">      80 </span>            :         integer(IK), parameter      :: newSampleSize = 3_IK</a>
 <a name="81"><span class="lineNum">      81 </span>            :         integer(IK), parameter      :: skip4NewSampleSize_ref = 4_IK</a>
 <a name="82"><span class="lineNum">      82 </span>            :         integer(IK)                 :: skip4NewSampleSize</a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          3 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          3 :         assertion = skip4NewSampleSize == skip4NewSampleSize_ref</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          6 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          6 :         assertion = skip4NewSampleSize == skip4NewSampleSize_ref</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          6 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :         ! LCOV_EXCL_START</a>
 <a name="87"><span class="lineNum">      87 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;)</a>
 <a name="88"><span class="lineNum">      88 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;) &quot;skip4NewSampleSize_ref  &quot;, skip4NewSampleSize_ref</a>
@@ -161,21 +161,21 @@
 <a name="91"><span class="lineNum">      91 </span>            :             return</a>
 <a name="92"><span class="lineNum">      92 </span>            :         end if</a>
 <a name="93"><span class="lineNum">      93 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          3 :     end function test_getSkip4NewSampleSize_1</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          6 :     end function test_getSkip4NewSampleSize_1</span></a>
 <a name="95"><span class="lineNum">      95 </span>            : </a>
 <a name="96"><span class="lineNum">      96 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="97"><span class="lineNum">      97 </span>            : </a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          3 :     function test_getSkip4NewSampleSize_2() result(assertion)</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          3 :         use Constants_mod, only: IK</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          6 :     function test_getSkip4NewSampleSize_2() result(assertion)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          6 :         use Constants_mod, only: IK</span></a>
 <a name="100"><span class="lineNum">     100 </span>            :         implicit none</a>
 <a name="101"><span class="lineNum">     101 </span>            :         logical                     :: assertion</a>
 <a name="102"><span class="lineNum">     102 </span>            :         integer(IK), parameter      :: oldSampleSize = 6_IK</a>
 <a name="103"><span class="lineNum">     103 </span>            :         integer(IK), parameter      :: newSampleSize = 3_IK</a>
 <a name="104"><span class="lineNum">     104 </span>            :         integer(IK), parameter      :: skip4NewSampleSize_ref = 2_IK</a>
 <a name="105"><span class="lineNum">     105 </span>            :         integer(IK)                 :: skip4NewSampleSize</a>
-<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          3 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          3 :         assertion = skip4NewSampleSize == skip4NewSampleSize_ref</span></a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="106"><span class="lineNum">     106 </span><span class="lineCov">          6 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">          6 :         assertion = skip4NewSampleSize == skip4NewSampleSize_ref</span></a>
+<a name="108"><span class="lineNum">     108 </span><span class="lineCov">          6 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="109"><span class="lineNum">     109 </span>            :         ! LCOV_EXCL_START</a>
 <a name="110"><span class="lineNum">     110 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;)</a>
 <a name="111"><span class="lineNum">     111 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;) &quot;skip4NewSampleSize_ref  &quot;, skip4NewSampleSize_ref</a>
@@ -184,21 +184,21 @@
 <a name="114"><span class="lineNum">     114 </span>            :             return</a>
 <a name="115"><span class="lineNum">     115 </span>            :         end if</a>
 <a name="116"><span class="lineNum">     116 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          3 :     end function test_getSkip4NewSampleSize_2</span></a>
+<a name="117"><span class="lineNum">     117 </span><span class="lineCov">          6 :     end function test_getSkip4NewSampleSize_2</span></a>
 <a name="118"><span class="lineNum">     118 </span>            : </a>
 <a name="119"><span class="lineNum">     119 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="120"><span class="lineNum">     120 </span>            : </a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          3 :     function test_getSkip4NewSampleSize_3() result(assertion)</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          3 :         use Constants_mod, only: IK</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">          6 :     function test_getSkip4NewSampleSize_3() result(assertion)</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">          6 :         use Constants_mod, only: IK</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :         implicit none</a>
 <a name="124"><span class="lineNum">     124 </span>            :         logical                     :: assertion</a>
 <a name="125"><span class="lineNum">     125 </span>            :         integer(IK), parameter      :: oldSampleSize = 3_IK</a>
 <a name="126"><span class="lineNum">     126 </span>            :         integer(IK), parameter      :: newSampleSize = 3_IK</a>
 <a name="127"><span class="lineNum">     127 </span>            :         integer(IK), parameter      :: skip4NewSampleSize_ref = 1_IK</a>
 <a name="128"><span class="lineNum">     128 </span>            :         integer(IK)                 :: skip4NewSampleSize</a>
-<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          3 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
-<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          3 :         assertion = skip4NewSampleSize == skip4NewSampleSize_ref</span></a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="129"><span class="lineNum">     129 </span><span class="lineCov">          6 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
+<a name="130"><span class="lineNum">     130 </span><span class="lineCov">          6 :         assertion = skip4NewSampleSize == skip4NewSampleSize_ref</span></a>
+<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          6 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="132"><span class="lineNum">     132 </span>            :         ! LCOV_EXCL_START</a>
 <a name="133"><span class="lineNum">     133 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;)</a>
 <a name="134"><span class="lineNum">     134 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;) &quot;skip4NewSampleSize_ref  &quot;, skip4NewSampleSize_ref</a>
@@ -207,20 +207,20 @@
 <a name="137"><span class="lineNum">     137 </span>            :             return</a>
 <a name="138"><span class="lineNum">     138 </span>            :         end if</a>
 <a name="139"><span class="lineNum">     139 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          3 :     end function test_getSkip4NewSampleSize_3</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          6 :     end function test_getSkip4NewSampleSize_3</span></a>
 <a name="141"><span class="lineNum">     141 </span>            : </a>
 <a name="142"><span class="lineNum">     142 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="143"><span class="lineNum">     143 </span>            : </a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          3 :     function test_getSkip4NewSampleSize_4() result(assertion)</span></a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          3 :         use Constants_mod, only: IK</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">          6 :     function test_getSkip4NewSampleSize_4() result(assertion)</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          6 :         use Constants_mod, only: IK</span></a>
 <a name="146"><span class="lineNum">     146 </span>            :         implicit none</a>
 <a name="147"><span class="lineNum">     147 </span>            :         logical                     :: assertion</a>
 <a name="148"><span class="lineNum">     148 </span>            :         integer(IK), parameter      :: oldSampleSize = 2_IK</a>
 <a name="149"><span class="lineNum">     149 </span>            :         integer(IK), parameter      :: newSampleSize = 3_IK</a>
 <a name="150"><span class="lineNum">     150 </span>            :         integer(IK)                 :: skip4NewSampleSize</a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          3 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          3 :         assertion = skip4NewSampleSize &lt; 0_IK</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          3 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          6 :         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)</span></a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          6 :         assertion = skip4NewSampleSize &lt; 0_IK</span></a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          6 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="154"><span class="lineNum">     154 </span>            :         ! LCOV_EXCL_START</a>
 <a name="155"><span class="lineNum">     155 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;)</a>
 <a name="156"><span class="lineNum">     156 </span>            :             write(*,&quot;(10(g0,:,', '))&quot;) &quot;skip4NewSampleSize      &quot;, skip4NewSampleSize</a>
@@ -228,7 +228,7 @@
 <a name="158"><span class="lineNum">     158 </span>            :             return</a>
 <a name="159"><span class="lineNum">     159 </span>            :         end if</a>
 <a name="160"><span class="lineNum">     160 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          3 :     end function test_getSkip4NewSampleSize_4</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          6 :     end function test_getSkip4NewSampleSize_4</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
 <a name="163"><span class="lineNum">     163 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="164"><span class="lineNum">     164 </span>            : </a>

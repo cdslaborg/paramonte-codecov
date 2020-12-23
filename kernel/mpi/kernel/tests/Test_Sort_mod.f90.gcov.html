@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-19 06:10:29</td>
+            <td class="headerValue">2020-12-23 03:49:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">7</td>
@@ -105,7 +105,7 @@
 <a name="35"><span class="lineNum">      35 </span>            : !!!!   work (education/research/industry/development/...) by citing the ParaMonte</a>
 <a name="36"><span class="lineNum">      36 </span>            : !!!!   library as described on this page:</a>
 <a name="37"><span class="lineNum">      37 </span>            : !!!!</a>
-<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md</a>
+<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md</a>
 <a name="39"><span class="lineNum">      39 </span>            : !!!!</a>
 <a name="40"><span class="lineNum">      40 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="41"><span class="lineNum">      41 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
@@ -237,35 +237,35 @@
 <a name="167"><span class="lineNum">     167 </span>            : </a>
 <a name="168"><span class="lineNum">     168 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="169"><span class="lineNum">     169 </span>            : </a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          3 :     subroutine test_Sort()</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          6 :     subroutine test_Sort()</span></a>
 <a name="171"><span class="lineNum">     171 </span>            :         implicit none</a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          3 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          3 :         call Test%run(test_sortArray_1, &quot;test_sortArray_1&quot;)</span></a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          3 :         call Test%run(test_getMedian_RK_1, &quot;test_getMedian_RK_1&quot;)</span></a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          3 :         call Test%run(test_getMedian_RK_2, &quot;test_getMedian_RK_2&quot;)</span></a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          3 :         call Test%run(test_sortAscending_RK_1, &quot;test_sortAscending_RK_1&quot;)</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          3 :         call Test%run(test_sortAscendingWithRooter_IK_1, &quot;test_sortAscendingWithRooter_IK_1&quot;)</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 :         call Test%run(test_sortAscendingWithRooter_RK_1, &quot;test_sortAscendingWithRooter_RK_1&quot;)</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :         call Test%finalize()</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          3 :     end subroutine test_Sort</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          6 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          6 :         call Test%run(test_sortArray_1, &quot;test_sortArray_1&quot;)</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          6 :         call Test%run(test_getMedian_RK_1, &quot;test_getMedian_RK_1&quot;)</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          6 :         call Test%run(test_getMedian_RK_2, &quot;test_getMedian_RK_2&quot;)</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          6 :         call Test%run(test_sortAscending_RK_1, &quot;test_sortAscending_RK_1&quot;)</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          6 :         call Test%run(test_sortAscendingWithRooter_IK_1, &quot;test_sortAscendingWithRooter_IK_1&quot;)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          6 :         call Test%run(test_sortAscendingWithRooter_RK_1, &quot;test_sortAscendingWithRooter_RK_1&quot;)</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          6 :         call Test%finalize()</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          6 :     end subroutine test_Sort</span></a>
 <a name="181"><span class="lineNum">     181 </span>            : </a>
 <a name="182"><span class="lineNum">     182 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          3 :     function test_sortArray_1() result(assertion)</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          6 :     function test_sortArray_1() result(assertion)</span></a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
 <a name="186"><span class="lineNum">     186 </span>            :         implicit none</a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
 <a name="188"><span class="lineNum">     188 </span>            :         integer(IK)             :: i</a>
 <a name="189"><span class="lineNum">     189 </span>            :         logical                 :: assertion</a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          3 :         real(RK), allocatable   :: DataUnsorted(:)</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">          6 :         real(RK), allocatable   :: DataUnsorted(:)</span></a>
 <a name="191"><span class="lineNum">     191 </span>            : </a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          3 :         assertion = .true.</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">          6 :         assertion = .true.</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        153 :         DataUnsorted = DataUnsorted_RK</span></a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :         call sortArray(DataUnsorted)</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">        306 :         DataUnsorted = DataUnsorted_RK</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          6 :         call sortArray(DataUnsorted)</span></a>
 <a name="196"><span class="lineNum">     196 </span>            : </a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        150 :         do i = 2, ndata</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        150 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">        300 :         do i = 2, ndata</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">        300 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
 <a name="199"><span class="lineNum">     199 </span>            :         end do</a>
 <a name="200"><span class="lineNum">     200 </span>            : </a>
 <a name="201"><span class="lineNum">     201 </span>            :         ! LCOV_EXCL_START</a>
@@ -279,27 +279,27 @@
 <a name="209"><span class="lineNum">     209 </span>            :         end if</a>
 <a name="210"><span class="lineNum">     210 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="211"><span class="lineNum">     211 </span>            : </a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          6 :     end function test_sortArray_1</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         12 :     end function test_sortArray_1</span></a>
 <a name="213"><span class="lineNum">     213 </span>            : </a>
 <a name="214"><span class="lineNum">     214 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="215"><span class="lineNum">     215 </span>            : </a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          3 :     function test_sortAscending_RK_1() result(assertion)</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">          6 :     function test_sortAscending_RK_1() result(assertion)</span></a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          3 :         use Err_mod, only: Err_type</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">          6 :         use Err_mod, only: Err_type</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :         implicit none</a>
 <a name="220"><span class="lineNum">     220 </span>            : </a>
 <a name="221"><span class="lineNum">     221 </span>            :         integer(IK)                 :: i</a>
 <a name="222"><span class="lineNum">     222 </span>            :         logical                     :: assertion</a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          3 :         real(RK)    , allocatable   :: DataUnsorted(:)</span></a>
-<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          3 :         type(Err_type)              :: Err</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          6 :         real(RK)    , allocatable   :: DataUnsorted(:)</span></a>
+<a name="224"><span class="lineNum">     224 </span><span class="lineCov">          6 :         type(Err_type)              :: Err</span></a>
 <a name="225"><span class="lineNum">     225 </span>            : </a>
-<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        153 :         DataUnsorted = DataUnsorted_RK</span></a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          3 :         call sortAscending(np = ndata, Point = DataUnsorted, Err = Err)</span></a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          3 :         assertion = .not. Err%occurred</span></a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">        306 :         DataUnsorted = DataUnsorted_RK</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          6 :         call sortAscending(np = ndata, Point = DataUnsorted, Err = Err)</span></a>
+<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          6 :         assertion = .not. Err%occurred</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        150 :         do i = 2, ndata</span></a>
-<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        150 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">        300 :         do i = 2, ndata</span></a>
+<a name="232"><span class="lineNum">     232 </span><span class="lineCov">        300 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
 <a name="233"><span class="lineNum">     233 </span>            :         end do</a>
 <a name="234"><span class="lineNum">     234 </span>            : </a>
 <a name="235"><span class="lineNum">     235 </span>            :         ! LCOV_EXCL_START</a>
@@ -313,29 +313,29 @@
 <a name="243"><span class="lineNum">     243 </span>            :         end if</a>
 <a name="244"><span class="lineNum">     244 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
-<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          3 :     end function test_sortAscending_RK_1</span></a>
+<a name="246"><span class="lineNum">     246 </span><span class="lineCov">          6 :     end function test_sortAscending_RK_1</span></a>
 <a name="247"><span class="lineNum">     247 </span>            : </a>
 <a name="248"><span class="lineNum">     248 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="249"><span class="lineNum">     249 </span>            : </a>
-<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          3 :     function test_sortAscendingWithRooter_IK_1() result(assertion)</span></a>
+<a name="250"><span class="lineNum">     250 </span><span class="lineCov">          6 :     function test_sortAscendingWithRooter_IK_1() result(assertion)</span></a>
 <a name="251"><span class="lineNum">     251 </span>            : </a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          3 :         use Err_mod, only: Err_type</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          6 :         use Err_mod, only: Err_type</span></a>
 <a name="253"><span class="lineNum">     253 </span>            :         implicit none</a>
 <a name="254"><span class="lineNum">     254 </span>            : </a>
 <a name="255"><span class="lineNum">     255 </span>            :         integer(IK)                 :: i</a>
 <a name="256"><span class="lineNum">     256 </span>            :         logical                     :: assertion</a>
-<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          3 :         integer(IK) , allocatable   :: DataUnsorted(:)</span></a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          3 :         integer(IK) , allocatable   :: DataUnsorted2(:)</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          3 :         type(Err_type)              :: Err</span></a>
+<a name="257"><span class="lineNum">     257 </span><span class="lineCov">          6 :         integer(IK) , allocatable   :: DataUnsorted(:)</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">          6 :         integer(IK) , allocatable   :: DataUnsorted2(:)</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">          6 :         type(Err_type)              :: Err</span></a>
 <a name="260"><span class="lineNum">     260 </span>            : </a>
-<a name="261"><span class="lineNum">     261 </span><span class="lineCov">        153 :         DataUnsorted    = DataUnsorted_IK</span></a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">        153 :         DataUnsorted2   = DataUnsorted2_IK</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">          3 :         call sortAscendingWithRooter_IK(lenLeader = ndata, Leader = DataUnsorted, Rooter = DataUnsorted2, Err = Err)</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          3 :         assertion = .not. Err%occurred</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
+<a name="261"><span class="lineNum">     261 </span><span class="lineCov">        306 :         DataUnsorted    = DataUnsorted_IK</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">        306 :         DataUnsorted2   = DataUnsorted2_IK</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">          6 :         call sortAscendingWithRooter_IK(lenLeader = ndata, Leader = DataUnsorted, Rooter = DataUnsorted2, Err = Err)</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">          6 :         assertion = .not. Err%occurred</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
 <a name="266"><span class="lineNum">     266 </span>            : </a>
-<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        150 :         do i = 2, ndata</span></a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        150 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
+<a name="267"><span class="lineNum">     267 </span><span class="lineCov">        300 :         do i = 2, ndata</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">        300 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
 <a name="269"><span class="lineNum">     269 </span>            :         end do</a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
 <a name="271"><span class="lineNum">     271 </span>            :         ! LCOV_EXCL_START</a>
@@ -349,8 +349,8 @@
 <a name="279"><span class="lineNum">     279 </span>            :         end if</a>
 <a name="280"><span class="lineNum">     280 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="281"><span class="lineNum">     281 </span>            : </a>
-<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        150 :         do i = 2, ndata</span></a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">        150 :             assertion = assertion .and. DataUnsorted2(i-1) &lt;= DataUnsorted2(i)</span></a>
+<a name="282"><span class="lineNum">     282 </span><span class="lineCov">        300 :         do i = 2, ndata</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">        300 :             assertion = assertion .and. DataUnsorted2(i-1) &lt;= DataUnsorted2(i)</span></a>
 <a name="284"><span class="lineNum">     284 </span>            :         end do</a>
 <a name="285"><span class="lineNum">     285 </span>            : </a>
 <a name="286"><span class="lineNum">     286 </span>            :         ! LCOV_EXCL_START</a>
@@ -364,29 +364,29 @@
 <a name="294"><span class="lineNum">     294 </span>            :         end if</a>
 <a name="295"><span class="lineNum">     295 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="296"><span class="lineNum">     296 </span>            : </a>
-<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          3 :     end function test_sortAscendingWithRooter_IK_1</span></a>
+<a name="297"><span class="lineNum">     297 </span><span class="lineCov">          6 :     end function test_sortAscendingWithRooter_IK_1</span></a>
 <a name="298"><span class="lineNum">     298 </span>            : </a>
 <a name="299"><span class="lineNum">     299 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="300"><span class="lineNum">     300 </span>            : </a>
-<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          3 :     function test_sortAscendingWithRooter_RK_1() result(assertion)</span></a>
+<a name="301"><span class="lineNum">     301 </span><span class="lineCov">          6 :     function test_sortAscendingWithRooter_RK_1() result(assertion)</span></a>
 <a name="302"><span class="lineNum">     302 </span>            : </a>
-<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          3 :         use Err_mod, only: Err_type</span></a>
+<a name="303"><span class="lineNum">     303 </span><span class="lineCov">          6 :         use Err_mod, only: Err_type</span></a>
 <a name="304"><span class="lineNum">     304 </span>            :         implicit none</a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
 <a name="306"><span class="lineNum">     306 </span>            :         integer(IK)                 :: i</a>
 <a name="307"><span class="lineNum">     307 </span>            :         logical                     :: assertion</a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          3 :         real(RK)    , allocatable   :: DataUnsorted(:)</span></a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          3 :         real(RK)    , allocatable   :: DataUnsorted2(:)</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          3 :         type(Err_type)              :: Err</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">          6 :         real(RK)    , allocatable   :: DataUnsorted(:)</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">          6 :         real(RK)    , allocatable   :: DataUnsorted2(:)</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">          6 :         type(Err_type)              :: Err</span></a>
 <a name="311"><span class="lineNum">     311 </span>            : </a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        153 :         DataUnsorted    = DataUnsorted_RK</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        153 :         DataUnsorted2   = DataUnsorted2_RK</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          3 :         call sortAscendingWithRooter_RK(lenLeader = ndata, Leader = DataUnsorted, Rooter = DataUnsorted2, Err = Err)</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          3 :         assertion = .not. Err%occurred</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">        306 :         DataUnsorted    = DataUnsorted_RK</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">        306 :         DataUnsorted2   = DataUnsorted2_RK</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          6 :         call sortAscendingWithRooter_RK(lenLeader = ndata, Leader = DataUnsorted, Rooter = DataUnsorted2, Err = Err)</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          6 :         assertion = .not. Err%occurred</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
 <a name="317"><span class="lineNum">     317 </span>            : </a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        150 :         do i = 2, ndata</span></a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">        150 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">        300 :         do i = 2, ndata</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">        300 :             assertion = assertion .and. DataUnsorted(i-1) &lt;= DataUnsorted(i)</span></a>
 <a name="320"><span class="lineNum">     320 </span>            :         end do</a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
 <a name="322"><span class="lineNum">     322 </span>            :         ! LCOV_EXCL_START</a>
@@ -400,8 +400,8 @@
 <a name="330"><span class="lineNum">     330 </span>            :         end if</a>
 <a name="331"><span class="lineNum">     331 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        150 :         do i = 2, ndata</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">        150 :             assertion = assertion .and. DataUnsorted2(i-1) &lt;= DataUnsorted2(i)</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        300 :         do i = 2, ndata</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">        300 :             assertion = assertion .and. DataUnsorted2(i-1) &lt;= DataUnsorted2(i)</span></a>
 <a name="335"><span class="lineNum">     335 </span>            :         end do</a>
 <a name="336"><span class="lineNum">     336 </span>            : </a>
 <a name="337"><span class="lineNum">     337 </span>            :         ! LCOV_EXCL_START</a>
@@ -415,25 +415,25 @@
 <a name="345"><span class="lineNum">     345 </span>            :         end if</a>
 <a name="346"><span class="lineNum">     346 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="347"><span class="lineNum">     347 </span>            : </a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          3 :     end function test_sortAscendingWithRooter_RK_1</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          6 :     end function test_sortAscendingWithRooter_RK_1</span></a>
 <a name="349"><span class="lineNum">     349 </span>            : </a>
 <a name="350"><span class="lineNum">     350 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="351"><span class="lineNum">     351 </span>            : </a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          3 :     function test_getMedian_RK_1() result(assertion)</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          6 :     function test_getMedian_RK_1() result(assertion)</span></a>
 <a name="353"><span class="lineNum">     353 </span>            : </a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          3 :         use Err_mod, only: Err_type</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          6 :         use Err_mod, only: Err_type</span></a>
 <a name="355"><span class="lineNum">     355 </span>            :         implicit none</a>
 <a name="356"><span class="lineNum">     356 </span>            : </a>
 <a name="357"><span class="lineNum">     357 </span>            :         logical                     :: assertion</a>
 <a name="358"><span class="lineNum">     358 </span>            :         real(RK)    , parameter     :: median_ref = 5.477003450000000_RK</a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">          3 :         real(RK)                    :: median</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          3 :         type(Err_type)              :: Err</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">          6 :         real(RK)                    :: median</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          6 :         type(Err_type)              :: Err</span></a>
 <a name="361"><span class="lineNum">     361 </span>            : </a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          3 :         call getMedian(lenArray = ndata, Array = DataUnsorted_RK, median = median, Err = Err)</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          3 :         assertion = .not. Err%occurred</span></a>
-<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          6 :         call getMedian(lenArray = ndata, Array = DataUnsorted_RK, median = median, Err = Err)</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          6 :         assertion = .not. Err%occurred</span></a>
+<a name="364"><span class="lineNum">     364 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
 <a name="365"><span class="lineNum">     365 </span>            : </a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          3 :         assertion = median == median_ref</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">          6 :         assertion = median == median_ref</span></a>
 <a name="367"><span class="lineNum">     367 </span>            : </a>
 <a name="368"><span class="lineNum">     368 </span>            :         ! LCOV_EXCL_START</a>
 <a name="369"><span class="lineNum">     369 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -444,25 +444,25 @@
 <a name="374"><span class="lineNum">     374 </span>            :         end if</a>
 <a name="375"><span class="lineNum">     375 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="376"><span class="lineNum">     376 </span>            : </a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          3 :     end function test_getMedian_RK_1</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">          6 :     end function test_getMedian_RK_1</span></a>
 <a name="378"><span class="lineNum">     378 </span>            : </a>
 <a name="379"><span class="lineNum">     379 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="380"><span class="lineNum">     380 </span>            : </a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          3 :     function test_getMedian_RK_2() result(assertion)</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          6 :     function test_getMedian_RK_2() result(assertion)</span></a>
 <a name="382"><span class="lineNum">     382 </span>            : </a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">          3 :         use Err_mod, only: Err_type</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">          6 :         use Err_mod, only: Err_type</span></a>
 <a name="384"><span class="lineNum">     384 </span>            :         implicit none</a>
 <a name="385"><span class="lineNum">     385 </span>            : </a>
 <a name="386"><span class="lineNum">     386 </span>            :         logical                     :: assertion</a>
 <a name="387"><span class="lineNum">     387 </span>            :         real(RK)    , parameter     :: median_ref = 5.477415200000000_RK</a>
-<a name="388"><span class="lineNum">     388 </span><span class="lineCov">          3 :         real(RK)                    :: median</span></a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          3 :         type(Err_type)              :: Err</span></a>
+<a name="388"><span class="lineNum">     388 </span><span class="lineCov">          6 :         real(RK)                    :: median</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          6 :         type(Err_type)              :: Err</span></a>
 <a name="390"><span class="lineNum">     390 </span>            : </a>
-<a name="391"><span class="lineNum">     391 </span><span class="lineCov">          3 :         call getMedian_RK(lenArray = ndata-1, Array = DataUnsorted_RK(1:ndata-1), median = median, Err = Err)</span></a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          3 :         assertion = .not. Err%occurred</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
+<a name="391"><span class="lineNum">     391 </span><span class="lineCov">          6 :         call getMedian_RK(lenArray = ndata-1, Array = DataUnsorted_RK(1:ndata-1), median = median, Err = Err)</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">          6 :         assertion = .not. Err%occurred</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
 <a name="394"><span class="lineNum">     394 </span>            : </a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          3 :         assertion = median == median_ref</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          6 :         assertion = median == median_ref</span></a>
 <a name="396"><span class="lineNum">     396 </span>            : </a>
 <a name="397"><span class="lineNum">     397 </span>            :         ! LCOV_EXCL_START</a>
 <a name="398"><span class="lineNum">     398 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -473,7 +473,7 @@
 <a name="403"><span class="lineNum">     403 </span>            :         end if</a>
 <a name="404"><span class="lineNum">     404 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="405"><span class="lineNum">     405 </span>            : </a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          3 :     end function test_getMedian_RK_2</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          6 :     end function test_getMedian_RK_2</span></a>
 <a name="407"><span class="lineNum">     407 </span>            : </a>
 <a name="408"><span class="lineNum">     408 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="409"><span class="lineNum">     409 </span>            : </a>

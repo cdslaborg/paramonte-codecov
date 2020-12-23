@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-19 06:10:29</td>
+            <td class="headerValue">2020-12-23 03:49:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -105,7 +105,7 @@
 <a name="35"><span class="lineNum">      35 </span>            : !!!!   work (education/research/industry/development/...) by citing the ParaMonte</a>
 <a name="36"><span class="lineNum">      36 </span>            : !!!!   library as described on this page:</a>
 <a name="37"><span class="lineNum">      37 </span>            : !!!!</a>
-<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md</a>
+<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md</a>
 <a name="39"><span class="lineNum">      39 </span>            : !!!!</a>
 <a name="40"><span class="lineNum">      40 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="41"><span class="lineNum">      41 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
@@ -363,7 +363,7 @@
 <a name="293"><span class="lineNum">     293 </span>            :     !&gt; + `&quot;white&quot;`          : (97) / (107)</a>
 <a name="294"><span class="lineNum">     294 </span>            :     !</a>
 <a name="295"><span class="lineNum">     295 </span>            :     !  For more information, see: https://misc.flogisoft.com/bash/tip_colors_and_formatting</a>
-<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         43 :     function style(string, attr, clfg, clbg) result(modifiedString)</span></a>
+<a name="296"><span class="lineNum">     296 </span><span class="lineCov">         86 :     function style(string, attr, clfg, clbg) result(modifiedString)</span></a>
 <a name="297"><span class="lineNum">     297 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="298"><span class="lineNum">     298 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: style</a>
 <a name="299"><span class="lineNum">     299 </span>            : #endif</a>
@@ -376,81 +376,81 @@
 <a name="306"><span class="lineNum">     306 </span>            : </a>
 <a name="307"><span class="lineNum">     307 </span>            :         ! cache the attribute / color list codes</a>
 <a name="308"><span class="lineNum">     308 </span>            : </a>
-<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         43 :         if (.not.allocated(mc_AnsiAttributeList)) then</span></a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         27 :             allocate(mc_AnsiAttributeList(ANSI_ATTRIBUTE_LIST_LEN))</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(1)%record = &quot;off&quot;          ; mc_AnsiAttributeList(1)%code = &quot;0&quot;</span></a>
-<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(2)%record = &quot;bold&quot;         ; mc_AnsiAttributeList(2)%code = &quot;1&quot;</span></a>
-<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(3)%record = &quot;bright&quot;       ; mc_AnsiAttributeList(3)%code = &quot;1&quot;</span></a>
-<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(4)%record = &quot;dim&quot;          ; mc_AnsiAttributeList(4)%code = &quot;2&quot;</span></a>
-<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(5)%record = &quot;underlined&quot;   ; mc_AnsiAttributeList(5)%code = &quot;4&quot;</span></a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(6)%record = &quot;blinking&quot;     ; mc_AnsiAttributeList(6)%code = &quot;5&quot;</span></a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(7)%record = &quot;reverse&quot;      ; mc_AnsiAttributeList(7)%code = &quot;7&quot;</span></a>
-<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          3 :             mc_AnsiAttributeList(8)%record = &quot;hidden&quot;       ; mc_AnsiAttributeList(8)%code = &quot;8&quot;</span></a>
+<a name="309"><span class="lineNum">     309 </span><span class="lineCov">         86 :         if (.not.allocated(mc_AnsiAttributeList)) then</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">         54 :             allocate(mc_AnsiAttributeList(ANSI_ATTRIBUTE_LIST_LEN))</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(1)%record = &quot;off&quot;          ; mc_AnsiAttributeList(1)%code = &quot;0&quot;</span></a>
+<a name="312"><span class="lineNum">     312 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(2)%record = &quot;bold&quot;         ; mc_AnsiAttributeList(2)%code = &quot;1&quot;</span></a>
+<a name="313"><span class="lineNum">     313 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(3)%record = &quot;bright&quot;       ; mc_AnsiAttributeList(3)%code = &quot;1&quot;</span></a>
+<a name="314"><span class="lineNum">     314 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(4)%record = &quot;dim&quot;          ; mc_AnsiAttributeList(4)%code = &quot;2&quot;</span></a>
+<a name="315"><span class="lineNum">     315 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(5)%record = &quot;underlined&quot;   ; mc_AnsiAttributeList(5)%code = &quot;4&quot;</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(6)%record = &quot;blinking&quot;     ; mc_AnsiAttributeList(6)%code = &quot;5&quot;</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(7)%record = &quot;reverse&quot;      ; mc_AnsiAttributeList(7)%code = &quot;7&quot;</span></a>
+<a name="318"><span class="lineNum">     318 </span><span class="lineCov">          6 :             mc_AnsiAttributeList(8)%record = &quot;hidden&quot;       ; mc_AnsiAttributeList(8)%code = &quot;8&quot;</span></a>
 <a name="319"><span class="lineNum">     319 </span>            :         end if</a>
 <a name="320"><span class="lineNum">     320 </span>            : </a>
-<a name="321"><span class="lineNum">     321 </span><span class="lineCov">         43 :         if (.not.allocated(mc_AnsiForegroundColorList)) then</span></a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">         51 :             allocate(mc_AnsiForegroundColorList(ANSI_COLOR_LIST_LEN))</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(1) %record = &quot;black&quot;         ; mc_AnsiForegroundColorList(1) %code = &quot;30&quot;</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(2) %record = &quot;red&quot;           ; mc_AnsiForegroundColorList(2) %code = &quot;31&quot;</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(3) %record = &quot;green&quot;         ; mc_AnsiForegroundColorList(3) %code = &quot;32&quot;</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(4) %record = &quot;yellow&quot;        ; mc_AnsiForegroundColorList(4) %code = &quot;33&quot;</span></a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(5) %record = &quot;blue&quot;          ; mc_AnsiForegroundColorList(5) %code = &quot;34&quot;</span></a>
-<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(6) %record = &quot;magenta&quot;       ; mc_AnsiForegroundColorList(6) %code = &quot;35&quot;</span></a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(7) %record = &quot;cyan&quot;          ; mc_AnsiForegroundColorList(7) %code = &quot;36&quot;</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(8) %record = &quot;light gray&quot;    ; mc_AnsiForegroundColorList(8) %code = &quot;37&quot;</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(9) %record = &quot;dark gray&quot;     ; mc_AnsiForegroundColorList(9) %code = &quot;90&quot;</span></a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(10)%record = &quot;light red&quot;     ; mc_AnsiForegroundColorList(10)%code = &quot;91&quot;</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(11)%record = &quot;light green&quot;   ; mc_AnsiForegroundColorList(11)%code = &quot;92&quot;</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(12)%record = &quot;light yellow&quot;  ; mc_AnsiForegroundColorList(12)%code = &quot;93&quot;</span></a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(13)%record = &quot;light blue&quot;    ; mc_AnsiForegroundColorList(13)%code = &quot;94&quot;</span></a>
-<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(14)%record = &quot;light magenta&quot; ; mc_AnsiForegroundColorList(14)%code = &quot;95&quot;</span></a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(15)%record = &quot;light cyan&quot;    ; mc_AnsiForegroundColorList(15)%code = &quot;96&quot;</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          3 :             mc_AnsiForegroundColorList(16)%record = &quot;white&quot;         ; mc_AnsiForegroundColorList(16)%code = &quot;97&quot;</span></a>
+<a name="321"><span class="lineNum">     321 </span><span class="lineCov">         86 :         if (.not.allocated(mc_AnsiForegroundColorList)) then</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">        102 :             allocate(mc_AnsiForegroundColorList(ANSI_COLOR_LIST_LEN))</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(1) %record = &quot;black&quot;         ; mc_AnsiForegroundColorList(1) %code = &quot;30&quot;</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(2) %record = &quot;red&quot;           ; mc_AnsiForegroundColorList(2) %code = &quot;31&quot;</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(3) %record = &quot;green&quot;         ; mc_AnsiForegroundColorList(3) %code = &quot;32&quot;</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(4) %record = &quot;yellow&quot;        ; mc_AnsiForegroundColorList(4) %code = &quot;33&quot;</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(5) %record = &quot;blue&quot;          ; mc_AnsiForegroundColorList(5) %code = &quot;34&quot;</span></a>
+<a name="328"><span class="lineNum">     328 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(6) %record = &quot;magenta&quot;       ; mc_AnsiForegroundColorList(6) %code = &quot;35&quot;</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(7) %record = &quot;cyan&quot;          ; mc_AnsiForegroundColorList(7) %code = &quot;36&quot;</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(8) %record = &quot;light gray&quot;    ; mc_AnsiForegroundColorList(8) %code = &quot;37&quot;</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(9) %record = &quot;dark gray&quot;     ; mc_AnsiForegroundColorList(9) %code = &quot;90&quot;</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(10)%record = &quot;light red&quot;     ; mc_AnsiForegroundColorList(10)%code = &quot;91&quot;</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(11)%record = &quot;light green&quot;   ; mc_AnsiForegroundColorList(11)%code = &quot;92&quot;</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(12)%record = &quot;light yellow&quot;  ; mc_AnsiForegroundColorList(12)%code = &quot;93&quot;</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(13)%record = &quot;light blue&quot;    ; mc_AnsiForegroundColorList(13)%code = &quot;94&quot;</span></a>
+<a name="336"><span class="lineNum">     336 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(14)%record = &quot;light magenta&quot; ; mc_AnsiForegroundColorList(14)%code = &quot;95&quot;</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(15)%record = &quot;light cyan&quot;    ; mc_AnsiForegroundColorList(15)%code = &quot;96&quot;</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          6 :             mc_AnsiForegroundColorList(16)%record = &quot;white&quot;         ; mc_AnsiForegroundColorList(16)%code = &quot;97&quot;</span></a>
 <a name="339"><span class="lineNum">     339 </span>            :         end if</a>
 <a name="340"><span class="lineNum">     340 </span>            : </a>
-<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         43 :         if (.not.allocated(mc_AnsiBackgroundColorList)) then</span></a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         51 :             allocate(mc_AnsiBackgroundColorList(ANSI_COLOR_LIST_LEN))</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(1) %record = &quot;black&quot;         ; mc_AnsiBackgroundColorList(1) %code = &quot;40&quot;</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(2) %record = &quot;red&quot;           ; mc_AnsiBackgroundColorList(2) %code = &quot;41&quot;</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(3) %record = &quot;green&quot;         ; mc_AnsiBackgroundColorList(3) %code = &quot;42&quot;</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(4) %record = &quot;yellow&quot;        ; mc_AnsiBackgroundColorList(4) %code = &quot;43&quot;</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(5) %record = &quot;blue&quot;          ; mc_AnsiBackgroundColorList(5) %code = &quot;44&quot;</span></a>
-<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(6) %record = &quot;magenta&quot;       ; mc_AnsiBackgroundColorList(6) %code = &quot;45&quot;</span></a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(7) %record = &quot;cyan&quot;          ; mc_AnsiBackgroundColorList(7) %code = &quot;46&quot;</span></a>
-<a name="350"><span class="lineNum">     350 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(8) %record = &quot;light gray&quot;    ; mc_AnsiBackgroundColorList(8) %code = &quot;47&quot;</span></a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(9) %record = &quot;dark gray&quot;     ; mc_AnsiBackgroundColorList(9) %code = &quot;100&quot;</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(10)%record = &quot;light red&quot;     ; mc_AnsiBackgroundColorList(10)%code = &quot;101&quot;</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(11)%record = &quot;light green&quot;   ; mc_AnsiBackgroundColorList(11)%code = &quot;102&quot;</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(12)%record = &quot;light yellow&quot;  ; mc_AnsiBackgroundColorList(12)%code = &quot;103&quot;</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(13)%record = &quot;light blue&quot;    ; mc_AnsiBackgroundColorList(13)%code = &quot;104&quot;</span></a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(14)%record = &quot;light magenta&quot; ; mc_AnsiBackgroundColorList(14)%code = &quot;105&quot;</span></a>
-<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(15)%record = &quot;light cyan&quot;    ; mc_AnsiBackgroundColorList(15)%code = &quot;106&quot;</span></a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          3 :             mc_AnsiBackgroundColorList(16)%record = &quot;white&quot;         ; mc_AnsiBackgroundColorList(16)%code = &quot;107&quot;</span></a>
+<a name="341"><span class="lineNum">     341 </span><span class="lineCov">         86 :         if (.not.allocated(mc_AnsiBackgroundColorList)) then</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">        102 :             allocate(mc_AnsiBackgroundColorList(ANSI_COLOR_LIST_LEN))</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(1) %record = &quot;black&quot;         ; mc_AnsiBackgroundColorList(1) %code = &quot;40&quot;</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(2) %record = &quot;red&quot;           ; mc_AnsiBackgroundColorList(2) %code = &quot;41&quot;</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(3) %record = &quot;green&quot;         ; mc_AnsiBackgroundColorList(3) %code = &quot;42&quot;</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(4) %record = &quot;yellow&quot;        ; mc_AnsiBackgroundColorList(4) %code = &quot;43&quot;</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(5) %record = &quot;blue&quot;          ; mc_AnsiBackgroundColorList(5) %code = &quot;44&quot;</span></a>
+<a name="348"><span class="lineNum">     348 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(6) %record = &quot;magenta&quot;       ; mc_AnsiBackgroundColorList(6) %code = &quot;45&quot;</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(7) %record = &quot;cyan&quot;          ; mc_AnsiBackgroundColorList(7) %code = &quot;46&quot;</span></a>
+<a name="350"><span class="lineNum">     350 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(8) %record = &quot;light gray&quot;    ; mc_AnsiBackgroundColorList(8) %code = &quot;47&quot;</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(9) %record = &quot;dark gray&quot;     ; mc_AnsiBackgroundColorList(9) %code = &quot;100&quot;</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(10)%record = &quot;light red&quot;     ; mc_AnsiBackgroundColorList(10)%code = &quot;101&quot;</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(11)%record = &quot;light green&quot;   ; mc_AnsiBackgroundColorList(11)%code = &quot;102&quot;</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(12)%record = &quot;light yellow&quot;  ; mc_AnsiBackgroundColorList(12)%code = &quot;103&quot;</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(13)%record = &quot;light blue&quot;    ; mc_AnsiBackgroundColorList(13)%code = &quot;104&quot;</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(14)%record = &quot;light magenta&quot; ; mc_AnsiBackgroundColorList(14)%code = &quot;105&quot;</span></a>
+<a name="357"><span class="lineNum">     357 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(15)%record = &quot;light cyan&quot;    ; mc_AnsiBackgroundColorList(15)%code = &quot;106&quot;</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          6 :             mc_AnsiBackgroundColorList(16)%record = &quot;white&quot;         ; mc_AnsiBackgroundColorList(16)%code = &quot;107&quot;</span></a>
 <a name="359"><span class="lineNum">     359 </span>            :         end if</a>
 <a name="360"><span class="lineNum">     360 </span>            : </a>
 <a name="361"><span class="lineNum">     361 </span>            :         ! construct the escape sequence</a>
 <a name="362"><span class="lineNum">     362 </span>            : </a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         43 :         modifiedString = ESC//&quot;[0&quot;</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">         86 :         modifiedString = ESC//&quot;[0&quot;</span></a>
 <a name="364"><span class="lineNum">     364 </span>            : </a>
-<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         43 :         if (present(attr)) then</span></a>
-<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        129 :             do i = 1, ANSI_ATTRIBUTE_LIST_LEN</span></a>
-<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        129 :                 if (attr==mc_AnsiAttributeList(i)%record) then</span></a>
-<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         43 :                     modifiedString = modifiedString // &quot;;&quot; // mc_AnsiAttributeList(i)%code</span></a>
-<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         43 :                     exit</span></a>
+<a name="365"><span class="lineNum">     365 </span><span class="lineCov">         86 :         if (present(attr)) then</span></a>
+<a name="366"><span class="lineNum">     366 </span><span class="lineCov">        258 :             do i = 1, ANSI_ATTRIBUTE_LIST_LEN</span></a>
+<a name="367"><span class="lineNum">     367 </span><span class="lineCov">        258 :                 if (attr==mc_AnsiAttributeList(i)%record) then</span></a>
+<a name="368"><span class="lineNum">     368 </span><span class="lineCov">         86 :                     modifiedString = modifiedString // &quot;;&quot; // mc_AnsiAttributeList(i)%code</span></a>
+<a name="369"><span class="lineNum">     369 </span><span class="lineCov">         86 :                     exit</span></a>
 <a name="370"><span class="lineNum">     370 </span>            :                 end if</a>
 <a name="371"><span class="lineNum">     371 </span>            :             end do</a>
 <a name="372"><span class="lineNum">     372 </span>            :         end if</a>
 <a name="373"><span class="lineNum">     373 </span>            : </a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         43 :         if (present(clfg)) then</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        161 :             do i = 1, ANSI_COLOR_LIST_LEN</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        161 :                 if (clfg==mc_AnsiForegroundColorList(i)%record) then</span></a>
-<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         43 :                     modifiedString = modifiedString // &quot;;&quot; // mc_AnsiForegroundColorList(i)%code</span></a>
-<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         43 :                     exit</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">         86 :         if (present(clfg)) then</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        322 :             do i = 1, ANSI_COLOR_LIST_LEN</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        322 :                 if (clfg==mc_AnsiForegroundColorList(i)%record) then</span></a>
+<a name="377"><span class="lineNum">     377 </span><span class="lineCov">         86 :                     modifiedString = modifiedString // &quot;;&quot; // mc_AnsiForegroundColorList(i)%code</span></a>
+<a name="378"><span class="lineNum">     378 </span><span class="lineCov">         86 :                     exit</span></a>
 <a name="379"><span class="lineNum">     379 </span>            :                 end if</a>
 <a name="380"><span class="lineNum">     380 </span>            :             end do</a>
 <a name="381"><span class="lineNum">     381 </span>            :         end if</a>
 <a name="382"><span class="lineNum">     382 </span>            : </a>
-<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         43 :         if (present(clbg)) then</span></a>
+<a name="383"><span class="lineNum">     383 </span><span class="lineCov">         86 :         if (present(clbg)) then</span></a>
 <a name="384"><span class="lineNum">     384 </span><span class="lineNoCov">          0 :             do i = 1, ANSI_COLOR_LIST_LEN</span></a>
 <a name="385"><span class="lineNum">     385 </span><span class="lineNoCov">          0 :                 if (clbg==mc_AnsiBackgroundColorList(i)%record) then</span></a>
 <a name="386"><span class="lineNum">     386 </span><span class="lineNoCov">          0 :                     modifiedString = modifiedString // &quot;;&quot; // mc_AnsiBackgroundColorList(i)%code</span></a>
@@ -459,9 +459,9 @@
 <a name="389"><span class="lineNum">     389 </span>            :             end do</a>
 <a name="390"><span class="lineNum">     390 </span>            :         end if</a>
 <a name="391"><span class="lineNum">     391 </span>            : </a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         43 :         modifiedString = modifiedString // &quot;m&quot; // string // ESC // &quot;[0m&quot;</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         86 :         modifiedString = modifiedString // &quot;m&quot; // string // ESC // &quot;[0m&quot;</span></a>
 <a name="393"><span class="lineNum">     393 </span>            : </a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         86 :     end function style</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">        172 :     end function style</span></a>
 <a name="395"><span class="lineNum">     395 </span>            : </a>
 <a name="396"><span class="lineNum">     396 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="397"><span class="lineNum">     397 </span>            : </a>
@@ -474,34 +474,34 @@
 <a name="404"><span class="lineNum">     404 </span>            :     !&gt;</a>
 <a name="405"><span class="lineNum">     405 </span>            :     !&gt; \return</a>
 <a name="406"><span class="lineNum">     406 </span>            :     !&gt; `formatStr` : The output format string to be used in IO.</a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">       1050 :     pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">       2100 :     pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)</span></a>
 <a name="408"><span class="lineNum">     408 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="409"><span class="lineNum">     409 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat</a>
 <a name="410"><span class="lineNum">     410 </span>            : #endif</a>
 <a name="411"><span class="lineNum">     411 </span>            :         ! generates IO format strings, primarily for use in the output report files of ParaMonte</a>
-<a name="412"><span class="lineNum">     412 </span><span class="lineCov">         43 :         use Constants_mod, only: IK</span></a>
+<a name="412"><span class="lineNum">     412 </span><span class="lineCov">         86 :         use Constants_mod, only: IK</span></a>
 <a name="413"><span class="lineNum">     413 </span>            :         use String_mod, only: num2str</a>
 <a name="414"><span class="lineNum">     414 </span>            :         implicit none</a>
 <a name="415"><span class="lineNum">     415 </span>            :         integer(IK) , intent(in), optional  :: width</a>
 <a name="416"><span class="lineNum">     416 </span>            :         integer(IK) , intent(in), optional  :: precision</a>
 <a name="417"><span class="lineNum">     417 </span>            :         character(*), intent(in), optional  :: delim</a>
 <a name="418"><span class="lineNum">     418 </span>            :         character(*), intent(in), optional  :: prefix</a>
-<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       1050 :         character(:), allocatable           :: widthStr</span></a>
+<a name="419"><span class="lineNum">     419 </span><span class="lineCov">       2100 :         character(:), allocatable           :: widthStr</span></a>
 <a name="420"><span class="lineNum">     420 </span>            :         character(:), allocatable           :: formatStr</a>
-<a name="421"><span class="lineNum">     421 </span><span class="lineCov">       1050 :         character(:), allocatable           :: precisionStr</span></a>
-<a name="422"><span class="lineNum">     422 </span><span class="lineCov">       1050 :         character(:), allocatable           :: delimDefault</span></a>
+<a name="421"><span class="lineNum">     421 </span><span class="lineCov">       2100 :         character(:), allocatable           :: precisionStr</span></a>
+<a name="422"><span class="lineNum">     422 </span><span class="lineCov">       2100 :         character(:), allocatable           :: delimDefault</span></a>
 <a name="423"><span class="lineNum">     423 </span>            : </a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       1050 :         widthStr = &quot;0&quot;; if (present(width)) widthStr = num2str(width)</span></a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       1050 :         precisionStr = &quot;&quot;; if (present(precision)) precisionStr = &quot;.&quot;//num2str(precision)</span></a>
-<a name="426"><span class="lineNum">     426 </span><span class="lineCov">       1050 :         delimDefault = &quot;&quot;; if (present(delim)) delimDefault = &quot;,:,'&quot;//delim//&quot;'&quot;</span></a>
-<a name="427"><span class="lineNum">     427 </span><span class="lineCov">       1050 :         formatStr = &quot;*(g&quot;//widthStr//precisionStr//delimDefault//&quot;))&quot;</span></a>
-<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       1050 :         if (present(prefix)) then</span></a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       1038 :             formatStr = &quot;('&quot; // prefix // &quot;',&quot; // formatStr</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">       2100 :         widthStr = &quot;0&quot;; if (present(width)) widthStr = num2str(width)</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">       2100 :         precisionStr = &quot;&quot;; if (present(precision)) precisionStr = &quot;.&quot;//num2str(precision)</span></a>
+<a name="426"><span class="lineNum">     426 </span><span class="lineCov">       2100 :         delimDefault = &quot;&quot;; if (present(delim)) delimDefault = &quot;,:,'&quot;//delim//&quot;'&quot;</span></a>
+<a name="427"><span class="lineNum">     427 </span><span class="lineCov">       2100 :         formatStr = &quot;*(g&quot;//widthStr//precisionStr//delimDefault//&quot;))&quot;</span></a>
+<a name="428"><span class="lineNum">     428 </span><span class="lineCov">       2100 :         if (present(prefix)) then</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">       2076 :             formatStr = &quot;('&quot; // prefix // &quot;',&quot; // formatStr</span></a>
 <a name="430"><span class="lineNum">     430 </span>            :         else</a>
-<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         12 :             formatStr = &quot;(&quot; // formatStr</span></a>
+<a name="431"><span class="lineNum">     431 </span><span class="lineCov">         24 :             formatStr = &quot;(&quot; // formatStr</span></a>
 <a name="432"><span class="lineNum">     432 </span>            :         end if</a>
 <a name="433"><span class="lineNum">     433 </span>            : </a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       1050 :     end function getGenericFormat</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">       2100 :     end function getGenericFormat</span></a>
 <a name="435"><span class="lineNum">     435 </span>            : </a>
 <a name="436"><span class="lineNum">     436 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="437"><span class="lineNum">     437 </span>            : </a>

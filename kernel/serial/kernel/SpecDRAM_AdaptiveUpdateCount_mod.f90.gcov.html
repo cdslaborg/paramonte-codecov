@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-19 06:06:33</td>
+            <td class="headerValue">2020-12-23 03:46:04</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -105,120 +105,125 @@
 <a name="35"><span class="lineNum">      35 </span>            : !!!!   work (education/research/industry/development/...) by citing the ParaMonte </a>
 <a name="36"><span class="lineNum">      36 </span>            : !!!!   library as described on this page:</a>
 <a name="37"><span class="lineNum">      37 </span>            : !!!!</a>
-<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md</a>
+<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md</a>
 <a name="39"><span class="lineNum">      39 </span>            : !!!!</a>
 <a name="40"><span class="lineNum">      40 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="41"><span class="lineNum">      41 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="42"><span class="lineNum">      42 </span>            : </a>
-<a name="43"><span class="lineNum">      43 </span>            : module SpecDRAM_AdaptiveUpdateCount_mod</a>
-<a name="44"><span class="lineNum">      44 </span>            : </a>
-<a name="45"><span class="lineNum">      45 </span>            :     use Constants_mod, only: IK</a>
-<a name="46"><span class="lineNum">      46 </span>            :     implicit none</a>
+<a name="43"><span class="lineNum">      43 </span>            : !&gt; \brief</a>
+<a name="44"><span class="lineNum">      44 </span>            : !&gt; This module contains the classes and procedures for setting up the `adaptiveUpdateCount` attribute of samplers of class [ParaDRAM_type](@ref paradram_mod::paradram_type).</a>
+<a name="45"><span class="lineNum">      45 </span>            : !&gt; For more information, see the description of this attribute in the body of the module.</a>
+<a name="46"><span class="lineNum">      46 </span>            : !&gt; \author Amir Shahmoradi</a>
 <a name="47"><span class="lineNum">      47 </span>            : </a>
-<a name="48"><span class="lineNum">      48 </span>            :     character(*), parameter         :: MODULE_NAME = &quot;@SpecDRAM_AdaptiveUpdateCount_mod&quot;</a>
+<a name="48"><span class="lineNum">      48 </span>            : module SpecDRAM_AdaptiveUpdateCount_mod</a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
-<a name="50"><span class="lineNum">      50 </span>            :     integer(IK)                     :: adaptiveUpdateCount ! namelist input</a>
-<a name="51"><span class="lineNum">      51 </span>            : </a>
-<a name="52"><span class="lineNum">      52 </span>            :     type                            :: AdaptiveUpdateCount_type</a>
-<a name="53"><span class="lineNum">      53 </span>            :         integer(IK)                 :: val</a>
-<a name="54"><span class="lineNum">      54 </span>            :         integer(IK)                 :: def</a>
-<a name="55"><span class="lineNum">      55 </span>            :         integer(IK)                 :: null</a>
-<a name="56"><span class="lineNum">      56 </span>            :         character(:), allocatable   :: desc</a>
-<a name="57"><span class="lineNum">      57 </span>            :     contains</a>
-<a name="58"><span class="lineNum">      58 </span>            :         procedure, pass             :: set =&gt; setAdaptiveUpdateCount, checkForSanity, nullifyNameListVar</a>
-<a name="59"><span class="lineNum">      59 </span>            :     end type AdaptiveUpdateCount_type</a>
-<a name="60"><span class="lineNum">      60 </span>            : </a>
-<a name="61"><span class="lineNum">      61 </span>            :     interface AdaptiveUpdateCount_type</a>
-<a name="62"><span class="lineNum">      62 </span>            :         module procedure            :: constructAdaptiveUpdateCount</a>
-<a name="63"><span class="lineNum">      63 </span>            :     end interface AdaptiveUpdateCount_type</a>
-<a name="64"><span class="lineNum">      64 </span>            : </a>
-<a name="65"><span class="lineNum">      65 </span>            :     private :: constructAdaptiveUpdateCount, setAdaptiveUpdateCount, checkForSanity, nullifyNameListVar</a>
-<a name="66"><span class="lineNum">      66 </span>            : </a>
-<a name="67"><span class="lineNum">      67 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span>            : contains</a>
-<a name="70"><span class="lineNum">      70 </span>            : </a>
-<a name="71"><span class="lineNum">      71 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">        349 :     function constructAdaptiveUpdateCount(methodName) result(self)</span></a>
-<a name="74"><span class="lineNum">      74 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
-<a name="75"><span class="lineNum">      75 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructAdaptiveUpdateCount</a>
-<a name="76"><span class="lineNum">      76 </span>            : #endif</a>
-<a name="77"><span class="lineNum">      77 </span>            :         use Constants_mod, only: IK, NULL_IK, POSINF_IK</a>
-<a name="78"><span class="lineNum">      78 </span>            :         use String_mod, only: num2str</a>
-<a name="79"><span class="lineNum">      79 </span>            :         implicit none</a>
-<a name="80"><span class="lineNum">      80 </span>            :         character(*), intent(in)        :: methodName</a>
-<a name="81"><span class="lineNum">      81 </span>            :         type(AdaptiveUpdateCount_type)  :: self</a>
-<a name="82"><span class="lineNum">      82 </span>            :        !integer(IK), intent(in)         :: chainSizeDef, adaptiveUpdatePeriodDef</a>
-<a name="83"><span class="lineNum">      83 </span>            :        !self%def  = chainSizeDef / ( 2 * adaptiveUpdatePeriodDef )  </a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        349 :         self%def  = POSINF_IK</span></a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">        349 :         self%null = NULL_IK</span></a>
-<a name="86"><span class="lineNum">      86 </span>            :         self%desc = &amp;</a>
-<a name="87"><span class="lineNum">      87 </span>            :         &quot;adaptiveUpdateCount represents the total number of adaptive updates that will be made &amp;</a>
-<a name="88"><span class="lineNum">      88 </span>            :         &amp;to the parameters of the proposal distribution to increase the efficiency of the sampler &amp;</a>
-<a name="89"><span class="lineNum">      89 </span>            :         &amp;thus increasing the overall sampling efficiency of &quot; // methodName // &quot;. &amp;</a>
-<a name="90"><span class="lineNum">      90 </span>            :         &amp;Every adaptiveUpdatePeriod number of calls to the objective function, the parameters of the proposal distribution &amp;</a>
-<a name="91"><span class="lineNum">      91 </span>            :         &amp;will be updated until either the total number of adaptive updates reaches the value of adaptiveUpdateCount. &amp;</a>
-<a name="92"><span class="lineNum">      92 </span>            :         &amp;This variable must be a non-negative integer. As a rule of thumb, it may be appropriate to &amp;</a>
-<a name="93"><span class="lineNum">      93 </span>            :         &amp;set the input variable chainSize &gt; 2 * adaptiveUpdatePeriod * adaptiveUpdateCount, &amp;</a>
-<a name="94"><span class="lineNum">      94 </span>            :         &amp;to ensure ergodicity and stationarity of the MCMC sampler. &amp;</a>
-<a name="95"><span class="lineNum">      95 </span>            :         &amp;If adaptiveUpdateCount=0, then the proposal distribution parameters will be fixed to &amp;</a>
-<a name="96"><span class="lineNum">      96 </span>            :         &amp;the initial input values throughout the entire MCMC sampling. &amp;</a>
-<a name="97"><span class="lineNum">      97 </span><span class="lineCov">        349 :         &amp;The default value is &quot; // num2str(self%def) // &quot;.&quot;</span></a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">        349 :     end function constructAdaptiveUpdateCount</span></a>
-<a name="99"><span class="lineNum">      99 </span>            : </a>
-<a name="100"><span class="lineNum">     100 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="101"><span class="lineNum">     101 </span>            : </a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">        349 :     subroutine nullifyNameListVar(self)</span></a>
-<a name="103"><span class="lineNum">     103 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
-<a name="104"><span class="lineNum">     104 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
-<a name="105"><span class="lineNum">     105 </span>            : #endif</a>
-<a name="106"><span class="lineNum">     106 </span>            :         implicit none</a>
-<a name="107"><span class="lineNum">     107 </span>            :         class(AdaptiveUpdateCount_type), intent(in)  :: self</a>
-<a name="108"><span class="lineNum">     108 </span><span class="lineCov">        349 :         adaptiveUpdateCount = self%null</span></a>
-<a name="109"><span class="lineNum">     109 </span><span class="lineCov">        349 :     end subroutine nullifyNameListVar</span></a>
-<a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="112"><span class="lineNum">     112 </span>            : </a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        353 :     subroutine setAdaptiveUpdateCount(self,adaptiveUpdateCount)</span></a>
-<a name="114"><span class="lineNum">     114 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
-<a name="115"><span class="lineNum">     115 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setAdaptiveUpdateCount</a>
-<a name="116"><span class="lineNum">     116 </span>            : #endif</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineCov">        349 :         use Constants_mod, only: IK</span></a>
-<a name="118"><span class="lineNum">     118 </span>            :         implicit none</a>
-<a name="119"><span class="lineNum">     119 </span>            :         class(AdaptiveUpdateCount_type), intent(inout)  :: self</a>
-<a name="120"><span class="lineNum">     120 </span>            :         integer(IK), intent(in)                         :: adaptiveUpdateCount</a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">        353 :         self%val = adaptiveUpdateCount</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        343 :         if ( self%val==self%null ) self%val = self%def</span></a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineCov">        353 :     end subroutine setAdaptiveUpdateCount</span></a>
-<a name="124"><span class="lineNum">     124 </span>            : </a>
-<a name="125"><span class="lineNum">     125 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="126"><span class="lineNum">     126 </span>            : </a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        345 :     subroutine checkForSanity(self,Err,methodName)</span></a>
-<a name="128"><span class="lineNum">     128 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
-<a name="129"><span class="lineNum">     129 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
-<a name="130"><span class="lineNum">     130 </span>            : #endif</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">        353 :         use Constants_mod, only: IK</span></a>
-<a name="132"><span class="lineNum">     132 </span>            :         use Err_mod, only: Err_type</a>
-<a name="133"><span class="lineNum">     133 </span>            :         use String_mod, only: num2str</a>
-<a name="134"><span class="lineNum">     134 </span>            :         implicit none</a>
-<a name="135"><span class="lineNum">     135 </span>            :         class(AdaptiveUpdateCount_type), intent(in)   :: self</a>
-<a name="136"><span class="lineNum">     136 </span>            :         character(*), intent(in)            :: methodName</a>
-<a name="137"><span class="lineNum">     137 </span>            :         type(Err_type), intent(inout)       :: Err</a>
-<a name="138"><span class="lineNum">     138 </span>            :         character(*), parameter             :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">        345 :         if ( self%val&lt;0) then</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          2 :             Err%occurred = .true.</span></a>
-<a name="141"><span class="lineNum">     141 </span>            :             Err%msg =   Err%msg // &amp;</a>
-<a name="142"><span class="lineNum">     142 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
-<a name="143"><span class="lineNum">     143 </span>            :                         &amp;The input requested value for adaptiveUpdateCount (&quot; // num2str(self%val) // &quot;) &amp;</a>
-<a name="144"><span class="lineNum">     144 </span>            :                         &amp;can not be negative. If you are not sure of the appropriate value for adaptiveUpdateCount, drop it &amp;</a>
-<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          2 :                         &amp;from the input list. &quot; // methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
-<a name="146"><span class="lineNum">     146 </span>            :         end if</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">        690 :     end subroutine checkForSanity</span></a>
-<a name="148"><span class="lineNum">     148 </span>            : </a>
-<a name="149"><span class="lineNum">     149 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
-<a name="150"><span class="lineNum">     150 </span>            : </a>
-<a name="151"><span class="lineNum">     151 </span>            : end module SpecDRAM_AdaptiveUpdateCount_mod ! LCOV_EXCL_LINE</a>
+<a name="50"><span class="lineNum">      50 </span>            :     use Constants_mod, only: IK</a>
+<a name="51"><span class="lineNum">      51 </span>            :     implicit none</a>
+<a name="52"><span class="lineNum">      52 </span>            : </a>
+<a name="53"><span class="lineNum">      53 </span>            :     character(*), parameter         :: MODULE_NAME = &quot;@SpecDRAM_AdaptiveUpdateCount_mod&quot;</a>
+<a name="54"><span class="lineNum">      54 </span>            : </a>
+<a name="55"><span class="lineNum">      55 </span>            :     integer(IK)                     :: adaptiveUpdateCount ! namelist input</a>
+<a name="56"><span class="lineNum">      56 </span>            : </a>
+<a name="57"><span class="lineNum">      57 </span>            :     type                            :: AdaptiveUpdateCount_type</a>
+<a name="58"><span class="lineNum">      58 </span>            :         integer(IK)                 :: val</a>
+<a name="59"><span class="lineNum">      59 </span>            :         integer(IK)                 :: def</a>
+<a name="60"><span class="lineNum">      60 </span>            :         integer(IK)                 :: null</a>
+<a name="61"><span class="lineNum">      61 </span>            :         character(:), allocatable   :: desc</a>
+<a name="62"><span class="lineNum">      62 </span>            :     contains</a>
+<a name="63"><span class="lineNum">      63 </span>            :         procedure, pass             :: set =&gt; setAdaptiveUpdateCount, checkForSanity, nullifyNameListVar</a>
+<a name="64"><span class="lineNum">      64 </span>            :     end type AdaptiveUpdateCount_type</a>
+<a name="65"><span class="lineNum">      65 </span>            : </a>
+<a name="66"><span class="lineNum">      66 </span>            :     interface AdaptiveUpdateCount_type</a>
+<a name="67"><span class="lineNum">      67 </span>            :         module procedure            :: constructAdaptiveUpdateCount</a>
+<a name="68"><span class="lineNum">      68 </span>            :     end interface AdaptiveUpdateCount_type</a>
+<a name="69"><span class="lineNum">      69 </span>            : </a>
+<a name="70"><span class="lineNum">      70 </span>            :     private :: constructAdaptiveUpdateCount, setAdaptiveUpdateCount, checkForSanity, nullifyNameListVar</a>
+<a name="71"><span class="lineNum">      71 </span>            : </a>
+<a name="72"><span class="lineNum">      72 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="73"><span class="lineNum">      73 </span>            : </a>
+<a name="74"><span class="lineNum">      74 </span>            : contains</a>
+<a name="75"><span class="lineNum">      75 </span>            : </a>
+<a name="76"><span class="lineNum">      76 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="77"><span class="lineNum">      77 </span>            : </a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">        349 :     function constructAdaptiveUpdateCount(methodName) result(self)</span></a>
+<a name="79"><span class="lineNum">      79 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="80"><span class="lineNum">      80 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: constructAdaptiveUpdateCount</a>
+<a name="81"><span class="lineNum">      81 </span>            : #endif</a>
+<a name="82"><span class="lineNum">      82 </span>            :         use Constants_mod, only: IK, NULL_IK, POSINF_IK</a>
+<a name="83"><span class="lineNum">      83 </span>            :         use String_mod, only: num2str</a>
+<a name="84"><span class="lineNum">      84 </span>            :         implicit none</a>
+<a name="85"><span class="lineNum">      85 </span>            :         character(*), intent(in)        :: methodName</a>
+<a name="86"><span class="lineNum">      86 </span>            :         type(AdaptiveUpdateCount_type)  :: self</a>
+<a name="87"><span class="lineNum">      87 </span>            :        !integer(IK), intent(in)         :: chainSizeDef, adaptiveUpdatePeriodDef</a>
+<a name="88"><span class="lineNum">      88 </span>            :        !self%def  = chainSizeDef / ( 2 * adaptiveUpdatePeriodDef )  </a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineCov">        349 :         self%def  = POSINF_IK</span></a>
+<a name="90"><span class="lineNum">      90 </span><span class="lineCov">        349 :         self%null = NULL_IK</span></a>
+<a name="91"><span class="lineNum">      91 </span>            :         self%desc = &amp;</a>
+<a name="92"><span class="lineNum">      92 </span>            :         &quot;adaptiveUpdateCount represents the total number of adaptive updates that will be made &amp;</a>
+<a name="93"><span class="lineNum">      93 </span>            :         &amp;to the parameters of the proposal distribution to increase the efficiency of the sampler &amp;</a>
+<a name="94"><span class="lineNum">      94 </span>            :         &amp;thus increasing the overall sampling efficiency of &quot; // methodName // &quot;. &amp;</a>
+<a name="95"><span class="lineNum">      95 </span>            :         &amp;Every adaptiveUpdatePeriod number of calls to the objective function, the parameters of the proposal distribution &amp;</a>
+<a name="96"><span class="lineNum">      96 </span>            :         &amp;will be updated until either the total number of adaptive updates reaches the value of adaptiveUpdateCount. &amp;</a>
+<a name="97"><span class="lineNum">      97 </span>            :         &amp;This variable must be a non-negative integer. As a rule of thumb, it may be appropriate to &amp;</a>
+<a name="98"><span class="lineNum">      98 </span>            :         &amp;set the input variable chainSize &gt; 2 * adaptiveUpdatePeriod * adaptiveUpdateCount, &amp;</a>
+<a name="99"><span class="lineNum">      99 </span>            :         &amp;to ensure ergodicity and stationarity of the MCMC sampler. &amp;</a>
+<a name="100"><span class="lineNum">     100 </span>            :         &amp;If adaptiveUpdateCount=0, then the proposal distribution parameters will be fixed to &amp;</a>
+<a name="101"><span class="lineNum">     101 </span>            :         &amp;the initial input values throughout the entire MCMC sampling. &amp;</a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">        349 :         &amp;The default value is &quot; // num2str(self%def) // &quot;.&quot;</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">        349 :     end function constructAdaptiveUpdateCount</span></a>
+<a name="104"><span class="lineNum">     104 </span>            : </a>
+<a name="105"><span class="lineNum">     105 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="106"><span class="lineNum">     106 </span>            : </a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">        349 :     subroutine nullifyNameListVar(self)</span></a>
+<a name="108"><span class="lineNum">     108 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="109"><span class="lineNum">     109 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar</a>
+<a name="110"><span class="lineNum">     110 </span>            : #endif</a>
+<a name="111"><span class="lineNum">     111 </span>            :         implicit none</a>
+<a name="112"><span class="lineNum">     112 </span>            :         class(AdaptiveUpdateCount_type), intent(in)  :: self</a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">        349 :         adaptiveUpdateCount = self%null</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineCov">        349 :     end subroutine nullifyNameListVar</span></a>
+<a name="115"><span class="lineNum">     115 </span>            : </a>
+<a name="116"><span class="lineNum">     116 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">        353 :     subroutine setAdaptiveUpdateCount(self,adaptiveUpdateCount)</span></a>
+<a name="119"><span class="lineNum">     119 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="120"><span class="lineNum">     120 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setAdaptiveUpdateCount</a>
+<a name="121"><span class="lineNum">     121 </span>            : #endif</a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">        349 :         use Constants_mod, only: IK</span></a>
+<a name="123"><span class="lineNum">     123 </span>            :         implicit none</a>
+<a name="124"><span class="lineNum">     124 </span>            :         class(AdaptiveUpdateCount_type), intent(inout)  :: self</a>
+<a name="125"><span class="lineNum">     125 </span>            :         integer(IK), intent(in)                         :: adaptiveUpdateCount</a>
+<a name="126"><span class="lineNum">     126 </span><span class="lineCov">        353 :         self%val = adaptiveUpdateCount</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">        343 :         if ( self%val==self%null ) self%val = self%def</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineCov">        353 :     end subroutine setAdaptiveUpdateCount</span></a>
+<a name="129"><span class="lineNum">     129 </span>            : </a>
+<a name="130"><span class="lineNum">     130 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">        345 :     subroutine checkForSanity(self,Err,methodName)</span></a>
+<a name="133"><span class="lineNum">     133 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
+<a name="134"><span class="lineNum">     134 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity</a>
+<a name="135"><span class="lineNum">     135 </span>            : #endif</a>
+<a name="136"><span class="lineNum">     136 </span><span class="lineCov">        353 :         use Constants_mod, only: IK</span></a>
+<a name="137"><span class="lineNum">     137 </span>            :         use Err_mod, only: Err_type</a>
+<a name="138"><span class="lineNum">     138 </span>            :         use String_mod, only: num2str</a>
+<a name="139"><span class="lineNum">     139 </span>            :         implicit none</a>
+<a name="140"><span class="lineNum">     140 </span>            :         class(AdaptiveUpdateCount_type), intent(in)   :: self</a>
+<a name="141"><span class="lineNum">     141 </span>            :         character(*), intent(in)            :: methodName</a>
+<a name="142"><span class="lineNum">     142 </span>            :         type(Err_type), intent(inout)       :: Err</a>
+<a name="143"><span class="lineNum">     143 </span>            :         character(*), parameter             :: PROCEDURE_NAME = &quot;@checkForSanity()&quot;</a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">        345 :         if ( self%val&lt;0) then</span></a>
+<a name="145"><span class="lineNum">     145 </span><span class="lineCov">          2 :             Err%occurred = .true.</span></a>
+<a name="146"><span class="lineNum">     146 </span>            :             Err%msg =   Err%msg // &amp;</a>
+<a name="147"><span class="lineNum">     147 </span>            :                         MODULE_NAME // PROCEDURE_NAME // &quot;: Error occurred. &amp;</a>
+<a name="148"><span class="lineNum">     148 </span>            :                         &amp;The input requested value for adaptiveUpdateCount (&quot; // num2str(self%val) // &quot;) &amp;</a>
+<a name="149"><span class="lineNum">     149 </span>            :                         &amp;can not be negative. If you are not sure of the appropriate value for adaptiveUpdateCount, drop it &amp;</a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          2 :                         &amp;from the input list. &quot; // methodName // &quot; will automatically assign an appropriate value to it.\n\n&quot;</span></a>
+<a name="151"><span class="lineNum">     151 </span>            :         end if</a>
+<a name="152"><span class="lineNum">     152 </span><span class="lineCov">        690 :     end subroutine checkForSanity</span></a>
+<a name="153"><span class="lineNum">     153 </span>            : </a>
+<a name="154"><span class="lineNum">     154 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
+<a name="155"><span class="lineNum">     155 </span>            : </a>
+<a name="156"><span class="lineNum">     156 </span>            : end module SpecDRAM_AdaptiveUpdateCount_mod ! LCOV_EXCL_LINE</a>
 </pre>
       </td>
     </tr>

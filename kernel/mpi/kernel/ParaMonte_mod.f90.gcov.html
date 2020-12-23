@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-19 06:10:29</td>
+            <td class="headerValue">2020-12-23 03:49:22</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -105,7 +105,7 @@
 <a name="35"><span class="lineNum">      35 </span>            : !!!!   work (education/research/industry/development/...) by citing the ParaMonte</a>
 <a name="36"><span class="lineNum">      36 </span>            : !!!!   library as described on this page:</a>
 <a name="37"><span class="lineNum">      37 </span>            : !!!!</a>
-<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md</a>
+<a name="38"><span class="lineNum">      38 </span>            : !!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md</a>
 <a name="39"><span class="lineNum">      39 </span>            : !!!!</a>
 <a name="40"><span class="lineNum">      40 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
 <a name="41"><span class="lineNum">      41 </span>            : !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a>
@@ -357,7 +357,7 @@
 <a name="287"><span class="lineNum">     287 </span>            :     !&gt;</a>
 <a name="288"><span class="lineNum">     288 </span>            :     !&gt; \warning</a>
 <a name="289"><span class="lineNum">     289 </span>            :     !&gt; This routine has to be called by all images (processes).</a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       1047 :     subroutine setupParaMonte(self,nd,name,inputFile)</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">       2094 :     subroutine setupParaMonte(self,nd,name,inputFile)</span></a>
 <a name="291"><span class="lineNum">     291 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="292"><span class="lineNum">     292 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte</a>
 <a name="293"><span class="lineNum">     293 </span>            : #endif</a>
@@ -373,12 +373,12 @@
 <a name="303"><span class="lineNum">     303 </span>            :         character(*), intent(in), optional      :: inputFile</a>
 <a name="304"><span class="lineNum">     304 </span>            :         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // &quot;@setupParaMonte()&quot;</a>
 <a name="305"><span class="lineNum">     305 </span>            : </a>
-<a name="306"><span class="lineNum">     306 </span><span class="lineCov">       1047 :         self%LogFile%unit = output_unit ! temporarily set the report file to stdout.</span></a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">       1047 :         self%Err%occurred = .false.</span></a>
-<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       1047 :         self%Err%msg = &quot;&quot;</span></a>
+<a name="306"><span class="lineNum">     306 </span><span class="lineCov">       2094 :         self%LogFile%unit = output_unit ! temporarily set the report file to stdout.</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">       2094 :         self%Err%occurred = .false.</span></a>
+<a name="308"><span class="lineNum">     308 </span><span class="lineCov">       2094 :         self%Err%msg = &quot;&quot;</span></a>
 <a name="309"><span class="lineNum">     309 </span>            : </a>
-<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       1047 :         self%Timer = Timer_type(self%Err)</span></a>
-<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       1047 :         if (self%Err%occurred) then</span></a>
+<a name="310"><span class="lineNum">     310 </span><span class="lineCov">       2094 :         self%Timer = Timer_type(self%Err)</span></a>
+<a name="311"><span class="lineNum">     311 </span><span class="lineCov">       2094 :         if (self%Err%occurred) then</span></a>
 <a name="312"><span class="lineNum">     312 </span>            :         ! LCOV_EXCL_START</a>
 <a name="313"><span class="lineNum">     313 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while setting up the &quot; // self%name // &quot;timer.&quot;//NLC// self%Err%msg</a>
 <a name="314"><span class="lineNum">     314 </span>            :             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -386,13 +386,13 @@
 <a name="316"><span class="lineNum">     316 </span>            :         end if</a>
 <a name="317"><span class="lineNum">     317 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="318"><span class="lineNum">     318 </span>            : </a>
-<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       1047 :         self%nd%val = nd</span></a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">       1127 :         self%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.</span></a>
+<a name="319"><span class="lineNum">     319 </span><span class="lineCov">       2094 :         self%nd%val = nd</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">       2254 :         self%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.</span></a>
 <a name="321"><span class="lineNum">     321 </span>            : </a>
-<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       1047 :         self%name     = name</span></a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">       1047 :         self%brand    = INDENT // self%name</span></a>
+<a name="322"><span class="lineNum">     322 </span><span class="lineCov">       2094 :         self%name     = name</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">       2094 :         self%brand    = INDENT // self%name</span></a>
 <a name="324"><span class="lineNum">     324 </span>            : #if defined INTEL_COMPILER_ENABLED || GNU_COMPILER_ENABLED</a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">       1047 :         self%date     = &quot;Build: &quot; // __TIMESTAMP__</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">       2094 :         self%date     = &quot;Build: &quot; // __TIMESTAMP__</span></a>
 <a name="326"><span class="lineNum">     326 </span>            : #else</a>
 <a name="327"><span class="lineNum">     327 </span>            :         self%date     = &quot;Unknown Release Date&quot;</a>
 <a name="328"><span class="lineNum">     328 </span>            : #endif</a>
@@ -404,22 +404,22 @@
 <a name="334"><span class="lineNum">     334 </span>            :         ! WARNING: This is superior to the above method of using the compiler Preprocessor</a>
 <a name="335"><span class="lineNum">     335 </span>            :         ! WARNING: since CMAKE triggers a complete lengthy rebuild of the library when the</a>
 <a name="336"><span class="lineNum">     336 </span>            :         ! WARNING: only the library version has changed.</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       1047 :         self%version  = &quot;Unknown ParaMonte Version&quot;</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">       2094 :         self%version  = &quot;Unknown ParaMonte Version&quot;</span></a>
 <a name="338"><span class="lineNum">     338 </span>            : #include &quot;ParaMonte_mod@version@kernel.inc.f90&quot;</a>
 <a name="339"><span class="lineNum">     339 </span>            : #endif</a>
 <a name="340"><span class="lineNum">     340 </span>            : </a>
 <a name="341"><span class="lineNum">     341 </span>            :         ! setup general processor / coarray image variables</a>
 <a name="342"><span class="lineNum">     342 </span>            : </a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       1047 :         call self%Image%query()</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">       2094 :         call self%Image%query()</span></a>
 <a name="344"><span class="lineNum">     344 </span>            : </a>
 <a name="345"><span class="lineNum">     345 </span>            :         ! setup formatting variables</a>
 <a name="346"><span class="lineNum">     346 </span>            : </a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">       1047 :         self%nd%str = num2str(self%nd%val)</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">       2094 :         self%nd%str = num2str(self%nd%val)</span></a>
 <a name="348"><span class="lineNum">     348 </span>            : </a>
 <a name="349"><span class="lineNum">     349 </span>            :         ! determine OS. Should be only needed by the Leader processes. But apparently not.</a>
 <a name="350"><span class="lineNum">     350 </span>            : </a>
-<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       1047 :         call self%OS%query()</span></a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       1047 :         if (self%OS%Err%occurred) then</span></a>
+<a name="351"><span class="lineNum">     351 </span><span class="lineCov">       2094 :         call self%OS%query()</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">       2094 :         if (self%OS%Err%occurred) then</span></a>
 <a name="353"><span class="lineNum">     353 </span>            :         ! LCOV_EXCL_START</a>
 <a name="354"><span class="lineNum">     354 </span>            :             self%Err = self%OS%Err</a>
 <a name="355"><span class="lineNum">     355 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while querying OS type.&quot;//NLC//self%Err%msg</a>
@@ -439,11 +439,11 @@
 <a name="369"><span class="lineNum">     369 </span>            : </a>
 <a name="370"><span class="lineNum">     370 </span>            :         ! check if input file exists by all images</a>
 <a name="371"><span class="lineNum">     371 </span>            : </a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       1047 :         self%InputFile%isInternal = .false.</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">       1047 :         self%inputFileArgIsPresent = present(inputFile)</span></a>
-<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       1047 :         blockInputFileExistence: if (self%inputFileArgIsPresent) then</span></a>
-<a name="375"><span class="lineNum">     375 </span><span class="lineCov">        504 :             self%InputFile = File_type( path=inputFile, status=&quot;old&quot;, OS=self%OS )</span></a>
-<a name="376"><span class="lineNum">     376 </span><span class="lineCov">        504 :             if (self%InputFile%Err%occurred) then</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">       2094 :         self%InputFile%isInternal = .false.</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">       2094 :         self%inputFileArgIsPresent = present(inputFile)</span></a>
+<a name="374"><span class="lineNum">     374 </span><span class="lineCov">       2094 :         blockInputFileExistence: if (self%inputFileArgIsPresent) then</span></a>
+<a name="375"><span class="lineNum">     375 </span><span class="lineCov">       1008 :             self%InputFile = File_type( path=inputFile, status=&quot;old&quot;, OS=self%OS )</span></a>
+<a name="376"><span class="lineNum">     376 </span><span class="lineCov">       1008 :             if (self%InputFile%Err%occurred) then</span></a>
 <a name="377"><span class="lineNum">     377 </span>            :             ! LCOV_EXCL_START</a>
 <a name="378"><span class="lineNum">     378 </span>            :                 self%Err = self%InputFile%Err</a>
 <a name="379"><span class="lineNum">     379 </span>            :                 self%Err%msg = PROCEDURE_NAME//&quot;: Error occurred while attempting to setup the user's input file='&quot;//inputFile//&quot;'.&quot;//NLC//self%Err%msg</a>
@@ -452,27 +452,27 @@
 <a name="382"><span class="lineNum">     382 </span>            :             end if</a>
 <a name="383"><span class="lineNum">     383 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="384"><span class="lineNum">     384 </span>            :             ! determine if the file is internal</a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">        504 :             self%InputFile%isInternal = self%inputFileArgIsPresent .and. .not.self%InputFile%exists .and. index(getLowerCase(inputFile),&quot;&amp;&quot;//getLowerCase(self%name)) &gt; 0</span></a>
-<a name="386"><span class="lineNum">     386 </span><span class="lineCov">        504 :             if (.not.(self%InputFile%isInternal .or. self%InputFile%exists)) then</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">       1008 :             self%InputFile%isInternal = self%inputFileArgIsPresent .and. .not.self%InputFile%exists .and. index(getLowerCase(inputFile),&quot;&amp;&quot;//getLowerCase(self%name)) &gt; 0</span></a>
+<a name="386"><span class="lineNum">     386 </span><span class="lineCov">       1008 :             if (.not.(self%InputFile%isInternal .or. self%InputFile%exists)) then</span></a>
 <a name="387"><span class="lineNum">     387 </span>            :                 ! file is given, but is neither a path to an external file, nor an internal file containing a namelist</a>
 <a name="388"><span class="lineNum">     388 </span>            :                 ! Therefore, there must be an error/mistake by the user.</a>
 <a name="389"><span class="lineNum">     389 </span>            :                 self%Err%msg =    &quot;The user's input file='&quot;//inputFile//&quot;' is neither the path to an existing &quot; // &amp;</a>
 <a name="390"><span class="lineNum">     390 </span>            :                                 &quot;external input file nor a string containing the input &quot;//self%name//&quot; specifications namelist. &amp;</a>
 <a name="391"><span class="lineNum">     391 </span>            :                                 &amp;This may be due to the user's mistake, providing a wrong path to the input external file or &amp;</a>
 <a name="392"><span class="lineNum">     392 </span>            :                                 &amp;a wrong list of input specifications for the &quot; //self%name// &quot; simulation. &quot; //self%name//&quot; will &amp;</a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         18 :                                 &amp;assume no input specifications file is given by the user...&quot;</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         18 :                 if (self%Image%isFirst) call self%warn(msg=self%Err%msg, prefix=self%brand, newline=NLC, outputUnit=self%LogFile%unit)</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">         18 :                 self%inputFileArgIsPresent = .false.</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         36 :                                 &amp;assume no input specifications file is given by the user...&quot;</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         36 :                 if (self%Image%isFirst) call self%warn(msg=self%Err%msg, prefix=self%brand, newline=NLC, outputUnit=self%LogFile%unit)</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">         36 :                 self%inputFileArgIsPresent = .false.</span></a>
 <a name="396"><span class="lineNum">     396 </span>            :             end if</a>
 <a name="397"><span class="lineNum">     397 </span>            :         end if blockInputFileExistence</a>
 <a name="398"><span class="lineNum">     398 </span>            : </a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       1047 :         if (self%Image%isFirst) call self%warnUserAboutInputFilePresence()</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">       2094 :         if (self%Image%isFirst) call self%warnUserAboutInputFilePresence()</span></a>
 <a name="400"><span class="lineNum">     400 </span>            : </a>
 <a name="401"><span class="lineNum">     401 </span>            :         ! Set the default and null values for ParaMonte SpecBase</a>
 <a name="402"><span class="lineNum">     402 </span>            : </a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       1047 :         self%SpecBase = SpecBase_type(nd=self%nd%val,methodName=self%name,imageID=self%Image%id,imageCount=self%Image%count)</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">       2094 :         self%SpecBase = SpecBase_type(nd=self%nd%val,methodName=self%name,imageID=self%Image%id,imageCount=self%Image%count)</span></a>
 <a name="404"><span class="lineNum">     404 </span>            : </a>
-<a name="405"><span class="lineNum">     405 </span><span class="lineCov">       1047 :     end subroutine setupParaMonte</span></a>
+<a name="405"><span class="lineNum">     405 </span><span class="lineCov">       2094 :     end subroutine setupParaMonte</span></a>
 <a name="406"><span class="lineNum">     406 </span>            : </a>
 <a name="407"><span class="lineNum">     407 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="408"><span class="lineNum">     408 </span>            : </a>
@@ -483,8 +483,8 @@
 <a name="413"><span class="lineNum">     413 </span>            :     !&gt; @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).</a>
 <a name="414"><span class="lineNum">     414 </span>            :     !&gt;</a>
 <a name="415"><span class="lineNum">     415 </span>            :     !&gt; \remark</a>
-<a name="416"><span class="lineNum">     416 </span>            :     !&gt; This routine has to be called by all master images (processes).</a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">        359 :     subroutine addSplashScreen(self)</span></a>
+<a name="416"><span class="lineNum">     416 </span>            :     !&gt; This routine has to be called by all leader images (processes).</a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">        718 :     subroutine addSplashScreen(self)</span></a>
 <a name="418"><span class="lineNum">     418 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="419"><span class="lineNum">     419 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: addSplashScreen</a>
 <a name="420"><span class="lineNum">     420 </span>            : #endif</a>
@@ -533,7 +533,7 @@
 <a name="463"><span class="lineNum">     463 </span>            :         &quot;cdslab.org/pm\n&quot;// &amp;</a>
 <a name="464"><span class="lineNum">     464 </span>            :         &quot;\n&quot;// &amp;</a>
 <a name="465"><span class="lineNum">     465 </span>            :         &quot;https://www.cdslab.org/paramonte/\n&quot;// &amp;</a>
-<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        359 :         &quot;\n&quot;</span></a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">        718 :         &quot;\n&quot;</span></a>
 <a name="467"><span class="lineNum">     467 </span>            : </a>
 <a name="468"><span class="lineNum">     468 </span>            :         call self%Decor%writeDecoratedText  ( text=self%Decor%text &amp; ! LCOV_EXCL_LINE</a>
 <a name="469"><span class="lineNum">     469 </span>            :                                             , symbol=&quot;*&quot; &amp; ! LCOV_EXCL_LINE</a>
@@ -544,9 +544,9 @@
 <a name="474"><span class="lineNum">     474 </span>            :                                             , marginBot=2 &amp; ! LCOV_EXCL_LINE</a>
 <a name="475"><span class="lineNum">     475 </span>            :                                             , outputUnit=self%LogFile%unit &amp; ! LCOV_EXCL_LINE</a>
 <a name="476"><span class="lineNum">     476 </span>            :                                             , newLine=&quot;\n&quot; &amp; ! LCOV_EXCL_LINE</a>
-<a name="477"><span class="lineNum">     477 </span><span class="lineCov">        359 :                                             )</span></a>
+<a name="477"><span class="lineNum">     477 </span><span class="lineCov">        718 :                                             )</span></a>
 <a name="478"><span class="lineNum">     478 </span>            : </a>
-<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       1047 :     end subroutine addSplashScreen</span></a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineCov">       2094 :     end subroutine addSplashScreen</span></a>
 <a name="480"><span class="lineNum">     480 </span>            : </a>
 <a name="481"><span class="lineNum">     481 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="482"><span class="lineNum">     482 </span>            : </a>
@@ -560,12 +560,12 @@
 <a name="490"><span class="lineNum">     490 </span>            :     !&gt;</a>
 <a name="491"><span class="lineNum">     491 </span>            :     !&gt; \remark</a>
 <a name="492"><span class="lineNum">     492 </span>            :     !&gt; This routine has to be called by all leader images (processes).</a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">        359 :     subroutine addCompilerPlatformInfo(self)</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">        718 :     subroutine addCompilerPlatformInfo(self)</span></a>
 <a name="494"><span class="lineNum">     494 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="495"><span class="lineNum">     495 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo</a>
 <a name="496"><span class="lineNum">     496 </span>            : #endif</a>
 <a name="497"><span class="lineNum">     497 </span>            :         use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options</a>
-<a name="498"><span class="lineNum">     498 </span><span class="lineCov">        359 :         use Constants_mod, only: NLC</span></a>
+<a name="498"><span class="lineNum">     498 </span><span class="lineCov">        718 :         use Constants_mod, only: NLC</span></a>
 <a name="499"><span class="lineNum">     499 </span>            :         implicit none</a>
 <a name="500"><span class="lineNum">     500 </span>            :         class(ParaMonte_type), intent(inout)    :: self</a>
 <a name="501"><span class="lineNum">     501 </span>            :         integer(IK)                             :: i, j</a>
@@ -583,10 +583,10 @@
 <a name="513"><span class="lineNum">     513 </span>            :                                             , marginBot=1 &amp;</a>
 <a name="514"><span class="lineNum">     514 </span>            :                                             , outputUnit=self%LogFile%unit &amp;</a>
 <a name="515"><span class="lineNum">     515 </span>            :                                             , newLine=&quot;\n&quot; &amp;</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">        359 :                                             )</span></a>
-<a name="517"><span class="lineNum">     517 </span><span class="lineCov">       1436 :         self%Decor%List = self%Decor%wrapText( self%SpecBase%InterfaceType%val , 132 )</span></a>
-<a name="518"><span class="lineNum">     518 </span><span class="lineCov">        718 :         do i = 1, size(self%Decor%List)</span></a>
-<a name="519"><span class="lineNum">     519 </span><span class="lineCov">        718 :             write(self%LogFile%unit,&quot;(*(g0))&quot;) self%Decor%List(i)%record</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">        718 :                                             )</span></a>
+<a name="517"><span class="lineNum">     517 </span><span class="lineCov">       2872 :         self%Decor%List = self%Decor%wrapText( self%SpecBase%InterfaceType%val , 132 )</span></a>
+<a name="518"><span class="lineNum">     518 </span><span class="lineCov">       1436 :         do i = 1, size(self%Decor%List)</span></a>
+<a name="519"><span class="lineNum">     519 </span><span class="lineCov">       1436 :             write(self%LogFile%unit,&quot;(*(g0))&quot;) self%Decor%List(i)%record</span></a>
 <a name="520"><span class="lineNum">     520 </span>            :         end do</a>
 <a name="521"><span class="lineNum">     521 </span>            : </a>
 <a name="522"><span class="lineNum">     522 </span>            :         ! report the ParaMonte compiler version and options</a>
@@ -600,10 +600,10 @@
 <a name="530"><span class="lineNum">     530 </span>            :                                             , marginBot=1 &amp;</a>
 <a name="531"><span class="lineNum">     531 </span>            :                                             , outputUnit=self%LogFile%unit &amp;</a>
 <a name="532"><span class="lineNum">     532 </span>            :                                             , newLine=&quot;\n&quot; &amp;</a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">        359 :                                             )</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">       1077 :         self%Decor%List = self%Decor%wrapText( compiler_version() , 132 )</span></a>
-<a name="535"><span class="lineNum">     535 </span><span class="lineCov">        718 :         do i = 1,size(self%Decor%List)</span></a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineCov">        718 :             write(self%LogFile%unit,&quot;(*(g0))&quot;) self%Decor%List(i)%record</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">        718 :                                             )</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">       2154 :         self%Decor%List = self%Decor%wrapText( compiler_version() , 132 )</span></a>
+<a name="535"><span class="lineNum">     535 </span><span class="lineCov">       1436 :         do i = 1,size(self%Decor%List)</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">       1436 :             write(self%LogFile%unit,&quot;(*(g0))&quot;) self%Decor%List(i)%record</span></a>
 <a name="537"><span class="lineNum">     537 </span>            :         end do</a>
 <a name="538"><span class="lineNum">     538 </span>            : </a>
 <a name="539"><span class="lineNum">     539 </span>            :         call self%Decor%writeDecoratedText  (text=&quot;\nParaMonte library compiler options\n&quot; &amp;</a>
@@ -615,10 +615,10 @@
 <a name="545"><span class="lineNum">     545 </span>            :                                             , marginBot=1 &amp;</a>
 <a name="546"><span class="lineNum">     546 </span>            :                                             , outputUnit=self%LogFile%unit &amp;</a>
 <a name="547"><span class="lineNum">     547 </span>            :                                             , newLine=&quot;\n&quot; &amp;</a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">        359 :                                             )</span></a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">       5744 :         self%Decor%List = self%Decor%wrapText( compiler_options() , 132 )</span></a>
-<a name="550"><span class="lineNum">     550 </span><span class="lineCov">       2513 :         do i = 1,size(self%Decor%List)</span></a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">       2513 :             write(self%LogFile%unit,&quot;(*(g0))&quot;) self%Decor%List(i)%record</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">        718 :                                             )</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">      11488 :         self%Decor%List = self%Decor%wrapText( compiler_options() , 132 )</span></a>
+<a name="550"><span class="lineNum">     550 </span><span class="lineCov">       5026 :         do i = 1,size(self%Decor%List)</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">       5026 :             write(self%LogFile%unit,&quot;(*(g0))&quot;) self%Decor%List(i)%record</span></a>
 <a name="552"><span class="lineNum">     552 </span>            :         end do</a>
 <a name="553"><span class="lineNum">     553 </span>            : </a>
 <a name="554"><span class="lineNum">     554 </span>            :         call self%Decor%writeDecoratedText  ( text=&quot;\nRuntime platform specifications\n&quot; &amp;</a>
@@ -630,15 +630,15 @@
 <a name="560"><span class="lineNum">     560 </span>            :                                             , marginBot=1 &amp;</a>
 <a name="561"><span class="lineNum">     561 </span>            :                                             , outputUnit=self%LogFile%unit &amp;</a>
 <a name="562"><span class="lineNum">     562 </span>            :                                             , newLine=&quot;\n&quot; &amp;</a>
-<a name="563"><span class="lineNum">     563 </span><span class="lineCov">        359 :                                             )</span></a>
+<a name="563"><span class="lineNum">     563 </span><span class="lineCov">        718 :                                             )</span></a>
 <a name="564"><span class="lineNum">     564 </span>            : </a>
 <a name="565"><span class="lineNum">     565 </span>            :         ! Get system info by all images. why? Not anymore.</a>
 <a name="566"><span class="lineNum">     566 </span>            :         ! On many parallel processors via singlChain this leads to</a>
 <a name="567"><span class="lineNum">     567 </span>            :         ! the creation of thousands of files on the system, simultaneously.</a>
-<a name="568"><span class="lineNum">     568 </span>            :         ! this is not needed by any process other than the masters.</a>
+<a name="568"><span class="lineNum">     568 </span>            :         ! this is not needed by any process other than the leader images.</a>
 <a name="569"><span class="lineNum">     569 </span>            : </a>
-<a name="570"><span class="lineNum">     570 </span><span class="lineCov">        835 :         self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)</span></a>
-<a name="571"><span class="lineNum">     571 </span><span class="lineCov">        359 :         if (self%SystemInfo%Err%occurred) then</span></a>
+<a name="570"><span class="lineNum">     570 </span><span class="lineCov">       1670 :         self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)</span></a>
+<a name="571"><span class="lineNum">     571 </span><span class="lineCov">        718 :         if (self%SystemInfo%Err%occurred) then</span></a>
 <a name="572"><span class="lineNum">     572 </span>            :         ! LCOV_EXCL_START</a>
 <a name="573"><span class="lineNum">     573 </span>            :             self%Err = self%SystemInfo%Err</a>
 <a name="574"><span class="lineNum">     574 </span>            :             self%Err%msg = PROCEDURE_NAME//&quot;: Error occurred while collecting system info.&quot;//NLC//self%Err%msg</a>
@@ -649,15 +649,15 @@
 <a name="579"><span class="lineNum">     579 </span>            : </a>
 <a name="580"><span class="lineNum">     580 </span>            :         ! write the system info to the output file</a>
 <a name="581"><span class="lineNum">     581 </span>            : </a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">      12206 :         do j = 1, self%SystemInfo%nRecord</span></a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">      41644 :             self%Decor%List = self%Decor%wrapText( self%SystemInfo%Records(j)%record , 132 )</span></a>
-<a name="584"><span class="lineNum">     584 </span><span class="lineCov">      25130 :             do i = 1,size(self%Decor%List)</span></a>
-<a name="585"><span class="lineNum">     585 </span><span class="lineCov">      24771 :                 write(self%LogFile%unit,&quot;(A)&quot;) self%Decor%List(i)%record</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineCov">      24412 :         do j = 1, self%SystemInfo%nRecord</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">      83288 :             self%Decor%List = self%Decor%wrapText( self%SystemInfo%Records(j)%record , 132 )</span></a>
+<a name="584"><span class="lineNum">     584 </span><span class="lineCov">      50260 :             do i = 1,size(self%Decor%List)</span></a>
+<a name="585"><span class="lineNum">     585 </span><span class="lineCov">      49542 :                 write(self%LogFile%unit,&quot;(A)&quot;) self%Decor%List(i)%record</span></a>
 <a name="586"><span class="lineNum">     586 </span>            :             end do</a>
 <a name="587"><span class="lineNum">     587 </span>            :         end do</a>
-<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        359 :         call self%Decor%write(self%LogFile%unit)</span></a>
+<a name="588"><span class="lineNum">     588 </span><span class="lineCov">        718 :         call self%Decor%write(self%LogFile%unit)</span></a>
 <a name="589"><span class="lineNum">     589 </span>            : </a>
-<a name="590"><span class="lineNum">     590 </span><span class="lineCov">        359 :     end subroutine addCompilerPlatformInfo</span></a>
+<a name="590"><span class="lineNum">     590 </span><span class="lineCov">        718 :     end subroutine addCompilerPlatformInfo</span></a>
 <a name="591"><span class="lineNum">     591 </span>            : </a>
 <a name="592"><span class="lineNum">     592 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="593"><span class="lineNum">     593 </span>            : </a>
@@ -668,8 +668,8 @@
 <a name="598"><span class="lineNum">     598 </span>            :     !&gt; @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).</a>
 <a name="599"><span class="lineNum">     599 </span>            :     !&gt;</a>
 <a name="600"><span class="lineNum">     600 </span>            :     !&gt; \remark</a>
-<a name="601"><span class="lineNum">     601 </span>            :     !&gt; This routine has to be called by all master images (processes).</a>
-<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        359 :     subroutine noteUserAboutEnvSetup(self)</span></a>
+<a name="601"><span class="lineNum">     601 </span>            :     !&gt; This routine has to be called by all leader images (processes).</a>
+<a name="602"><span class="lineNum">     602 </span><span class="lineCov">        718 :     subroutine noteUserAboutEnvSetup(self)</span></a>
 <a name="603"><span class="lineNum">     603 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="604"><span class="lineNum">     604 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: noteUserAboutEnvSetup</a>
 <a name="605"><span class="lineNum">     605 </span>            : #endif</a>
@@ -679,8 +679,8 @@
 <a name="609"><span class="lineNum">     609 </span>            :                                             , marginTop = 1     &amp;</a>
 <a name="610"><span class="lineNum">     610 </span>            :                                             , marginBot = 1     &amp;</a>
 <a name="611"><span class="lineNum">     611 </span>            :                                             , newline = &quot;\n&quot;    &amp;</a>
-<a name="612"><span class="lineNum">     612 </span><span class="lineCov">        359 :                                             , outputUnit = self%LogFile%unit )</span></a>
-<a name="613"><span class="lineNum">     613 </span><span class="lineCov">        359 :     end subroutine noteUserAboutEnvSetup</span></a>
+<a name="612"><span class="lineNum">     612 </span><span class="lineCov">        718 :                                             , outputUnit = self%LogFile%unit )</span></a>
+<a name="613"><span class="lineNum">     613 </span><span class="lineCov">        718 :     end subroutine noteUserAboutEnvSetup</span></a>
 <a name="614"><span class="lineNum">     614 </span>            : </a>
 <a name="615"><span class="lineNum">     615 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="616"><span class="lineNum">     616 </span>            : </a>
@@ -689,7 +689,7 @@
 <a name="619"><span class="lineNum">     619 </span>            :     !&gt;</a>
 <a name="620"><span class="lineNum">     620 </span>            :     !&gt; @param[in]       self        :   An object of class [ParaMonte_type](@ref paramonte_type).</a>
 <a name="621"><span class="lineNum">     621 </span>            :     !&gt; @param[inout]    namelist    :   The name of the missing namelist.</a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineCov">         48 :     subroutine warnUserAboutMissingNamelist(self, namelist)</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">         96 :     subroutine warnUserAboutMissingNamelist(self, namelist)</span></a>
 <a name="623"><span class="lineNum">     623 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="624"><span class="lineNum">     624 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutMissingNamelist</a>
 <a name="625"><span class="lineNum">     625 </span>            : #endif</a>
@@ -700,12 +700,12 @@
 <a name="630"><span class="lineNum">     630 </span>            :         implicit none</a>
 <a name="631"><span class="lineNum">     631 </span>            :         class(ParaMonte_type), intent(in)   :: self</a>
 <a name="632"><span class="lineNum">     632 </span>            :         character(*), intent(in)            :: namelist</a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">         48 :         character(:), allocatable           :: msg</span></a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineCov">         64 :         if (self%Image%isFirst .or. self%Image%isLeader) then</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">         96 :         character(:), allocatable           :: msg</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineCov">        128 :         if (self%Image%isFirst .or. self%Image%isLeader) then</span></a>
 <a name="635"><span class="lineNum">     635 </span>            :             msg = &quot;No namelist group of variables named &quot;//namelist//&quot; was detected in user's input file for &quot;//self%name//&quot; options.&quot;//NLC//&amp;</a>
-<a name="636"><span class="lineNum">     636 </span><span class="lineCov">         16 :                   &quot;All &quot; // self%name // &quot; options will be assigned appropriate default values.&quot;</span></a>
-<a name="637"><span class="lineNum">     637 </span><span class="lineCov">         16 :             call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = &quot;\n&quot;, msg = msg )</span></a>
-<a name="638"><span class="lineNum">     638 </span><span class="lineCov">         16 :             if (self%LogFile%unit == output_unit) then ! only the first image gets to print on the stdout</span></a>
+<a name="636"><span class="lineNum">     636 </span><span class="lineCov">         32 :                   &quot;All &quot; // self%name // &quot; options will be assigned appropriate default values.&quot;</span></a>
+<a name="637"><span class="lineNum">     637 </span><span class="lineCov">         32 :             call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = &quot;\n&quot;, msg = msg )</span></a>
+<a name="638"><span class="lineNum">     638 </span><span class="lineCov">         32 :             if (self%LogFile%unit == output_unit) then ! only the first image gets to print on the stdout</span></a>
 <a name="639"><span class="lineNum">     639 </span>            :                 if (self%Image%isFirst) call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg ) ! LCOV_EXCL_LINE</a>
 <a name="640"><span class="lineNum">     640 </span>            :             ! LCOV_EXCL_START</a>
 <a name="641"><span class="lineNum">     641 </span>            :             else</a>
@@ -713,7 +713,7 @@
 <a name="643"><span class="lineNum">     643 </span>            :             end if</a>
 <a name="644"><span class="lineNum">     644 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="645"><span class="lineNum">     645 </span>            :         end if</a>
-<a name="646"><span class="lineNum">     646 </span><span class="lineCov">         48 :     end subroutine warnUserAboutMissingNamelist</span></a>
+<a name="646"><span class="lineNum">     646 </span><span class="lineCov">         96 :     end subroutine warnUserAboutMissingNamelist</span></a>
 <a name="647"><span class="lineNum">     647 </span>            : </a>
 <a name="648"><span class="lineNum">     648 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="649"><span class="lineNum">     649 </span>            : </a>
@@ -722,14 +722,14 @@
 <a name="652"><span class="lineNum">     652 </span>            :     !&gt; Warn the user about whether the input file is missing, or is present, and other input file activities.</a>
 <a name="653"><span class="lineNum">     653 </span>            :     !&gt;</a>
 <a name="654"><span class="lineNum">     654 </span>            :     !&gt; @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).</a>
-<a name="655"><span class="lineNum">     655 </span><span class="lineCov">        708 :     subroutine warnUserAboutInputFilePresence(self)</span></a>
+<a name="655"><span class="lineNum">     655 </span><span class="lineCov">       1416 :     subroutine warnUserAboutInputFilePresence(self)</span></a>
 <a name="656"><span class="lineNum">     656 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="657"><span class="lineNum">     657 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutInputFilePresence</a>
 <a name="658"><span class="lineNum">     658 </span>            : #endif</a>
 <a name="659"><span class="lineNum">     659 </span>            :         use Constants_mod, only: NLC ! LCOV_EXCL_LINE</a>
 <a name="660"><span class="lineNum">     660 </span>            :         implicit none</a>
 <a name="661"><span class="lineNum">     661 </span>            :         class(ParaMonte_type), intent(inout)    :: self</a>
-<a name="662"><span class="lineNum">     662 </span><span class="lineCov">        708 :         character(:), allocatable               :: msg</span></a>
+<a name="662"><span class="lineNum">     662 </span><span class="lineCov">       1416 :         character(:), allocatable               :: msg</span></a>
 <a name="663"><span class="lineNum">     663 </span>            : #if defined JULIA_ENABLED</a>
 <a name="664"><span class="lineNum">     664 </span>            :         msg = &quot;Interfacing Julia with &quot;// self%name //&quot;...&quot;</a>
 <a name="665"><span class="lineNum">     665 </span>            : #elif defined MATLAB_ENABLED</a>
@@ -741,14 +741,14 @@
 <a name="671"><span class="lineNum">     671 </span>            : #elif defined R_ENABLED</a>
 <a name="672"><span class="lineNum">     672 </span>            :         msg = &quot;Interfacing R with &quot;// self%name //&quot;...&quot;</a>
 <a name="673"><span class="lineNum">     673 </span>            : #elif defined C_ENABLED || defined CPP_ENABLED || defined FORTRAN_ENABLED</a>
-<a name="674"><span class="lineNum">     674 </span><span class="lineCov">        708 :         if (self%inputFileArgIsPresent) then</span></a>
-<a name="675"><span class="lineNum">     675 </span><span class="lineCov">        326 :             if (self%InputFile%exists) then</span></a>
+<a name="674"><span class="lineNum">     674 </span><span class="lineCov">       1416 :         if (self%inputFileArgIsPresent) then</span></a>
+<a name="675"><span class="lineNum">     675 </span><span class="lineCov">        652 :             if (self%InputFile%exists) then</span></a>
 <a name="676"><span class="lineNum">     676 </span>            :                 msg =   &quot;The user's input file for &quot; // self%name // &quot; options was detected.&quot;// NLC // &amp;</a>
 <a name="677"><span class="lineNum">     677 </span>            :                         &quot;All &quot; // self%name // &quot; specifications will be read from the input file.&quot;// NLC // &amp;</a>
-<a name="678"><span class="lineNum">     678 </span><span class="lineCov">         14 :                         &quot;Here is &quot; // self%name // &quot; input specifications file:&quot;// NLC // self%inputFile%Path%modified</span></a>
-<a name="679"><span class="lineNum">     679 </span><span class="lineCov">        312 :             elseif (self%InputFile%isInternal) then</span></a>
+<a name="678"><span class="lineNum">     678 </span><span class="lineCov">         28 :                         &quot;Here is &quot; // self%name // &quot; input specifications file:&quot;// NLC // self%inputFile%Path%modified</span></a>
+<a name="679"><span class="lineNum">     679 </span><span class="lineCov">        624 :             elseif (self%InputFile%isInternal) then</span></a>
 <a name="680"><span class="lineNum">     680 </span>            :                 msg =   &quot;No external file corresponding to the user's input file for &quot;//self%name//&quot; options could be found.&quot;//NLC// &amp;</a>
-<a name="681"><span class="lineNum">     681 </span><span class="lineCov">        312 :                         &quot;The user-provided input file will be processed as an input string of &quot;//self%name//&quot; options.&quot;</span></a>
+<a name="681"><span class="lineNum">     681 </span><span class="lineCov">        624 :                         &quot;The user-provided input file will be processed as an input string of &quot;//self%name//&quot; options.&quot;</span></a>
 <a name="682"><span class="lineNum">     682 </span>            :             end if</a>
 <a name="683"><span class="lineNum">     683 </span>            :         else</a>
 <a name="684"><span class="lineNum">     684 </span>            :                 msg =   &quot;No &quot; // self%name  // &quot; input file is provided by the user.&quot;//NLC// &amp;</a>
@@ -757,14 +757,14 @@
 <a name="687"><span class="lineNum">     687 </span>            : #else</a>
 <a name="688"><span class="lineNum">     688 </span>            :                         &quot;Where needed, &quot;// &amp;</a>
 <a name="689"><span class="lineNum">     689 </span>            : #endif</a>
-<a name="690"><span class="lineNum">     690 </span><span class="lineCov">        382 :                         &quot;the default options will be used.&quot;</span></a>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">        764 :                         &quot;the default options will be used.&quot;</span></a>
 <a name="691"><span class="lineNum">     691 </span>            :         end if</a>
 <a name="692"><span class="lineNum">     692 </span>            : #endif</a>
 <a name="693"><span class="lineNum">     693 </span>            :         call self%note  ( prefix     = self%brand &amp;</a>
 <a name="694"><span class="lineNum">     694 </span>            :                         , outputUnit = self%LogFile%unit &amp;</a>
 <a name="695"><span class="lineNum">     695 </span>            :                         , newline    = NLC &amp;</a>
-<a name="696"><span class="lineNum">     696 </span><span class="lineCov">        708 :                         , msg        = msg )</span></a>
-<a name="697"><span class="lineNum">     697 </span><span class="lineCov">        708 :     end subroutine warnUserAboutInputFilePresence</span></a>
+<a name="696"><span class="lineNum">     696 </span><span class="lineCov">       1416 :                         , msg        = msg )</span></a>
+<a name="697"><span class="lineNum">     697 </span><span class="lineCov">       1416 :     end subroutine warnUserAboutInputFilePresence</span></a>
 <a name="698"><span class="lineNum">     698 </span>            : </a>
 <a name="699"><span class="lineNum">     699 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="700"><span class="lineNum">     700 </span>            : </a>
@@ -773,30 +773,30 @@
 <a name="703"><span class="lineNum">     703 </span>            :     !&gt; Warn the user about whether the specifications setup from within the program are allowed or not.</a>
 <a name="704"><span class="lineNum">     704 </span>            :     !&gt;</a>
 <a name="705"><span class="lineNum">     705 </span>            :     !&gt; @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).</a>
-<a name="706"><span class="lineNum">     706 </span><span class="lineCov">       1406 :     subroutine setWarnAboutProcArgHasPriority(self)</span></a>
+<a name="706"><span class="lineNum">     706 </span><span class="lineCov">       2812 :     subroutine setWarnAboutProcArgHasPriority(self)</span></a>
 <a name="707"><span class="lineNum">     707 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="708"><span class="lineNum">     708 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnAboutProcArgHasPriority</a>
 <a name="709"><span class="lineNum">     709 </span>            : #endif</a>
 <a name="710"><span class="lineNum">     710 </span>            :         implicit none</a>
 <a name="711"><span class="lineNum">     711 </span>            :         class(ParaMonte_type), intent(inout) :: self</a>
 <a name="712"><span class="lineNum">     712 </span>            : #if !defined CFI_ENABLED</a>
-<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       1406 :         character(:), allocatable            :: msg</span></a>
+<a name="713"><span class="lineNum">     713 </span><span class="lineCov">       2812 :         character(:), allocatable            :: msg</span></a>
 <a name="714"><span class="lineNum">     714 </span>            : #endif</a>
-<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       1406 :         self%procArgHasPriority = .not. self%SpecBase%InputFileHasPriority%val</span></a>
-<a name="716"><span class="lineNum">     716 </span><span class="lineCov">       1406 :         self%procArgNeeded = self%procArgHasPriority .or. (.not.self%inputFileArgIsPresent)</span></a>
+<a name="715"><span class="lineNum">     715 </span><span class="lineCov">       2812 :         self%procArgHasPriority = .not. self%SpecBase%InputFileHasPriority%val</span></a>
+<a name="716"><span class="lineNum">     716 </span><span class="lineCov">       2812 :         self%procArgNeeded = self%procArgHasPriority .or. (.not.self%inputFileArgIsPresent)</span></a>
 <a name="717"><span class="lineNum">     717 </span>            : </a>
 <a name="718"><span class="lineNum">     718 </span>            : #if defined FORTRAN_ENABLED</a>
-<a name="719"><span class="lineNum">     719 </span><span class="lineCov">       1406 :         if (self%procArgHasPriority) then</span></a>
+<a name="719"><span class="lineNum">     719 </span><span class="lineCov">       2812 :         if (self%procArgHasPriority) then</span></a>
 <a name="720"><span class="lineNum">     720 </span>            :             msg =   &quot;Variable inputFileHasPriority = .false.\n&amp;</a>
 <a name="721"><span class="lineNum">     721 </span>            :                     &amp;All variable values will be overwritten by the corresponding procedure argument values,\n&amp;</a>
-<a name="722"><span class="lineNum">     722 </span><span class="lineCov">       1400 :                     &amp;only if provided as procedure arguments.&quot;</span></a>
+<a name="722"><span class="lineNum">     722 </span><span class="lineCov">       2800 :                     &amp;only if provided as procedure arguments.&quot;</span></a>
 <a name="723"><span class="lineNum">     723 </span>            :         else</a>
 <a name="724"><span class="lineNum">     724 </span>            :             msg =   &quot;Variable inputFileHasPriority = .true.\n&amp;</a>
-<a name="725"><span class="lineNum">     725 </span><span class="lineCov">          6 :                     &amp;All variable values will be read from the user-provided input file&quot;</span></a>
+<a name="725"><span class="lineNum">     725 </span><span class="lineCov">         12 :                     &amp;All variable values will be read from the user-provided input file&quot;</span></a>
 <a name="726"><span class="lineNum">     726 </span>            :         end if</a>
 <a name="727"><span class="lineNum">     727 </span>            :         if (self%Image%isFirst) call self%note(prefix = self%brand, outputUnit = self%LogFile%unit, newline = &quot;\n&quot;, msg = msg) ! LCOV_EXCL_LINE</a>
 <a name="728"><span class="lineNum">     728 </span>            : #endif</a>
-<a name="729"><span class="lineNum">     729 </span><span class="lineCov">       2114 :     end subroutine setWarnAboutProcArgHasPriority</span></a>
+<a name="729"><span class="lineNum">     729 </span><span class="lineCov">       4228 :     end subroutine setWarnAboutProcArgHasPriority</span></a>
 <a name="730"><span class="lineNum">     730 </span>            : </a>
 <a name="731"><span class="lineNum">     731 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="732"><span class="lineNum">     732 </span>            : </a>
@@ -805,11 +805,11 @@
 <a name="735"><span class="lineNum">     735 </span>            :     !&gt; Set up the output files of the simulation.</a>
 <a name="736"><span class="lineNum">     736 </span>            :     !&gt;</a>
 <a name="737"><span class="lineNum">     737 </span>            :     !&gt; @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).</a>
-<a name="738"><span class="lineNum">     738 </span><span class="lineCov">       1047 :     subroutine setupOutputFiles(self)</span></a>
+<a name="738"><span class="lineNum">     738 </span><span class="lineCov">       2094 :     subroutine setupOutputFiles(self)</span></a>
 <a name="739"><span class="lineNum">     739 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="740"><span class="lineNum">     740 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: setupOutputFiles</a>
 <a name="741"><span class="lineNum">     741 </span>            : #endif</a>
-<a name="742"><span class="lineNum">     742 </span><span class="lineCov">       1406 :         use Decoration_mod, only: getGenericFormat, INDENT</span></a>
+<a name="742"><span class="lineNum">     742 </span><span class="lineCov">       2812 :         use Decoration_mod, only: getGenericFormat, INDENT</span></a>
 <a name="743"><span class="lineNum">     743 </span>            :         use Constants_mod, only: NLC, FILE_EXT</a>
 <a name="744"><span class="lineNum">     744 </span>            :         use String_mod, only: num2str</a>
 <a name="745"><span class="lineNum">     745 </span>            :         use Path_mod, only: MAX_FILE_PATH_LEN, mkdir</a>
@@ -817,19 +817,19 @@
 <a name="747"><span class="lineNum">     747 </span>            :         implicit none</a>
 <a name="748"><span class="lineNum">     748 </span>            : </a>
 <a name="749"><span class="lineNum">     749 </span>            :         class(ParaMonte_type), intent(inout)    :: self</a>
-<a name="750"><span class="lineNum">     750 </span><span class="lineCov">       1047 :         character(:), allocatable               :: msg, workingOn, currentWorkingDir</span></a>
+<a name="750"><span class="lineNum">     750 </span><span class="lineCov">       2094 :         character(:), allocatable               :: msg, workingOn, currentWorkingDir</span></a>
 <a name="751"><span class="lineNum">     751 </span>            :         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // &quot;@setupOutputFiles()&quot;</a>
 <a name="752"><span class="lineNum">     752 </span>            : </a>
-<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       1047 :         if (self%SpecBase%OutputFileName%original==self%SpecBase%OutputFileName%def) then</span></a>
+<a name="753"><span class="lineNum">     753 </span><span class="lineCov">       2094 :         if (self%SpecBase%OutputFileName%original==self%SpecBase%OutputFileName%def) then</span></a>
 <a name="754"><span class="lineNum">     754 </span>            :             msg =   &quot;No user-input filename prefix for &quot; // self%name // &quot; output files detected.&quot; // NLC // &amp;</a>
 <a name="755"><span class="lineNum">     755 </span><span class="lineNoCov">          0 :                     &quot;Generating appropriate filenames for &quot; // self%name // &quot; output files from the current date and time...&quot;</span></a>
 <a name="756"><span class="lineNum">     756 </span>            :         else</a>
-<a name="757"><span class="lineNum">     757 </span><span class="lineCov">       1047 :             msg = &quot;Variable outputFileName detected among the input variables to &quot; // self%name // &quot;:&quot; //NLC// self%SpecBase%OutputFileName%original</span></a>
+<a name="757"><span class="lineNum">     757 </span><span class="lineCov">       2094 :             msg = &quot;Variable outputFileName detected among the input variables to &quot; // self%name // &quot;:&quot; //NLC// self%SpecBase%OutputFileName%original</span></a>
 <a name="758"><span class="lineNum">     758 </span>            :         end if</a>
 <a name="759"><span class="lineNum">     759 </span>            : </a>
-<a name="760"><span class="lineNum">     760 </span><span class="lineCov">       1047 :         call self%SpecBase%OutputFileName%query(OS=self%OS)</span></a>
+<a name="760"><span class="lineNum">     760 </span><span class="lineCov">       2094 :         call self%SpecBase%OutputFileName%query(OS=self%OS)</span></a>
 <a name="761"><span class="lineNum">     761 </span>            : </a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">       1047 :         if (self%SpecBase%OutputFileName%Err%occurred) then</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">       2094 :         if (self%SpecBase%OutputFileName%Err%occurred) then</span></a>
 <a name="763"><span class="lineNum">     763 </span>            :         ! LCOV_EXCL_START</a>
 <a name="764"><span class="lineNum">     764 </span>            :             self%Err = self%SpecBase%OutputFileName%Err</a>
 <a name="765"><span class="lineNum">     765 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while attempting to construct OutputFileName path type.&quot; //NLC// self%Err%msg</a>
@@ -838,45 +838,45 @@
 <a name="768"><span class="lineNum">     768 </span>            :         end if</a>
 <a name="769"><span class="lineNum">     769 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="770"><span class="lineNum">     770 </span>            : </a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       1041 :         self%SpecBase%OutputFileName%namePrefix = self%SpecBase%OutputFileName%name // self%SpecBase%OutputFileName%ext</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       2082 :         self%SpecBase%OutputFileName%namePrefix = self%SpecBase%OutputFileName%name // self%SpecBase%OutputFileName%ext</span></a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
 <a name="773"><span class="lineNum">     773 </span>            :         ! get the current working directory</a>
 <a name="774"><span class="lineNum">     774 </span>            : </a>
-<a name="775"><span class="lineNum">     775 </span><span class="lineCov">       1041 :         if (allocated(currentWorkingDir)) deallocate(currentWorkingDir)</span></a>
-<a name="776"><span class="lineNum">     776 </span><span class="lineCov">       1041 :         allocate( character(MAX_FILE_PATH_LEN) :: currentWorkingDir )</span></a>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">       2082 :         if (allocated(currentWorkingDir)) deallocate(currentWorkingDir)</span></a>
+<a name="776"><span class="lineNum">     776 </span><span class="lineCov">       2082 :         allocate( character(MAX_FILE_PATH_LEN) :: currentWorkingDir )</span></a>
 <a name="777"><span class="lineNum">     777 </span>            :         block</a>
 <a name="778"><span class="lineNum">     778 </span>            : #if defined INTEL_COMPILER_ENABLED</a>
 <a name="779"><span class="lineNum">     779 </span>            :             use ifport ! only: getcwd</a>
 <a name="780"><span class="lineNum">     780 </span>            : #endif</a>
 <a name="781"><span class="lineNum">     781 </span>            : #if defined INTEL_COMPILER_ENABLED || GNU_COMPILER_ENABLED</a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       1041 :             self%Err%stat = getcwd(currentWorkingDir)</span></a>
-<a name="783"><span class="lineNum">     783 </span><span class="lineCov">       1041 :             currentWorkingDir = trim(adjustl(currentWorkingDir))</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">       2082 :             self%Err%stat = getcwd(currentWorkingDir)</span></a>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">       2082 :             currentWorkingDir = trim(adjustl(currentWorkingDir))</span></a>
 <a name="784"><span class="lineNum">     784 </span>            : #else</a>
 <a name="785"><span class="lineNum">     785 </span>            :             self%Err%stat = 0_IK</a>
 <a name="786"><span class="lineNum">     786 </span>            :             currentWorkingDir = &quot;.&quot;</a>
 <a name="787"><span class="lineNum">     787 </span>            : #endif</a>
 <a name="788"><span class="lineNum">     788 </span>            :         end block</a>
-<a name="789"><span class="lineNum">     789 </span><span class="lineCov">       1041 :         if (self%Err%stat/=0) then</span></a>
+<a name="789"><span class="lineNum">     789 </span><span class="lineCov">       2082 :         if (self%Err%stat/=0) then</span></a>
 <a name="790"><span class="lineNum">     790 </span>            :         ! LCOV_EXCL_START</a>
 <a name="791"><span class="lineNum">     791 </span>            :             self%Err%msg = PROCEDURE_NAME//&quot;: Error occurred while fetching the current working directory via getcwd().&quot;//NLC</a>
 <a name="792"><span class="lineNum">     792 </span>            :             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
 <a name="793"><span class="lineNum">     793 </span>            :             return</a>
 <a name="794"><span class="lineNum">     794 </span>            :         end if</a>
 <a name="795"><span class="lineNum">     795 </span>            :         ! LCOV_EXCL_STOP</a>
-<a name="796"><span class="lineNum">     796 </span><span class="lineCov">       1041 :         msg = msg //NLC//NLC// &quot;Absolute path to the current working directory:&quot;//NLC//currentWorkingDir</span></a>
+<a name="796"><span class="lineNum">     796 </span><span class="lineCov">       2082 :         msg = msg //NLC//NLC// &quot;Absolute path to the current working directory:&quot;//NLC//currentWorkingDir</span></a>
 <a name="797"><span class="lineNum">     797 </span>            : </a>
-<a name="798"><span class="lineNum">     798 </span><span class="lineCov">       1041 :         if (len_trim(adjustl(self%SpecBase%OutputFileName%dir))==0) then</span></a>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">       2082 :         if (len_trim(adjustl(self%SpecBase%OutputFileName%dir))==0) then</span></a>
 <a name="799"><span class="lineNum">     799 </span><span class="lineNoCov">          0 :             self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%shellSlash</span></a>
 <a name="800"><span class="lineNum">     800 </span><span class="lineNoCov">          0 :             msg = msg //NLC//NLC// &quot;All output files will be written to the current working directory:&quot;//NLC//self%SpecBase%OutputFileName%dir</span></a>
 <a name="801"><span class="lineNum">     801 </span>            :         else</a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">       1041 :             msg = msg //NLC//NLC// &quot;Generating the requested directory for the &quot;//self%name//&quot; output files:&quot;//NLC//self%SpecBase%OutputFileName%dir</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">       2082 :             msg = msg //NLC//NLC// &quot;Generating the requested directory for the &quot;//self%name//&quot; output files:&quot;//NLC//self%SpecBase%OutputFileName%dir</span></a>
 <a name="803"><span class="lineNum">     803 </span>            :         end if</a>
 <a name="804"><span class="lineNum">     804 </span>            : </a>
 <a name="805"><span class="lineNum">     805 </span>            :         ! Generate the output files directory:</a>
 <a name="806"><span class="lineNum">     806 </span>            : </a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       1041 :         if (self%Image%isFirst) then</span></a>
-<a name="808"><span class="lineNum">     808 </span><span class="lineCov">        347 :             self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isUnixShell = self%OS%Shell%isUnix )</span></a>
-<a name="809"><span class="lineNum">     809 </span><span class="lineCov">        347 :             if (self%Err%occurred) then</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">       2082 :         if (self%Image%isFirst) then</span></a>
+<a name="808"><span class="lineNum">     808 </span><span class="lineCov">        694 :             self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isUnixShell = self%OS%Shell%isUnix )</span></a>
+<a name="809"><span class="lineNum">     809 </span><span class="lineCov">        694 :             if (self%Err%occurred) then</span></a>
 <a name="810"><span class="lineNum">     810 </span>            :             ! LCOV_EXCL_START</a>
 <a name="811"><span class="lineNum">     811 </span>            :                 self%Err%msg = PROCEDURE_NAME//&quot;: Error occurred while making directory = '&quot;//self%SpecBase%OutputFileName%dir//&quot;'.&quot;//NLC//self%Err%msg</a>
 <a name="812"><span class="lineNum">     812 </span>            :                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -887,67 +887,67 @@
 <a name="817"><span class="lineNum">     817 </span>            : </a>
 <a name="818"><span class="lineNum">     818 </span>            :         ! in parallel mode, ensure the directory exists before moving on</a>
 <a name="819"><span class="lineNum">     819 </span>            : </a>
-<a name="820"><span class="lineNum">     820 </span><span class="lineCov">       1041 :         call self%Image%sync()</span></a>
+<a name="820"><span class="lineNum">     820 </span><span class="lineCov">       2082 :         call self%Image%sync()</span></a>
 <a name="821"><span class="lineNum">     821 </span>            : </a>
-<a name="822"><span class="lineNum">     822 </span><span class="lineCov">       1041 :         if (len_trim(adjustl(self%SpecBase%OutputFileName%namePrefix))==0) then</span></a>
+<a name="822"><span class="lineNum">     822 </span><span class="lineCov">       2082 :         if (len_trim(adjustl(self%SpecBase%OutputFileName%namePrefix))==0) then</span></a>
 <a name="823"><span class="lineNum">     823 </span>            :             msg = msg //NLC//NLC// &quot;No user-input filename prefix for &quot; // self%name // &quot; output files detected.&quot;//NLC//&amp;</a>
 <a name="824"><span class="lineNum">     824 </span><span class="lineNoCov">          0 :             &quot;Generating appropriate filenames for &quot; // self%name // &quot; output files from the current date and time...&quot;</span></a>
 <a name="825"><span class="lineNum">     825 </span><span class="lineNoCov">          0 :             self%SpecBase%OutputFileName%namePrefix = self%SpecBase%OutputFileName%def</span></a>
 <a name="826"><span class="lineNum">     826 </span>            :         end if</a>
 <a name="827"><span class="lineNum">     827 </span>            : </a>
-<a name="828"><span class="lineNum">     828 </span><span class="lineCov">       1041 :         self%SpecBase%OutputFileName%pathPrefix = self%SpecBase%OutputFileName%dir // self%SpecBase%OutputFileName%namePrefix</span></a>
+<a name="828"><span class="lineNum">     828 </span><span class="lineCov">       2082 :         self%SpecBase%OutputFileName%pathPrefix = self%SpecBase%OutputFileName%dir // self%SpecBase%OutputFileName%namePrefix</span></a>
 <a name="829"><span class="lineNum">     829 </span>            : </a>
 <a name="830"><span class="lineNum">     830 </span>            :         ! Variable msg will be used down this subroutine, so it should not be changed beyond this point</a>
-<a name="831"><span class="lineNum">     831 </span><span class="lineCov">       1041 :         msg  =  msg //NLC//NLC// self%name // &quot; output files will be prefixed with:&quot;//NLC// self%SpecBase%OutputFileName%pathPrefix</span></a>
+<a name="831"><span class="lineNum">     831 </span><span class="lineCov">       2082 :         msg  =  msg //NLC//NLC// self%name // &quot; output files will be prefixed with:&quot;//NLC// self%SpecBase%OutputFileName%pathPrefix</span></a>
 <a name="832"><span class="lineNum">     832 </span>            :         if (self%Image%isFirst) call self%note(prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg) ! LCOV_EXCL_LINE</a>
 <a name="833"><span class="lineNum">     833 </span>            : </a>
 <a name="834"><span class="lineNum">     834 </span>            :         ! Generate the output filenames, search for pre-existing runs, and open the report file:</a>
 <a name="835"><span class="lineNum">     835 </span>            : </a>
-<a name="836"><span class="lineNum">     836 </span><span class="lineCov">       1041 :         if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = &quot;Searching for previous runs of &quot; // self%name // &quot;...&quot; )</span></a>
+<a name="836"><span class="lineNum">     836 </span><span class="lineCov">       2082 :         if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = &quot;Searching for previous runs of &quot; // self%name // &quot;...&quot; )</span></a>
 <a name="837"><span class="lineNum">     837 </span>            : </a>
-<a name="838"><span class="lineNum">     838 </span>            :         ! this block could be all executed by only the master images</a>
+<a name="838"><span class="lineNum">     838 </span>            :         ! this block could be all executed by only the leader images</a>
 <a name="839"><span class="lineNum">     839 </span>            : </a>
-<a name="840"><span class="lineNum">     840 </span><span class="lineCov">       1041 :         self%LogFile%Path%Ext = FILE_EXT%ascii</span></a>
-<a name="841"><span class="lineNum">     841 </span><span class="lineCov">       1041 :         self%TimeFile%Path%Ext = FILE_EXT%ascii</span></a>
-<a name="842"><span class="lineNum">     842 </span><span class="lineCov">       1041 :         self%ChainFile%Path%Ext = FILE_EXT%ascii</span></a>
-<a name="843"><span class="lineNum">     843 </span><span class="lineCov">       1041 :         self%SampleFile%Path%Ext = FILE_EXT%ascii</span></a>
-<a name="844"><span class="lineNum">     844 </span><span class="lineCov">       1041 :         self%RestartFile%Path%Ext = FILE_EXT%ascii</span></a>
+<a name="840"><span class="lineNum">     840 </span><span class="lineCov">       2082 :         self%LogFile%Path%Ext = FILE_EXT%ascii</span></a>
+<a name="841"><span class="lineNum">     841 </span><span class="lineCov">       2082 :         self%TimeFile%Path%Ext = FILE_EXT%ascii</span></a>
+<a name="842"><span class="lineNum">     842 </span><span class="lineCov">       2082 :         self%ChainFile%Path%Ext = FILE_EXT%ascii</span></a>
+<a name="843"><span class="lineNum">     843 </span><span class="lineCov">       2082 :         self%SampleFile%Path%Ext = FILE_EXT%ascii</span></a>
+<a name="844"><span class="lineNum">     844 </span><span class="lineCov">       2082 :         self%RestartFile%Path%Ext = FILE_EXT%ascii</span></a>
 <a name="845"><span class="lineNum">     845 </span>            : </a>
-<a name="846"><span class="lineNum">     846 </span><span class="lineCov">       1041 :         self%RestartFile%Form%value = &quot;formatted&quot;</span></a>
-<a name="847"><span class="lineNum">     847 </span><span class="lineCov">       1041 :         if (self%SpecBase%RestartFileFormat%isBinary) then</span></a>
-<a name="848"><span class="lineNum">     848 </span><span class="lineCov">        975 :             self%RestartFile%Form%value = &quot;unformatted&quot;</span></a>
-<a name="849"><span class="lineNum">     849 </span><span class="lineCov">        975 :             self%RestartFile%Path%Ext = FILE_EXT%binary</span></a>
+<a name="846"><span class="lineNum">     846 </span><span class="lineCov">       2082 :         self%RestartFile%Form%value = &quot;formatted&quot;</span></a>
+<a name="847"><span class="lineNum">     847 </span><span class="lineCov">       2082 :         if (self%SpecBase%RestartFileFormat%isBinary) then</span></a>
+<a name="848"><span class="lineNum">     848 </span><span class="lineCov">       1950 :             self%RestartFile%Form%value = &quot;unformatted&quot;</span></a>
+<a name="849"><span class="lineNum">     849 </span><span class="lineCov">       1950 :             self%RestartFile%Path%Ext = FILE_EXT%binary</span></a>
 <a name="850"><span class="lineNum">     850 </span>            :         end if</a>
 <a name="851"><span class="lineNum">     851 </span>            : </a>
-<a name="852"><span class="lineNum">     852 </span><span class="lineCov">       1041 :         self%ChainFile%Form%value = &quot;formatted&quot;</span></a>
-<a name="853"><span class="lineNum">     853 </span><span class="lineCov">       1041 :         if (self%SpecBase%ChainFileFormat%isBinary) then</span></a>
-<a name="854"><span class="lineNum">     854 </span><span class="lineCov">         36 :             self%ChainFile%Form%value = &quot;unformatted&quot;</span></a>
-<a name="855"><span class="lineNum">     855 </span><span class="lineCov">         36 :             self%ChainFile%Path%Ext = FILE_EXT%binary</span></a>
+<a name="852"><span class="lineNum">     852 </span><span class="lineCov">       2082 :         self%ChainFile%Form%value = &quot;formatted&quot;</span></a>
+<a name="853"><span class="lineNum">     853 </span><span class="lineCov">       2082 :         if (self%SpecBase%ChainFileFormat%isBinary) then</span></a>
+<a name="854"><span class="lineNum">     854 </span><span class="lineCov">         72 :             self%ChainFile%Form%value = &quot;unformatted&quot;</span></a>
+<a name="855"><span class="lineNum">     855 </span><span class="lineCov">         72 :             self%ChainFile%Path%Ext = FILE_EXT%binary</span></a>
 <a name="856"><span class="lineNum">     856 </span>            :         end if</a>
 <a name="857"><span class="lineNum">     857 </span>            : </a>
 <a name="858"><span class="lineNum">     858 </span>            :         block</a>
 <a name="859"><span class="lineNum">     859 </span>            :             use Path_mod, only: Path_type</a>
 <a name="860"><span class="lineNum">     860 </span>            :             integer(IK) :: imageID</a>
 <a name="861"><span class="lineNum">     861 </span>            : #if defined CAF_ENABLED || defined MPI_ENABLED</a>
-<a name="862"><span class="lineNum">     862 </span><span class="lineCov">       1041 :             if (self%SpecBase%ParallelizationModel%isMultiChain) then</span></a>
-<a name="863"><span class="lineNum">     863 </span><span class="lineCov">         72 :                 imageID = self%Image%id</span></a>
+<a name="862"><span class="lineNum">     862 </span><span class="lineCov">       2082 :             if (self%SpecBase%ParallelizationModel%isMultiChain) then</span></a>
+<a name="863"><span class="lineNum">     863 </span><span class="lineCov">        144 :                 imageID = self%Image%id</span></a>
 <a name="864"><span class="lineNum">     864 </span>            :             else</a>
 <a name="865"><span class="lineNum">     865 </span>            : #endif</a>
-<a name="866"><span class="lineNum">     866 </span><span class="lineCov">        969 :                 imageID = 1_IK</span></a>
+<a name="866"><span class="lineNum">     866 </span><span class="lineCov">       1938 :                 imageID = 1_IK</span></a>
 <a name="867"><span class="lineNum">     867 </span>            : #if defined CAF_ENABLED || defined MPI_ENABLED</a>
 <a name="868"><span class="lineNum">     868 </span>            :             end if</a>
 <a name="869"><span class="lineNum">     869 </span>            : #endif</a>
-<a name="870"><span class="lineNum">     870 </span><span class="lineCov">       1041 :             self%SpecBase%OutputFileName%pathPrefix = self%SpecBase%OutputFileName%pathPrefix // &quot;_process_&quot; // num2str(imageID) // &quot;_&quot;</span></a>
-<a name="871"><span class="lineNum">     871 </span><span class="lineCov">       1041 :             self%LogFile%Path       = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%LogFile%suffix        // self%LogFile%Path%Ext      , OS = self%OS )</span></a>
-<a name="872"><span class="lineNum">     872 </span><span class="lineCov">       1041 :             self%TimeFile%Path      = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%TimeFile%suffix       // self%TimeFile%Path%Ext     , OS = self%OS )</span></a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineCov">       1041 :             self%ChainFile%Path     = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%ChainFile%suffix      // self%ChainFile%Path%Ext    , OS = self%OS )</span></a>
-<a name="874"><span class="lineNum">     874 </span><span class="lineCov">       1041 :             self%SampleFile%Path    = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%SampleFile%suffix     // self%SampleFile%Path%Ext   , OS = self%OS )</span></a>
-<a name="875"><span class="lineNum">     875 </span><span class="lineCov">       1041 :             self%RestartFile%Path   = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%RestartFile%suffix    // self%RestartFile%Path%Ext  , OS = self%OS )</span></a>
+<a name="870"><span class="lineNum">     870 </span><span class="lineCov">       2082 :             self%SpecBase%OutputFileName%pathPrefix = self%SpecBase%OutputFileName%pathPrefix // &quot;_process_&quot; // num2str(imageID) // &quot;_&quot;</span></a>
+<a name="871"><span class="lineNum">     871 </span><span class="lineCov">       2082 :             self%LogFile%Path       = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%LogFile%suffix        // self%LogFile%Path%Ext      , OS = self%OS )</span></a>
+<a name="872"><span class="lineNum">     872 </span><span class="lineCov">       2082 :             self%TimeFile%Path      = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%TimeFile%suffix       // self%TimeFile%Path%Ext     , OS = self%OS )</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">       2082 :             self%ChainFile%Path     = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%ChainFile%suffix      // self%ChainFile%Path%Ext    , OS = self%OS )</span></a>
+<a name="874"><span class="lineNum">     874 </span><span class="lineCov">       2082 :             self%SampleFile%Path    = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%SampleFile%suffix     // self%SampleFile%Path%Ext   , OS = self%OS )</span></a>
+<a name="875"><span class="lineNum">     875 </span><span class="lineCov">       2082 :             self%RestartFile%Path   = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%RestartFile%suffix    // self%RestartFile%Path%Ext  , OS = self%OS )</span></a>
 <a name="876"><span class="lineNum">     876 </span>            :         end block</a>
 <a name="877"><span class="lineNum">     877 </span>            : </a>
-<a name="878"><span class="lineNum">     878 </span><span class="lineCov">       1041 :         inquire( file = self%LogFile%Path%original, exist = self%LogFile%exists, iostat = self%LogFile%Err%stat )</span></a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">       1041 :         self%Err = self%LogFile%getInqErr( self%LogFile%Err%stat )</span></a>
-<a name="880"><span class="lineNum">     880 </span><span class="lineCov">       1041 :         if (self%Err%occurred) then</span></a>
+<a name="878"><span class="lineNum">     878 </span><span class="lineCov">       2082 :         inquire( file = self%LogFile%Path%original, exist = self%LogFile%exists, iostat = self%LogFile%Err%stat )</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">       2082 :         self%Err = self%LogFile%getInqErr( self%LogFile%Err%stat )</span></a>
+<a name="880"><span class="lineNum">     880 </span><span class="lineCov">       2082 :         if (self%Err%occurred) then</span></a>
 <a name="881"><span class="lineNum">     881 </span>            :         ! LCOV_EXCL_START</a>
 <a name="882"><span class="lineNum">     882 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while inquiring the existence of file='&quot; // self%LogFile%Path%original // self%Err%msg</a>
 <a name="883"><span class="lineNum">     883 </span>            :             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -955,9 +955,9 @@
 <a name="885"><span class="lineNum">     885 </span>            :         end if</a>
 <a name="886"><span class="lineNum">     886 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="887"><span class="lineNum">     887 </span>            : </a>
-<a name="888"><span class="lineNum">     888 </span><span class="lineCov">       1041 :         inquire( file = self%SampleFile%Path%original, exist = self%SampleFile%exists, iostat = self%SampleFile%Err%stat )</span></a>
-<a name="889"><span class="lineNum">     889 </span><span class="lineCov">       1041 :         self%Err = self%SampleFile%getInqErr( self%SampleFile%Err%stat )</span></a>
-<a name="890"><span class="lineNum">     890 </span><span class="lineCov">       1041 :         if (self%Err%occurred) then</span></a>
+<a name="888"><span class="lineNum">     888 </span><span class="lineCov">       2082 :         inquire( file = self%SampleFile%Path%original, exist = self%SampleFile%exists, iostat = self%SampleFile%Err%stat )</span></a>
+<a name="889"><span class="lineNum">     889 </span><span class="lineCov">       2082 :         self%Err = self%SampleFile%getInqErr( self%SampleFile%Err%stat )</span></a>
+<a name="890"><span class="lineNum">     890 </span><span class="lineCov">       2082 :         if (self%Err%occurred) then</span></a>
 <a name="891"><span class="lineNum">     891 </span>            :         ! LCOV_EXCL_START</a>
 <a name="892"><span class="lineNum">     892 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while inquiring the existence of file='&quot; // self%SampleFile%Path%original // self%Err%msg</a>
 <a name="893"><span class="lineNum">     893 </span>            :             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -965,9 +965,9 @@
 <a name="895"><span class="lineNum">     895 </span>            :         end if</a>
 <a name="896"><span class="lineNum">     896 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="897"><span class="lineNum">     897 </span>            : </a>
-<a name="898"><span class="lineNum">     898 </span><span class="lineCov">       1041 :         inquire( file = self%TimeFile%Path%original, exist = self%TimeFile%exists, iostat = self%TimeFile%Err%stat )</span></a>
-<a name="899"><span class="lineNum">     899 </span><span class="lineCov">       1041 :         self%Err = self%TimeFile%getInqErr( self%TimeFile%Err%stat )</span></a>
-<a name="900"><span class="lineNum">     900 </span><span class="lineCov">       1041 :         if (self%Err%occurred) then</span></a>
+<a name="898"><span class="lineNum">     898 </span><span class="lineCov">       2082 :         inquire( file = self%TimeFile%Path%original, exist = self%TimeFile%exists, iostat = self%TimeFile%Err%stat )</span></a>
+<a name="899"><span class="lineNum">     899 </span><span class="lineCov">       2082 :         self%Err = self%TimeFile%getInqErr( self%TimeFile%Err%stat )</span></a>
+<a name="900"><span class="lineNum">     900 </span><span class="lineCov">       2082 :         if (self%Err%occurred) then</span></a>
 <a name="901"><span class="lineNum">     901 </span>            :         ! LCOV_EXCL_START</a>
 <a name="902"><span class="lineNum">     902 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while inquiring the existence of file='&quot; // self%TimeFile%Path%original // self%Err%msg</a>
 <a name="903"><span class="lineNum">     903 </span>            :             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -975,9 +975,9 @@
 <a name="905"><span class="lineNum">     905 </span>            :         end if</a>
 <a name="906"><span class="lineNum">     906 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="907"><span class="lineNum">     907 </span>            : </a>
-<a name="908"><span class="lineNum">     908 </span><span class="lineCov">       1041 :         inquire( file = self%ChainFile%Path%original, exist = self%ChainFile%exists, iostat = self%ChainFile%Err%stat )</span></a>
-<a name="909"><span class="lineNum">     909 </span><span class="lineCov">       1041 :         self%Err = self%ChainFile%getInqErr( self%ChainFile%Err%stat )</span></a>
-<a name="910"><span class="lineNum">     910 </span><span class="lineCov">       1041 :         if (self%Err%occurred) then</span></a>
+<a name="908"><span class="lineNum">     908 </span><span class="lineCov">       2082 :         inquire( file = self%ChainFile%Path%original, exist = self%ChainFile%exists, iostat = self%ChainFile%Err%stat )</span></a>
+<a name="909"><span class="lineNum">     909 </span><span class="lineCov">       2082 :         self%Err = self%ChainFile%getInqErr( self%ChainFile%Err%stat )</span></a>
+<a name="910"><span class="lineNum">     910 </span><span class="lineCov">       2082 :         if (self%Err%occurred) then</span></a>
 <a name="911"><span class="lineNum">     911 </span>            :         ! LCOV_EXCL_START</a>
 <a name="912"><span class="lineNum">     912 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while inquiring the existence of file='&quot; // self%ChainFile%Path%original // self%Err%msg</a>
 <a name="913"><span class="lineNum">     913 </span>            :             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -985,9 +985,9 @@
 <a name="915"><span class="lineNum">     915 </span>            :         end if</a>
 <a name="916"><span class="lineNum">     916 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="917"><span class="lineNum">     917 </span>            : </a>
-<a name="918"><span class="lineNum">     918 </span><span class="lineCov">       1041 :         inquire( file = self%RestartFile%Path%original, exist = self%RestartFile%exists, iostat = self%RestartFile%Err%stat )</span></a>
-<a name="919"><span class="lineNum">     919 </span><span class="lineCov">       1041 :         self%Err = self%RestartFile%getInqErr( self%RestartFile%Err%stat )</span></a>
-<a name="920"><span class="lineNum">     920 </span><span class="lineCov">       1041 :         if (self%Err%occurred) then</span></a>
+<a name="918"><span class="lineNum">     918 </span><span class="lineCov">       2082 :         inquire( file = self%RestartFile%Path%original, exist = self%RestartFile%exists, iostat = self%RestartFile%Err%stat )</span></a>
+<a name="919"><span class="lineNum">     919 </span><span class="lineCov">       2082 :         self%Err = self%RestartFile%getInqErr( self%RestartFile%Err%stat )</span></a>
+<a name="920"><span class="lineNum">     920 </span><span class="lineCov">       2082 :         if (self%Err%occurred) then</span></a>
 <a name="921"><span class="lineNum">     921 </span>            :         ! LCOV_EXCL_START</a>
 <a name="922"><span class="lineNum">     922 </span>            :             self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while inquiring the existence of file='&quot; // self%RestartFile%Path%original // self%Err%msg</a>
 <a name="923"><span class="lineNum">     923 </span>            :             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -996,24 +996,24 @@
 <a name="926"><span class="lineNum">     926 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="927"><span class="lineNum">     927 </span>            : </a>
 <a name="928"><span class="lineNum">     928 </span>            :         self%isDryRun = (.not. self%SpecBase%OverwriteRequested%val) .and. &amp; ! not fresh, if any file exists</a>
-<a name="929"><span class="lineNum">     929 </span><span class="lineCov">       1041 :                         (self%LogFile%exists .or. self%TimeFile%exists .or. self%RestartFile%exists .or. self%ChainFile%exists .or. self%SampleFile%exists)</span></a>
-<a name="930"><span class="lineNum">     930 </span><span class="lineCov">       1041 :         self%isFreshRun = .not. self%isDryRun</span></a>
+<a name="929"><span class="lineNum">     929 </span><span class="lineCov">       2082 :                         (self%LogFile%exists .or. self%TimeFile%exists .or. self%RestartFile%exists .or. self%ChainFile%exists .or. self%SampleFile%exists)</span></a>
+<a name="930"><span class="lineNum">     930 </span><span class="lineCov">       2082 :         self%isFreshRun = .not. self%isDryRun</span></a>
 <a name="931"><span class="lineNum">     931 </span>            : </a>
-<a name="932"><span class="lineNum">     932 </span><span class="lineCov">       1041 :         if (self%isFreshRun) then</span></a>
-<a name="933"><span class="lineNum">     933 </span><span class="lineCov">        969 :             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = &quot;No pre-existing &quot;//self%name//&quot; run detected.&quot;//NLC//&quot;Starting a fresh &quot;//self%name//&quot; run...&quot; )</span></a>
+<a name="932"><span class="lineNum">     932 </span><span class="lineCov">       2082 :         if (self%isFreshRun) then</span></a>
+<a name="933"><span class="lineNum">     933 </span><span class="lineCov">       1938 :             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = &quot;No pre-existing &quot;//self%name//&quot; run detected.&quot;//NLC//&quot;Starting a fresh &quot;//self%name//&quot; run...&quot; )</span></a>
 <a name="934"><span class="lineNum">     934 </span>            :         else</a>
-<a name="935"><span class="lineNum">     935 </span><span class="lineCov">         72 :             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = &quot;Previous run of &quot;//self%name//&quot; detected.&quot;//NLC//&quot;Searching for restart files...&quot; )</span></a>
-<a name="936"><span class="lineNum">     936 </span><span class="lineCov">         72 :             if (self%SampleFile%exists) then ! sampling is already complete</span></a>
-<a name="937"><span class="lineNum">     937 </span><span class="lineCov">          6 :                 self%Err%occurred = .true.</span></a>
+<a name="935"><span class="lineNum">     935 </span><span class="lineCov">        144 :             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = &quot;Previous run of &quot;//self%name//&quot; detected.&quot;//NLC//&quot;Searching for restart files...&quot; )</span></a>
+<a name="936"><span class="lineNum">     936 </span><span class="lineCov">        144 :             if (self%SampleFile%exists) then ! sampling is already complete</span></a>
+<a name="937"><span class="lineNum">     937 </span><span class="lineCov">         12 :                 self%Err%occurred = .true.</span></a>
 <a name="938"><span class="lineNum">     938 </span>            :                 self%Err%msg =  PROCEDURE_NAME//&quot;: Error occurred. Output sample file detected: &quot;//self%SampleFile%Path%original//&amp;</a>
 <a name="939"><span class="lineNum">     939 </span>            :                                 NLC//self%name//&quot; cannot overwrite an already-completed simulation.&quot;//&amp;</a>
-<a name="940"><span class="lineNum">     940 </span><span class="lineCov">          6 :                                 NLC//&quot;Please provide an alternative file name for the new simulation outputs.&quot;</span></a>
-<a name="941"><span class="lineNum">     941 </span><span class="lineCov">         66 :             elseif (self%LogFile%exists .and. self%TimeFile%exists .and. self%RestartFile%exists .and. self%ChainFile%exists) then  ! restart mode</span></a>
-<a name="942"><span class="lineNum">     942 </span><span class="lineCov">         66 :                 if (self%SpecBase%SampleSize%val==0_IK) then ! sampling is already complete</span></a>
+<a name="940"><span class="lineNum">     940 </span><span class="lineCov">         12 :                                 NLC//&quot;Please provide an alternative file name for the new simulation outputs.&quot;</span></a>
+<a name="941"><span class="lineNum">     941 </span><span class="lineCov">        132 :             elseif (self%LogFile%exists .and. self%TimeFile%exists .and. self%RestartFile%exists .and. self%ChainFile%exists) then  ! restart mode</span></a>
+<a name="942"><span class="lineNum">     942 </span><span class="lineCov">        132 :                 if (self%SpecBase%SampleSize%val==0_IK) then ! sampling is already complete</span></a>
 <a name="943"><span class="lineNum">     943 </span><span class="lineNoCov">          0 :                     self%Err%occurred = .true.</span></a>
 <a name="944"><span class="lineNum">     944 </span><span class="lineNoCov">          0 :                     self%Err%msg = PROCEDURE_NAME//&quot;: Error occurred. The input variable sampleSize = 0 indicates that the output files belong to a completed simulation.&quot;</span></a>
 <a name="945"><span class="lineNum">     945 </span>            :                 else</a>
-<a name="946"><span class="lineNum">     946 </span><span class="lineCov">         66 :                     self%Err%occurred = .false.</span></a>
+<a name="946"><span class="lineNum">     946 </span><span class="lineCov">        132 :                     self%Err%occurred = .false.</span></a>
 <a name="947"><span class="lineNum">     947 </span>            :                 end if</a>
 <a name="948"><span class="lineNum">     948 </span>            :             else</a>
 <a name="949"><span class="lineNum">     949 </span><span class="lineNoCov">          0 :                 self%Err%occurred = .true.</span></a>
@@ -1023,45 +1023,45 @@
 <a name="953"><span class="lineNum">     953 </span><span class="lineNoCov">          0 :                 if (.not. self%ChainFile%exists)      self%Err%msg = self%Err%msg//NLC//self%ChainFile%Path%original</span></a>
 <a name="954"><span class="lineNum">     954 </span><span class="lineNoCov">          0 :                 if (.not. self%RestartFile%exists)    self%Err%msg = self%Err%msg//NLC//self%RestartFile%Path%original</span></a>
 <a name="955"><span class="lineNum">     955 </span>            :             end if</a>
-<a name="956"><span class="lineNum">     956 </span><span class="lineCov">         72 :             if (self%Err%occurred) then</span></a>
-<a name="957"><span class="lineNum">     957 </span><span class="lineCov">          6 :                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</span></a>
-<a name="958"><span class="lineNum">     958 </span><span class="lineCov">          6 :                 return</span></a>
+<a name="956"><span class="lineNum">     956 </span><span class="lineCov">        144 :             if (self%Err%occurred) then</span></a>
+<a name="957"><span class="lineNum">     957 </span><span class="lineCov">         12 :                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</span></a>
+<a name="958"><span class="lineNum">     958 </span><span class="lineCov">         12 :                 return</span></a>
 <a name="959"><span class="lineNum">     959 </span>            :             end if</a>
 <a name="960"><span class="lineNum">     960 </span>            :         end if</a>
 <a name="961"><span class="lineNum">     961 </span>            : </a>
 <a name="962"><span class="lineNum">     962 </span>            :         ! open/append the output files:</a>
 <a name="963"><span class="lineNum">     963 </span>            : </a>
-<a name="964"><span class="lineNum">     964 </span><span class="lineCov">       1035 :         if (self%Image%isLeader) then</span></a>
-<a name="965"><span class="lineNum">     965 </span><span class="lineCov">        393 :             if (self%isFreshRun) then</span></a>
-<a name="966"><span class="lineNum">     966 </span><span class="lineCov">        359 :                 workingOn = &quot;Generating the output &quot;</span></a>
-<a name="967"><span class="lineNum">     967 </span><span class="lineCov">        359 :                 self%LogFile%status = &quot;replace&quot;</span></a>
-<a name="968"><span class="lineNum">     968 </span><span class="lineCov">        359 :                 self%TimeFile%status = &quot;replace&quot;</span></a>
-<a name="969"><span class="lineNum">     969 </span><span class="lineCov">        359 :                 self%ChainFile%status = &quot;replace&quot;</span></a>
-<a name="970"><span class="lineNum">     970 </span><span class="lineCov">        359 :                 self%SampleFile%status = &quot;replace&quot;</span></a>
-<a name="971"><span class="lineNum">     971 </span><span class="lineCov">        359 :                 self%RestartFile%status = &quot;replace&quot;</span></a>
-<a name="972"><span class="lineNum">     972 </span><span class="lineCov">        359 :                 self%LogFile%Position%value = &quot;asis&quot;</span></a>
-<a name="973"><span class="lineNum">     973 </span><span class="lineCov">        359 :                 self%TimeFile%Position%value = &quot;asis&quot;</span></a>
-<a name="974"><span class="lineNum">     974 </span><span class="lineCov">        359 :                 self%ChainFile%Position%value = &quot;asis&quot;</span></a>
-<a name="975"><span class="lineNum">     975 </span><span class="lineCov">        359 :                 self%SampleFile%Position%value = &quot;asis&quot;</span></a>
-<a name="976"><span class="lineNum">     976 </span><span class="lineCov">        359 :                 self%RestartFile%Position%value = &quot;asis&quot;</span></a>
+<a name="964"><span class="lineNum">     964 </span><span class="lineCov">       2070 :         if (self%Image%isLeader) then</span></a>
+<a name="965"><span class="lineNum">     965 </span><span class="lineCov">        786 :             if (self%isFreshRun) then</span></a>
+<a name="966"><span class="lineNum">     966 </span><span class="lineCov">        718 :                 workingOn = &quot;Generating the output &quot;</span></a>
+<a name="967"><span class="lineNum">     967 </span><span class="lineCov">        718 :                 self%LogFile%status = &quot;replace&quot;</span></a>
+<a name="968"><span class="lineNum">     968 </span><span class="lineCov">        718 :                 self%TimeFile%status = &quot;replace&quot;</span></a>
+<a name="969"><span class="lineNum">     969 </span><span class="lineCov">        718 :                 self%ChainFile%status = &quot;replace&quot;</span></a>
+<a name="970"><span class="lineNum">     970 </span><span class="lineCov">        718 :                 self%SampleFile%status = &quot;replace&quot;</span></a>
+<a name="971"><span class="lineNum">     971 </span><span class="lineCov">        718 :                 self%RestartFile%status = &quot;replace&quot;</span></a>
+<a name="972"><span class="lineNum">     972 </span><span class="lineCov">        718 :                 self%LogFile%Position%value = &quot;asis&quot;</span></a>
+<a name="973"><span class="lineNum">     973 </span><span class="lineCov">        718 :                 self%TimeFile%Position%value = &quot;asis&quot;</span></a>
+<a name="974"><span class="lineNum">     974 </span><span class="lineCov">        718 :                 self%ChainFile%Position%value = &quot;asis&quot;</span></a>
+<a name="975"><span class="lineNum">     975 </span><span class="lineCov">        718 :                 self%SampleFile%Position%value = &quot;asis&quot;</span></a>
+<a name="976"><span class="lineNum">     976 </span><span class="lineCov">        718 :                 self%RestartFile%Position%value = &quot;asis&quot;</span></a>
 <a name="977"><span class="lineNum">     977 </span>            :             else</a>
-<a name="978"><span class="lineNum">     978 </span><span class="lineCov">         34 :                 workingOn = &quot;Appending to the existing &quot;</span></a>
-<a name="979"><span class="lineNum">     979 </span><span class="lineCov">         34 :                 self%LogFile%status = &quot;old&quot;</span></a>
-<a name="980"><span class="lineNum">     980 </span><span class="lineCov">         34 :                 self%TimeFile%status = &quot;old&quot;</span></a>
-<a name="981"><span class="lineNum">     981 </span><span class="lineCov">         34 :                 self%ChainFile%status = &quot;old&quot;</span></a>
-<a name="982"><span class="lineNum">     982 </span><span class="lineCov">         34 :                 self%SampleFile%status = &quot;replace&quot;</span></a>
-<a name="983"><span class="lineNum">     983 </span><span class="lineCov">         34 :                 self%RestartFile%status = &quot;old&quot;</span></a>
-<a name="984"><span class="lineNum">     984 </span><span class="lineCov">         34 :                 self%LogFile%Position%value = &quot;append&quot;</span></a>
-<a name="985"><span class="lineNum">     985 </span><span class="lineCov">         34 :                 self%TimeFile%Position%value = &quot;asis&quot;</span></a>
-<a name="986"><span class="lineNum">     986 </span><span class="lineCov">         34 :                 self%ChainFile%Position%value = &quot;asis&quot;</span></a>
-<a name="987"><span class="lineNum">     987 </span><span class="lineCov">         34 :                 self%SampleFile%Position%value = &quot;asis&quot;</span></a>
-<a name="988"><span class="lineNum">     988 </span><span class="lineCov">         34 :                 self%RestartFile%Position%value = &quot;asis&quot;</span></a>
+<a name="978"><span class="lineNum">     978 </span><span class="lineCov">         68 :                 workingOn = &quot;Appending to the existing &quot;</span></a>
+<a name="979"><span class="lineNum">     979 </span><span class="lineCov">         68 :                 self%LogFile%status = &quot;old&quot;</span></a>
+<a name="980"><span class="lineNum">     980 </span><span class="lineCov">         68 :                 self%TimeFile%status = &quot;old&quot;</span></a>
+<a name="981"><span class="lineNum">     981 </span><span class="lineCov">         68 :                 self%ChainFile%status = &quot;old&quot;</span></a>
+<a name="982"><span class="lineNum">     982 </span><span class="lineCov">         68 :                 self%SampleFile%status = &quot;replace&quot;</span></a>
+<a name="983"><span class="lineNum">     983 </span><span class="lineCov">         68 :                 self%RestartFile%status = &quot;old&quot;</span></a>
+<a name="984"><span class="lineNum">     984 </span><span class="lineCov">         68 :                 self%LogFile%Position%value = &quot;append&quot;</span></a>
+<a name="985"><span class="lineNum">     985 </span><span class="lineCov">         68 :                 self%TimeFile%Position%value = &quot;asis&quot;</span></a>
+<a name="986"><span class="lineNum">     986 </span><span class="lineCov">         68 :                 self%ChainFile%Position%value = &quot;asis&quot;</span></a>
+<a name="987"><span class="lineNum">     987 </span><span class="lineCov">         68 :                 self%SampleFile%Position%value = &quot;asis&quot;</span></a>
+<a name="988"><span class="lineNum">     988 </span><span class="lineCov">         68 :                 self%RestartFile%Position%value = &quot;asis&quot;</span></a>
 <a name="989"><span class="lineNum">     989 </span>            :             end if</a>
 <a name="990"><span class="lineNum">     990 </span>            :         end if</a>
 <a name="991"><span class="lineNum">     991 </span>            : </a>
 <a name="992"><span class="lineNum">     992 </span>            :         ! print the stdout message for generating / appending the output report file</a>
 <a name="993"><span class="lineNum">     993 </span>            : </a>
-<a name="994"><span class="lineNum">     994 </span><span class="lineCov">       1035 :         blockLogFileListByFirstImage: if (self%Image%isFirst) then</span></a>
+<a name="994"><span class="lineNum">     994 </span><span class="lineCov">       2070 :         blockLogFileListByFirstImage: if (self%Image%isFirst) then</span></a>
 <a name="995"><span class="lineNum">     995 </span>            : #if defined CAF_ENABLED || defined MPI_ENABLED</a>
 <a name="996"><span class="lineNum">     996 </span>            : ! LCOV_EXCL_START</a>
 <a name="997"><span class="lineNum">     997 </span>            : #endif</a>
@@ -1117,14 +1117,14 @@
 <a name="1047"><span class="lineNum">    1047 </span>            : </a>
 <a name="1048"><span class="lineNum">    1048 </span>            :         ! ensure all images sync here to avoid wrong inquire result for the existence of the files</a>
 <a name="1049"><span class="lineNum">    1049 </span>            : </a>
-<a name="1050"><span class="lineNum">    1050 </span><span class="lineCov">       1035 :         call self%Image%sync()</span></a>
+<a name="1050"><span class="lineNum">    1050 </span><span class="lineCov">       2070 :         call self%Image%sync()</span></a>
 <a name="1051"><span class="lineNum">    1051 </span>            : </a>
 <a name="1052"><span class="lineNum">    1052 </span>            :         ! open the output files</a>
 <a name="1053"><span class="lineNum">    1053 </span>            :         ! Intel ifort SHARED attribute is essential for file unlocking</a>
 <a name="1054"><span class="lineNum">    1054 </span>            : </a>
-<a name="1055"><span class="lineNum">    1055 </span><span class="lineCov">       1035 :         blockLeaderFileSetup: if (self%Image%isLeader) then</span></a>
+<a name="1055"><span class="lineNum">    1055 </span><span class="lineCov">       2070 :         blockLeaderFileSetup: if (self%Image%isLeader) then</span></a>
 <a name="1056"><span class="lineNum">    1056 </span>            : </a>
-<a name="1057"><span class="lineNum">    1057 </span><span class="lineCov">        393 :             self%LogFile%unit = 1001 + self%Image%id ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
+<a name="1057"><span class="lineNum">    1057 </span><span class="lineCov">        786 :             self%LogFile%unit = 1001 + self%Image%id ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
 <a name="1058"><span class="lineNum">    1058 </span>            :             open( unit = self%LogFile%unit              &amp;</a>
 <a name="1059"><span class="lineNum">    1059 </span>            :                 , file = self%LogFile%Path%original     &amp;</a>
 <a name="1060"><span class="lineNum">    1060 </span>            :                 , status = self%LogFile%status          &amp;</a>
@@ -1132,9 +1132,9 @@
 <a name="1062"><span class="lineNum">    1062 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="1063"><span class="lineNum">    1063 </span>            :                 , SHARED                                &amp;</a>
 <a name="1064"><span class="lineNum">    1064 </span>            : #endif</a>
-<a name="1065"><span class="lineNum">    1065 </span><span class="lineCov">        393 :                 , position = self%LogFile%Position%value)</span></a>
-<a name="1066"><span class="lineNum">    1066 </span><span class="lineCov">        393 :             self%Err = self%LogFile%getOpenErr(self%LogFile%Err%stat)</span></a>
-<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">        393 :             if (self%Err%occurred) then</span></a>
+<a name="1065"><span class="lineNum">    1065 </span><span class="lineCov">        786 :                 , position = self%LogFile%Position%value)</span></a>
+<a name="1066"><span class="lineNum">    1066 </span><span class="lineCov">        786 :             self%Err = self%LogFile%getOpenErr(self%LogFile%Err%stat)</span></a>
+<a name="1067"><span class="lineNum">    1067 </span><span class="lineCov">        786 :             if (self%Err%occurred) then</span></a>
 <a name="1068"><span class="lineNum">    1068 </span>            :             ! LCOV_EXCL_START</a>
 <a name="1069"><span class="lineNum">    1069 </span>            :                 self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while opening the &quot; // self%name // &quot; &quot; // self%LogFile%suffix // &quot; file='&quot; // self%LogFile%Path%original // &quot;'. &quot;</a>
 <a name="1070"><span class="lineNum">    1070 </span>            :                 if (scan(&quot; &quot;,trim(adjustl(self%LogFile%Path%original)))/=0) then</a>
@@ -1150,20 +1150,20 @@
 <a name="1080"><span class="lineNum">    1080 </span>            : </a>
 <a name="1081"><span class="lineNum">    1081 </span>            :             ! rewrite the same old stuff to all report files</a>
 <a name="1082"><span class="lineNum">    1082 </span>            : </a>
-<a name="1083"><span class="lineNum">    1083 </span><span class="lineCov">        393 :             if (self%isFreshRun) then</span></a>
-<a name="1084"><span class="lineNum">    1084 </span><span class="lineCov">        359 :                 call self%addSplashScreen()</span></a>
-<a name="1085"><span class="lineNum">    1085 </span><span class="lineCov">        359 :                 if (self%SpecBase%SilentModeRequested%isFalse) call self%addCompilerPlatformInfo()   ! this takes about 0.75 seconds to execute on Stampede Login nodes.</span></a>
-<a name="1086"><span class="lineNum">    1086 </span><span class="lineCov">        359 :                 call self%noteUserAboutEnvSetup()</span></a>
-<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">        359 :                 call self%warnUserAboutInputFilePresence()</span></a>
-<a name="1088"><span class="lineNum">    1088 </span><span class="lineCov">        359 :                 call self%setWarnAboutProcArgHasPriority()</span></a>
-<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">        359 :                 call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg )</span></a>
+<a name="1083"><span class="lineNum">    1083 </span><span class="lineCov">        786 :             if (self%isFreshRun) then</span></a>
+<a name="1084"><span class="lineNum">    1084 </span><span class="lineCov">        718 :                 call self%addSplashScreen()</span></a>
+<a name="1085"><span class="lineNum">    1085 </span><span class="lineCov">        718 :                 if (self%SpecBase%SilentModeRequested%isFalse) call self%addCompilerPlatformInfo()   ! this takes about 0.75 seconds to execute on Stampede Login nodes.</span></a>
+<a name="1086"><span class="lineNum">    1086 </span><span class="lineCov">        718 :                 call self%noteUserAboutEnvSetup()</span></a>
+<a name="1087"><span class="lineNum">    1087 </span><span class="lineCov">        718 :                 call self%warnUserAboutInputFilePresence()</span></a>
+<a name="1088"><span class="lineNum">    1088 </span><span class="lineCov">        718 :                 call self%setWarnAboutProcArgHasPriority()</span></a>
+<a name="1089"><span class="lineNum">    1089 </span><span class="lineCov">        718 :                 call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg )</span></a>
 <a name="1090"><span class="lineNum">    1090 </span>            :             end if</a>
 <a name="1091"><span class="lineNum">    1091 </span>            : </a>
 <a name="1092"><span class="lineNum">    1092 </span>            :             ! open/append the output files</a>
 <a name="1093"><span class="lineNum">    1093 </span>            : </a>
-<a name="1094"><span class="lineNum">    1094 </span><span class="lineCov">        393 :             if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%TimeFile%suffix//&quot; file:&quot;//NLC//self%TimeFile%Path%original )</span></a>
+<a name="1094"><span class="lineNum">    1094 </span><span class="lineCov">        786 :             if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%TimeFile%suffix//&quot; file:&quot;//NLC//self%TimeFile%Path%original )</span></a>
 <a name="1095"><span class="lineNum">    1095 </span>            : </a>
-<a name="1096"><span class="lineNum">    1096 </span><span class="lineCov">        393 :             self%TimeFile%unit = 1000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
+<a name="1096"><span class="lineNum">    1096 </span><span class="lineCov">        786 :             self%TimeFile%unit = 1000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
 <a name="1097"><span class="lineNum">    1097 </span>            :             open( unit = self%TimeFile%unit                 &amp;</a>
 <a name="1098"><span class="lineNum">    1098 </span>            :                 , file = self%TimeFile%Path%original        &amp;</a>
 <a name="1099"><span class="lineNum">    1099 </span>            :                 , status = self%TimeFile%status             &amp;</a>
@@ -1171,9 +1171,9 @@
 <a name="1101"><span class="lineNum">    1101 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="1102"><span class="lineNum">    1102 </span>            :                 , SHARED                                    &amp;</a>
 <a name="1103"><span class="lineNum">    1103 </span>            : #endif</a>
-<a name="1104"><span class="lineNum">    1104 </span><span class="lineCov">        393 :                 , position = self%TimeFile%Position%value   )</span></a>
-<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">        393 :             self%Err = self%TimeFile%getOpenErr(self%TimeFile%Err%stat)</span></a>
-<a name="1106"><span class="lineNum">    1106 </span><span class="lineCov">        393 :             if (self%Err%occurred) then</span></a>
+<a name="1104"><span class="lineNum">    1104 </span><span class="lineCov">        786 :                 , position = self%TimeFile%Position%value   )</span></a>
+<a name="1105"><span class="lineNum">    1105 </span><span class="lineCov">        786 :             self%Err = self%TimeFile%getOpenErr(self%TimeFile%Err%stat)</span></a>
+<a name="1106"><span class="lineNum">    1106 </span><span class="lineCov">        786 :             if (self%Err%occurred) then</span></a>
 <a name="1107"><span class="lineNum">    1107 </span>            :             ! LCOV_EXCL_START</a>
 <a name="1108"><span class="lineNum">    1108 </span>            :                 self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while opening the &quot; // self%name // &quot; &quot; // self%TimeFile%suffix // &quot; file='&quot; // self%TimeFile%Path%original // &quot;'. &quot;</a>
 <a name="1109"><span class="lineNum">    1109 </span>            :                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -1181,9 +1181,9 @@
 <a name="1111"><span class="lineNum">    1111 </span>            :             end if</a>
 <a name="1112"><span class="lineNum">    1112 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="1113"><span class="lineNum">    1113 </span>            : </a>
-<a name="1114"><span class="lineNum">    1114 </span><span class="lineCov">        393 :             if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%ChainFile%suffix//&quot;file:&quot;//NLC//self%ChainFile%Path%original )</span></a>
+<a name="1114"><span class="lineNum">    1114 </span><span class="lineCov">        786 :             if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%ChainFile%suffix//&quot;file:&quot;//NLC//self%ChainFile%Path%original )</span></a>
 <a name="1115"><span class="lineNum">    1115 </span>            : </a>
-<a name="1116"><span class="lineNum">    1116 </span><span class="lineCov">        393 :             self%ChainFile%unit = 2000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
+<a name="1116"><span class="lineNum">    1116 </span><span class="lineCov">        786 :             self%ChainFile%unit = 2000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
 <a name="1117"><span class="lineNum">    1117 </span>            :             open( unit = self%ChainFile%unit                &amp;</a>
 <a name="1118"><span class="lineNum">    1118 </span>            :                 , file = self%ChainFile%Path%original       &amp;</a>
 <a name="1119"><span class="lineNum">    1119 </span>            :                 , form = self%ChainFile%Form%value          &amp;</a>
@@ -1192,9 +1192,9 @@
 <a name="1122"><span class="lineNum">    1122 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="1123"><span class="lineNum">    1123 </span>            :                 , SHARED                                    &amp;</a>
 <a name="1124"><span class="lineNum">    1124 </span>            : #endif</a>
-<a name="1125"><span class="lineNum">    1125 </span><span class="lineCov">        393 :                 , position = self%ChainFile%Position%value  )</span></a>
-<a name="1126"><span class="lineNum">    1126 </span><span class="lineCov">        393 :             self%Err = self%ChainFile%getOpenErr(self%ChainFile%Err%stat)</span></a>
-<a name="1127"><span class="lineNum">    1127 </span><span class="lineCov">        393 :             if (self%Err%occurred) then</span></a>
+<a name="1125"><span class="lineNum">    1125 </span><span class="lineCov">        786 :                 , position = self%ChainFile%Position%value  )</span></a>
+<a name="1126"><span class="lineNum">    1126 </span><span class="lineCov">        786 :             self%Err = self%ChainFile%getOpenErr(self%ChainFile%Err%stat)</span></a>
+<a name="1127"><span class="lineNum">    1127 </span><span class="lineCov">        786 :             if (self%Err%occurred) then</span></a>
 <a name="1128"><span class="lineNum">    1128 </span>            :             ! LCOV_EXCL_START</a>
 <a name="1129"><span class="lineNum">    1129 </span>            :                 self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while opening the &quot; // self%name // &quot; &quot; // self%ChainFile%suffix // &quot; file='&quot; // self%ChainFile%Path%original // &quot;'. &quot;</a>
 <a name="1130"><span class="lineNum">    1130 </span>            :                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -1202,7 +1202,7 @@
 <a name="1132"><span class="lineNum">    1132 </span>            :             end if</a>
 <a name="1133"><span class="lineNum">    1133 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="1134"><span class="lineNum">    1134 </span>            : </a>
-<a name="1135"><span class="lineNum">    1135 </span><span class="lineCov">        393 :             self%RestartFile%unit = 3000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
+<a name="1135"><span class="lineNum">    1135 </span><span class="lineCov">        786 :             self%RestartFile%unit = 3000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file</span></a>
 <a name="1136"><span class="lineNum">    1136 </span>            :             open( unit = self%RestartFile%unit              &amp;</a>
 <a name="1137"><span class="lineNum">    1137 </span>            :                 , file = self%RestartFile%Path%original     &amp;</a>
 <a name="1138"><span class="lineNum">    1138 </span>            :                 , form = self%RestartFile%Form%value        &amp;</a>
@@ -1211,9 +1211,9 @@
 <a name="1141"><span class="lineNum">    1141 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="1142"><span class="lineNum">    1142 </span>            :                 , SHARED                                    &amp;</a>
 <a name="1143"><span class="lineNum">    1143 </span>            : #endif</a>
-<a name="1144"><span class="lineNum">    1144 </span><span class="lineCov">        393 :                 , position = self%RestartFile%Position%value)</span></a>
-<a name="1145"><span class="lineNum">    1145 </span><span class="lineCov">        393 :             self%Err = self%RestartFile%getOpenErr(self%RestartFile%Err%stat)</span></a>
-<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">        393 :             if (self%Err%occurred) then</span></a>
+<a name="1144"><span class="lineNum">    1144 </span><span class="lineCov">        786 :                 , position = self%RestartFile%Position%value)</span></a>
+<a name="1145"><span class="lineNum">    1145 </span><span class="lineCov">        786 :             self%Err = self%RestartFile%getOpenErr(self%RestartFile%Err%stat)</span></a>
+<a name="1146"><span class="lineNum">    1146 </span><span class="lineCov">        786 :             if (self%Err%occurred) then</span></a>
 <a name="1147"><span class="lineNum">    1147 </span>            :             ! LCOV_EXCL_START</a>
 <a name="1148"><span class="lineNum">    1148 </span>            :                 self%Err%msg = PROCEDURE_NAME // &quot;: Error occurred while opening the &quot; // self%name // &quot; &quot; // self%RestartFile%suffix // &quot; file='&quot; // self%RestartFile%Path%original // &quot;'. &quot;</a>
 <a name="1149"><span class="lineNum">    1149 </span>            :                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )</a>
@@ -1221,29 +1221,29 @@
 <a name="1151"><span class="lineNum">    1151 </span>            :             end if</a>
 <a name="1152"><span class="lineNum">    1152 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="1153"><span class="lineNum">    1153 </span>            : </a>
-<a name="1154"><span class="lineNum">    1154 </span><span class="lineCov">        393 :             if (self%isFreshRun) then</span></a>
+<a name="1154"><span class="lineNum">    1154 </span><span class="lineCov">        786 :             if (self%isFreshRun) then</span></a>
 <a name="1155"><span class="lineNum">    1155 </span>            :                 call self%Decor%writeDecoratedText  ( text = NLC // self%name // &quot; simulation specifications&quot; // NLC &amp;</a>
 <a name="1156"><span class="lineNum">    1156 </span>            :                                                     , marginTop = 1     &amp;</a>
 <a name="1157"><span class="lineNum">    1157 </span>            :                                                     , marginBot = 1     &amp;</a>
 <a name="1158"><span class="lineNum">    1158 </span>            :                                                     , newline = NLC     &amp;</a>
-<a name="1159"><span class="lineNum">    1159 </span><span class="lineCov">        359 :                                                     , outputUnit = self%LogFile%unit )</span></a>
+<a name="1159"><span class="lineNum">    1159 </span><span class="lineCov">        718 :                                                     , outputUnit = self%LogFile%unit )</span></a>
 <a name="1160"><span class="lineNum">    1160 </span>            :             end if</a>
 <a name="1161"><span class="lineNum">    1161 </span>            : </a>
 <a name="1162"><span class="lineNum">    1162 </span>            :         end if blockLeaderFileSetup</a>
 <a name="1163"><span class="lineNum">    1163 </span>            : </a>
 <a name="1164"><span class="lineNum">    1164 </span>            :         ! These must be defined for all images, because they may be passed as arguments to the kernel subroutines.</a>
 <a name="1165"><span class="lineNum">    1165 </span>            : </a>
-<a name="1166"><span class="lineNum">    1166 </span><span class="lineCov">       1035 :         self%LogFile%maxColWidth%val = max(self%SpecBase%OutputRealPrecision%val, self%SpecBase%OutputColumnWidth%val, self%SpecBase%VariableNameList%MaxLen%val) + 9_IK</span></a>
-<a name="1167"><span class="lineNum">    1167 </span><span class="lineCov">       1035 :         self%LogFile%maxColWidth%str = num2str(self%LogFile%maxColWidth%val)</span></a>
+<a name="1166"><span class="lineNum">    1166 </span><span class="lineCov">       2070 :         self%LogFile%maxColWidth%val = max(self%SpecBase%OutputRealPrecision%val, self%SpecBase%OutputColumnWidth%val, self%SpecBase%VariableNameList%MaxLen%val) + 9_IK</span></a>
+<a name="1167"><span class="lineNum">    1167 </span><span class="lineCov">       2070 :         self%LogFile%maxColWidth%str = num2str(self%LogFile%maxColWidth%val)</span></a>
 <a name="1168"><span class="lineNum">    1168 </span>            :         self%LogFile%format = getGenericFormat( width = self%LogFile%maxColWidth%val &amp;</a>
 <a name="1169"><span class="lineNum">    1169 </span>            :                                             , precision = self%SpecBase%OutputRealPrecision%val &amp;</a>
-<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">       1035 :                                             , prefix = INDENT ) ! this is the generic indented format required mostly in postprocessing report</span></a>
-<a name="1171"><span class="lineNum">    1171 </span><span class="lineCov">       1035 :         self%TimeFile%format = &quot;(*(g&quot; // self%SpecBase%OutputColumnWidth%str // &quot;.&quot; // self%SpecBase%OutputRealPrecision%str // &quot;,:,'&quot; // self%SpecBase%OutputDelimiter%val // &quot;'))&quot;</span></a>
-<a name="1172"><span class="lineNum">    1172 </span><span class="lineCov">       1035 :         self%ChainFile%format = self%TimeFile%format</span></a>
-<a name="1173"><span class="lineNum">    1173 </span><span class="lineCov">       1035 :         self%SampleFile%format = self%ChainFile%format</span></a>
-<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">       1035 :         self%RestartFile%format = &quot;(*(g0,:,'&quot;//NLC//&quot;'))&quot;</span></a>
+<a name="1170"><span class="lineNum">    1170 </span><span class="lineCov">       2070 :                                             , prefix = INDENT ) ! this is the generic indented format required mostly in postprocessing report</span></a>
+<a name="1171"><span class="lineNum">    1171 </span><span class="lineCov">       2070 :         self%TimeFile%format = &quot;(*(g&quot; // self%SpecBase%OutputColumnWidth%str // &quot;.&quot; // self%SpecBase%OutputRealPrecision%str // &quot;,:,'&quot; // self%SpecBase%OutputDelimiter%val // &quot;'))&quot;</span></a>
+<a name="1172"><span class="lineNum">    1172 </span><span class="lineCov">       2070 :         self%ChainFile%format = self%TimeFile%format</span></a>
+<a name="1173"><span class="lineNum">    1173 </span><span class="lineCov">       2070 :         self%SampleFile%format = self%ChainFile%format</span></a>
+<a name="1174"><span class="lineNum">    1174 </span><span class="lineCov">       2070 :         self%RestartFile%format = &quot;(*(g0,:,'&quot;//NLC//&quot;'))&quot;</span></a>
 <a name="1175"><span class="lineNum">    1175 </span>            : </a>
-<a name="1176"><span class="lineNum">    1176 </span><span class="lineCov">       1047 :     end subroutine setupOutputFiles</span></a>
+<a name="1176"><span class="lineNum">    1176 </span><span class="lineCov">       2094 :     end subroutine setupOutputFiles</span></a>
 <a name="1177"><span class="lineNum">    1177 </span>            : </a>
 <a name="1178"><span class="lineNum">    1178 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1179"><span class="lineNum">    1179 </span>            : </a>
@@ -1253,11 +1253,11 @@
 <a name="1183"><span class="lineNum">    1183 </span>            :     !&gt;</a>
 <a name="1184"><span class="lineNum">    1184 </span>            :     !&gt; @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).</a>
 <a name="1185"><span class="lineNum">    1185 </span>            :     !&gt; @param[inout]    msg     :   The message to be output.</a>
-<a name="1186"><span class="lineNum">    1186 </span><span class="lineCov">      12985 :     subroutine reportDesc(self, msg) !, marginTop, marginBot)</span></a>
+<a name="1186"><span class="lineNum">    1186 </span><span class="lineCov">      25970 :     subroutine reportDesc(self, msg) !, marginTop, marginBot)</span></a>
 <a name="1187"><span class="lineNum">    1187 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="1188"><span class="lineNum">    1188 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: reportDesc</a>
 <a name="1189"><span class="lineNum">    1189 </span>            : #endif</a>
-<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">       1047 :         use Constants_mod, only: IK, NLC</span></a>
+<a name="1190"><span class="lineNum">    1190 </span><span class="lineCov">       2094 :         use Constants_mod, only: IK, NLC</span></a>
 <a name="1191"><span class="lineNum">    1191 </span>            :         implicit none</a>
 <a name="1192"><span class="lineNum">    1192 </span>            :         class(ParaMonte_type), intent(inout)    :: self</a>
 <a name="1193"><span class="lineNum">    1193 </span>            :         character(*), intent(in)                :: msg</a>
@@ -1268,8 +1268,8 @@
 <a name="1198"><span class="lineNum">    1198 </span>            :                         , newline    = NLC                  &amp;</a>
 <a name="1199"><span class="lineNum">    1199 </span>            :                         , marginTop  = 1_IK                 &amp;</a>
 <a name="1200"><span class="lineNum">    1200 </span>            :                         , marginBot  = 1_IK                 &amp;</a>
-<a name="1201"><span class="lineNum">    1201 </span><span class="lineCov">      12985 :                         , msg        = msg                  )</span></a>
-<a name="1202"><span class="lineNum">    1202 </span><span class="lineCov">      25970 :     end subroutine reportDesc</span></a>
+<a name="1201"><span class="lineNum">    1201 </span><span class="lineCov">      25970 :                         , msg        = msg                  )</span></a>
+<a name="1202"><span class="lineNum">    1202 </span><span class="lineCov">      51940 :     end subroutine reportDesc</span></a>
 <a name="1203"><span class="lineNum">    1203 </span>            : </a>
 <a name="1204"><span class="lineNum">    1204 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="1205"><span class="lineNum">    1205 </span>            : </a>
