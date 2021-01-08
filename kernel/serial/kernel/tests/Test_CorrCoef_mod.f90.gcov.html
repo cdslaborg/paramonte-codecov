@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ParaMonte 1.5.0 :: Serial Kernel - Code Coverage Report - kernel/tests/Test_CorrCoef_mod.f90</title>
+  <title>LCOV - ParaMonte 1.5.1 :: Serial Kernel - Code Coverage Report - kernel/tests/Test_CorrCoef_mod.f90</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ParaMonte 1.5.0 :: Serial Kernel - Code Coverage Report</td>
+            <td class="headerValue">ParaMonte 1.5.1 :: Serial Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">24</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-23 03:46:04</td>
+            <td class="headerValue">2021-01-08 13:03:42</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">3</td>
@@ -234,26 +234,26 @@
 <a name="164"><span class="lineNum">     164 </span>            : </a>
 <a name="165"><span class="lineNum">     165 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="166"><span class="lineNum">     166 </span>            : </a>
-<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          2 :     subroutine test_CorrCoef()</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          1 :     subroutine test_CorrCoef()</span></a>
 <a name="168"><span class="lineNum">     168 </span>            :         implicit none</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          2 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          2 :         call Test%run(test_getCorrCoefSpearman_1, &quot;test_getCorrCoefSpearman_1&quot;)</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          2 :         call Test%run(test_getCorrCoefSpearman_2, &quot;test_getCorrCoefSpearman_2&quot;)</span></a>
-<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          2 :         call Test%finalize()</span></a>
-<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          2 :     end subroutine test_CorrCoef</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">          1 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">          1 :         call Test%run(test_getCorrCoefSpearman_1, &quot;test_getCorrCoefSpearman_1&quot;)</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">          1 :         call Test%run(test_getCorrCoefSpearman_2, &quot;test_getCorrCoefSpearman_2&quot;)</span></a>
+<a name="172"><span class="lineNum">     172 </span><span class="lineCov">          1 :         call Test%finalize()</span></a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          1 :     end subroutine test_CorrCoef</span></a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
 <a name="175"><span class="lineNum">     175 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          2 :     function test_getCorrCoefSpearman_1() result(assertion)</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          1 :     function test_getCorrCoefSpearman_1() result(assertion)</span></a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          2 :         use System_mod, only: sleep</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          1 :         use System_mod, only: sleep</span></a>
 <a name="180"><span class="lineNum">     180 </span>            :         use Constants_mod, only: RK, IK</a>
 <a name="181"><span class="lineNum">     181 </span>            :         use CorrCoef_mod</a>
 <a name="182"><span class="lineNum">     182 </span>            : </a>
 <a name="183"><span class="lineNum">     183 </span>            :         implicit none</a>
 <a name="184"><span class="lineNum">     184 </span>            : </a>
 <a name="185"><span class="lineNum">     185 </span>            :         logical :: assertion</a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          2 :         type(CorrCoefSpearman_type) :: Spearman</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          1 :         type(CorrCoefSpearman_type) :: Spearman</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :         real(RK)                    :: CorrCoef_ref = 0.443361344537815_RK, CorrPval_ref = 0.00140031209338936_RK</a>
 <a name="188"><span class="lineNum">     188 </span>            : </a>
 <a name="189"><span class="lineNum">     189 </span>            :         call Spearman%get   ( ndata             = ndata                     &amp;</a>
@@ -265,8 +265,8 @@
 <a name="195"><span class="lineNum">     195 </span>            :                             , dStarStarSignif   = Spearman%dStarStarSignif  &amp;</a>
 <a name="196"><span class="lineNum">     196 </span>            :                             , dStarStarProb     = Spearman%dStarStarProb    &amp;</a>
 <a name="197"><span class="lineNum">     197 </span>            :                             , Err               = Spearman%Err              &amp;</a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          2 :                             )</span></a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          2 :         if (Spearman%Err%occurred) then</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          1 :                             )</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          1 :         if (Spearman%Err%occurred) then</span></a>
 <a name="200"><span class="lineNum">     200 </span>            :         ! LCOV_EXCL_START</a>
 <a name="201"><span class="lineNum">     201 </span>            :             assertion = .false.</a>
 <a name="202"><span class="lineNum">     202 </span>            :             if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -276,10 +276,10 @@
 <a name="206"><span class="lineNum">     206 </span>            :         end if</a>
 <a name="207"><span class="lineNum">     207 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="208"><span class="lineNum">     208 </span>            : </a>
-<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          2 :         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) &lt; 1.e-10_RK</span></a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          2 :         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) &lt; 1.e-1_RK</span></a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">          1 :         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) &lt; 1.e-10_RK</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">          1 :         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) &lt; 1.e-1_RK</span></a>
 <a name="211"><span class="lineNum">     211 </span>            : </a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          2 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">          1 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="213"><span class="lineNum">     213 </span>            :         ! LCOV_EXCL_START</a>
 <a name="214"><span class="lineNum">     214 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;)</a>
 <a name="215"><span class="lineNum">     215 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;Computed Spearman's statistic:&quot;</a>
@@ -296,20 +296,20 @@
 <a name="226"><span class="lineNum">     226 </span>            :         end if</a>
 <a name="227"><span class="lineNum">     227 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
-<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          2 :     end function test_getCorrCoefSpearman_1</span></a>
+<a name="229"><span class="lineNum">     229 </span><span class="lineCov">          1 :     end function test_getCorrCoefSpearman_1</span></a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
 <a name="231"><span class="lineNum">     231 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="232"><span class="lineNum">     232 </span>            : </a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          2 :     function test_getCorrCoefSpearman_2() result(assertion)</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          1 :     function test_getCorrCoefSpearman_2() result(assertion)</span></a>
 <a name="234"><span class="lineNum">     234 </span>            : </a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          2 :         use System_mod, only: sleep</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          1 :         use System_mod, only: sleep</span></a>
 <a name="236"><span class="lineNum">     236 </span>            :         use Constants_mod, only: RK, IK</a>
 <a name="237"><span class="lineNum">     237 </span>            :         use CorrCoef_mod</a>
 <a name="238"><span class="lineNum">     238 </span>            : </a>
 <a name="239"><span class="lineNum">     239 </span>            :         implicit none</a>
 <a name="240"><span class="lineNum">     240 </span>            : </a>
 <a name="241"><span class="lineNum">     241 </span>            :         logical :: assertion</a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          2 :         type(CorrCoefSpearman_type) :: Spearman</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          1 :         type(CorrCoefSpearman_type) :: Spearman</span></a>
 <a name="243"><span class="lineNum">     243 </span>            :         real(RK)                    :: CorrCoef_ref = 0.443361344537815_RK, CorrPval_ref = 0.00140031209338936_RK</a>
 <a name="244"><span class="lineNum">     244 </span>            : </a>
 <a name="245"><span class="lineNum">     245 </span>            :         call getCorrCoefSpearman( ndata             = ndata                     &amp;</a>
@@ -321,8 +321,8 @@
 <a name="251"><span class="lineNum">     251 </span>            :                                 , dStarStarSignif   = Spearman%dStarStarSignif  &amp;</a>
 <a name="252"><span class="lineNum">     252 </span>            :                                 , dStarStarProb     = Spearman%dStarStarProb    &amp;</a>
 <a name="253"><span class="lineNum">     253 </span>            :                                 , Err               = Spearman%Err              &amp;</a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          2 :                                 )</span></a>
-<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          2 :         if (Spearman%Err%occurred) then</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">          1 :                                 )</span></a>
+<a name="255"><span class="lineNum">     255 </span><span class="lineCov">          1 :         if (Spearman%Err%occurred) then</span></a>
 <a name="256"><span class="lineNum">     256 </span>            :         ! LCOV_EXCL_START</a>
 <a name="257"><span class="lineNum">     257 </span>            :             assertion = .false.</a>
 <a name="258"><span class="lineNum">     258 </span>            :             if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -332,10 +332,10 @@
 <a name="262"><span class="lineNum">     262 </span>            :         end if</a>
 <a name="263"><span class="lineNum">     263 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="264"><span class="lineNum">     264 </span>            : </a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          2 :         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) &lt; 1.e-10_RK</span></a>
-<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          2 :         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) &lt; 1.e-1_RK</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">          1 :         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) &lt; 1.e-10_RK</span></a>
+<a name="266"><span class="lineNum">     266 </span><span class="lineCov">          1 :         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) &lt; 1.e-1_RK</span></a>
 <a name="267"><span class="lineNum">     267 </span>            : </a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          2 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">          1 :         if (Test%isDebugMode .and. .not. assertion) then</span></a>
 <a name="269"><span class="lineNum">     269 </span>            :         ! LCOV_EXCL_START</a>
 <a name="270"><span class="lineNum">     270 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;)</a>
 <a name="271"><span class="lineNum">     271 </span>            :             write(Test%outputUnit,&quot;(*(g0))&quot;) &quot;Computed Spearman's statistic:&quot;</a>
@@ -352,7 +352,7 @@
 <a name="282"><span class="lineNum">     282 </span>            :         end if</a>
 <a name="283"><span class="lineNum">     283 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="284"><span class="lineNum">     284 </span>            : </a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          2 :     end function test_getCorrCoefSpearman_2</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          1 :     end function test_getCorrCoefSpearman_2</span></a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
 <a name="287"><span class="lineNum">     287 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
@@ -365,7 +365,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2020</td></tr>
+<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2021</td></tr>
   </table>
   <br>
 

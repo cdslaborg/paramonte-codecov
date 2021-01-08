@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ParaMonte 1.5.0 :: MPI Parallel Kernel - Code Coverage Report - kernel/SpecDRAM_DelayedRejectionCount_mod.f90</title>
+  <title>LCOV - ParaMonte 1.5.1 :: MPI Parallel Kernel - Code Coverage Report - kernel/SpecDRAM_DelayedRejectionCount_mod.f90</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ParaMonte 1.5.0 :: MPI Parallel Kernel - Code Coverage Report</td>
+            <td class="headerValue">ParaMonte 1.5.1 :: MPI Parallel Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">19</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-23 03:49:22</td>
+            <td class="headerValue">2021-01-08 13:07:16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -169,8 +169,8 @@
 <a name="99"><span class="lineNum">      99 </span>            :         &amp;    delayedRejectionCount &gt; 0\n\n&amp;</a>
 <a name="100"><span class="lineNum">     100 </span>            :         &amp;            which implies a maximum delayedRejectionCount number of rejections will be tolerated.\n\n&amp;</a>
 <a name="101"><span class="lineNum">     101 </span>            :         &amp;For example, delayedRejectionCount = 1, means that at any point during the sampling, if a proposal is rejected, &quot;&amp;</a>
-<a name="102"><span class="lineNum">     102 </span>            :         //methodName//&quot; will not go back to the last sampled state. Instead, it will continue to propose a new from the current &amp;</a>
-<a name="103"><span class="lineNum">     103 </span>            :         &amp;rejected state. If the new state is again rejected based on the rules of &quot;//methodName//&quot;, then the algorithm will not &amp;</a>
+<a name="102"><span class="lineNum">     102 </span>            :         //methodName//&quot; will not go back to the last sampled state. Instead, it will continue to propose a new state from the last &amp;</a>
+<a name="103"><span class="lineNum">     103 </span>            :         &amp;rejected proposal. If the new state is again rejected based on the rules of &quot;//methodName//&quot;, then the algorithm will not &amp;</a>
 <a name="104"><span class="lineNum">     104 </span>            :         &amp;tolerate further rejections, because the maximum number of rejections to be tolerated has been set by the user to be &amp;</a>
 <a name="105"><span class="lineNum">     105 </span>            :         &amp;delayedRejectionCount = 1. The algorithm then goes back to the original last-accepted state and will begin proposing &amp;</a>
 <a name="106"><span class="lineNum">     106 </span>            :         &amp;new states from that location. &amp;</a>
@@ -243,7 +243,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
-<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2020</td></tr>
+<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2021</td></tr>
   </table>
   <br>
 

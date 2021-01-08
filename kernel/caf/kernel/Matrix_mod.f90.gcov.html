@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ParaMonte 1.5.0 :: Coarray Parallel Kernel - Code Coverage Report - kernel/Matrix_mod.f90</title>
+  <title>LCOV - ParaMonte 1.5.1 :: Coarray Parallel Kernel - Code Coverage Report - kernel/Matrix_mod.f90</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ParaMonte 1.5.0 :: Coarray Parallel Kernel - Code Coverage Report</td>
+            <td class="headerValue">ParaMonte 1.5.1 :: Coarray Parallel Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">276</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-23 03:52:42</td>
+            <td class="headerValue">2021-01-08 12:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">18</td>
@@ -134,7 +134,7 @@
 <a name="64"><span class="lineNum">      64 </span>            :     !&gt;</a>
 <a name="65"><span class="lineNum">      65 </span>            :     !&gt; \return</a>
 <a name="66"><span class="lineNum">      66 </span>            :     !&gt; `eye` : A matrix of rank n * m whose diagonal elements are set to the input `diag` value or, if not provided, to `1.`.</a>
-<a name="67"><span class="lineNum">      67 </span><span class="lineCov">      14454 :     pure function getEye(n,m,diag) result(eye)</span></a>
+<a name="67"><span class="lineNum">      67 </span><span class="lineCov">       7250 :     pure function getEye(n,m,diag) result(eye)</span></a>
 <a name="68"><span class="lineNum">      68 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="69"><span class="lineNum">      69 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getEye</a>
 <a name="70"><span class="lineNum">      70 </span>            : #endif</a>
@@ -143,18 +143,18 @@
 <a name="73"><span class="lineNum">      73 </span>            :         integer(IK), intent(in)             :: n, m</a>
 <a name="74"><span class="lineNum">      74 </span>            :         real(RK)   , intent(in), optional   :: diag</a>
 <a name="75"><span class="lineNum">      75 </span>            :         real(RK)                            :: eye(n,m)</a>
-<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       2118 :         real(RK)                            :: diagonal</span></a>
+<a name="76"><span class="lineNum">      76 </span><span class="lineCov">       1062 :         real(RK)                            :: diagonal</span></a>
 <a name="77"><span class="lineNum">      77 </span>            :         integer(IK)                         :: i, j</a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       2118 :         diagonal = 1._RK</span></a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       2118 :         if (present(diag)) diagonal = diag</span></a>
-<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       2118 :         do concurrent(i=1:n, j=1:m)</span></a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">      10218 :             if (i==j) then</span></a>
-<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       3072 :                 eye(i,j) = diagonal</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">       1062 :         diagonal = 1._RK</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">       1062 :         if (present(diag)) diagonal = diag</span></a>
+<a name="80"><span class="lineNum">      80 </span><span class="lineCov">       1062 :         do concurrent(i=1:n, j=1:m)</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">       5126 :             if (i==j) then</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineCov">       1541 :                 eye(i,j) = diagonal</span></a>
 <a name="83"><span class="lineNum">      83 </span>            :             else</a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">       1950 :                 eye(i,j) = 0._RK</span></a>
+<a name="84"><span class="lineNum">      84 </span><span class="lineCov">        979 :                 eye(i,j) = 0._RK</span></a>
 <a name="85"><span class="lineNum">      85 </span>            :             end if</a>
 <a name="86"><span class="lineNum">      86 </span>            :         end do</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       2118 :     end function getEye</span></a>
+<a name="87"><span class="lineNum">      87 </span><span class="lineCov">       1062 :     end function getEye</span></a>
 <a name="88"><span class="lineNum">      88 </span>            : </a>
 <a name="89"><span class="lineNum">      89 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="90"><span class="lineNum">      90 </span>            : </a>
@@ -174,27 +174,27 @@
 <a name="104"><span class="lineNum">     104 </span>            :     !&gt; \details</a>
 <a name="105"><span class="lineNum">     105 </span>            :     !&gt; Returns in the lower triangle of `PosDefMat`, the Cholesky factorization L of \f$\texttt{PosDefMat} = L.L^T\f$.</a>
 <a name="106"><span class="lineNum">     106 </span>            :     !&gt; On input, the upper upper triangle of `PosDefMat` should be given, which remains intact on output.</a>
-<a name="107"><span class="lineNum">     107 </span><span class="lineCov">      62381 :     pure subroutine getCholeskyFactor(nd,PosDefMat,Diagonal)</span></a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineCov">      31154 :     pure subroutine getCholeskyFactor(nd,PosDefMat,Diagonal)</span></a>
 <a name="108"><span class="lineNum">     108 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="109"><span class="lineNum">     109 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getCholeskyFactor</a>
 <a name="110"><span class="lineNum">     110 </span>            : #endif</a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       2118 :         use Constants_mod, only: RK, IK</span></a>
+<a name="111"><span class="lineNum">     111 </span><span class="lineCov">       1062 :         use Constants_mod, only: RK, IK</span></a>
 <a name="112"><span class="lineNum">     112 </span>            :         implicit none</a>
 <a name="113"><span class="lineNum">     113 </span>            :         integer(IK), intent(in)    :: nd</a>
 <a name="114"><span class="lineNum">     114 </span>            :         real(RK)   , intent(inout) :: PosDefMat(nd,nd) ! Upper triangle + diagonal is input matrix, lower is output.</a>
 <a name="115"><span class="lineNum">     115 </span>            :         real(RK)   , intent(out)   :: Diagonal(nd)</a>
-<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      62381 :         real(RK)                   :: summ</span></a>
+<a name="116"><span class="lineNum">     116 </span><span class="lineCov">      31154 :         real(RK)                   :: summ</span></a>
 <a name="117"><span class="lineNum">     117 </span>            :         integer(IK)                :: i</a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineCov">     163286 :         do i=1,nd</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineCov">     139537 :             summ = PosDefMat(i,i) - dot_product(PosDefMat(i,1:i-1),PosDefMat(i,1:i-1))</span></a>
-<a name="120"><span class="lineNum">     120 </span><span class="lineCov">     100929 :             if (summ &lt;= 0._RK) then</span></a>
-<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         24 :                 Diagonal(1) = -1._RK</span></a>
-<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         24 :                 return</span></a>
+<a name="118"><span class="lineNum">     118 </span><span class="lineCov">      81444 :         do i=1,nd</span></a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineCov">      69480 :             summ = PosDefMat(i,i) - dot_product(PosDefMat(i,1:i-1),PosDefMat(i,1:i-1))</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineCov">      50302 :             if (summ &lt;= 0._RK) then</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineCov">         12 :                 Diagonal(1) = -1._RK</span></a>
+<a name="122"><span class="lineNum">     122 </span><span class="lineCov">         12 :                 return</span></a>
 <a name="123"><span class="lineNum">     123 </span>            :             end if</a>
-<a name="124"><span class="lineNum">     124 </span><span class="lineCov">     100905 :             Diagonal(i) = sqrt(summ)</span></a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineCov">     201870 :             PosDefMat(i+1:nd,i) = ( PosDefMat(i,i+1:nd) - matmul(PosDefMat(i+1:nd,1:i-1),PosDefMat(i,1:i-1)) ) / Diagonal(i)</span></a>
+<a name="124"><span class="lineNum">     124 </span><span class="lineCov">      50290 :             Diagonal(i) = sqrt(summ)</span></a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineCov">     100610 :             PosDefMat(i+1:nd,i) = ( PosDefMat(i,i+1:nd) - matmul(PosDefMat(i+1:nd,1:i-1),PosDefMat(i,1:i-1)) ) / Diagonal(i)</span></a>
 <a name="126"><span class="lineNum">     126 </span>            :         end do</a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      62381 :     end subroutine getCholeskyFactor</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">      31154 :     end subroutine getCholeskyFactor</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : </a>
 <a name="129"><span class="lineNum">     129 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="130"><span class="lineNum">     130 </span>            : </a>
@@ -214,7 +214,7 @@
 <a name="144"><span class="lineNum">     144 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="145"><span class="lineNum">     145 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: solveLinearPosDefSystem</a>
 <a name="146"><span class="lineNum">     146 </span>            : #endif</a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      62381 :         use Constants_mod, only: RK, IK</span></a>
+<a name="147"><span class="lineNum">     147 </span><span class="lineCov">      31154 :         use Constants_mod, only: RK, IK</span></a>
 <a name="148"><span class="lineNum">     148 </span>            :         implicit none</a>
 <a name="149"><span class="lineNum">     149 </span>            :         integer(IK), intent(in)    :: nd</a>
 <a name="150"><span class="lineNum">     150 </span>            :         real(RK)   , intent(in)    :: PosDefMat(nd,nd),Diagonal(nd),Intercept(nd)</a>
@@ -249,7 +249,7 @@
 <a name="179"><span class="lineNum">     179 </span>            :     !&gt;</a>
 <a name="180"><span class="lineNum">     180 </span>            :     !&gt; \author</a>
 <a name="181"><span class="lineNum">     181 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         30 :     pure subroutine getInvPosDefMatSqrtDet(nd,MatInvMat,sqrtDetInvPosDefMat)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         15 :     pure subroutine getInvPosDefMatSqrtDet(nd,MatInvMat,sqrtDetInvPosDefMat)</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="184"><span class="lineNum">     184 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMatSqrtDet</a>
 <a name="185"><span class="lineNum">     185 </span>            : #endif</a>
@@ -258,43 +258,43 @@
 <a name="188"><span class="lineNum">     188 </span>            :         integer(IK), intent(in)    :: nd</a>
 <a name="189"><span class="lineNum">     189 </span>            :         real(RK)   , intent(inout) :: MatInvMat(nd,nd)           ! input: upper half is covariance matrix, output: inverse matrix</a>
 <a name="190"><span class="lineNum">     190 </span>            :         real(RK)   , intent(out)   :: sqrtDetInvPosDefMat        !</a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        330 :         real(RK)                   :: CholeskyLower(nd,nd)       ! Cholesky factor</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">        138 :         real(RK)                   :: Diagonal(nd)               ! diagonal terms of the inverse matrix</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineCov">         30 :         real(RK)                   :: summ</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">        165 :         real(RK)                   :: CholeskyLower(nd,nd)       ! Cholesky factor</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         69 :         real(RK)                   :: Diagonal(nd)               ! diagonal terms of the inverse matrix</span></a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">         15 :         real(RK)                   :: summ</span></a>
 <a name="194"><span class="lineNum">     194 </span>            :         integer(IK)                :: i,j,k</a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         30 :         if (nd==1_IK) then</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          6 :             MatInvMat(1,1) = 1._RK / MatInvMat(1,1)</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          6 :             sqrtDetInvPosDefMat = MatInvMat(1,1)</span></a>
-<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          6 :             return</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">         15 :         if (nd==1_IK) then</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          3 :             MatInvMat(1,1) = 1._RK / MatInvMat(1,1)</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          3 :             sqrtDetInvPosDefMat = MatInvMat(1,1)</span></a>
+<a name="198"><span class="lineNum">     198 </span><span class="lineCov">          3 :             return</span></a>
 <a name="199"><span class="lineNum">     199 </span>            :         end if</a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         96 :         do j=1,nd</span></a>
-<a name="201"><span class="lineNum">     201 </span><span class="lineCov">        240 :             do i=1,j</span></a>
-<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        216 :                 CholeskyLower(i,j) = MatInvMat(i,j)</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         48 :         do j=1,nd</span></a>
+<a name="201"><span class="lineNum">     201 </span><span class="lineCov">        120 :             do i=1,j</span></a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">        108 :                 CholeskyLower(i,j) = MatInvMat(i,j)</span></a>
 <a name="203"><span class="lineNum">     203 </span>            :             end do</a>
 <a name="204"><span class="lineNum">     204 </span>            :         end do</a>
-<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         24 :         call getCholeskyFactor(nd,CholeskyLower,Diagonal)</span></a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         24 :         if (Diagonal(1)&lt;0._RK) then</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          6 :             sqrtDetInvPosDefMat = -1._RK</span></a>
-<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          6 :             return</span></a>
+<a name="205"><span class="lineNum">     205 </span><span class="lineCov">         12 :         call getCholeskyFactor(nd,CholeskyLower,Diagonal)</span></a>
+<a name="206"><span class="lineNum">     206 </span><span class="lineCov">         12 :         if (Diagonal(1)&lt;0._RK) then</span></a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          3 :             sqrtDetInvPosDefMat = -1._RK</span></a>
+<a name="208"><span class="lineNum">     208 </span><span class="lineCov">          3 :             return</span></a>
 <a name="209"><span class="lineNum">     209 </span>            :         end if</a>
-<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         72 :         sqrtDetInvPosDefMat = 1._RK / product(Diagonal)</span></a>
-<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         72 :         do i = 1,nd</span></a>
-<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         54 :             CholeskyLower(i,i) = 1._RK / Diagonal(i)</span></a>
-<a name="213"><span class="lineNum">     213 </span><span class="lineCov">        126 :             do j = i+1,nd</span></a>
-<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         54 :                 summ = 0._RK</span></a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">        126 :                 do k = i,j-1</span></a>
-<a name="216"><span class="lineNum">     216 </span><span class="lineCov">        126 :                     summ = summ - CholeskyLower(j,k) * CholeskyLower(k,i)</span></a>
+<a name="210"><span class="lineNum">     210 </span><span class="lineCov">         36 :         sqrtDetInvPosDefMat = 1._RK / product(Diagonal)</span></a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         36 :         do i = 1,nd</span></a>
+<a name="212"><span class="lineNum">     212 </span><span class="lineCov">         27 :             CholeskyLower(i,i) = 1._RK / Diagonal(i)</span></a>
+<a name="213"><span class="lineNum">     213 </span><span class="lineCov">         63 :             do j = i+1,nd</span></a>
+<a name="214"><span class="lineNum">     214 </span><span class="lineCov">         27 :                 summ = 0._RK</span></a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">         63 :                 do k = i,j-1</span></a>
+<a name="216"><span class="lineNum">     216 </span><span class="lineCov">         63 :                     summ = summ - CholeskyLower(j,k) * CholeskyLower(k,i)</span></a>
 <a name="217"><span class="lineNum">     217 </span>            :                 end do</a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">        108 :                 CholeskyLower(j,i) = summ / Diagonal(j)</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         54 :                 CholeskyLower(j,i) = summ / Diagonal(j)</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :             end do</a>
 <a name="220"><span class="lineNum">     220 </span>            :         end do</a>
-<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         72 :         do i = 1,nd</span></a>
-<a name="222"><span class="lineNum">     222 </span><span class="lineCov">        162 :             do j = i,nd</span></a>
-<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        342 :                 MatInvMat(j,i) = dot_product(CholeskyLower(j:nd,j),CholeskyLower(j:nd,i))</span></a>
+<a name="221"><span class="lineNum">     221 </span><span class="lineCov">         36 :         do i = 1,nd</span></a>
+<a name="222"><span class="lineNum">     222 </span><span class="lineCov">         81 :             do j = i,nd</span></a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">        171 :                 MatInvMat(j,i) = dot_product(CholeskyLower(j:nd,j),CholeskyLower(j:nd,i))</span></a>
 <a name="224"><span class="lineNum">     224 </span>            :             end do</a>
-<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        288 :             MatInvMat(i,i:nd) = MatInvMat(i:nd,i)</span></a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">        144 :             MatInvMat(i,i:nd) = MatInvMat(i:nd,i)</span></a>
 <a name="226"><span class="lineNum">     226 </span>            :         end do</a>
-<a name="227"><span class="lineNum">     227 </span><span class="lineCov">         30 :   end subroutine getInvPosDefMatSqrtDet</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">         15 :   end subroutine getInvPosDefMatSqrtDet</span></a>
 <a name="228"><span class="lineNum">     228 </span>            : </a>
 <a name="229"><span class="lineNum">     229 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
@@ -314,45 +314,45 @@
 <a name="244"><span class="lineNum">     244 </span>            :     !&gt;</a>
 <a name="245"><span class="lineNum">     245 </span>            :     !&gt; \author</a>
 <a name="246"><span class="lineNum">     246 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin</a>
-<a name="247"><span class="lineNum">     247 </span><span class="lineCov">    4878940 :     pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)</span></a>
+<a name="247"><span class="lineNum">     247 </span><span class="lineCov">    2544920 :     pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)</span></a>
 <a name="248"><span class="lineNum">     248 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="249"><span class="lineNum">     249 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMatFromCholFac</a>
 <a name="250"><span class="lineNum">     250 </span>            : #endif</a>
-<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         30 :         use Constants_mod, only: RK, IK</span></a>
+<a name="251"><span class="lineNum">     251 </span><span class="lineCov">         15 :         use Constants_mod, only: RK, IK</span></a>
 <a name="252"><span class="lineNum">     252 </span>            :         implicit none</a>
 <a name="253"><span class="lineNum">     253 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="254"><span class="lineNum">     254 </span>            :         real(RK)   , intent(in) :: CholeskyLower(nd,nd),Diagonal(nd)</a>
 <a name="255"><span class="lineNum">     255 </span>            :         real(RK)                :: InvMatFromCholFac(nd,nd)</a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">     579945 :         real(RK)                :: summ</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">     301832 :         real(RK)                :: summ</span></a>
 <a name="257"><span class="lineNum">     257 </span>            :         integer(IK)             :: i,j,k</a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">     579945 :         if (nd==1_IK) then</span></a>
-<a name="259"><span class="lineNum">     259 </span><span class="lineCov">      85149 :             InvMatFromCholFac(1,1) = 1._RK / Diagonal(1)**2</span></a>
-<a name="260"><span class="lineNum">     260 </span><span class="lineCov">      85149 :             return</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">     301832 :         if (nd==1_IK) then</span></a>
+<a name="259"><span class="lineNum">     259 </span><span class="lineCov">      42897 :             InvMatFromCholFac(1,1) = 1._RK / Diagonal(1)**2</span></a>
+<a name="260"><span class="lineNum">     260 </span><span class="lineCov">      42897 :             return</span></a>
 <a name="261"><span class="lineNum">     261 </span>            :         end if</a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">    3463610 :         InvMatFromCholFac = 0._RK</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">     989598 :         do j=1,nd-1</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">    1484410 :             do i=j+1,nd</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">     989610 :                 InvMatFromCholFac(i,j) = CholeskyLower(i,j)</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">    1812560 :         InvMatFromCholFac = 0._RK</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">     517873 :         do j=1,nd-1</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">     776814 :             do i=j+1,nd</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">     517879 :                 InvMatFromCholFac(i,j) = CholeskyLower(i,j)</span></a>
 <a name="266"><span class="lineNum">     266 </span>            :             end do</a>
 <a name="267"><span class="lineNum">     267 </span>            :         end do</a>
-<a name="268"><span class="lineNum">     268 </span><span class="lineCov">    1484390 :         do i = 1,nd</span></a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">     989598 :             InvMatFromCholFac(i,i) = 1._RK / Diagonal(i)</span></a>
-<a name="270"><span class="lineNum">     270 </span><span class="lineCov">    1979200 :             do j = i+1,nd</span></a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">     494808 :                 summ = 0._RK</span></a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     989622 :                 do k = i,j-1</span></a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">     989622 :                     summ = summ - InvMatFromCholFac(j,k) * InvMatFromCholFac(k,i)</span></a>
+<a name="268"><span class="lineNum">     268 </span><span class="lineCov">     776808 :         do i = 1,nd</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">     517873 :             InvMatFromCholFac(i,i) = 1._RK / Diagonal(i)</span></a>
+<a name="270"><span class="lineNum">     270 </span><span class="lineCov">    1035750 :             do j = i+1,nd</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">     258941 :                 summ = 0._RK</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">     517885 :                 do k = i,j-1</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">     517885 :                     summ = summ - InvMatFromCholFac(j,k) * InvMatFromCholFac(k,i)</span></a>
 <a name="274"><span class="lineNum">     274 </span>            :                 end do</a>
-<a name="275"><span class="lineNum">     275 </span><span class="lineCov">    1484410 :                 InvMatFromCholFac(j,i) = summ / Diagonal(j)</span></a>
+<a name="275"><span class="lineNum">     275 </span><span class="lineCov">     776814 :                 InvMatFromCholFac(j,i) = summ / Diagonal(j)</span></a>
 <a name="276"><span class="lineNum">     276 </span>            :             end do</a>
 <a name="277"><span class="lineNum">     277 </span>            :         end do</a>
-<a name="278"><span class="lineNum">     278 </span><span class="lineCov">    1484390 :         do i = 1,nd</span></a>
-<a name="279"><span class="lineNum">     279 </span><span class="lineCov">    2968800 :             do j = i,nd</span></a>
-<a name="280"><span class="lineNum">     280 </span><span class="lineCov">    3463630 :                 InvMatFromCholFac(j,i) = dot_product(InvMatFromCholFac(j:nd,j),InvMatFromCholFac(j:nd,i))</span></a>
-<a name="281"><span class="lineNum">     281 </span><span class="lineCov">    2474000 :                 InvMatFromCholFac(i,j) = InvMatFromCholFac(j,i)</span></a>
+<a name="278"><span class="lineNum">     278 </span><span class="lineCov">     776808 :         do i = 1,nd</span></a>
+<a name="279"><span class="lineNum">     279 </span><span class="lineCov">    1553620 :             do j = i,nd</span></a>
+<a name="280"><span class="lineNum">     280 </span><span class="lineCov">    1812570 :                 InvMatFromCholFac(j,i) = dot_product(InvMatFromCholFac(j:nd,j),InvMatFromCholFac(j:nd,i))</span></a>
+<a name="281"><span class="lineNum">     281 </span><span class="lineCov">    1294690 :                 InvMatFromCholFac(i,j) = InvMatFromCholFac(j,i)</span></a>
 <a name="282"><span class="lineNum">     282 </span>            :             end do</a>
 <a name="283"><span class="lineNum">     283 </span>            :             !InvMatFromCholFac(i,i:nd) = InvMatFromCholFac(i:nd,i)</a>
 <a name="284"><span class="lineNum">     284 </span>            :         end do</a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">    1159890 :     end function getInvMatFromCholFac</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">     603664 :     end function getInvMatFromCholFac</span></a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
 <a name="287"><span class="lineNum">     287 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="288"><span class="lineNum">     288 </span>            : </a>
@@ -383,49 +383,49 @@
 <a name="313"><span class="lineNum">     313 </span>            :     !&gt;</a>
 <a name="314"><span class="lineNum">     314 </span>            :     !&gt; \author</a>
 <a name="315"><span class="lineNum">     315 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">        180 :     pure function getInvPosDefMat(nd,PosDefMat) result(InvPosDefMat)</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">         90 :     pure function getInvPosDefMat(nd,PosDefMat) result(InvPosDefMat)</span></a>
 <a name="317"><span class="lineNum">     317 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="318"><span class="lineNum">     318 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMat</a>
 <a name="319"><span class="lineNum">     319 </span>            : #endif</a>
-<a name="320"><span class="lineNum">     320 </span><span class="lineCov">     579945 :         use Constants_mod, only: RK, IK</span></a>
+<a name="320"><span class="lineNum">     320 </span><span class="lineCov">     301832 :         use Constants_mod, only: RK, IK</span></a>
 <a name="321"><span class="lineNum">     321 </span>            :         implicit none</a>
 <a name="322"><span class="lineNum">     322 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="323"><span class="lineNum">     323 </span>            :         real(RK)   , intent(in) :: PosDefMat(nd,nd)</a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">        156 :         real(RK)                :: InvPosDefMat(nd,nd), CholeskyLower(nd,nd)</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         60 :         real(RK)                :: Diagonal(nd)</span></a>
-<a name="326"><span class="lineNum">     326 </span><span class="lineCov">         12 :         real(RK)                :: summ</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">         78 :         real(RK)                :: InvPosDefMat(nd,nd), CholeskyLower(nd,nd)</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">         30 :         real(RK)                :: Diagonal(nd)</span></a>
+<a name="326"><span class="lineNum">     326 </span><span class="lineCov">          6 :         real(RK)                :: summ</span></a>
 <a name="327"><span class="lineNum">     327 </span>            :         integer(IK)             :: i,j,k</a>
 <a name="328"><span class="lineNum">     328 </span>            :        !if (nd==1) then</a>
 <a name="329"><span class="lineNum">     329 </span>            :        !    InvPosDefMat(1,1) = 1._RK / sqrt(PosDefMat(1,1))</a>
 <a name="330"><span class="lineNum">     330 </span>            :        !    return</a>
 <a name="331"><span class="lineNum">     331 </span>            :        !end if</a>
-<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         48 :         do j=1,nd</span></a>
-<a name="333"><span class="lineNum">     333 </span><span class="lineCov">        120 :             do i=1,j</span></a>
-<a name="334"><span class="lineNum">     334 </span><span class="lineCov">        108 :                 CholeskyLower(i,j) = PosDefMat(i,j)</span></a>
+<a name="332"><span class="lineNum">     332 </span><span class="lineCov">         24 :         do j=1,nd</span></a>
+<a name="333"><span class="lineNum">     333 </span><span class="lineCov">         60 :             do i=1,j</span></a>
+<a name="334"><span class="lineNum">     334 </span><span class="lineCov">         54 :                 CholeskyLower(i,j) = PosDefMat(i,j)</span></a>
 <a name="335"><span class="lineNum">     335 </span>            :             end do</a>
 <a name="336"><span class="lineNum">     336 </span>            :         end do</a>
-<a name="337"><span class="lineNum">     337 </span><span class="lineCov">         12 :         call getCholeskyFactor(nd,CholeskyLower,Diagonal)</span></a>
-<a name="338"><span class="lineNum">     338 </span><span class="lineCov">         12 :         if (Diagonal(1)&lt;0._RK) then</span></a>
-<a name="339"><span class="lineNum">     339 </span><span class="lineCov">         78 :             InvPosDefMat = -1._RK   ! error occurred: getCholeskyFactor() failed in getInvPosDefMat()</span></a>
-<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          6 :             return</span></a>
+<a name="337"><span class="lineNum">     337 </span><span class="lineCov">          6 :         call getCholeskyFactor(nd,CholeskyLower,Diagonal)</span></a>
+<a name="338"><span class="lineNum">     338 </span><span class="lineCov">          6 :         if (Diagonal(1)&lt;0._RK) then</span></a>
+<a name="339"><span class="lineNum">     339 </span><span class="lineCov">         39 :             InvPosDefMat = -1._RK   ! error occurred: getCholeskyFactor() failed in getInvPosDefMat()</span></a>
+<a name="340"><span class="lineNum">     340 </span><span class="lineCov">          3 :             return</span></a>
 <a name="341"><span class="lineNum">     341 </span>            :         end if</a>
-<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         24 :         do i = 1,nd</span></a>
-<a name="343"><span class="lineNum">     343 </span><span class="lineCov">         18 :             CholeskyLower(i,i) = 1._RK / Diagonal(i)</span></a>
-<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         42 :             do j = i+1,nd</span></a>
-<a name="345"><span class="lineNum">     345 </span><span class="lineCov">         18 :                 summ = 0._RK</span></a>
-<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         42 :                 do k = i,j-1</span></a>
-<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         42 :                     summ = summ - CholeskyLower(j,k) * CholeskyLower(k,i)</span></a>
+<a name="342"><span class="lineNum">     342 </span><span class="lineCov">         12 :         do i = 1,nd</span></a>
+<a name="343"><span class="lineNum">     343 </span><span class="lineCov">          9 :             CholeskyLower(i,i) = 1._RK / Diagonal(i)</span></a>
+<a name="344"><span class="lineNum">     344 </span><span class="lineCov">         21 :             do j = i+1,nd</span></a>
+<a name="345"><span class="lineNum">     345 </span><span class="lineCov">          9 :                 summ = 0._RK</span></a>
+<a name="346"><span class="lineNum">     346 </span><span class="lineCov">         21 :                 do k = i,j-1</span></a>
+<a name="347"><span class="lineNum">     347 </span><span class="lineCov">         21 :                     summ = summ - CholeskyLower(j,k) * CholeskyLower(k,i)</span></a>
 <a name="348"><span class="lineNum">     348 </span>            :                 end do</a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         36 :                 CholeskyLower(j,i) = summ / Diagonal(j)</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">         18 :                 CholeskyLower(j,i) = summ / Diagonal(j)</span></a>
 <a name="350"><span class="lineNum">     350 </span>            :             end do</a>
 <a name="351"><span class="lineNum">     351 </span>            :         end do</a>
-<a name="352"><span class="lineNum">     352 </span><span class="lineCov">         24 :         do i = 1,nd</span></a>
-<a name="353"><span class="lineNum">     353 </span><span class="lineCov">         60 :             do j = i,nd</span></a>
-<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         96 :                 InvPosDefMat(j,i) = dot_product(CholeskyLower(j:nd,j),CholeskyLower(j:nd,i))</span></a>
-<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         54 :                 InvPosDefMat(i,j) = InvPosDefMat(j,i)</span></a>
+<a name="352"><span class="lineNum">     352 </span><span class="lineCov">         12 :         do i = 1,nd</span></a>
+<a name="353"><span class="lineNum">     353 </span><span class="lineCov">         30 :             do j = i,nd</span></a>
+<a name="354"><span class="lineNum">     354 </span><span class="lineCov">         48 :                 InvPosDefMat(j,i) = dot_product(CholeskyLower(j:nd,j),CholeskyLower(j:nd,i))</span></a>
+<a name="355"><span class="lineNum">     355 </span><span class="lineCov">         27 :                 InvPosDefMat(i,j) = InvPosDefMat(j,i)</span></a>
 <a name="356"><span class="lineNum">     356 </span>            :             end do</a>
 <a name="357"><span class="lineNum">     357 </span>            :         end do</a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         24 :   end function getInvPosDefMat</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">         12 :   end function getInvPosDefMat</span></a>
 <a name="359"><span class="lineNum">     359 </span>            : </a>
 <a name="360"><span class="lineNum">     360 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="361"><span class="lineNum">     361 </span>            : </a>
@@ -448,30 +448,30 @@
 <a name="378"><span class="lineNum">     378 </span>            :     !&gt;</a>
 <a name="379"><span class="lineNum">     379 </span>            :     !&gt; \author</a>
 <a name="380"><span class="lineNum">     380 </span>            :     !&gt; Amir Shahmoradi, Oct 18, 2009, 1:54 AM, MTU</a>
-<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          6 :     subroutine getInvMatDet(nd,MatrixLU,InverseMatrix,detInvMat)</span></a>
+<a name="381"><span class="lineNum">     381 </span><span class="lineCov">          3 :     subroutine getInvMatDet(nd,MatrixLU,InverseMatrix,detInvMat)</span></a>
 <a name="382"><span class="lineNum">     382 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="383"><span class="lineNum">     383 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMatDet</a>
 <a name="384"><span class="lineNum">     384 </span>            : #endif</a>
-<a name="385"><span class="lineNum">     385 </span><span class="lineCov">         12 :         use Constants_mod, only: RK, IK</span></a>
+<a name="385"><span class="lineNum">     385 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
 <a name="386"><span class="lineNum">     386 </span>            :         implicit none</a>
 <a name="387"><span class="lineNum">     387 </span>            :         integer(IK), intent(in)    :: nd</a>
 <a name="388"><span class="lineNum">     388 </span>            :         real(RK)   , intent(inout) :: MatrixLU(nd,nd) ! On input it is the matrix, on output it is the LU decomposition.</a>
 <a name="389"><span class="lineNum">     389 </span>            :         real(RK)   , intent(out)   :: InverseMatrix(nd,nd)</a>
 <a name="390"><span class="lineNum">     390 </span>            :         real(RK)   , intent(out)   :: detInvMat</a>
 <a name="391"><span class="lineNum">     391 </span>            :         integer(IK)                :: i,j,Permutation(nd) ! LCOV_EXCL_LINE</a>
-<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         24 :         do i = 1,nd</span></a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         72 :             do j = 1,nd</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         72 :                 InverseMatrix(i,j) = 0._RK</span></a>
+<a name="392"><span class="lineNum">     392 </span><span class="lineCov">         12 :         do i = 1,nd</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">         36 :             do j = 1,nd</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">         36 :                 InverseMatrix(i,j) = 0._RK</span></a>
 <a name="395"><span class="lineNum">     395 </span>            :             end do</a>
-<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         24 :             InverseMatrix(i,i) = 1._RK</span></a>
+<a name="396"><span class="lineNum">     396 </span><span class="lineCov">         12 :             InverseMatrix(i,i) = 1._RK</span></a>
 <a name="397"><span class="lineNum">     397 </span>            :         end do</a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          6 :         call getLU(nd,MatrixLU,Permutation,detInvMat)</span></a>
-<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         24 :         do j = 1,nd</span></a>
-<a name="400"><span class="lineNum">     400 </span><span class="lineCov">         18 :             detInvMat = detInvMat * MatrixLU(j,j)</span></a>
-<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         24 :             call solveLinearSystem(nd,MatrixLU,Permutation,InverseMatrix(1:nd,j))</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          3 :         call getLU(nd,MatrixLU,Permutation,detInvMat)</span></a>
+<a name="399"><span class="lineNum">     399 </span><span class="lineCov">         12 :         do j = 1,nd</span></a>
+<a name="400"><span class="lineNum">     400 </span><span class="lineCov">          9 :             detInvMat = detInvMat * MatrixLU(j,j)</span></a>
+<a name="401"><span class="lineNum">     401 </span><span class="lineCov">         12 :             call solveLinearSystem(nd,MatrixLU,Permutation,InverseMatrix(1:nd,j))</span></a>
 <a name="402"><span class="lineNum">     402 </span>            :         end do</a>
-<a name="403"><span class="lineNum">     403 </span><span class="lineCov">          6 :         detInvMat = 1._RK/detInvMat</span></a>
-<a name="404"><span class="lineNum">     404 </span><span class="lineCov">          6 :   end subroutine getInvMatDet</span></a>
+<a name="403"><span class="lineNum">     403 </span><span class="lineCov">          3 :         detInvMat = 1._RK/detInvMat</span></a>
+<a name="404"><span class="lineNum">     404 </span><span class="lineCov">          3 :   end subroutine getInvMatDet</span></a>
 <a name="405"><span class="lineNum">     405 </span>            : </a>
 <a name="406"><span class="lineNum">     406 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="407"><span class="lineNum">     407 </span>            : </a>
@@ -492,29 +492,29 @@
 <a name="422"><span class="lineNum">     422 </span>            :     !&gt;</a>
 <a name="423"><span class="lineNum">     423 </span>            :     !&gt; \author</a>
 <a name="424"><span class="lineNum">     424 </span>            :     !&gt; Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU</a>
-<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         90 :     function getInvMat(nd,Matrix) result(InverseMatrix)</span></a>
+<a name="425"><span class="lineNum">     425 </span><span class="lineCov">         45 :     function getInvMat(nd,Matrix) result(InverseMatrix)</span></a>
 <a name="426"><span class="lineNum">     426 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="427"><span class="lineNum">     427 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMat</a>
 <a name="428"><span class="lineNum">     428 </span>            : #endif</a>
-<a name="429"><span class="lineNum">     429 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
+<a name="429"><span class="lineNum">     429 </span><span class="lineCov">          3 :         use Constants_mod, only: RK, IK</span></a>
 <a name="430"><span class="lineNum">     430 </span>            :         implicit none</a>
 <a name="431"><span class="lineNum">     431 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="432"><span class="lineNum">     432 </span>            :         real(RK)   , intent(in) :: Matrix(nd,nd)</a>
-<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         84 :         real(RK)                :: InverseMatrix(nd,nd),LU(nd,nd)</span></a>
-<a name="434"><span class="lineNum">     434 </span><span class="lineCov">          6 :         integer(IK)             :: i,j,Permutation(nd)</span></a>
-<a name="435"><span class="lineNum">     435 </span><span class="lineCov">          6 :         real(RK)                :: parity</span></a>
-<a name="436"><span class="lineNum">     436 </span><span class="lineCov">         24 :         do i = 1,nd</span></a>
-<a name="437"><span class="lineNum">     437 </span><span class="lineCov">         72 :             do j = 1,nd</span></a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         72 :                 InverseMatrix(i,j) = 0._RK</span></a>
+<a name="433"><span class="lineNum">     433 </span><span class="lineCov">         42 :         real(RK)                :: InverseMatrix(nd,nd),LU(nd,nd)</span></a>
+<a name="434"><span class="lineNum">     434 </span><span class="lineCov">          3 :         integer(IK)             :: i,j,Permutation(nd)</span></a>
+<a name="435"><span class="lineNum">     435 </span><span class="lineCov">          3 :         real(RK)                :: parity</span></a>
+<a name="436"><span class="lineNum">     436 </span><span class="lineCov">         12 :         do i = 1,nd</span></a>
+<a name="437"><span class="lineNum">     437 </span><span class="lineCov">         36 :             do j = 1,nd</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">         36 :                 InverseMatrix(i,j) = 0._RK</span></a>
 <a name="439"><span class="lineNum">     439 </span>            :             end do</a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         24 :             InverseMatrix(i,i) = 1._RK</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         12 :             InverseMatrix(i,i) = 1._RK</span></a>
 <a name="441"><span class="lineNum">     441 </span>            :         end do</a>
-<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         78 :         LU = Matrix</span></a>
-<a name="443"><span class="lineNum">     443 </span><span class="lineCov">          6 :         call getLU(nd,LU,Permutation,parity)</span></a>
-<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         24 :         do j = 1,nd</span></a>
-<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         24 :             call solveLinearSystem(nd,LU,Permutation,InverseMatrix(1:nd,j))</span></a>
+<a name="442"><span class="lineNum">     442 </span><span class="lineCov">         39 :         LU = Matrix</span></a>
+<a name="443"><span class="lineNum">     443 </span><span class="lineCov">          3 :         call getLU(nd,LU,Permutation,parity)</span></a>
+<a name="444"><span class="lineNum">     444 </span><span class="lineCov">         12 :         do j = 1,nd</span></a>
+<a name="445"><span class="lineNum">     445 </span><span class="lineCov">         12 :             call solveLinearSystem(nd,LU,Permutation,InverseMatrix(1:nd,j))</span></a>
 <a name="446"><span class="lineNum">     446 </span>            :         end do</a>
-<a name="447"><span class="lineNum">     447 </span><span class="lineCov">          6 :     end function getInvMat</span></a>
+<a name="447"><span class="lineNum">     447 </span><span class="lineCov">          3 :     end function getInvMat</span></a>
 <a name="448"><span class="lineNum">     448 </span>            : </a>
 <a name="449"><span class="lineNum">     449 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="450"><span class="lineNum">     450 </span>            : </a>
@@ -537,32 +537,32 @@
 <a name="467"><span class="lineNum">     467 </span>            :     !&gt;</a>
 <a name="468"><span class="lineNum">     468 </span>            :     !&gt; \author</a>
 <a name="469"><span class="lineNum">     469 </span>            :     !&gt; Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU</a>
-<a name="470"><span class="lineNum">     470 </span><span class="lineCov">         36 :     subroutine solveLinearSystem(nd, LU, Permutation, InputSolution)</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineCov">         18 :     subroutine solveLinearSystem(nd, LU, Permutation, InputSolution)</span></a>
 <a name="471"><span class="lineNum">     471 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="472"><span class="lineNum">     472 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: solveLinearSystem</a>
 <a name="473"><span class="lineNum">     473 </span>            : #endif</a>
-<a name="474"><span class="lineNum">     474 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineCov">          3 :         use Constants_mod, only: RK, IK</span></a>
 <a name="475"><span class="lineNum">     475 </span>            :         integer(IK), intent(in)    :: nd</a>
 <a name="476"><span class="lineNum">     476 </span>            :         integer(IK), intent(in)    :: Permutation(nd)</a>
 <a name="477"><span class="lineNum">     477 </span>            :         real(RK)   , intent(in)    :: LU(nd,nd)</a>
 <a name="478"><span class="lineNum">     478 </span>            :         real(RK)   , intent(inout) :: InputSolution(nd)</a>
 <a name="479"><span class="lineNum">     479 </span>            :         integer(IK)                :: i,ii</a>
-<a name="480"><span class="lineNum">     480 </span><span class="lineCov">         36 :         real(RK)                   :: summ</span></a>
-<a name="481"><span class="lineNum">     481 </span><span class="lineCov">         36 :         ii = 0</span></a>
-<a name="482"><span class="lineNum">     482 </span><span class="lineCov">        144 :         do i=1,nd</span></a>
-<a name="483"><span class="lineNum">     483 </span><span class="lineCov">        108 :             summ = InputSolution(Permutation(i))</span></a>
-<a name="484"><span class="lineNum">     484 </span><span class="lineCov">        108 :             InputSolution(Permutation(i)) = InputSolution(i)</span></a>
-<a name="485"><span class="lineNum">     485 </span><span class="lineCov">        108 :             if (ii /= 0) then</span></a>
-<a name="486"><span class="lineNum">     486 </span><span class="lineCov">         84 :                 summ = summ - dot_product( LU(i,ii:i-1) , InputSolution(ii:i-1) )</span></a>
-<a name="487"><span class="lineNum">     487 </span><span class="lineCov">         72 :             else if (summ /= 0._RK) then</span></a>
-<a name="488"><span class="lineNum">     488 </span><span class="lineCov">         36 :                 ii = i</span></a>
+<a name="480"><span class="lineNum">     480 </span><span class="lineCov">         18 :         real(RK)                   :: summ</span></a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineCov">         18 :         ii = 0</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineCov">         72 :         do i=1,nd</span></a>
+<a name="483"><span class="lineNum">     483 </span><span class="lineCov">         54 :             summ = InputSolution(Permutation(i))</span></a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineCov">         54 :             InputSolution(Permutation(i)) = InputSolution(i)</span></a>
+<a name="485"><span class="lineNum">     485 </span><span class="lineCov">         54 :             if (ii /= 0) then</span></a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineCov">         42 :                 summ = summ - dot_product( LU(i,ii:i-1) , InputSolution(ii:i-1) )</span></a>
+<a name="487"><span class="lineNum">     487 </span><span class="lineCov">         36 :             else if (summ /= 0._RK) then</span></a>
+<a name="488"><span class="lineNum">     488 </span><span class="lineCov">         18 :                 ii = i</span></a>
 <a name="489"><span class="lineNum">     489 </span>            :             end if</a>
-<a name="490"><span class="lineNum">     490 </span><span class="lineCov">        144 :             InputSolution(i) = summ</span></a>
+<a name="490"><span class="lineNum">     490 </span><span class="lineCov">         72 :             InputSolution(i) = summ</span></a>
 <a name="491"><span class="lineNum">     491 </span>            :         end do</a>
-<a name="492"><span class="lineNum">     492 </span><span class="lineCov">        144 :         do i = nd,1,-1</span></a>
-<a name="493"><span class="lineNum">     493 </span><span class="lineCov">        252 :             InputSolution(i) = ( InputSolution(i) - dot_product( LU(i,i+1:nd) , InputSolution(i+1:nd)) ) / LU(i,i)</span></a>
+<a name="492"><span class="lineNum">     492 </span><span class="lineCov">         72 :         do i = nd,1,-1</span></a>
+<a name="493"><span class="lineNum">     493 </span><span class="lineCov">        126 :             InputSolution(i) = ( InputSolution(i) - dot_product( LU(i,i+1:nd) , InputSolution(i+1:nd)) ) / LU(i,i)</span></a>
 <a name="494"><span class="lineNum">     494 </span>            :         end do</a>
-<a name="495"><span class="lineNum">     495 </span><span class="lineCov">         36 :     end subroutine solveLinearSystem</span></a>
+<a name="495"><span class="lineNum">     495 </span><span class="lineCov">         18 :     end subroutine solveLinearSystem</span></a>
 <a name="496"><span class="lineNum">     496 </span>            : </a>
 <a name="497"><span class="lineNum">     497 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="498"><span class="lineNum">     498 </span>            : </a>
@@ -579,11 +579,11 @@
 <a name="509"><span class="lineNum">     509 </span>            :     !&gt;</a>
 <a name="510"><span class="lineNum">     510 </span>            :     !&gt; \author</a>
 <a name="511"><span class="lineNum">     511 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 1:43 PM, ICES, UT Austin</a>
-<a name="512"><span class="lineNum">     512 </span><span class="lineCov">         18 :     subroutine getLU(nd,MatrixLU,Permutation,parity) ! ,errorOccurred)</span></a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineCov">          9 :     subroutine getLU(nd,MatrixLU,Permutation,parity) ! ,errorOccurred)</span></a>
 <a name="513"><span class="lineNum">     513 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="514"><span class="lineNum">     514 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLU</a>
 <a name="515"><span class="lineNum">     515 </span>            : #endif</a>
-<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         36 :         use Constants_mod, only: RK, IK</span></a>
+<a name="516"><span class="lineNum">     516 </span><span class="lineCov">         18 :         use Constants_mod, only: RK, IK</span></a>
 <a name="517"><span class="lineNum">     517 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
 <a name="518"><span class="lineNum">     518 </span>            :         integer(IK) , intent(in)    :: nd</a>
 <a name="519"><span class="lineNum">     519 </span>            :         integer(IK) , intent(out)   :: Permutation(nd)</a>
@@ -591,16 +591,16 @@
 <a name="521"><span class="lineNum">     521 </span>            :         real(RK)    , intent(out)   :: parity</a>
 <a name="522"><span class="lineNum">     522 </span>            :         !logical     , intent(out)   :: errorOccurred</a>
 <a name="523"><span class="lineNum">     523 </span>            :         real(RK)    , parameter     :: TINY = 1.e-20_RK</a>
-<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         72 :         real(RK)                    :: aamax,dum,summ,vv(nd)</span></a>
+<a name="524"><span class="lineNum">     524 </span><span class="lineCov">         36 :         real(RK)                    :: aamax,dum,summ,vv(nd)</span></a>
 <a name="525"><span class="lineNum">     525 </span>            :         integer(IK)                 :: i,imax,j,k</a>
 <a name="526"><span class="lineNum">     526 </span>            :         !errorOccurred = .false.</a>
-<a name="527"><span class="lineNum">     527 </span><span class="lineCov">         18 :         parity = 1._RK</span></a>
-<a name="528"><span class="lineNum">     528 </span><span class="lineCov">         72 :         do i = 1,nd</span></a>
-<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         54 :             aamax = 0._RK</span></a>
-<a name="530"><span class="lineNum">     530 </span><span class="lineCov">        216 :             do j=1,nd</span></a>
-<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        216 :                 if ( abs(MatrixLU(i,j)) &gt; aamax ) aamax = abs( MatrixLU(i,j) )</span></a>
+<a name="527"><span class="lineNum">     527 </span><span class="lineCov">          9 :         parity = 1._RK</span></a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineCov">         36 :         do i = 1,nd</span></a>
+<a name="529"><span class="lineNum">     529 </span><span class="lineCov">         27 :             aamax = 0._RK</span></a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineCov">        108 :             do j=1,nd</span></a>
+<a name="531"><span class="lineNum">     531 </span><span class="lineCov">        108 :                 if ( abs(MatrixLU(i,j)) &gt; aamax ) aamax = abs( MatrixLU(i,j) )</span></a>
 <a name="532"><span class="lineNum">     532 </span>            :             end do</a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineCov">         54 :             if (aamax == 0._RK) then</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">         27 :             if (aamax == 0._RK) then</span></a>
 <a name="534"><span class="lineNum">     534 </span>            :             ! LCOV_EXCL_START</a>
 <a name="535"><span class="lineNum">     535 </span>            :                 write(output_unit,&quot;(A)&quot;) &quot;Statistics@getLU() failed. Singular matrix detected.&quot;</a>
 <a name="536"><span class="lineNum">     536 </span>            :                 error stop</a>
@@ -608,30 +608,30 @@
 <a name="538"><span class="lineNum">     538 </span>            :                 !return</a>
 <a name="539"><span class="lineNum">     539 </span>            :             ! LCOV_EXCL_STOP</a>
 <a name="540"><span class="lineNum">     540 </span>            :             end if</a>
-<a name="541"><span class="lineNum">     541 </span><span class="lineCov">         72 :             vv(i) = 1._RK/aamax</span></a>
+<a name="541"><span class="lineNum">     541 </span><span class="lineCov">         36 :             vv(i) = 1._RK/aamax</span></a>
 <a name="542"><span class="lineNum">     542 </span>            :         end do</a>
-<a name="543"><span class="lineNum">     543 </span><span class="lineCov">         72 :         do j=1,nd</span></a>
-<a name="544"><span class="lineNum">     544 </span><span class="lineCov">        108 :             do i=1,j-1</span></a>
-<a name="545"><span class="lineNum">     545 </span><span class="lineCov">         54 :                 summ = MatrixLU(i,j)</span></a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">         72 :                 do k=1,i-1</span></a>
-<a name="547"><span class="lineNum">     547 </span><span class="lineCov">         72 :                     summ = summ - MatrixLU(i,k) * MatrixLU(k,j)</span></a>
+<a name="543"><span class="lineNum">     543 </span><span class="lineCov">         36 :         do j=1,nd</span></a>
+<a name="544"><span class="lineNum">     544 </span><span class="lineCov">         54 :             do i=1,j-1</span></a>
+<a name="545"><span class="lineNum">     545 </span><span class="lineCov">         27 :                 summ = MatrixLU(i,j)</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">         36 :                 do k=1,i-1</span></a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineCov">         36 :                     summ = summ - MatrixLU(i,k) * MatrixLU(k,j)</span></a>
 <a name="548"><span class="lineNum">     548 </span>            :                 end do</a>
-<a name="549"><span class="lineNum">     549 </span><span class="lineCov">        108 :                 MatrixLU(i,j) = summ</span></a>
+<a name="549"><span class="lineNum">     549 </span><span class="lineCov">         54 :                 MatrixLU(i,j) = summ</span></a>
 <a name="550"><span class="lineNum">     550 </span>            :             end do</a>
-<a name="551"><span class="lineNum">     551 </span><span class="lineCov">         54 :             aamax = 0._RK</span></a>
-<a name="552"><span class="lineNum">     552 </span><span class="lineCov">        162 :             do i = j, nd</span></a>
-<a name="553"><span class="lineNum">     553 </span><span class="lineCov">        108 :                 summ = MatrixLU(i,j)</span></a>
-<a name="554"><span class="lineNum">     554 </span><span class="lineCov">        180 :                 do k = 1, j-1</span></a>
-<a name="555"><span class="lineNum">     555 </span><span class="lineCov">        180 :                     summ = summ - MatrixLU(i,k) * MatrixLU(k,j)</span></a>
+<a name="551"><span class="lineNum">     551 </span><span class="lineCov">         27 :             aamax = 0._RK</span></a>
+<a name="552"><span class="lineNum">     552 </span><span class="lineCov">         81 :             do i = j, nd</span></a>
+<a name="553"><span class="lineNum">     553 </span><span class="lineCov">         54 :                 summ = MatrixLU(i,j)</span></a>
+<a name="554"><span class="lineNum">     554 </span><span class="lineCov">         90 :                 do k = 1, j-1</span></a>
+<a name="555"><span class="lineNum">     555 </span><span class="lineCov">         90 :                     summ = summ - MatrixLU(i,k) * MatrixLU(k,j)</span></a>
 <a name="556"><span class="lineNum">     556 </span>            :                 end do</a>
-<a name="557"><span class="lineNum">     557 </span><span class="lineCov">        108 :                 MatrixLU(i,j) = summ</span></a>
-<a name="558"><span class="lineNum">     558 </span><span class="lineCov">        108 :                 dum = vv(i) * abs(summ)</span></a>
-<a name="559"><span class="lineNum">     559 </span><span class="lineCov">        162 :                 if (dum &gt;= aamax) then</span></a>
-<a name="560"><span class="lineNum">     560 </span><span class="lineCov">         54 :                     imax = i</span></a>
-<a name="561"><span class="lineNum">     561 </span><span class="lineCov">         54 :                     aamax = dum</span></a>
+<a name="557"><span class="lineNum">     557 </span><span class="lineCov">         54 :                 MatrixLU(i,j) = summ</span></a>
+<a name="558"><span class="lineNum">     558 </span><span class="lineCov">         54 :                 dum = vv(i) * abs(summ)</span></a>
+<a name="559"><span class="lineNum">     559 </span><span class="lineCov">         81 :                 if (dum &gt;= aamax) then</span></a>
+<a name="560"><span class="lineNum">     560 </span><span class="lineCov">         27 :                     imax = i</span></a>
+<a name="561"><span class="lineNum">     561 </span><span class="lineCov">         27 :                     aamax = dum</span></a>
 <a name="562"><span class="lineNum">     562 </span>            :                 end if</a>
 <a name="563"><span class="lineNum">     563 </span>            :             end do</a>
-<a name="564"><span class="lineNum">     564 </span><span class="lineCov">         54 :             if (j /= imax)then</span></a>
+<a name="564"><span class="lineNum">     564 </span><span class="lineCov">         27 :             if (j /= imax)then</span></a>
 <a name="565"><span class="lineNum">     565 </span><span class="lineNoCov">          0 :                 do k=1,nd</span></a>
 <a name="566"><span class="lineNum">     566 </span><span class="lineNoCov">          0 :                     dum = MatrixLU(imax,k)</span></a>
 <a name="567"><span class="lineNum">     567 </span><span class="lineNoCov">          0 :                     MatrixLU(imax,k) = MatrixLU(j,k)</span></a>
@@ -640,16 +640,16 @@
 <a name="570"><span class="lineNum">     570 </span><span class="lineNoCov">          0 :                 parity = - parity</span></a>
 <a name="571"><span class="lineNum">     571 </span><span class="lineNoCov">          0 :                 vv(imax) = vv(j)</span></a>
 <a name="572"><span class="lineNum">     572 </span>            :             end if</a>
-<a name="573"><span class="lineNum">     573 </span><span class="lineCov">         54 :             Permutation(j) = imax</span></a>
-<a name="574"><span class="lineNum">     574 </span><span class="lineCov">         54 :             if (MatrixLU(j,j) == 0._RK) MatrixLU(j,j) = TINY</span></a>
-<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         72 :             if (j /= nd) then</span></a>
-<a name="576"><span class="lineNum">     576 </span><span class="lineCov">         36 :                 dum = 1._RK / MatrixLU(j,j)</span></a>
-<a name="577"><span class="lineNum">     577 </span><span class="lineCov">         90 :                 do i = j+1,nd</span></a>
-<a name="578"><span class="lineNum">     578 </span><span class="lineCov">         90 :                     MatrixLU(i,j) = MatrixLU(i,j) * dum</span></a>
+<a name="573"><span class="lineNum">     573 </span><span class="lineCov">         27 :             Permutation(j) = imax</span></a>
+<a name="574"><span class="lineNum">     574 </span><span class="lineCov">         27 :             if (MatrixLU(j,j) == 0._RK) MatrixLU(j,j) = TINY</span></a>
+<a name="575"><span class="lineNum">     575 </span><span class="lineCov">         36 :             if (j /= nd) then</span></a>
+<a name="576"><span class="lineNum">     576 </span><span class="lineCov">         18 :                 dum = 1._RK / MatrixLU(j,j)</span></a>
+<a name="577"><span class="lineNum">     577 </span><span class="lineCov">         45 :                 do i = j+1,nd</span></a>
+<a name="578"><span class="lineNum">     578 </span><span class="lineCov">         45 :                     MatrixLU(i,j) = MatrixLU(i,j) * dum</span></a>
 <a name="579"><span class="lineNum">     579 </span>            :                 end do</a>
 <a name="580"><span class="lineNum">     580 </span>            :             endif</a>
 <a name="581"><span class="lineNum">     581 </span>            :         end do</a>
-<a name="582"><span class="lineNum">     582 </span><span class="lineCov">         18 :   end subroutine getLU</span></a>
+<a name="582"><span class="lineNum">     582 </span><span class="lineCov">          9 :   end subroutine getLU</span></a>
 <a name="583"><span class="lineNum">     583 </span>            : </a>
 <a name="584"><span class="lineNum">     584 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="585"><span class="lineNum">     585 </span>            : </a>
@@ -663,11 +663,11 @@
 <a name="593"><span class="lineNum">     593 </span>            :     !&gt;</a>
 <a name="594"><span class="lineNum">     594 </span>            :     !&gt; \author</a>
 <a name="595"><span class="lineNum">     595 </span>            :     !&gt; Amir Shahmoradi, Oct 20, 2009, 10:56 PM, MTU</a>
-<a name="596"><span class="lineNum">     596 </span><span class="lineCov">          6 :     subroutine multiplyMatrix(A,rowsA,colsA,B,rowsB,colsB,C)</span></a>
+<a name="596"><span class="lineNum">     596 </span><span class="lineCov">          3 :     subroutine multiplyMatrix(A,rowsA,colsA,B,rowsB,colsB,C)</span></a>
 <a name="597"><span class="lineNum">     597 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="598"><span class="lineNum">     598 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: multiplyMatrix</a>
 <a name="599"><span class="lineNum">     599 </span>            : #endif</a>
-<a name="600"><span class="lineNum">     600 </span><span class="lineCov">         18 :         use Constants_mod, only: RK, IK</span></a>
+<a name="600"><span class="lineNum">     600 </span><span class="lineCov">          9 :         use Constants_mod, only: RK, IK</span></a>
 <a name="601"><span class="lineNum">     601 </span>            :         use, intrinsic :: iso_fortran_env, only: output_unit</a>
 <a name="602"><span class="lineNum">     602 </span>            :         !use Misc  , only: abortProgram</a>
 <a name="603"><span class="lineNum">     603 </span>            :         implicit none</a>
@@ -676,9 +676,9 @@
 <a name="606"><span class="lineNum">     606 </span>            :         real(RK)   , intent(in)  :: B(rowsB,colsB)</a>
 <a name="607"><span class="lineNum">     607 </span>            :         real(RK)   , intent(out) :: C(rowsA,colsB)</a>
 <a name="608"><span class="lineNum">     608 </span>            :         integer(IK)              :: i,j,k,rowsC,colsC !Counters</a>
-<a name="609"><span class="lineNum">     609 </span><span class="lineCov">          6 :         if (colsA == rowsB) then</span></a>
-<a name="610"><span class="lineNum">     610 </span><span class="lineCov">          6 :             rowsC = rowsA</span></a>
-<a name="611"><span class="lineNum">     611 </span><span class="lineCov">          6 :             colsC = colsB</span></a>
+<a name="609"><span class="lineNum">     609 </span><span class="lineCov">          3 :         if (colsA == rowsB) then</span></a>
+<a name="610"><span class="lineNum">     610 </span><span class="lineCov">          3 :             rowsC = rowsA</span></a>
+<a name="611"><span class="lineNum">     611 </span><span class="lineCov">          3 :             colsC = colsB</span></a>
 <a name="612"><span class="lineNum">     612 </span>            :         ! LCOV_EXCL_START</a>
 <a name="613"><span class="lineNum">     613 </span>            :         else</a>
 <a name="614"><span class="lineNum">     614 </span>            :             write(output_unit,&quot;(A)&quot;) &quot;Matrix@multiplyMatrix() failed. dimensions of matrices do not match.&quot;</a>
@@ -687,20 +687,20 @@
 <a name="617"><span class="lineNum">     617 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="618"><span class="lineNum">     618 </span>            :         end if</a>
 <a name="619"><span class="lineNum">     619 </span>            :         ! Initialize product matrix to 0</a>
-<a name="620"><span class="lineNum">     620 </span><span class="lineCov">         24 :         do i = 1, rowsC</span></a>
-<a name="621"><span class="lineNum">     621 </span><span class="lineCov">         78 :             do j = 1, colsC</span></a>
-<a name="622"><span class="lineNum">     622 </span><span class="lineCov">         72 :                 C(i,j) = 0._RK</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">         12 :         do i = 1, rowsC</span></a>
+<a name="621"><span class="lineNum">     621 </span><span class="lineCov">         39 :             do j = 1, colsC</span></a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">         36 :                 C(i,j) = 0._RK</span></a>
 <a name="623"><span class="lineNum">     623 </span>            :             end do</a>
 <a name="624"><span class="lineNum">     624 </span>            :         end do</a>
 <a name="625"><span class="lineNum">     625 </span>            :         ! Find product as per above formula</a>
-<a name="626"><span class="lineNum">     626 </span><span class="lineCov">         24 :         do i = 1, rowsA</span></a>
-<a name="627"><span class="lineNum">     627 </span><span class="lineCov">         78 :             do j = 1, colsB</span></a>
-<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        234 :                 do k = 1, colsA</span></a>
-<a name="629"><span class="lineNum">     629 </span><span class="lineCov">        216 :                     C(i,j) = C(i,j) + A(i,k)*B(k,j)</span></a>
+<a name="626"><span class="lineNum">     626 </span><span class="lineCov">         12 :         do i = 1, rowsA</span></a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineCov">         39 :             do j = 1, colsB</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineCov">        117 :                 do k = 1, colsA</span></a>
+<a name="629"><span class="lineNum">     629 </span><span class="lineCov">        108 :                     C(i,j) = C(i,j) + A(i,k)*B(k,j)</span></a>
 <a name="630"><span class="lineNum">     630 </span>            :                 end do</a>
 <a name="631"><span class="lineNum">     631 </span>            :             end do</a>
 <a name="632"><span class="lineNum">     632 </span>            :         end do</a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">          6 :     end subroutine multiplyMatrix</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">          3 :     end subroutine multiplyMatrix</span></a>
 <a name="634"><span class="lineNum">     634 </span>            : </a>
 <a name="635"><span class="lineNum">     635 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="636"><span class="lineNum">     636 </span>            : </a>
@@ -715,24 +715,24 @@
 <a name="645"><span class="lineNum">     645 </span>            :     !&gt;</a>
 <a name="646"><span class="lineNum">     646 </span>            :     !&gt; \author</a>
 <a name="647"><span class="lineNum">     647 </span>            :     !&gt; Amir Shahmoradi, Oct 18, 2009, 4:10 PM, MTU</a>
-<a name="648"><span class="lineNum">     648 </span><span class="lineCov">          6 :     function getDeterminant(nd,Matrix) result(determinant)</span></a>
+<a name="648"><span class="lineNum">     648 </span><span class="lineCov">          3 :     function getDeterminant(nd,Matrix) result(determinant)</span></a>
 <a name="649"><span class="lineNum">     649 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="650"><span class="lineNum">     650 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getDeterminant</a>
 <a name="651"><span class="lineNum">     651 </span>            : #endif</a>
-<a name="652"><span class="lineNum">     652 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
+<a name="652"><span class="lineNum">     652 </span><span class="lineCov">          3 :         use Constants_mod, only: RK, IK</span></a>
 <a name="653"><span class="lineNum">     653 </span>            :         implicit none</a>
 <a name="654"><span class="lineNum">     654 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="655"><span class="lineNum">     655 </span>            :         real(RK)   , intent(in) :: Matrix(nd,nd)</a>
-<a name="656"><span class="lineNum">     656 </span><span class="lineCov">         78 :         real(RK)                :: DummyMat(nd,nd)</span></a>
+<a name="656"><span class="lineNum">     656 </span><span class="lineCov">         39 :         real(RK)                :: DummyMat(nd,nd)</span></a>
 <a name="657"><span class="lineNum">     657 </span>            :         real(RK)                :: determinant</a>
-<a name="658"><span class="lineNum">     658 </span><span class="lineCov">          6 :         integer(IK)             :: Permutation(nd)</span></a>
+<a name="658"><span class="lineNum">     658 </span><span class="lineCov">          3 :         integer(IK)             :: Permutation(nd)</span></a>
 <a name="659"><span class="lineNum">     659 </span>            :         integer(IK)             :: j</a>
-<a name="660"><span class="lineNum">     660 </span><span class="lineCov">         78 :         DummyMat = Matrix</span></a>
-<a name="661"><span class="lineNum">     661 </span><span class="lineCov">          6 :         call getLU(nd,DummyMat,Permutation,determinant) ! This returns determinant as +-1.</span></a>
-<a name="662"><span class="lineNum">     662 </span><span class="lineCov">         24 :         do j=1,nd</span></a>
-<a name="663"><span class="lineNum">     663 </span><span class="lineCov">         24 :             determinant = determinant * DummyMat(j,j)</span></a>
+<a name="660"><span class="lineNum">     660 </span><span class="lineCov">         39 :         DummyMat = Matrix</span></a>
+<a name="661"><span class="lineNum">     661 </span><span class="lineCov">          3 :         call getLU(nd,DummyMat,Permutation,determinant) ! This returns determinant as +-1.</span></a>
+<a name="662"><span class="lineNum">     662 </span><span class="lineCov">         12 :         do j=1,nd</span></a>
+<a name="663"><span class="lineNum">     663 </span><span class="lineCov">         12 :             determinant = determinant * DummyMat(j,j)</span></a>
 <a name="664"><span class="lineNum">     664 </span>            :         end do</a>
-<a name="665"><span class="lineNum">     665 </span><span class="lineCov">          6 :     end function getDeterminant</span></a>
+<a name="665"><span class="lineNum">     665 </span><span class="lineCov">          3 :     end function getDeterminant</span></a>
 <a name="666"><span class="lineNum">     666 </span>            : </a>
 <a name="667"><span class="lineNum">     667 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="668"><span class="lineNum">     668 </span>            : </a>
@@ -749,29 +749,29 @@
 <a name="679"><span class="lineNum">     679 </span>            :     !&gt;</a>
 <a name="680"><span class="lineNum">     680 </span>            :     !&gt; \author</a>
 <a name="681"><span class="lineNum">     681 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT</a>
-<a name="682"><span class="lineNum">     682 </span><span class="lineCov">         12 :     function getSqrtDetPosDefMat(nd,PosDefMat) result(sqrtDetPosDefMat)</span></a>
+<a name="682"><span class="lineNum">     682 </span><span class="lineCov">          6 :     function getSqrtDetPosDefMat(nd,PosDefMat) result(sqrtDetPosDefMat)</span></a>
 <a name="683"><span class="lineNum">     683 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="684"><span class="lineNum">     684 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDetPosDefMat</a>
 <a name="685"><span class="lineNum">     685 </span>            : #endif</a>
-<a name="686"><span class="lineNum">     686 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
+<a name="686"><span class="lineNum">     686 </span><span class="lineCov">          3 :         use Constants_mod, only: RK, IK</span></a>
 <a name="687"><span class="lineNum">     687 </span>            :         implicit none</a>
 <a name="688"><span class="lineNum">     688 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="689"><span class="lineNum">     689 </span>            :         real(RK)   , intent(in) :: PosDefMat(nd,nd)</a>
-<a name="690"><span class="lineNum">     690 </span><span class="lineCov">        192 :         real(RK)                :: Diagonal(nd),DummyMat(nd,nd)</span></a>
+<a name="690"><span class="lineNum">     690 </span><span class="lineCov">         96 :         real(RK)                :: Diagonal(nd),DummyMat(nd,nd)</span></a>
 <a name="691"><span class="lineNum">     691 </span>            :         real(RK)                :: sqrtDetPosDefMat</a>
 <a name="692"><span class="lineNum">     692 </span>            :         integer(IK)             :: i,j</a>
-<a name="693"><span class="lineNum">     693 </span><span class="lineCov">         48 :         do j=1,nd</span></a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">        120 :             do i=1,j</span></a>
-<a name="695"><span class="lineNum">     695 </span><span class="lineCov">        108 :                 DummyMat(i,j) = PosDefMat(i,j)</span></a>
+<a name="693"><span class="lineNum">     693 </span><span class="lineCov">         24 :         do j=1,nd</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">         60 :             do i=1,j</span></a>
+<a name="695"><span class="lineNum">     695 </span><span class="lineCov">         54 :                 DummyMat(i,j) = PosDefMat(i,j)</span></a>
 <a name="696"><span class="lineNum">     696 </span>            :             end do</a>
 <a name="697"><span class="lineNum">     697 </span>            :         end do</a>
-<a name="698"><span class="lineNum">     698 </span><span class="lineCov">         12 :         call getCholeskyFactor(nd,DummyMat,Diagonal)</span></a>
-<a name="699"><span class="lineNum">     699 </span><span class="lineCov">         12 :         if (Diagonal(1)&lt;0._RK) then</span></a>
-<a name="700"><span class="lineNum">     700 </span><span class="lineCov">          6 :             sqrtDetPosDefMat = -1._RK</span></a>
-<a name="701"><span class="lineNum">     701 </span><span class="lineCov">          6 :             return</span></a>
+<a name="698"><span class="lineNum">     698 </span><span class="lineCov">          6 :         call getCholeskyFactor(nd,DummyMat,Diagonal)</span></a>
+<a name="699"><span class="lineNum">     699 </span><span class="lineCov">          6 :         if (Diagonal(1)&lt;0._RK) then</span></a>
+<a name="700"><span class="lineNum">     700 </span><span class="lineCov">          3 :             sqrtDetPosDefMat = -1._RK</span></a>
+<a name="701"><span class="lineNum">     701 </span><span class="lineCov">          3 :             return</span></a>
 <a name="702"><span class="lineNum">     702 </span>            :         end if</a>
-<a name="703"><span class="lineNum">     703 </span><span class="lineCov">         24 :         sqrtDetPosDefMat = product(Diagonal)</span></a>
-<a name="704"><span class="lineNum">     704 </span><span class="lineCov">         12 :     end function getSqrtDetPosDefMat</span></a>
+<a name="703"><span class="lineNum">     703 </span><span class="lineCov">         12 :         sqrtDetPosDefMat = product(Diagonal)</span></a>
+<a name="704"><span class="lineNum">     704 </span><span class="lineCov">          6 :     end function getSqrtDetPosDefMat</span></a>
 <a name="705"><span class="lineNum">     705 </span>            : </a>
 <a name="706"><span class="lineNum">     706 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="707"><span class="lineNum">     707 </span>            : </a>
@@ -786,31 +786,31 @@
 <a name="716"><span class="lineNum">     716 </span>            :     !&gt;</a>
 <a name="717"><span class="lineNum">     717 </span>            :     !&gt; \author</a>
 <a name="718"><span class="lineNum">     718 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT</a>
-<a name="719"><span class="lineNum">     719 </span><span class="lineCov">     224879 :     pure subroutine getLogSqrtDetPosDefMat(nd,PosDefMat,logSqrtDetPosDefMat,failed)</span></a>
+<a name="719"><span class="lineNum">     719 </span><span class="lineCov">     115130 :     pure subroutine getLogSqrtDetPosDefMat(nd,PosDefMat,logSqrtDetPosDefMat,failed)</span></a>
 <a name="720"><span class="lineNum">     720 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="721"><span class="lineNum">     721 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSqrtDetPosDefMat</a>
 <a name="722"><span class="lineNum">     722 </span>            : #endif</a>
-<a name="723"><span class="lineNum">     723 </span><span class="lineCov">         12 :         use Constants_mod, only: RK, IK</span></a>
+<a name="723"><span class="lineNum">     723 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
 <a name="724"><span class="lineNum">     724 </span>            :         implicit none</a>
 <a name="725"><span class="lineNum">     725 </span>            :         integer(IK), intent(in)     :: nd</a>
 <a name="726"><span class="lineNum">     726 </span>            :         real(RK)   , intent(inout)  :: PosDefMat(nd,nd) ! Upper triangle + diagonal is input matrix, lower is output.</a>
 <a name="727"><span class="lineNum">     727 </span>            :         real(RK)   , intent(out)    :: logSqrtDetPosDefMat</a>
 <a name="728"><span class="lineNum">     728 </span>            :         logical    , intent(out)    :: failed</a>
-<a name="729"><span class="lineNum">     729 </span><span class="lineCov">     651263 :         real(RK)                    :: Diagonal(nd)</span></a>
-<a name="730"><span class="lineNum">     730 </span><span class="lineCov">     224879 :         real(RK)                    :: summ</span></a>
+<a name="729"><span class="lineNum">     729 </span><span class="lineCov">     333601 :         real(RK)                    :: Diagonal(nd)</span></a>
+<a name="730"><span class="lineNum">     730 </span><span class="lineCov">     115130 :         real(RK)                    :: summ</span></a>
 <a name="731"><span class="lineNum">     731 </span>            :         integer(IK)                 :: i</a>
-<a name="732"><span class="lineNum">     732 </span><span class="lineCov">     224879 :         failed = .false.</span></a>
-<a name="733"><span class="lineNum">     733 </span><span class="lineCov">     651245 :         do i=1,nd</span></a>
-<a name="734"><span class="lineNum">     734 </span><span class="lineCov">     627871 :             summ = PosDefMat(i,i) - dot_product(PosDefMat(i,1:i-1),PosDefMat(i,1:i-1))</span></a>
-<a name="735"><span class="lineNum">     735 </span><span class="lineCov">     426372 :             if (summ &lt;= 0._RK) then</span></a>
-<a name="736"><span class="lineNum">     736 </span><span class="lineCov">          6 :                 failed = .true.</span></a>
-<a name="737"><span class="lineNum">     737 </span><span class="lineCov">          6 :                 return</span></a>
+<a name="732"><span class="lineNum">     732 </span><span class="lineCov">     115130 :         failed = .false.</span></a>
+<a name="733"><span class="lineNum">     733 </span><span class="lineCov">     333592 :         do i=1,nd</span></a>
+<a name="734"><span class="lineNum">     734 </span><span class="lineCov">     321803 :             summ = PosDefMat(i,i) - dot_product(PosDefMat(i,1:i-1),PosDefMat(i,1:i-1))</span></a>
+<a name="735"><span class="lineNum">     735 </span><span class="lineCov">     218465 :             if (summ &lt;= 0._RK) then</span></a>
+<a name="736"><span class="lineNum">     736 </span><span class="lineCov">          3 :                 failed = .true.</span></a>
+<a name="737"><span class="lineNum">     737 </span><span class="lineCov">          3 :                 return</span></a>
 <a name="738"><span class="lineNum">     738 </span>            :             end if</a>
-<a name="739"><span class="lineNum">     739 </span><span class="lineCov">     426366 :             Diagonal(i) = sqrt(summ)</span></a>
-<a name="740"><span class="lineNum">     740 </span><span class="lineCov">     852738 :             PosDefMat(i+1:nd,i) = ( PosDefMat(i,i+1:nd) - matmul(PosDefMat(i+1:nd,1:i-1),PosDefMat(i,1:i-1)) ) / Diagonal(i)</span></a>
+<a name="739"><span class="lineNum">     739 </span><span class="lineCov">     218462 :             Diagonal(i) = sqrt(summ)</span></a>
+<a name="740"><span class="lineNum">     740 </span><span class="lineCov">     436927 :             PosDefMat(i+1:nd,i) = ( PosDefMat(i,i+1:nd) - matmul(PosDefMat(i+1:nd,1:i-1),PosDefMat(i,1:i-1)) ) / Diagonal(i)</span></a>
 <a name="741"><span class="lineNum">     741 </span>            :         end do</a>
-<a name="742"><span class="lineNum">     742 </span><span class="lineCov">     651239 :         logSqrtDetPosDefMat = sum(log(Diagonal))</span></a>
-<a name="743"><span class="lineNum">     743 </span><span class="lineCov">     224879 :     end subroutine getLogSqrtDetPosDefMat</span></a>
+<a name="742"><span class="lineNum">     742 </span><span class="lineCov">     333589 :         logSqrtDetPosDefMat = sum(log(Diagonal))</span></a>
+<a name="743"><span class="lineNum">     743 </span><span class="lineCov">     115130 :     end subroutine getLogSqrtDetPosDefMat</span></a>
 <a name="744"><span class="lineNum">     744 </span>            : </a>
 <a name="745"><span class="lineNum">     745 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="746"><span class="lineNum">     746 </span>            : </a>
@@ -829,36 +829,36 @@
 <a name="759"><span class="lineNum">     759 </span>            :     !&gt;</a>
 <a name="760"><span class="lineNum">     760 </span>            :     !&gt; \author</a>
 <a name="761"><span class="lineNum">     761 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT</a>
-<a name="762"><span class="lineNum">     762 </span><span class="lineCov">       5952 :     pure logical function isPosDef(nd,Matrix)</span></a>
+<a name="762"><span class="lineNum">     762 </span><span class="lineCov">       2976 :     pure logical function isPosDef(nd,Matrix)</span></a>
 <a name="763"><span class="lineNum">     763 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="764"><span class="lineNum">     764 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: isPosDef</a>
 <a name="765"><span class="lineNum">     765 </span>            : #endif</a>
-<a name="766"><span class="lineNum">     766 </span><span class="lineCov">     224879 :         use Constants_mod, only: RK, IK</span></a>
+<a name="766"><span class="lineNum">     766 </span><span class="lineCov">     115130 :         use Constants_mod, only: RK, IK</span></a>
 <a name="767"><span class="lineNum">     767 </span>            :         implicit none</a>
 <a name="768"><span class="lineNum">     768 </span>            :         integer(IK), intent(in) :: nd</a>
 <a name="769"><span class="lineNum">     769 </span>            :         real(RK)   , intent(in) :: Matrix(nd,nd)</a>
-<a name="770"><span class="lineNum">     770 </span><span class="lineCov">      48084 :         real(RK)                :: Array(nd,nd),p(nd)</span></a>
-<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       5952 :         real(RK)                :: dummySum</span></a>
+<a name="770"><span class="lineNum">     770 </span><span class="lineCov">      24042 :         real(RK)                :: Array(nd,nd),p(nd)</span></a>
+<a name="771"><span class="lineNum">     771 </span><span class="lineCov">       2976 :         real(RK)                :: dummySum</span></a>
 <a name="772"><span class="lineNum">     772 </span>            :         integer(IK)             :: i,j,k</a>
-<a name="773"><span class="lineNum">     773 </span><span class="lineCov">       5952 :         isPosDef = .true.</span></a>
-<a name="774"><span class="lineNum">     774 </span><span class="lineCov">      15510 :         do i = 1, nd</span></a>
-<a name="775"><span class="lineNum">     775 </span><span class="lineCov">      28722 :             do j = i, nd</span></a>
-<a name="776"><span class="lineNum">     776 </span><span class="lineCov">      13254 :                 dummySum = Matrix(i,j)</span></a>
-<a name="777"><span class="lineNum">     777 </span><span class="lineCov">      16914 :                 do k = i-1,1,-1</span></a>
-<a name="778"><span class="lineNum">     778 </span><span class="lineCov">      16914 :                     dummySum = dummySum - Array(i,k) * Array(j,k)</span></a>
+<a name="773"><span class="lineNum">     773 </span><span class="lineCov">       2976 :         isPosDef = .true.</span></a>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">       7755 :         do i = 1, nd</span></a>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">      14361 :             do j = i, nd</span></a>
+<a name="776"><span class="lineNum">     776 </span><span class="lineCov">       6627 :                 dummySum = Matrix(i,j)</span></a>
+<a name="777"><span class="lineNum">     777 </span><span class="lineCov">       8457 :                 do k = i-1,1,-1</span></a>
+<a name="778"><span class="lineNum">     778 </span><span class="lineCov">       8457 :                     dummySum = dummySum - Array(i,k) * Array(j,k)</span></a>
 <a name="779"><span class="lineNum">     779 </span>            :                 end do</a>
-<a name="780"><span class="lineNum">     780 </span><span class="lineCov">      22812 :                 if(i==j)then</span></a>
-<a name="781"><span class="lineNum">     781 </span><span class="lineCov">       9600 :                     if(dummySum&lt;=0._RK) then</span></a>
-<a name="782"><span class="lineNum">     782 </span><span class="lineCov">         42 :                         isPosDef = .false.</span></a>
-<a name="783"><span class="lineNum">     783 </span><span class="lineCov">         42 :                         return</span></a>
+<a name="780"><span class="lineNum">     780 </span><span class="lineCov">      11406 :                 if(i==j)then</span></a>
+<a name="781"><span class="lineNum">     781 </span><span class="lineCov">       4800 :                     if(dummySum&lt;=0._RK) then</span></a>
+<a name="782"><span class="lineNum">     782 </span><span class="lineCov">         21 :                         isPosDef = .false.</span></a>
+<a name="783"><span class="lineNum">     783 </span><span class="lineCov">         21 :                         return</span></a>
 <a name="784"><span class="lineNum">     784 </span>            :                     end if</a>
-<a name="785"><span class="lineNum">     785 </span><span class="lineCov">       9558 :                     p(i) = sqrt(dummySum)</span></a>
+<a name="785"><span class="lineNum">     785 </span><span class="lineCov">       4779 :                     p(i) = sqrt(dummySum)</span></a>
 <a name="786"><span class="lineNum">     786 </span>            :                 else</a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">       3654 :                     Array(j,i)=dummySum/p(i)</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">       1827 :                     Array(j,i)=dummySum/p(i)</span></a>
 <a name="788"><span class="lineNum">     788 </span>            :                 endif</a>
 <a name="789"><span class="lineNum">     789 </span>            :             end do</a>
 <a name="790"><span class="lineNum">     790 </span>            :         end do</a>
-<a name="791"><span class="lineNum">     791 </span><span class="lineCov">       5952 :     end function isPosDef</span></a>
+<a name="791"><span class="lineNum">     791 </span><span class="lineCov">       2976 :     end function isPosDef</span></a>
 <a name="792"><span class="lineNum">     792 </span>            : </a>
 <a name="793"><span class="lineNum">     793 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="794"><span class="lineNum">     794 </span>            : </a>
@@ -873,15 +873,15 @@
 <a name="803"><span class="lineNum">     803 </span>            :     !&gt;</a>
 <a name="804"><span class="lineNum">     804 </span>            :     !&gt; \author</a>
 <a name="805"><span class="lineNum">     805 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT</a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">         66 :     pure function getOuterProd(Vector1,Vector2) result(OuterProd)</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">         33 :     pure function getOuterProd(Vector1,Vector2) result(OuterProd)</span></a>
 <a name="807"><span class="lineNum">     807 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="808"><span class="lineNum">     808 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getOuterProd</a>
 <a name="809"><span class="lineNum">     809 </span>            : #endif</a>
-<a name="810"><span class="lineNum">     810 </span><span class="lineCov">       5952 :         use Constants_mod, only: RK, IK</span></a>
+<a name="810"><span class="lineNum">     810 </span><span class="lineCov">       2976 :         use Constants_mod, only: RK, IK</span></a>
 <a name="811"><span class="lineNum">     811 </span>            :         real(RK), intent(in) :: Vector1(:),Vector2(:)</a>
-<a name="812"><span class="lineNum">     812 </span><span class="lineCov">         12 :         real(RK)             :: OuterProd(size(Vector1), size(Vector2))</span></a>
-<a name="813"><span class="lineNum">     813 </span><span class="lineCov">         54 :         OuterProd = spread(Vector1,dim=2,ncopies=size(Vector2)) * spread(Vector2,dim=1,ncopies=size(Vector1))</span></a>
-<a name="814"><span class="lineNum">     814 </span><span class="lineCov">         12 :     end function getOuterProd</span></a>
+<a name="812"><span class="lineNum">     812 </span><span class="lineCov">          6 :         real(RK)             :: OuterProd(size(Vector1), size(Vector2))</span></a>
+<a name="813"><span class="lineNum">     813 </span><span class="lineCov">         27 :         OuterProd = spread(Vector1,dim=2,ncopies=size(Vector2)) * spread(Vector2,dim=1,ncopies=size(Vector1))</span></a>
+<a name="814"><span class="lineNum">     814 </span><span class="lineCov">          6 :     end function getOuterProd</span></a>
 <a name="815"><span class="lineNum">     815 </span>            : </a>
 <a name="816"><span class="lineNum">     816 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="817"><span class="lineNum">     817 </span>            : </a>
@@ -919,39 +919,39 @@
 <a name="849"><span class="lineNum">     849 </span>            :     !&gt;</a>
 <a name="850"><span class="lineNum">     850 </span>            :     !&gt; \author</a>
 <a name="851"><span class="lineNum">     851 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT</a>
-<a name="852"><span class="lineNum">     852 </span><span class="lineCov">        198 :     pure function sortPosDefMat(rank,PosDefMatUpper,lenColIndx,ColIndx,ColIndxMap) result(SortedPosDefMatUpper)</span></a>
+<a name="852"><span class="lineNum">     852 </span><span class="lineCov">         99 :     pure function sortPosDefMat(rank,PosDefMatUpper,lenColIndx,ColIndx,ColIndxMap) result(SortedPosDefMatUpper)</span></a>
 <a name="853"><span class="lineNum">     853 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="854"><span class="lineNum">     854 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: sortPosDefMat</a>
 <a name="855"><span class="lineNum">     855 </span>            : #endif</a>
-<a name="856"><span class="lineNum">     856 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
+<a name="856"><span class="lineNum">     856 </span><span class="lineCov">          3 :         use Constants_mod, only: RK, IK</span></a>
 <a name="857"><span class="lineNum">     857 </span>            :         integer(IK), intent(in) :: rank, lenColIndx, ColIndx(lenColIndx), ColIndxMap(lenColIndx)</a>
 <a name="858"><span class="lineNum">     858 </span>            :         real(RK), intent(in)    :: PosDefMatUpper(rank,rank)</a>
 <a name="859"><span class="lineNum">     859 </span>            :         real(RK)                :: SortedPosDefMatUpper(rank,rank)</a>
 <a name="860"><span class="lineNum">     860 </span>            :         integer(IK)             :: iRow, iCol, iRowNew, iColNew, i</a>
-<a name="861"><span class="lineNum">     861 </span><span class="lineCov">         12 :         loopIndx: do i = 1, lenColIndx</span></a>
-<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         42 :             do iCol = 1, rank</span></a>
-<a name="863"><span class="lineNum">     863 </span><span class="lineCov">         30 :                 iColNew = iCol</span></a>
-<a name="864"><span class="lineNum">     864 </span><span class="lineCov">         30 :                 if (iColNew==ColIndx(i)) then</span></a>
-<a name="865"><span class="lineNum">     865 </span><span class="lineCov">          6 :                     iColNew = ColIndxMap(i)</span></a>
-<a name="866"><span class="lineNum">     866 </span><span class="lineCov">         24 :                 elseif (iColNew==ColIndxMap(i)) then</span></a>
-<a name="867"><span class="lineNum">     867 </span><span class="lineCov">          6 :                     iColNew = ColIndx(i)</span></a>
+<a name="861"><span class="lineNum">     861 </span><span class="lineCov">          6 :         loopIndx: do i = 1, lenColIndx</span></a>
+<a name="862"><span class="lineNum">     862 </span><span class="lineCov">         21 :             do iCol = 1, rank</span></a>
+<a name="863"><span class="lineNum">     863 </span><span class="lineCov">         15 :                 iColNew = iCol</span></a>
+<a name="864"><span class="lineNum">     864 </span><span class="lineCov">         15 :                 if (iColNew==ColIndx(i)) then</span></a>
+<a name="865"><span class="lineNum">     865 </span><span class="lineCov">          3 :                     iColNew = ColIndxMap(i)</span></a>
+<a name="866"><span class="lineNum">     866 </span><span class="lineCov">         12 :                 elseif (iColNew==ColIndxMap(i)) then</span></a>
+<a name="867"><span class="lineNum">     867 </span><span class="lineCov">          3 :                     iColNew = ColIndx(i)</span></a>
 <a name="868"><span class="lineNum">     868 </span>            :                 end if</a>
-<a name="869"><span class="lineNum">     869 </span><span class="lineCov">        126 :                 do iRow = 1, iCol</span></a>
-<a name="870"><span class="lineNum">     870 </span><span class="lineCov">         90 :                     iRowNew = iRow</span></a>
-<a name="871"><span class="lineNum">     871 </span><span class="lineCov">         90 :                     if (iRowNew==ColIndx(i)) then</span></a>
-<a name="872"><span class="lineNum">     872 </span><span class="lineCov">         12 :                         iRowNew = ColIndxMap(i)</span></a>
-<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         78 :                     elseif (iRowNew==ColIndxMap(i)) then</span></a>
-<a name="874"><span class="lineNum">     874 </span><span class="lineCov">          6 :                         iRowNew = ColIndx(i)</span></a>
+<a name="869"><span class="lineNum">     869 </span><span class="lineCov">         63 :                 do iRow = 1, iCol</span></a>
+<a name="870"><span class="lineNum">     870 </span><span class="lineCov">         45 :                     iRowNew = iRow</span></a>
+<a name="871"><span class="lineNum">     871 </span><span class="lineCov">         45 :                     if (iRowNew==ColIndx(i)) then</span></a>
+<a name="872"><span class="lineNum">     872 </span><span class="lineCov">          6 :                         iRowNew = ColIndxMap(i)</span></a>
+<a name="873"><span class="lineNum">     873 </span><span class="lineCov">         39 :                     elseif (iRowNew==ColIndxMap(i)) then</span></a>
+<a name="874"><span class="lineNum">     874 </span><span class="lineCov">          3 :                         iRowNew = ColIndx(i)</span></a>
 <a name="875"><span class="lineNum">     875 </span>            :                     end if</a>
-<a name="876"><span class="lineNum">     876 </span><span class="lineCov">        120 :                     if (iRowNew&gt;iColNew) then</span></a>
-<a name="877"><span class="lineNum">     877 </span><span class="lineCov">          6 :                         SortedPosDefMatUpper(iRow,iCol) = PosDefMatUpper(iColNew,iRowNew)</span></a>
+<a name="876"><span class="lineNum">     876 </span><span class="lineCov">         60 :                     if (iRowNew&gt;iColNew) then</span></a>
+<a name="877"><span class="lineNum">     877 </span><span class="lineCov">          3 :                         SortedPosDefMatUpper(iRow,iCol) = PosDefMatUpper(iColNew,iRowNew)</span></a>
 <a name="878"><span class="lineNum">     878 </span>            :                     else</a>
-<a name="879"><span class="lineNum">     879 </span><span class="lineCov">         84 :                         SortedPosDefMatUpper(iRow,iCol) = PosDefMatUpper(iRowNew,iColNew)</span></a>
+<a name="879"><span class="lineNum">     879 </span><span class="lineCov">         42 :                         SortedPosDefMatUpper(iRow,iCol) = PosDefMatUpper(iRowNew,iColNew)</span></a>
 <a name="880"><span class="lineNum">     880 </span>            :                     end if</a>
 <a name="881"><span class="lineNum">     881 </span>            :                 end do</a>
 <a name="882"><span class="lineNum">     882 </span>            :             end do</a>
 <a name="883"><span class="lineNum">     883 </span>            :         end do loopIndx</a>
-<a name="884"><span class="lineNum">     884 </span><span class="lineCov">          6 :     end function sortPosDefMat</span></a>
+<a name="884"><span class="lineNum">     884 </span><span class="lineCov">          3 :     end function sortPosDefMat</span></a>
 <a name="885"><span class="lineNum">     885 </span>            : </a>
 <a name="886"><span class="lineNum">     886 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="887"><span class="lineNum">     887 </span>            : </a>
@@ -963,21 +963,21 @@
 <a name="893"><span class="lineNum">     893 </span>            :     !&gt;</a>
 <a name="894"><span class="lineNum">     894 </span>            :     !&gt; \author</a>
 <a name="895"><span class="lineNum">     895 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT</a>
-<a name="896"><span class="lineNum">     896 </span><span class="lineCov">          6 :     pure subroutine symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)</span></a>
+<a name="896"><span class="lineNum">     896 </span><span class="lineCov">          3 :     pure subroutine symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)</span></a>
 <a name="897"><span class="lineNum">     897 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="898"><span class="lineNum">     898 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: symmetrizeUpperSquareMatrix</a>
 <a name="899"><span class="lineNum">     899 </span>            : #endif</a>
-<a name="900"><span class="lineNum">     900 </span><span class="lineCov">          6 :         use Constants_mod, only: RK, IK</span></a>
+<a name="900"><span class="lineNum">     900 </span><span class="lineCov">          3 :         use Constants_mod, only: RK, IK</span></a>
 <a name="901"><span class="lineNum">     901 </span>            :         implicit none</a>
 <a name="902"><span class="lineNum">     902 </span>            :         integer(IK) , intent(in)    :: nd</a>
 <a name="903"><span class="lineNum">     903 </span>            :         real(RK)    , intent(inout) :: UpperSquareMatrix(nd,nd)</a>
 <a name="904"><span class="lineNum">     904 </span>            :         integer(IK)                 :: i, j</a>
-<a name="905"><span class="lineNum">     905 </span><span class="lineCov">         24 :         do j = 1, nd</span></a>
-<a name="906"><span class="lineNum">     906 </span><span class="lineCov">         42 :             do i = 1,j-1</span></a>
-<a name="907"><span class="lineNum">     907 </span><span class="lineCov">         36 :                 UpperSquareMatrix(j,i) = UpperSquareMatrix(i,j)</span></a>
+<a name="905"><span class="lineNum">     905 </span><span class="lineCov">         12 :         do j = 1, nd</span></a>
+<a name="906"><span class="lineNum">     906 </span><span class="lineCov">         21 :             do i = 1,j-1</span></a>
+<a name="907"><span class="lineNum">     907 </span><span class="lineCov">         18 :                 UpperSquareMatrix(j,i) = UpperSquareMatrix(i,j)</span></a>
 <a name="908"><span class="lineNum">     908 </span>            :             end do</a>
 <a name="909"><span class="lineNum">     909 </span>            :         end do</a>
-<a name="910"><span class="lineNum">     910 </span><span class="lineCov">          6 :     end subroutine symmetrizeUpperSquareMatrix</span></a>
+<a name="910"><span class="lineNum">     910 </span><span class="lineCov">          3 :     end subroutine symmetrizeUpperSquareMatrix</span></a>
 <a name="911"><span class="lineNum">     911 </span>            : </a>
 <a name="912"><span class="lineNum">     912 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="913"><span class="lineNum">     913 </span>            : </a>
@@ -1006,7 +1006,7 @@
 <a name="936"><span class="lineNum">     936 </span>            :     !&gt;</a>
 <a name="937"><span class="lineNum">     937 </span>            :     !&gt; \author</a>
 <a name="938"><span class="lineNum">     938 </span>            :     !&gt; Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT</a>
-<a name="939"><span class="lineNum">     939 </span><span class="lineCov">         12 :     pure subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)</span></a>
+<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          6 :     pure subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)</span></a>
 <a name="940"><span class="lineNum">     940 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="941"><span class="lineNum">     941 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getRegresCoef</a>
 <a name="942"><span class="lineNum">     942 </span>            : #endif</a>
@@ -1016,24 +1016,24 @@
 <a name="946"><span class="lineNum">     946 </span>            :         real(RK), intent(in)                :: PosDefMat(rankPDM,rankPDM)</a>
 <a name="947"><span class="lineNum">     947 </span>            :         real(RK), intent(out)               :: RegresCoefMat(rankS11,rankS22)</a>
 <a name="948"><span class="lineNum">     948 </span>            :         real(RK), intent(out), optional     :: SchurComplement(rankS11,rankS11)</a>
-<a name="949"><span class="lineNum">     949 </span><span class="lineCov">         30 :         real(RK)                            :: InvS22(rankS22,rankS22), S22(rankS22,rankS22)</span></a>
+<a name="949"><span class="lineNum">     949 </span><span class="lineCov">         15 :         real(RK)                            :: InvS22(rankS22,rankS22), S22(rankS22,rankS22)</span></a>
 <a name="950"><span class="lineNum">     950 </span>            :         integer(IK)                         :: startS22</a>
-<a name="951"><span class="lineNum">     951 </span><span class="lineCov">          6 :         startS22 = rankS11 + 1</span></a>
-<a name="952"><span class="lineNum">     952 </span><span class="lineCov">         18 :         S22 = PosDefMat(startS22:rankPDM,startS22:rankPDM)</span></a>
-<a name="953"><span class="lineNum">     953 </span><span class="lineCov">          6 :         if (rankS22==1) then</span></a>
-<a name="954"><span class="lineNum">     954 </span><span class="lineCov">          6 :             InvS22(1,1) = 1._RK/S22(1,1)</span></a>
+<a name="951"><span class="lineNum">     951 </span><span class="lineCov">          3 :         startS22 = rankS11 + 1</span></a>
+<a name="952"><span class="lineNum">     952 </span><span class="lineCov">          9 :         S22 = PosDefMat(startS22:rankPDM,startS22:rankPDM)</span></a>
+<a name="953"><span class="lineNum">     953 </span><span class="lineCov">          3 :         if (rankS22==1) then</span></a>
+<a name="954"><span class="lineNum">     954 </span><span class="lineCov">          3 :             InvS22(1,1) = 1._RK/S22(1,1)</span></a>
 <a name="955"><span class="lineNum">     955 </span>            :         else</a>
 <a name="956"><span class="lineNum">     956 </span><span class="lineNoCov">          0 :             InvS22 = getInvPosDefMat(rankS22,S22)</span></a>
 <a name="957"><span class="lineNum">     957 </span>            :         end if</a>
-<a name="958"><span class="lineNum">     958 </span><span class="lineCov">          6 :         if (InvS22(1,1)&lt;0._RK) then</span></a>
+<a name="958"><span class="lineNum">     958 </span><span class="lineCov">          3 :         if (InvS22(1,1)&lt;0._RK) then</span></a>
 <a name="959"><span class="lineNum">     959 </span><span class="lineNoCov">          0 :             RegresCoefMat(1,1) = -1._RK</span></a>
 <a name="960"><span class="lineNum">     960 </span><span class="lineNoCov">          0 :             return</span></a>
 <a name="961"><span class="lineNum">     961 </span>            :         end if</a>
-<a name="962"><span class="lineNum">     962 </span><span class="lineCov">          6 :         RegresCoefMat = matmul( PosDefMat(1:rankS11,startS22:rankPDM) , InvS22 )</span></a>
-<a name="963"><span class="lineNum">     963 </span><span class="lineCov">          6 :         if (present(SchurComplement)) then</span></a>
-<a name="964"><span class="lineNum">     964 </span><span class="lineCov">         78 :             SchurComplement = PosDefMat(1:rankS11,1:rankS11) - matmul( RegresCoefMat , PosDefMat(startS22:rankPDM,1:rankS11) )</span></a>
+<a name="962"><span class="lineNum">     962 </span><span class="lineCov">          3 :         RegresCoefMat = matmul( PosDefMat(1:rankS11,startS22:rankPDM) , InvS22 )</span></a>
+<a name="963"><span class="lineNum">     963 </span><span class="lineCov">          3 :         if (present(SchurComplement)) then</span></a>
+<a name="964"><span class="lineNum">     964 </span><span class="lineCov">         39 :             SchurComplement = PosDefMat(1:rankS11,1:rankS11) - matmul( RegresCoefMat , PosDefMat(startS22:rankPDM,1:rankS11) )</span></a>
 <a name="965"><span class="lineNum">     965 </span>            :         end if</a>
-<a name="966"><span class="lineNum">     966 </span><span class="lineCov">         12 :     end subroutine getRegresCoef</span></a>
+<a name="966"><span class="lineNum">     966 </span><span class="lineCov">          6 :     end subroutine getRegresCoef</span></a>
 <a name="967"><span class="lineNum">     967 </span>            : </a>
 <a name="968"><span class="lineNum">     968 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="969"><span class="lineNum">     969 </span>            : </a>
@@ -1046,7 +1046,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
-<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2020</td></tr>
+<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2021</td></tr>
   </table>
   <br>
 

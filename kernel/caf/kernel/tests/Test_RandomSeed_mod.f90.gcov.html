@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ParaMonte 1.5.0 :: Coarray Parallel Kernel - Code Coverage Report - kernel/tests/Test_RandomSeed_mod.f90</title>
+  <title>LCOV - ParaMonte 1.5.1 :: Coarray Parallel Kernel - Code Coverage Report - kernel/tests/Test_RandomSeed_mod.f90</title>
   <link rel="stylesheet" type="text/css" href="../../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ParaMonte 1.5.0 :: Coarray Parallel Kernel - Code Coverage Report</td>
+            <td class="headerValue">ParaMonte 1.5.1 :: Coarray Parallel Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">87</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-23 03:52:42</td>
+            <td class="headerValue">2021-01-08 12:59:07</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -136,23 +136,23 @@
 <a name="66"><span class="lineNum">      66 </span>            : </a>
 <a name="67"><span class="lineNum">      67 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          6 :     subroutine test_RandomSeed()</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          3 :     subroutine test_RandomSeed()</span></a>
 <a name="70"><span class="lineNum">      70 </span>            : </a>
 <a name="71"><span class="lineNum">      71 </span>            :         implicit none</a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
-<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          6 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
-<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          6 :         call Test%run(test_constructRandomSeed, &quot;test_constructRandomSeed&quot;)</span></a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          6 :         call Test%finalize()</span></a>
+<a name="73"><span class="lineNum">      73 </span><span class="lineCov">          3 :         Test = Test_type(moduleName=MODULE_NAME)</span></a>
+<a name="74"><span class="lineNum">      74 </span><span class="lineCov">          3 :         call Test%run(test_constructRandomSeed, &quot;test_constructRandomSeed&quot;)</span></a>
+<a name="75"><span class="lineNum">      75 </span><span class="lineCov">          3 :         call Test%finalize()</span></a>
 <a name="76"><span class="lineNum">      76 </span>            : </a>
-<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          6 :     end subroutine test_RandomSeed</span></a>
+<a name="77"><span class="lineNum">      77 </span><span class="lineCov">          3 :     end subroutine test_RandomSeed</span></a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
 <a name="79"><span class="lineNum">      79 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="80"><span class="lineNum">      80 </span>            : </a>
-<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          6 :     function test_constructRandomSeed() result(assertion)</span></a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineCov">          3 :     function test_constructRandomSeed() result(assertion)</span></a>
 <a name="82"><span class="lineNum">      82 </span>            : </a>
 <a name="83"><span class="lineNum">      83 </span>            :         implicit none</a>
 <a name="84"><span class="lineNum">      84 </span>            :         logical                 :: assertion</a>
-<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          6 :         type(RandomSeed_type)   :: RandomSeed</span></a>
+<a name="85"><span class="lineNum">      85 </span><span class="lineCov">          3 :         type(RandomSeed_type)   :: RandomSeed</span></a>
 <a name="86"><span class="lineNum">      86 </span>            :         integer                 :: seedSize</a>
 <a name="87"><span class="lineNum">      87 </span>            : </a>
 <a name="88"><span class="lineNum">      88 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
@@ -161,12 +161,12 @@
 <a name="91"><span class="lineNum">      91 </span>            : </a>
 <a name="92"><span class="lineNum">      92 </span>            :         ! without any arguments it must give non-repeatable image-distinct random seeds.</a>
 <a name="93"><span class="lineNum">      93 </span>            : </a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id)</span></a>
-<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id)</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="97"><span class="lineNum">      97 </span>            : </a>
-<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          6 :         call random_seed(size=seedSize)</span></a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          6 :         assertion = RandomSeed%size == seedSize</span></a>
+<a name="98"><span class="lineNum">      98 </span><span class="lineCov">          3 :         call random_seed(size=seedSize)</span></a>
+<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          3 :         assertion = RandomSeed%size == seedSize</span></a>
 <a name="100"><span class="lineNum">     100 </span>            : </a>
 <a name="101"><span class="lineNum">     101 </span>            :         ! LCOV_EXCL_START</a>
 <a name="102"><span class="lineNum">     102 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -194,24 +194,24 @@
 <a name="124"><span class="lineNum">     124 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="125"><span class="lineNum">     125 </span>            : </a>
 <a name="126"><span class="lineNum">     126 </span>            : #if defined CAF_ENABLED</a>
-<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          6 :         allocate( Seed(seedSize)[*] )</span></a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineCov">          3 :         allocate( Seed(seedSize)[*] )</span></a>
 <a name="128"><span class="lineNum">     128 </span>            : #else</a>
 <a name="129"><span class="lineNum">     129 </span>            :         allocate( Seed(seedSize) )</a>
 <a name="130"><span class="lineNum">     130 </span>            : #endif</a>
 <a name="131"><span class="lineNum">     131 </span>            : </a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          6 :         call random_seed(get=Seed)</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         54 :         assertion = all(RandomSeed%Value == Seed)</span></a>
+<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          3 :         call random_seed(get=Seed)</span></a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">         27 :         assertion = all(RandomSeed%Value == Seed)</span></a>
 <a name="134"><span class="lineNum">     134 </span>            : </a>
 <a name="135"><span class="lineNum">     135 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="136"><span class="lineNum">     136 </span>            :         ! Testing RandomSeed_type with default isRepeatable, isImageDistinct=.false.</a>
 <a name="137"><span class="lineNum">     137 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="138"><span class="lineNum">     138 </span>            : </a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isImageDistinct=.false.)</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isImageDistinct=.false.)</span></a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="142"><span class="lineNum">     142 </span>            : </a>
-<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          6 :         call random_seed(get=Seed)</span></a>
-<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         54 :         assertion = all(RandomSeed%Value == Seed)</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          3 :         call random_seed(get=Seed)</span></a>
+<a name="144"><span class="lineNum">     144 </span><span class="lineCov">         27 :         assertion = all(RandomSeed%Value == Seed)</span></a>
 <a name="145"><span class="lineNum">     145 </span>            : </a>
 <a name="146"><span class="lineNum">     146 </span>            :         ! LCOV_EXCL_START</a>
 <a name="147"><span class="lineNum">     147 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -242,32 +242,32 @@
 <a name="172"><span class="lineNum">     172 </span>            :         ! Testing RandomSeed_type for equivalence of Seed vector on all images</a>
 <a name="173"><span class="lineNum">     173 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          6 :         assertion = .true.</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          3 :         assertion = .true.</span></a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
 <a name="177"><span class="lineNum">     177 </span>            : #if defined CAF_ENABLED</a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          6 :         sync all</span></a>
-<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          6 :         if (Test%Image%id==1) then</span></a>
-<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          2 :             sync images(*)</span></a>
+<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          3 :         sync all</span></a>
+<a name="179"><span class="lineNum">     179 </span><span class="lineCov">          3 :         if (Test%Image%id==1) then</span></a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineCov">          1 :             sync images(*)</span></a>
 <a name="181"><span class="lineNum">     181 </span>            :         else</a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         36 :             if ( any(Seed /= Seed(:)[1]) ) assertion = .true.</span></a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          4 :             sync images(1)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">         18 :             if ( any(Seed /= Seed(:)[1]) ) assertion = .true.</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          2 :             sync images(1)</span></a>
 <a name="184"><span class="lineNum">     184 </span>            :         end if</a>
 <a name="185"><span class="lineNum">     185 </span>            : #endif</a>
 <a name="186"><span class="lineNum">     186 </span>            : </a>
 <a name="187"><span class="lineNum">     187 </span>            : #if defined CAF_ENABLED</a>
-<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          6 :         sync all</span></a>
+<a name="188"><span class="lineNum">     188 </span><span class="lineCov">          3 :         sync all</span></a>
 <a name="189"><span class="lineNum">     189 </span>            : #endif</a>
 <a name="190"><span class="lineNum">     190 </span>            : </a>
 <a name="191"><span class="lineNum">     191 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="192"><span class="lineNum">     192 </span>            :         ! Testing RandomSeed_type with isRepeatable=.true., isImageDistinct=.false.</a>
 <a name="193"><span class="lineNum">     193 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="194"><span class="lineNum">     194 </span>            : </a>
-<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.false.)</span></a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="195"><span class="lineNum">     195 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.false.)</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="197"><span class="lineNum">     197 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="198"><span class="lineNum">     198 </span>            : </a>
-<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          6 :         call random_seed(get=Seed)</span></a>
-<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         54 :         assertion = all(RandomSeed%Value == Seed)</span></a>
+<a name="199"><span class="lineNum">     199 </span><span class="lineCov">          3 :         call random_seed(get=Seed)</span></a>
+<a name="200"><span class="lineNum">     200 </span><span class="lineCov">         27 :         assertion = all(RandomSeed%Value == Seed)</span></a>
 <a name="201"><span class="lineNum">     201 </span>            : </a>
 <a name="202"><span class="lineNum">     202 </span>            :         ! LCOV_EXCL_START</a>
 <a name="203"><span class="lineNum">     203 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -298,20 +298,20 @@
 <a name="228"><span class="lineNum">     228 </span>            :         ! Testing RandomSeed_type for equivalence of Seed vector on all images</a>
 <a name="229"><span class="lineNum">     229 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="230"><span class="lineNum">     230 </span>            : </a>
-<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          6 :         assertion = .true.</span></a>
+<a name="231"><span class="lineNum">     231 </span><span class="lineCov">          3 :         assertion = .true.</span></a>
 <a name="232"><span class="lineNum">     232 </span>            : #if defined CAF_ENABLED</a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          6 :         sync all</span></a>
-<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          6 :         if (Test%Image%id==1) then</span></a>
-<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          2 :             sync images(*)</span></a>
+<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          3 :         sync all</span></a>
+<a name="234"><span class="lineNum">     234 </span><span class="lineCov">          3 :         if (Test%Image%id==1) then</span></a>
+<a name="235"><span class="lineNum">     235 </span><span class="lineCov">          1 :             sync images(*)</span></a>
 <a name="236"><span class="lineNum">     236 </span>            :         else</a>
-<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         36 :             if ( any(Seed /= Seed(:)[1]) ) assertion = .false.</span></a>
-<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          4 :             sync images(1)</span></a>
+<a name="237"><span class="lineNum">     237 </span><span class="lineCov">         18 :             if ( any(Seed /= Seed(:)[1]) ) assertion = .false.</span></a>
+<a name="238"><span class="lineNum">     238 </span><span class="lineCov">          2 :             sync images(1)</span></a>
 <a name="239"><span class="lineNum">     239 </span>            :         end if</a>
 <a name="240"><span class="lineNum">     240 </span>            : #endif</a>
 <a name="241"><span class="lineNum">     241 </span>            : </a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.false.)</span></a>
-<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.false.)</span></a>
+<a name="243"><span class="lineNum">     243 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="244"><span class="lineNum">     244 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="245"><span class="lineNum">     245 </span>            : </a>
 <a name="246"><span class="lineNum">     246 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="247"><span class="lineNum">     247 </span>            :         ! Testing RandomSeed_type for equivalence of the old and the new Seed vector on each image</a>
@@ -319,9 +319,9 @@
 <a name="249"><span class="lineNum">     249 </span>            : </a>
 <a name="250"><span class="lineNum">     250 </span>            :         block</a>
 <a name="251"><span class="lineNum">     251 </span>            :             integer, allocatable, save  :: SeedNew(:)</a>
-<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          6 :             allocate( SeedNew(seedSize) )</span></a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          6 :             call random_seed(get=SeedNew)</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         54 :             assertion = all(SeedNew==Seed)</span></a>
+<a name="252"><span class="lineNum">     252 </span><span class="lineCov">          3 :             allocate( SeedNew(seedSize) )</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">          3 :             call random_seed(get=SeedNew)</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         27 :             assertion = all(SeedNew==Seed)</span></a>
 <a name="255"><span class="lineNum">     255 </span>            :             ! LCOV_EXCL_START</a>
 <a name="256"><span class="lineNum">     256 </span>            :             if (Test%isDebugMode .and. .not. assertion) then</a>
 <a name="257"><span class="lineNum">     257 </span>            :                 if (Test%Image%id==1) then</a>
@@ -339,23 +339,23 @@
 <a name="269"><span class="lineNum">     269 </span>            : #endif</a>
 <a name="270"><span class="lineNum">     270 </span>            :             end if</a>
 <a name="271"><span class="lineNum">     271 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          6 :             deallocate(SeedNew)</span></a>
+<a name="272"><span class="lineNum">     272 </span><span class="lineCov">          3 :             deallocate(SeedNew)</span></a>
 <a name="273"><span class="lineNum">     273 </span>            :         end block</a>
 <a name="274"><span class="lineNum">     274 </span>            : </a>
 <a name="275"><span class="lineNum">     275 </span>            : #if defined CAF_ENABLED</a>
-<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          6 :         sync all</span></a>
+<a name="276"><span class="lineNum">     276 </span><span class="lineCov">          3 :         sync all</span></a>
 <a name="277"><span class="lineNum">     277 </span>            : #endif</a>
 <a name="278"><span class="lineNum">     278 </span>            : </a>
 <a name="279"><span class="lineNum">     279 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="280"><span class="lineNum">     280 </span>            :         ! Testing RandomSeed_type with isRepeatable=.true., isImageDistinct=.true.</a>
 <a name="281"><span class="lineNum">     281 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="282"><span class="lineNum">     282 </span>            : </a>
-<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.true.)</span></a>
-<a name="284"><span class="lineNum">     284 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="283"><span class="lineNum">     283 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.true.)</span></a>
+<a name="284"><span class="lineNum">     284 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="285"><span class="lineNum">     285 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="286"><span class="lineNum">     286 </span>            : </a>
-<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          6 :         call random_seed(get=Seed)</span></a>
-<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         54 :         assertion = all(RandomSeed%Value == Seed)</span></a>
+<a name="287"><span class="lineNum">     287 </span><span class="lineCov">          3 :         call random_seed(get=Seed)</span></a>
+<a name="288"><span class="lineNum">     288 </span><span class="lineCov">         27 :         assertion = all(RandomSeed%Value == Seed)</span></a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
 <a name="290"><span class="lineNum">     290 </span>            :         ! LCOV_EXCL_START</a>
 <a name="291"><span class="lineNum">     291 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -383,22 +383,22 @@
 <a name="313"><span class="lineNum">     313 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="314"><span class="lineNum">     314 </span>            : </a>
 <a name="315"><span class="lineNum">     315 </span>            : #if defined CAF_ENABLED</a>
-<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          6 :         sync all</span></a>
+<a name="316"><span class="lineNum">     316 </span><span class="lineCov">          3 :         sync all</span></a>
 <a name="317"><span class="lineNum">     317 </span>            : #endif</a>
 <a name="318"><span class="lineNum">     318 </span>            : </a>
 <a name="319"><span class="lineNum">     319 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="320"><span class="lineNum">     320 </span>            :         ! Testing RandomSeed_type for equivalence of the old and the new Seed vector on each image</a>
 <a name="321"><span class="lineNum">     321 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="322"><span class="lineNum">     322 </span>            : </a>
-<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.true.)</span></a>
-<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="323"><span class="lineNum">     323 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, isRepeatable=.true., isImageDistinct=.true.)</span></a>
+<a name="324"><span class="lineNum">     324 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="325"><span class="lineNum">     325 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            :         block</a>
 <a name="328"><span class="lineNum">     328 </span>            :             integer, allocatable, save  :: SeedNew(:)</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          6 :             allocate( SeedNew(seedSize) )</span></a>
-<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          6 :             call random_seed(get=SeedNew)</span></a>
-<a name="331"><span class="lineNum">     331 </span><span class="lineCov">         54 :             assertion = all(SeedNew==Seed)</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          3 :             allocate( SeedNew(seedSize) )</span></a>
+<a name="330"><span class="lineNum">     330 </span><span class="lineCov">          3 :             call random_seed(get=SeedNew)</span></a>
+<a name="331"><span class="lineNum">     331 </span><span class="lineCov">         27 :             assertion = all(SeedNew==Seed)</span></a>
 <a name="332"><span class="lineNum">     332 </span>            :             ! LCOV_EXCL_START</a>
 <a name="333"><span class="lineNum">     333 </span>            :             if (Test%isDebugMode .and. .not. assertion) then</a>
 <a name="334"><span class="lineNum">     334 </span>            :                 if (Test%Image%id==1) then</a>
@@ -416,21 +416,21 @@
 <a name="346"><span class="lineNum">     346 </span>            : #endif</a>
 <a name="347"><span class="lineNum">     347 </span>            :             end if</a>
 <a name="348"><span class="lineNum">     348 </span>            :             ! LCOV_EXCL_STOP</a>
-<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          6 :             deallocate(SeedNew)</span></a>
+<a name="349"><span class="lineNum">     349 </span><span class="lineCov">          3 :             deallocate(SeedNew)</span></a>
 <a name="350"><span class="lineNum">     350 </span>            :         end block</a>
 <a name="351"><span class="lineNum">     351 </span>            : </a>
 <a name="352"><span class="lineNum">     352 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="353"><span class="lineNum">     353 </span>            :         ! Testing RandomSeed_type for non-equivalence of Seed vector on all images</a>
 <a name="354"><span class="lineNum">     354 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="355"><span class="lineNum">     355 </span>            : </a>
-<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          6 :         assertion = .true.</span></a>
+<a name="356"><span class="lineNum">     356 </span><span class="lineCov">          3 :         assertion = .true.</span></a>
 <a name="357"><span class="lineNum">     357 </span>            : #if defined CAF_ENABLED</a>
-<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          6 :         sync all</span></a>
-<a name="359"><span class="lineNum">     359 </span><span class="lineCov">          6 :         if (Test%Image%id==1) then</span></a>
-<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          2 :             sync images(*)</span></a>
+<a name="358"><span class="lineNum">     358 </span><span class="lineCov">          3 :         sync all</span></a>
+<a name="359"><span class="lineNum">     359 </span><span class="lineCov">          3 :         if (Test%Image%id==1) then</span></a>
+<a name="360"><span class="lineNum">     360 </span><span class="lineCov">          1 :             sync images(*)</span></a>
 <a name="361"><span class="lineNum">     361 </span>            :         else</a>
-<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          4 :             if ( all(Seed == Seed(:)[1]) ) assertion = .false.</span></a>
-<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          4 :             sync images(1)</span></a>
+<a name="362"><span class="lineNum">     362 </span><span class="lineCov">          2 :             if ( all(Seed == Seed(:)[1]) ) assertion = .false.</span></a>
+<a name="363"><span class="lineNum">     363 </span><span class="lineCov">          2 :             sync images(1)</span></a>
 <a name="364"><span class="lineNum">     364 </span>            :         end if</a>
 <a name="365"><span class="lineNum">     365 </span>            : #endif</a>
 <a name="366"><span class="lineNum">     366 </span>            : </a>
@@ -438,9 +438,9 @@
 <a name="368"><span class="lineNum">     368 </span>            :         ! Testing RandomSeed_type(inputSeed = 1313, isImageDistinct=.false.)</a>
 <a name="369"><span class="lineNum">     369 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="370"><span class="lineNum">     370 </span>            : </a>
-<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, inputSeed = 1313, isImageDistinct=.false.)</span></a>
-<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="371"><span class="lineNum">     371 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, inputSeed = 1313, isImageDistinct=.false.)</span></a>
+<a name="372"><span class="lineNum">     372 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="373"><span class="lineNum">     373 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="374"><span class="lineNum">     374 </span>            : </a>
 <a name="375"><span class="lineNum">     375 </span>            :         ! LCOV_EXCL_START</a>
 <a name="376"><span class="lineNum">     376 </span>            :         if (Test%isDebugMode .and. .not. assertion) then</a>
@@ -456,16 +456,16 @@
 <a name="386"><span class="lineNum">     386 </span>            :         end if</a>
 <a name="387"><span class="lineNum">     387 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="388"><span class="lineNum">     388 </span>            : </a>
-<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          6 :         call random_seed(get=Seed)</span></a>
-<a name="390"><span class="lineNum">     390 </span><span class="lineCov">          6 :         assertion = .true.</span></a>
+<a name="389"><span class="lineNum">     389 </span><span class="lineCov">          3 :         call random_seed(get=Seed)</span></a>
+<a name="390"><span class="lineNum">     390 </span><span class="lineCov">          3 :         assertion = .true.</span></a>
 <a name="391"><span class="lineNum">     391 </span>            : </a>
 <a name="392"><span class="lineNum">     392 </span>            : #if defined CAF_ENABLED</a>
-<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          6 :         sync all</span></a>
-<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          6 :         if (Test%Image%id==1) then</span></a>
-<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          2 :             sync images(*)</span></a>
+<a name="393"><span class="lineNum">     393 </span><span class="lineCov">          3 :         sync all</span></a>
+<a name="394"><span class="lineNum">     394 </span><span class="lineCov">          3 :         if (Test%Image%id==1) then</span></a>
+<a name="395"><span class="lineNum">     395 </span><span class="lineCov">          1 :             sync images(*)</span></a>
 <a name="396"><span class="lineNum">     396 </span>            :         else</a>
-<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         36 :             if ( any(Seed /= Seed(:)[1]) ) assertion = .false.</span></a>
-<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          4 :             sync images(1)</span></a>
+<a name="397"><span class="lineNum">     397 </span><span class="lineCov">         18 :             if ( any(Seed /= Seed(:)[1]) ) assertion = .false.</span></a>
+<a name="398"><span class="lineNum">     398 </span><span class="lineCov">          2 :             sync images(1)</span></a>
 <a name="399"><span class="lineNum">     399 </span>            :         end if</a>
 <a name="400"><span class="lineNum">     400 </span>            : #endif</a>
 <a name="401"><span class="lineNum">     401 </span>            : </a>
@@ -473,19 +473,19 @@
 <a name="403"><span class="lineNum">     403 </span>            :         ! Testing RandomSeed_type(inputSeed = 1313, isImageDistinct=.true.)</a>
 <a name="404"><span class="lineNum">     404 </span>            :         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="405"><span class="lineNum">     405 </span>            : </a>
-<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          6 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, inputSeed = 1313, isImageDistinct=.true.)</span></a>
-<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          6 :         assertion = .not. RandomSeed%Err%occurred</span></a>
-<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          6 :         if (.not. assertion) return</span></a>
+<a name="406"><span class="lineNum">     406 </span><span class="lineCov">          3 :         RandomSeed = RandomSeed_type(imageID=Test%Image%id, inputSeed = 1313, isImageDistinct=.true.)</span></a>
+<a name="407"><span class="lineNum">     407 </span><span class="lineCov">          3 :         assertion = .not. RandomSeed%Err%occurred</span></a>
+<a name="408"><span class="lineNum">     408 </span><span class="lineCov">          3 :         if (.not. assertion) return</span></a>
 <a name="409"><span class="lineNum">     409 </span>            : </a>
-<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          6 :         call random_seed(get=Seed)</span></a>
-<a name="411"><span class="lineNum">     411 </span><span class="lineCov">          6 :         assertion = .true.</span></a>
+<a name="410"><span class="lineNum">     410 </span><span class="lineCov">          3 :         call random_seed(get=Seed)</span></a>
+<a name="411"><span class="lineNum">     411 </span><span class="lineCov">          3 :         assertion = .true.</span></a>
 <a name="412"><span class="lineNum">     412 </span>            : #if defined CAF_ENABLED</a>
-<a name="413"><span class="lineNum">     413 </span><span class="lineCov">          6 :         sync all</span></a>
-<a name="414"><span class="lineNum">     414 </span><span class="lineCov">          6 :         if (Test%Image%id==1) then</span></a>
-<a name="415"><span class="lineNum">     415 </span><span class="lineCov">          2 :             sync images(*)</span></a>
+<a name="413"><span class="lineNum">     413 </span><span class="lineCov">          3 :         sync all</span></a>
+<a name="414"><span class="lineNum">     414 </span><span class="lineCov">          3 :         if (Test%Image%id==1) then</span></a>
+<a name="415"><span class="lineNum">     415 </span><span class="lineCov">          1 :             sync images(*)</span></a>
 <a name="416"><span class="lineNum">     416 </span>            :         else</a>
-<a name="417"><span class="lineNum">     417 </span><span class="lineCov">         36 :             if ( any(Seed == Seed(:)[1]) ) assertion = .false.</span></a>
-<a name="418"><span class="lineNum">     418 </span><span class="lineCov">          4 :             sync images(1)</span></a>
+<a name="417"><span class="lineNum">     417 </span><span class="lineCov">         18 :             if ( any(Seed == Seed(:)[1]) ) assertion = .false.</span></a>
+<a name="418"><span class="lineNum">     418 </span><span class="lineCov">          2 :             sync images(1)</span></a>
 <a name="419"><span class="lineNum">     419 </span>            :         end if</a>
 <a name="420"><span class="lineNum">     420 </span>            : #endif</a>
 <a name="421"><span class="lineNum">     421 </span>            : </a>
@@ -505,9 +505,9 @@
 <a name="435"><span class="lineNum">     435 </span>            :         end if</a>
 <a name="436"><span class="lineNum">     436 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="437"><span class="lineNum">     437 </span>            : </a>
-<a name="438"><span class="lineNum">     438 </span><span class="lineCov">          6 :         deallocate( Seed )</span></a>
+<a name="438"><span class="lineNum">     438 </span><span class="lineCov">          3 :         deallocate( Seed )</span></a>
 <a name="439"><span class="lineNum">     439 </span>            : </a>
-<a name="440"><span class="lineNum">     440 </span><span class="lineCov">         12 :     end function test_constructRandomSeed</span></a>
+<a name="440"><span class="lineNum">     440 </span><span class="lineCov">          6 :     end function test_constructRandomSeed</span></a>
 <a name="441"><span class="lineNum">     441 </span>            : </a>
 <a name="442"><span class="lineNum">     442 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="443"><span class="lineNum">     443 </span>            : </a>
@@ -520,7 +520,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
-<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2020</td></tr>
+<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2021</td></tr>
   </table>
   <br>
 

@@ -4,7 +4,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>LCOV - ParaMonte 1.5.0 :: MPI Parallel Kernel - Code Coverage Report - kernel/ParaDXXX_mod@Input_smod.inc.f90</title>
+  <title>LCOV - ParaMonte 1.5.1 :: MPI Parallel Kernel - Code Coverage Report - kernel/ParaDXXX_mod@Input_smod.inc.f90</title>
   <link rel="stylesheet" type="text/css" href="../gcov.css">
 </head>
 
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test:</td>
-            <td class="headerValue">ParaMonte 1.5.0 :: MPI Parallel Kernel - Code Coverage Report</td>
+            <td class="headerValue">ParaMonte 1.5.1 :: MPI Parallel Kernel - Code Coverage Report</td>
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">34</td>
@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-12-23 03:49:22</td>
+            <td class="headerValue">2021-01-08 13:07:16</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -222,7 +222,7 @@
 <a name="152"><span class="lineNum">     152 </span>            :     !&gt;</a>
 <a name="153"><span class="lineNum">     153 </span>            :     !&gt; \remark</a>
 <a name="154"><span class="lineNum">     154 </span>            :     !&gt; This procedure requires preprocessing.</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       2094 :     module subroutine getSpecFromInputFile(self,nd)</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">       1047 :     module subroutine getSpecFromInputFile(self,nd)</span></a>
 <a name="156"><span class="lineNum">     156 </span>            : #if INTEL_COMPILER_ENABLED &amp;&amp; defined DLL_ENABLED &amp;&amp; (OS_IS_WINDOWS || defined OS_IS_DARWIN)</a>
 <a name="157"><span class="lineNum">     157 </span>            :         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile</a>
 <a name="158"><span class="lineNum">     158 </span>            : #endif</a>
@@ -236,34 +236,34 @@
 <a name="166"><span class="lineNum">     166 </span>            : </a>
 <a name="167"><span class="lineNum">     167 </span>            :         ! initialize/nullify all general input options</a>
 <a name="168"><span class="lineNum">     168 </span>            : </a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       2094 :         call self%SpecBase%nullifyNameListVar(nd)</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       2094 :         call self%SpecMCMC%nullifyNameListVar(nd)</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       2094 :         call self%SpecDRAM%nullifyNameListVar(nd)</span></a>
+<a name="169"><span class="lineNum">     169 </span><span class="lineCov">       1047 :         call self%SpecBase%nullifyNameListVar(nd)</span></a>
+<a name="170"><span class="lineNum">     170 </span><span class="lineCov">       1047 :         call self%SpecMCMC%nullifyNameListVar(nd)</span></a>
+<a name="171"><span class="lineNum">     171 </span><span class="lineCov">       1047 :         call self%SpecDRAM%nullifyNameListVar(nd)</span></a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
 <a name="173"><span class="lineNum">     173 </span>            :         ! read input options if input file is provided</a>
 <a name="174"><span class="lineNum">     174 </span>            : </a>
-<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       2094 :         blockReadInputFile: if (self%inputFileArgIsPresent) then</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">       1047 :         blockReadInputFile: if (self%inputFileArgIsPresent) then</span></a>
 <a name="176"><span class="lineNum">     176 </span>            : </a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">        972 :             blockInputFileType: if (self%InputFile%isInternal) then</span></a>
+<a name="177"><span class="lineNum">     177 </span><span class="lineCov">        486 :             blockInputFileType: if (self%InputFile%isInternal) then</span></a>
 <a name="178"><span class="lineNum">     178 </span>            : </a>
 <a name="179"><span class="lineNum">     179 </span>            :                 ! read input file as an internal file</a>
 <a name="180"><span class="lineNum">     180 </span>            : </a>
-<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        924 :                 read(self%InputFile%Path%original,nml=ParaDXXX,iostat=self%InputFile%Err%stat)</span></a>
-<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        924 :                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
+<a name="181"><span class="lineNum">     181 </span><span class="lineCov">        462 :                 read(self%InputFile%Path%original,nml=ParaDXXX,iostat=self%InputFile%Err%stat)</span></a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineCov">        462 :                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
 <a name="183"><span class="lineNum">     183 </span>            : </a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        924 :                 if (self%Err%occurred) then</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineCov">        462 :                 if (self%Err%occurred) then</span></a>
 <a name="185"><span class="lineNum">     185 </span>            : </a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         48 :                     if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then</span></a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineCov">         24 :                     if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then</span></a>
 <a name="187"><span class="lineNum">     187 </span>            : </a>
 <a name="188"><span class="lineNum">     188 </span>            :                         ! search for the paradxxx namelist group in the file.</a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         48 :                         call self%warnUserAboutMissingNamelist(namelist = self%name)</span></a>
-<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         48 :                         read(self%InputFile%Path%original,nml=paradxxx,iostat=self%InputFile%Err%stat) ! WARNING: &quot;paradxxx&quot; is NOT the same as fpp macro name &quot;ParaDXXX&quot;. This is a real namelist name.</span></a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         48 :                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
+<a name="190"><span class="lineNum">     190 </span><span class="lineCov">         24 :                         call self%warnUserAboutMissingNamelist(namelist = self%name)</span></a>
+<a name="191"><span class="lineNum">     191 </span><span class="lineCov">         24 :                         read(self%InputFile%Path%original,nml=paradxxx,iostat=self%InputFile%Err%stat) ! WARNING: &quot;paradxxx&quot; is NOT the same as fpp macro name &quot;ParaDXXX&quot;. This is a real namelist name.</span></a>
+<a name="192"><span class="lineNum">     192 </span><span class="lineCov">         24 :                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
 <a name="193"><span class="lineNum">     193 </span>            : </a>
 <a name="194"><span class="lineNum">     194 </span>            :                     end if</a>
 <a name="195"><span class="lineNum">     195 </span>            : </a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         48 :                     if (self%Err%occurred) then</span></a>
+<a name="196"><span class="lineNum">     196 </span><span class="lineCov">         24 :                     if (self%Err%occurred) then</span></a>
 <a name="197"><span class="lineNum">     197 </span>            : </a>
 <a name="198"><span class="lineNum">     198 </span><span class="lineNoCov">          0 :                         if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then</span></a>
 <a name="199"><span class="lineNum">     199 </span>            : </a>
@@ -285,7 +285,7 @@
 <a name="215"><span class="lineNum">     215 </span>            : </a>
 <a name="216"><span class="lineNum">     216 </span>            :                 ! close input file if it is open</a>
 <a name="217"><span class="lineNum">     217 </span>            : </a>
-<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         48 :                 if (self%InputFile%isOpen) then</span></a>
+<a name="218"><span class="lineNum">     218 </span><span class="lineCov">         24 :                 if (self%InputFile%isOpen) then</span></a>
 <a name="219"><span class="lineNum">     219 </span>            :                     ! LCOV_EXCL_START</a>
 <a name="220"><span class="lineNum">     220 </span>            :                     close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)</a>
 <a name="221"><span class="lineNum">     221 </span>            :                     self%Err = self%InputFile%getCloseErr(self%InputFile%Err%stat)</a>
@@ -307,9 +307,9 @@
 <a name="237"><span class="lineNum">     237 </span>            : #if defined INTEL_COMPILER_ENABLED &amp;&amp; defined OS_IS_WINDOWS</a>
 <a name="238"><span class="lineNum">     238 </span>            :                     , SHARED &amp;</a>
 <a name="239"><span class="lineNum">     239 </span>            : #endif</a>
-<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         48 :                     )</span></a>
-<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         48 :                 self%Err = self%InputFile%getOpenErr(self%InputFile%Err%stat)</span></a>
-<a name="242"><span class="lineNum">     242 </span><span class="lineCov">         48 :                 if (self%Err%occurred) then</span></a>
+<a name="240"><span class="lineNum">     240 </span><span class="lineCov">         24 :                     )</span></a>
+<a name="241"><span class="lineNum">     241 </span><span class="lineCov">         24 :                 self%Err = self%InputFile%getOpenErr(self%InputFile%Err%stat)</span></a>
+<a name="242"><span class="lineNum">     242 </span><span class="lineCov">         24 :                 if (self%Err%occurred) then</span></a>
 <a name="243"><span class="lineNum">     243 </span>            :                     ! LCOV_EXCL_START</a>
 <a name="244"><span class="lineNum">     244 </span>            :                     self%Err%msg =  PROCEDURE_NAME // &quot;: Error occurred while attempting to open the user-provided input file='&quot; // &amp;</a>
 <a name="245"><span class="lineNum">     245 </span>            :                                     self%InputFile%Path%modified // &quot;', unit=&quot; // num2str(self%InputFile%unit) // &quot;.\n&quot; // &amp;</a>
@@ -320,27 +320,27 @@
 <a name="250"><span class="lineNum">     250 </span>            : </a>
 <a name="251"><span class="lineNum">     251 </span>            :                 ! read input file</a>
 <a name="252"><span class="lineNum">     252 </span>            : </a>
-<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         48 :                 read(self%InputFile%unit,nml=ParaDXXX,iostat=self%InputFile%Err%stat)</span></a>
-<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         48 :                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
+<a name="253"><span class="lineNum">     253 </span><span class="lineCov">         24 :                 read(self%InputFile%unit,nml=ParaDXXX,iostat=self%InputFile%Err%stat)</span></a>
+<a name="254"><span class="lineNum">     254 </span><span class="lineCov">         24 :                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
 <a name="255"><span class="lineNum">     255 </span>            : </a>
-<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         48 :                 if (self%Err%occurred) then</span></a>
+<a name="256"><span class="lineNum">     256 </span><span class="lineCov">         24 :                 if (self%Err%occurred) then</span></a>
 <a name="257"><span class="lineNum">     257 </span>            : </a>
-<a name="258"><span class="lineNum">     258 </span><span class="lineCov">         36 :                     if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then</span></a>
+<a name="258"><span class="lineNum">     258 </span><span class="lineCov">         18 :                     if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then</span></a>
 <a name="259"><span class="lineNum">     259 </span>            : </a>
 <a name="260"><span class="lineNum">     260 </span>            :                         ! search for the paradxxx namelist group in the file.</a>
 <a name="261"><span class="lineNum">     261 </span>            : </a>
-<a name="262"><span class="lineNum">     262 </span><span class="lineCov">         36 :                         rewind(self%InputFile%unit)</span></a>
-<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         36 :                         call self%warnUserAboutMissingNamelist(namelist = self%name)</span></a>
-<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         36 :                         read(self%InputFile%unit, nml=paradxxx, iostat=self%InputFile%Err%stat) ! WARNING: &quot;paradxxx&quot; is NOT the same as fpp macro name &quot;ParaDXXX&quot;</span></a>
-<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         36 :                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
+<a name="262"><span class="lineNum">     262 </span><span class="lineCov">         18 :                         rewind(self%InputFile%unit)</span></a>
+<a name="263"><span class="lineNum">     263 </span><span class="lineCov">         18 :                         call self%warnUserAboutMissingNamelist(namelist = self%name)</span></a>
+<a name="264"><span class="lineNum">     264 </span><span class="lineCov">         18 :                         read(self%InputFile%unit, nml=paradxxx, iostat=self%InputFile%Err%stat) ! WARNING: &quot;paradxxx&quot; is NOT the same as fpp macro name &quot;ParaDXXX&quot;</span></a>
+<a name="265"><span class="lineNum">     265 </span><span class="lineCov">         18 :                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)</span></a>
 <a name="266"><span class="lineNum">     266 </span>            : </a>
 <a name="267"><span class="lineNum">     267 </span>            :                     end if</a>
 <a name="268"><span class="lineNum">     268 </span>            : </a>
-<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         36 :                     if (self%Err%occurred) then</span></a>
+<a name="269"><span class="lineNum">     269 </span><span class="lineCov">         18 :                     if (self%Err%occurred) then</span></a>
 <a name="270"><span class="lineNum">     270 </span>            : </a>
-<a name="271"><span class="lineNum">     271 </span><span class="lineCov">         12 :                         if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then</span></a>
+<a name="271"><span class="lineNum">     271 </span><span class="lineCov">          6 :                         if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then</span></a>
 <a name="272"><span class="lineNum">     272 </span>            : </a>
-<a name="273"><span class="lineNum">     273 </span><span class="lineCov">         12 :                             call self%warnUserAboutMissingNamelist(namelist = &quot;ParaDXXX&quot;)</span></a>
+<a name="273"><span class="lineNum">     273 </span><span class="lineCov">          6 :                             call self%warnUserAboutMissingNamelist(namelist = &quot;ParaDXXX&quot;)</span></a>
 <a name="274"><span class="lineNum">     274 </span>            : </a>
 <a name="275"><span class="lineNum">     275 </span>            :                         else ! attempt to read the file one more time, without error handling, so that the compiler prints out the error message.</a>
 <a name="276"><span class="lineNum">     276 </span>            : </a>
@@ -357,7 +357,7 @@
 <a name="287"><span class="lineNum">     287 </span>            : </a>
 <a name="288"><span class="lineNum">     288 </span>            :                 ! close input file</a>
 <a name="289"><span class="lineNum">     289 </span>            : </a>
-<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         48 :                 close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)</span></a>
+<a name="290"><span class="lineNum">     290 </span><span class="lineCov">         24 :                 close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)</span></a>
 <a name="291"><span class="lineNum">     291 </span>            :                 ! LCOV_EXCL_START</a>
 <a name="292"><span class="lineNum">     292 </span>            :                 self%Err = self%InputFile%getCloseErr(self%InputFile%Err%stat)</a>
 <a name="293"><span class="lineNum">     293 </span>            :                 if (self%Err%occurred) then</a>
@@ -374,7 +374,7 @@
 <a name="304"><span class="lineNum">     304 </span>            : </a>
 <a name="305"><span class="lineNum">     305 </span>            :         ! setup SpecBase variables that have been read form the input file</a>
 <a name="306"><span class="lineNum">     306 </span>            : </a>
-<a name="307"><span class="lineNum">     307 </span><span class="lineCov">       2094 :         call self%SpecBase%setFromInputFile(Err = self%Err)</span></a>
+<a name="307"><span class="lineNum">     307 </span><span class="lineCov">       1047 :         call self%SpecBase%setFromInputFile(Err = self%Err)</span></a>
 <a name="308"><span class="lineNum">     308 </span>            :         ! LCOV_EXCL_START</a>
 <a name="309"><span class="lineNum">     309 </span>            :         if (self%Err%occurred) then</a>
 <a name="310"><span class="lineNum">     310 </span>            :             self%Err%msg = PROCEDURE_NAME // self%Err%msg</a>
@@ -384,7 +384,7 @@
 <a name="314"><span class="lineNum">     314 </span>            : </a>
 <a name="315"><span class="lineNum">     315 </span>            :         ! setup SpecMCMC variables that have been read form the input file</a>
 <a name="316"><span class="lineNum">     316 </span>            : </a>
-<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       2094 :         call self%SpecMCMC%setFromInputFile(Err = self%Err)</span></a>
+<a name="317"><span class="lineNum">     317 </span><span class="lineCov">       1047 :         call self%SpecMCMC%setFromInputFile(Err = self%Err)</span></a>
 <a name="318"><span class="lineNum">     318 </span>            :         ! LCOV_EXCL_START</a>
 <a name="319"><span class="lineNum">     319 </span>            :         if (self%Err%occurred) then</a>
 <a name="320"><span class="lineNum">     320 </span>            :             self%Err%msg = PROCEDURE_NAME // self%Err%msg</a>
@@ -394,7 +394,7 @@
 <a name="324"><span class="lineNum">     324 </span>            : </a>
 <a name="325"><span class="lineNum">     325 </span>            :         ! setup SpecDRAM variables that have been read form the input file</a>
 <a name="326"><span class="lineNum">     326 </span>            : </a>
-<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       2094 :         call self%SpecDRAM%setFromInputFile( self%Err )</span></a>
+<a name="327"><span class="lineNum">     327 </span><span class="lineCov">       1047 :         call self%SpecDRAM%setFromInputFile( self%Err )</span></a>
 <a name="328"><span class="lineNum">     328 </span>            :         ! LCOV_EXCL_START</a>
 <a name="329"><span class="lineNum">     329 </span>            :         if (self%Err%occurred) then</a>
 <a name="330"><span class="lineNum">     330 </span>            :             self%Err%msg = PROCEDURE_NAME // self%Err%msg</a>
@@ -402,7 +402,7 @@
 <a name="332"><span class="lineNum">     332 </span>            :         end if</a>
 <a name="333"><span class="lineNum">     333 </span>            :         ! LCOV_EXCL_STOP</a>
 <a name="334"><span class="lineNum">     334 </span>            : </a>
-<a name="335"><span class="lineNum">     335 </span><span class="lineCov">       2094 :     end subroutine getSpecFromInputFile</span></a>
+<a name="335"><span class="lineNum">     335 </span><span class="lineCov">       1047 :     end subroutine getSpecFromInputFile</span></a>
 <a name="336"><span class="lineNum">     336 </span>            : </a>
 <a name="337"><span class="lineNum">     337 </span>            : !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</a>
 <a name="338"><span class="lineNum">     338 </span>            : </a>
@@ -417,7 +417,7 @@
 
   <table width="100%" border=0 cellspacing=0 cellpadding=0>
     <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
-<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2020</td></tr>
+<tr><td class="versionInfo"><a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;<br><a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a><br>&copy; Copyright 2012 - 2021</td></tr>
   </table>
   <br>
 
