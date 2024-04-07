@@ -9,6 +9,9 @@ The ParaMonte Code Coverage Report
 
 </div>
 
+> **WARNING**: This repository is now archived permanently and will not be updated.
+> All ParaMonte library code coverage reports can be found at [https://www.cdslab.org/paramonte/generic/1/codecov/](https://www.cdslab.org/paramonte/generic/1/codecov/).
+
 This repository contains the [ParaMonte library](https://github.com/cdslaborg/paramonte)'s Code Coverage report for different build configurations and programming languages. 
 To learn more about the details of code coverage preparation, visit the [ParaMonte library's documentation website](https://www.cdslab.org/paramonte/).  
 
